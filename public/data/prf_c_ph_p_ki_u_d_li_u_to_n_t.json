@@ -1,0 +1,537 @@
+[
+  {
+    "id": "prf_3",
+    "word": "Câu 3: Which of the following statements is invalid?",
+    "question": "Which of the following statements is invalid?",
+    "options": [
+      "A. printf(\"\\\\\");",
+      "B. printf(\"abc\");",
+      "C. printf(\"%%\");",
+      "D. printf(\"\\n\");"
+    ],
+    "answer": "A",
+    "correctWord": "A. printf(\"\\\\\");",
+    "explanation": "Đáp án: A. đề có thể lỗi: cả 4 câu lệnh đều hợp lệ; có thể đề gốc là printf(\"\\\"); nên chọn A, bạn nên kiểm tra lại",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_10",
+    "word": "Câu 10: Which of the following is not a valid variable name declarat...",
+    "question": "Which of the following is not a valid variable name declaration?",
+    "options": [
+      "A. int _a3;",
+      "B. int a_3;",
+      "C. int 3_a;",
+      "D. int _3a"
+    ],
+    "answer": "C",
+    "correctWord": "C. int 3_a;",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_11",
+    "word": "Câu 11: Which of the following is a valid variable definition?",
+    "question": "Which of the following is a valid variable definition?",
+    "options": [
+      "A. int 1student_ID;",
+      "B. int _Student_ID1;",
+      "C. int Age$;",
+      "D. int long;"
+    ],
+    "answer": "B",
+    "correctWord": "B. int _Student_ID1;",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_22",
+    "word": "Câu 22: What will this code output?\nint a = 5, b = 10;\nprintf(\"%d\", ...",
+    "question": "What will this code output?\nint a = 5, b = 10;\nprintf(\"%d\", !(a > b || b == 10));",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 5",
+      "D. -1"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_24",
+    "word": "Câu 24: Which of the following code snippets calculates the square r...",
+    "question": "Which of the following code snippets calculates the square root of 9 using the correct C library?",
+    "options": [
+      "A. double result = sqrt(9);",
+      "B. int result = sqrt(9);",
+      "C. float result = sqrt(9);",
+      "D. result = power(9, 0.5);"
+    ],
+    "answer": "A",
+    "correctWord": "A. double result = sqrt(9);",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_27",
+    "word": "Câu 27: Which implicit type casting is used in the following codes i...",
+    "question": "Which implicit type casting is used in the following codes in C programming?",
+    "options": [
+      "A. int i = (double)123.5;",
+      "B. double t = double(2);",
+      "C. double t = (double) 2;",
+      "D. double t = (int) 2.7;"
+    ],
+    "answer": "A",
+    "correctWord": "A. int i = (double)123.5;",
+    "explanation": "Đáp án: A. đề không rõ ràng: A có ép kiểu ngầm double sang int khi gán, nên chọn A",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_33",
+    "word": "Câu 33: What is the syntax of the conditional operator in C?",
+    "question": "What is the syntax of the conditional operator in C?",
+    "options": [
+      "A. condition ? expression1 : expression2",
+      "B. condition ? expression1, expression2",
+      "C. condition : expression1 ? expression2",
+      "D. expression1 : condition ? expression2"
+    ],
+    "answer": "A",
+    "correctWord": "A. condition ? expression1 : expression2",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_38",
+    "word": "Câu 38: What is the correct syntax to output \"Hello, World!\" in C/C+...",
+    "question": "What is the correct syntax to output \"Hello, World!\" in C/C++?",
+    "options": [
+      "A. printf(\"Hello, World!\");",
+      "B. cout << \"Hello, World!\" << endl;",
+      "C. System.out.println(\"Hello, World!\");",
+      "D. echo \"Hello, World!\";"
+    ],
+    "answer": "A",
+    "correctWord": "A. printf(\"Hello, World!\");",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_53",
+    "word": "Câu 53: Given the following code snippet:\nint a[10] = {1, 2, 3};\nWha...",
+    "question": "Given the following code snippet:\nint a[10] = {1, 2, 3};\nWhat is the value of a[3]?",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 2",
+      "D. 3"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_54",
+    "word": "Câu 54: What is the result of the expression 10 % 3?",
+    "question": "What is the result of the expression 10 % 3?",
+    "options": [
+      "A. 1",
+      "B. 3",
+      "C. 2",
+      "D. 0"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_59",
+    "word": "Câu 59: What does the following code print?\nfloat y = 3 / 2;\nprintf(...",
+    "question": "What does the following code print?\nfloat y = 3 / 2;\nprintf(\"%f\", y);",
+    "options": [
+      "A. 1.000000",
+      "B. 1.500000",
+      "C. 1.0",
+      "D. 1.5",
+      "E. 1\nF. Compiler error"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1.000000",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_69",
+    "word": "Câu 69: What is the result displayed on the screen of the following ...",
+    "question": "What is the result displayed on the screen of the following program?\n#include <stdio.h>\nint main()\n{\n    int i;\n    i = 10;\n    printf(\"%o\", i);\n}",
+    "options": [
+      "A. 12",
+      "B. 8",
+      "C. 10",
+      "D. None of these"
+    ],
+    "answer": "A",
+    "correctWord": "A. 12",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_71",
+    "word": "Câu 71: What is the value of ceil(2.55) from the math.h library?",
+    "question": "What is the value of ceil(2.55) from the math.h library?",
+    "options": [
+      "A. 3",
+      "B. 2",
+      "C. 2.5",
+      "D. 2.6"
+    ],
+    "answer": "A",
+    "correctWord": "A. 3",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_76",
+    "word": "Câu 76: What will be the output of the C program?\nint a = 4, b = 2;\n...",
+    "question": "What will be the output of the C program?\nint a = 4, b = 2;\nprintf(\"a^b = %d\", a^b);",
+    "options": [
+      "A. 2",
+      "B. 8",
+      "C. 16",
+      "D. 6"
+    ],
+    "answer": "D",
+    "correctWord": "D. 6",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_82",
+    "word": "Câu 82: What is the result of the \"printf(\"%d\", 0x11 | 010);\" comman...",
+    "question": "What is the result of the \"printf(\"%d\", 0x11 | 010);\" command?",
+    "options": [
+      "A. 5",
+      "B. 22",
+      "C. 18",
+      "D. 25",
+      "E. 28"
+    ],
+    "answer": "D",
+    "correctWord": "D. 25",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_83",
+    "word": "Câu 83: In the sample code int a = 0x10 | 011; the variable a will c...",
+    "question": "In the sample code int a = 0x10 | 011; the variable a will contain the value (in decimal number system):",
+    "options": [
+      "A. 3",
+      "B. 13",
+      "C. 19",
+      "D. 25",
+      "E. 27"
+    ],
+    "answer": "D",
+    "correctWord": "D. 25",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_91",
+    "word": "Câu 91: What is the value of z after the \"int a = 8, b = 6, c = 4, b...",
+    "question": "What is the value of z after the \"int a = 8, b = 6, c = 4, b++ * ++c + --a;\" command?",
+    "options": [
+      "A. 16",
+      "B. 28",
+      "C. 37",
+      "D. 32",
+      "E. -28"
+    ],
+    "answer": "C",
+    "correctWord": "C. 37",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_111",
+    "word": "Câu 111: What will this code print?\nint x[5] = {0};\nprintf(\"%d\", x[3]...",
+    "question": "What will this code print?\nint x[5] = {0};\nprintf(\"%d\", x[3]);",
+    "options": [
+      "A. 0",
+      "B. Garbage value",
+      "C. 3",
+      "D. Error"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_121",
+    "word": "Câu 121: What does the following code print?\nfloat a = 3.0;\nfloat b =...",
+    "question": "What does the following code print?\nfloat a = 3.0;\nfloat b = 2.0;\nint r = a % b;\nprintf(\"%d\", r);",
+    "options": [
+      "A. Compiler error",
+      "B. 1.000000",
+      "C. 1.500000",
+      "D. 1.0",
+      "E. 1.5\nF. 1"
+    ],
+    "answer": "A",
+    "correctWord": "A. Compiler error",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_132",
+    "word": "Câu 132: What is the result of this code?\nint a = 10;\nint b = 3;\nfloa...",
+    "question": "What is the result of this code?\nint a = 10;\nint b = 3;\nfloat c = a / b;\nprintf(\"%.1f\", c);",
+    "options": [
+      "A. 3",
+      "B. 3.3",
+      "C. 3.0",
+      "D. Compile error"
+    ],
+    "answer": "C",
+    "correctWord": "C. 3.0",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_141",
+    "word": "Câu 141: What is the result of the printf(\"%d %d\", 12<<2, 8>>2); comm...",
+    "question": "What is the result of the printf(\"%d %d\", 12<<2, 8>>2); command?",
+    "options": [
+      "A. 6 4",
+      "B. 24 2",
+      "C. 48 4",
+      "D. 48 2",
+      "E. 0 0"
+    ],
+    "answer": "D",
+    "correctWord": "D. 48 2",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_144",
+    "word": "Câu 144: What will be the output of the following C code?\n#include <s...",
+    "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main()\n{\n    int i = 10, j = 3, k = 3;\n    printf(\"%d %d\", i, j, k);\n}",
+    "options": [
+      "A. Compile time error",
+      "B. 10 3 3",
+      "C. 10 3",
+      "D. 10 3 somegarbage value"
+    ],
+    "answer": "C",
+    "correctWord": "C. 10 3",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_145",
+    "word": "Câu 145: What will be the output of the C program?\nint 2_var = 15;\npr...",
+    "question": "What will be the output of the C program?\nint 2_var = 15;\nprintf(\"%d\", 2_var);",
+    "options": [
+      "A. 0",
+      "B. 15",
+      "C. Compilation error",
+      "D. Runtime error"
+    ],
+    "answer": "C",
+    "correctWord": "C. Compilation error",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_149",
+    "word": "Câu 149: What will be the output of the following code?\nprintf(\"%c\", ...",
+    "question": "What will be the output of the following code?\nprintf(\"%c\", tolower('c'));",
+    "options": [
+      "A. 'c'",
+      "B. 'C'",
+      "C. 'c' or 'C' (depending on IDE)",
+      "D. Compilation error"
+    ],
+    "answer": "A",
+    "correctWord": "A. 'c'",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_159",
+    "word": "Câu 159: What is the size of a float variable in byte?",
+    "question": "What is the size of a float variable in byte?",
+    "options": [
+      "A. 2 bytes",
+      "B. 1 byte",
+      "C. 8 bytes",
+      "D. 4 bytes"
+    ],
+    "answer": "D",
+    "correctWord": "D. 4 bytes",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_160",
+    "word": "Câu 160: How many bytes to represent float data type in C?",
+    "question": "How many bytes to represent float data type in C?",
+    "options": [
+      "A. 1 byte",
+      "B. 2 bytes",
+      "C. 4 bytes",
+      "D. 8 bytes"
+    ],
+    "answer": "C",
+    "correctWord": "C. 4 bytes",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_162",
+    "word": "Câu 162: What will be the maximum size of a double variable?",
+    "question": "What will be the maximum size of a double variable?",
+    "options": [
+      "A. 8 bytes",
+      "B. 4 bytes",
+      "C. 2 bytes",
+      "D. 16 bytes"
+    ],
+    "answer": "A",
+    "correctWord": "A. 8 bytes",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_166",
+    "word": "Câu 166: What will be the output of the C program?\nint a = 5;\nprintf(...",
+    "question": "What will be the output of the C program?\nint a = 5;\nprintf(\"%dha\" + 2, a);",
+    "options": [
+      "A. 5ha",
+      "B. ha",
+      "C. dha",
+      "D. 7"
+    ],
+    "answer": "B",
+    "correctWord": "B. ha",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_171",
+    "word": "Câu 171: What is the result of the printf(\"%c %c %c %c\", 'A', 0x42, 0...",
+    "question": "What is the result of the printf(\"%c %c %c %c\", 'A', 0x42, 0103, 68); command?",
+    "options": [
+      "A. A A B C",
+      "B. A B C D",
+      "C. A C C D",
+      "D. A B D C"
+    ],
+    "answer": "B",
+    "correctWord": "B. A B C D",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_176",
+    "word": "Câu 176: What does this code print?\nint n = 30, m = 5;\nfloat x = 3.5F...",
+    "question": "What does this code print?\nint n = 30, m = 5;\nfloat x = 3.5F, y = 8.12F;\nprintf(\"%d, %d\\n\", (n < m || x >= y), !(x > y));",
+    "options": [
+      "A. 1, 0",
+      "B. 0, 1",
+      "C. 1, 1",
+      "D. 0, 0"
+    ],
+    "answer": "B",
+    "correctWord": "B. 0, 1",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_178",
+    "word": "Câu 178: What will be the output of the following C code?\n#include <s...",
+    "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main()\n{\n    int k = 4;\n    int const p = k;\n    int r = 3;\n    printf(\"%d\", p);\n}",
+    "options": [
+      "A. The value of p is 4",
+      "B. Run time error",
+      "C. Compile time error",
+      "D. The value of p is a garbage value"
+    ],
+    "answer": "A",
+    "correctWord": "A. The value of p is 4",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_184",
+    "word": "Câu 184: What is the result of the statement printf(\"Welcome to\\rFPTU...",
+    "question": "What is the result of the statement printf(\"Welcome to\\rFPTU\"); ?",
+    "options": [
+      "A. FPTUome to",
+      "B. FPTU",
+      "C. Welcome to FPTU",
+      "D. Welcome toFPTU",
+      "E. FPTU Welcome to"
+    ],
+    "answer": "A",
+    "correctWord": "A. FPTUome to",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  },
+  {
+    "id": "prf_385",
+    "word": "Câu 385: In C, what is the purpose of | operator?",
+    "question": "In C, what is the purpose of | operator?",
+    "options": [
+      "A. It is a bitwise operator OR",
+      "B. It is a logical operator AND",
+      "C. It is a bitwise operator AND",
+      "D. It is a logical operator OR"
+    ],
+    "answer": "A",
+    "correctWord": "A. It is a bitwise operator OR",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+  }
+]

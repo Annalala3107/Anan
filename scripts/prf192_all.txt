@@ -1,0 +1,2465 @@
+Câu 1: Which is the function returns the absolute value of a floating number?
+A. fabsf()
+B. abs()
+C. labs()
+D. absf()
+Đáp án đúng: A
+Câu 2: Which of the following is the correct syntax of the for statement?
+A. for ( Init1, Init2; Condition ; Task1, Task2);
+B. for ( Init1, Condition ,Task1);
+C. for (Condition ; Init1, Init2; Task1);
+D. for ( Init1; Init2; Condition ; Task2)
+Đáp án đúng: A
+Câu 3: Which of the following statements is invalid?
+A. printf("\\");
+B. printf("abc");
+C. printf("%%");
+D. printf("\n");
+Đáp án đúng: A (đề có thể lỗi: cả 4 câu lệnh đều hợp lệ; có thể đề gốc là printf("\"); nên chọn A, bạn nên kiểm tra lại)
+Câu 4: What is incorrect when input a string?
+A. scanf("%s", s);
+B. scanf("%[^\n]", s);
+C. getc(s);
+D. gets(s)
+E. scanf(s);
+Đáp án đúng: C (getc nhận FILE*, không dùng để nhập chuỗi; E cũng sai về logic)
+Câu 5: Choose the correct statement for declaring a float pointer:
+A. float* ptr;
+B. float  ptr;
+C. *float ptr;
+D. float  ptr*;
+Đáp án đúng: A
+Câu 6: Which of the following is used for single character I/O?
+A. getchar() and putchar()
+B. gets() and puts()
+C. scanf() and printf()
+D. fgets() and fputs()
+Đáp án đúng: A
+Câu 7: Which follows the function used to remove the keyboard buffer?
+A. fflush()
+B. clearbuffer()
+C. clear input()
+D. clrscr()
+Đáp án đúng: A
+Câu 8: Which of the following declaration is not supported by C?
+A. string a;
+B. float a = 3e2;
+C. int* a;
+D. float *a;
+E. char * a;
+Đáp án đúng: A
+Câu 9: Which of the following statements correctly declares a function that receives a float pointer parameter and returns a float pointer?
+A. float* fun(float *p);
+B. float fun(float *p);
+C. float fun(double *p);
+D. float* fun(int *p);
+Đáp án đúng: A
+Câu 10: Which of the following is not a valid variable name declaration?
+A. int _a3;
+B. int a_3;
+C. int 3_a;
+D. int _3a
+Đáp án đúng: C
+Câu 11: Which of the following is a valid variable definition?
+A. int 1student_ID;
+B. int _Student_ID1;
+C. int Age$;
+D. int long;
+Đáp án đúng: B
+Câu 12: Choose the correct statement for declaring a pointer variable to an integer variable.
+A. int *p;
+B. int p*;
+C. int +p;
+D. int $p;
+Đáp án đúng: A
+Câu 13: Which of the following is a valid code to use to declare and initialize a two-dimensional array?
+A. int a[2,3] = [[1,2,3],[4,5,6]];
+B. int a[][] = {{1,2,3},{4,5,6}};
+C. int a[2][3] = [[1,2,3],[4,5,6]];
+D. int a[][3] = {{1,2,3},{4,5,6}};
+Đáp án đúng: D
+Câu 14: Which of the following correctly declares an integer array of size 5 in C/C++?
+A. int arr[5];
+B. array int arr = [5];
+C. int arr = new int[5];
+D. int arr{5};
+Đáp án đúng: A
+Câu 15: What represents dynamic allocation in C?
+A. int* a = (int*)malloc(5*sizeof(int));
+B. int a[5];
+C. int a[5][5];
+D. free(a);
+Đáp án đúng: A
+Câu 16: What function in C is used to check if the end of a file has been reached?
+A. feof()
+B. eof()
+C. fscanf()
+D. checkEOF()
+Đáp án đúng: A
+Câu 17: Which function is used to open a text file?
+A. open()
+B. fopen()
+C. fileopen()
+D. openfile()
+Đáp án đúng: B
+Câu 18: Which library function returns a pseudo-random number in the range 0 to RAND_MAX?
+A. random()
+B. rand()
+C. generate_random()
+D. getrand()
+Đáp án đúng: B
+Câu 19: Which is the correct function definition that will run without errors?
+A. int minus(int a; int b) {return (a - b);}
+B. int minus (int a, b) {return (a - b);};
+C. int minus (int a, int b) {return (a - b);};
+D. int minus (int a, b) {return (a - b);};
+Đáp án đúng: C
+Câu 20: What is incorrect about function prototype?
+A. void printSum(int* a, int b);
+B. int printSum(int* a, int b);
+C. int printSum(int a, b);
+D. int* printSum(int* a, int b);
+Đáp án đúng: C
+Câu 21: What is the output?
+int x = 0, y = 5;
+printf("%d", (x && y));
+A. 1
+B. 5
+C. -1
+D. 0
+Đáp án đúng: D
+Câu 22: What will this code output?
+int a = 5, b = 10;
+printf("%d", !(a > b || b == 10));
+A. 0
+B. 1
+C. 5
+D. -1
+Đáp án đúng: A
+Câu 23: What will be the output of the following code?
+int i = 10;
+while (i > 0) {
+    printf("%d ", i);
+    i -= 3;
+}
+A. 10 7 4 1
+B. 10 9 8 7 6 5 4 3 2 1
+C. 10 7 4 1 -2
+D. 10 7 4 1 -2 -5
+Đáp án đúng: A
+Câu 24: Which of the following code snippets calculates the square root of 9 using the correct C library?
+A. double result = sqrt(9);
+B. int result = sqrt(9);
+C. float result = sqrt(9);
+D. result = power(9, 0.5);
+Đáp án đúng: A
+Câu 25: Which function is specifically used to return the absolute value of an int data type in C?
+A. abs()
+B. labs()
+C. llabs()
+D. fabs()
+Đáp án đúng: A
+Câu 26: The function which will compute the average of two real numbers should be prototyped as:
+A. int average( double, double);
+B. double average( double, double);
+C. char average( double, double);
+D. void average( double, double);
+Đáp án đúng: B
+Câu 27: Which implicit type casting is used in the following codes in C programming?
+A. int i = (double)123.5;
+B. double t = double(2);
+C. double t = (double) 2;
+D. double t = (int) 2.7;
+Đáp án đúng: A (đề không rõ ràng: A có ép kiểu ngầm double sang int khi gán, nên chọn A)
+Câu 28: How can you initialize a character array in C?
+A. char arr[] = "Hello";
+B. char arr[] = ['H', 'e', 'l', 'l', 'o','/e'];
+C. Char[] arr = "Hello";
+D. Char[] arr = {'H', 'e', 'l', 'l', 'o','/0'};
+Đáp án đúng: A
+Câu 29: Which of the following statements has a different result from the other statements?
+A. char c1 = 'B'; printf("%c",c1);
+B. char c2 = 066; printf("%c",c2);
+C. char c3 = 0x42; printf("%c",c3);
+D. char c4 = 0102; printf("%c",c4);
+Đáp án đúng: B
+Câu 30: Which of the following is the correct syntax of the do-while statement?
+A. do{ statements; } while(condition) ;
+B. do while(condition) { statements;}
+C. do{ statements; } while (condition)
+D. do{ statements; } while (condition) ;
+Đáp án đúng: A (D cũng đúng vì giống A)
+Câu 31: Which of the following is an incorrect iteration construct?
+A. (condition) ? True_Value : False_Value
+B. for ( InitBlock; Condition; Task2) Task1;
+C. do{ statements;} while (condition) ;
+D. while (condition){ statements; }
+Đáp án đúng: A
+Câu 32: Which function writes the character value of the argument c to the output stream referenced by fp?
+A. int fputc( int c, FILE *fp );
+B. int fputs( const char *s, FILE *fp );
+C. int fgetc( FILE *fp );
+D. char *fgets( char *buf, int n, FILE *fp );
+Đáp án đúng: A
+Câu 33: What is the syntax of the conditional operator in C?
+A. condition ? expression1 : expression2
+B. condition ? expression1, expression2
+C. condition : expression1 ? expression2
+D. expression1 : condition ? expression2
+Đáp án đúng: A
+Câu 34: The pow() function in the math.h library is used to calculate the value of a number raised to a specified power. What is the return value type of the pow() function?
+A. double
+B. int
+C. long double
+D. float
+Đáp án đúng: A
+Câu 35: Which of the following is the correct syntax of the while statement?
+A. while (condition) { statements; }
+B. (condition){ statements ;}
+C. while (condition) { statements ;}
+D. { statements } while (condition);
+Đáp án đúng: A (C cũng đúng vì giống A)
+Câu 36: What commands are used to write data appended to the end of the file? (Choose 2 answers)
+A. FILE *f = fwrite("output.txt", "a" );
+B. FILE *f = fopen("output.txt", "a" );
+C. FILE *f = fopen("output.txt", "a+" );
+D. FILE *f = fopen("output.txt", "w+" );
+E. FILE *f = fopen("output.txt", "w" );
+Đáp án đúng: B, C
+Câu 37: int *ptr = malloc( sizeof( int ) );
+To reallocate ptr to be an array of 5 elements, which of the following statements generates an error?
+A. ptr = realloc( ptr, 5 * sizeof(int) );
+B. realloc( ptr, 5 * sizeof(int) );
+C. ptr += malloc( 5 * sizeof( int ) );
+D. realloc( ptr, 20);
+E. ptr = realloc( ptr, 20);
+Đáp án đúng: C
+Câu 38: What is the correct syntax to output "Hello, World!" in C/C++?
+A. printf("Hello, World!");
+B. cout << "Hello, World!" << endl;
+C. System.out.println("Hello, World!");
+D. echo "Hello, World!";
+Đáp án đúng: A
+Câu 39: What is a proper method of opening a file for writing as binary file?
+A. FILE *f = fwrite( "test.bin", "b" );
+B. FILE *f = fopen( "test.bin", "w" );
+C. FILE *f = fopen( "test.bin", "wb" );
+D. FILE *f = fwriteb( "test.bin" );
+E. FILE *f = fopen( "test.bin", "bwr" );
+Đáp án đúng: C
+Câu 40: Which library should you include to work with the FILE data type in C?
+A. stdio.h
+B. stdlib.h
+C. string.h
+D. type.h
+Đáp án đúng: A
+Câu 41: In C, which of the following statements allows to move to the next loop without having to do the rest of the loop
+A. break;
+B. goto;
+C. continue;
+D. return;
+Đáp án đúng: C
+Câu 42: What is the correct way to access the 4th element in array a?
+A. printf("a[3] = %d\n", a[3]);
+B. printf("*(a + 3) = %d\n", *(a + 3));
+C. printf("&a[3] = %p\n", (void*)&a[3]);
+D. All the above
+Đáp án đúng: D
+Câu 43: What is the output of this reverse loop?
+#define SIZE 5
+int nums[SIZE] = {5, 10, 2, -45, 6};
+for (int i = SIZE - 1; i >= 0; i--)
+    printf("%d ", nums[i]);
+A. 5 10 2 -45 6
+B. 6 -45 2 10 5
+C. -45 2 10 5 6
+D. Error
+Đáp án đúng: B
+Câu 44: What is the output when the sample code below is executed?
+#include <stdio.h>
+int main()
+{
+    int x = 7;
+    for(x > 3)
+        printf("Yes");
+        x--;
+    return 0;
+}
+A. Infinite loop
+B. Compile time error
+C. YesYesYesYes
+D. Yes
+Đáp án đúng: B
+Câu 45: A one dimensional array A has indices 1...100. Each element is a string and takes up three byte. The starting address of the array A[1] is 1110 decimal. The address of A[49] is ____
+A. 1254
+B. 1158
+C. 1159
+D. 1257
+Đáp án đúng: A
+Câu 46: What happens in this do/while loop?
+int n;
+do {
+    printf("Enter a number:");
+    scanf("%d", &n);
+} while (n < 1 || n > 5);
+A. Never runs
+B. Runs only when n = 1
+C. Infinite loop
+D. Runs at least once
+Đáp án đúng: D
+Câu 47: What is the binary representation of 0xA2?
+A. 0b01100010
+B. 0b10100010
+C. 0b10010010
+D. 0b10110010
+Đáp án đúng: B
+Câu 48: Choose the correct answer. The decimal positive binary computer representation on 16 bits (2 Bytes) with 251(10)
+A. 0000 0000 1111 1011(2)
+B. 0000 0000 1110 1011(2)
+C. 0000 0000 1111 1001(2)
+D. 0000 0000 1101 1011(2)
+Đáp án đúng: A
+Câu 49: The strcmp() compares two strings character by character. If the strings are equal, the function returns...
+A. 1
+B. 0
+C. -1
+Đáp án đúng: B
+Câu 50: What is the result of the statement strcmp("abcdef","abdc")?
+A. 1
+B. 0
+C. -1
+Đáp án đúng: C
+Câu 51: If the two strings have the same value, then strcmp() function returns _____
+A. True
+B. 1
+C. 0
+D. -1
+Đáp án đúng: C
+Câu 52: Given two character strings s1="C" and s2="C and C++", the function strcmp(s1, s2) will return the value _____
+A. 0
+B. 1
+C. -1
+D. <0
+E. >0
+Đáp án đúng: C (D cũng đúng)
+Câu 53: Given the following code snippet:
+int a[10] = {1, 2, 3};
+What is the value of a[3]?
+A. 0
+B. 1
+C. 2
+D. 3
+Đáp án đúng: A
+Câu 54: What is the result of the expression 10 % 3?
+A. 1
+B. 3
+C. 2
+D. 0
+Đáp án đúng: A
+Câu 55: What is the return value of the strcmp("abc","Abcdef") function?
+A. 1
+B. 0
+C. -1
+D. 2
+Đáp án đúng: A
+Câu 56: What will the following if-else statement output if x = 10?
+if (x > 5)
+    printf("Greater");
+else
+    printf("Smaller");
+A. Greater
+B. Smaller
+C. Equal
+D. None of the others
+Đáp án đúng: A
+Câu 57: What will the following program output?
+#include <stdio.h>
+int main()
+{
+    int n, m;
+    m = 6;
+    n = 2 * ++m;
+    printf("n is %d and m is %d\n", n, m);
+    n = 3 - m++;
+    printf("and n is %d and m is %d\n", n, m);
+    return 0;
+}
+A. 14 7 and -4 8
+B. 6 2 and 3 5
+C. Compilation Error
+D. No Output
+Đáp án đúng: A
+Câu 58: What does the following program print?
+#include <stdio.h>
+float max(float a, float b) {
+    return a > b ? a : b;
+}
+int main() {
+    float x = 5.5, y = 4.5, z = 2;
+    printf("%f", max(x++, y--, ++z));
+    return 0;
+}
+A. 5.5
+B. 5.500000
+C. 4.500000
+D. An error will be raised.
+Đáp án đúng: D
+Câu 59: What does the following code print?
+float y = 3 / 2;
+printf("%f", y);
+A. 1.000000
+B. 1.500000
+C. 1.0
+D. 1.5
+E. 1
+F. Compiler error
+Đáp án đúng: A
+Câu 60: What does the following program display?
+#include <stdio.h>
+int main() {
+    int arr[] = {3, 6, 9, 12};
+    for (int i = 3; i >= 0; i -= 2)
+        printf("%d ", arr[i]);
+    return 0;
+}
+A. 3 9
+B. 12 6
+C. 12 6 3
+D. 12 9 6
+Đáp án đúng: B
+Câu 61: What will be the output of the C program?
+char temp;
+char arr[10] = {1, 2, 3, 4, 5, 6, 7, 8};
+temp = (arr + 1)[2];
+printf("%d\n", temp);
+A. 1
+B. 2
+C. 3
+D. 4
+Đáp án đúng: D
+Câu 62: What will be the output of the following code?
+#include <stdio.h>
+int main() {
+    int a = 1, b = 1;
+    int result = ++a + ++b;
+    printf("%d %d %d\n", result, a, b);
+    return 0;
+}
+A. 4 2 2
+B. 0 2 2
+C. 1 2 2
+D. 2 2 2
+Đáp án đúng: A
+Câu 63: What will be printed after execution of the following program code?
+#include <stdio.h>
+int main() {
+    int a = 12, b = 5;
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+    printf("%d %d", a, b);
+    return 0;
+}
+A. 5 12
+B. 12 5
+C. 9 5
+D. 12 9
+Đáp án đúng: A
+Câu 64: What is the output of this code?
+int i = 5;
+for (; i > 0; i--) {
+    printf("%d", i);
+}
+A. 5 4 3 2 1
+B. 5 4 3 2 1 0
+C. 5 3 1
+D. 5 4 2
+Đáp án đúng: A (thực tế in "54321" không có khoảng trắng, A là gần nhất)
+Câu 65: What is the output of the following code?
+char s[] = "fpt";
+int i = strlen(s);
+while (i)
+    printf("%s", s + --i);
+A. tptfpt
+B. fpttp
+C. tfptp
+D. Compile error
+Đáp án đúng: A
+Câu 66: What is the output when the sample code below is executed?
+#include <stdio.h>
+void increment(int x) {
+    x++;
+}
+int main(){
+    int x = 1005;
+    increment(x);
+    printf("%d", x);
+    return 0;
+}
+A. 1005
+B. 1006
+C. 1000
+D. 1004
+Đáp án đúng: A
+Câu 67: What is the result displayed on the screen of the following program?
+#include <stdio.h>
+int main()
+{
+    int x, *p;
+    x = 3;
+    x = 6;
+    p = &x;
+    *p = 9;
+    printf("%d", x);
+    printf("%d", *p);
+}
+A. None of these
+B. 99
+C. 39
+D. 69
+Đáp án đúng: B
+Câu 68: What is the output of the following code snippet?
+void main(){
+    int x = 4;
+    int *p = &x;
+    int *k = p++;
+    int r = p - k;
+    printf("%d", r);
+}
+A. 1
+B. 4
+C. 5
+D. 0
+Đáp án đúng: A
+Câu 69: What is the result displayed on the screen of the following program?
+#include <stdio.h>
+int main()
+{
+    int i;
+    i = 10;
+    printf("%o", i);
+}
+A. 12
+B. 8
+C. 10
+D. None of these
+Đáp án đúng: A
+Câu 70: What is the output of the following code?
+char s[] = "2024";
+*(s + 3) = *s + 3;
+printf("%s", s);
+A. 2025
+B. 2024
+C. 2023
+D. 2026
+Đáp án đúng: A
+Câu 71: What is the value of ceil(2.55) from the math.h library?
+A. 3
+B. 2
+C. 2.5
+D. 2.6
+Đáp án đúng: A
+Câu 72: What is the output when the sample code below is executed?
+#include <stdio.h>
+int main()
+{
+    int i, j, result = 0;
+    for(i = 3; i <= 5; i++){
+        for(j = 5; j > i; j--)
+            result += j;
+    }
+    printf("%d", result);
+    return 0;
+}
+A. 14
+B. 15
+C. 16
+D. 20
+Đáp án đúng: A
+Câu 73: Suppose there is a function in C as follows:
+double g (double x, double y){
+    return (x - 2)(x - 2) + yy;
+}
+What is the value of z after executing the statement z=g(2,0)?
+A. 0
+B. 4
+C. 2
+D. 8
+Đáp án đúng: A (đề có lỗi cú pháp: thiếu toán tử *; ý đề là (x-2)*(x-2) + y*y nên kết quả 0)
+Câu 74: What is the maximum index of the last character in a character array initialized with a size is 10?
+A. 9
+B. 10
+C. 8
+D. It depends on the contents of the array
+Đáp án đúng: A
+Câu 75: What is the result of the expression !1?
+A. 0
+B. 1
+C. 10
+D. 11
+Đáp án đúng: A
+Câu 76: What will be the output of the C program?
+int a = 4, b = 2;
+printf("a^b = %d", a^b);
+A. 2
+B. 8
+C. 16
+D. 6
+Đáp án đúng: D
+Câu 77: What will the following program print?
+#include <stdio.h>
+int main() {
+    int i = 1, j = 0;
+    do {
+        printf("%d %d ", i, j);
+        i += 1;
+        j -= 1;
+    } while (i < j);
+    return 0;
+}
+A. 4 -1
+B. 0 1
+C. 1 0
+D. 0 2
+Đáp án đúng: C
+Câu 78: What will the following program print?
+#include <stdio.h>
+int main()
+{
+    int x = 5, y = 10;
+    while(x++ < y--)
+    {
+        printf("%d %d\n", x, y);
+    }
+    return 0;
+}
+A. 2 5
+   3 4
+   4 3
+B. 6 9
+   7 8
+   8 7
+C. 5 10
+   7 8
+   8 7
+D. 6 9
+   2 2
+   8 7
+Đáp án đúng: B
+Câu 79: What will be the output of the following C code?
+#include <stdio.h>
+int main() {
+    int x = 5, y = 10;
+    if (x >= y) {
+        printf("x is greater than or equal to y\n");
+    } else {
+        printf("x is less than y\n");
+    }
+    return 0;
+}
+A. x is greater than or equal to y
+B. x is less than y
+C. x is equal to y
+D. Compilation error
+Đáp án đúng: B
+Câu 80: What is the result displayed on the screen of the following program?
+#include<stdio.h>
+int isTriangle(float a, float b, float c)
+{
+    if ((a>0)&&(b>0)&&(c>0)&&(a<b+c)&&(b<c+a)&&(c<a+b))
+        return 1;
+    else
+        return 0;
+}
+int main()
+{
+    float a = 1, b = 1, c = 1.25;
+    if (isTriangle(a, b, c))
+        printf("%2.2f, %2.2f, %2.2f: a triangle.\n", a, b, c);
+    else
+        printf("%2.2f, %2.2f, %2.2f: not a triangle.\n", a, b, c);
+    return 0;
+}
+A. a, b, c: a triangle
+B. 1.00, 1.00, 1.25: a triangle
+C. 1, 1, 1.25: a triangle
+D. 1.00, 1.00, 1.25: not a triangle
+Đáp án đúng: B
+Câu 81: What is the output when the sample code below is executed?
+#include<stdio.h>
+int main()
+{
+    int x=10,i;
+    for(i=9;i<x;i+=3){
+        printf("%d",i++);
+        break;
+        printf("%d",--i);
+    }
+    return 0;
+}
+A. 9
+B. 8
+C. 12
+D. 10
+Đáp án đúng: A
+Câu 82: What is the result of the "printf("%d", 0x11 | 010);" command?
+A. 5
+B. 22
+C. 18
+D. 25
+E. 28
+Đáp án đúng: D
+Câu 83: In the sample code int a = 0x10 | 011; the variable a will contain the value (in decimal number system):
+A. 3
+B. 13
+C. 19
+D. 25
+E. 27
+Đáp án đúng: D
+Câu 84: Assume we have the following code:
+int i=4;
+int *p = &i;
+What is the result of the following expression: ++*p?
+A. 5
+B. 4
+C. 9
+D. 12
+Đáp án đúng: A
+Câu 85: Assume we have a snippet code in C:
+int main() {
+    int *p = NULL;
+    printf("%d",p);
+    getchar();
+    return 0;
+}
+The output will be:
+A. 0
+B. 1
+C. 10
+D. 100
+Đáp án đúng: A
+Câu 86: What will be the output of the C program?
+int i = 1, j = 2;
+if(--i == j)
+    printf("i = %d", --i);
+else
+    printf("j = %d", ++j);
+A. i = 2
+B. i = 0
+C. j = 3
+D. j = 1
+Đáp án đúng: C
+Câu 87: What will be the output of the following program?
+void func(int *p){
+    int j =11;
+    *p = j;
+}
+int main() {
+    int i = 1;
+    int *p = &i;
+    func(p);
+    printf("%d,%d", i, *p);
+    getchar();
+    return 0;
+}
+A. 11,11
+B. 1,1
+C. 0,0
+D. 0,1
+Đáp án đúng: A
+Câu 88: What does the following program print?
+#include <stdio.h>
+int main() {
+    int a = 4, *b = &a;
+    a--;
+    *b = *b - 1;
+    printf("%d %d", a, *b);
+    return 0;
+}
+A. 2 2
+B. 2 1
+C. 3 1
+D. 3 3
+Đáp án đúng: A
+Câu 89: What is the output of the following code snippet?
+#include <stdio.h>
+int num(int a, int b){
+    int sum;
+    sum = a + b;
+    return sum;
+}
+int main()
+{
+    int a, b, result;
+    a = 10;
+    b= 12;
+    result = num(a, b);
+    printf("%d", result);
+    return 0;
+}
+A. 22
+B. 10
+C. 12
+D. 21
+Đáp án đúng: A
+Câu 90: How many times will the loop execute?
+int i = 0;
+while (i < 4) {
+    printf("%d", i);
+    i += 2;
+}
+A. 2
+B. 1
+C. 3
+D. 4
+Đáp án đúng: A
+Câu 91: What is the value of z after the "int a = 8, b = 6, c = 4, b++ * ++c + --a;" command?
+A. 16
+B. 28
+C. 37
+D. 32
+E. -28
+Đáp án đúng: C
+Câu 92: What is the result when converting 0101010 in binary system to decimal system?
+A. 78
+B. 76
+C. 74
+D. 72
+Đáp án đúng: A (đề có lỗi: 0101010 = 42 không có trong đáp án, 78 tương ứng 1001110, bạn nên kiểm tra lại đề gốc)
+Câu 93: What will be the output of the following program?
+int main()
+{
+    int i = 101;
+    int *p = &i;
+    printf("%d\n", *p++);
+    return 0;
+}
+A. 101
+B. 102
+C. 0
+D. Address of i
+Đáp án đúng: A
+Câu 94: What will be printed by the code below?
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int *p = (int*) malloc(sizeof(int));
+    *p = 50;
+    printf("%d", *p);
+    free(p);
+    return 0;
+}
+A. Address of p
+B. Garbage value
+C. 50
+D. Compilation error
+Đáp án đúng: C
+Câu 95: Assume we have the following codes:
+double d=9;
+double *p = &d;
+Suppose that a double occupies the memory block of 8 bytes, and the address of d is 1200. What is the result of the following expression: p + 8?
+A. 1264
+B. 1200
+C. 1208
+D. 1209
+Đáp án đúng: A
+Câu 96: What will be the output of the following C code?
+#include <stdio.h>
+void main()
+{
+    int total=0;
+    for(int s=1; s<15; s++)
+        total=total+s;
+    printf("%d",total);
+}
+A. 105
+B. 150
+C. 120
+D. 210
+Đáp án đúng: A
+Câu 97: What will be the output of the following C code?
+#include <stdio.h>
+void main()
+{
+    char result = 125;
+    result = result + 5;
+    printf("%d", result);
+}
+A. 130
+B. -130
+C. 126
+D. -126
+Đáp án đúng: D
+Câu 98: What will be the output of the C program?
+int arr[5] = { 2, 3, 5, 4, 7 };
+int *ptr = (&arr + 1);
+printf("%d %d\n", *(arr + 1), *(ptr - 1));
+A. 2 3
+B. 3 2
+C. 3 7
+D. 2 6356728
+Đáp án đúng: C
+Câu 99: What will be printed when the following code is executed?
+#include <stdio.h>
+int main() {
+    int a[] = {1,2,3,4,5,6};
+    int* p = a;
+    p += 3;
+    printf("%d, %d", *(a+3), *(p++));
+    return 0;
+}
+A. 4 5
+B. 3 4
+C. 3 3
+D. 4 4
+Đáp án đúng: D
+Câu 100: What is the output when the sample code below is executed?
+#include<stdio.h>
+int main()
+{
+    int a=5, b=10;
+    while(a>0)
+    {
+        label:{
+            a--;
+            b--;
+        }
+        while(b>5)
+        {
+            goto label;
+        }
+    }
+    printf("%d %d",a,b);
+    return 0;
+}
+A. 0 5
+B. 5 10
+C. 10 5
+D. 0 0
+Đáp án đúng: A
+Câu 101: What will be printed when the following code is executed?
+#include <stdio.h>
+int a = 5, b = 6;
+void cal1(int a, int b){
+    a++;
+    b--;
+}
+void cal2(){
+    a++;
+    b--;
+}
+int main() {
+    cal1(a,b);
+    printf("a = %d, b = %d\n", a, b);
+    cal2(a,b);
+    printf("a = %d, b = %d\n", a, b);
+    cal2(a,b);
+    printf("a = %d, b = %d\n", a, b);
+    return 0;
+}
+A. a = 6, b = 5
+   a = 6, b = 5
+   a = 6, b = 5
+B. a = 5, b = 6
+   a = 6, b = 5
+   a = 7, b = 4
+C. a = 6, b = 5
+   a = 6, b = 5
+   a = 7, b = 4
+D. a = 5, b = 6
+   a = 7, b = 4
+   a = 7, b = 4
+Đáp án đúng: B
+Câu 102: What will be the output of the following code snippet:
+#include <stdlib.h>
+#include <stdio.h>
+int main() {
+    int a = 5;
+    {
+        int a = 10;
+        printf("%d ", a);
+    }
+    printf("%d", a);
+    return 0;
+}
+A. 10 5
+B. 5 10
+C. 5 5
+D. 10 10
+Đáp án đúng: A
+Câu 103: What will be the output of the following code snippet:
+#include <stdlib.h>
+#include <stdio.h>
+int x = 5;
+void someFunction() {
+    int x = 10;
+    {
+        int x;
+        x = 15;
+        printf("%d ", x);
+    }
+    printf("%d ", x);
+}
+int main() {
+    someFunction();
+    printf("%d", x);
+    return 0;
+}
+A. 15 10 5
+B. 15 5 10
+C. 10 15 15
+D. 10 10 5
+Đáp án đúng: A
+Câu 104: What will be the output of the following C code?
+#include <stdio.h>
+int main()
+{
+    int a, b, c;
+    a = b = c = 10;
+    c = a++ || ++b && ++c;
+    printf("%d %d %d", c, a, b);
+    return 0;
+}
+A. 1 11 10
+B. 10 11 1
+C. 10 11 10
+D. 1 1 10
+Đáp án đúng: A
+Câu 105: What is the output of the following code snippet?
+#include <stdio.h>
+int x = 9;
+void someFunction() {
+    int x = 8;
+    printf("%d ", x);
+}
+int main() {
+    someFunction();
+    printf("%d", x);
+    return 0;
+}
+A. 8 9
+B. 9 8
+C. 8 8
+D. 9 9
+Đáp án đúng: A
+Câu 106: What does the following program display?
+#include <stdio.h>
+int main()
+{
+    int a = 4, b = 1, c = 1;
+    a = a % 2 + b++;
+    c = a*- - b;
+    printf("%d %d %d", a, b, c);
+    return 0;
+}
+A. 0 1 0
+B. 1 2 1
+C. 1 1 1
+D. 1 2 3
+Đáp án đúng: B (đề có lỗi: tính ra 1 2 2, không có trong đáp án, B gần nhất)
+Câu 107: What is the output of s?
+#include <stdio.h>
+int main()
+{
+    int h = 5;
+    int m = 3;
+    int n = 1, s = 0;
+    do {
+        s += m;
+        n++;
+    } while (h > n++);
+    printf("%d %d", s, n);
+}
+A. 15 5
+B. 15 6
+C. 12 5
+D. 12 6
+Đáp án đúng: không khớp đáp án nào (tính ra 9 7), bạn nên kiểm tra lại đề gốc
+Câu 108: What will be the output of the following C code?
+#include <stdio.h>
+void main()
+{
+    int *ptr, a = 10;
+    ptr = &a;
+    *ptr += 1;
+    printf("%d,%d\n", *ptr, a);
+}
+A. 10,10
+B. 10,11
+C. 11,10
+D. 11,11
+Đáp án đúng: D
+Câu 109: What will be printed when the following code is executed?
+#include <stdio.h>
+int main()
+{
+    int a[]={7,4,8,5,9};
+    int* b=a;
+    b++;
+    printf("%d %d", *(b++), *(a+3));
+    getchar();
+    return 0;
+}
+A. 8 8
+B. 4 8
+C. 8 5
+D. 4 5
+Đáp án đúng: D
+Câu 110: What will be the output of the following program?
+#include <stdio.h>
+int main() {
+    int *pa = a;
+    int a = 10;
+    (*pa)++;
+    a = a + 10;
+    printf("%d", ++a);
+    getchar();
+    return 0;
+}
+A. Compiler error
+B. 22
+C. 21
+D. 20
+Đáp án đúng: A
+Câu 111: What will this code print?
+int x[5] = {0};
+printf("%d", x[3]);
+A. 0
+B. Garbage value
+C. 3
+D. Error
+Đáp án đúng: A
+Câu 112: What does the following program display?
+#include <stdio.h>
+int main()
+{
+    int x = 1, y = 2, z = 3;
+    x = x - - -y;
+    z = z + ++y;
+    printf("%d %d %d", x, y, z);
+    return 0;
+}
+A. -1 5 3
+B. 0 2 5
+C. 1 2 4
+D. 1 5 3
+Đáp án đúng: A (đề có lỗi: tính ra -1 3 6, chỉ A khớp giá trị x = -1)
+Câu 113: What is the result of the "printf("%d %d", 12&5,12|5);" command?
+A. 4 13
+B. 5 12
+C. 4 12
+D. 5 13
+E. 1 1
+Đáp án đúng: A
+Câu 114: What will be the output of the following program?
+int main()
+{
+    int i = 100;
+    int *p = &i;
+    *p +=2;
+    printf("%d, %d", i, *p);
+    getchar();
+    return 0;
+}
+A. 102, 102
+B. 100, 102
+C. 100, 100
+D. 102, 100
+Đáp án đúng: A
+Câu 115: What is the output when the sample code below is executed?
+#include<stdio.h>
+int main()
+{
+    int a=10,b=20,c=30;
+    while(a>1)
+    {
+        if(b%2!=0)
+            a/=10;
+        b--;
+        c*=2;
+    }
+    printf("%d ; %d ; %d",a,b,c);
+    return 0;
+}
+A. 1 ; 18 ; 120
+B. 10 ; 19 ; 60
+C. 1 ; 20 ; 60
+D. 10 ; 19 ; 120
+Đáp án đúng: A
+Câu 116: What is the output when the sample code below is executed?
+#include<stdio.h>
+int main()
+{
+    int a=70,b=90,c=80;
+    if(a!=b){
+        a-=b; c/=10;
+    }
+    else
+        a+=c;
+    printf("%d;%d;%d",a,b,c);
+    return 0;
+}
+A. -20;90;8
+B. 70;90;80
+C. 150;80;8
+D. 150;90;80
+Đáp án đúng: A
+Câu 117: What is the results will be displayed on the screen after executing the following code:
+char s[] = "AbCd";
+printf("%d;%d;%d;%d", s[1], s[2], s[3], s[4]);
+A. 97;98;99;100
+B. 65;66;67;68
+C. 65;98;67;100
+D. 98;67;100;0
+Đáp án đúng: D
+Câu 118: What is the output when the sample code below is executed?
+#include <stdio.h>
+int main() {
+    int i = 10;
+    do {
+        printf("%d ", i);
+        i -= 2;
+    } while (i >= 1);
+    return 0;
+}
+A. 10 8 6 4 2
+B. 10 8 6 4 2 0
+C. 10 8 6 4 2 0 -2 -4
+D. 10 9 8 7 6 5 4 3 2
+Đáp án đúng: A
+Câu 119: What will the following program print?
+#include <stdio.h>
+int main()
+{
+    int i, j;
+    for(i = 0, j = 9; i < j; i--, j -= 1)
+        printf("%d %d ", i, j);
+    return 0;
+}
+A. 0 1 0 1 9 2 8 3 7 4 6
+B. 0 1 0 1 8 2 6 3 4
+C. 0 9 1 8 2 7 3 6 4 5
+D. An error will be raised.
+Đáp án đúng: C (đề có lỗi: i-- làm vòng lặp vô hạn, ý đề là i++ nên kết quả C)
+Câu 120: What is the result displayed on the screen of the following program?
+#include <stdio.h>
+int main(void)
+{
+    int a[] = {1, 2, 3, 5, 6, 7};
+    for (int i = 0; i < 6; ++i)
+        printf("%3d", a[i]/2);
+    return 0;
+}
+A. 0 1 1 2 3 3
+B. 0.5 1.0 1.5 2.5 3.0 3.5
+C. 1 1 2 3 4
+D. 0 1 1 2 2 3
+Đáp án đúng: A
+Câu 121: What does the following code print?
+float a = 3.0;
+float b = 2.0;
+int r = a % b;
+printf("%d", r);
+A. Compiler error
+B. 1.000000
+C. 1.500000
+D. 1.0
+E. 1.5
+F. 1
+Đáp án đúng: A
+Câu 122: What does the following program print?
+#include <stdio.h>
+double max(double a, double b)
+{
+    return a > b ? a : b;
+}
+int main()
+{
+    double x = 2.5, y = 2, z = 3;
+    printf("%lf", max(max(++x, -y), z++));
+    return 0;
+}
+A. 3
+B. 3.000000
+C. 3.500000
+D. An error will be raised.
+Đáp án đúng: C
+Câu 123: What is the results will be displayed on the screen after executing the following code:
+int a[] = {1,2,3,4};
+int i, s;
+for (i=0; i<4; ++i)
+    s += a[i];
+printf("%f", s/4.0);
+A. 0.000000
+B. 2.000000
+C. 2.500000
+D. Garbage value
+Đáp án đúng: D
+Câu 124: What is the results will be displayed on the screen after executing the following code:
+int a[] = {1, 2, 3, 4};
+int i, s = 0;
+for (i = 0; i < 4; ++i)
+    s += a[i];
+printf("%0f", (float)(s / 4));
+A. 2.5
+B. 2
+C. 2.500000
+D. 2.000000
+Đáp án đúng: D
+Câu 125: What will be the output of the C program?
+#include<stdio.h>
+void myFunction(int i)
+{
+    printf("%d",i);
+}
+int main()
+{
+    myFunction();
+    return 0;
+}
+A. 0
+B. 2
+C. Compiler error.
+D. 4
+Đáp án đúng: C
+Câu 126: How many times will the do-while loop execute the code if the condition is false?
+A. 1
+B. 0
+C. Loop infinitely
+D. Compile time error
+Đáp án đúng: A
+Câu 127: What is the output when the sample code below is executed?
+#include<stdio.h>
+int main()
+{
+    20 > 30? return 1 : return 2;
+}
+A. Compile time error
+B. 1
+C. 2
+D. return 1:return 2
+Đáp án đúng: A
+Câu 128: What is the output of the following code?
+int a = 10, b = 20;
+printf("%d", (a > 5 && b < 25));
+A. 0
+B. 1
+C. 10
+D. 20
+Đáp án đúng: B
+Câu 129: What does the following program display?
+#include<stdio.h>
+int main()
+{
+    int x[] = {1, 2, 3, 4, 5};
+    int y = 3;
+    printf("%d", x[y]);
+    return 0;
+}
+A. 2
+B. 3
+C. 4
+D. An error will be raised.
+Đáp án đúng: C
+Câu 130: What does the following program display?
+#include <stdio.h>
+int main()
+{
+    int a[5] = {1, 2, 3};
+    printf("%d", a[0]);
+    return 0;
+}
+A. 3
+B. 2
+C. 1
+D. An error will be raised
+Đáp án đúng: C
+Câu 131: What will be the output of the C program?
+int default = 5, a = 3;
+if(a > 2)
+    printf("%d", default);
+A. 2
+B. 5
+C. Compilation error.
+D. 3
+Đáp án đúng: C
+Câu 132: What is the result of this code?
+int a = 10;
+int b = 3;
+float c = a / b;
+printf("%.1f", c);
+A. 3
+B. 3.3
+C. 3.0
+D. Compile error
+Đáp án đúng: C
+Câu 133: What is the output when the sample code below is executed?
+#include<stdio.h>
+int main()
+{
+    const int a=5;
+    if(a>3)
+        a++;
+        break;
+    else
+        a--;
+    printf("%d",a);
+    return 0;
+}
+A. Compile time error
+B. 6
+C. 4
+D. 5
+Đáp án đúng: A
+Câu 134: What is the output of the following code snippet?
+void main()
+{
+    int const *p = 5;
+    printf("%d", ++(*p));
+    getchar();
+}
+A. Compile error
+B. 5
+C. NULL
+D. 6
+Đáp án đúng: A
+Câu 135: What the matter is the following C code?
+#include <stdio.h>
+int main() {
+    int a=1,b=2,c=3;
+    printf("%d %d %d");
+    return 0;
+}
+A. The program outputs undefined values.
+B. The program has compile errors but still prints 1 2 3
+C. The program output 3 2 1.
+D. The program runtime error.
+Đáp án đúng: A
+Câu 136: What will be the output of the following C code?
+#include <stdio.h>
+void main()
+{
+    int k = 5;
+    int *p = &k;
+    int **m = &p;
+    **m = 6;
+    printf("%d\n", k);
+}
+A. 5
+B. Run time error
+C. 6
+D. Junk
+Đáp án đúng: C
+Câu 137: What is the output of the following code snippet?
+#include <stdio.h>
+int change(int a)
+{
+    a = 10;
+    return a;
+}
+void main()
+{
+    int i = 5;
+    i = change(i);
+    printf("%d", i);
+}
+A. 10
+B. 5
+C. 15
+D. Compiler error
+Đáp án đúng: A
+Câu 138: What is the output of the following code if the user enters the value "20"?
+int n;
+char c;
+scanf("%d", &n);
+c = getchar();
+printf("%d", c);
+A. 10
+B. 20
+C. ''
+D. Undefined
+Đáp án đúng: A
+Câu 139: What is the output of the following code snippet?
+#include<stdio.h>
+int main()
+{
+    const int *p;
+    int a = 100;
+    p = &a;
+    printf("%d", *p);
+    return 0;
+}
+A. 100
+B. 0
+C. 101
+D. Compile error
+Đáp án đúng: A
+Câu 140: What is the results will be displayed on the screen after executing the following code:
+char a[] = "Ab";
+char *s = a;
+int t = 1;
+for (; *s; ++s)
+    t *= *s;
+printf("%d", t);
+A. Garbage value
+B. 0
+C. Compiler error
+D. 6370
+E. 65
+F. 98
+Đáp án đúng: D
+Câu 141: What is the result of the printf("%d %d", 12<<2, 8>>2); command?
+A. 6 4
+B. 24 2
+C. 48 4
+D. 48 2
+E. 0 0
+Đáp án đúng: D
+Câu 142: What will be printed when the following code is executed?
+#include <stdio.h>
+int main() {
+    int a = 7, b = 6;
+    printf("%d", ++a > b ? a : b);
+    return 0;
+}
+A. 6
+B. Results are not printed
+C. 8
+D. Error
+E. 7
+Đáp án đúng: C
+Câu 143: What will be the output of the following program?
+int main()
+{
+    int i = 1;
+    int *p = &i;
+    int **k = &p;
+    i += 2;
+    printf("%d%d%d", *p, **k, *(*k));
+    getchar();
+    return 0;
+}
+A. 333
+B. 111
+C. 222
+D. Compile error
+Đáp án đúng: A
+Câu 144: What will be the output of the following C code?
+#include <stdio.h>
+void main()
+{
+    int i = 10, j = 3, k = 3;
+    printf("%d %d", i, j, k);
+}
+A. Compile time error
+B. 10 3 3
+C. 10 3
+D. 10 3 somegarbage value
+Đáp án đúng: C
+Câu 145: What will be the output of the C program?
+int 2_var = 15;
+printf("%d", 2_var);
+A. 0
+B. 15
+C. Compilation error
+D. Runtime error
+Đáp án đúng: C
+Câu 146: Given the following code snippet:
+#include <stdio.h>
+#define MONTHS_IN_YEAR 12
+int main() {
+    const int WORKING_DAYS = 22;
+    printf("%d ", MONTHS_IN_YEAR);
+    printf("%d", WORKING_DAYS);
+    return 0;
+}
+Choose the correct statement:
+A. The output will be: 12 22
+B. No output
+C. Compile error
+D. Runtime error
+Đáp án đúng: A
+Câu 147: What is the output when the sample code below is executed?
+#include <stdio.h>
+int main()
+{
+    int n = 50, m = 60;
+    if (n > 50)
+        if (m > 50)
+            printf("True");
+        else
+            printf("False");
+    return 0;
+}
+A. No the output
+B. True
+C. False
+D. Compile time error
+Đáp án đúng: A
+Câu 148: What does the following code print?
+#include <stdio.h>
+void swap(int a, int *b) {
+    int temp = a;
+    a = *b;
+    *b = temp;
+}
+int main() {
+    int x = 5;
+    int y = 10;
+    swap(x, y);
+    printf("x = %d, y = %d\n", x, y);
+    return 0;
+}
+A. Runtime error
+B. Compiler error
+C. x = 5, y = 10
+D. x = 10, y = 5
+E. x = 10, y = 10
+F. x = 5, y = 5
+Đáp án đúng: B
+Câu 149: What will be the output of the following code?
+printf("%c", tolower('c'));
+A. 'c'
+B. 'C'
+C. 'c' or 'C' (depending on IDE)
+D. Compilation error
+Đáp án đúng: A
+Câu 150: What is the issue with the following code?
+char str[1];
+gets(str);
+printf("%s", str);
+A. Runtime error.
+B. Logical error.
+C. Compilation error.
+D. No issue.
+Đáp án đúng: A
+Câu 151: How many times will the loop execute?
+for (int i = 0; i < 5; i++) {
+    printf("%d ", i);
+}
+A. 5
+B. 4
+C. 6
+D. 0
+Đáp án đúng: A
+Câu 152: Which of the following statements correctly allocates memory for a dynamic array of 10 integers in C?
+A. int* a = (int*)malloc(10 * sizeof(int));
+B. int a[10] = malloc(10 * sizeof(int));
+C. int* a = (int*)calloc(sizeof(int), 10);
+D. int* a = (int*)malloc(10);
+Đáp án đúng: A (C cũng đúng)
+Câu 153: Given a matrix named mat with dimensions 6x6, what is the correct way to access the element the last row and last column?
+A. mat[5][5]
+B. mat[5][6]
+C. mat[6][5]
+D. mat[-1][-1]
+Đáp án đúng: A
+Câu 154: Which of the following is the correct syntax for declaring a structure in C?
+A. typedef struct {
+       dataType1 field1;
+       dataType2 field2;
+   } structName;
+B. struct typedef {
+       dataType1 field1;
+       dataType2 field2;
+   } structName;
+C. typedef {
+       dataType1 field1;
+       dataType2 field2;
+   } struct structName;
+D. structName typedef {
+       dataType1 field1;
+       dataType2 field2;
+   };
+Đáp án đúng: A
+Câu 155: Which of the following correctly represents the updated array after the execution of the below code?
+int a[] = {1, 2, 3, 4, 5};
+for (i = 2; i < 4; i++){
+    a[i] = a[i + 1];
+}
+A. {1, 2, 4, 5, 5}
+B. {1, 2, 4, 5}
+C. {1, 3, 4, 5}
+D. {1, 2, 3, 4}
+Đáp án đúng: A
+Câu 156: Consider the following array of integers: {8, 1, 2, 7, 9}
+What will be the state of the array after one pass of selection sort?
+A. {1, 8, 2, 7, 9}
+B. {8, 1, 2, 7, 9}
+C. {1, 2, 8, 7, 9}
+D. {1, 2, 7, 8, 9}
+Đáp án đúng: A
+Câu 157: Consider the following program and answer the following questions.
+#include <stdio.h>
+void updatePosition(int *time, float* position, float v)
+{
+    if ((*position <= 5) && (*position > -5))
+        *position += v;
+    else
+        *position += -0.1*(*position);
+    *time += 1;
+}
+int main()
+{
+    float p = 4.0, v = 1;
+    int t = 0;
+    printf("t = %d, p = %f\n", t, p);
+    updatePosition(&t, &p, v);
+    updatePosition(&t, &p, v);
+    printf("t = %d, p = %f\n", t, p);
+}
+What is the result displayed to the screen?
+A. t = 0, p = 4.000000
+   t = 2, p = 6.000000
+B. t = 0, p = 4.000000
+   t = 2, p = 5.000000
+C. t = 0, p = 4.000000
+   t = 2, p = 4.500000
+D. t = 0, p = 4.000000
+   t = 2, p = 4.000000
+Đáp án đúng: A
+Câu 158: What is the size of the char data type in bytes?
+A. 1 byte
+B. 2 bytes
+C. 4 bytes
+D. It depends on the system
+Đáp án đúng: A
+Câu 159: What is the size of a float variable in byte?
+A. 2 bytes
+B. 1 byte
+C. 8 bytes
+D. 4 bytes
+Đáp án đúng: D
+Câu 160: How many bytes to represent float data type in C?
+A. 1 byte
+B. 2 bytes
+C. 4 bytes
+D. 8 bytes
+Đáp án đúng: C
+Câu 161: What is the maximum size required to store the string "Hello" in C?
+A. 5 bytes
+B. 6 bytes
+C. 4 bytes
+D. 10 bytes
+Đáp án đúng: B
+Câu 162: What will be the maximum size of a double variable?
+A. 8 bytes
+B. 4 bytes
+C. 2 bytes
+D. 16 bytes
+Đáp án đúng: A
+Câu 163: What is the result of floor(-5.9) and floor(5.9)?
+A. -6 and 5
+B. -5 and 5
+C. -6 and 6
+D. -5 and 6
+Đáp án đúng: A
+Câu 164: What are the sizes of the memory blocks allocated for d and e?
+int size = 100;
+float *d = malloc(size);
+float *e = calloc(size, sizeof(float));
+A. 400 bytes and 400 bytes
+B. 400 bytes and 100 bytes
+C. 100 bytes and 800 bytes
+D. 100 bytes and 400 bytes
+Đáp án đúng: D
+Câu 165: In linear search, if the size of the array is n and the expected value does NOT exist in the array, how many comparisons will be made between the searching item and elements in the array?
+A. n
+B. 2n + 1
+C. n - 1
+D. n + 1
+Đáp án đúng: A
+Câu 166: What will be the output of the C program?
+int a = 5;
+printf("%dha" + 2, a);
+A. 5ha
+B. ha
+C. dha
+D. 7
+Đáp án đúng: B
+Câu 167: What is the result displayed on the screen of the following program?
+#include <stdio.h>
+#include <ctype.h>
+int main() {
+    char a[] = "hello world";
+    int i = 0;
+    while (!isspace(a[i]))
+        i++;
+    printf("%d, %c", i, a[i-1]);
+    return 0;
+}
+A. 0, h
+B. 5, o
+C. 5,
+D. 5, w
+Đáp án đúng: B
+Câu 168: What will the following code output?
+#include <stdio.h>
+int main() {
+    int a = 7;
+    printf("%d", (a << 2) | 1);
+    return 0;
+}
+A. 28
+B. 29
+C. 15
+D. 30
+Đáp án đúng: B
+Câu 169: What is the value of variable a after executing the following lines of code:
+int a = 0;
+char line1[] = "Hi";
+char line2[] = "Hello";
+a = strcmp(line1, line2);
+A. 0
+B. A positive value
+C. A negative value
+D. NAN
+Đáp án đúng: B
+Câu 170: The strcmp(S1, S2) will return _____ even if the value of S1 is greater than the value of S2.
+A. Positive integer
+B. Negative integer
+C. Null
+D. -1
+E. 0
+Đáp án đúng: A
+Câu 171: What is the result of the printf("%c %c %c %c", 'A', 0x42, 0103, 68); command?
+A. A A B C
+B. A B C D
+C. A C C D
+D. A B D C
+Đáp án đúng: B
+Câu 172: What will be the output of the following C code?
+#include <stdio.h>
+void main() {
+    int x = 0;
+    if (x == 0)
+        printf("Hi");
+    else
+        printf("How are you");
+    printf("Hello");
+}
+A. Hi
+B. How are you
+C. Hello
+D. HiHello
+Đáp án đúng: D
+Câu 173: What is the output of the following code snippet?
+char words[4][11];
+strcpy(words[0], "apple");
+strcat(words[0], "juice");
+printf("%s\n", words[0]);
+A. applejuice
+B. apple
+C. juice
+D. juiceapple
+Đáp án đúng: A
+Câu 174: What will be the output of the following code if the input is abcdef?
+char s[5];
+fgets(s, sizeof(s), stdin);
+printf("%s", s);
+A. abcd
+B. abcdef
+C. abc
+D. Syntax Error in fgets function
+Đáp án đúng: A
+Câu 175: What does the following program display?
+#include <stdio.h>
+int main()
+{
+    char str[] = "Hello";
+    printf("%c", *(str + 1));
+    return 0;
+}
+A. H
+B. l
+C. e
+D. o
+Đáp án đúng: C
+Câu 176: What does this code print?
+int n = 30, m = 5;
+float x = 3.5F, y = 8.12F;
+printf("%d, %d\n", (n < m || x >= y), !(x > y));
+A. 1, 0
+B. 0, 1
+C. 1, 1
+D. 0, 0
+Đáp án đúng: B
+Câu 177: What will be the output of the C program?
+int i = 5, j = 8;
+while (++i < --j)
+    printf("loop");
+A. loop
+B. Infinite loop
+C. loop loop loop
+D. loop loop
+Đáp án đúng: A
+Câu 178: What will be the output of the following C code?
+#include <stdio.h>
+void main()
+{
+    int k = 4;
+    int const p = k;
+    int r = 3;
+    printf("%d", p);
+}
+A. The value of p is 4
+B. Run time error
+C. Compile time error
+D. The value of p is a garbage value
+Đáp án đúng: A
+Câu 179: (Choose 1 answer)
+char str1[20] = "Hello";
+char str2[20] = "World";
+strcat(str1, str2);
+printf("%s", str1);
+What will be the result of the following C code?
+A. WorldHello
+B. HelloWorld
+C. Hello World
+D. World Helio
+Đáp án đúng: B
+Câu 180: What is the result will be displayed on the screen after executing the following code:
+char a[] = "AbCdEf";
+char *s = a;
+for (; *s; s += 3)
+    printf("%s", s);
+A. Runtime error
+B. Ad
+C. Compiler error
+D. AbCdEfdEf
+E. AbC
+F. dEf
+Đáp án đúng: D
+Câu 181: What is the output when the sample code below is executed?
+#include <stdio.h>
+int main() {
+    int x = 7;
+    for (; x > 3;)
+        printf("Yes");
+    x--;
+    return 0;
+}
+A. Infinite loop
+B. Compile time error
+C. YesYesYesYes
+D. Yes
+Đáp án đúng: A
+Câu 182: What is the output when the sample code below is executed?
+#include <stdio.h>
+int main() {
+    int x = 10, i;
+    for (i = 0; i < x; i += 3) {
+        printf("One");
+        continue;
+        printf("Two");
+    }
+    return 0;
+}
+A. OneOneOneOne
+B. OneTwoOneOne
+C. OneTwoTwoTwo
+D. TwoTwoTwoOne
+Đáp án đúng: A
+Câu 183: What is the output when the sample code below is executed?
+#include <stdio.h>
+int main() {
+    int a = 1;
+    switch (a) {
+        case 2: printf("Two");
+        case 1: printf("One");
+        case 3: printf("Three");
+        case 4: printf("Four");
+    }
+    return 0;
+}
+A. OneThreeFour
+B. OneTwoThreeFour
+C. One
+D. TwoOneThreeFour
+Đáp án đúng: A
+Câu 184: What is the result of the statement printf("Welcome to\rFPTU"); ?
+A. FPTUome to
+B. FPTU
+C. Welcome to FPTU
+D. Welcome toFPTU
+E. FPTU Welcome to
+Đáp án đúng: A
+Câu 185: Choose the best comment about the output of the following C code:
+#include <stdio.h>
+void main() {
+    int i = 0;
+    while (i < 5) {
+        i++;
+        printf("Hi-");
+        while (i < 4) {
+            i++;
+            printf("Hello-");
+        }
+    }
+}
+A. Hi-Hi-Hi-Hi-Hello-Hello-Hello-Hi-
+B. Hi-Hi-Hi-Hi-Hi-Hello-Hello-Hello-
+C. Hi-Hello-Hello-Hello-Hello-Hi-
+D. Hi-Hello-Hello-Hello-Hi-
+Đáp án đúng: D
+Câu 186: Consider the following program. What will be printed to the screen?
+#include <stdio.h>
+int main() {
+    char i, j;
+    for (i = 'A'; i <= 'E'; i++) {
+        for (j = 'A'; j <= i; j++) {
+            printf("%c", i);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+A. A
+   BB
+   CCC
+   DDDD
+   EEEEE
+B. AAAAA
+   BBBB
+   CCC
+   DD
+   E
+C. A
+   AB
+   ABC
+   ABCD
+   ABCDE
+D. A
+   AA
+   AAA
+   AAAA
+   AAAAA
+Đáp án đúng: A
+Câu 187: What is the output of the following code snippet?
+#include <stdio.h>
+int main() {
+    char char_array[] = {'a', 'b', 'c', 'd', 'e'};
+    int array_size = sizeof(char_array) / sizeof(char);
+    for (int i = 0; i < array_size; i++) {
+        char_array[i] = char_array[i] + 1;
+    }
+    for (int i = 0; i < array_size; i++) {
+        printf("%c ", char_array[i]);
+    }
+    return 0;
+}
+A. b c d e f
+B. a b c d e
+C. 98 99 100 101 102
+D. c d e f g
+Đáp án đúng: A
+
+Câu 350: What does a variable represent in a program?
+A. A constant value stored in memory
+B. A reference to a memory location
+C. A function used for binary conversion
+D. A line number in the code
+Đáp án đúng: B
+Câu 352: What does the statement rewind(fp) do?
+A. Bring the pointer fp back to the beginning of the file
+B. Assign to the pointer fp the address 0x00 (NULL)
+C. Bring the pointer fp to the end of the file
+D. Bring the pointer fp back to the beginning of the current line
+Đáp án đúng: A
+Câu 353: What does the expression sizeof(arr) / sizeof(arr[0]) evaluate to, where arr is an array?
+A. The number of elements in arr
+B. The size of arr in bytes
+C. The number of bytes occupied by each element in arr
+D. The total size of arr in bytes
+Đáp án đúng: A
+Câu 354: What will happen if a break statement is not used in a switch case?
+A. The program will execute the next case(s) until a break is encountered or the switch ends
+B. The program will terminate immediately
+C. The program will throw a compile-time error
+D. The program will skip all remaining cases
+Đáp án đúng: A
+Câu 355: What will happen if the while loop does NOT the loop's condition?
+A. Compile time error
+B. Loop infinitely
+C. No Output will be printed
+D. The loop will not work
+Đáp án đúng: B
+Câu 356: What will happen if the condition in a while loop is initially false?
+A. The loop is skipped entirely.
+B. The loop executes indefinitely.
+C. The loop executes once and then terminates.
+D. An error occurs.
+Đáp án đúng: A
+Câu 357: What will be the result of performing a binary search on an unsorted array?
+A. The search may return an incorrect index or fail to locate the target element.
+B. The search will always find the target element if it is present somewhere in the array.
+C. The search will perform as expected, but only for elements in the lower half of the array.
+D. The search will automatically sort the array before locating the target element.
+Đáp án đúng: A
+Câu 358: What will happen if the loop's condition is always true?
+A. Loop infinitely
+B. No Output will be printed
+C. Compile time error
+D. The loop will not work
+Đáp án đúng: A
+Câu 359: What benefit does #define offer when dealing with magic values in code?
+A. It improves code portability
+B. It makes the code shorter
+C. It prevents the use of symbolic names
+D. It increases code complexity
+Đáp án đúng: A
+Câu 360: What happens when the return statement has a double expression and the function return type is int?
+A. There is error
+B. This causes a run-time error
+C. This is system dependent
+D. There is a conversion from double to int
+Đáp án đúng: D
+Câu 361: What happens when you try to access the 11th element of an array with a size of 10 in the C language?
+A. The program compiles and runs without any errors, but the behavior is undefined
+B. The program compiles and runs without any errors, and the 11th element is accessed
+C. The program fails to compile due to a compilation error
+D. The program compiles and runs without any errors, and the 11th element is automatically added to the array
+Đáp án đúng: A
+Câu 362: Which is incorrect statement in C programming?
+A. #define is a preprocessor command often used to introduce named constants
+B. double and goto are keyword for declaring data type.
+C. return 0; is normally the last statement in main()
+D. The file stdio.h is the library where the compiler finds scanf().
+Đáp án đúng: B
+Câu 363: Which of the following is true about the default case in a switch statement?
+A. It must always be placed at the beginning of the switch statement
+B. It is mandatory for every switch statement
+C. It executes when none of the case conditions match
+D. It can be used multiple times within a single switch
+Đáp án đúng: C
+Câu 364: Which of the following statements is incorrect?
+A. To make our programs longer, we use higher-level languages.
+B. Program code in a high level language can not run, it must be translated to binary code (machine code) before running.
+C. C is based on a view of structured programming.
+D. Programs that perform relatively simple tasks and are written in assembly language contain a large number of statements.
+Đáp án đúng: A
+Câu 365: Which of the following statements about the strstr() function in C is true?
+A. Compare two strings
+B. Returns the pointer to the first occurrence of the given substring in the main string
+C. Concatenate source string to the end of destination string
+D. Copy source string to destination string
+Đáp án đúng: B
+Câu 366: Which of the following is NOT mentioned as a reason why C is selected as the first programming language?
+A. C has object-oriented features.
+B. C is English-like
+C. C is faster and more powerful than other high-level languages.
+D. C supports basic ways to understand the memory of a program
+Đáp án đúng: A
+Câu 367: Which of the following accurately describes the scope of a local variable in C?
+A. It is visible only within the function where it's declared.
+B. It is accessible throughout the entire program.
+C. It can be accessed by any function within the same source file.
+D. It is available globally but with restricted modification rights.
+Đáp án đúng: A
+Câu 368: Which of the following is TRUE about the while loop in C?
+A. The loop will always execute at least once.
+B. The condition is checked after each iteration.
+C. The loop will never execute if the condition is initially false.
+D. The loop requires an increment statement inside the body.
+Đáp án đúng: C
+Câu 369: Which of the following is true regarding the declaration of a two-dimensional array in C?
+A. Both the number of rows and columns must be specified.
+B. The number of columns must be specified.
+C. The number of rows must be specified.
+D. The number of rows and columns can be determined dynamically at runtime.
+Đáp án đúng: A
+Câu 370: Which of the following about the switch case statement is true?
+A. It can only be used with integer or character type expressions.
+B. It can be used with any data type.
+C. It can only be used in functions.
+D. It can only have one case statement inside.
+Đáp án đúng: A
+Câu 371: Which of the following statements is correct regarding the first character of an identifier?
+A. The first character of an identifier can be a number
+B. The first character of an identifier must be a special symbol
+C. The first character of an identifier must be a letter or an underscore
+D. The first character of an identifier can be a space
+Đáp án đúng: C
+Câu 372: Which of the following about linear search is true?
+A. It sequentially checks each element in the array.
+B. It requires the array to be sorted.
+C. It is faster than binary search.
+D. It is the fastest way to find an element in the array
+Đáp án đúng: A
+Câu 373: How can you check if a file was successfully opened for writing in C?
+A. Checking the return value of fopen()
+B. Using ferror()
+C. Using feof()
+D. Using fprintf()
+Đáp án đúng: A
+Câu 374: How are strings typically represented in C?
+A. As an array of characters
+B. As an array of strings
+C. As individual characters
+D. As integers referencing ASCII values
+Đáp án đúng: A
+Câu 375: How is 'Data' related to information?
+A. It is a hidden aspect of information
+B. It is a way to solve a problem
+C. It describes values used to define information
+D. It is an implementation of a program
+Đáp án đúng: C
+Câu 376: How does compilation differ from interpretation in the context of C programming language?
+A. Compilation involves converting source code to machine code, while interpretation involves executing code line by line.
+B. Compilation and interpretation are two terms that are used interchangeably.
+C. Algorithm is another term for interpretation in programming languages.
+D. IDE tools are responsible for both compilation and interpretation processes.
+Đáp án đúng: A
+Câu 377: How does a "for" loop differ from a "while" loop in C programming?
+A. A "for" loop is used for iterating over a sequence of elements, while a "while" loop is used to execute a block of code repeatedly as long as a condition is true.
+B. A "for" loop is primarily used for conditional statements, while a "while" loop is designed for sequential processing.
+C. The use of "for" and "while" loops is interchangeable; there is no substantial difference between them.
+D. A "for" loop is exclusively used with arrays, while a "while" loop is used with numerical calculations..
+Đáp án đúng: A
+Câu 378: How to declare a variable in C language?
+A. All variables must be declared before we use them in C program.
+B. To declare a variable you specify its name and data type it can store.
+C. All variable are always stored on the stack.
+D. Reading a value from keyboard or other device with a OUT statement
+E. The scope of a variable is the range of program statements that can't access that variable.
+Đáp án đúng: A, B
+Câu 379: Choose the correct statement related to the array.
+A. Arrays provide constant-time access to elements.
+B. Arrays allow for dynamic resizing during runtime.
+C. Arrays can store elements of different data types.
+D. Arrays automatically adjust their size based on the number of elements.
+Đáp án đúng: A
+Câu 380: Choose the correct statement about the following statement:
+scanf("%d, %d", &a, &b);
+A. scanf will expect two integers inputted by user and write them to variables a and b.
+B. scanf will expect two floating-point numbers inputted by user and write them to variables a and b.
+C. scanf will expect two integers inputted by user separated by a comma, and write the first integer to variable a, the comma to variable b.
+D. scanf will expect two integers inputted by user separated by a comma, and write the first integer to variable a, the second integer to variable b.
+Đáp án đúng: D
+Câu 381: Choose the correct definition for "Simple data types" in C programming.
+A. Changing from one form of representation to another
+B. A category of data that represents individual, non-complex elements such as integers, floating-point numbers, and characters
+C. Performing operations and expressions on data
+D. Storing a collection of elements accessible by an index or a key
+Đáp án đúng: B
+Câu 383: During the compilation process, what will be done with comments?
+A. The comment mark will be removed. The content of the comments will be compiled line by line.
+B. The comment is treated as an array of characters.
+C. Comments are removed in the pre-processing step.
+D. Each comment is compiled as a statement that does nothing.
+Đáp án đúng: C
+Câu 384: Real-world example of a switch statement in C is:
+A. Check the day of the week.
+B. Sort an array ascending.
+C. Sort an array descending.
+D. Find the average value of a sequence.
+Đáp án đúng: A
+Câu 385: In C, what is the purpose of | operator?
+A. It is a bitwise operator OR
+B. It is a logical operator AND
+C. It is a bitwise operator AND
+D. It is a logical operator OR
+Đáp án đúng: A
+Câu 386: In C programming language, what is the function fprintf() used for?
+A. Writing formatted data to a file.
+B. Reading formatted data from a file.
+C. Appending formatted data to a file.
+D. Closing a file.
+Đáp án đúng: A
+Câu 387: In a C program, what happens if none of the conditions in an if-else statement are true?
+A. The program will skip the if-else block and continue with the next statement.
+B. The program will raise an error.
+C. The else if block will be executed.
+D. The program will terminate abruptly.
+Đáp án đúng: A
+Câu 388: In computers, what are the basic number systems and their corresponding bases used?
+A. Decimal number system (Base-10).
+B. Binary number system (Base-2).
+C. Octal number system (Base-8).
+D. Hexadecimal number system (Base-16).
+E. All answers are correct.
+Đáp án đúng: E
+Câu 389: In bubble sort, after each pass of sorting in ascending, where is the largest element in the unsorted part of the array?
+A. It moved to the end of the sorted part
+B. It moved to the beginning of the sorted part
+C. It stays in its position
+D. It removed from the array
+Đáp án đúng: A
+Câu 390: In the context of arrays in the C language, what does traversal refer to?
+A. The process of accessing elements in an array sequentially.
+B. The process of searching for a specific element in an array.
+C. The process of resizing the array during runtime.
+D. The process of inserting elements into an array.
+Đáp án đúng: A
+Câu 391: In a switch statement, what is the purpose of the default case?
+A. To specify a condition to stop execution
+B. To exit the program
+C. To define the first case in the switch statement
+D. To handle values that are not matched by any case label
+Đáp án đúng: D
+Câu 392: The rand() function in C is used for:
+A. Generating random integer.
+B. Generating random integer from min to max.
+C. Generating random float from min to max.
+D. Generating random float.
+E. Generating random double.
+F. Generating random double from min to max.
+Đáp án đúng: A
+Câu 393: In the C programming language, which of the following statements about the pointer operators & and * is true?
+A. The & operator is used to get the address of a variable, while the * operator is used to access the value at the address the pointer points to.
+B. The & operator is used to get the value of a variable, while the * operator is used to access the address of a variable.
+C. The & operator is used to get the value of a variable, while the * operator can only be used with global variables.
+D. None of the others
+Đáp án đúng: A
+Câu 394: The ^ operator in the C programming language is used to_____
+A. XOR two bit sequences.
+B. OR two bit sequences.
+C. AND two bit sequences.
+D. SHIFT UP a bit sequences.
+E. NOT a bit sequences.
+F. Calculate the exponential value, for example 2^3 = 8.
+Đáp án đúng: A
+Câu 395: What is the main difference between opening a file with mode "a+" and mode "w+" in C?
+A. "w+" truncates existing files, "a+" preserves them.
+B. "a+" can only append data, while "w+" can only write from the beginning.
+C. "a+" opens binary files, while "w+" opens text files.
+D. "a+" allows reading only, while "w+" allows both reading and writing.
+Đáp án đúng: A
+Câu 396: What happens when you use a break statement inside a for loop?
+A. The loop exits immediately.
+B. The loop continues with the next iteration and skips the remaining statements.
+C. The program terminates completely, and all variables are destroyed.
+D. Nothing happens; the break statement is completely ignored in for loops.
+Đáp án đúng: A
+Câu 397: What is an algorithm?
+A. A program executed using a computer
+B. A procedure used for solving a problem or performing a computation.
+C. A sequence of steps to solve a problem
+D. A description of hidden information
+Đáp án đúng: B
+Câu 398: What is the primary purpose of a data type in C programming?
+A. To define how values are stored and how operations are performed
+B. To determine the variable name and its scope within the program
+C. To specify the program's execution order and control flow
+D. To control the program's memory allocation and deallocation process
+Đáp án đúng: A
+Câu 399: In the C programming language, which of the following statements about local variables within a function is true?
+A. Local variables within a function are declared and initialized each time the function is called.
+B. Local variables within a function can be accessed from any other function in the program.
+C. Local variables within a function retain their value between different function calls.
+D. Local variables within a function can be declared outside the function and still maintain local scope.
+Đáp án đúng: A
+Câu 400: In the following C function, what is the purpose of the parameter int* a?
+void input(int* a, int n);
+A. It is a pointer to the first element of the array
+B. It holds the array size
+C. It defines the function return type
+D. It stores the index of the element
+Đáp án đúng: A
+Câu 401: What is the main purpose of a module in programming?
+A. To carry out a specific function and may be used alone or combined with other modules to create a program
+B. To store data in a database
+C. To handle user input exclusively
+D. To perform arithmetic calculations only
+Đáp án đúng: A
+Câu 403: What is the correct syntax for declaring a static array in C?
+A. DataType ArrayName[NumberOfElements];
+B. ArrayName DataType[NumberOfElements];
+C. DataType[NumberOfElements] ArrayName;
+D. [NumberOfElements] DataType ArrayName;
+Đáp án đúng: A
+Câu 404: Which is the correct syntax for a for loop in C?
+A. for (initialization, condition, increment) { statements; }
+B. for { initialization; condition; increment; } { statements; }
+C. for (initialization; condition; increment) { statements; }
+D. for: (initialization; condition; increment) { statements; }
+Đáp án đúng: C
+Câu 405: What characteristic defines low "coupling" in module design?
+A. A module performs its tasks independently.
+B. A module shares performance with other modules.
+C. A module accesses global data.
+D. A module depends on many other modules.
+Đáp án đúng: A
+Câu 406: What does the line scanf("%d", &n); do?
+A. Assign value to n
+B. Print n
+C. Read an integer input
+D. Declare n
+Đáp án đúng: C
+Câu 407: What does this code do?
+char names[10][31];
+gets(names[0]);
+A. Takes a line of input into names[0]
+B. Takes input into all 10 strings
+C. Fails to compile
+D. Only stores 1 character
+Đáp án đúng: A
+Câu 408: What does the '\0' character in a string represent?
+A. The null terminator in C strings
+B. A whitespace character
+C. A printable character
+D. A NULL pointer value
+Đáp án đúng: A
+Câu 409: What does the following statement do?
+FILE *fp = fopen("employee.dat", "a");
+A. Create a file named employee.dat. The address of the newly created file is assigned to the file pointer fp.
+B. Open a file named employee.dat to read data. If the file exists, the address of the file is assigned to the file pointer fp.
+C. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp. If the file does not exist, a new file named employee.dat will be created and its address will be assigned to fp.
+D. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp and all existing data will be overwritten. If the file does not exist, a new file named employee.dat will be created and its address will be assigned to fp.
+Đáp án đúng: C
+Câu 410: Which of the following functions performs a binary search on a sorted array?
+A. int linearSearch(int a[], int n)
+B. int binarySearch(int x, int a[], int n)
+C. int firstLinearSearch(double x, double a[], int n)
+D. void sort(int a[], int n)
+Đáp án đúng: B
+Câu 411: Which of the following functions in C is used to reset the file position indicator to the beginning of the file?
+A. fseek()
+B. ftell()
+C. rewind()
+D. return()
+Đáp án đúng: C
+Câu 412: Which function is used to copy strings in C?
+A. strcat()
+B. strcpy()
+C. puts()
+D. scanf()
+Đáp án đúng: B
+Câu 413: Which statement is specifically designed for efficiently handling multiple discrete cases of a single variable, providing a clear structure for selecting one among several possible paths?
+A. if
+B. switch
+C. while
+D. for
+Đáp án đúng: B
+Câu 414: Which library in C is used for mathematical calculations?
+A. math.h
+B. stdlib.h
+C. time.h
+D. ctype.h
+Đáp án đúng: A
+Câu 415: Consider two strings s1 and s2 in C. How can you determine if s1 is greater than or equal to s2?
+A. if (strcmp(s1, s2) >= 0)
+B. if (strcmp(s1, s2) < 0)
+C. if (strlen(s1) >= strlen(s2))
+D. if (s1 >= s2)
+Đáp án đúng: A
+Câu 416: Given the variable arr declared as follow
+char arr[16];
+What is the maximum number of characters you can store in arr to represent a null-terminated strings?
+A. 13
+B. 14
+C. 15
+D. 16
+Đáp án đúng: C
+Câu 417: In the C language, which method is used when a function receives a copy of the argument's value, ensuring that changes inside the function do not affect the original variable?
+A. Pass by value
+B. Pass by reference
+C. Pass by address
+D. Pass by pointer
+Đáp án đúng: A
+Câu 418: Using DeMorgan's Law, how would you correctly negate the condition (x >= 10 && x <= 20)?
+A. (x < 10 || x > 20)
+B. (x > 10 && x < 20)
+C. (x < 10 && x > 20)
+D. !(x >= 10 || x <= 20)
+Đáp án đúng: A

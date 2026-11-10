@@ -1,0 +1,615 @@
+[
+  {
+    "id": "prf_4",
+    "word": "Câu 4: What is incorrect when input a string?",
+    "question": "What is incorrect when input a string?",
+    "options": [
+      "A. scanf(\"%s\", s);",
+      "B. scanf(\"%[^\\n]\", s);",
+      "C. getc(s);",
+      "D. gets(s)",
+      "E. scanf(s);"
+    ],
+    "answer": "C",
+    "correctWord": "C. getc(s);",
+    "explanation": "Đáp án: C. getc nhận FILE*, không dùng để nhập chuỗi; E cũng sai về logic",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_6",
+    "word": "Câu 6: Which of the following is used for single character I/O?",
+    "question": "Which of the following is used for single character I/O?",
+    "options": [
+      "A. getchar() and putchar()",
+      "B. gets() and puts()",
+      "C. scanf() and printf()",
+      "D. fgets() and fputs()"
+    ],
+    "answer": "A",
+    "correctWord": "A. getchar() and putchar()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_8",
+    "word": "Câu 8: Which of the following declaration is not supported by C?",
+    "question": "Which of the following declaration is not supported by C?",
+    "options": [
+      "A. string a;",
+      "B. float a = 3e2;",
+      "C. int* a;",
+      "D. float *a;",
+      "E. char * a;"
+    ],
+    "answer": "A",
+    "correctWord": "A. string a;",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_26",
+    "word": "Câu 26: The function which will compute the average of two real numb...",
+    "question": "The function which will compute the average of two real numbers should be prototyped as:",
+    "options": [
+      "A. int average( double, double);",
+      "B. double average( double, double);",
+      "C. char average( double, double);",
+      "D. void average( double, double);"
+    ],
+    "answer": "B",
+    "correctWord": "B. double average( double, double);",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_29",
+    "word": "Câu 29: Which of the following statements has a different result fro...",
+    "question": "Which of the following statements has a different result from the other statements?",
+    "options": [
+      "A. char c1 = 'B'; printf(\"%c\",c1);",
+      "B. char c2 = 066; printf(\"%c\",c2);",
+      "C. char c3 = 0x42; printf(\"%c\",c3);",
+      "D. char c4 = 0102; printf(\"%c\",c4);"
+    ],
+    "answer": "B",
+    "correctWord": "B. char c2 = 066; printf(\"%c\",c2);",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_32",
+    "word": "Câu 32: Which function writes the character value of the argument c ...",
+    "question": "Which function writes the character value of the argument c to the output stream referenced by fp?",
+    "options": [
+      "A. int fputc( int c, FILE *fp );",
+      "B. int fputs( const char *s, FILE *fp );",
+      "C. int fgetc( FILE *fp );",
+      "D. char *fgets( char *buf, int n, FILE *fp );"
+    ],
+    "answer": "A",
+    "correctWord": "A. int fputc( int c, FILE *fp );",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_40",
+    "word": "Câu 40: Which library should you include to work with the FILE data ...",
+    "question": "Which library should you include to work with the FILE data type in C?",
+    "options": [
+      "A. stdio.h",
+      "B. stdlib.h",
+      "C. string.h",
+      "D. type.h"
+    ],
+    "answer": "A",
+    "correctWord": "A. stdio.h",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_49",
+    "word": "Câu 49: The strcmp() compares two strings character by character. If...",
+    "question": "The strcmp() compares two strings character by character. If the strings are equal, the function returns...",
+    "options": [
+      "A. 1",
+      "B. 0",
+      "C. -1"
+    ],
+    "answer": "B",
+    "correctWord": "B. 0",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_50",
+    "word": "Câu 50: What is the result of the statement strcmp(\"abcdef\",\"abdc\")?",
+    "question": "What is the result of the statement strcmp(\"abcdef\",\"abdc\")?",
+    "options": [
+      "A. 1",
+      "B. 0",
+      "C. -1"
+    ],
+    "answer": "C",
+    "correctWord": "C. -1",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_51",
+    "word": "Câu 51: If the two strings have the same value, then strcmp() functi...",
+    "question": "If the two strings have the same value, then strcmp() function returns _____",
+    "options": [
+      "A. True",
+      "B. 1",
+      "C. 0",
+      "D. -1"
+    ],
+    "answer": "C",
+    "correctWord": "C. 0",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_52",
+    "word": "Câu 52: Given two character strings s1=\"C\" and s2=\"C and C++\", the f...",
+    "question": "Given two character strings s1=\"C\" and s2=\"C and C++\", the function strcmp(s1, s2) will return the value _____",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. -1",
+      "D. <0",
+      "E. >0"
+    ],
+    "answer": "C",
+    "correctWord": "C. -1",
+    "explanation": "Đáp án: C. D cũng đúng",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_55",
+    "word": "Câu 55: What is the return value of the strcmp(\"abc\",\"Abcdef\") funct...",
+    "question": "What is the return value of the strcmp(\"abc\",\"Abcdef\") function?",
+    "options": [
+      "A. 1",
+      "B. 0",
+      "C. -1",
+      "D. 2"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_65",
+    "word": "Câu 65: What is the output of the following code?\nchar s[] = \"fpt\";\n...",
+    "question": "What is the output of the following code?\nchar s[] = \"fpt\";\nint i = strlen(s);\nwhile (i)\n    printf(\"%s\", s + --i);",
+    "options": [
+      "A. tptfpt",
+      "B. fpttp",
+      "C. tfptp",
+      "D. Compile error"
+    ],
+    "answer": "A",
+    "correctWord": "A. tptfpt",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_70",
+    "word": "Câu 70: What is the output of the following code?\nchar s[] = \"2024\";...",
+    "question": "What is the output of the following code?\nchar s[] = \"2024\";\n*(s + 3) = *s + 3;\nprintf(\"%s\", s);",
+    "options": [
+      "A. 2025",
+      "B. 2024",
+      "C. 2023",
+      "D. 2026"
+    ],
+    "answer": "A",
+    "correctWord": "A. 2025",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_97",
+    "word": "Câu 97: What will be the output of the following C code?\n#include <s...",
+    "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main()\n{\n    char result = 125;\n    result = result + 5;\n    printf(\"%d\", result);\n}",
+    "options": [
+      "A. 130",
+      "B. -130",
+      "C. 126",
+      "D. -126"
+    ],
+    "answer": "D",
+    "correctWord": "D. -126",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_109",
+    "word": "Câu 109: What will be printed when the following code is executed?\n#i...",
+    "question": "What will be printed when the following code is executed?\n#include <stdio.h>\nint main()\n{\n    int a[]={7,4,8,5,9};\n    int* b=a;\n    b++;\n    printf(\"%d %d\", *(b++), *(a+3));\n    getchar();\n    return 0;\n}",
+    "options": [
+      "A. 8 8",
+      "B. 4 8",
+      "C. 8 5",
+      "D. 4 5"
+    ],
+    "answer": "D",
+    "correctWord": "D. 4 5",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_117",
+    "word": "Câu 117: What is the results will be displayed on the screen after ex...",
+    "question": "What is the results will be displayed on the screen after executing the following code:\nchar s[] = \"AbCd\";\nprintf(\"%d;%d;%d;%d\", s[1], s[2], s[3], s[4]);",
+    "options": [
+      "A. 97;98;99;100",
+      "B. 65;66;67;68",
+      "C. 65;98;67;100",
+      "D. 98;67;100;0"
+    ],
+    "answer": "D",
+    "correctWord": "D. 98;67;100;0",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_135",
+    "word": "Câu 135: What the matter is the following C code?\n#include <stdio.h>\n...",
+    "question": "What the matter is the following C code?\n#include <stdio.h>\nint main() {\n    int a=1,b=2,c=3;\n    printf(\"%d %d %d\");\n    return 0;\n}",
+    "options": [
+      "A. The program outputs undefined values.",
+      "B. The program has compile errors but still prints 1 2 3",
+      "C. The program output 3 2 1.",
+      "D. The program runtime error."
+    ],
+    "answer": "A",
+    "correctWord": "A. The program outputs undefined values.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_140",
+    "word": "Câu 140: What is the results will be displayed on the screen after ex...",
+    "question": "What is the results will be displayed on the screen after executing the following code:\nchar a[] = \"Ab\";\nchar *s = a;\nint t = 1;\nfor (; *s; ++s)\n    t *= *s;\nprintf(\"%d\", t);",
+    "options": [
+      "A. Garbage value",
+      "B. 0",
+      "C. Compiler error",
+      "D. 6370",
+      "E. 65\nF. 98"
+    ],
+    "answer": "D",
+    "correctWord": "D. 6370",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_150",
+    "word": "Câu 150: What is the issue with the following code?\nchar str[1];\ngets...",
+    "question": "What is the issue with the following code?\nchar str[1];\ngets(str);\nprintf(\"%s\", str);",
+    "options": [
+      "A. Runtime error.",
+      "B. Logical error.",
+      "C. Compilation error.",
+      "D. No issue."
+    ],
+    "answer": "A",
+    "correctWord": "A. Runtime error.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_158",
+    "word": "Câu 158: What is the size of the char data type in bytes?",
+    "question": "What is the size of the char data type in bytes?",
+    "options": [
+      "A. 1 byte",
+      "B. 2 bytes",
+      "C. 4 bytes",
+      "D. It depends on the system"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1 byte",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_161",
+    "word": "Câu 161: What is the maximum size required to store the string \"Hello...",
+    "question": "What is the maximum size required to store the string \"Hello\" in C?",
+    "options": [
+      "A. 5 bytes",
+      "B. 6 bytes",
+      "C. 4 bytes",
+      "D. 10 bytes"
+    ],
+    "answer": "B",
+    "correctWord": "B. 6 bytes",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_167",
+    "word": "Câu 167: What is the result displayed on the screen of the following ...",
+    "question": "What is the result displayed on the screen of the following program?\n#include <stdio.h>\n#include <ctype.h>\nint main() {\n    char a[] = \"hello world\";\n    int i = 0;\n    while (!isspace(a[i]))\n        i++;\n    printf(\"%d, %c\", i, a[i-1]);\n    return 0;\n}",
+    "options": [
+      "A. 0, h",
+      "B. 5, o",
+      "C. 5,",
+      "D. 5, w"
+    ],
+    "answer": "B",
+    "correctWord": "B. 5, o",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_169",
+    "word": "Câu 169: What is the value of variable a after executing the followin...",
+    "question": "What is the value of variable a after executing the following lines of code:\nint a = 0;\nchar line1[] = \"Hi\";\nchar line2[] = \"Hello\";\na = strcmp(line1, line2);",
+    "options": [
+      "A. 0",
+      "B. A positive value",
+      "C. A negative value",
+      "D. NAN"
+    ],
+    "answer": "B",
+    "correctWord": "B. A positive value",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_170",
+    "word": "Câu 170: The strcmp(S1, S2) will return _____ even if the value of S1...",
+    "question": "The strcmp(S1, S2) will return _____ even if the value of S1 is greater than the value of S2.",
+    "options": [
+      "A. Positive integer",
+      "B. Negative integer",
+      "C. Null",
+      "D. -1",
+      "E. 0"
+    ],
+    "answer": "A",
+    "correctWord": "A. Positive integer",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_173",
+    "word": "Câu 173: What is the output of the following code snippet?\nchar words...",
+    "question": "What is the output of the following code snippet?\nchar words[4][11];\nstrcpy(words[0], \"apple\");\nstrcat(words[0], \"juice\");\nprintf(\"%s\\n\", words[0]);",
+    "options": [
+      "A. applejuice",
+      "B. apple",
+      "C. juice",
+      "D. juiceapple"
+    ],
+    "answer": "A",
+    "correctWord": "A. applejuice",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_174",
+    "word": "Câu 174: What will be the output of the following code if the input i...",
+    "question": "What will be the output of the following code if the input is abcdef?\nchar s[5];\nfgets(s, sizeof(s), stdin);\nprintf(\"%s\", s);",
+    "options": [
+      "A. abcd",
+      "B. abcdef",
+      "C. abc",
+      "D. Syntax Error in fgets function"
+    ],
+    "answer": "A",
+    "correctWord": "A. abcd",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_175",
+    "word": "Câu 175: What does the following program display?\n#include <stdio.h>\n...",
+    "question": "What does the following program display?\n#include <stdio.h>\nint main()\n{\n    char str[] = \"Hello\";\n    printf(\"%c\", *(str + 1));\n    return 0;\n}",
+    "options": [
+      "A. H",
+      "B. l",
+      "C. e",
+      "D. o"
+    ],
+    "answer": "C",
+    "correctWord": "C. e",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_179",
+    "word": "Câu 179: (Choose 1 answer)\nchar str1[20] = \"Hello\";\nchar str2[20] = \"...",
+    "question": "(Choose 1 answer)\nchar str1[20] = \"Hello\";\nchar str2[20] = \"World\";\nstrcat(str1, str2);\nprintf(\"%s\", str1);\nWhat will be the result of the following C code?",
+    "options": [
+      "A. WorldHello",
+      "B. HelloWorld",
+      "C. Hello World",
+      "D. World Helio"
+    ],
+    "answer": "B",
+    "correctWord": "B. HelloWorld",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_180",
+    "word": "Câu 180: What is the result will be displayed on the screen after exe...",
+    "question": "What is the result will be displayed on the screen after executing the following code:\nchar a[] = \"AbCdEf\";\nchar *s = a;\nfor (; *s; s += 3)\n    printf(\"%s\", s);",
+    "options": [
+      "A. Runtime error",
+      "B. Ad",
+      "C. Compiler error",
+      "D. AbCdEfdEf",
+      "E. AbC\nF. dEf"
+    ],
+    "answer": "D",
+    "correctWord": "D. AbCdEfdEf",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_186",
+    "word": "Câu 186: Consider the following program. What will be printed to the ...",
+    "question": "Consider the following program. What will be printed to the screen?\n#include <stdio.h>\nint main() {\n    char i, j;\n    for (i = 'A'; i <= 'E'; i++) {\n        for (j = 'A'; j <= i; j++) {\n            printf(\"%c\", i);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+    "options": [
+      "A. A\n   BB\n   CCC\n   DDDD\n   EEEEE",
+      "B. AAAAA\n   BBBB\n   CCC\n   DD\n   E",
+      "C. A\n   AB\n   ABC\n   ABCD\n   ABCDE",
+      "D. A\n   AA\n   AAA\n   AAAA\n   AAAAA"
+    ],
+    "answer": "A",
+    "correctWord": "A. A\n   BB\n   CCC\n   DDDD\n   EEEEE",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_370",
+    "word": "Câu 370: Which of the following about the switch case statement is tr...",
+    "question": "Which of the following about the switch case statement is true?",
+    "options": [
+      "A. It can only be used with integer or character type expressions.",
+      "B. It can be used with any data type.",
+      "C. It can only be used in functions.",
+      "D. It can only have one case statement inside."
+    ],
+    "answer": "A",
+    "correctWord": "A. It can only be used with integer or character type expressions.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_371",
+    "word": "Câu 371: Which of the following statements is correct regarding the f...",
+    "question": "Which of the following statements is correct regarding the first character of an identifier?",
+    "options": [
+      "A. The first character of an identifier can be a number",
+      "B. The first character of an identifier must be a special symbol",
+      "C. The first character of an identifier must be a letter or an underscore",
+      "D. The first character of an identifier can be a space"
+    ],
+    "answer": "C",
+    "correctWord": "C. The first character of an identifier must be a letter or an underscore",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_381",
+    "word": "Câu 381: Choose the correct definition for \"Simple data types\" in C p...",
+    "question": "Choose the correct definition for \"Simple data types\" in C programming.",
+    "options": [
+      "A. Changing from one form of representation to another",
+      "B. A category of data that represents individual, non-complex elements such as integers, floating-point numbers, and characters",
+      "C. Performing operations and expressions on data",
+      "D. Storing a collection of elements accessible by an index or a key"
+    ],
+    "answer": "B",
+    "correctWord": "B. A category of data that represents individual, non-complex elements such as integers, floating-point numbers, and characters",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_405",
+    "word": "Câu 405: What characteristic defines low \"coupling\" in module design?",
+    "question": "What characteristic defines low \"coupling\" in module design?",
+    "options": [
+      "A. A module performs its tasks independently.",
+      "B. A module shares performance with other modules.",
+      "C. A module accesses global data.",
+      "D. A module depends on many other modules."
+    ],
+    "answer": "A",
+    "correctWord": "A. A module performs its tasks independently.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_407",
+    "word": "Câu 407: What does this code do?\nchar names[10][31];\ngets(names[0]);",
+    "question": "What does this code do?\nchar names[10][31];\ngets(names[0]);",
+    "options": [
+      "A. Takes a line of input into names[0]",
+      "B. Takes input into all 10 strings",
+      "C. Fails to compile",
+      "D. Only stores 1 character"
+    ],
+    "answer": "A",
+    "correctWord": "A. Takes a line of input into names[0]",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_412",
+    "word": "Câu 412: Which function is used to copy strings in C?",
+    "question": "Which function is used to copy strings in C?",
+    "options": [
+      "A. strcat()",
+      "B. strcpy()",
+      "C. puts()",
+      "D. scanf()"
+    ],
+    "answer": "B",
+    "correctWord": "B. strcpy()",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_415",
+    "word": "Câu 415: Consider two strings s1 and s2 in",
+    "question": "Consider two strings s1 and s2 in",
+    "options": [
+      "C. How can you determine if s1 is greater than or equal to s2?",
+      "A. if (strcmp(s1, s2) >= 0)",
+      "B. if (strcmp(s1, s2) < 0)",
+      "C. if (strlen(s1) >= strlen(s2))",
+      "D. if (s1 >= s2)"
+    ],
+    "answer": "A",
+    "correctWord": "A. if (strcmp(s1, s2) >= 0)",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  }
+]

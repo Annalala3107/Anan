@@ -1,0 +1,547 @@
+[
+  {
+    "id": "cea_27",
+    "word": "Câu 27: In a steganographic algorithm, if each comma (,) in the encr...",
+    "question": "In a steganographic algorithm, if each comma (,) in the encrypted message equals digit 0 and each dot (.) in the message equals digit 1. What is the hidden information in following message? “I am a human, a student. I studied hard, so I got a good score.”",
+    "options": [
+      "A. 0101",
+      "B. 1010",
+      "C. 0011",
+      "D. 1100"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0101",
+    "explanation": "Đáp án: A. phẩy, chấm, phẩy, chấm = 0101",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_45",
+    "word": "Câu 45: In a steganographic algorithm, if each comma (,) in the encr...",
+    "question": "In a steganographic algorithm, if each comma (,) in the encrypted message equals digit 0 and each dot (.) in the message equals digit 1, what is the hidden information in the following message? “I am a human, a student. I studied hard, so I got a good score.”",
+    "options": [
+      "A. 0101",
+      "B. 1010",
+      "C. 0011",
+      "D. 1100"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0101",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_54",
+    "word": "Câu 54: Which of the following is TRUE about an undirected graph?",
+    "question": "Which of the following is TRUE about an undirected graph?",
+    "options": [
+      "A. The edges have no direction",
+      "B. It has one-way connections between nodes.",
+      "C. The edges have a specific starting and ending point",
+      "D. A node only has one parent"
+    ],
+    "answer": "A",
+    "correctWord": "A. The edges have no direction",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_55",
+    "word": "Câu 55: Which is true about organizing relational data storage?",
+    "question": "Which is true about organizing relational data storage?",
+    "options": [
+      "A. The physical storage of the data is independent of the way in which the data is logically organized",
+      "B. The abstract storage of the data is independent of the way in which the data is logically organized",
+      "C. The logical storage of the data is independent of the way in which the data is logically organized",
+      "D. The virtual storage of the data is independent of the way in which the data is logically organized"
+    ],
+    "answer": "A",
+    "correctWord": "A. The physical storage of the data is independent of the way in which the data is logically organized",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_76",
+    "word": "Câu 76: Array traversal refers to ______",
+    "question": "Array traversal refers to ______",
+    "options": [
+      "A. an operation that search a specific element of the array",
+      "B. an operation that search and edit a specific element of the array",
+      "C. an operation that search and delete a specific element of the array",
+      "D. an operation that is applied to all elements of the array"
+    ],
+    "answer": "D",
+    "correctWord": "D. an operation that is applied to all elements of the array",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_84",
+    "word": "Câu 84: In hashing there is a possibility that more than one key wil...",
+    "question": "In hashing there is a possibility that more than one key will hash to the same address in the file, resulting in a ______",
+    "options": [
+      "A. Duplication",
+      "B. Synonym",
+      "C. Hazard",
+      "D. Collision"
+    ],
+    "answer": "D",
+    "correctWord": "D. Collision",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_96",
+    "word": "Câu 96: In a linked list, the ______ is the pointer that identifies ...",
+    "question": "In a linked list, the ______ is the pointer that identifies the next element.",
+    "options": [
+      "A. link",
+      "B. node",
+      "C. array",
+      "D. data"
+    ],
+    "answer": "A",
+    "correctWord": "A. link",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_108",
+    "word": "Câu 108: What is Queue used for?",
+    "question": "What is Queue used for?",
+    "options": [
+      "A. Keep the same order",
+      "B. Reverse the order of elements",
+      "C. Random elements",
+      "D. Sort the elements"
+    ],
+    "answer": "A",
+    "correctWord": "A. Keep the same order",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_113",
+    "word": "Câu 113: What are the two primary techniques for storing images in co...",
+    "question": "What are the two primary techniques for storing images in computers?",
+    "options": [
+      "A. Raster graphics and vector graphics",
+      "B. Raster graphics and animation",
+      "C. Vector graphics and text encoding",
+      "D. Image scanning and color depth"
+    ],
+    "answer": "A",
+    "correctWord": "A. Raster graphics and vector graphics",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_136",
+    "word": "Câu 136: Which sorting algorithm compares adjacent items and swaps th...",
+    "question": "Which sorting algorithm compares adjacent items and swaps them?",
+    "options": [
+      "A. Bubble Sort",
+      "B. Quick Sort",
+      "C. Merge Sort",
+      "D. Selection Sort"
+    ],
+    "answer": "A",
+    "correctWord": "A. Bubble Sort",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_140",
+    "word": "Câu 140: Which method is used to add an element to a stack?",
+    "question": "Which method is used to add an element to a stack?",
+    "options": [
+      "A. push()",
+      "B. pop()",
+      "C. delete()",
+      "D. top()"
+    ],
+    "answer": "A",
+    "correctWord": "A. push()",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_146",
+    "word": "Câu 146: Which software engineering principle advocates breaking down...",
+    "question": "Which software engineering principle advocates breaking down complex systems into smaller, manageable components that are easier to understand, develop, and maintain?",
+    "options": [
+      "A. Abstraction",
+      "B. Encapsulation",
+      "C. Modularity",
+      "D. Inheritance"
+    ],
+    "answer": "C",
+    "correctWord": "C. Modularity",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_147",
+    "word": "Câu 147: Which access method typically requires additional space for ...",
+    "question": "Which access method typically requires additional space for maintaining an index structure but provides faster access to records compared to sequential access?",
+    "options": [
+      "A. Sequential access",
+      "B. Direct access",
+      "C. Indexed sequential access",
+      "D. Hashing"
+    ],
+    "answer": "C",
+    "correctWord": "C. Indexed sequential access",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_160",
+    "word": "Câu 160: Which principle of OOP encourages bundling data and methods ...",
+    "question": "Which principle of OOP encourages bundling data and methods that operate on the data into a single unit, known as a class?",
+    "options": [
+      "A. Inheritance",
+      "B. Encapsulation",
+      "C. Polymorphism",
+      "D. Abstraction"
+    ],
+    "answer": "B",
+    "correctWord": "B. Encapsulation",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_161",
+    "word": "Câu 161: Which data structure allows dynamic memory allocation?",
+    "question": "Which data structure allows dynamic memory allocation?",
+    "options": [
+      "A. Array",
+      "B. Record",
+      "C. Linked List",
+      "D. Variable"
+    ],
+    "answer": "C",
+    "correctWord": "C. Linked List",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_165",
+    "word": "Câu 165: How is a linked list typically implemented?",
+    "question": "How is a linked list typically implemented?",
+    "options": [
+      "A. Using arrays",
+      "B. Using stacks",
+      "C. Using queues",
+      "D. Using pointers"
+    ],
+    "answer": "D",
+    "correctWord": "D. Using pointers",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_176",
+    "word": "Câu 176: In the context of sequential search, what is the main criter...",
+    "question": "In the context of sequential search, what is the main criterion for stopping the search?",
+    "options": [
+      "A. When the target is found or the end of the list is reached",
+      "B. When the middle of the list is reached",
+      "C. When largest element of the list is found",
+      "D. None of the other answers"
+    ],
+    "answer": "A",
+    "correctWord": "A. When the target is found or the end of the list is reached",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_177",
+    "word": "Câu 177: If an undirected graph has N vertices, what is the maximum n...",
+    "question": "If an undirected graph has N vertices, what is the maximum number of edges it can have?",
+    "options": [
+      "A. N(N-1)/2",
+      "B. N",
+      "C. N+1",
+      "D. 2N",
+      "E. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. N(N-1)/2",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_181",
+    "word": "Câu 181: In the File Structure, Hashing works by:",
+    "question": "In the File Structure, Hashing works by:",
+    "options": [
+      "A. Sorting files by Index",
+      "B. Compress a normal file",
+      "C. Calculating a key",
+      "D. Adding lines to the file"
+    ],
+    "answer": "C",
+    "correctWord": "C. Calculating a key",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_219",
+    "word": "Câu 219: Which structure stores items of different types together?",
+    "question": "Which structure stores items of different types together?",
+    "options": [
+      "A. Array",
+      "B. Record",
+      "C. Linked List",
+      "D. Queue"
+    ],
+    "answer": "B",
+    "correctWord": "B. Record",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_232",
+    "word": "Câu 232: What is a “linked list” primarily characterized by?",
+    "question": "What is a “linked list” primarily characterized by?",
+    "options": [
+      "A. Elements stored in contiguous memory locations",
+      "B. Each element containing a data part and a link (pointer) to the next element.",
+      "C. Direct access to any element using an integer index",
+      "D. Elements always being of the same data type"
+    ],
+    "answer": "B",
+    "correctWord": "B. Each element containing a data part and a link (pointer) to the next element.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_241",
+    "word": "Câu 241: What is the most correct statement about LAN topologies?",
+    "question": "What is the most correct statement about LAN topologies?",
+    "options": [
+      "A. Bus topology is a sophisticated structure and robust with high traffic.",
+      "B. Ring topology is a high risk for collision between 2 nodes.",
+      "C. Star topology is a structure that has a central switch.",
+      "D. Mesh topology is the most complicated structure."
+    ],
+    "answer": "C",
+    "correctWord": "C. Star topology is a structure that has a central switch.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_243",
+    "word": "Câu 243: What is the difference between a stack and a queue?",
+    "question": "What is the difference between a stack and a queue?",
+    "options": [
+      "A. A stack follows FIFO, and a queue follows LIFO",
+      "B. A stack is a hierarchical data structure, and a queue is not",
+      "C. A stack is LIFO, and a queue is FIFO",
+      "D. There is no difference between a stack and a queue"
+    ],
+    "answer": "C",
+    "correctWord": "C. A stack is LIFO, and a queue is FIFO",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_247",
+    "word": "Câu 247: What does the enqueue operation do in a queue ADT?",
+    "question": "What does the enqueue operation do in a queue ADT?",
+    "options": [
+      "A. Removes the item at the front of the queue.",
+      "B. Checks if the queue is empty",
+      "C. Creates a new empty queue",
+      "D. Inserts an item at the rear of the queue, making it the last item"
+    ],
+    "answer": "D",
+    "correctWord": "D. Inserts an item at the rear of the queue, making it the last item",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_258",
+    "word": "Câu 258: What characteristic makes a stack a “Last In, First Out (LIF...",
+    "question": "What characteristic makes a stack a “Last In, First Out (LIFO)” data structure?",
+    "options": [
+      "A. Elements are retrieved based on their priority",
+      "B. Elements can be accessed directly by their memory address",
+      "C. If data is inserted into a stack and then removed, the order of the data is reversed",
+      "D. The oldest element is always removed first."
+    ],
+    "answer": "C",
+    "correctWord": "C. If data is inserted into a stack and then removed, the order of the data is reversed",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_275",
+    "word": "Câu 275: Which sorting algorithm is the most efficient in terms of sp...",
+    "question": "Which sorting algorithm is the most efficient in terms of space complexity, requiring only a constant amount of additional memory?",
+    "options": [
+      "A. Bubble Sort",
+      "B. Selection Sort",
+      "C. Insertion Sort",
+      "D. They all require the same amount of additional memory"
+    ],
+    "answer": "D",
+    "correctWord": "D. They all require the same amount of additional memory",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_279",
+    "word": "Câu 279: How does a queue differ from a stack?",
+    "question": "How does a queue differ from a stack?",
+    "options": [
+      "A. A queue operates on a LIFO principle, while a stack operates on a FIFO principle.",
+      "B. A queue operates on a FIFO principle, while a stack operates on a LIFO principle.",
+      "C. A queue can only store characters, while a stack can store any data type.",
+      "D. A queue is used for recursion, while a stack is used for sorting."
+    ],
+    "answer": "B",
+    "correctWord": "B. A queue operates on a FIFO principle, while a stack operates on a LIFO principle.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_288",
+    "word": "Câu 288: When is an array considered a suitable data structure to use...",
+    "question": "When is an array considered a suitable data structure to use?",
+    "options": [
+      "A. When a large number of insertions and deletions are expected after creation",
+      "B. When data items are completely unrelated",
+      "C. When the number of deletions and insertions is small, but a lot of searching and retrieval activities are expected.",
+      "D. When elements need to be accessed non-sequentially only"
+    ],
+    "answer": "C",
+    "correctWord": "C. When the number of deletions and insertions is small, but a lot of searching and retrieval activities are expected.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_303",
+    "word": "Câu 303: In which case would an iterative algorithm be preferred over...",
+    "question": "In which case would an iterative algorithm be preferred over a recursive algorithm?",
+    "options": [
+      "A. When solving problems that require backtracking",
+      "B. When stack overflow is a concern",
+      "C. When the problem involves tree traversal",
+      "D. When solving problems with divide-and-conquer techniques"
+    ],
+    "answer": "B",
+    "correctWord": "B. When stack overflow is a concern",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_307",
+    "word": "Câu 307: In computer science, what is a “stack” data structure, and w...",
+    "question": "In computer science, what is a “stack” data structure, and what is the primary characteristic that defines how data is added to and removed from it?",
+    "options": [
+      "A. A linear list; First In, First Out (FIFO).",
+      "B. A restricted linear list; Last In, First Out (LIFO).",
+      "C. A collection of related elements of different types.",
+      "D. A sorted collection of elements accessed by index."
+    ],
+    "answer": "B",
+    "correctWord": "B. A restricted linear list; Last In, First Out (LIFO).",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_325",
+    "word": "Câu 325: Which of the following is a characteristic of sequential fil...",
+    "question": "Which of the following is a characteristic of sequential file organization?",
+    "options": [
+      "A. Data is stored in random order within the file, and access to specific records is achieved using a key or index",
+      "B. Data is stored in the order in which it is entered and can only be accessed sequentially",
+      "C. Data is stored using a linked list structure, where each record contains a pointer to the location of the next record in the sequence",
+      "D. Data is organized with an index that allows for quick searching and retrieval of records based on keys or identifiers"
+    ],
+    "answer": "B",
+    "correctWord": "B. Data is stored in the order in which it is entered and can only be accessed sequentially",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_332",
+    "word": "Câu 332: What is a major disadvantage of recursive algorithms compare...",
+    "question": "What is a major disadvantage of recursive algorithms compared to iterative algorithms?",
+    "options": [
+      "A. Recursive algorithms are harder to implement.",
+      "B. Recursive algorithms always have higher time complexity.",
+      "C. Recursive algorithms use more memory due to stack calls.",
+      "D. Recursive algorithms cannot solve sorting problems."
+    ],
+    "answer": "C",
+    "correctWord": "C. Recursive algorithms use more memory due to stack calls.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_333",
+    "word": "Câu 333: The primary objective of a searching algorithm is:",
+    "question": "The primary objective of a searching algorithm is:",
+    "options": [
+      "A. To call Google’s API efficiently.",
+      "B. To perform calculations on a set of data.",
+      "C. To locate a specific element within a data set.",
+      "D. To create new data elements based on existing ones."
+    ],
+    "answer": "C",
+    "correctWord": "C. To locate a specific element within a data set.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "cea_334",
+    "word": "Câu 334: Which of the following statements about sequential search is...",
+    "question": "Which of the following statements about sequential search is true?",
+    "options": [
+      "A. It is efficient when searching small or unsorted datasets",
+      "B. It is the fastest search method for large datasets",
+      "C. It can only be used on sorted lists",
+      "D. It requires dividing the dataset into halves at every step"
+    ],
+    "answer": "A",
+    "correctWord": "A. It is efficient when searching small or unsorted datasets",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  }
+]

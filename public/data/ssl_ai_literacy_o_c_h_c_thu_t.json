@@ -1,0 +1,226 @@
+[
+  {
+    "id": "ssl_30",
+    "word": "Câu 30: Which of the following best distinguishes digital literacy f...",
+    "question": "Which of the following best distinguishes digital literacy from AI literacy?",
+    "options": [
+      "A. Digital literacy focuses only on social media skills while AI literacy focuses on academic skills",
+      "B. AI literacy includes competencies for understanding and interacting with AI systems",
+      "C. AI literacy excludes ethical considerations",
+      "D. Digital literacy is limited to hardware usage"
+    ],
+    "answer": "B",
+    "correctWord": "B. AI literacy includes competencies for understanding and interacting with AI systems",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_72",
+    "word": "Câu 72: According to the International Society of Academic Integrity...",
+    "question": "According to the International Society of Academic Integrity (2021), academic integrity is best defined as:",
+    "options": [
+      "A. Compliance with university assessment rules only",
+      "B. A promise to uphold honesty, fairness, respect, responsibility, and courage",
+      "C. The ability to avoid plagiarism through software tools and institutional policies",
+      "D. A system of penalties designed to discourage cheating and misconduct"
+    ],
+    "answer": "B",
+    "correctWord": "B. A promise to uphold honesty, fairness, respect, responsibility, and courage",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_90",
+    "word": "Câu 90: The concept of \"hallucination\" in AI refers to:",
+    "question": "The concept of \"hallucination\" in AI refers to:",
+    "options": [
+      "A. Visual misinterpretation by humans",
+      "B. AI producing incorrect or fabricated information",
+      "C. Emotional responses to AI feedback",
+      "D. Errors caused only by user prompts"
+    ],
+    "answer": "B",
+    "correctWord": "B. AI producing incorrect or fabricated information",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_106",
+    "word": "Câu 106: Which term describes AI systems producing incorrect or fabri...",
+    "question": "Which term describes AI systems producing incorrect or fabricated information?",
+    "options": [
+      "A. Automation",
+      "B. Optimization",
+      "C. Hallucination",
+      "D. Simulation"
+    ],
+    "answer": "C",
+    "correctWord": "C. Hallucination",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_137",
+    "word": "Câu 137: A student copies text without citation. This is:",
+    "question": "A student copies text without citation. This is:",
+    "options": [
+      "A. Research",
+      "B. Plagiarism",
+      "C. Summary",
+      "D. Analysis"
+    ],
+    "answer": "B",
+    "correctWord": "B. Plagiarism",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_147",
+    "word": "Câu 147: Which of the following best distinguishes digital literacy f...",
+    "question": "Which of the following best distinguishes digital literacy from AI literacy?",
+    "options": [
+      "A. Digital literacy focuses only on social media skills while AI literacy focuses on academic skills",
+      "B. AI literacy includes competencies for understanding and interacting with AI systems",
+      "C. AI literacy excludes ethical considerations",
+      "D. Digital literacy is limited to hardware usage"
+    ],
+    "answer": "B",
+    "correctWord": "B. AI literacy includes competencies for understanding and interacting with AI systems",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_178",
+    "word": "Câu 178: Which factor makes academic integrity a shared responsibilit...",
+    "question": "Which factor makes academic integrity a shared responsibility?",
+    "options": [
+      "A. Only students submit assignments",
+      "B. Institutions must establish clear guidelines and pedagogical practices",
+      "C. Faculty are solely responsible for enforcement",
+      "D. Internal communication campaign to criticize and condemn case studies of plagiarism"
+    ],
+    "answer": "B",
+    "correctWord": "B. Institutions must establish clear guidelines and pedagogical practices",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_199",
+    "word": "Câu 199: What is a major negative environmental impact of developing ...",
+    "question": "What is a major negative environmental impact of developing and training Large Language Models (like ChatGPT-4)?",
+    "options": [
+      "A. The continuous execution of complex algorithms actively depletes the overall quality of biodiversity data stored in international environmental databases",
+      "B. The physical process of collecting billions of data points causes severe noise pollution and habitat disruption at global server storage centers",
+      "C. The training process requires continuous operation on specialized hardware for weeks, consuming massive electricity and creating a large carbon footprint",
+      "D. The rapid advancement of models increases electronic waste exponentially due to constant, yearly server and hardware replacements"
+    ],
+    "answer": "C",
+    "correctWord": "C. The training process requires continuous operation on specialized hardware for weeks, consuming massive electricity and creating a large carbon footprint",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_200",
+    "word": "Câu 200: What is the greatest risk to students' freedom of expression...",
+    "question": "What is the greatest risk to students' freedom of expression when universities implement \"AI surveillance\" on school-issued devices?",
+    "options": [
+      "A. The students' devices may experience severe performance degradation and battery drain due to the constant running of background monitoring algorithms",
+      "B. Students' search histories on sensitive topics (e.g., politics, mental health) could be tracked, creating a persistent fear of being criminalized or exposed",
+      "C. A significant loss of diverse academic thinking because students are artificially restricted to only utilizing safe, school-recommended research databases",
+      "D. The advanced surveillance algorithms cost too much to maintain, leading directly to increased tuition fees and financial burdens for marginalized students"
+    ],
+    "answer": "B",
+    "correctWord": "B. Students' search histories on sensitive topics (e.g., politics, mental health) could be tracked, creating a persistent fear of being criminalized or exposed",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_210",
+    "word": "Câu 210: What is the risk of setting goals that are not truly your ow...",
+    "question": "What is the risk of setting goals that are not truly your own?",
+    "options": [
+      "A. You will complete them too quickly.",
+      "B. You will be accused of plagiarism.",
+      "C. You will have very little motivation to achieve them because you don't actually care.",
+      "D. Your academic advisor will not approve them."
+    ],
+    "answer": "C",
+    "correctWord": "C. You will have very little motivation to achieve them because you don't actually care.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_218",
+    "word": "Câu 218: What was the primary ethical issue discovered in the AI-base...",
+    "question": "What was the primary ethical issue discovered in the AI-based recruiting tool that was implemented and subsequently scrapped by Amazon in 2018?",
+    "options": [
+      "A. The system required candidates to pay exorbitant processing fees to access the portal, which severely exacerbated existing socioeconomic inequalities",
+      "B. The system consistently downgraded the resumes of female candidates because it was trained on ten years of historically male-dominated data",
+      "C. The system utilized unauthorized facial recognition algorithms to monitor candidates' expressions and reactions during the virtual interview process",
+      "D. The system generated fabricated educational backgrounds for numerous applicants, leading to widespread hallucinations and false credential verifications"
+    ],
+    "answer": "B",
+    "correctWord": "B. The system consistently downgraded the resumes of female candidates because it was trained on ten years of historically male-dominated data",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_219",
+    "word": "Câu 219: What does the term \"Hallucinations\" in Large Language Models...",
+    "question": "What does the term \"Hallucinations\" in Large Language Models (LLMs) refer to?",
+    "options": [
+      "A. The AI generating highly abstract, surreal, and unrealistic visual images when prompted to create realistic photographs",
+      "B. Users becoming overly dependent on the software and holding unrealistic illusions about the true technological capabilities of AI",
+      "C. The AI producing text responses that sound highly plausible but are actually factually incorrect or entirely fabricated by the system.",
+      "D. The AI consistently misidentifying specific human faces or expressions when utilized in advanced facial recognition security tools"
+    ],
+    "answer": "C",
+    "correctWord": "C. The AI producing text responses that sound highly plausible but are actually factually incorrect or entirely fabricated by the system.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_223",
+    "word": "Câu 223: Which of the following is a recommended visual technique for...",
+    "question": "Which of the following is a recommended visual technique for individuals attempting to identify hyper-realistic \"deep fake\" media?",
+    "options": [
+      "A. Trusting the emotional resonance of the media content and relying exclusively on mainstream social media platforms for rapid, community-based fact-checking",
+      "B. Searching for subtle inconsistencies in lighting, shadows, unnatural facial movements, mismatched lip-syncing, and irregular or absent blinking patterns",
+      "C. Assuming that all digital videos featuring high-profile politicians or celebrities are inherently fabricated by advanced generative artificial intelligence algorithms",
+      "D. Using strictly text-based large language models to analyze the video files and automatically generate a highly conclusive report on the media's authenticity"
+    ],
+    "answer": "B",
+    "correctWord": "B. Searching for subtle inconsistencies in lighting, shadows, unnatural facial movements, mismatched lip-syncing, and irregular or absent blinking patterns",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "ssl_266",
+    "word": "Câu 266: In the cases of Ellen Rae and Kris Kashtanova, why did the U...",
+    "question": "In the cases of Ellen Rae and Kris Kashtanova, why did the U.S. Copyright Office grant limited copyright to Rae but completely deny Kashtanova?",
+    "options": [
+      "A. Because Rae used a text-generating AI (ChatGPT) while Kashtanova used an image-generating AI (Midjourney)",
+      "B. Because Rae significantly shifted, arranged, and manipulated the AI-generated outputs, while Kashtanova simply used the raw AI images with minor editing.",
+      "C. Because Rae transparently declared her use of AI tools from the very beginning of the process, whereas Kashtanova deliberately attempted to hide her use of the software.",
+      "D. Because ChatGPT allows commercial rights, whereas Midjourney does not."
+    ],
+    "answer": "B",
+    "correctWord": "B. Because Rae significantly shifted, arranged, and manipulated the AI-generated outputs, while Kashtanova simply used the raw AI images with minor editing.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  }
+]

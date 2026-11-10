@@ -1,0 +1,997 @@
+[
+  {
+    "id": "cea_7",
+    "word": "Câu 7: Which of the following representations is erroneous?",
+    "question": "Which of the following representations is erroneous?",
+    "options": [
+      "A. (10111)2",
+      "B. (349)8",
+      "C. (3AB)16",
+      "D. 2656"
+    ],
+    "answer": "B",
+    "correctWord": "B. (349)8",
+    "explanation": "Đáp án: B. hệ bát phân không có chữ số 9",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_11",
+    "word": "Câu 11: How many types of cyber attacks exist?",
+    "question": "How many types of cyber attacks exist?",
+    "options": [
+      "A. 2",
+      "B. 3",
+      "C. 4",
+      "D. 5"
+    ],
+    "answer": "B",
+    "correctWord": "B. 3",
+    "explanation": "Đáp án: B. 3 loại: tấn công vào confidentiality, integrity, availability",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_13",
+    "word": "Câu 13: How many main types of intellectual property are recognized?",
+    "question": "How many main types of intellectual property are recognized?",
+    "options": [
+      "A. 2",
+      "B. 3",
+      "C. 4",
+      "D. 5"
+    ],
+    "answer": "B",
+    "correctWord": "B. 3",
+    "explanation": "Đáp án: B. copyright, patent, trade secret",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_14",
+    "word": "Câu 14: How many ethical principles are there?",
+    "question": "How many ethical principles are there?",
+    "options": [
+      "A. 2",
+      "B. 3",
+      "C. 4",
+      "D. 5",
+      "E. 1"
+    ],
+    "answer": "B",
+    "correctWord": "B. 3",
+    "explanation": "Đáp án: B. moral rules, utilization, social contract",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_17",
+    "word": "Câu 17: A device is sending out data at the rate of 1000 bps. How lo...",
+    "question": "A device is sending out data at the rate of 1000 bps. How long does it take to send out 10 bits?",
+    "options": [
+      "A. 10 ms",
+      "B. 1 ms",
+      "C. 10 000 ms",
+      "D. 100 ms"
+    ],
+    "answer": "A",
+    "correctWord": "A. 10 ms",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_18",
+    "word": "Câu 18: A memory with 128 kilobytes and a word size of 1 byte has an...",
+    "question": "A memory with 128 kilobytes and a word size of 1 byte has an address space that ranges from ______ to ______.",
+    "options": [
+      "A. 0; 131 071",
+      "B. 1; 131 071",
+      "C. 0; 131 072",
+      "D. 1; 131 072"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0; 131 071",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_32",
+    "word": "Câu 32: If a memory has an address space that ranges from 0 to 4095,...",
+    "question": "If a memory has an address space that ranges from 0 to 4095, and each addressable location stores 1 byte, what is the total memory?",
+    "options": [
+      "A. 4 KB",
+      "B. 2 KB",
+      "C. 1 KB",
+      "D. 6 KB"
+    ],
+    "answer": "A",
+    "correctWord": "A. 4 KB",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_34",
+    "word": "Câu 34: In the True-Color (RGB) model for encoding pixels in digital...",
+    "question": "In the True-Color (RGB) model for encoding pixels in digital image storage, where the color Red is represented by the tuple (255, 0, 0), determine the RGB encoding for the color White.",
+    "options": [
+      "A. (0, 0, 0)",
+      "B. (255, 255, 255)",
+      "C. (0, 255, 0)",
+      "D. (0, 0, 255)"
+    ],
+    "answer": "B",
+    "correctWord": "B. (255, 255, 255)",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_36",
+    "word": "Câu 36: Given a program declares 5 integer variables (each 4 bytes) ...",
+    "question": "Given a program declares 5 integer variables (each 4 bytes) and 3 float variables (each 4 bytes), how much total memory is required in bytes?",
+    "options": [
+      "A. 32",
+      "B. 12",
+      "C. 20",
+      "D. 28"
+    ],
+    "answer": "A",
+    "correctWord": "A. 32",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_39",
+    "word": "Câu 39: We divide computer languages into ____ paradigms",
+    "question": "We divide computer languages into ____ paradigms",
+    "options": [
+      "A. 2",
+      "B. 3",
+      "C. 4",
+      "D. 5"
+    ],
+    "answer": "C",
+    "correctWord": "C. 4",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_49",
+    "word": "Câu 49: In an 8-bit memory location we can only store an unsigned in...",
+    "question": "In an 8-bit memory location we can only store an unsigned integer between:",
+    "options": [
+      "A. 1 and 255",
+      "B. 1 and 256",
+      "C. 0 and 255",
+      "D. 0 and 256"
+    ],
+    "answer": "C",
+    "correctWord": "C. 0 and 255",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_64",
+    "word": "Câu 64: Which is not a high-level language?",
+    "question": "Which is not a high-level language?",
+    "options": [
+      "A. Ruby",
+      "B. C",
+      "C. Assembly",
+      "D. Pascal"
+    ],
+    "answer": "C",
+    "correctWord": "C. Assembly",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_65",
+    "word": "Câu 65: Which of these is not a loop?",
+    "question": "Which of these is not a loop?",
+    "options": [
+      "A. For",
+      "B. While",
+      "C. Switch",
+      "D. Do-While"
+    ],
+    "answer": "C",
+    "correctWord": "C. Switch",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_69",
+    "word": "Câu 69: Which of the following is NOT a computer language paradigm?",
+    "question": "Which of the following is NOT a computer language paradigm?",
+    "options": [
+      "A. Procedural",
+      "B. Object-oriented",
+      "C. Functional",
+      "D. Declarative",
+      "E. Mathematical"
+    ],
+    "answer": "E",
+    "correctWord": "A. Procedural",
+    "explanation": "Đáp án: E.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_73",
+    "word": "Câu 73: ______ means protecting a message from being modified.",
+    "question": "______ means protecting a message from being modified.",
+    "options": [
+      "A. confidentiality",
+      "B. integrity",
+      "C. availability",
+      "D. None of these above"
+    ],
+    "answer": "B",
+    "correctWord": "B. integrity",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_78",
+    "word": "Câu 78: A ______ reads the source code, symbol by symbol, and create...",
+    "question": "A ______ reads the source code, symbol by symbol, and creates a list of tokens in the source language.",
+    "options": [
+      "A. Lexical analyzer",
+      "B. Syntax analyzer",
+      "C. Semantic analyzer",
+      "D. Code generator"
+    ],
+    "answer": "A",
+    "correctWord": "A. Lexical analyzer",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_80",
+    "word": "Câu 80: ______ is an artificial neuron similar to a single biologica...",
+    "question": "______ is an artificial neuron similar to a single biological neuron.",
+    "options": [
+      "A. An expert system",
+      "B. An intelligent agent",
+      "C. A perceptron",
+      "D. Perception"
+    ],
+    "answer": "C",
+    "correctWord": "C. A perceptron",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_81",
+    "word": "Câu 81: Choose the most suitable answer: Python is a/an ______ langu...",
+    "question": "Choose the most suitable answer: Python is a/an ______ language",
+    "options": [
+      "A. object-oriented",
+      "B. procedural",
+      "C. functional",
+      "D. declarative"
+    ],
+    "answer": "A",
+    "correctWord": "A. object-oriented",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_83",
+    "word": "Câu 83: Each element in a record is called a(n) ______",
+    "question": "Each element in a record is called a(n) ______",
+    "options": [
+      "A. Cell",
+      "B. Word",
+      "C. Item",
+      "D. Field"
+    ],
+    "answer": "D",
+    "correctWord": "D. Field",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_86",
+    "word": "Câu 86: Java is a(n) ______ language.",
+    "question": "Java is a(n) ______ language.",
+    "options": [
+      "A. procedural",
+      "B. functional",
+      "C. declarative",
+      "D. object-oriented"
+    ],
+    "answer": "D",
+    "correctWord": "D. object-oriented",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_87",
+    "word": "Câu 87: Multi-programming requires a ______ operating-system.",
+    "question": "Multi-programming requires a ______ operating-system.",
+    "options": [
+      "A. batch",
+      "B. Time-sharing",
+      "C. parallel",
+      "D. distributed"
+    ],
+    "answer": "B",
+    "correctWord": "B. Time-sharing",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_95",
+    "word": "Câu 95: ______ is an ordered set of unambiguous steps that produces ...",
+    "question": "______ is an ordered set of unambiguous steps that produces a result and terminates in a finite time.",
+    "options": [
+      "A. A construct",
+      "B. A recursion",
+      "C. An iteration",
+      "D. An algorithm"
+    ],
+    "answer": "D",
+    "correctWord": "D. An algorithm",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_102",
+    "word": "Câu 102: What is a recursive algorithm?",
+    "question": "What is a recursive algorithm?",
+    "options": [
+      "A. An algorithm that calls itself",
+      "B. An algorithm that runs only once",
+      "C. An algorithm that sorts data",
+      "D. An algorithm that stores data"
+    ],
+    "answer": "A",
+    "correctWord": "A. An algorithm that calls itself",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_104",
+    "word": "Câu 104: What is the name of the first electronic computer designed f...",
+    "question": "What is the name of the first electronic computer designed for a special-purpose?",
+    "options": [
+      "A. Pascal",
+      "B. Pascaline",
+      "C. ABC",
+      "D. ENIAC"
+    ],
+    "answer": "C",
+    "correctWord": "C. ABC",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_109",
+    "word": "Câu 109: What is an AI program?",
+    "question": "What is an AI program?",
+    "options": [
+      "A. ChatGPT",
+      "B. Microsoft Word",
+      "C. React",
+      "D. MongoDB"
+    ],
+    "answer": "A",
+    "correctWord": "A. ChatGPT",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_112",
+    "word": "Câu 112: What is the most common language to write AI models?",
+    "question": "What is the most common language to write AI models?",
+    "options": [
+      "A. C++",
+      "B. PROLOG",
+      "C. LISP",
+      "D. Python"
+    ],
+    "answer": "D",
+    "correctWord": "D. Python",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_114",
+    "word": "Câu 114: What was the name of the first electronic general-purpose co...",
+    "question": "What was the name of the first electronic general-purpose computer?",
+    "options": [
+      "A. ENIAC",
+      "B. UNIVAC",
+      "C. IBM PC",
+      "D. Apple I"
+    ],
+    "answer": "A",
+    "correctWord": "A. ENIAC",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_115",
+    "word": "Câu 115: What was the first type of programming language?",
+    "question": "What was the first type of programming language?",
+    "options": [
+      "A. Assembly language",
+      "B. High-level language",
+      "C. Machine language",
+      "D. Object-oriented language"
+    ],
+    "answer": "C",
+    "correctWord": "C. Machine language",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_116",
+    "word": "Câu 116: What does a hash function primarily ensure?",
+    "question": "What does a hash function primarily ensure?",
+    "options": [
+      "A. Integrity",
+      "B. Confidentiality",
+      "C. Availability",
+      "D. Authentication"
+    ],
+    "answer": "A",
+    "correctWord": "A. Integrity",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_120",
+    "word": "Câu 120: What command do you use to iterate through each element in t...",
+    "question": "What command do you use to iterate through each element in the array?",
+    "options": [
+      "A. for",
+      "B. if else",
+      "C. switch case",
+      "D. return"
+    ],
+    "answer": "A",
+    "correctWord": "A. for",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_125",
+    "word": "Câu 125: Which of the following is considered an input/output storage...",
+    "question": "Which of the following is considered an input/output storage device?",
+    "options": [
+      "A. Keyboard",
+      "B. Monitor",
+      "C. Magnetic disk",
+      "D. Printer"
+    ],
+    "answer": "C",
+    "correctWord": "C. Magnetic disk",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_130",
+    "word": "Câu 130: Which type of intellectual property protects confidential bu...",
+    "question": "Which type of intellectual property protects confidential business information?",
+    "options": [
+      "A. Trade secret",
+      "B. Trademark",
+      "C. Patent",
+      "D. Copyright"
+    ],
+    "answer": "A",
+    "correctWord": "A. Trade secret",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_132",
+    "word": "Câu 132: Which file system is most commonly associated with Linux?",
+    "question": "Which file system is most commonly associated with Linux?",
+    "options": [
+      "A. NTFS",
+      "B. FAT32",
+      "C. ext4",
+      "D. HFS+"
+    ],
+    "answer": "C",
+    "correctWord": "C. ext4",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_135",
+    "word": "Câu 135: Which file structure allows direct access to a specific reco...",
+    "question": "Which file structure allows direct access to a specific record without retrieving all preceding records?",
+    "options": [
+      "A. Indexed file structure",
+      "B. Sequential file structure",
+      "C. Text file structure",
+      "D. Stream file structure"
+    ],
+    "answer": "A",
+    "correctWord": "A. Indexed file structure",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_156",
+    "word": "Câu 156: Which file format is commonly used for storing vector images...",
+    "question": "Which file format is commonly used for storing vector images?",
+    "options": [
+      "A. .jpg",
+      "B. .svg",
+      "C. .gif",
+      "D. .mp4"
+    ],
+    "answer": "B",
+    "correctWord": "B. .svg",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_183",
+    "word": "Câu 183: If we need to access one specific record without having to r...",
+    "question": "If we need to access one specific record without having to retrieve all records before it, we use a ______",
+    "options": [
+      "A. sequential file structure",
+      "B. random file structure",
+      "C. Both a and b are correct",
+      "D. Both a and b are incorrect"
+    ],
+    "answer": "B",
+    "correctWord": "B. random file structure",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_186",
+    "word": "Câu 186: In the physical layer, what mediums are examples of guided m...",
+    "question": "In the physical layer, what mediums are examples of guided media?",
+    "options": [
+      "A. Radio and Microwaves",
+      "B. Infrared wave and twisted-pair cable",
+      "C. Coaxial cable and Fiber-optic cable",
+      "D. Water and air"
+    ],
+    "answer": "C",
+    "correctWord": "C. Coaxial cable and Fiber-optic cable",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_187",
+    "word": "Câu 187: To perceive an object in an image, which of the following al...",
+    "question": "To perceive an object in an image, which of the following algorithm can be used?",
+    "options": [
+      "A. Edge detection",
+      "B. Chatbot",
+      "C. Voice emotional analytic",
+      "D. Text translation"
+    ],
+    "answer": "A",
+    "correctWord": "A. Edge detection",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_189",
+    "word": "Câu 189: Which of the following ethical principles states that an act...",
+    "question": "Which of the following ethical principles states that an act is ethical if it is in accordance with a universally accepted principle of morality?",
+    "options": [
+      "A. Moral rules",
+      "B. Utilization",
+      "C. Social contract",
+      "D. None of the other options are correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. Moral rules",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_208",
+    "word": "Câu 208: What are the three fundamental constructs used in structured...",
+    "question": "What are the three fundamental constructs used in structured programming?",
+    "options": [
+      "A. Sequence, decision, and repetition",
+      "B. Variables, loops, and conditions",
+      "C. Functions, arrays, and pointers",
+      "D. Compilation, execution, and debugging"
+    ],
+    "answer": "A",
+    "correctWord": "A. Sequence, decision, and repetition",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_216",
+    "word": "Câu 216: Which programming paradigm emphasizes defining what should b...",
+    "question": "Which programming paradigm emphasizes defining what should be computed rather than how it should be computed?",
+    "options": [
+      "A. Functional programming",
+      "B. Imperative programming",
+      "C. Object-oriented programming",
+      "D. Procedural programming"
+    ],
+    "answer": "A",
+    "correctWord": "A. Functional programming",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_218",
+    "word": "Câu 218: What is the earliest computers built on the von Neuman model...",
+    "question": "What is the earliest computers built on the von Neuman model?",
+    "options": [
+      "A. Pascal",
+      "B. Pascaline",
+      "C. ABC",
+      "D. EDVAC"
+    ],
+    "answer": "D",
+    "correctWord": "D. EDVAC",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_225",
+    "word": "Câu 225: What is the correct statement about a point-to-point WAN and...",
+    "question": "What is the correct statement about a point-to-point WAN and a switched WAN?",
+    "options": [
+      "A. They are identical.",
+      "B. Point-to-point WAN has more than 2 ends.",
+      "C. Switched WAN is a combination of more than 2 ends.",
+      "D. Switched WAN is used only in cable medium."
+    ],
+    "answer": "C",
+    "correctWord": "C. Switched WAN is a combination of more than 2 ends.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_228",
+    "word": "Câu 228: What is the conceptual difference between an array and a rec...",
+    "question": "What is the conceptual difference between an array and a record?",
+    "options": [
+      "A. An array defines attributes of an element, while a record defines a collection of similar elements",
+      "B. An array defines a combination of elements, while a record defines the identifiable parts (attributes) of a single element.",
+      "C. Arrays store data on disk, while records store data in main memory",
+      "D. Records can only store numerical data, while arrays store all data types."
+    ],
+    "answer": "B",
+    "correctWord": "B. An array defines a combination of elements, while a record defines the identifiable parts (attributes) of a single element.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_231",
+    "word": "Câu 231: What is a key feature of a copyright?",
+    "question": "What is a key feature of a copyright?",
+    "options": [
+      "A. It is automatically granted with a statement.",
+      "B. It requires registration with a government agency.",
+      "C. It protects inventions for a limited period.",
+      "D. It identifies a company’s products or services."
+    ],
+    "answer": "A",
+    "correctWord": "A. It is automatically granted with a statement.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_249",
+    "word": "Câu 249: What is the role of a data scientist in an AI project?",
+    "question": "What is the role of a data scientist in an AI project?",
+    "options": [
+      "A. To design and build the AI algorithms.",
+      "B. To collect, clean, and prepare the data for analysis.",
+      "C. To deploy the AI model into production.",
+      "D. To interpret the results of the AI model and communicate them to stakeholders."
+    ],
+    "answer": "B",
+    "correctWord": "B. To collect, clean, and prepare the data for analysis.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_261",
+    "word": "Câu 261: Which of the following statements about records’ data types ...",
+    "question": "Which of the following statements about records’ data types is correct?",
+    "options": [
+      "A. Records cannot contain other records as fields.",
+      "B. Records are immutable data types.",
+      "C. Records have a fixed size that cannot be changed at runtime.",
+      "D. Records can have fields of different data types."
+    ],
+    "answer": "D",
+    "correctWord": "D. Records can have fields of different data types.",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_263",
+    "word": "Câu 263: Which of the following best describes a unary operation?",
+    "question": "Which of the following best describes a unary operation?",
+    "options": [
+      "A. An operation involving multiple operands.",
+      "B. An operation that always results in zero.",
+      "C. An operation with a single operand.",
+      "D. An operation performed on two different data types."
+    ],
+    "answer": "C",
+    "correctWord": "C. An operation with a single operand.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_266",
+    "word": "Câu 266: Which of the following scenarios is most likely to require t...",
+    "question": "Which of the following scenarios is most likely to require the use of larger memory locations and other presentations due to the risk of truncation error?",
+    "options": [
+      "A. Performing calculations for a space mission",
+      "B. Calculating the total sales of a small business",
+      "C. Determining the average temperature of a city",
+      "D. Counting the number of students in a university."
+    ],
+    "answer": "A",
+    "correctWord": "A. Performing calculations for a space mission",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_272",
+    "word": "Câu 272: Which of the following best describes an array?",
+    "question": "Which of the following best describes an array?",
+    "options": [
+      "A. A collection of functions",
+      "B. A data structure that stores a list of data items in contiguous memory locations",
+      "C. A sequence of characters",
+      "D. A method for sorting data"
+    ],
+    "answer": "B",
+    "correctWord": "B. A data structure that stores a list of data items in contiguous memory locations",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_278",
+    "word": "Câu 278: How does a computer system interpret a sequence of bits to r...",
+    "question": "How does a computer system interpret a sequence of bits to represent a symbol in a character encoding scheme?",
+    "options": [
+      "A. By following a predefined code table to determine the symbol",
+      "B. By mapping each bit to a corresponding word in a dictionary",
+      "C. By interpreting bits as colors in a display",
+      "D. By using random bit sequences to represent symbols",
+      "E. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. By following a predefined code table to determine the symbol",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_280",
+    "word": "Câu 280: How does a compiler function in the context of high-level la...",
+    "question": "How does a compiler function in the context of high-level languages?",
+    "options": [
+      "A. It directly executes the high-level code",
+      "B. It translates high-level code into machine language all at once",
+      "C. It translates and executes the code line by line",
+      "D. It optimizes the code for better performance"
+    ],
+    "answer": "B",
+    "correctWord": "B. It translates high-level code into machine language all at once",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_292",
+    "word": "Câu 292: According to the social contract theory, what makes an act e...",
+    "question": "According to the social contract theory, what makes an act ethical?",
+    "options": [
+      "A. The act is approved by a majority of people in society",
+      "B. The act aligns with universally accepted moral principles",
+      "C. The act results in beneficial consequences for society",
+      "D. The act is based on personal secrecy"
+    ],
+    "answer": "A",
+    "correctWord": "A. The act is approved by a majority of people in society",
+    "explanation": "Đáp án: A. câu này tùy giáo trình, mình chọn theo cách hiểu phổ biến trong giáo trình Forouzan",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_296",
+    "word": "Câu 296: In the procedural paradigm, how are data and program units (...",
+    "question": "In the procedural paradigm, how are data and program units (functions) typically related?",
+    "options": [
+      "A. Functions and data are separate entities with no direct relationship.",
+      "B. Functions operate directly on data passed to them as parameters.",
+      "C. Functions encapsulate both data and behavior.",
+      "D. Data and functions are globally shared without restrictions."
+    ],
+    "answer": "B",
+    "correctWord": "B. Functions operate directly on data passed to them as parameters.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_299",
+    "word": "Câu 299: In message authentication, what is the purpose of a Message ...",
+    "question": "In message authentication, what is the purpose of a Message Authentication Code (MAC)?",
+    "options": [
+      "A. To encrypt the message for secure transmission",
+      "B. To verify the integrity and authenticity of the message",
+      "C. To compress the message for efficient storage",
+      "D. To generate a unique identifier for the message"
+    ],
+    "answer": "B",
+    "correctWord": "B. To verify the integrity and authenticity of the message",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_302",
+    "word": "Câu 302: In software development, how would you explain the concept o...",
+    "question": "In software development, how would you explain the concept of coupling?",
+    "options": [
+      "A. The degree of dependency between modules.",
+      "B. The number of lines of code in a module.",
+      "C. The speed of program execution.",
+      "D. The total number of coupled modules in a system."
+    ],
+    "answer": "A",
+    "correctWord": "A. The degree of dependency between modules.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_309",
+    "word": "Câu 309: In the “procedural paradigm,” how is a program primarily str...",
+    "question": "In the “procedural paradigm,” how is a program primarily structured?",
+    "options": [
+      "A. As a collection of active objects that react to stimuli",
+      "B. As a set of facts and rules to answer queries",
+      "C. As a series of function calls where the algorithm calls itself",
+      "D. As a set of procedure calls, separating procedures from passive data objects"
+    ],
+    "answer": "D",
+    "correctWord": "D. As a set of procedure calls, separating procedures from passive data objects",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_316",
+    "word": "Câu 316: What do logic operations refer to in the context of computer...",
+    "question": "What do logic operations refer to in the context of computer data manipulation?",
+    "options": [
+      "A. Operations that change the data type of a bit pattern.",
+      "B. Operations that apply the same basic operation on individual bits of a pattern, or on two corresponding bits in two patterns.",
+      "C. Operations that physically move bit patterns between memory locations.",
+      "D. Operations that perform mathematical calculations on entire bit patterns as a whole."
+    ],
+    "answer": "B",
+    "correctWord": "B. Operations that apply the same basic operation on individual bits of a pattern, or on two corresponding bits in two patterns.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_330",
+    "word": "Câu 330: What does high cohesion within a module ensure in software d...",
+    "question": "What does high cohesion within a module ensure in software design?",
+    "options": [
+      "A. The module’s components are strongly related to its purpose",
+      "B. The module depends heavily on other modules",
+      "C. The module communicates frequently with external modules",
+      "D. The module relies on shared global data"
+    ],
+    "answer": "A",
+    "correctWord": "A. The module’s components are strongly related to its purpose",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_336",
+    "word": "Câu 336: What is the purpose of encoding in digital audio?",
+    "question": "What is the purpose of encoding in digital audio?",
+    "options": [
+      "A. To improve the quality of the sound",
+      "B. To convert audio into a format suitable for storage or transmission",
+      "C. To increase the speed of audio playback",
+      "D. To reduce the number of channels used in the audio"
+    ],
+    "answer": "B",
+    "correctWord": "B. To convert audio into a format suitable for storage or transmission",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_341",
+    "word": "Câu 341: What is the difference between a compiler and an interpreter...",
+    "question": "What is the difference between a compiler and an interpreter?",
+    "options": [
+      "A. A compiler translates the entire program before execution, while an interpreter translates one line at a time",
+      "B. A compiler executes code line by line, while an interpreter translates the whole program at once",
+      "C. A compiler does not check for errors, while an interpreter does",
+      "D. A compiler continuously checks for errors line by line, while an interpreter does not, so an interpreter runs faster than a compiler"
+    ],
+    "answer": "A",
+    "correctWord": "A. A compiler translates the entire program before execution, while an interpreter translates one line at a time",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  },
+  {
+    "id": "cea_345",
+    "word": "Câu 345: In a two-dimensional array stored using row-major order, how...",
+    "question": "In a two-dimensional array stored using row-major order, how are elements stored in memory?",
+    "options": [
+      "A. An entire row of an array is stored before the next row",
+      "B. An entire column of an array is stored before the next column",
+      "C. Elements are stored randomly",
+      "D. Rows and columns are stored simultaneously"
+    ],
+    "answer": "A",
+    "correctWord": "A. An entire row of an array is stored before the next row",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Máy Tính Chung"
+  }
+]

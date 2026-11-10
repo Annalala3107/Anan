@@ -1,0 +1,532 @@
+[
+  {
+    "id": "cea_33",
+    "word": "Câu 33: In the context of demand paging and demand segmentation, a m...",
+    "question": "In the context of demand paging and demand segmentation, a memory size of 100 MB can execute ten programs, each of size 30 MB, for a total of 300 M",
+    "options": [
+      "B. At any moment, 100 MB of the ten programs are in memory and 200 MB are on disk. There is therefore a virtual memory size of ______ M",
+      "B. ",
+      "A. 300",
+      "B. 100",
+      "C. 200",
+      "D. 400"
+    ],
+    "answer": "A",
+    "correctWord": "A. 300",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_68",
+    "word": "Câu 68: Which of the following is not an advantage of AI?",
+    "question": "Which of the following is not an advantage of AI?",
+    "options": [
+      "A. Reduces the time taken to perform a task",
+      "B. Decision-making by making the process faster and smarter",
+      "C. Increased Automation",
+      "D. The cost hight to develop, implement, and maintain AI systems"
+    ],
+    "answer": "D",
+    "correctWord": "D. The cost hight to develop, implement, and maintain AI systems",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_72",
+    "word": "Câu 72: ______ which implies demand paging, demand segmentation, or ...",
+    "question": "______ which implies demand paging, demand segmentation, or both, is used in almost all operating systems today.",
+    "options": [
+      "A. Physical memory",
+      "B. Semiconductor memory",
+      "C. Virtual memory",
+      "D. All of these above"
+    ],
+    "answer": "C",
+    "correctWord": "C. Virtual memory",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_90",
+    "word": "Câu 90: The first duty of a transport-layer protocol is to provide p...",
+    "question": "The first duty of a transport-layer protocol is to provide process-to-process communication. To define the processes, we need identifiers, called ______",
+    "options": [
+      "A. MAC addresses",
+      "B. IP addresses",
+      "C. Process names",
+      "D. Port numbers"
+    ],
+    "answer": "D",
+    "correctWord": "D. Port numbers",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_92",
+    "word": "Câu 92: The development process in the software lifecycle involves _...",
+    "question": "The development process in the software lifecycle involves ______",
+    "options": [
+      "A. 2 phases: implementation and testing",
+      "B. 3 phases: design, implementation and testing",
+      "C. 4 phases: analysis, design, implementation and testing",
+      "D. 5 phases: planning, analysis, design, implementation and testing"
+    ],
+    "answer": "C",
+    "correctWord": "C. 4 phases: analysis, design, implementation and testing",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_98",
+    "word": "Câu 98: In ______, memory is divided into equally sized sections cal...",
+    "question": "In ______, memory is divided into equally sized sections called frames.",
+    "options": [
+      "A. Partitioning",
+      "B. Paging",
+      "C. Segmentation",
+      "D. Swapping"
+    ],
+    "answer": "B",
+    "correctWord": "B. Paging",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_103",
+    "word": "Câu 103: What is used to separate directories in an absolute pathname...",
+    "question": "What is used to separate directories in an absolute pathname in UNIX?",
+    "options": [
+      "A. Slash (/)",
+      "B. Backslash ()",
+      "C. Dash (-)",
+      "D. Underscore (_)"
+    ],
+    "answer": "A",
+    "correctWord": "A. Slash (/)",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_139",
+    "word": "Câu 139: Which memory management technique divides the memory into va...",
+    "question": "Which memory management technique divides the memory into variable-sized segments?",
+    "options": [
+      "A. Paging",
+      "B. Segmentation",
+      "C. Virtual memory",
+      "D. Swapping"
+    ],
+    "answer": "B",
+    "correctWord": "B. Segmentation",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_145",
+    "word": "Câu 145: Which data structure is commonly used for First-In, First-Ou...",
+    "question": "Which data structure is commonly used for First-In, First-Out (FIFO) data processing?",
+    "options": [
+      "A. Stack",
+      "B. Queue",
+      "C. Tree",
+      "D. Linked list"
+    ],
+    "answer": "B",
+    "correctWord": "B. Queue",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_154",
+    "word": "Câu 154: Which component of an operating system is responsible for ac...",
+    "question": "Which component of an operating system is responsible for accepting and interpreting user requests, often through a command-line interface?",
+    "options": [
+      "A. Shell",
+      "B. Kernel",
+      "C. Graphical interface",
+      "D. File system"
+    ],
+    "answer": "A",
+    "correctWord": "A. Shell",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_175",
+    "word": "Câu 175: In which scenario is a real-time operating system (RTOS) typ...",
+    "question": "In which scenario is a real-time operating system (RTOS) typically used?",
+    "options": [
+      "A. Running a word processor",
+      "B. Controlling embedded systems like autopilots",
+      "C. Browsing the Internet",
+      "D. Editing videos"
+    ],
+    "answer": "B",
+    "correctWord": "B. Controlling embedded systems like autopilots",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_178",
+    "word": "Câu 178: In UNIX, which of the following commands is used to manage p...",
+    "question": "In UNIX, which of the following commands is used to manage processes?",
+    "options": [
+      "A. ls",
+      "B. ps",
+      "C. mv",
+      "D. cat"
+    ],
+    "answer": "B",
+    "correctWord": "B. ps",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_188",
+    "word": "Câu 188: The network layer is responsible for?",
+    "question": "The network layer is responsible for?",
+    "options": [
+      "A. Host-to-host delivery",
+      "B. Application-to-application communication",
+      "C. Process-to-process communication",
+      "D. Physical transmission"
+    ],
+    "answer": "A",
+    "correctWord": "A. Host-to-host delivery",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_193",
+    "word": "Câu 193: Which of the following pseudo-code constructs is commonly us...",
+    "question": "Which of the following pseudo-code constructs is commonly used to represent a repetitive process until a certain condition is met?",
+    "options": [
+      "A. FOR loop",
+      "B. WHILE loop",
+      "C. IF statement",
+      "D. SWITCH statement"
+    ],
+    "answer": "B",
+    "correctWord": "B. WHILE loop",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_203",
+    "word": "Câu 203: Which component of an operating system is responsible for ma...",
+    "question": "Which component of an operating system is responsible for managing access to input/output devices?",
+    "options": [
+      "A. Memory manager",
+      "B. Process manager",
+      "C. Device manager",
+      "D. File manager"
+    ],
+    "answer": "C",
+    "correctWord": "C. Device manager",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_204",
+    "word": "Câu 204: Which operating system is known for its strong emphasis on s...",
+    "question": "Which operating system is known for its strong emphasis on stability and performance in multi-user environments?",
+    "options": [
+      "A. UNIX",
+      "B. Linux",
+      "C. Windows",
+      "D. Android"
+    ],
+    "answer": "A",
+    "correctWord": "A. UNIX",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_205",
+    "word": "Câu 205: When a program is selected by the operating system and moved...",
+    "question": "When a program is selected by the operating system and moved to the hold state, what does it become?",
+    "options": [
+      "A. Job",
+      "B. Process",
+      "C. Deadlock",
+      "D. Partition"
+    ],
+    "answer": "A",
+    "correctWord": "A. Job",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_214",
+    "word": "Câu 214: The scheme of allocating memory in fixed-sized blocks is kno...",
+    "question": "The scheme of allocating memory in fixed-sized blocks is known as:",
+    "options": [
+      "A. Paging",
+      "B. Swapping",
+      "C. Segmentation",
+      "D. Fragmentation"
+    ],
+    "answer": "A",
+    "correctWord": "A. Paging",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_220",
+    "word": "Câu 220: What is the fundamental difference in memory usage between m...",
+    "question": "What is the fundamental difference in memory usage between monoprogramming and multiprogramming?",
+    "options": [
+      "A. Monoprogramming uses virtual memory, while multiprogramming does not",
+      "B. Monoprogramming dedicates most memory to one program, while multiprogramming allows multiple programs concurrently.",
+      "C. Multiprogramming loads programs entirely into memory, while monoprogramming uses demand paging",
+      "D. Monoprogramming always stores programs on disk, multiprogramming in RAM"
+    ],
+    "answer": "B",
+    "correctWord": "B. Monoprogramming dedicates most memory to one program, while multiprogramming allows multiple programs concurrently.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_221",
+    "word": "Câu 221: What is the difference between a job and a process?",
+    "question": "What is the difference between a job and a process?",
+    "options": [
+      "A. A job is a program in execution, while a process is stored on disk.",
+      "B. A job is a program selected for execution, while a process is in execution.",
+      "C. A job is a completed program, while a process is on disk.",
+      "D. A job and a process are identical terms."
+    ],
+    "answer": "B",
+    "correctWord": "B. A job is a program selected for execution, while a process is in execution.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_245",
+    "word": "Câu 245: What is the order of steps to design a database?",
+    "question": "What is the order of steps to design a database?",
+    "options": [
+      "A. Collect the information needed to be stored → Build an entity-relation model → Normalization",
+      "B. Collect the information needed to be stored → Normalization → Build an entity-relation model",
+      "C. Build an entity-relation model → Normalization → Collect the information needed to be stored",
+      "D. Not need be done through a step-by-step process."
+    ],
+    "answer": "A",
+    "correctWord": "A. Collect the information needed to be stored → Build an entity-relation model → Normalization",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_253",
+    "word": "Câu 253: What does the term ‘bus’ refer to in a computer system?",
+    "question": "What does the term ‘bus’ refer to in a computer system?",
+    "options": [
+      "A. A physical path used for data transmission between components",
+      "B. A type of memory",
+      "C. A backup storage system",
+      "D. A processor’s internal clock"
+    ],
+    "answer": "A",
+    "correctWord": "A. A physical path used for data transmission between components",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_259",
+    "word": "Câu 259: What happens when a program finishes running in a monoprogra...",
+    "question": "What happens when a program finishes running in a monoprogramming environment?",
+    "options": [
+      "A. The program’s memory space is reallocated to another program.",
+      "B. The program remains in memory indefinitely.",
+      "C. The operating system’s memory space is expanded.",
+      "D. A new memory module is added to accommodate more programs."
+    ],
+    "answer": "A",
+    "correctWord": "A. The program’s memory space is reallocated to another program.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_276",
+    "word": "Câu 276: Which one BEST describes the paging as a memory management t...",
+    "question": "Which one BEST describes the paging as a memory management technique?",
+    "options": [
+      "A. Dividing memory into variable-sized partitions.",
+      "B. Keeping only the essential parts of a program in the main memory to optimizing start time.",
+      "C. Dividing both memory and programs into fixed-size blocks.",
+      "D. Swapping entire processes between memory and disk."
+    ],
+    "answer": "C",
+    "correctWord": "C. Dividing both memory and programs into fixed-size blocks.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_281",
+    "word": "Câu 281: How does demand paging improve efficiency over regular pagin...",
+    "question": "How does demand paging improve efficiency over regular paging?",
+    "options": [
+      "A. It loads only the required pages as needed",
+      "B. It requires the entire program to be in memory",
+      "C. It uses variable-sized memory sections",
+      "D. It prevents programs from being swapped"
+    ],
+    "answer": "A",
+    "correctWord": "A. It loads only the required pages as needed",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_287",
+    "word": "Câu 287: When it comes to protecting information within computer syst...",
+    "question": "When it comes to protecting information within computer systems, what is the main purpose of confidentiality?",
+    "options": [
+      "A. To keep data secret from unauthorized users.",
+      "B. To ensure data can be accessed by everyone for maximum transparency at all times regardless of user permission.",
+      "C. To allow users to modify data freely without any controls or logging.",
+      "D. To speed up encryption processes significantly even if it compromises data safety."
+    ],
+    "answer": "A",
+    "correctWord": "A. To keep data secret from unauthorized users.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_294",
+    "word": "Câu 294: In cryptographic systems where a single piece of confidentia...",
+    "question": "In cryptographic systems where a single piece of confidential information controls both the process of converting plain data into secured form and reversing it back, what key-related mechanism is typically employed?",
+    "options": [
+      "A. The same secret key for both operations.",
+      "B. Public and private keys exchanged via secured network to ensure trustworthiness.",
+      "C. No key at all.",
+      "D. Public and private keys."
+    ],
+    "answer": "A",
+    "correctWord": "A. The same secret key for both operations.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_301",
+    "word": "Câu 301: In which scenario is a real-time operating system (RTOS) typ...",
+    "question": "In which scenario is a real-time operating system (RTOS) typically used?",
+    "options": [
+      "A. Running a word processor",
+      "B. Controlling embedded systems like autopilots",
+      "C. Browsing the Internet",
+      "D. Editing videos."
+    ],
+    "answer": "B",
+    "correctWord": "B. Controlling embedded systems like autopilots",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_305",
+    "word": "Câu 305: In a multiprogramming system, how are multiple programs typi...",
+    "question": "In a multiprogramming system, how are multiple programs typically managed in memory and executed?",
+    "options": [
+      "A. They are loaded into memory simultaneously and executed concurrently.",
+      "B. They are loaded one after another sequentially.",
+      "C. They run sequentially, with each program completing before the next one starts.",
+      "D. They are stored in secondary storage until needed for execution."
+    ],
+    "answer": "A",
+    "correctWord": "A. They are loaded into memory simultaneously and executed concurrently.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_321",
+    "word": "Câu 321: What is a common use case for functional programming languag...",
+    "question": "What is a common use case for functional programming languages?",
+    "options": [
+      "A. Web development",
+      "B. Writing operating systems",
+      "C. Performing mathematical and data analysis tasks",
+      "D. Building relational databases"
+    ],
+    "answer": "C",
+    "correctWord": "C. Performing mathematical and data analysis tasks",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_340",
+    "word": "Câu 340: In the context of a hashed file organization, what does the ...",
+    "question": "In the context of a hashed file organization, what does the term “collision” refer to, and under what circumstances does it occur?",
+    "options": [
+      "A. When a new record’s key maps to an occupied address.",
+      "B. The process of converting a key into an address.",
+      "C. The method of sorting records alphabetically.",
+      "D. The use of an index file to find records."
+    ],
+    "answer": "A",
+    "correctWord": "A. When a new record’s key maps to an occupied address.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_342",
+    "word": "Câu 342: Which of the following is a key principle of monoprogramming...",
+    "question": "Which of the following is a key principle of monoprogramming?",
+    "options": [
+      "A. Concurrent execution of multiple processes",
+      "B. Efficient utilization of system resources",
+      "C. Dynamic allocation of memory",
+      "D. Shared memory space among processes"
+    ],
+    "answer": "B",
+    "correctWord": "B. Efficient utilization of system resources",
+    "explanation": "Đáp án: B. câu này hơi lạ, các phương án khác đều thuộc multiprogramming nên mình chọn theo phương pháp loại trừ",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "cea_343",
+    "word": "Câu 343: In object-oriented analysis, what does a use-case diagram pr...",
+    "question": "In object-oriented analysis, what does a use-case diagram primarily show?",
+    "options": [
+      "A. The user’s interaction with the system",
+      "B. The movement of data within the system",
+      "C. The relationships between entities in a database",
+      "D. The sequence of events in a process"
+    ],
+    "answer": "A",
+    "correctWord": "A. The user’s interaction with the system",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  }
+]

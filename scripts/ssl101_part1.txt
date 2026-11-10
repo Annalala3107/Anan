@@ -1,0 +1,1080 @@
+1. Which is a characteristic of analytical thinking?
+A. Guessing outcomes
+B. Ignoring evidence
+C. Verifying sources
+D. Avoiding comparison
+Đáp án: C
+2. What is one common reason students procrastinate?
+A. Tasks feel unimportant or overwhelming
+B. Instructors assign unclear deadlines
+C. Students lack intelligence and teamwork
+D. College schedules are too flexible
+Đáp án: A
+3. Which concept focuses on identifying what tasks truly matter?
+A. Multitasking
+B. Time blocking
+C. Prioritization
+D. Delegation
+Đáp án: C
+4. Which habit most weakens critical thinking?
+A. Seeking evidence
+B. Reflecting on assumptions and preconceptions
+C. Accepting information without evaluation
+D. Comparing multiple sources
+Đáp án: C
+5. Which Bloom's level requires learners to break information into parts?
+A. Understand
+B. Apply
+C. Analyze
+D. Remember
+Đáp án: C
+6. Which behavior most strongly limits creative thinking?
+A. Questioning assumptions
+B. Fear of making mistakes
+C. Generating multiple solutions
+D. Seeking alternative perspectives
+Đáp án: B
+7. Which type of memory is primarily responsible for temporarily holding information while processing it?
+A. Long-term memory
+B. Sensory memory
+C. Working memory
+D. Episodic memory
+Đáp án: C
+8. Which step typically comes first in effective problem-solving?
+A. Selecting a solution
+B. Clearly defining the problem
+C. Evaluating outcomes
+D. Implementing a plan immediately
+Đáp án: B
+9. Analytical thinking is especially useful when students need to:
+A. Memorize large amounts of information
+B. Understand complex systems or arguments
+C. Express personal opinions creatively
+D. Work under strict time pressure
+Đáp án: B
+10. A student accepts an online claim because it aligns with their beliefs. Which critical thinking skill is missing?
+A. Creativity and problem solving
+B. Logical reasoning
+C. Evaluation of evidence
+D. Time management
+Đáp án: C
+11. Analytical thinking involves:
+A. Trusting intuition
+B. Breaking a whole into parts
+C. Following emotions
+D. Avoiding structure
+Đáp án: B
+12. According to Long & Magerko (2020), AI literacy enables individuals to:
+A. Fully automate decision-making
+B. Critically evaluate AI technologies
+C. Eliminate bias in all AI systems
+D. Replace teachers with AI
+Đáp án: B
+13. Critical thinking involves:
+A. Guessing outcomes based on personal experiences
+B. Weighing options and data
+C. Emotional reactions
+D. Blind trust
+Đáp án: B
+14. Creative thinking involves:
+A. Memorization
+B. Generating original ideas
+C. Repeating tradition and exploring art
+D. Avoiding risk
+Đáp án: B
+15. Cognitive presence in the Community of Inquiry refers mainly to:
+A. Emotional engagement
+B. Knowledge construction through thinking
+C. Instructor authority
+D. Social interaction
+Đáp án: B
+16. Critical thinkers should:
+A. Accept everything
+B. Question everything
+C. Avoid research
+D. Being smart in all situations
+Đáp án: B
+17. Goal setting is most effective when goals are:
+A. Ambitious and open-ended
+B. Flexible and undefined
+C. Specific, realistic, and measurable
+D. Focused only on long-term outcomes
+Đáp án: C
+18. In the Plan-Monitor-Evaluate cycle, monitoring mainly focuses on:
+A. Setting learning goals
+B. Checking understanding during learning
+C. Grading performance
+D. Comparing results with peers
+Đáp án: B
+19. Successful students typically view challenges as:
+A. Signs they chose the wrong major
+B. Evidence of instructor bias
+C. Opportunities for growth and adjustment
+D. Reasons to withdraw from courses
+Đáp án: C
+20. What is one major difference between high school and college learning?
+A. College instructors monitor students' progress more closely
+B. College requires greater student responsibility and self-advocacy
+C. College courses require fewer assessments but much more difficult
+D. College learning focuses less on independent work
+Đáp án: B
+21. What is the main purpose of self-directed learning in online education?
+A. To reduce instructor workload
+B. To help students take control of their learning
+C. To eliminate group work
+D. To replace assessments with self-study activities
+Đáp án: B
+22. What role does environment play in effective studying?
+A. It has minimal impact
+B. It only matters for group study
+C. It can significantly affect focus and memory
+D. It replaces good study strategies and techniques
+Đáp án: C
+23. Which skill is NOT explicitly included in digital literacy as described in the book?
+A. Evaluating online information
+B. Communicating through digital platforms and social media
+C. Understanding neural network architecture in depth
+D. Responsible engagement with digital content
+Đáp án: C
+24. Which of the following is NOT a component of metacognition?
+A. Planning how to approach a task
+B. Monitoring understanding during learning
+C. Evaluating outcomes after completing a task
+D. Memorizing facts without reflection
+Đáp án: D
+25. Which of the following is identified as a common barrier to effective communication?
+A. Clear purpose and using technologies
+B. Cultural awareness and prejudice
+C. Assumptions and misinterpretations
+D. Active listening strategies
+Đáp án: C
+26. Which of the following best describes "college culture"?
+A. A fixed set of rules identical across all academic institutions
+B. A system focused only on academic performance and science of knowledge
+C. Shared expectations, language, and norms within higher education
+D. A social environment unrelated to learning
+Đáp án: C
+27. Which of the following best defines time-on-task?
+A. The total time spent thinking about an assignment
+B. The actual time required to complete a specific task
+C. The time available before a deadline
+D. The amount of time scheduled for studying each week
+Đáp án: B
+28. Which of the following best describes retrieval in learning?
+A. Re-reading notes repeatedly
+B. Accessing and using stored knowledge when needed
+C. Highlighting important sections of a text
+D. Uploading materials to an AI chatbot
+Đáp án: B
+29. Which of the following best describes encoding in the learning process?
+A. Storing information permanently without effort using long-term memory
+B. Processing new information deeply so that memories are formed
+C. Recalling information during an exam
+D. Translating information into digital formats
+Đáp án: B
+30. Which of the following best distinguishes digital literacy from AI literacy?
+A. Digital literacy focuses only on social media skills while AI literacy focuses on academic skills
+B. AI literacy includes competencies for understanding and interacting with AI systems
+C. AI literacy excludes ethical considerations
+D. Digital literacy is limited to hardware usage
+Đáp án: B
+31. Which of the following is a key step in analytical thinking?
+A. Accepting information at face value and let it be there
+B. Separating facts from assumptions before drawing conclusions
+C. Generating as many ideas as possible regardless the quality of each idea
+D. Prioritizing emotional responses
+Đáp án: B
+32. Which activity best demonstrates metacognitive awareness?
+A. Studying longer hours before exams to aim high grades
+B. Recognizing which study strategies work best for you
+C. Highlighting every paragraph in a textbook
+D. Copying notes from slides
+Đáp án: B
+33. Which factor most strongly affects how a message is interpreted?
+A. The length of the message
+B. The context in which communication occurs
+C. The communication technology used such as social media
+D. The sender's educational background and attitude
+Đáp án: B
+34. Which question best helps evaluate the credibility of a source?
+A. Is the information easy to read and interpret?
+B. Does the author have relevant expertise?
+C. Is the source visually appealing?
+D. Does the source confirm personal opinions?
+Đáp án: B
+35. Which practice best demonstrates responsible use of information?
+A. Copying text when sources are cited without any form of paraphrasing
+B. Paraphrasing without attribution
+C. Integrating sources while acknowledging original authors
+D. Using only one strong source
+Đáp án: C
+36. Which statement best reflects how time management in college differs from high school?
+A. College students have fewer deadlines
+B. College schedules are more structured and require more efforts to follow
+C. College requires students to independently plan and allocate time
+D. Time management is less important in college
+Đáp án: C
+37. Which statement best reflects the authors' view of the college transition?
+A. It is primarily academic and rarely emotional
+B. It is uniform for all students
+C. It involves academic, social, and personal change
+D. It ends after the first month
+Đáp án: C
+38. Which action best represents effective problem-solving?
+A. Selecting the first solution that seems reasonable
+B. Ignoring alternative approaches
+C. Evaluating possible solutions before implementation
+D. Avoiding feedback after solving the problem
+Đáp án: C
+39. Which step typically comes first in effective problem-solving?
+A. Choosing a solution
+B. Identifying and defining the problem clearly
+C. Evaluating results based on criteria
+D. Implementing a strategy using the power of teamwork
+Đáp án: B
+40. Which question best reflects a critical thinking mindset?
+A. "Do I agree with this?"
+B. "Is this information popular?"
+C. "What evidence supports this claim?"
+D. "Who benefits from this idea emotionally?"
+Đáp án: C
+41. Which activity best demonstrates analytical thinking?
+A. Brainstorming multiple possible essay topics quickly and productively
+B. Identifying relevant data while ignoring unnecessary details in a problem
+C. Agreeing with the most popular interpretation of an issue
+D. Responding emotionally to complex situations
+Đáp án: B
+42. Which strategy is recommended for managing test anxiety?
+A. Avoiding preparation to reduce stress
+B. Relying on last-minute cramming
+C. Using preparation and familiarity to reduce fear
+D. Studying only the night before
+Đáp án: C
+43. Which question reflects a metacognitive approach to learning?
+A. "How many pages do I need to read?"
+B. "What strategy am I using, and is it effective?"
+C. "Will this be on the exam and how can I have support?"
+D. "How long is this assignment?"
+Đáp án: B
+44. Which study habit is least effective for long-term learning?
+A. Self-testing with flashcards, quiz and teaching others
+B. Spaced practice combined with interleaving
+C. Re-reading notes repeatedly without engagement
+D. Reviewing mistakes
+Đáp án: C
+45. Which condition best supports creative thinking?
+A. Strict adherence to one correct answer
+B. Openness to risk and experimentation
+C. Avoidance of uncertainty
+D. Dependence on authority
+Đáp án: B
+46. Which situation would most clearly violate ethical guidelines when using AI for assessment?
+A. Using AI to grade multiple-choice quizzes
+B. Using AI to provide grammar suggestions
+C. Using AI to evaluate student work without students' consent or awareness
+D. Using AI to help manage gradebooks
+Đáp án: C
+47. Why does the author warn against confusing opinion with evidence?
+A. Opinions are always incorrect and being more effected by emotions
+B. Evidence-based reasoning leads to stronger conclusions
+C. Opinions slow down decision-making
+D. Evidence is difficult to interpret
+Đáp án: B
+48. Why does Chapter 7 emphasize defining the problem accurately?
+A. It reduces the number of possible solutions
+B. Incorrect problem definition leads to ineffective solutions
+C. It saves time in implementation
+D. It limits creative thinking
+Đáp án: B
+49. Why is retrieval practice effective for learning?
+A. It reduces the amount of material and knowledge to study
+B. It strengthens memory storage and retrieval pathways
+C. It replaces the need for review knowledge
+D. It prevents forgetting entirely
+Đáp án: B
+50. Why is relying solely on search engine rankings problematic?
+A. High-ranking results are always outdated
+B. Rankings prioritize academic sources only
+C. Popularity does not equal accuracy or reliability
+D. Search engines limit access to peer-reviewed material
+Đáp án: C
+51. Why is using AI for personalized feedback considered ethically problematic in some cases?
+A. AI feedback is always inaccurate or inclined towards complementation
+B. It may replace meaningful instructor-student learning relationships
+C. Students prefer automated feedback
+D. AI cannot process written language
+Đáp án: B
+52. Why is understanding why you are in college considered foundational for success?
+A. It helps students choose easier and low-cost courses
+B. It clarifies long-term goals and increases motivation
+C. It allows students to reduce academic workload
+D. It guarantees higher grades
+Đáp án: B
+53. Why is it important to evaluate bias in sources?
+A. Bias invalidates all arguments and ideas
+B. Bias helps identify the strongest position to debate
+C. Understanding bias helps interpret information critically
+D. Biased sources should never be used
+Đáp án: C
+54. Why is intentional choice of communication method important?
+A. Different methods require different levels of formality and clarity
+B. Face-to-face communication is always superior and productive
+C. Digital communication reduces misunderstandings
+D. Informal methods save time
+Đáp án: A
+55. Why is metacognition considered a self-regulation skill?
+A. It controls classroom behavior and course expectation
+B. It allows students to manage and direct their learning
+C. It reduces dependence on instructors
+D. It improves memorization speed
+Đáp án: B
+56. Why is multitasking a bad habit for learning?
+A. It increases creativity in complex tasks
+B. It often reduces efficiency and quality of work
+C. It saves time when deadlines overlap
+D. It improves long-term memory
+Đáp án: B
+57. Why is the process in analytical thinking important?
+A. Because outcomes matter more than understanding
+B. Because understanding how parts connect leads to better conclusions
+C. Because analytical thinking is slower than other thinking types
+D. Because it reduces creativity
+Đáp án: B
+58. Why is transparency in AI systems important?
+A. It increases software profits
+B. It allows users to modify algorithms directly
+C. It enables accountability and trust
+D. It eliminates the need for regulation
+Đáp án: C
+59. Why does the author argue that using AI to do the work instead of the student is problematic?
+A. It violates copyright law automatically
+B. It cheats students out of the learning experience
+C. It reduces the accuracy of AI systems
+D. It increases institutional costs and reduces
+Đáp án: B
+60. Why should we review outcomes after implementing a solution?
+A. To assign blame
+B. To determine whether adjustments are needed
+C. To prove effort was sufficient and possible
+D. To avoid repeating the process
+Đáp án: B
+61. Why does the book emphasize higher-order thinking in online learning?
+A. Exams are more difficult online
+B. Surface learning is ineffective for long-term learning
+C. Students prefer complex tasks
+D. Memorization is no longer needed
+Đáp án: B
+62. Why should encourage combining creative and analytical thinking be encouraged?
+A. They are interchangeable skills and it is possible to replace each other
+B. Creativity generates ideas, while analysis refines them
+C. Creativity replaces logic
+D. Analysis limits imagination
+Đáp án: B
+63. According to the American Library Association (2011), digital literacy primarily refers to the ability to:
+A. Program artificial intelligence systems to get the most productive information system
+B. Use information and communication technologies to find, evaluate, create, and communicate information
+C. Detect AI-generated content
+D. Replace human judgment with algorithms
+Đáp án: B
+64. According to the chapter, creativity is:
+A. A talent only some people are born with
+B. Limited to artistic disciplines
+C. A skill that can be developed and practiced
+D. Incompatible with analytical thinking
+Đáp án: C
+65. AI can support memory formation primarily by:
+A. Replacing reading and note-taking entirely by provide main content of every document
+B. Providing metaphors, emotional connections, and multisensory learning ideas
+C. Automatically storing information in long-term memory
+D. Eliminating the need for attention and focus
+Đáp án: B
+66. A student feels overwhelmed during their first semester and avoids contacting professors. Based on Chapter 1, what is the best recommended action?
+A. Focus only on independent study
+B. Wait until grades are released
+C. Seek support from faculty, advisors, and campus resources
+D. Reduce course load immediately
+Đáp án: C
+67. A student sends an emotional email to a professor late at night and receives a negative response. Based on Chapter 8, what principle was most likely violated?
+A. Choosing the fastest communication method
+B. Considering tone, purpose, and audience before sending
+C. Using complete sentences and formal grammar
+D. Providing sufficient background information
+Đáp án: B
+68. A student struggles with word problems in math because they focus on every detail. Based on analytical thinking principles, what should they do first?
+A. Practice more similar problems without reflection and revision
+B. Identify essential information and ignore irrelevant details
+C. Memorize formulas more frequently
+D. Seek help only after failing exams
+Đáp án: B
+69. A student fails an exam and immediately blames lack of ability. From a problem-solving perspective, what should the student do instead?
+A. Accept failure and move on, hope for better results
+B. Clearly identify contributing factors and possible changes
+C. Change majors immediately
+D. Increase study time without reflection and teamwork
+Đáp án: B
+70. According to the text, a major concern for graduate students regarding AI grading tools is that:
+A. AI grading is smarter than human grading and could overshade human's ability in grading
+B. AI systems may use their work as training data, affecting future publication
+C. AI cannot understand complex arguments
+D. AI always produces biased feedback
+Đáp án: B
+71. A student avoids sharing unconventional ideas during group discussions. From a creative thinking perspective, what is the main consequence?
+A. Improved efficiency and diverse forms of idea
+B. Reduced originality and idea generation
+C. Stronger analytical reasoning
+D. Clearer communication
+Đáp án: B
+72. According to the International Society of Academic Integrity (2021), academic integrity is best defined as:
+A. Compliance with university assessment rules only
+B. A promise to uphold honesty, fairness, respect, responsibility, and courage
+C. The ability to avoid plagiarism through software tools and institutional policies
+D. A system of penalties designed to discourage cheating and misconduct
+Đáp án: B
+73. According to the chapter, the primary goal of learning is to:
+A. Complete assignments as efficiently as possible using available tools
+B. Distill knowledge and skills so they can be applied in new situations
+C. Memorize large amounts of information for examinations
+D. Reduce cognitive effort through automation and technological support
+Đáp án: B
+74. According to Chapter 7, analytical thinking primarily involves:
+A. Generating original ideas through imagination and brainstorming techniques
+B. Breaking information into components to understand relationships and patterns
+C. Evaluating arguments based on personal beliefs and values
+D. Solving problems through trial and error without structured steps
+Đáp án: B
+75. A student finds an article that supports their argument but is written by an anonymous author on a personal blog. Based on Chapter 7, what should the student do first?
+A. Use the article because it supports the claim
+B. Evaluate the author's credibility and evidence provided
+C. Replace it with any academic article because journal articles are qualified
+D. Ignore online sources entirely
+Đáp án: B
+76. Creative thinking is described in as the ability to:
+A. Follow established rules precisely
+B. Produce original ideas by making new connections
+C. Evaluate information objectively and systematically
+D. Solve problems using fixed procedures
+Đáp án: B
+77. Chapter 7 emphasizes that critical thinking requires students to:
+A. Avoid questioning authority and forms of powers
+B. Consider multiple perspectives before judging
+C. Focus on speed rather than accuracy
+D. Rely on intuition
+Đáp án: B
+78. Communication is best described as:
+A. A simple exchange of spoken words
+B. A one-way transfer of information and signals from sender to receiver
+C. A complex process influenced by context, purpose, and participants
+D. A skill used primarily in professional environments
+Đáp án: C
+79. Digital literacy is described as important because it:
+A. Is only useful for students in technology majors
+B. Helps individuals critically evaluate online content
+C. Removes the need for critical thinking and metacognition
+D. Guarantees employment
+Đáp án: B
+80. Effective time management in college is important primarily because it:
+A. Reduces the total number of assignments students receive
+B. Helps prevent a chain reaction of academic problems
+C. Allows students to finish college more quickly
+D. Eliminates the need for prioritization
+Đáp án: B
+81. Guerrero-Dib, Portales, and Heredia-Escorza (2020) emphasize that academic integrity extends beyond cheating because it:
+A. Focuses solely on punishment and enforcement
+B. Represents a commitment to the learning process and ethical use of resources
+C. Is mainly concerned with citation formatting and application of formal structure
+D. Applies only to written assignments
+Đáp án: B
+82. Information literacy is defined as the ability to:
+A. Memorize academic content efficiently
+B. Locate, evaluate, and use information effectively
+C. Rely on digital sources for research and study
+D. Avoid biased information entirely and consistently
+Đáp án: B
+83. Metacognition is best defined as
+A. Thinking critically about academic content
+B. Awareness and regulation of one's own thinking and learning
+C. Memorizing information efficiently
+D. Monitoring other students' performance
+Đáp án: B
+84. Metacognition helps students mainly by:
+A. Increasing intelligence
+B. Making learning automatic
+C. Allowing learners to adjust strategies intentionally
+D. Reducing academic workload
+Đáp án: C
+85. One ethical concern about using AI as a grading tool is that it may:
+A. Improve consistency too much
+B. Breach students' intellectual property by uploading their work to AI systems
+C. Reduce grading speed
+D. Require excessive faculty training
+Đáp án: B
+86. Problem-solving is best described as:
+A. Finding the quickest answer to a difficulty
+B. Applying a structured process to address challenges
+C. Relying on intuition and experience to address normal issues
+D. Avoiding situations that seem complex
+Đáp án: B
+87. Procrastination is described as:
+A. A harmless habit with minimal consequences that students usually have
+B. A delay that can trigger multiple academic difficulties
+C. A strategy for managing stress effectively
+D. A result of excessive motivation
+Đáp án: B
+88. Problem-solving is described as:
+A. Finding the fastest solution available based on A.I suggestion
+B. Applying a structured process to address challenges
+C. Using intuition to make decisions
+D. Avoiding complex situations
+Đáp án: B
+89. Studying in college often requires students to:
+A. Study only before exams
+B. Modify old habits to meet new academic demands
+C. Depend on memorization alone
+D. Avoid collaborative learning
+Đáp án: B
+90. The concept of "hallucination" in AI refers to:
+A. Visual misinterpretation by humans
+B. AI producing incorrect or fabricated information
+C. Emotional responses to AI feedback
+D. Errors caused only by user prompts
+Đáp án: B
+91. Employers value analytical thinkers because they:
+A. Work alone confidently and work with AI effectively
+B. Use logical thinking to solve issues
+C. Avoid workplace conflict
+D. Prefer routine tasks
+Đáp án: B
+92. Analytical thinking is commonly used when:
+A. Writing poetry only
+B. Solving complex problems
+C. Avoiding decisions
+D. Relaxing
+Đáp án: B
+93. Amazon is significantly successful business based in analytical thinking, which of the following is a sign of applying analytical thinking?
+A. Intuition
+B. Hyper organization
+C. Random processes
+D. Individual memory
+Đáp án: B
+94. What is time management?
+A. Controlling others
+B. Planning time use
+C. Working randomly
+D. Avoiding tasks and responsibilities
+Đáp án: B
+95. Which of the following best represents an effective use of a planner?
+A. Recording deadlines after they pass
+B. Scheduling tasks without estimating duration
+C. Planning tasks while considering priorities and time-on-task
+D. Using it during exam weeks to cram knowledge in a short period of time
+Đáp án: C
+96. What is scheduling?
+A. Ignoring time
+B. Planning activities
+C. Avoiding tasks
+D. Doing tasks randomly without any structure or order
+Đáp án: B
+97. What tool helps prioritize tasks?
+A. Calendar only
+B. Priority list
+C. Social media
+D. Email inbox
+Đáp án: B
+98. A student spends hours on low-priority tasks. What is the issue?
+A. Good planning
+B. High productivity
+C. Poor prioritization
+D. Effective scheduling
+Đáp án: C
+99. What is "keyword searching"?
+A. Writing essays
+B. Reading books strategically
+C. Using key terms
+D. Copying text
+Đáp án: C
+100. What is information literacy?
+A. Reading and present articles professionally
+B. Evaluating information
+C. Memorizing data
+D. Copying content
+Đáp án: B
+101. Why is problem-solving linked with other thinking skills?
+A. Problem-solving replaces analytical thinking and creative thinking
+B. Effective problem-solving integrates multiple types of thinking
+C. Creative thinking interferes with problem-solving
+D. Critical thinking is unnecessary
+Đáp án: B
+102. Reviewing results after solving a problem helps students:
+A. Assign blame to less responsible person
+B. Improve future problem-solving efforts
+C. Prove effort was sufficient to solve any problem
+D. Avoid repeating tasks
+Đáp án: B
+103. Why is flexibility important in problem-solving?
+A. Problems rarely change once identified
+B. Initial solutions may not fully address the problem
+C. Flexibility reduces accountability
+D. It saves time in decision-making
+Đáp án: B
+104. What is clarity in communication?
+A. Long and complex sentences
+B. Beautiful and eloquent language
+C. Easy understanding
+D. Repetition and emphasizing
+Đáp án: C
+105. Which of the following best reflects the relationship between digital literacy and human agency?
+A. Digital literacy reduces personal responsibility
+B. Algorithms fully determine human choices and thinking process
+C. Digital literacy helps individuals navigate algorithmic influence
+D. Human agency is irrelevant in digital environments
+Đáp án: C
+106. Which term describes AI systems producing incorrect or fabricated information?
+A. Automation
+B. Optimization
+C. Hallucination
+D. Simulation
+Đáp án: C
+107. Which AI-supported strategy best aligns with improving memory storage?
+A. Asking AI to summarize a chapter and skipping the reading
+B. Using AI to plan spaced practice after understanding the material
+C. Letting AI answer practice questions and remember the answer list
+D. Relying on AI-generated notes only
+Đáp án: B
+108. Which of the following principle could best guides ethical student use of AI?
+A. Use AI whenever it saves time and when you are too busy
+B. Use AI to support learning goals, not replace them
+C. Avoid AI entirely in higher education because it causes more harm than benefit
+D. Use AI only for graded tasks
+Đáp án: B
+109. Why is using AI to complete assignments unethical?
+A. It takes too much time
+B. It replaces the intended learning process
+C. It requires technical skills
+D. It reduces collaboration and social learning
+Đáp án: B
+110. A student skips classes but studies alone. What is the likely issue?
+A. Too much collaboration
+B. Low behavioral engagement
+C. Overconfidence
+D. Excessive motivation
+Đáp án: B
+111. A student reads the syllabus carefully and plans ahead. This shows:
+A. Passive learning
+B. Avoidance behavior
+C. Self-management
+D. Dependence on teachers
+Đáp án: C
+112. Which term describes taking responsibility for your own learning?
+A. Passive learning
+B. Academic ownership
+C. External motivation
+D. Teacher-led learning systems
+Đáp án: B
+113. A student studies extensively but keeps failing quizzes. From a metacognitive perspective, what is the most likely issue?
+A. Lack of motivation
+B. Poor time management
+C. Ineffective study strategies not being evaluated
+D. Insufficient intelligence
+Đáp án: C
+114. Mark Twain compared idea generation to:
+A. A journey
+B. A kaleidoscope
+C. A puzzle
+D. A dream-making machine
+Đáp án: B
+115. Tracking ideas enhances creativity because it:
+A. Eliminates imagination
+B. Preserves inspiration
+C. Avoids reflection and conclusion
+D. Reduces novelty
+Đáp án: B
+116. What is the key advantage of short, regular study sessions?
+A. Less effort is required
+B. Information is memorized faster
+C. Focus and retention are improved
+D. Assignments become easier and more motivational
+Đáp án: C
+117. Which type of memory is primarily responsible for temporarily holding information while processing it?
+A. Long-term memory
+B. Sensory memory
+C. Working memory
+D. Episodic memory
+Đáp án: C
+118. What is encoding in memory?
+A. Forgetting information
+B. Converting information for storage in memory
+C. Repeating words and image
+D. Skipping details
+Đáp án: B
+119. What is the primary benefit of reviewing graded tests?
+A. Improving GPA immediately
+B. Identifying grading errors
+C. Strengthening understanding and memory
+D. Reducing study time and have more fun if practicing with friends
+Đáp án: C
+120. Why are AI detection tools controversial in academic settings?
+A. They could replace teachers in learning any knowledge
+B. They are difficult to install
+C. They are rarely used productively
+D. They may produce inaccurate results and false accusations
+Đáp án: D
+121. Which institutional response best aligns with the ethical approach advocated in the text?
+A. Developing clear AI usage policies and promoting transparency
+B. Banning all AI tools immediately because AI will destroy students' independent thinking
+C. Ignoring AI-related misconduct
+D. Replacing instructors with AI graders
+Đáp án: A
+122. Why are universities described as being "in the process" of developing AI policies?
+A. AI adoption is declining
+B. AI is developing faster than ethical guidelines can be established
+C. Faculty resistance has ended and AI become a popular tool accepted everywhere
+D. Students no longer use AI
+Đáp án: B
+123. Recognizing personal bias is part of:
+A. Problem-solving
+B. Critical thinking
+C. Information literacy
+D. Intuition
+Đáp án: B
+124. Revisiting a resolved issue when conditions change is:
+A. Weakness
+B. Critical awareness
+C. Confusion
+D. Creativity
+Đáp án: B
+125. What is active listening?
+A. Hearing only
+B. Engaging fully
+C. Interrupting to clarify if needed
+D. Ignoring speaker
+Đáp án: B
+126. What is nonverbal communication?
+A. Spoken words
+B. Body language
+C. Written text
+D. Grammar rules
+Đáp án: B
+127. Analytical thinking can help prevent:
+A. Emotional thinking
+B. Workplace inefficiency
+C. Creativity and overthinking
+D. Collaboration and communication
+Đáp án: B
+128. Component parts refer to:
+A. Final conclusions
+B. Emotional reactions
+C. Separate elements of a problem
+D. Examine assumptions and bias that influence thinking
+Đáp án: C
+129. Which skill supports analytical thinking?
+A. Information literacy
+B. Ignoring data
+C. Emotional reaction and intuition
+D. Guesswork
+Đáp án: A
+130. Assembly lines (in mass production) reduced inefficiency by:
+A. Eliminating thinking
+B. Dividing labor
+C. Increasing chaos
+D. Slowing production
+Đáp án: B
+131. Which factor most strongly contributes to poor time management?
+A. Lack of access to technology
+B. Underestimating how long tasks will take
+C. Too many group projects
+D. Excessive instructor support
+Đáp án: B
+132. What is one benefit of regularly evaluating your time management habits?
+A. It guarantees higher grades
+B. It allows continuous adjustment and improvement
+C. It eliminates stress permanently
+D. It reduces course workload
+Đáp án: B
+133. A student believes being constantly busy means they are managing time well. Based on Chapter 3, why is this assumption flawed?
+A. Being busy always reduces learning quality and knowledge retention
+B. Productivity depends on purposeful prioritization, not just activity
+C. Time management only applies to academic tasks
+D. Busy students are more likely to procrastinate and aske for external support
+Đáp án: B
+134. What is a planner used for?
+A. Organizing time
+B. Entertainment
+C. Social media
+D. Ignoring deadlines
+Đáp án: A
+135. What is procrastination?
+A. Planning tasks
+B. Delaying tasks
+C. Completing tasks
+D. Prioritizing tasks
+Đáp án: B
+136. Why is multitasking a bad habit for learning?
+A. It increases creativity in complex tasks
+B. It often reduces efficiency and quality of work
+C. It saves time when deadlines overlap
+D. It improves long-term memory
+Đáp án: B
+137. A student copies text without citation. This is:
+A. Research
+B. Plagiarism
+C. Summary
+D. Analysis
+Đáp án: B
+138. Information literacy is defined as the ability to:
+A. Memorize academic content efficiently
+B. Locate, evaluate, and use information effectively
+C. Rely on digital sources for research and study
+D. Avoid biased information entirely and consistently
+Đáp án: B
+139. What is paraphrasing?
+A. Copying text
+B. Rewriting ideas
+C. Quoting directly
+D. Ignoring source
+Đáp án: B
+140. Which step typically comes first in effective problem-solving?
+A. Choosing a solution
+B. Identifying and defining the problem clearly
+C. Evaluating results based on criteria
+D. Implementing a strategy using the power of teamwork
+Đáp án: B
+141. Why should we review outcomes after implementing a solution?
+A. To assign blame
+B. To determine whether adjustments are needed
+C. To prove effort was sufficient and possible
+D. To avoid repeating the process
+Đáp án: B
+142. Why is it important to define the problem accurately?
+A. It limits the number of possible solutions and reduces cost accordingly
+B. Misidentified problems often lead to ineffective solutions
+C. It saves time and energy during implementation
+D. It reduces the need for evaluation
+Đáp án: B
+143. Which statement best reflects the chapter's view of problem-solving outcomes?
+A. A solution must work perfectly the first time
+B. Solutions should be evaluated and adjusted if needed
+C. Once a solution is chosen, it should not change because of the financial riks
+D. Outcomes matter more than process
+Đáp án: B
+144. What is effective communication?
+A. Speaking loudly and emotionally
+B. Clear message exchange
+C. Talking more to express yourself
+D. Ignoring feedback
+Đáp án: B
+145. Communication is best described as:
+A. A simple exchange of spoken words
+B. A one-way transfer of information and signals from sender to receiver
+C. A complex process influenced by context, purpose, and participants
+D. A skill used primarily in professional environments
+Đáp án: C
+146. Digital literacy enhances employability mainly because it:
+A. Guarantees higher salaries
+B. Enables adaptation to technological change
+C. Eliminates workplace stress and enhance mental health
+D. Replaces teamwork skills
+Đáp án: B
+147. Which of the following best distinguishes digital literacy from AI literacy?
+A. Digital literacy focuses only on social media skills while AI literacy focuses on academic skills
+B. AI literacy includes competencies for understanding and interacting with AI systems
+C. AI literacy excludes ethical considerations
+D. Digital literacy is limited to hardware usage
+Đáp án: B
+148. The book suggests digital literacy programs should include training on:
+A. AI coding only
+B. Protecting personal data and digital footprints
+C. Eliminating AI tools
+D. Memorizing algorithms and how to train data
+Đáp án: B
+149. AI can support memory formation by:
+A. Replacing reading and note-taking entirely by provide main content of every document
+B. Providing metaphors, emotional connections, and multisensory learning ideas
+C. Automatically storing information in long-term memory
+D. Eliminating the need for attention and focus
+Đáp án: B
+150. Why does the author argue that using AI to do the work instead of the student is problematic?
+A. It violates copyright law automatically
+B. It cheats students out of the learning experience
+C. It reduces the accuracy of AI systems
+D. It increases institutional costs and reduces
+Đáp án: B
+151. Which of the following best describes "college culture"?
+A. A fixed set of rules identical across all academic institutions
+B. A system focused only on academic performance and science of knowledge
+C. Shared expectations, language, and norms within higher education
+D. A social environment unrelated to learning
+Đáp án: C
+152. Which factor contributes most to student success?
+A. Intelligence only
+B. Active engagement
+C. Memorizing everything
+D. Avoiding challenges
+Đáp án: B
+153. Why is understanding why you are in college considered foundational for success?
+A. It helps students choose easier and low-cost courses
+B. It clarifies long-term goals and increases motivation
+C. It allows students to reduce academic workload
+D. It guarantees higher grades
+Đáp án: B
+154. Which of the following best illustrates monitoring in metacognition?
+A. Creating a study schedule
+B. Checking comprehension while reading
+C. Reviewing grades at the end of the semester
+D. Choosing a major
+Đáp án: B
+155. Why is metacognition considered a self-regulation skill?
+A. It controls classroom behavior and course expectation
+B. It allows students to manage and direct their learning
+C. It reduces dependence on instructors
+D. It improves memorization speed
+Đáp án: B
+156. Why is metacognition linked to academic success?
+A. Successful students study longer and collaboratively
+B. Effective learners actively reflect and adapt
+C. Intelligence predicts performance
+D. Grades depend on effort alone
+Đáp án: B
+157. Creativity often combines:
+A. Only new ideas
+B. Old ideas in new ways
+C. Unrelated facts and information
+D. Strict repetition
+Đáp án: B
+158. If a student combines two theories to form a new model, this reflects:
+A. Simple recall
+B. Creative synthesis
+C. Memorization
+D. Avoidance
+Đáp án: B
+159. Which condition best supports creative thinking?
+A. Strict adherence to one correct answer
+B. Openness to risk and experimentation
+C. Avoidance of uncertainty
+D. Dependence on authority
+Đáp án: B
+160. Creativity improves thinking skills by:
+A. Limiting scope
+B. Narrowing vision
+C. Expanding possibilities
+D. Avoiding challenge
+Đáp án: C
+161. Which learner behavior best reflects metacognitive awareness?
+A. Completing tasks quickly
+B. Following instructions exactly
+C. Reflecting on what strategies worked or failed
+D. Memorizing lecture slides
+Đáp án: C
+162. Which situation BEST illustrates weak social presence in an online course?
+A. Students debate ideas respectfully
+B. Learners avoid responding to peers
+C. Instructors provide timely feedback
+D. Groups set clear communication rules
+Đáp án: B
+163. Why does the book emphasize higher-order thinking in online learning?
+A. Exams are more difficult online
+B. Surface learning is ineffective for long-term learning
+C. Students prefer complex tasks
+D. Memorization is no longer needed
+Đáp án: B
+164. What is working memory?
+A. Long-term storage
+B. Temporary processing space
+C. Permanent recall of knowledge
+D. Emotional memory system
+Đáp án: B
+165. Studying in college often requires students to:
+A. Study only before exams
+B. Modify old habits to meet new academic demands
+C. Depend on memorization alone
+D. Avoid collaborative learning
+Đáp án: B
+166. A student studies 10 minutes daily instead of cramming. This uses:
+A. Massed practice
+B. Spaced learning
+C. Passive recall
+D. Surface processing
+Đáp án: B
+167. According to the text, a major concern for graduate students regarding AI grading tools is that:
+A. AI grading is smarter than human grading and could overshadow human's ability in grading
+B. AI systems may use their work as training data, affecting future publication
+C. AI cannot understand complex arguments
+D. AI always produces biased feedback
+Đáp án: B
+168. Which method helps reduce test anxiety?
+A. Avoid studying
+B. Ignoring exams
+C. Preparation
+D. Skipping practice
+Đáp án: C
+169. Which action would most directly improve a student's metacognitive skills?
+A. Increasing total study hours
+B. Reflecting on why an exam strategy failed
+C. Highlighting more information
+D. Studying with friends
+Đáp án: B
+170. When planning travel during uncertainty, you should:
+A. Ignore risk
+B. Assume success
+C. Prepare backup plans
+D. Avoid thinking
+Đáp án: C
+171. Critical thinking forces you to determine:
+A. Actual situation
+B. By emotion
+C. Preference and research
+D. Habit
+Đáp án: A
+172. Looking at something "with a different lens" means:
+A. Reframing perspective
+B. Criticizing it
+C. Ignoring details
+D. Avoiding structure
+Đáp án: A
+173. What is one major purpose of college beyond career preparation?
+A. To avoid responsibilities
+B. Personal growth
+C. To earn money quickly
+D. To reduce social interaction
+Đáp án: B
+174. A student sets specific study hours daily. This improves:
+A. Confusion
+B. Procrastination
+C. Consistency
+D. Random work habits
+Đáp án: C
+175. Developing a board game from literature shows:
+A. Recall from the best childhood experiences
+B. Memorization
+C. Creative transformation
+D. Imitation from best practices
+Đáp án: C
+176. What is the primary role of a rubric in assignments?
+A. To limit creativity
+B. To replace instructor's guideline and comments
+C. To explain grading criteria clearly
+D. To rank students
+Đáp án: C
+177. What risk is associated with uploading dense readings to AI for summaries without reading them?
+A. Reduced chances to practicing English
+B. Missing critical thinking required for memory formation
+C. Violating institutional AI policies automatically
+D. Overloading working memory and risk to pay more for AI premium versions
+Đáp án: B
+178. Which factor makes academic integrity a shared responsibility?
+A. Only students submit assignments
+B. Institutions must establish clear guidelines and pedagogical practices
+C. Faculty are solely responsible for enforcement
+D. Internal communication campaign to criticize and condemn case studies of plagiarism
+Đáp án: B
+179. What is a 'Liability' example provided for college students?
+A. A savings account.
+B. A student loan or credit card debt.
+C. Income from a part-time job.
+D. A scholarship.
+Đáp án: B
+180. What is the mathematical formula for Net Worth?
+A. Income + Expenses = Net Worth
+B. Assets + Liabilities = Net Worth
+C. Assets (Owned) – Liabilities (Owed) = Net Worth
+D. Savings – Debt = Net Worth
+Đáp án: C

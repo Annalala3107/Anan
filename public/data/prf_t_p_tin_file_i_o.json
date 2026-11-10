@@ -1,0 +1,228 @@
+[
+  {
+    "id": "prf_16",
+    "word": "Câu 16: What function in C is used to check if the end of a file has...",
+    "question": "What function in C is used to check if the end of a file has been reached?",
+    "options": [
+      "A. feof()",
+      "B. eof()",
+      "C. fscanf()",
+      "D. checkEOF()"
+    ],
+    "answer": "A",
+    "correctWord": "A. feof()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_17",
+    "word": "Câu 17: Which function is used to open a text file?",
+    "question": "Which function is used to open a text file?",
+    "options": [
+      "A. open()",
+      "B. fopen()",
+      "C. fileopen()",
+      "D. openfile()"
+    ],
+    "answer": "B",
+    "correctWord": "B. fopen()",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_36",
+    "word": "Câu 36: What commands are used to write data appended to the end of ...",
+    "question": "What commands are used to write data appended to the end of the file? (Choose 2 answers)",
+    "options": [
+      "A. FILE *f = fwrite(\"output.txt\", \"a\" );",
+      "B. FILE *f = fopen(\"output.txt\", \"a\" );",
+      "C. FILE *f = fopen(\"output.txt\", \"a+\" );",
+      "D. FILE *f = fopen(\"output.txt\", \"w+\" );",
+      "E. FILE *f = fopen(\"output.txt\", \"w\" );"
+    ],
+    "answer": "B, C",
+    "correctWord": "B. FILE *f = fopen(\"output.txt\", \"a\" );",
+    "explanation": "Đáp án: B, C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_39",
+    "word": "Câu 39: What is a proper method of opening a file for writing as bin...",
+    "question": "What is a proper method of opening a file for writing as binary file?",
+    "options": [
+      "A. FILE *f = fwrite( \"test.bin\", \"b\" );",
+      "B. FILE *f = fopen( \"test.bin\", \"w\" );",
+      "C. FILE *f = fopen( \"test.bin\", \"wb\" );",
+      "D. FILE *f = fwriteb( \"test.bin\" );",
+      "E. FILE *f = fopen( \"test.bin\", \"bwr\" );"
+    ],
+    "answer": "C",
+    "correctWord": "C. FILE *f = fopen( \"test.bin\", \"wb\" );",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_99",
+    "word": "Câu 99: What will be printed when the following code is executed?\n#i...",
+    "question": "What will be printed when the following code is executed?\n#include <stdio.h>\nint main() {\n    int a[] = {1,2,3,4,5,6};\n    int* p = a;\n    p += 3;\n    printf(\"%d, %d\", *(a+3), *(p++));\n    return 0;\n}",
+    "options": [
+      "A. 4 5",
+      "B. 3 4",
+      "C. 3 3",
+      "D. 4 4"
+    ],
+    "answer": "D",
+    "correctWord": "D. 4 4",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_101",
+    "word": "Câu 101: What will be printed when the following code is executed?\n#i...",
+    "question": "What will be printed when the following code is executed?\n#include <stdio.h>\nint a = 5, b = 6;\nvoid cal1(int a, int b){\n    a++;\n    b--;\n}\nvoid cal2(){\n    a++;\n    b--;\n}\nint main() {\n    cal1(a,b);\n    printf(\"a = %d, b = %d\\n\", a, b);\n    cal2(a,b);\n    printf(\"a = %d, b = %d\\n\", a, b);\n    cal2(a,b);\n    printf(\"a = %d, b = %d\\n\", a, b);\n    return 0;\n}",
+    "options": [
+      "A. a = 6, b = 5\n   a = 6, b = 5\n   a = 6, b = 5",
+      "B. a = 5, b = 6\n   a = 6, b = 5\n   a = 7, b = 4",
+      "C. a = 6, b = 5\n   a = 6, b = 5\n   a = 7, b = 4",
+      "D. a = 5, b = 6\n   a = 7, b = 4\n   a = 7, b = 4"
+    ],
+    "answer": "B",
+    "correctWord": "B. a = 5, b = 6\n   a = 6, b = 5\n   a = 7, b = 4",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_116",
+    "word": "Câu 116: What is the output when the sample code below is executed?\n#...",
+    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    int a=70,b=90,c=80;\n    if(a!=b){\n        a-=b; c/=10;\n    }\n    else\n        a+=c;\n    printf(\"%d;%d;%d\",a,b,c);\n    return 0;\n}",
+    "options": [
+      "A. -20;90;8",
+      "B. 70;90;80",
+      "C. 150;80;8",
+      "D. 150;90;80"
+    ],
+    "answer": "A",
+    "correctWord": "A. -20;90;8",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_133",
+    "word": "Câu 133: What is the output when the sample code below is executed?\n#...",
+    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    const int a=5;\n    if(a>3)\n        a++;\n        break;\n    else\n        a--;\n    printf(\"%d\",a);\n    return 0;\n}",
+    "options": [
+      "A. Compile time error",
+      "B. 6",
+      "C. 4",
+      "D. 5"
+    ],
+    "answer": "A",
+    "correctWord": "A. Compile time error",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_362",
+    "word": "Câu 362: Which is incorrect statement in C programming?",
+    "question": "Which is incorrect statement in C programming?",
+    "options": [
+      "A. #define is a preprocessor command often used to introduce named constants",
+      "B. double and goto are keyword for declaring data type.",
+      "C. return 0; is normally the last statement in main()",
+      "D. The file stdio.h is the library where the compiler finds scanf()."
+    ],
+    "answer": "B",
+    "correctWord": "B. double and goto are keyword for declaring data type.",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_367",
+    "word": "Câu 367: Which of the following accurately describes the scope of a l...",
+    "question": "Which of the following accurately describes the scope of a local variable in C?",
+    "options": [
+      "A. It is visible only within the function where it's declared.",
+      "B. It is accessible throughout the entire program.",
+      "C. It can be accessed by any function within the same source file.",
+      "D. It is available globally but with restricted modification rights."
+    ],
+    "answer": "A",
+    "correctWord": "A. It is visible only within the function where it's declared.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_373",
+    "word": "Câu 373: How can you check if a file was successfully opened for writ...",
+    "question": "How can you check if a file was successfully opened for writing in C?",
+    "options": [
+      "A. Checking the return value of fopen()",
+      "B. Using ferror()",
+      "C. Using feof()",
+      "D. Using fprintf()"
+    ],
+    "answer": "A",
+    "correctWord": "A. Checking the return value of fopen()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_386",
+    "word": "Câu 386: In C programming language, what is the function fprintf() us...",
+    "question": "In C programming language, what is the function fprintf() used for?",
+    "options": [
+      "A. Writing formatted data to a file.",
+      "B. Reading formatted data from a file.",
+      "C. Appending formatted data to a file.",
+      "D. Closing a file."
+    ],
+    "answer": "A",
+    "correctWord": "A. Writing formatted data to a file.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_395",
+    "word": "Câu 395: What is the main difference between opening a file with mode...",
+    "question": "What is the main difference between opening a file with mode \"a+\" and mode \"w+\" in C?",
+    "options": [
+      "A. \"w+\" truncates existing files, \"a+\" preserves them.",
+      "B. \"a+\" can only append data, while \"w+\" can only write from the beginning.",
+      "C. \"a+\" opens binary files, while \"w+\" opens text files.",
+      "D. \"a+\" allows reading only, while \"w+\" allows both reading and writing."
+    ],
+    "answer": "A",
+    "correctWord": "A. \"w+\" truncates existing files, \"a+\" preserves them.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_411",
+    "word": "Câu 411: Which of the following functions in C is used to reset the f...",
+    "question": "Which of the following functions in C is used to reset the file position indicator to the beginning of the file?",
+    "options": [
+      "A. fseek()",
+      "B. ftell()",
+      "C. rewind()",
+      "D. return()"
+    ],
+    "answer": "C",
+    "correctWord": "C. rewind()",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  }
+]

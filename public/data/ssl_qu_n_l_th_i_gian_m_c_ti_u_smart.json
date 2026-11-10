@@ -1,0 +1,706 @@
+[
+  {
+    "id": "ssl_2",
+    "word": "Câu 2: What is one common reason students procrastinate?",
+    "question": "What is one common reason students procrastinate?",
+    "options": [
+      "A. Tasks feel unimportant or overwhelming",
+      "B. Instructors assign unclear deadlines",
+      "C. Students lack intelligence and teamwork",
+      "D. College schedules are too flexible"
+    ],
+    "answer": "A",
+    "correctWord": "A. Tasks feel unimportant or overwhelming",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_3",
+    "word": "Câu 3: Which concept focuses on identifying what tasks truly matter...",
+    "question": "Which concept focuses on identifying what tasks truly matter?",
+    "options": [
+      "A. Multitasking",
+      "B. Time blocking",
+      "C. Prioritization",
+      "D. Delegation"
+    ],
+    "answer": "C",
+    "correctWord": "C. Prioritization",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_16",
+    "word": "Câu 16: Critical thinkers should:",
+    "question": "Critical thinkers should:",
+    "options": [
+      "A. Accept everything",
+      "B. Question everything",
+      "C. Avoid research",
+      "D. Being smart in all situations"
+    ],
+    "answer": "B",
+    "correctWord": "B. Question everything",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_17",
+    "word": "Câu 17: Goal setting is most effective when goals are:",
+    "question": "Goal setting is most effective when goals are:",
+    "options": [
+      "A. Ambitious and open-ended",
+      "B. Flexible and undefined",
+      "C. Specific, realistic, and measurable",
+      "D. Focused only on long-term outcomes"
+    ],
+    "answer": "C",
+    "correctWord": "C. Specific, realistic, and measurable",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_36",
+    "word": "Câu 36: Which statement best reflects how time management in college...",
+    "question": "Which statement best reflects how time management in college differs from high school?",
+    "options": [
+      "A. College students have fewer deadlines",
+      "B. College schedules are more structured and require more efforts to follow",
+      "C. College requires students to independently plan and allocate time",
+      "D. Time management is less important in college"
+    ],
+    "answer": "C",
+    "correctWord": "C. College requires students to independently plan and allocate time",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_52",
+    "word": "Câu 52: Why is understanding why you are in college considered found...",
+    "question": "Why is understanding why you are in college considered foundational for success?",
+    "options": [
+      "A. It helps students choose easier and low-cost courses",
+      "B. It clarifies long-term goals and increases motivation",
+      "C. It allows students to reduce academic workload",
+      "D. It guarantees higher grades"
+    ],
+    "answer": "B",
+    "correctWord": "B. It clarifies long-term goals and increases motivation",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_80",
+    "word": "Câu 80: Effective time management in college is important primarily ...",
+    "question": "Effective time management in college is important primarily because it:",
+    "options": [
+      "A. Reduces the total number of assignments students receive",
+      "B. Helps prevent a chain reaction of academic problems",
+      "C. Allows students to finish college more quickly",
+      "D. Eliminates the need for prioritization"
+    ],
+    "answer": "B",
+    "correctWord": "B. Helps prevent a chain reaction of academic problems",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_87",
+    "word": "Câu 87: Procrastination is described as:",
+    "question": "Procrastination is described as:",
+    "options": [
+      "A. A harmless habit with minimal consequences that students usually have",
+      "B. A delay that can trigger multiple academic difficulties",
+      "C. A strategy for managing stress effectively",
+      "D. A result of excessive motivation"
+    ],
+    "answer": "B",
+    "correctWord": "B. A delay that can trigger multiple academic difficulties",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_94",
+    "word": "Câu 94: What is time management?",
+    "question": "What is time management?",
+    "options": [
+      "A. Controlling others",
+      "B. Planning time use",
+      "C. Working randomly",
+      "D. Avoiding tasks and responsibilities"
+    ],
+    "answer": "B",
+    "correctWord": "B. Planning time use",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_95",
+    "word": "Câu 95: Which of the following best represents an effective use of a...",
+    "question": "Which of the following best represents an effective use of a planner?",
+    "options": [
+      "A. Recording deadlines after they pass",
+      "B. Scheduling tasks without estimating duration",
+      "C. Planning tasks while considering priorities and time-on-task",
+      "D. Using it during exam weeks to cram knowledge in a short period of time"
+    ],
+    "answer": "C",
+    "correctWord": "C. Planning tasks while considering priorities and time-on-task",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_98",
+    "word": "Câu 98: A student spends hours on low-priority tasks. What is the is...",
+    "question": "A student spends hours on low-priority tasks. What is the issue?",
+    "options": [
+      "A. Good planning",
+      "B. High productivity",
+      "C. Poor prioritization",
+      "D. Effective scheduling"
+    ],
+    "answer": "C",
+    "correctWord": "C. Poor prioritization",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_131",
+    "word": "Câu 131: Which factor most strongly contributes to poor time manageme...",
+    "question": "Which factor most strongly contributes to poor time management?",
+    "options": [
+      "A. Lack of access to technology",
+      "B. Underestimating how long tasks will take",
+      "C. Too many group projects",
+      "D. Excessive instructor support"
+    ],
+    "answer": "B",
+    "correctWord": "B. Underestimating how long tasks will take",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_132",
+    "word": "Câu 132: What is one benefit of regularly evaluating your time manage...",
+    "question": "What is one benefit of regularly evaluating your time management habits?",
+    "options": [
+      "A. It guarantees higher grades",
+      "B. It allows continuous adjustment and improvement",
+      "C. It eliminates stress permanently",
+      "D. It reduces course workload"
+    ],
+    "answer": "B",
+    "correctWord": "B. It allows continuous adjustment and improvement",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_134",
+    "word": "Câu 134: What is a planner used for?",
+    "question": "What is a planner used for?",
+    "options": [
+      "A. Organizing time",
+      "B. Entertainment",
+      "C. Social media",
+      "D. Ignoring deadlines"
+    ],
+    "answer": "A",
+    "correctWord": "A. Organizing time",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_135",
+    "word": "Câu 135: What is procrastination?",
+    "question": "What is procrastination?",
+    "options": [
+      "A. Planning tasks",
+      "B. Delaying tasks",
+      "C. Completing tasks",
+      "D. Prioritizing tasks"
+    ],
+    "answer": "B",
+    "correctWord": "B. Delaying tasks",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_153",
+    "word": "Câu 153: Why is understanding why you are in college considered found...",
+    "question": "Why is understanding why you are in college considered foundational for success?",
+    "options": [
+      "A. It helps students choose easier and low-cost courses",
+      "B. It clarifies long-term goals and increases motivation",
+      "C. It allows students to reduce academic workload",
+      "D. It guarantees higher grades"
+    ],
+    "answer": "B",
+    "correctWord": "B. It clarifies long-term goals and increases motivation",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_181",
+    "word": "Câu 181: What is the first step in the five-step financial planning p...",
+    "question": "What is the first step in the five-step financial planning process?",
+    "options": [
+      "A. Monitor and Adjust the Plan",
+      "B. Implement the Plan",
+      "C. Develop Personal Goals",
+      "D. Write My Financial Plan"
+    ],
+    "answer": "C",
+    "correctWord": "C. Develop Personal Goals",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_182",
+    "word": "Câu 182: Which time management app uses boards to organize obligation...",
+    "question": "Which time management app uses boards to organize obligations and share them with collaborators?",
+    "options": [
+      "A. Toggl",
+      "B. Trello",
+      "C. Sticky Notes",
+      "D. Google Calendar"
+    ],
+    "answer": "B",
+    "correctWord": "B. Trello",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_183",
+    "word": "Câu 183: Which motivation strategy involves adopting the mindset that...",
+    "question": "Which motivation strategy involves adopting the mindset that you alone are responsible for your goals?",
+    "options": [
+      "A. Reward Yourself",
+      "B. Tap into Other People's Energy",
+      "C. Increase Personal Responsibility",
+      "D. Visualize the Results"
+    ],
+    "answer": "C",
+    "correctWord": "C. Increase Personal Responsibility",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_184",
+    "word": "Câu 184: Which motivation strategy suggests that moods and emotions c...",
+    "question": "Which motivation strategy suggests that moods and emotions can be influenced by those around you?",
+    "options": [
+      "A. Visualize the Results.",
+      "B. Tap into Other People's Energy.",
+      "C. Break the Goal Down.",
+      "D. Increase Personal Responsibility."
+    ],
+    "answer": "B",
+    "correctWord": "B. Tap into Other People's Energy.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_191",
+    "word": "Câu 191: In the SMART acronym, what does 'T' usually stand for?",
+    "question": "In the SMART acronym, what does 'T' usually stand for?",
+    "options": [
+      "A. Technical.",
+      "B. Tested.",
+      "C. Time-bound.",
+      "D. Theoretical."
+    ],
+    "answer": "C",
+    "correctWord": "C. Time-bound.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_206",
+    "word": "Câu 206: What is 'Monitoring' in the financial planning process?",
+    "question": "What is 'Monitoring' in the financial planning process?",
+    "options": [
+      "A. Continually tracking your income, spending, and progress toward your financial goals.",
+      "B. Watching the stock market daily.",
+      "C. Letting the bank manage all your money.",
+      "D. Setting a goal and never looking back."
+    ],
+    "answer": "A",
+    "correctWord": "A. Continually tracking your income, spending, and progress toward your financial goals.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_209",
+    "word": "Câu 209: What is the 'Occupational Outlook Handbook' used for?",
+    "question": "What is the 'Occupational Outlook Handbook' used for?",
+    "options": [
+      "A. To find the easiest classes in college.",
+      "B. To research requirements for careers and identify fields with good job growth prospects.",
+      "C. To apply for financial aid.",
+      "D. To track your daily schedule."
+    ],
+    "answer": "B",
+    "correctWord": "B. To research requirements for careers and identify fields with good job growth prospects.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_211",
+    "word": "Câu 211: What is one common reason people waste time during the day?",
+    "question": "What is one common reason people waste time during the day?",
+    "options": [
+      "A. They have too many entertainment apps on their phones.",
+      "B. Being constrained by schedules and lacking the awareness to effectively repurpose short \"waiting times\" (15-20 minutes).",
+      "C. They sleep more than 8 hours a night.",
+      "D. They spend too much time planning."
+    ],
+    "answer": "B",
+    "correctWord": "B. Being constrained by schedules and lacking the awareness to effectively repurpose short \"waiting times\" (15-20 minutes).",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_215",
+    "word": "Câu 215: What is the first step in identifying wasted time in a daily...",
+    "question": "What is the first step in identifying wasted time in a daily schedule?",
+    "options": [
+      "A. Asking a friend to track your movements",
+      "B. Immediately cutting out all leisure activities",
+      "C. Analyzing your schedule to identify areas where you can recapture and repurpose time",
+      "D. Downloading a complex time-management app"
+    ],
+    "answer": "C",
+    "correctWord": "C. Analyzing your schedule to identify areas where you can recapture and repurpose time",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_226",
+    "word": "Câu 226: How do academic advisors help with career exploration?",
+    "question": "How do academic advisors help with career exploration?",
+    "options": [
+      "A. They guarantee you a job right after graduation.",
+      "B. They help you set educational/career goals, choose a major, and connect you with career services.",
+      "C. They write your resume and cover letter for you.",
+      "D. They provide loans to pay for your tuition."
+    ],
+    "answer": "B",
+    "correctWord": "B. They help you set educational/career goals, choose a major, and connect you with career services.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_227",
+    "word": "Câu 227: How does breaking a goal down into manageable tasks aid in c...",
+    "question": "How does breaking a goal down into manageable tasks aid in completion?",
+    "options": [
+      "A. Accomplishing the whole is easier when each part is tackled individually",
+      "B. It makes the goal look larger and more impressive",
+      "C. It allows you to procrastinate on the smaller parts",
+      "D. It removes the need for a timeline"
+    ],
+    "answer": "A",
+    "correctWord": "A. Accomplishing the whole is easier when each part is tackled individually",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_230",
+    "word": "Câu 230: How can a balance sheet help a student in the future?",
+    "question": "How can a balance sheet help a student in the future?",
+    "options": [
+      "A. It helps balance their class schedule.",
+      "B. It provides a comprehensive picture (\"snapshot\") of assets and liabilities, allowing them to track financial progress at a point in time.",
+      "C. It automatically pays bills.",
+      "D. It prevents students from getting into debt."
+    ],
+    "answer": "B",
+    "correctWord": "B. It provides a comprehensive picture (\"snapshot\") of assets and liabilities, allowing them to track financial progress at a point in time.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_245",
+    "word": "Câu 245: When creating a highly effective daily task list, which of t...",
+    "question": "When creating a highly effective daily task list, which of the following practices is recommended for managing large and complex academic projects?",
+    "options": [
+      "A. You should schedule the entire project to be completed in one extended work period to ensure that your train of thought remains entirely uninterrupted",
+      "B. You should break the large project down into smaller, specific, and measurable tasks that can each be comfortably completed within a single hour or less",
+      "C. You should prioritize the project only after all of your minor, less urgent tasks have been completed to clear your mind of any daily distractions",
+      "D. You should leave the project off your daily task list entirely and instead rely strictly on the master semester schedule to track its eventual completion"
+    ],
+    "answer": "B",
+    "correctWord": "B. You should break the large project down into smaller, specific, and measurable tasks that can each be comfortably completed within a single hour or less",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_256",
+    "word": "Câu 256: Define the student term 'pulling an all-nighter'.",
+    "question": "Define the student term 'pulling an all-nighter'.",
+    "options": [
+      "A. Spending the entire night socializing with friends in the dorms",
+      "B. Going without sleep for the entire night to use that time to finish an assignment",
+      "C. Sleeping for more than 12 hours to catch up on rest",
+      "D. Working a late-night shift at a part-time job"
+    ],
+    "answer": "B",
+    "correctWord": "B. Going without sleep for the entire night to use that time to finish an assignment",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_257",
+    "word": "Câu 257: During the \"Storming\" phase of Tuckman's Team Development mo...",
+    "question": "During the \"Storming\" phase of Tuckman's Team Development model, what interpersonal and task-related behaviors are a team most likely to experience?",
+    "options": [
+      "A. The members establish base-level expectations, identify common similarities, develop initial trust, and depend heavily on the team leader for overall project direction",
+      "B. The members encounter anxiety regarding power and control, express differing opinions, challenge leadership, and potentially form small cliques or experience personal conflicts",
+      "C. The members successfully negotiate their specific roles, build strong mutual appreciation, establish open feedback channels, and commit to the shared goals of the team",
+      "D. The members operate extremely efficiently with high motivation, share leadership roles based on individual strengths, and take tremendous pride in their collective success"
+    ],
+    "answer": "B",
+    "correctWord": "B. The members encounter anxiety regarding power and control, express differing opinions, challenge leadership, and potentially form small cliques or experience personal conflicts",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_265",
+    "word": "Câu 265: In the context of financial goals, what does it mean to 'ali...",
+    "question": "In the context of financial goals, what does it mean to 'align personal and financial goals'?",
+    "options": [
+      "A. Recognizing that personal behaviors have financial consequences and planning your finances to support what you want to achieve in life.",
+      "B. Putting all your money into a savings account.",
+      "C. Borrowing as much money as possible to fund your personal lifestyle.",
+      "D. Choosing a career based solely on salary."
+    ],
+    "answer": "A",
+    "correctWord": "A. Recognizing that personal behaviors have financial consequences and planning your finances to support what you want to achieve in life.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_267",
+    "word": "Câu 267: In the 'Seven Ways to Stay Motivated', why is 'Rewarding You...",
+    "question": "In the 'Seven Ways to Stay Motivated', why is 'Rewarding Yourself' important?",
+    "options": [
+      "A. It allows you to spend more money.",
+      "B. Humans are motivated by rewards, so rewarding yourself for a job well done helps maintain motivation and avoid procrastination.",
+      "C. It replaces the need for setting long-term goals.",
+      "D. It guarantees you will get an A in the class."
+    ],
+    "answer": "B",
+    "correctWord": "B. Humans are motivated by rewards, so rewarding yourself for a job well done helps maintain motivation and avoid procrastination.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_269",
+    "word": "Câu 269: According to the text, what plays a central role in developi...",
+    "question": "According to the text, what plays a central role in developing an effective identity as an online learner?",
+    "options": [
+      "A. Time management skills",
+      "B. Information management",
+      "C. Social networking",
+      "D. Memorization techniques"
+    ],
+    "answer": "B",
+    "correctWord": "B. Information management",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_287",
+    "word": "Câu 287: Which action step is recommended to move from \"Norming\" to \"...",
+    "question": "Which action step is recommended to move from \"Norming\" to \"Performing\"?",
+    "options": [
+      "A. Define the team mission and goals",
+      "B. Encourage shared leadership and responsibility",
+      "C. Clarify roles during initial meetings",
+      "D. Actively reinforce positive behavior to reduce conflict"
+    ],
+    "answer": "B",
+    "correctWord": "B. Encourage shared leadership and responsibility",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_294",
+    "word": "Câu 294: In the \"Performing\" stage, teams demonstrate:",
+    "question": "In the \"Performing\" stage, teams demonstrate:",
+    "options": [
+      "A. High dependency on the leader",
+      "B. A strong \"we\" orientation and superior performance",
+      "C. Frequent unresolved conflicts",
+      "D. Unclear shared goals"
+    ],
+    "answer": "B",
+    "correctWord": "B. A strong \"we\" orientation and superior performance",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_297",
+    "word": "Câu 297: In the framework for working together, a \"shared vision\" is ...",
+    "question": "In the framework for working together, a \"shared vision\" is described as:",
+    "options": [
+      "A. A past-oriented summary of achievements",
+      "B. A future-oriented statement of purpose aligned with members' values",
+      "C. An administrative job description",
+      "D. A list of unrelated personal goals"
+    ],
+    "answer": "B",
+    "correctWord": "B. A future-oriented statement of purpose aligned with members' values",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_315",
+    "word": "Câu 315: What is the main purpose of creating a master semester sched...",
+    "question": "What is the main purpose of creating a master semester schedule?",
+    "options": [
+      "A. To focus only on daily tasks",
+      "B. To provide an \"overview at a glance\" of all academic requirements and stay on track",
+      "C. To replace weekly reviews completely",
+      "D. To avoid using course presentations"
+    ],
+    "answer": "B",
+    "correctWord": "B. To provide an \"overview at a glance\" of all academic requirements and stay on track",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_316",
+    "word": "Câu 316: In Step 1 of designing a semester schedule, what should the ...",
+    "question": "In Step 1 of designing a semester schedule, what should the table include?",
+    "options": [
+      "A. Only one column for all days",
+      "B. Seven columns for days of the week and one row for each week of the semester",
+      "C. Rows for months instead of weeks",
+      "D. No labels for days or weeks"
+    ],
+    "answer": "B",
+    "correctWord": "B. Seven columns for days of the week and one row for each week of the semester",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_317",
+    "word": "Câu 317: When populating the semester schedule (Step 3), what should ...",
+    "question": "When populating the semester schedule (Step 3), what should be recorded for graded assignments?",
+    "options": [
+      "A. Only the due date",
+      "B. The course name, task details, and its value (points/weight)",
+      "C. Personal opinions about the task",
+      "D. Only personal events"
+    ],
+    "answer": "B",
+    "correctWord": "B. The course name, task details, and its value (points/weight)",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_320",
+    "word": "Câu 320: What should be included in a weekly schedule to support well...",
+    "question": "What should be included in a weekly schedule to support well-being?",
+    "options": [
+      "A. No time for rest",
+      "B. Daily time for physical activity and time blocks for rest/recreation on weekends",
+      "C. Only academic tasks",
+      "D. Unlimited OPEN blocks without limits"
+    ],
+    "answer": "B",
+    "correctWord": "B. Daily time for physical activity and time blocks for rest/recreation on weekends",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_321",
+    "word": "Câu 321: The weekly review (WR) for each course is best scheduled:",
+    "question": "The weekly review (WR) for each course is best scheduled:",
+    "options": [
+      "A. At the beginning of the week",
+      "B. Preferably at the end of the week",
+      "C. Only once per month",
+      "D. During class time only"
+    ],
+    "answer": "B",
+    "correctWord": "B. Preferably at the end of the week",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_330",
+    "word": "Câu 330: Which tip is NOT recommended for participating effectively i...",
+    "question": "Which tip is NOT recommended for participating effectively in online forums?",
+    "options": [
+      "A. Establish a regular posting schedule",
+      "B. Use overly informal language to build rapport",
+      "C. Make explicit connections between posts and course content",
+      "D. Respond respectfully and constructively, even with alternative viewpoints"
+    ],
+    "answer": "B",
+    "correctWord": "B. Use overly informal language to build rapport",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "ssl_353",
+    "word": "Câu 353: Why are broad goals like \"work on research paper\" considered...",
+    "question": "Why are broad goals like \"work on research paper\" considered insufficient?",
+    "options": [
+      "A. They are too specific",
+      "B. They are insufficiently defined and may increase procrastination",
+      "C. They guarantee high grades",
+      "D. They require no planning"
+    ],
+    "answer": "B",
+    "correctWord": "B. They are insufficiently defined and may increase procrastination",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  }
+]

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Word, ExamQuestion } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { Clock, CheckCircle2, XCircle, AlertCircle, ArrowLeft, ArrowRight, Trophy, RotateCcw } from 'lucide-react';
+import { Clock, CheckCircle2, XCircle, AlertCircle, ArrowLeft, ArrowRight, Trophy, RotateCcw, HelpCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface ExamModeProps {
@@ -15,7 +15,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   const [questions, setQuestions] = useState<ExamQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [timeLeft, setTimeLeft] = useState(300); // 5 minutes (300s)
+  const [timeLeft, setTimeLeft] = useState(600); // 10 minutes (600s)
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Generate exam questions
@@ -24,34 +24,45 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
 
     const list: ExamQuestion[] = [];
     const pool = [...words].sort(() => 0.5 - Math.random());
-    const count = Math.min(pool.length, 10);
+    const count = Math.min(pool.length, 25);
 
     for (let i = 0; i < count; i++) {
       const target = pool[i];
-      const rawSentence =
-        target.advanced_example ||
-        target.simple_examples?.[0] ||
-        `The author's argument was remarkably ________, convincing even his fiercest critics.`;
 
-      const regex = new RegExp(`\\b${target.word}\\w*`, 'gi');
-      const sentence = rawSentence.replace(regex, '________');
+      if (target.question && target.options && target.options.length > 0) {
+        list.push({
+          id: `exam_q_${i}`,
+          sentence: target.question,
+          correctWord: target.correctWord || target.options[0],
+          options: target.options,
+          explanation: target.explanation || `Đáp án đúng: ${target.answer || ''}`,
+          answerKey: target.answer,
+        });
+      } else {
+        const rawSentence =
+          target.advanced_example ||
+          target.simple_examples?.[0] ||
+          `The author's argument was remarkably ________, convincing even his fiercest critics.`;
 
-      // Distractors
-      const distractors = words
-        .filter((w) => w.word.toLowerCase() !== target.word.toLowerCase())
-        .map((w) => w.word)
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 3);
+        const regex = new RegExp(`\\b${target.word}\\w*`, 'gi');
+        const sentence = rawSentence.replace(regex, '________');
 
-      const options = [target.word, ...distractors].sort(() => 0.5 - Math.random());
+        const distractors = words
+          .filter((w) => w.word.toLowerCase() !== target.word.toLowerCase())
+          .map((w) => w.word)
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 3);
 
-      list.push({
-        id: `exam_q_${i}`,
-        sentence,
-        correctWord: target.word,
-        options,
-        explanation: `${target.word} (${target.vi || target.ru || 'chính xác'})`,
-      });
+        const options = [target.word, ...distractors].sort(() => 0.5 - Math.random());
+
+        list.push({
+          id: `exam_q_${i}`,
+          sentence,
+          correctWord: target.word,
+          options,
+          explanation: `${target.word} (${target.vi || target.ru || 'chính xác'})`,
+        });
+      }
     }
 
     setQuestions(list);
@@ -75,14 +86,18 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     return () => clearInterval(timer);
   }, [timeLeft, isSubmitted]);
 
+  const isAnswerCorrect = (userAns: string | undefined, q: ExamQuestion) => {
+    if (!userAns) return false;
+    return userAns.trim().toLowerCase() === q.correctWord.trim().toLowerCase();
+  };
+
   const handleSubmit = () => {
     setIsSubmitted(true);
 
-    // Calculate score
     let correctCount = 0;
     questions.forEach((q, idx) => {
       const ans = answers[idx];
-      const isCorrect = ans?.toLowerCase() === q.correctWord.toLowerCase();
+      const isCorrect = isAnswerCorrect(ans, q);
       if (isCorrect) correctCount++;
       StorageEngine.updateWordProgress(q.correctWord, isCorrect ? 5 : 1);
     });
@@ -113,7 +128,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   if (isSubmitted) {
     let correctCount = 0;
     questions.forEach((q, idx) => {
-      if (answers[idx]?.toLowerCase() === q.correctWord.toLowerCase()) correctCount++;
+      if (isAnswerCorrect(answers[idx], q)) correctCount++;
     });
     const percent = Math.round((correctCount / questions.length) * 100);
 
@@ -125,10 +140,10 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
             <Trophy className="w-8 h-8" />
           </div>
           <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2">
-            Kết Quả Bài Thi Thử SAT
+            Kết Quả Bài Thi Thử
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
-            Đánh giá độ nhạy từ vựng & khả năng suy luận ngữ cảnh học thuật
+            Đánh giá kiến thức & mức độ nắm vững các chủ đề trọng tâm
           </p>
 
           <div className="flex justify-center items-center gap-8 mb-6">
@@ -160,12 +175,12 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
               onClick={() => {
                 setIsSubmitted(false);
                 setAnswers({});
-                setTimeLeft(300);
+                setTimeLeft(600);
                 setCurrentIndex(0);
               }}
               className="py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all shadow-glow flex items-center gap-2"
             >
-              <RotateCcw className="w-4 h-4" /> Thi lại đề mới
+              <RotateCcw className="w-4 h-4" /> Làm lại đề thi
             </button>
             <button
               onClick={onExit}
@@ -183,7 +198,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
         <div className="space-y-4">
           {questions.map((q, idx) => {
             const userAns = answers[idx];
-            const isCorrect = userAns?.toLowerCase() === q.correctWord.toLowerCase();
+            const isCorrect = isAnswerCorrect(userAns, q);
             return (
               <div
                 key={idx}
@@ -208,11 +223,11 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
                   )}
                 </div>
 
-                <p className="text-base text-slate-900 dark:text-slate-100 mb-3">
-                  &quot;{q.sentence}&quot;
+                <p className="text-base font-medium text-slate-900 dark:text-slate-100 mb-3">
+                  {q.sentence}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4 text-xs font-medium">
+                <div className="space-y-1.5 text-xs font-medium pt-2 border-t border-slate-200/60 dark:border-slate-800/80">
                   <div>
                     <span className="text-slate-400">Bạn chọn: </span>
                     <span
@@ -229,6 +244,11 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
                       {q.correctWord}
                     </span>
                   </div>
+                  {q.explanation && (
+                    <p className="text-slate-500 dark:text-slate-400 italic mt-1">
+                      Giải thích: {q.explanation}
+                    </p>
+                  )}
                 </div>
               </div>
             );
@@ -247,7 +267,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       <div className="flex items-center justify-between mb-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
-            Chế độ Thi Thử SAT (Timed Exam)
+            Chế độ Thi Thử (Timed Exam)
           </span>
           <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
             Câu hỏi {currentIndex + 1} / {questions.length}
@@ -255,10 +275,9 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
         </div>
 
         <div className="flex items-center gap-3">
-          {/* Timer Badge */}
           <div
             className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-mono font-bold ${
-              timeLeft < 60
+              timeLeft < 120
                 ? 'bg-rose-500/20 text-rose-500 animate-pulse'
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
             }`}
@@ -277,7 +296,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       </div>
 
       {/* Question Navigator Grid */}
-      <div className="flex flex-wrap gap-2 mb-6 p-3 rounded-2xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800">
+      <div className="flex flex-wrap gap-1.5 mb-6 p-3 rounded-2xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 max-h-32 overflow-y-auto">
         {questions.map((_, idx) => {
           const isAnswered = Boolean(answers[idx]);
           const isCurrent = idx === currentIndex;
@@ -300,17 +319,18 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       </div>
 
       {/* Question Card */}
-      <div className="p-8 rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-6">
-        <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
-          Chọn đáp án điền vào ngữ cảnh học thuật
-        </p>
-        <p className="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white leading-relaxed">
-          &quot;{currentQ.sentence}&quot;
+      <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-6">
+        <div className="flex items-center gap-2 mb-2 text-xs font-bold text-indigo-500 uppercase tracking-wider">
+          <HelpCircle className="w-4 h-4" />
+          <span>Câu hỏi {currentIndex + 1}</span>
+        </div>
+        <p className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
+          {currentQ.sentence}
         </p>
       </div>
 
       {/* Choices */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+      <div className="space-y-3 mb-6">
         {currentQ.options.map((opt, idx) => {
           const isChosen = answers[currentIndex] === opt;
           return (
@@ -319,15 +339,15 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
               onClick={() => {
                 setAnswers((prev) => ({ ...prev, [currentIndex]: opt }));
               }}
-              className={`p-4 rounded-2xl font-bold border text-left transition-all flex items-center justify-between ${
+              className={`w-full p-4 rounded-2xl font-semibold border text-left transition-all flex items-center justify-between ${
                 isChosen
-                  ? 'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-500 text-indigo-700 dark:text-indigo-300 shadow-glow'
+                  ? 'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-500 text-indigo-700 dark:text-indigo-300 shadow-glow font-bold'
                   : 'bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-slate-400'
               }`}
             >
               <div className="flex items-center gap-3">
                 <span
-                  className={`w-6 h-6 rounded-lg text-xs flex items-center justify-center font-mono ${
+                  className={`w-7 h-7 rounded-xl text-xs flex items-center justify-center font-mono font-bold shrink-0 ${
                     isChosen
                       ? 'bg-indigo-600 text-white'
                       : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
@@ -335,7 +355,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
                 >
                   {String.fromCharCode(65 + idx)}
                 </span>
-                <span className="text-base">{opt}</span>
+                <span className="text-sm sm:text-base">{opt}</span>
               </div>
             </button>
           );

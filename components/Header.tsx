@@ -16,10 +16,8 @@ export default function Header() {
   useEffect(() => {
     setStreak(StorageEngine.getStreak());
 
-    // Check system or saved theme
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const shouldBeDark = savedTheme ? savedTheme === 'dark' : true; // Default dark
+    const shouldBeDark = savedTheme ? savedTheme === 'dark' : true;
     setIsDark(shouldBeDark);
     if (shouldBeDark) {
       document.documentElement.classList.add('dark');
@@ -42,11 +40,17 @@ export default function Header() {
 
   const getQuizName = () => {
     if (activeCustomQuiz) return activeCustomQuiz.name;
+    if (selectedQuizPath.includes('cea201_all')) return 'CEA201 - Full (347 câu)';
+    if (selectedQuizPath.includes('cea_')) return 'CEA201 Chuyên Đề';
+    if (selectedQuizPath.includes('ssl101_all')) return 'SSL101 - Full (370 câu)';
+    if (selectedQuizPath.includes('ssl_')) return 'SSL101 Chuyên Đề';
+    if (selectedQuizPath.includes('prf192_all')) return 'PRF192 - C (253 câu)';
+    if (selectedQuizPath.includes('prf_')) return 'PRF192 Chuyên Đề';
     if (selectedQuizPath.includes('vi-en-ielts')) return 'IELTS/SAT Tiếng Việt';
     if (selectedQuizPath.includes('1.json')) return 'SAT Core Set 1';
     if (selectedQuizPath.includes('2.json')) return 'SAT Advanced Set 2';
     if (selectedQuizPath.includes('archaic.json')) return 'Archaic Words';
-    return 'Custom Quiz';
+    return 'Bộ Đề Tuỳ Chọn';
   };
 
   return (
@@ -72,7 +76,7 @@ export default function Header() {
             className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60 hover:bg-indigo-100 transition-colors"
           >
             <Layers className="w-3.5 h-3.5" />
-            <span className="max-w-[140px] truncate">{getQuizName()}</span>
+            <span className="max-w-[160px] truncate">{getQuizName()}</span>
           </Link>
         </div>
 
@@ -96,7 +100,7 @@ export default function Header() {
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Bộ đề & AI
+            Kho Đề Thi & Chuyên Đề
           </Link>
           <Link
             href="/library"
@@ -106,7 +110,7 @@ export default function Header() {
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Từ vựng
+            Ngân hàng câu hỏi
           </Link>
           <Link
             href="/profile"

@@ -1,0 +1,1331 @@
+[
+  {
+    "id": "ssl_1",
+    "word": "Câu 1: Which is a characteristic of analytical thinking?",
+    "question": "Which is a characteristic of analytical thinking?",
+    "options": [
+      "A. Guessing outcomes",
+      "B. Ignoring evidence",
+      "C. Verifying sources",
+      "D. Avoiding comparison"
+    ],
+    "answer": "C",
+    "correctWord": "C. Verifying sources",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_4",
+    "word": "Câu 4: Which habit most weakens critical thinking?",
+    "question": "Which habit most weakens critical thinking?",
+    "options": [
+      "A. Seeking evidence",
+      "B. Reflecting on assumptions and preconceptions",
+      "C. Accepting information without evaluation",
+      "D. Comparing multiple sources"
+    ],
+    "answer": "C",
+    "correctWord": "C. Accepting information without evaluation",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_5",
+    "word": "Câu 5: Which Bloom's level requires learners to break information i...",
+    "question": "Which Bloom's level requires learners to break information into parts?",
+    "options": [
+      "A. Understand",
+      "B. Apply",
+      "C. Analyze",
+      "D. Remember"
+    ],
+    "answer": "C",
+    "correctWord": "C. Analyze",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_6",
+    "word": "Câu 6: Which behavior most strongly limits creative thinking?",
+    "question": "Which behavior most strongly limits creative thinking?",
+    "options": [
+      "A. Questioning assumptions",
+      "B. Fear of making mistakes",
+      "C. Generating multiple solutions",
+      "D. Seeking alternative perspectives"
+    ],
+    "answer": "B",
+    "correctWord": "B. Fear of making mistakes",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_8",
+    "word": "Câu 8: Which step typically comes first in effective problem-solvin...",
+    "question": "Which step typically comes first in effective problem-solving?",
+    "options": [
+      "A. Selecting a solution",
+      "B. Clearly defining the problem",
+      "C. Evaluating outcomes",
+      "D. Implementing a plan immediately"
+    ],
+    "answer": "B",
+    "correctWord": "B. Clearly defining the problem",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_9",
+    "word": "Câu 9: Analytical thinking is especially useful when students need ...",
+    "question": "Analytical thinking is especially useful when students need to:",
+    "options": [
+      "A. Memorize large amounts of information",
+      "B. Understand complex systems or arguments",
+      "C. Express personal opinions creatively",
+      "D. Work under strict time pressure"
+    ],
+    "answer": "B",
+    "correctWord": "B. Understand complex systems or arguments",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_10",
+    "word": "Câu 10: A student accepts an online claim because it aligns with the...",
+    "question": "A student accepts an online claim because it aligns with their beliefs. Which critical thinking skill is missing?",
+    "options": [
+      "A. Creativity and problem solving",
+      "B. Logical reasoning",
+      "C. Evaluation of evidence",
+      "D. Time management"
+    ],
+    "answer": "C",
+    "correctWord": "C. Evaluation of evidence",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_11",
+    "word": "Câu 11: Analytical thinking involves:",
+    "question": "Analytical thinking involves:",
+    "options": [
+      "A. Trusting intuition",
+      "B. Breaking a whole into parts",
+      "C. Following emotions",
+      "D. Avoiding structure"
+    ],
+    "answer": "B",
+    "correctWord": "B. Breaking a whole into parts",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_12",
+    "word": "Câu 12: According to Long & Magerko (2020), AI literacy enables indi...",
+    "question": "According to Long & Magerko (2020), AI literacy enables individuals to:",
+    "options": [
+      "A. Fully automate decision-making",
+      "B. Critically evaluate AI technologies",
+      "C. Eliminate bias in all AI systems",
+      "D. Replace teachers with AI"
+    ],
+    "answer": "B",
+    "correctWord": "B. Critically evaluate AI technologies",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_13",
+    "word": "Câu 13: Critical thinking involves:",
+    "question": "Critical thinking involves:",
+    "options": [
+      "A. Guessing outcomes based on personal experiences",
+      "B. Weighing options and data",
+      "C. Emotional reactions",
+      "D. Blind trust"
+    ],
+    "answer": "B",
+    "correctWord": "B. Weighing options and data",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_14",
+    "word": "Câu 14: Creative thinking involves:",
+    "question": "Creative thinking involves:",
+    "options": [
+      "A. Memorization",
+      "B. Generating original ideas",
+      "C. Repeating tradition and exploring art",
+      "D. Avoiding risk"
+    ],
+    "answer": "B",
+    "correctWord": "B. Generating original ideas",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_18",
+    "word": "Câu 18: In the Plan-Monitor-Evaluate cycle, monitoring mainly focuse...",
+    "question": "In the Plan-Monitor-Evaluate cycle, monitoring mainly focuses on:",
+    "options": [
+      "A. Setting learning goals",
+      "B. Checking understanding during learning",
+      "C. Grading performance",
+      "D. Comparing results with peers"
+    ],
+    "answer": "B",
+    "correctWord": "B. Checking understanding during learning",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_19",
+    "word": "Câu 19: Successful students typically view challenges as:",
+    "question": "Successful students typically view challenges as:",
+    "options": [
+      "A. Signs they chose the wrong major",
+      "B. Evidence of instructor bias",
+      "C. Opportunities for growth and adjustment",
+      "D. Reasons to withdraw from courses"
+    ],
+    "answer": "C",
+    "correctWord": "C. Opportunities for growth and adjustment",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_31",
+    "word": "Câu 31: Which of the following is a key step in analytical thinking?",
+    "question": "Which of the following is a key step in analytical thinking?",
+    "options": [
+      "A. Accepting information at face value and let it be there",
+      "B. Separating facts from assumptions before drawing conclusions",
+      "C. Generating as many ideas as possible regardless the quality of each idea",
+      "D. Prioritizing emotional responses"
+    ],
+    "answer": "B",
+    "correctWord": "B. Separating facts from assumptions before drawing conclusions",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_34",
+    "word": "Câu 34: Which question best helps evaluate the credibility of a sour...",
+    "question": "Which question best helps evaluate the credibility of a source?",
+    "options": [
+      "A. Is the information easy to read and interpret?",
+      "B. Does the author have relevant expertise?",
+      "C. Is the source visually appealing?",
+      "D. Does the source confirm personal opinions?"
+    ],
+    "answer": "B",
+    "correctWord": "B. Does the author have relevant expertise?",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_38",
+    "word": "Câu 38: Which action best represents effective problem-solving?",
+    "question": "Which action best represents effective problem-solving?",
+    "options": [
+      "A. Selecting the first solution that seems reasonable",
+      "B. Ignoring alternative approaches",
+      "C. Evaluating possible solutions before implementation",
+      "D. Avoiding feedback after solving the problem"
+    ],
+    "answer": "C",
+    "correctWord": "C. Evaluating possible solutions before implementation",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_39",
+    "word": "Câu 39: Which step typically comes first in effective problem-solvin...",
+    "question": "Which step typically comes first in effective problem-solving?",
+    "options": [
+      "A. Choosing a solution",
+      "B. Identifying and defining the problem clearly",
+      "C. Evaluating results based on criteria",
+      "D. Implementing a strategy using the power of teamwork"
+    ],
+    "answer": "B",
+    "correctWord": "B. Identifying and defining the problem clearly",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_40",
+    "word": "Câu 40: Which question best reflects a critical thinking mindset?",
+    "question": "Which question best reflects a critical thinking mindset?",
+    "options": [
+      "A. \"Do I agree with this?\"",
+      "B. \"Is this information popular?\"",
+      "C. \"What evidence supports this claim?\"",
+      "D. \"Who benefits from this idea emotionally?\""
+    ],
+    "answer": "C",
+    "correctWord": "C. \"What evidence supports this claim?\"",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_41",
+    "word": "Câu 41: Which activity best demonstrates analytical thinking?",
+    "question": "Which activity best demonstrates analytical thinking?",
+    "options": [
+      "A. Brainstorming multiple possible essay topics quickly and productively",
+      "B. Identifying relevant data while ignoring unnecessary details in a problem",
+      "C. Agreeing with the most popular interpretation of an issue",
+      "D. Responding emotionally to complex situations"
+    ],
+    "answer": "B",
+    "correctWord": "B. Identifying relevant data while ignoring unnecessary details in a problem",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_45",
+    "word": "Câu 45: Which condition best supports creative thinking?",
+    "question": "Which condition best supports creative thinking?",
+    "options": [
+      "A. Strict adherence to one correct answer",
+      "B. Openness to risk and experimentation",
+      "C. Avoidance of uncertainty",
+      "D. Dependence on authority"
+    ],
+    "answer": "B",
+    "correctWord": "B. Openness to risk and experimentation",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_46",
+    "word": "Câu 46: Which situation would most clearly violate ethical guideline...",
+    "question": "Which situation would most clearly violate ethical guidelines when using AI for assessment?",
+    "options": [
+      "A. Using AI to grade multiple-choice quizzes",
+      "B. Using AI to provide grammar suggestions",
+      "C. Using AI to evaluate student work without students' consent or awareness",
+      "D. Using AI to help manage gradebooks"
+    ],
+    "answer": "C",
+    "correctWord": "C. Using AI to evaluate student work without students' consent or awareness",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_47",
+    "word": "Câu 47: Why does the author warn against confusing opinion with evid...",
+    "question": "Why does the author warn against confusing opinion with evidence?",
+    "options": [
+      "A. Opinions are always incorrect and being more effected by emotions",
+      "B. Evidence-based reasoning leads to stronger conclusions",
+      "C. Opinions slow down decision-making",
+      "D. Evidence is difficult to interpret"
+    ],
+    "answer": "B",
+    "correctWord": "B. Evidence-based reasoning leads to stronger conclusions",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_48",
+    "word": "Câu 48: Why does Chapter 7 emphasize defining the problem accurately...",
+    "question": "Why does Chapter 7 emphasize defining the problem accurately?",
+    "options": [
+      "A. It reduces the number of possible solutions",
+      "B. Incorrect problem definition leads to ineffective solutions",
+      "C. It saves time in implementation",
+      "D. It limits creative thinking"
+    ],
+    "answer": "B",
+    "correctWord": "B. Incorrect problem definition leads to ineffective solutions",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_53",
+    "word": "Câu 53: Why is it important to evaluate bias in sources?",
+    "question": "Why is it important to evaluate bias in sources?",
+    "options": [
+      "A. Bias invalidates all arguments and ideas",
+      "B. Bias helps identify the strongest position to debate",
+      "C. Understanding bias helps interpret information critically",
+      "D. Biased sources should never be used"
+    ],
+    "answer": "C",
+    "correctWord": "C. Understanding bias helps interpret information critically",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_57",
+    "word": "Câu 57: Why is the process in analytical thinking important?",
+    "question": "Why is the process in analytical thinking important?",
+    "options": [
+      "A. Because outcomes matter more than understanding",
+      "B. Because understanding how parts connect leads to better conclusions",
+      "C. Because analytical thinking is slower than other thinking types",
+      "D. Because it reduces creativity"
+    ],
+    "answer": "B",
+    "correctWord": "B. Because understanding how parts connect leads to better conclusions",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_62",
+    "word": "Câu 62: Why should encourage combining creative and analytical think...",
+    "question": "Why should encourage combining creative and analytical thinking be encouraged?",
+    "options": [
+      "A. They are interchangeable skills and it is possible to replace each other",
+      "B. Creativity generates ideas, while analysis refines them",
+      "C. Creativity replaces logic",
+      "D. Analysis limits imagination"
+    ],
+    "answer": "B",
+    "correctWord": "B. Creativity generates ideas, while analysis refines them",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_63",
+    "word": "Câu 63: According to the American Library Association (2011), digita...",
+    "question": "According to the American Library Association (2011), digital literacy primarily refers to the ability to:",
+    "options": [
+      "A. Program artificial intelligence systems to get the most productive information system",
+      "B. Use information and communication technologies to find, evaluate, create, and communicate information",
+      "C. Detect AI-generated content",
+      "D. Replace human judgment with algorithms"
+    ],
+    "answer": "B",
+    "correctWord": "B. Use information and communication technologies to find, evaluate, create, and communicate information",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_64",
+    "word": "Câu 64: According to the chapter, creativity is:",
+    "question": "According to the chapter, creativity is:",
+    "options": [
+      "A. A talent only some people are born with",
+      "B. Limited to artistic disciplines",
+      "C. A skill that can be developed and practiced",
+      "D. Incompatible with analytical thinking"
+    ],
+    "answer": "C",
+    "correctWord": "C. A skill that can be developed and practiced",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_68",
+    "word": "Câu 68: A student struggles with word problems in math because they ...",
+    "question": "A student struggles with word problems in math because they focus on every detail. Based on analytical thinking principles, what should they do first?",
+    "options": [
+      "A. Practice more similar problems without reflection and revision",
+      "B. Identify essential information and ignore irrelevant details",
+      "C. Memorize formulas more frequently",
+      "D. Seek help only after failing exams"
+    ],
+    "answer": "B",
+    "correctWord": "B. Identify essential information and ignore irrelevant details",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_69",
+    "word": "Câu 69: A student fails an exam and immediately blames lack of abili...",
+    "question": "A student fails an exam and immediately blames lack of ability. From a problem-solving perspective, what should the student do instead?",
+    "options": [
+      "A. Accept failure and move on, hope for better results",
+      "B. Clearly identify contributing factors and possible changes",
+      "C. Change majors immediately",
+      "D. Increase study time without reflection and teamwork"
+    ],
+    "answer": "B",
+    "correctWord": "B. Clearly identify contributing factors and possible changes",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_70",
+    "word": "Câu 70: According to the text, a major concern for graduate students...",
+    "question": "According to the text, a major concern for graduate students regarding AI grading tools is that:",
+    "options": [
+      "A. AI grading is smarter than human grading and could overshade human's ability in grading",
+      "B. AI systems may use their work as training data, affecting future publication",
+      "C. AI cannot understand complex arguments",
+      "D. AI always produces biased feedback"
+    ],
+    "answer": "B",
+    "correctWord": "B. AI systems may use their work as training data, affecting future publication",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_71",
+    "word": "Câu 71: A student avoids sharing unconventional ideas during group d...",
+    "question": "A student avoids sharing unconventional ideas during group discussions. From a creative thinking perspective, what is the main consequence?",
+    "options": [
+      "A. Improved efficiency and diverse forms of idea",
+      "B. Reduced originality and idea generation",
+      "C. Stronger analytical reasoning",
+      "D. Clearer communication"
+    ],
+    "answer": "B",
+    "correctWord": "B. Reduced originality and idea generation",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_74",
+    "word": "Câu 74: According to Chapter 7, analytical thinking primarily involv...",
+    "question": "According to Chapter 7, analytical thinking primarily involves:",
+    "options": [
+      "A. Generating original ideas through imagination and brainstorming techniques",
+      "B. Breaking information into components to understand relationships and patterns",
+      "C. Evaluating arguments based on personal beliefs and values",
+      "D. Solving problems through trial and error without structured steps"
+    ],
+    "answer": "B",
+    "correctWord": "B. Breaking information into components to understand relationships and patterns",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_75",
+    "word": "Câu 75: A student finds an article that supports their argument but ...",
+    "question": "A student finds an article that supports their argument but is written by an anonymous author on a personal blog. Based on Chapter 7, what should the student do first?",
+    "options": [
+      "A. Use the article because it supports the claim",
+      "B. Evaluate the author's credibility and evidence provided",
+      "C. Replace it with any academic article because journal articles are qualified",
+      "D. Ignore online sources entirely"
+    ],
+    "answer": "B",
+    "correctWord": "B. Evaluate the author's credibility and evidence provided",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_76",
+    "word": "Câu 76: Creative thinking is described in as the ability to:",
+    "question": "Creative thinking is described in as the ability to:",
+    "options": [
+      "A. Follow established rules precisely",
+      "B. Produce original ideas by making new connections",
+      "C. Evaluate information objectively and systematically",
+      "D. Solve problems using fixed procedures"
+    ],
+    "answer": "B",
+    "correctWord": "B. Produce original ideas by making new connections",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_77",
+    "word": "Câu 77: Chapter 7 emphasizes that critical thinking requires student...",
+    "question": "Chapter 7 emphasizes that critical thinking requires students to:",
+    "options": [
+      "A. Avoid questioning authority and forms of powers",
+      "B. Consider multiple perspectives before judging",
+      "C. Focus on speed rather than accuracy",
+      "D. Rely on intuition"
+    ],
+    "answer": "B",
+    "correctWord": "B. Consider multiple perspectives before judging",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_79",
+    "word": "Câu 79: Digital literacy is described as important because it:",
+    "question": "Digital literacy is described as important because it:",
+    "options": [
+      "A. Is only useful for students in technology majors",
+      "B. Helps individuals critically evaluate online content",
+      "C. Removes the need for critical thinking and metacognition",
+      "D. Guarantees employment"
+    ],
+    "answer": "B",
+    "correctWord": "B. Helps individuals critically evaluate online content",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_82",
+    "word": "Câu 82: Information literacy is defined as the ability to:",
+    "question": "Information literacy is defined as the ability to:",
+    "options": [
+      "A. Memorize academic content efficiently",
+      "B. Locate, evaluate, and use information effectively",
+      "C. Rely on digital sources for research and study",
+      "D. Avoid biased information entirely and consistently"
+    ],
+    "answer": "B",
+    "correctWord": "B. Locate, evaluate, and use information effectively",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_86",
+    "word": "Câu 86: Problem-solving is best described as:",
+    "question": "Problem-solving is best described as:",
+    "options": [
+      "A. Finding the quickest answer to a difficulty",
+      "B. Applying a structured process to address challenges",
+      "C. Relying on intuition and experience to address normal issues",
+      "D. Avoiding situations that seem complex"
+    ],
+    "answer": "B",
+    "correctWord": "B. Applying a structured process to address challenges",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_88",
+    "word": "Câu 88: Problem-solving is described as:",
+    "question": "Problem-solving is described as:",
+    "options": [
+      "A. Finding the fastest solution available based on",
+      "A. I suggestion",
+      "B. Applying a structured process to address challenges",
+      "C. Using intuition to make decisions",
+      "D. Avoiding complex situations"
+    ],
+    "answer": "B",
+    "correctWord": "B. Applying a structured process to address challenges",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_91",
+    "word": "Câu 91: Employers value analytical thinkers because they:",
+    "question": "Employers value analytical thinkers because they:",
+    "options": [
+      "A. Work alone confidently and work with AI effectively",
+      "B. Use logical thinking to solve issues",
+      "C. Avoid workplace conflict",
+      "D. Prefer routine tasks"
+    ],
+    "answer": "B",
+    "correctWord": "B. Use logical thinking to solve issues",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_92",
+    "word": "Câu 92: Analytical thinking is commonly used when:",
+    "question": "Analytical thinking is commonly used when:",
+    "options": [
+      "A. Writing poetry only",
+      "B. Solving complex problems",
+      "C. Avoiding decisions",
+      "D. Relaxing"
+    ],
+    "answer": "B",
+    "correctWord": "B. Solving complex problems",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_93",
+    "word": "Câu 93: Amazon is significantly successful business based in analyti...",
+    "question": "Amazon is significantly successful business based in analytical thinking, which of the following is a sign of applying analytical thinking?",
+    "options": [
+      "A. Intuition",
+      "B. Hyper organization",
+      "C. Random processes",
+      "D. Individual memory"
+    ],
+    "answer": "B",
+    "correctWord": "B. Hyper organization",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_101",
+    "word": "Câu 101: Why is problem-solving linked with other thinking skills?",
+    "question": "Why is problem-solving linked with other thinking skills?",
+    "options": [
+      "A. Problem-solving replaces analytical thinking and creative thinking",
+      "B. Effective problem-solving integrates multiple types of thinking",
+      "C. Creative thinking interferes with problem-solving",
+      "D. Critical thinking is unnecessary"
+    ],
+    "answer": "B",
+    "correctWord": "B. Effective problem-solving integrates multiple types of thinking",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_102",
+    "word": "Câu 102: Reviewing results after solving a problem helps students:",
+    "question": "Reviewing results after solving a problem helps students:",
+    "options": [
+      "A. Assign blame to less responsible person",
+      "B. Improve future problem-solving efforts",
+      "C. Prove effort was sufficient to solve any problem",
+      "D. Avoid repeating tasks"
+    ],
+    "answer": "B",
+    "correctWord": "B. Improve future problem-solving efforts",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_103",
+    "word": "Câu 103: Why is flexibility important in problem-solving?",
+    "question": "Why is flexibility important in problem-solving?",
+    "options": [
+      "A. Problems rarely change once identified",
+      "B. Initial solutions may not fully address the problem",
+      "C. Flexibility reduces accountability",
+      "D. It saves time in decision-making"
+    ],
+    "answer": "B",
+    "correctWord": "B. Initial solutions may not fully address the problem",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_113",
+    "word": "Câu 113: A student studies extensively but keeps failing quizzes. Fro...",
+    "question": "A student studies extensively but keeps failing quizzes. From a metacognitive perspective, what is the most likely issue?",
+    "options": [
+      "A. Lack of motivation",
+      "B. Poor time management",
+      "C. Ineffective study strategies not being evaluated",
+      "D. Insufficient intelligence"
+    ],
+    "answer": "C",
+    "correctWord": "C. Ineffective study strategies not being evaluated",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_123",
+    "word": "Câu 123: Recognizing personal bias is part of:",
+    "question": "Recognizing personal bias is part of:",
+    "options": [
+      "A. Problem-solving",
+      "B. Critical thinking",
+      "C. Information literacy",
+      "D. Intuition"
+    ],
+    "answer": "B",
+    "correctWord": "B. Critical thinking",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_127",
+    "word": "Câu 127: Analytical thinking can help prevent:",
+    "question": "Analytical thinking can help prevent:",
+    "options": [
+      "A. Emotional thinking",
+      "B. Workplace inefficiency",
+      "C. Creativity and overthinking",
+      "D. Collaboration and communication"
+    ],
+    "answer": "B",
+    "correctWord": "B. Workplace inefficiency",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_128",
+    "word": "Câu 128: Component parts refer to:",
+    "question": "Component parts refer to:",
+    "options": [
+      "A. Final conclusions",
+      "B. Emotional reactions",
+      "C. Separate elements of a problem",
+      "D. Examine assumptions and bias that influence thinking"
+    ],
+    "answer": "C",
+    "correctWord": "C. Separate elements of a problem",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_129",
+    "word": "Câu 129: Which skill supports analytical thinking?",
+    "question": "Which skill supports analytical thinking?",
+    "options": [
+      "A. Information literacy",
+      "B. Ignoring data",
+      "C. Emotional reaction and intuition",
+      "D. Guesswork"
+    ],
+    "answer": "A",
+    "correctWord": "A. Information literacy",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_138",
+    "word": "Câu 138: Information literacy is defined as the ability to:",
+    "question": "Information literacy is defined as the ability to:",
+    "options": [
+      "A. Memorize academic content efficiently",
+      "B. Locate, evaluate, and use information effectively",
+      "C. Rely on digital sources for research and study",
+      "D. Avoid biased information entirely and consistently"
+    ],
+    "answer": "B",
+    "correctWord": "B. Locate, evaluate, and use information effectively",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_140",
+    "word": "Câu 140: Which step typically comes first in effective problem-solvin...",
+    "question": "Which step typically comes first in effective problem-solving?",
+    "options": [
+      "A. Choosing a solution",
+      "B. Identifying and defining the problem clearly",
+      "C. Evaluating results based on criteria",
+      "D. Implementing a strategy using the power of teamwork"
+    ],
+    "answer": "B",
+    "correctWord": "B. Identifying and defining the problem clearly",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_143",
+    "word": "Câu 143: Which statement best reflects the chapter's view of problem-...",
+    "question": "Which statement best reflects the chapter's view of problem-solving outcomes?",
+    "options": [
+      "A. A solution must work perfectly the first time",
+      "B. Solutions should be evaluated and adjusted if needed",
+      "C. Once a solution is chosen, it should not change because of the financial riks",
+      "D. Outcomes matter more than process"
+    ],
+    "answer": "B",
+    "correctWord": "B. Solutions should be evaluated and adjusted if needed",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_158",
+    "word": "Câu 158: If a student combines two theories to form a new model, this...",
+    "question": "If a student combines two theories to form a new model, this reflects:",
+    "options": [
+      "A. Simple recall",
+      "B. Creative synthesis",
+      "C. Memorization",
+      "D. Avoidance"
+    ],
+    "answer": "B",
+    "correctWord": "B. Creative synthesis",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_159",
+    "word": "Câu 159: Which condition best supports creative thinking?",
+    "question": "Which condition best supports creative thinking?",
+    "options": [
+      "A. Strict adherence to one correct answer",
+      "B. Openness to risk and experimentation",
+      "C. Avoidance of uncertainty",
+      "D. Dependence on authority"
+    ],
+    "answer": "B",
+    "correctWord": "B. Openness to risk and experimentation",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_167",
+    "word": "Câu 167: According to the text, a major concern for graduate students...",
+    "question": "According to the text, a major concern for graduate students regarding AI grading tools is that:",
+    "options": [
+      "A. AI grading is smarter than human grading and could overshadow human's ability in grading",
+      "B. AI systems may use their work as training data, affecting future publication",
+      "C. AI cannot understand complex arguments",
+      "D. AI always produces biased feedback"
+    ],
+    "answer": "B",
+    "correctWord": "B. AI systems may use their work as training data, affecting future publication",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_171",
+    "word": "Câu 171: Critical thinking forces you to determine:",
+    "question": "Critical thinking forces you to determine:",
+    "options": [
+      "A. Actual situation",
+      "B. By emotion",
+      "C. Preference and research",
+      "D. Habit"
+    ],
+    "answer": "A",
+    "correctWord": "A. Actual situation",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_175",
+    "word": "Câu 175: Developing a board game from literature shows:",
+    "question": "Developing a board game from literature shows:",
+    "options": [
+      "A. Recall from the best childhood experiences",
+      "B. Memorization",
+      "C. Creative transformation",
+      "D. Imitation from best practices"
+    ],
+    "answer": "C",
+    "correctWord": "C. Creative transformation",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_177",
+    "word": "Câu 177: What risk is associated with uploading dense readings to AI ...",
+    "question": "What risk is associated with uploading dense readings to AI for summaries without reading them?",
+    "options": [
+      "A. Reduced chances to practicing English",
+      "B. Missing critical thinking required for memory formation",
+      "C. Violating institutional AI policies automatically",
+      "D. Overloading working memory and risk to pay more for AI premium versions"
+    ],
+    "answer": "B",
+    "correctWord": "B. Missing critical thinking required for memory formation",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_186",
+    "word": "Câu 186: Which level of the revised Bloom's cognitive taxonomy is con...",
+    "question": "Which level of the revised Bloom's cognitive taxonomy is considered the apex (highest level)?",
+    "options": [
+      "A. Remembering",
+      "B. Analyzing",
+      "C. Evaluating",
+      "D. Creating"
+    ],
+    "answer": "D",
+    "correctWord": "D. Creating",
+    "explanation": "Đáp án: D.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_187",
+    "word": "Câu 187: Which type of thinking involves generating original and unco...",
+    "question": "Which type of thinking involves generating original and unconventional ideas?",
+    "options": [
+      "A. Analytical Thinking",
+      "B. Creative Thinking",
+      "C. Critical Thinking",
+      "D. Metacognition"
+    ],
+    "answer": "B",
+    "correctWord": "B. Creative Thinking",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_190",
+    "word": "Câu 190: In the SIFT method used to evaluate the accuracy of informat...",
+    "question": "In the SIFT method used to evaluate the accuracy of information on the internet, what does the letter \"I\" stand for?",
+    "options": [
+      "A. Identify the initial author.",
+      "B. Investigate the source.",
+      "C. Imitate the main claim.",
+      "D. Inform the general public"
+    ],
+    "answer": "B",
+    "correctWord": "B. Investigate the source.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_195",
+    "word": "Câu 195: During a class, what type of questions should a student ask ...",
+    "question": "During a class, what type of questions should a student ask to engage in critical thinking?",
+    "options": [
+      "A. Questions about the format of the final exam",
+      "B. Questions that distract the professor to use up class time",
+      "C. Questions for clarification on areas that are confusing",
+      "D. All of the above"
+    ],
+    "answer": "C",
+    "correctWord": "C. Questions for clarification on areas that are confusing",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_205",
+    "word": "Câu 205: What is one way a nurse might use 'Creative Thinking' on the...",
+    "question": "What is one way a nurse might use 'Creative Thinking' on the job?",
+    "options": [
+      "A. By ignoring hospital safety protocols.",
+      "B. By prescribing untested medication.",
+      "C. By finding an original and effective way to convey patient care information to other medical team members.",
+      "D. By singing to the patient instead of giving an injection."
+    ],
+    "answer": "C",
+    "correctWord": "C. By finding an original and effective way to convey patient care information to other medical team members.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_224",
+    "word": "Câu 224: Which of the following best describes the \"Monitoring\" phase...",
+    "question": "Which of the following best describes the \"Monitoring\" phase in the Plan-Monitor-Evaluate model of metacognition?",
+    "options": [
+      "A. You are continuously assessing what you have already learned, identifying what you do not yet know, and determining if your current study strategies are working effectively",
+      "B. You are reflecting on how well you met your overall learning objectives after completely finishing a unit of study or receiving feedback from a recent course assignment",
+      "C. You are deciding exactly what material you need to learn for an upcoming exam and selecting the specific active learning strategies you will use to master that material",
+      "D. You are reviewing your final exam answers to compare them with the instructor's suggested answers to see which key components were entirely missed during the test"
+    ],
+    "answer": "A",
+    "correctWord": "A. You are continuously assessing what you have already learned, identifying what you do not yet know, and determining if your current study strategies are working effectively",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_225",
+    "word": "Câu 225: How does 'Critical Thinking' assist a student in identifying...",
+    "question": "How does 'Critical Thinking' assist a student in identifying exam material?",
+    "options": [
+      "A. By asking the professor to reveal the test questions",
+      "B. By using data (like careful class notes) and reasoning to deduce what core content the professor might include on the exam.",
+      "C. By blindly guessing the questions.",
+      "D. By only studying the hardest questions."
+    ],
+    "answer": "B",
+    "correctWord": "B. By using data (like careful class notes) and reasoning to deduce what core content the professor might include on the exam.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_229",
+    "word": "Câu 229: How does 'Metacognition' improve problem-solving?",
+    "question": "How does 'Metacognition' improve problem-solving?",
+    "options": [
+      "A. By increasing your reading speed.",
+      "B. By practicing self-awareness, helping you recognize knowledge gaps and adjust problem-solving strategies promptly.",
+      "C. By relying strictly on emotions to make decisions.",
+      "D. By helping you rote-memorize faster."
+    ],
+    "answer": "B",
+    "correctWord": "B. By practicing self-awareness, helping you recognize knowledge gaps and adjust problem-solving strategies promptly.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_248",
+    "word": "Câu 248: How does 'Analytical Thinking' differ from 'Creative Thinkin...",
+    "question": "How does 'Analytical Thinking' differ from 'Creative Thinking'?",
+    "options": [
+      "A. Analytical thinking is only for math; creative thinking is only for art",
+      "B. Analytical thinking involves systematically breaking a problem into component parts for analysis, while creative thinking involves generating original and unconventional ideas",
+      "C. Analytical thinking is optional; creative thinking is mandatory",
+      "D. Analytical thinking creates clutter; creative thinking organizes it"
+    ],
+    "answer": "B",
+    "correctWord": "B. Analytical thinking involves systematically breaking a problem into component parts for analysis, while creative thinking involves generating original and unconventional ideas",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_253",
+    "word": "Câu 253: According to Bloom's Taxonomy, which of the following activi...",
+    "question": "According to Bloom's Taxonomy, which of the following activities best demonstrates a student operating at the \"Analyze\" level of the cognitive domain?",
+    "options": [
+      "A. The student interprets the meaning of new information by translating it entirely into their own words and linking it to their personal background knowledge",
+      "B. The student takes information apart to explore relationships, continuously asks \"why,\" and examines how various independent components interact to form a complete system",
+      "C. The student uses the knowledge they have previously acquired to perform required tasks and resolve similar problems within a completely new practical situation",
+      "D. The student integrates various pieces of familiar information together to generate a completely new product, perspective, or theoretical framework from the available data"
+    ],
+    "answer": "B",
+    "correctWord": "B. The student takes information apart to explore relationships, continuously asks \"why,\" and examines how various independent components interact to form a complete system",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_260",
+    "word": "Câu 260: During the \"Norming\" stage of Tuckman's Team Development mod...",
+    "question": "During the \"Norming\" stage of Tuckman's Team Development model, what characteristic behaviors and group dynamics are the team members most likely to exhibit?",
+    "options": [
+      "A. The team members begin to experience high anxiety regarding power and control, express differing opinions, challenge leadership, and potentially form exclusive cliques",
+      "B. The team members operate extremely efficiently with high motivation, share leadership roles based on individual strengths, and take tremendous pride in collective success",
+      "C. The team members establish base-level expectations, identify common similarities, develop initial trust, and depend heavily on the designated team leader for direction",
+      "D. The team members reach consensus on roles and problem-solving processes, build mutual trust, provide objective feedback, and commit strongly to shared collective goals."
+    ],
+    "answer": "D",
+    "correctWord": "D. The team members reach consensus on roles and problem-solving processes, build mutual trust, provide objective feedback, and commit strongly to shared collective goals.",
+    "explanation": "Đáp án: D.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_263",
+    "word": "Câu 263: In the context of AI-assisted educational assessments, how i...",
+    "question": "In the context of AI-assisted educational assessments, how is \"Criterion Validity\" formally defined by the scientific evaluation community?",
+    "options": [
+      "A. It assesses whether the AI tool truly measures the underlying theoretical concept or specific academic trait that it was originally intended to measure",
+      "B. It examines whether the content of the AI assessment comprehensively covers the entire mathematical or literary range of the subject being evaluated",
+      "C. It evaluates whether the overall user interface of the AI tool appears friendly and intuitively aligned with the superficial goals of the standardized test",
+      "D. It involves directly comparing the specific results generated by the AI assessment against other proven, established measures or actual real-world outcomes"
+    ],
+    "answer": "D",
+    "correctWord": "D. It involves directly comparing the specific results generated by the AI assessment against other proven, established measures or actual real-world outcomes",
+    "explanation": "Đáp án: D.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_268",
+    "word": "Câu 268: Within the Community of Inquiry (CoI) model, what is the pri...",
+    "question": "Within the Community of Inquiry (CoI) model, what is the primary function of \"Social Presence\" in an online learning environment?",
+    "options": [
+      "A. It requires the instructor to curate the course content carefully and design meaningful activities that will lead students toward professional and intellectual development",
+      "B. It demands that learners maintain a continuous process of critical thinking to construct new knowledge through direct interaction with the provided course materials",
+      "C. It creates a safe and supportive communication environment where students feel trusted enough to express their personal ideas and collaborate with their classmates",
+      "D. It involves the instructor directly answering student questions during office hours and challenging the students' assumptions to help them grow in their given field"
+    ],
+    "answer": "C",
+    "correctWord": "C. It creates a safe and supportive communication environment where students feel trusted enough to express their personal ideas and collaborate with their classmates",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_275",
+    "word": "Câu 275: In the Plan-Monitor-Evaluate model, the \"Monitoring\" stage p...",
+    "question": "In the Plan-Monitor-Evaluate model, the \"Monitoring\" stage primarily involves:",
+    "options": [
+      "A. Setting initial learning goals",
+      "B. Asking \"How am I doing at learning this?\"",
+      "C. Reflecting after receiving final grades",
+      "D. Choosing which course to enroll in"
+    ],
+    "answer": "B",
+    "correctWord": "B. Asking \"How am I doing at learning this?\"",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_276",
+    "word": "Câu 276: Which question is an example from the \"Evaluating\" stage of ...",
+    "question": "Which question is an example from the \"Evaluating\" stage of the Plan-Monitor-Evaluate model?",
+    "options": [
+      "A. What do I need to learn?",
+      "B. How am I going to learn the material?",
+      "C. Did I learn the material effectively?",
+      "D. What remains unclear right now?"
+    ],
+    "answer": "C",
+    "correctWord": "C. Did I learn the material effectively?",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_277",
+    "word": "Câu 277: According to Bloom's Taxonomy, which level comes immediately...",
+    "question": "According to Bloom's Taxonomy, which level comes immediately after \"Understanding\"?",
+    "options": [
+      "A. Remembering",
+      "B. Applying",
+      "C. Analyzing",
+      "D. Creating"
+    ],
+    "answer": "B",
+    "correctWord": "B. Applying",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_278",
+    "word": "Câu 278: A question such as \"What is the definition of global warming...",
+    "question": "A question such as \"What is the definition of global warming?\" belongs to which level of Bloom's Taxonomy?",
+    "options": [
+      "A. Understanding",
+      "B. Applying",
+      "C. Remembering",
+      "D. Evaluating"
+    ],
+    "answer": "C",
+    "correctWord": "C. Remembering",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_279",
+    "word": "Câu 279: Which type of question is associated with the \"Analyze\" leve...",
+    "question": "Which type of question is associated with the \"Analyze\" level of Bloom's Taxonomy?",
+    "options": [
+      "A. What is the definition of…?",
+      "B. What is the relationship between… and …?",
+      "C. What are my own examples of…?",
+      "D. What will happen if temperatures continue to rise?"
+    ],
+    "answer": "B",
+    "correctWord": "B. What is the relationship between… and …?",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_280",
+    "word": "Câu 280: An \"Evaluate\" level question typically includes judgment usi...",
+    "question": "An \"Evaluate\" level question typically includes judgment using criteria such as:",
+    "options": [
+      "A. What are the steps to…?",
+      "B. Effective or ineffective? Why?",
+      "C. How does the process occur?",
+      "D. Who discovered…?"
+    ],
+    "answer": "B",
+    "correctWord": "B. Effective or ineffective? Why?",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_281",
+    "word": "Câu 281: The \"Create\" level of Bloom's Taxonomy involves:",
+    "question": "The \"Create\" level of Bloom's Taxonomy involves:",
+    "options": [
+      "A. Simply listing facts",
+      "B. Generating new ideas or establishing new connections",
+      "C. Explaining in your own words",
+      "D. Comparing two theories"
+    ],
+    "answer": "B",
+    "correctWord": "B. Generating new ideas or establishing new connections",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_289",
+    "word": "Câu 289: Cognitive presence in a learning community primarily involve...",
+    "question": "Cognitive presence in a learning community primarily involves:",
+    "options": [
+      "A. Using emoticons to express emotions",
+      "B. An ongoing process of critical thinking and constructing new knowledge",
+      "C. Focusing only on individual exams",
+      "D. Avoiding discussions with peers"
+    ],
+    "answer": "B",
+    "correctWord": "B. An ongoing process of critical thinking and constructing new knowledge",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_325",
+    "word": "Câu 325: At the end of the day, what should be done with incomplete t...",
+    "question": "At the end of the day, what should be done with incomplete tasks on the to-do list?",
+    "options": [
+      "A. Ignore them permanently",
+      "B. Evaluate, reschedule to another day if necessary, or remove if no longer important",
+      "C. Blame external factors only",
+      "D. Double the workload tomorrow"
+    ],
+    "answer": "B",
+    "correctWord": "B. Evaluate, reschedule to another day if necessary, or remove if no longer important",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "ssl_336",
+    "word": "Câu 336: Which of the following is a key benefit of maintaining an eP...",
+    "question": "Which of the following is a key benefit of maintaining an ePortfolio?",
+    "options": [
+      "A. It replaces the need for any course assignments",
+      "B. It provides documented evidence of learning for future study programs or employment",
+      "C. It focuses only on weekly grades",
+      "D. It eliminates the need for reflection"
+    ],
+    "answer": "B",
+    "correctWord": "B. It provides documented evidence of learning for future study programs or employment",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  }
+]

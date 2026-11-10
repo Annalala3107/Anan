@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Word, DrillQuestion } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { SpeechService } from '@/lib/speech';
-import { Volume2, ArrowRight, CheckCircle2, XCircle, Zap, RotateCcw, Trophy } from 'lucide-react';
+import { Volume2, ArrowRight, CheckCircle2, XCircle, Zap, RotateCcw, Trophy, HelpCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface DrillModeProps {
@@ -20,39 +19,52 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   const [streak, setStreak] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  // Generate 15-20 questions from words
+  // Generate drill questions (handles both MCQ questions & vocabulary cloze)
   useEffect(() => {
     if (!words || words.length === 0) return;
 
     const list: DrillQuestion[] = [];
     const pool = [...words].sort(() => 0.5 - Math.random());
-    const count = Math.min(pool.length, 15);
+    const count = Math.min(pool.length, 20);
 
     for (let i = 0; i < count; i++) {
       const target = pool[i];
-      const rawSentence =
-        target.simple_examples?.[0] ||
-        target.advanced_example ||
-        `The committee praised his ________ approach to the complex challenge.`;
 
-      const regex = new RegExp(`\\b${target.word}\\w*`, 'gi');
-      const clozeSentence = rawSentence.replace(regex, '________');
+      // Case 1: Target is an MCQ question
+      if (target.question && target.options && target.options.length > 0) {
+        list.push({
+          sentence: target.question,
+          correctWord: target.correctWord || target.options[0],
+          options: target.options,
+          explanation: target.explanation || `Đáp án chính xác: ${target.answer || ''}`,
+          questionNumber: target.id || i + 1,
+        });
+      } else {
+        // Case 2: Target is a Vocabulary word
+        const rawSentence =
+          target.simple_examples?.[0] ||
+          target.advanced_example ||
+          `The committee praised his ________ approach to the complex challenge.`;
 
-      // Generate 3 distractors
-      const otherWords = words
-        .filter((w) => w.word.toLowerCase() !== target.word.toLowerCase())
-        .map((w) => w.word)
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 3);
+        const regex = new RegExp(`\\b${target.word}\\w*`, 'gi');
+        const clozeSentence = rawSentence.replace(regex, '________');
 
-      const options = [target.word, ...otherWords].sort(() => 0.5 - Math.random());
+        const otherWords = words
+          .filter((w) => w.word.toLowerCase() !== target.word.toLowerCase())
+          .map((w) => w.word)
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 3);
 
-      list.push({
-        sentence: clozeSentence,
-        correctWord: target.word,
-        options,
-        explanation: `${target.word} (${target.vi || target.ru || 'chính xác'}) phù hợp nhất với ngữ cảnh câu này.`,
-      });
+        const options = [target.word, ...otherWords].sort(() => 0.5 - Math.random());
+
+        list.push({
+          sentence: clozeSentence,
+          correctWord: target.word,
+          options,
+          explanation: `${target.word} (${target.vi || target.ru || 'chính xác'}) phù hợp nhất với ngữ cảnh câu này.`,
+          questionNumber: i + 1,
+        });
+      }
     }
 
     setQuestions(list);
@@ -90,16 +102,20 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   if (!currentQ) {
     return (
       <div className="text-center py-20 text-slate-500">
-        Đang khởi tạo bài luyện tập (Drill)...
+        Đang chuẩn bị câu hỏi luyện tập (Drill)...
       </div>
     );
   }
+
+  const isOptionCorrect = (opt: string) => {
+    return opt.trim().toLowerCase() === currentQ.correctWord.trim().toLowerCase();
+  };
 
   const handleSelect = (choice: string) => {
     if (selectedWord) return;
     setSelectedWord(choice);
 
-    const isCorrect = choice.toLowerCase() === currentQ.correctWord.toLowerCase();
+    const isCorrect = isOptionCorrect(choice);
     if (isCorrect) {
       setScore((s) => s + 1);
       setStreak((s) => s + 1);
@@ -176,16 +192,14 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   }
 
   const isAnswered = Boolean(selectedWord);
-  const isCorrectAnswer =
-    selectedWord?.toLowerCase() === currentQ.correctWord.toLowerCase();
 
   return (
-    <div className="max-w-2xl mx-auto py-6 px-4">
+    <div className="max-w-3xl mx-auto py-6 px-4">
       {/* Top Bar */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-            Luyện ngữ cảnh (Drill)
+            Luyện Ngữ Cảnh & Trắc Nghiệm (Drill)
           </span>
           {streak >= 3 && (
             <span className="flex items-center gap-1 text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 animate-pulse">
@@ -216,32 +230,33 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       </div>
 
       {/* Question Card */}
-      <div className="p-8 rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-6">
-        <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
-          Điền từ chính xác vào chỗ trống
-        </p>
-        <p className="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white leading-relaxed">
-          &quot;{currentQ.sentence}&quot;
+      <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-6">
+        <div className="flex items-center gap-2 mb-2 text-xs font-bold text-indigo-500 uppercase tracking-wider">
+          <HelpCircle className="w-4 h-4" />
+          <span>Câu hỏi {currentIndex + 1}</span>
+        </div>
+        <p className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
+          {currentQ.sentence}
         </p>
       </div>
 
       {/* 4 Choices */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+      <div className="space-y-3 mb-6">
         {currentQ.options.map((opt, idx) => {
           const isSelected = selectedWord === opt;
-          const isTarget = opt.toLowerCase() === currentQ.correctWord.toLowerCase();
+          const isTarget = isOptionCorrect(opt);
           let style =
-            'p-4 rounded-2xl font-bold border text-left transition-all flex items-center justify-between ';
+            'w-full p-4 rounded-2xl font-semibold border text-left transition-all flex items-center justify-between ';
 
           if (!selectedWord) {
             style +=
-              'bg-white dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-slate-900 dark:text-white hover:scale-[1.01]';
+              'bg-white dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-slate-900 dark:text-white hover:scale-[1.005]';
           } else if (isTarget) {
             style +=
-              'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-700 dark:text-emerald-300 shadow-glow-success';
+              'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-700 dark:text-emerald-300 shadow-glow-success font-bold';
           } else if (isSelected && !isTarget) {
             style +=
-              'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-700 dark:text-rose-300';
+              'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-700 dark:text-rose-300 font-bold';
           } else {
             style +=
               'opacity-40 bg-slate-100 dark:bg-slate-800 border-transparent text-slate-500';
@@ -254,17 +269,17 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
               onClick={() => handleSelect(opt)}
               className={style}
             >
-              <div className="flex items-center gap-2.5">
-                <span className="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-700/80 text-xs flex items-center justify-center font-mono text-slate-500 dark:text-slate-400">
-                  {idx + 1}
+              <div className="flex items-center gap-3">
+                <span className="w-7 h-7 rounded-xl bg-slate-100 dark:bg-slate-700/80 text-xs flex items-center justify-center font-mono font-bold text-slate-600 dark:text-slate-300 shrink-0">
+                  {String.fromCharCode(65 + idx)}
                 </span>
-                <span className="text-base">{opt}</span>
+                <span className="text-sm sm:text-base">{opt}</span>
               </div>
               {isAnswered && isTarget && (
-                <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 ml-2" />
               )}
               {isAnswered && isSelected && !isTarget && (
-                <XCircle className="w-5 h-5 text-rose-500" />
+                <XCircle className="w-5 h-5 text-rose-500 shrink-0 ml-2" />
               )}
             </button>
           );
@@ -275,9 +290,9 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       {isAnswered && (
         <div className="p-4 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/40 border border-indigo-200/80 dark:border-indigo-900/60 mb-6 animate-slide-up">
           <p className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">
-            Giải thích chi tiết
+            Giải thích chi tiết & Đáp án
           </p>
-          <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
+          <p className="text-sm font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
             {currentQ.explanation}
           </p>
         </div>

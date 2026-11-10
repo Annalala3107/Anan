@@ -1,0 +1,642 @@
+[
+  {
+    "id": "ssl_15",
+    "word": "Câu 15: Cognitive presence in the Community of Inquiry refers mainly...",
+    "question": "Cognitive presence in the Community of Inquiry refers mainly to:",
+    "options": [
+      "A. Emotional engagement",
+      "B. Knowledge construction through thinking",
+      "C. Instructor authority",
+      "D. Social interaction"
+    ],
+    "answer": "B",
+    "correctWord": "B. Knowledge construction through thinking",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_25",
+    "word": "Câu 25: Which of the following is identified as a common barrier to ...",
+    "question": "Which of the following is identified as a common barrier to effective communication?",
+    "options": [
+      "A. Clear purpose and using technologies",
+      "B. Cultural awareness and prejudice",
+      "C. Assumptions and misinterpretations",
+      "D. Active listening strategies"
+    ],
+    "answer": "C",
+    "correctWord": "C. Assumptions and misinterpretations",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_33",
+    "word": "Câu 33: Which factor most strongly affects how a message is interpre...",
+    "question": "Which factor most strongly affects how a message is interpreted?",
+    "options": [
+      "A. The length of the message",
+      "B. The context in which communication occurs",
+      "C. The communication technology used such as social media",
+      "D. The sender's educational background and attitude"
+    ],
+    "answer": "B",
+    "correctWord": "B. The context in which communication occurs",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_54",
+    "word": "Câu 54: Why is intentional choice of communication method important?",
+    "question": "Why is intentional choice of communication method important?",
+    "options": [
+      "A. Different methods require different levels of formality and clarity",
+      "B. Face-to-face communication is always superior and productive",
+      "C. Digital communication reduces misunderstandings",
+      "D. Informal methods save time"
+    ],
+    "answer": "A",
+    "correctWord": "A. Different methods require different levels of formality and clarity",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_67",
+    "word": "Câu 67: A student sends an emotional email to a professor late at ni...",
+    "question": "A student sends an emotional email to a professor late at night and receives a negative response. Based on Chapter 8, what principle was most likely violated?",
+    "options": [
+      "A. Choosing the fastest communication method",
+      "B. Considering tone, purpose, and audience before sending",
+      "C. Using complete sentences and formal grammar",
+      "D. Providing sufficient background information"
+    ],
+    "answer": "B",
+    "correctWord": "B. Considering tone, purpose, and audience before sending",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_78",
+    "word": "Câu 78: Communication is best described as:",
+    "question": "Communication is best described as:",
+    "options": [
+      "A. A simple exchange of spoken words",
+      "B. A one-way transfer of information and signals from sender to receiver",
+      "C. A complex process influenced by context, purpose, and participants",
+      "D. A skill used primarily in professional environments"
+    ],
+    "answer": "C",
+    "correctWord": "C. A complex process influenced by context, purpose, and participants",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_97",
+    "word": "Câu 97: What tool helps prioritize tasks?",
+    "question": "What tool helps prioritize tasks?",
+    "options": [
+      "A. Calendar only",
+      "B. Priority list",
+      "C. Social media",
+      "D. Email inbox"
+    ],
+    "answer": "B",
+    "correctWord": "B. Priority list",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_104",
+    "word": "Câu 104: What is clarity in communication?",
+    "question": "What is clarity in communication?",
+    "options": [
+      "A. Long and complex sentences",
+      "B. Beautiful and eloquent language",
+      "C. Easy understanding",
+      "D. Repetition and emphasizing"
+    ],
+    "answer": "C",
+    "correctWord": "C. Easy understanding",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_126",
+    "word": "Câu 126: What is nonverbal communication?",
+    "question": "What is nonverbal communication?",
+    "options": [
+      "A. Spoken words",
+      "B. Body language",
+      "C. Written text",
+      "D. Grammar rules"
+    ],
+    "answer": "B",
+    "correctWord": "B. Body language",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_144",
+    "word": "Câu 144: What is effective communication?",
+    "question": "What is effective communication?",
+    "options": [
+      "A. Speaking loudly and emotionally",
+      "B. Clear message exchange",
+      "C. Talking more to express yourself",
+      "D. Ignoring feedback"
+    ],
+    "answer": "B",
+    "correctWord": "B. Clear message exchange",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_145",
+    "word": "Câu 145: Communication is best described as:",
+    "question": "Communication is best described as:",
+    "options": [
+      "A. A simple exchange of spoken words",
+      "B. A one-way transfer of information and signals from sender to receiver",
+      "C. A complex process influenced by context, purpose, and participants",
+      "D. A skill used primarily in professional environments"
+    ],
+    "answer": "C",
+    "correctWord": "C. A complex process influenced by context, purpose, and participants",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_146",
+    "word": "Câu 146: Digital literacy enhances employability mainly because it:",
+    "question": "Digital literacy enhances employability mainly because it:",
+    "options": [
+      "A. Guarantees higher salaries",
+      "B. Enables adaptation to technological change",
+      "C. Eliminates workplace stress and enhance mental health",
+      "D. Replaces teamwork skills"
+    ],
+    "answer": "B",
+    "correctWord": "B. Enables adaptation to technological change",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_162",
+    "word": "Câu 162: Which situation BEST illustrates weak social presence in an ...",
+    "question": "Which situation BEST illustrates weak social presence in an online course?",
+    "options": [
+      "A. Students debate ideas respectfully",
+      "B. Learners avoid responding to peers",
+      "C. Instructors provide timely feedback",
+      "D. Groups set clear communication rules"
+    ],
+    "answer": "B",
+    "correctWord": "B. Learners avoid responding to peers",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_176",
+    "word": "Câu 176: What is the primary role of a rubric in assignments?",
+    "question": "What is the primary role of a rubric in assignments?",
+    "options": [
+      "A. To limit creativity",
+      "B. To replace instructor's guideline and comments",
+      "C. To explain grading criteria clearly",
+      "D. To rank students"
+    ],
+    "answer": "C",
+    "correctWord": "C. To explain grading criteria clearly",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_234",
+    "word": "Câu 234: How can a student most effectively utilize a grading rubric ...",
+    "question": "How can a student most effectively utilize a grading rubric to improve their assignment before submitting the final version to their online instructor?",
+    "options": [
+      "A. The student should completely ignore the rubric until after receiving the final grade, using it only to argue for additional points if the instructor made a mistake",
+      "B. The student should put themselves in the place of the instructor and grade their own drafted assignment according to the rubric criteria to identify missing elements",
+      "C. The student should copy the exact phrasing found within the highest scoring column of the rubric and paste it directly into their assignment to guarantee top marks",
+      "D. The student should only read the rubric after finishing the entire writing process to avoid feeling overwhelmed or restricted by the instructor's specific guidelines"
+    ],
+    "answer": "B",
+    "correctWord": "B. The student should put themselves in the place of the instructor and grade their own drafted assignment according to the rubric criteria to identify missing elements",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_247",
+    "word": "Câu 247: When sending an email to an online instructor, which of the ...",
+    "question": "When sending an email to an online instructor, which of the following practices is recommended to ensure the communication is professional and effective?",
+    "options": [
+      "A. You should include an informative subject line, use a formal professional greeting, and break your message into multiple paragraphs to ensure optimal readability",
+      "B. You should keep the message as short as humanly possible, omitting any greetings or sign-offs, to ensure you do not waste the instructor's highly valuable time",
+      "C. You should expect a response within a few hours and send an immediate follow-up email on the exact same day if you have not yet received the requested information",
+      "D. You should write in a casual and conversational tone, using abbreviations and slang, to quickly build a friendly, relaxed, and approachable relationship with them"
+    ],
+    "answer": "A",
+    "correctWord": "A. You should include an informative subject line, use a formal professional greeting, and break your message into multiple paragraphs to ensure optimal readability",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_252",
+    "word": "Câu 252: According to the guidelines for giving positive feedback to ...",
+    "question": "According to the guidelines for giving positive feedback to a team member, which of the following approaches is the most appropriate and effective?",
+    "options": [
+      "A. You should completely avoid asking for permission before delivering the feedback, because waiting might cause the individual to forget the specific negative event",
+      "B. You should compare the team member's performance directly to other highly successful students in the group so they have a clear and measurable standard to aim for",
+      "C. You should begin and end the discussion by highlighting what is working well, focus on specific behaviors that can be changed, and avoid using absolutes like \"never.\"",
+      "D. You should point out everything that went wrong all at once, using generalized statements about their overall attitude to ensure they understand the severe impact"
+    ],
+    "answer": "C",
+    "correctWord": "C. You should begin and end the discussion by highlighting what is working well, focus on specific behaviors that can be changed, and avoid using absolutes like \"never.\"",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_284",
+    "word": "Câu 284: According to the text, which stage of team development is of...",
+    "question": "According to the text, which stage of team development is often misunderstood as dysfunction but is actually a normal part?",
+    "options": [
+      "A. Forming",
+      "B. Storming",
+      "C. Norming",
+      "D. Performing"
+    ],
+    "answer": "B",
+    "correctWord": "B. Storming",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_285",
+    "word": "Câu 285: In the \"Forming\" stage, which characteristic is NOT typicall...",
+    "question": "In the \"Forming\" stage, which characteristic is NOT typically present?",
+    "options": [
+      "A. Low commitment to the team",
+      "B. Unclear roles and responsibilities",
+      "C. High trust among members",
+      "D. Lack of group history"
+    ],
+    "answer": "C",
+    "correctWord": "C. High trust among members",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_286",
+    "word": "Câu 286: During the \"Storming\" stage, what tends to increase among te...",
+    "question": "During the \"Storming\" stage, what tends to increase among team members?",
+    "options": [
+      "A. Trust and appreciation",
+      "B. Conflict and competition",
+      "C. Efficient operations",
+      "D. Shared leadership"
+    ],
+    "answer": "B",
+    "correctWord": "B. Conflict and competition",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_288",
+    "word": "Câu 288: In the Community of Inquiry framework, what are the two key ...",
+    "question": "In the Community of Inquiry framework, what are the two key roles learners assume?",
+    "options": [
+      "A. Teaching presence and content creation",
+      "B. Maintaining cognitive presence and developing social presence",
+      "C. Instructor guidance and peer competition",
+      "D. Memorization and individual testing"
+    ],
+    "answer": "B",
+    "correctWord": "B. Maintaining cognitive presence and developing social presence",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_290",
+    "word": "Câu 290: Social presence is supported online by strategies such as:",
+    "question": "Social presence is supported online by strategies such as:",
+    "options": [
+      "A. Ignoring group work",
+      "B. Using emoticons to convey nuances and emotions",
+      "C. Limiting communication to the instructor",
+      "D. Focusing solely on task completion"
+    ],
+    "answer": "B",
+    "correctWord": "B. Using emoticons to convey nuances and emotions",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_291",
+    "word": "Câu 291: Which of the following is NOT one of the five basic elements...",
+    "question": "Which of the following is NOT one of the five basic elements of effective teamwork mentioned in the text?",
+    "options": [
+      "A. Positive interdependence",
+      "B. Individual accountability",
+      "C. Group processing",
+      "D. Financial incentives"
+    ],
+    "answer": "D",
+    "correctWord": "D. Financial incentives",
+    "explanation": "Đáp án: D.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_295",
+    "word": "Câu 295: When planning for successful teamwork, what should teams do ...",
+    "question": "When planning for successful teamwork, what should teams do in the \"Forming\" stage regarding interpersonal tasks?",
+    "options": [
+      "A. Express differences aggressively",
+      "B. Initiate contact, build connections, and develop trust",
+      "C. Delegate all tasks immediately",
+      "D. Focus only on project deadlines"
+    ],
+    "answer": "B",
+    "correctWord": "B. Initiate contact, build connections, and develop trust",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_296",
+    "word": "Câu 296: A team charter, as mentioned for effective communication, ty...",
+    "question": "A team charter, as mentioned for effective communication, typically includes commitments to:",
+    "options": [
+      "A. Blame individuals for problems",
+      "B. Respect, active listening, and constructive feedback",
+      "C. Avoid conflict at all costs",
+      "D. Work independently without discussion"
+    ],
+    "answer": "B",
+    "correctWord": "B. Respect, active listening, and constructive feedback",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_298",
+    "word": "Câu 298: Continuous improvement in teamwork is achieved through:",
+    "question": "Continuous improvement in teamwork is achieved through:",
+    "options": [
+      "A. Large, drastic changes only",
+      "B. Small, incremental changes with planning, implementation, and verification",
+      "C. Avoiding any evaluation of progress",
+      "D. Focusing solely on individual rewards"
+    ],
+    "answer": "B",
+    "correctWord": "B. Small, incremental changes with planning, implementation, and verification",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_302",
+    "word": "Câu 302: The text suggests using email to contact instructors because...",
+    "question": "The text suggests using email to contact instructors because it is considered:",
+    "options": [
+      "A. An informal and casual tool",
+      "B. A professional communication tool",
+      "C. Unnecessary in online courses",
+      "D. Only for submitting late assignments"
+    ],
+    "answer": "B",
+    "correctWord": "B. A professional communication tool",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_303",
+    "word": "Câu 303: What is the main benefit of carefully reviewing instructor f...",
+    "question": "What is the main benefit of carefully reviewing instructor feedback on assignments?",
+    "options": [
+      "A. To argue against the grade received",
+      "B. To identify areas for improvement and support continuous skill development",
+      "C. To avoid future assignments",
+      "D. To compare feedback with classmates only"
+    ],
+    "answer": "B",
+    "correctWord": "B. To identify areas for improvement and support continuous skill development",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_310",
+    "word": "Câu 310: Office hours are useful for:",
+    "question": "Office hours are useful for:",
+    "options": [
+      "A. Socializing unrelated to the course",
+      "B. Clarifying academic difficulties and strengthening professional relationships",
+      "C. Submitting all assignments late",
+      "D. Avoiding feedback on work"
+    ],
+    "answer": "B",
+    "correctWord": "B. Clarifying academic difficulties and strengthening professional relationships",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_331",
+    "word": "Câu 331: Effective feedback when giving it must include all of the fo...",
+    "question": "Effective feedback when giving it must include all of the following EXCEPT:",
+    "options": [
+      "A. Identify what is being done correctly and well",
+      "B. Explain how performance can be improved",
+      "C. Suggest possible next steps",
+      "D. Compare the person's work to others in the class"
+    ],
+    "answer": "D",
+    "correctWord": "D. Compare the person's work to others in the class",
+    "explanation": "Đáp án: D.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_332",
+    "word": "Câu 332: When receiving feedback, why is it important to suspend imme...",
+    "question": "When receiving feedback, why is it important to suspend immediate reactions?",
+    "options": [
+      "A. To avoid understanding the feedback",
+      "B. Emotional reactions like defensiveness can interfere with fully understanding the information",
+      "C. To immediately argue against the feedback",
+      "D. Because feedback is always negative"
+    ],
+    "answer": "B",
+    "correctWord": "B. Emotional reactions like defensiveness can interfere with fully understanding the information",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_333",
+    "word": "Câu 333: Positive feedback is most effective when it is:",
+    "question": "Positive feedback is most effective when it is:",
+    "options": [
+      "A. Based on rumours rather than facts",
+      "B. Offered at an appropriate time, includes recognition of strengths and suggestions, targets changeable behavior, and addresses one point at a time",
+      "C. Given without prior agreement or permission",
+      "D. Delivered under high stress conditions"
+    ],
+    "answer": "B",
+    "correctWord": "B. Offered at an appropriate time, includes recognition of strengths and suggestions, targets changeable behavior, and addresses one point at a time",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_337",
+    "word": "Câu 337: Commonly mentioned tools for creating ePortfolios in the tex...",
+    "question": "Commonly mentioned tools for creating ePortfolios in the text are:",
+    "options": [
+      "A. Microsoft Word and Excel",
+      "B. Mahara and WordPress",
+      "C. Email and forums only",
+      "D. Paper notebooks"
+    ],
+    "answer": "B",
+    "correctWord": "B. Mahara and WordPress",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_340",
+    "word": "Câu 340: Before sending an email to an instructor, students should fi...",
+    "question": "Before sending an email to an instructor, students should first:",
+    "options": [
+      "A. Immediately send without checking",
+      "B. Review course materials such as the syllabus, assignment descriptions, or lecture notes",
+      "C. Ask classmates for the answer instead",
+      "D. Wait until the last minute"
+    ],
+    "answer": "B",
+    "correctWord": "B. Review course materials such as the syllabus, assignment descriptions, or lecture notes",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_341",
+    "word": "Câu 341: Regarding email response times from instructors, the text ad...",
+    "question": "Regarding email response times from instructors, the text advises:",
+    "options": [
+      "A. Expecting immediate replies within minutes",
+      "B. Responses may take 1–3 days, and follow-up only after at least 5 days",
+      "C. Sending multiple follow-ups the same day",
+      "D. Assuming no response means the question is ignored"
+    ],
+    "answer": "B",
+    "correctWord": "B. Responses may take 1–3 days, and follow-up only after at least 5 days",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_348",
+    "word": "Câu 348: A rubric is best defined as:",
+    "question": "A rubric is best defined as:",
+    "options": [
+      "A. A list of optional suggestions for the assignment",
+      "B. An assessment tool outlining how the work will be graded and the criteria for success",
+      "C. The final grade sheet from the instructor",
+      "D. A template for formatting the paper"
+    ],
+    "answer": "B",
+    "correctWord": "B. An assessment tool outlining how the work will be graded and the criteria for success",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_350",
+    "word": "Câu 350: After completing a draft, the rubric should primarily be use...",
+    "question": "After completing a draft, the rubric should primarily be used for:",
+    "options": [
+      "A. Ignoring minor issues",
+      "B. Self-evaluation by grading the work against each criterion and revising weak areas",
+      "C. Sharing with classmates only",
+      "D. Calculating the expected grade without changes"
+    ],
+    "answer": "B",
+    "correctWord": "B. Self-evaluation by grading the work against each criterion and revising weak areas",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_351",
+    "word": "Câu 351: One major benefit of regularly using a rubric for self-asses...",
+    "question": "One major benefit of regularly using a rubric for self-assessment is that it helps:",
+    "options": [
+      "A. Avoid all instructor feedback",
+      "B. Develop accurate self-assessment skills and align self-evaluation closer to instructor expectations over time",
+      "C. Reduce the need to revise work",
+      "D. Focus only on final products"
+    ],
+    "answer": "B",
+    "correctWord": "B. Develop accurate self-assessment skills and align self-evaluation closer to instructor expectations over time",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_355",
+    "word": "Câu 355: According to the text, feedback from instructors should be v...",
+    "question": "According to the text, feedback from instructors should be viewed primarily as:",
+    "options": [
+      "A. Pure criticism to be ignored",
+      "B. An opportunity for development and personal growth rather than just criticism",
+      "C. A final judgment with no room for improvement",
+      "D. Only relevant for the current assignment"
+    ],
+    "answer": "B",
+    "correctWord": "B. An opportunity for development and personal growth rather than just criticism",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "ssl_360",
+    "word": "Câu 360: To use Hypothes.is for annotating online texts, what is the ...",
+    "question": "To use Hypothes.is for annotating online texts, what is the first step after installing the Chrome extension?",
+    "options": [
+      "A. Start annotating without an account",
+      "B. Create a free account with email, username, password, and activate via email confirmation",
+      "C. Purchase a premium subscription",
+      "D. Share annotations publicly without login"
+    ],
+    "answer": "B",
+    "correctWord": "B. Create a free account with email, username, password, and activate via email confirmation",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  }
+]

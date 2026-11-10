@@ -1,0 +1,885 @@
+[
+  {
+    "id": "cea_23",
+    "word": "Câu 23: Computers built on the Von Neumann model divide the computer...",
+    "question": "Computers built on the Von Neumann model divide the computer hardware into ____ subsystems",
+    "options": [
+      "A. 3",
+      "B. 4",
+      "C. 5",
+      "D. 6"
+    ],
+    "answer": "B",
+    "correctWord": "B. 4",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_38",
+    "word": "Câu 38: Suppose the following sequence of values is pushed into a st...",
+    "question": "Suppose the following sequence of values is pushed into a stack: 5, 15, 10, 20. What would be the order of removal?",
+    "options": [
+      "A. 20, 10, 15, 5",
+      "B. 5, 10, 15, 20",
+      "C. 10, 15, 20, 5",
+      "D. 15, 10, 5, 20"
+    ],
+    "answer": "A",
+    "correctWord": "A. 20, 10, 15, 5",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_40",
+    "word": "Câu 40: Based on the waterfall model, if each phase (requirement ana...",
+    "question": "Based on the waterfall model, if each phase (requirement analysis, design, implementation, testing, documentation, evaluation) takes 2 weeks, how many weeks are required to complete the entire process, assuming no overlap?",
+    "options": [
+      "A. 12",
+      "B. 14",
+      "C. 8",
+      "D. 10"
+    ],
+    "answer": "A",
+    "correctWord": "A. 12",
+    "explanation": "Đáp án: A. 6 phase × 2 tuần",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_46",
+    "word": "Câu 46: Which of the following best describes the 80-20 rule in the ...",
+    "question": "Which of the following best describes the 80-20 rule in the context of computer cache memory?",
+    "options": [
+      "A. 20% of the data is accessed 80% of the time",
+      "B. 80% of the data is accessed 20% of the time",
+      "C. 20% of the data is computed 80% of the time",
+      "D. 80% of the data is computed 20% of the time"
+    ],
+    "answer": "A",
+    "correctWord": "A. 20% of the data is accessed 80% of the time",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_60",
+    "word": "Câu 60: What does the file manager NOT control?",
+    "question": "What does the file manager NOT control?",
+    "options": [
+      "A. CPU scheduling",
+      "B. File access permissions",
+      "C. File creation and deletion",
+      "D. File storage and backups"
+    ],
+    "answer": "A",
+    "correctWord": "A. CPU scheduling",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_63",
+    "word": "Câu 63: In glass-box testing, which of the following criteria is NOT...",
+    "question": "In glass-box testing, which of the following criteria is NOT required to be tested?",
+    "options": [
+      "A. All user input values",
+      "B. All independent paths in every module",
+      "C. All decision constructs on each branch.",
+      "D. Each loop construct"
+    ],
+    "answer": "A",
+    "correctWord": "A. All user input values",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_67",
+    "word": "Câu 67: Which of the following is NOT a component of a database mana...",
+    "question": "Which of the following is NOT a component of a database management system (DBMS)?",
+    "options": [
+      "A. Hardware",
+      "B. Software",
+      "C. Network",
+      "D. Data"
+    ],
+    "answer": "C",
+    "correctWord": "C. Network",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_74",
+    "word": "Câu 74: ______ is a stand-alone storage location that holds data tem...",
+    "question": "______ is a stand-alone storage location that holds data temporarily.",
+    "options": [
+      "A. An ALU",
+      "B. A register",
+      "C. A control unit",
+      "D. A tape drive"
+    ],
+    "answer": "B",
+    "correctWord": "B. A register",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_77",
+    "word": "Câu 77: A program is a set of instructions that tells the computer w...",
+    "question": "A program is a set of instructions that tells the computer what to do with ______",
+    "options": [
+      "A. Computer",
+      "B. Program",
+      "C. Algorithm",
+      "D. Data"
+    ],
+    "answer": "D",
+    "correctWord": "D. Data",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_99",
+    "word": "Câu 99: The ______ keeps track of the instruction currently being ex...",
+    "question": "The ______ keeps track of the instruction currently being executed",
+    "options": [
+      "A. Instruction register",
+      "B. Data register",
+      "C. User register",
+      "D. Program counter"
+    ],
+    "answer": "A",
+    "correctWord": "A. Instruction register",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_100",
+    "word": "Câu 100: In a computer, the ______ subsystem serves as a manager of t...",
+    "question": "In a computer, the ______ subsystem serves as a manager of the other subsystems.",
+    "options": [
+      "A. ALU",
+      "B. input/output",
+      "C. memory",
+      "D. control unit"
+    ],
+    "answer": "D",
+    "correctWord": "D. control unit",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_117",
+    "word": "Câu 117: What components make up an element in a linked list?",
+    "question": "What components make up an element in a linked list?",
+    "options": [
+      "A. Data value and the address of the next element",
+      "B. Data value and the index of the element",
+      "C. Index of the previous and next element",
+      "D. Only the data value",
+      "E. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. Data value and the address of the next element",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_118",
+    "word": "Câu 118: What are the two parts of a node in a linked list?",
+    "question": "What are the two parts of a node in a linked list?",
+    "options": [
+      "A. Data and a pointer to the next node",
+      "B. Data and an index of the current node",
+      "C. Data and the next node’s value",
+      "D. Data and the size of the list"
+    ],
+    "answer": "A",
+    "correctWord": "A. Data and a pointer to the next node",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_119",
+    "word": "Câu 119: What model is the foundation of modern computers?",
+    "question": "What model is the foundation of modern computers?",
+    "options": [
+      "A. Leibnitz",
+      "B. von Neumann",
+      "C. Pascal",
+      "D. Charles Babbage"
+    ],
+    "answer": "B",
+    "correctWord": "B. von Neumann",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_124",
+    "word": "Câu 124: Which of the following is a type of non-volatile storage?",
+    "question": "Which of the following is a type of non-volatile storage?",
+    "options": [
+      "A. RAM",
+      "B. ROM",
+      "C. Cache",
+      "D. Register"
+    ],
+    "answer": "B",
+    "correctWord": "B. ROM",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_127",
+    "word": "Câu 127: Which of the following is NOT a function of the CPU?",
+    "question": "Which of the following is NOT a function of the CPU?",
+    "options": [
+      "A. Display output",
+      "B. Fetch instructions",
+      "C. Decode instructions",
+      "D. Execute instructions"
+    ],
+    "answer": "A",
+    "correctWord": "A. Display output",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_128",
+    "word": "Câu 128: Which type of memory is typically the fastest and used to te...",
+    "question": "Which type of memory is typically the fastest and used to temporarily store frequently accessed data?",
+    "options": [
+      "A. Hard disk drive.",
+      "B. Cache memory.",
+      "C. Random Access Memory (RAM).",
+      "D. Read Only Memory (ROM)."
+    ],
+    "answer": "B",
+    "correctWord": "B. Cache memory.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_133",
+    "word": "Câu 133: Where are programs and data stored during processing in the ...",
+    "question": "Where are programs and data stored during processing in the Von Neumann architecture?",
+    "options": [
+      "A. Memory",
+      "B. Arithmetic Logic Unit (ALU)",
+      "C. Control Unit",
+      "D. Input/Output"
+    ],
+    "answer": "A",
+    "correctWord": "A. Memory",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_141",
+    "word": "Câu 141: Which of the following is closest to the CPU in the memory h...",
+    "question": "Which of the following is closest to the CPU in the memory hierarchy?",
+    "options": [
+      "A. Cache memory",
+      "B. Secondary storage",
+      "C. Main memory",
+      "D. Virtual memory"
+    ],
+    "answer": "A",
+    "correctWord": "A. Cache memory",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_166",
+    "word": "Câu 166: Who is known as the “Father of the Computer”?",
+    "question": "Who is known as the “Father of the Computer”?",
+    "options": [
+      "A. Alan Turing",
+      "B. Charles Babbage",
+      "C. Steve Jobs",
+      "D. Bill Gates"
+    ],
+    "answer": "B",
+    "correctWord": "B. Charles Babbage",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_168",
+    "word": "Câu 168: According to the Von Neumann model, which one is NOT a compu...",
+    "question": "According to the Von Neumann model, which one is NOT a computer hardware subsystem?",
+    "options": [
+      "A. Arithmetic logic unit (ALU)",
+      "B. Input/Output (I/O)",
+      "C. Control unit (CU)",
+      "D. Power supply unit (PSU)"
+    ],
+    "answer": "D",
+    "correctWord": "D. Power supply unit (PSU)",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_171",
+    "word": "Câu 171: According to operator precedence, which operation is perform...",
+    "question": "According to operator precedence, which operation is performed first in the expression (A OR B) AND C?",
+    "options": [
+      "A. OR, then AND",
+      "B. AND, then OR",
+      "C. Both at the same time",
+      "D. Depends on the hardware"
+    ],
+    "answer": "A",
+    "correctWord": "A. OR, then AND",
+    "explanation": "Đáp án: A. dấu ngoặc nên OR làm trước",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_182",
+    "word": "Câu 182: In a memory hierarchy, which memory type has the highest acc...",
+    "question": "In a memory hierarchy, which memory type has the highest access speed?",
+    "options": [
+      "A. Cache memory",
+      "B. RAM",
+      "C. Registers",
+      "D. Hard disk"
+    ],
+    "answer": "C",
+    "correctWord": "C. Registers",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_185",
+    "word": "Câu 185: In a singly linked list, each node has:",
+    "question": "In a singly linked list, each node has:",
+    "options": [
+      "A. Data and a link",
+      "B. Data and an index code",
+      "C. Data and a hash code",
+      "D. Data and a value"
+    ],
+    "answer": "A",
+    "correctWord": "A. Data and a link",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_190",
+    "word": "Câu 190: The second generation of computers replaced vacuum tubes wit...",
+    "question": "The second generation of computers replaced vacuum tubes with which technology, leading to smaller, more reliable, and less power-hungry machines?",
+    "options": [
+      "A. Transistors",
+      "B. Microprocessors",
+      "C. Integrated circuits",
+      "D. Hard disks"
+    ],
+    "answer": "A",
+    "correctWord": "A. Transistors",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_197",
+    "word": "Câu 197: In the Turing model, the output data depends on the combinat...",
+    "question": "In the Turing model, the output data depends on the combination of two factors:",
+    "options": [
+      "A. The processor and the memory",
+      "B. The input data and the program",
+      "C. The hardware and the software",
+      "D. The control unit and the I/O"
+    ],
+    "answer": "B",
+    "correctWord": "B. The input data and the program",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_198",
+    "word": "Câu 198: Which of the following is a non-volatile storage device?",
+    "question": "Which of the following is a non-volatile storage device?",
+    "options": [
+      "A. SSD",
+      "B. RAM",
+      "C. CPU Cache",
+      "D. Registers"
+    ],
+    "answer": "A",
+    "correctWord": "A. SSD",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_212",
+    "word": "Câu 212: In the physical layer, what hardware has a mission to conver...",
+    "question": "In the physical layer, what hardware has a mission to convert signal from analog to digital signal",
+    "options": [
+      "A. Discrete Filter Transform",
+      "B. ADC",
+      "C. DAC",
+      "D. Quantization filtering circuits"
+    ],
+    "answer": "B",
+    "correctWord": "B. ADC",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_215",
+    "word": "Câu 215: Which of the following is a common definition of an operatin...",
+    "question": "Which of the following is a common definition of an operating system?",
+    "options": [
+      "A. An interface between hardware and users",
+      "B. A specific application program",
+      "C. A document outlining system policies",
+      "D. A type of computer hardware",
+      "E. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. An interface between hardware and users",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_227",
+    "word": "Câu 227: What is a core concept of the von Neumann model that differe...",
+    "question": "What is a core concept of the von Neumann model that differentiates it from earlier computing architectures?",
+    "options": [
+      "A. It uses a single-purpose processing unit.",
+      "B. It stores data and programs in the same memory.",
+      "C. It relies solely on mechanical components.",
+      "D. It requires a new wiring system for each program."
+    ],
+    "answer": "B",
+    "correctWord": "B. It stores data and programs in the same memory.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_229",
+    "word": "Câu 229: What is a significant limitation of monoprogramming in terms...",
+    "question": "What is a significant limitation of monoprogramming in terms of CPU utilization?",
+    "options": [
+      "A. The CPU remains idle during input/output operations because no other program is in memory",
+      "B. The CPU continuously runs multiple programs, leading to overheating",
+      "C. The CPU is only able to process user requests but cannot manage system resources efficiency",
+      "D. The CPU cannot perform arithmetic operations when a program is executing or waiting"
+    ],
+    "answer": "A",
+    "correctWord": "A. The CPU remains idle during input/output operations because no other program is in memory",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_235",
+    "word": "Câu 235: What is the main characteristic of the procedural programmin...",
+    "question": "What is the main characteristic of the procedural programming paradigm?",
+    "options": [
+      "A. It structures programs as a sequence of instructions acting on passive data",
+      "B. It focuses on objects and their interactions",
+      "C. It defines functions based on mathematical logic",
+      "D. It allows programs to make decisions based on logical rules and focuses on objects"
+    ],
+    "answer": "A",
+    "correctWord": "A. It structures programs as a sequence of instructions acting on passive data",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_238",
+    "word": "Câu 238: What are the five necessary components of a Database Managem...",
+    "question": "What are the five necessary components of a Database Management System (DBMS)?",
+    "options": [
+      "A. CPU, Memory, I/O devices, Network, Operating System",
+      "B. Hardware, Software, Data, Users, and Procedures",
+      "C. Application programs, End users, Database administrators, Data analysts, and System architects",
+      "D. Tables, Rows, Columns, Keys, and Indexes"
+    ],
+    "answer": "B",
+    "correctWord": "B. Hardware, Software, Data, Users, and Procedures",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_240",
+    "word": "Câu 240: What is the correct answer for an expert system?",
+    "question": "What is the correct answer for an expert system?",
+    "options": [
+      "A. Machines can learn knowledge without instructions from experts",
+      "B. Experts use machines to talk with remote patients",
+      "C. Machine use searching algorithms on databases to respond to patients",
+      "D. Machine learns knowledge given by experts and responds to patients",
+      "E. None of the others"
+    ],
+    "answer": "D",
+    "correctWord": "D. Machine learns knowledge given by experts and responds to patients",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_248",
+    "word": "Câu 248: What is an algorithm?",
+    "question": "What is an algorithm?",
+    "options": [
+      "A. A set of programming commands or instructions that are executed in a specific order to perform a task",
+      "B. A step-by-step procedure to solve a problem or accomplish a task",
+      "C. A program that is loaded into the computer’s memory and is ready for execution",
+      "D. A method for compressing data to reduce its size for efficient storage or transmission"
+    ],
+    "answer": "B",
+    "correctWord": "B. A step-by-step procedure to solve a problem or accomplish a task",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_250",
+    "word": "Câu 250: What is a major difference between procedural and object-ori...",
+    "question": "What is a major difference between procedural and object-oriented programming?",
+    "options": [
+      "A. Procedural programming uses functions, while object-oriented programming uses loops.",
+      "B. Object-oriented programming organizes code into objects, while procedural programming uses a linear sequence of instructions.",
+      "C. Procedural programming supports inheritance, while object-oriented programming does not.",
+      "D. Object-oriented programming does not allow code reuse, while procedural programming does."
+    ],
+    "answer": "B",
+    "correctWord": "B. Object-oriented programming organizes code into objects, while procedural programming uses a linear sequence of instructions.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_252",
+    "word": "Câu 252: What is the primary key in a relational database table?",
+    "question": "What is the primary key in a relational database table?",
+    "options": [
+      "A. A column that can store null values",
+      "B. A column or combination of columns that uniquely identify each row in the table",
+      "C. A column used for indexing",
+      "D. A foreign key reference in another table"
+    ],
+    "answer": "B",
+    "correctWord": "B. A column or combination of columns that uniquely identify each row in the table",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_254",
+    "word": "Câu 254: What are the two major design goals of an operating system?",
+    "question": "What are the two major design goals of an operating system?",
+    "options": [
+      "A. Efficient hardware use and ease of resource use.",
+      "B. Data compression and user authentication.",
+      "C. High-speed processing and minimal memory use.",
+      "D. Application development and network connectivity."
+    ],
+    "answer": "A",
+    "correctWord": "A. Efficient hardware use and ease of resource use.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_264",
+    "word": "Câu 264: Which of the following best describes hashed files?",
+    "question": "Which of the following best describes hashed files?",
+    "options": [
+      "A. Files that store data in a fixed order",
+      "B. Files where data is stored based on a computed hash value, which determines the location of the data",
+      "C. Files that are encrypted for security purposes",
+      "D. Files that contain only textual information"
+    ],
+    "answer": "B",
+    "correctWord": "B. Files where data is stored based on a computed hash value, which determines the location of the data",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_265",
+    "word": "Câu 265: Which of the following statements is true in the context of ...",
+    "question": "Which of the following statements is true in the context of different architectures of computers?",
+    "options": [
+      "A. Programming in RISC is more difficult and time-consuming than in the other design",
+      "B. Programming in CISC is more difficult and time-consuming than in the other design",
+      "C. The strategy behind CISC architectures is to have a small set of instructions",
+      "D. Programs executed on RISC architecture tend to have more bugs because there are not enough instructions available for the programmer"
+    ],
+    "answer": "B",
+    "correctWord": "B. Programming in CISC is more difficult and time-consuming than in the other design",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_267",
+    "word": "Câu 267: Which of the following is a responsibility of the process ma...",
+    "question": "Which of the following is a responsibility of the process manager in an operating system?",
+    "options": [
+      "A. Managing the communication between hardware and software",
+      "B. Scheduling processes for execution",
+      "C. Encrypting and decrypting data files",
+      "D. Loading the operating system during boot"
+    ],
+    "answer": "B",
+    "correctWord": "B. Scheduling processes for execution",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_269",
+    "word": "Câu 269: Which of the following examples demonstrates the “repetition...",
+    "question": "Which of the following examples demonstrates the “repetition” construct in an algorithm?",
+    "options": [
+      "A. Assigning a value to a variable",
+      "B. Evaluating a condition once",
+      "C. Using a for loop to iterate over a list",
+      "D. Breaking out of a loop"
+    ],
+    "answer": "C",
+    "correctWord": "C. Using a for loop to iterate over a list",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_293",
+    "word": "Câu 293: In a computer based on the Turing model, what is the specifi...",
+    "question": "In a computer based on the Turing model, what is the specific role of a “program”?",
+    "options": [
+      "A. To define the hardware architecture.",
+      "B. To manage memory allocation.",
+      "C. To provide a set of instructions that dictates what to do with data",
+      "D. To establish communication protocols between devices"
+    ],
+    "answer": "C",
+    "correctWord": "C. To provide a set of instructions that dictates what to do with data",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_298",
+    "word": "Câu 298: Inside the ADT (abstract data type) are two different parts ...",
+    "question": "Inside the ADT (abstract data type) are two different parts of the model:",
+    "options": [
+      "A. Hardware and software",
+      "B. Database and operations",
+      "C. Data structure and algorithms",
+      "D. Data structure and operations"
+    ],
+    "answer": "D",
+    "correctWord": "D. Data structure and operations",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_310",
+    "word": "Câu 310: In the context of software development, what does the term “...",
+    "question": "In the context of software development, what does the term “refactoring” refer to?",
+    "options": [
+      "A. Rewriting code from scratch to improve performance",
+      "B. Adding new features to existing software without changing its external behavior",
+      "C. Optimizing code to reduce memory usage",
+      "D. Restructuring existing code to improve readability, maintainability, and efficiency"
+    ],
+    "answer": "D",
+    "correctWord": "D. Restructuring existing code to improve readability, maintainability, and efficiency",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_313",
+    "word": "Câu 313: In a relational database, what is the primary reason for usi...",
+    "question": "In a relational database, what is the primary reason for using a primary key in a relation?",
+    "options": [
+      "A. To ensure each tuple can be uniquely identified",
+      "B. To allow multiple tuples to have identical values for all attributes",
+      "C. To reduce the number of attributes in a relation",
+      "D. To link the relation to the conceptual schema"
+    ],
+    "answer": "A",
+    "correctWord": "A. To ensure each tuple can be uniquely identified",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_322",
+    "word": "Câu 322: Which of the following BEST describes the Turing model of a ...",
+    "question": "Which of the following BEST describes the Turing model of a computer?",
+    "options": [
+      "A. A machine capable of performing multiple tasks simultaneously",
+      "B. A machine processing data with external programming",
+      "C. A universal computational device using a program and data",
+      "D. A machine limited to performing simple arithmetic operations"
+    ],
+    "answer": "C",
+    "correctWord": "C. A universal computational device using a program and data",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_323",
+    "word": "Câu 323: Which of the following best describes the Turing model of a ...",
+    "question": "Which of the following best describes the Turing model of a computer?",
+    "options": [
+      "A. A model that includes hardware, software, and data",
+      "B. A mathematical model of computation that defines what can be computed",
+      "C. A hardware-centric architecture for data processing",
+      "D. A model emphasizing the interaction between users and computers"
+    ],
+    "answer": "B",
+    "correctWord": "B. A mathematical model of computation that defines what can be computed",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_324",
+    "word": "Câu 324: In modern computers following the Von Neumann architecture, ...",
+    "question": "In modern computers following the Von Neumann architecture, where are both programs and their corresponding data stored?",
+    "options": [
+      "A. Programs and data in the same memory",
+      "B. Programs in memory, data in punch cards",
+      "C. Programs in punch cards, data in memory",
+      "D. Programs and data in separate memory units"
+    ],
+    "answer": "A",
+    "correctWord": "A. Programs and data in the same memory",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_326",
+    "word": "Câu 326: What is an address collision in the context of hashed files?",
+    "question": "What is an address collision in the context of hashed files?",
+    "options": [
+      "A. When two different data items are assigned the same hash value, leading to the same storage location",
+      "B. When data cannot be accessed due to file corruption",
+      "C. When a file grows beyond its maximum size",
+      "D. When an index points to a non-existent location in a file"
+    ],
+    "answer": "A",
+    "correctWord": "A. When two different data items are assigned the same hash value, leading to the same storage location",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_329",
+    "word": "Câu 329: What is the primary purpose of an operating system?",
+    "question": "What is the primary purpose of an operating system?",
+    "options": [
+      "A. To design and develop software applications and tools for various purposes",
+      "B. To manage system hardware and software resources efficiently",
+      "C. To establish connections and facilitate communication between multiple computers in a network",
+      "D. To encrypt user data and protect it from unauthorized access and threats"
+    ],
+    "answer": "B",
+    "correctWord": "B. To manage system hardware and software resources efficiently",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_337",
+    "word": "Câu 337: Among the values that guide professional conduct in the fiel...",
+    "question": "Among the values that guide professional conduct in the field of computer science, which of the following best represents a key ethical principle?",
+    "options": [
+      "A. Honesty in reporting data and respecting user privacy.",
+      "B. Sharing all user information publicly without consent to promote transparency.",
+      "C. Ignoring software errors because fixing them costs time and money.",
+      "D. Using any means necessary to bypass security as long as it helps you learn."
+    ],
+    "answer": "A",
+    "correctWord": "A. Honesty in reporting data and respecting user privacy.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_338",
+    "word": "Câu 338: In the “declarative paradigm,” how are problems typically so...",
+    "question": "In the “declarative paradigm,” how are problems typically solved?",
+    "options": [
+      "A. By writing a sequence of instructions to manipulate data",
+      "B. By creating objects that encapsulate data and methods",
+      "C. By defining functions that transform data without side effects.",
+      "D. By stating facts and rules, allowing the system to use logical reasoning to answer queries"
+    ],
+    "answer": "D",
+    "correctWord": "D. By stating facts and rules, allowing the system to use logical reasoning to answer queries",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_339",
+    "word": "Câu 339: Which of the following is a characteristic feature of preemp...",
+    "question": "Which of the following is a characteristic feature of preemptive multitasking?",
+    "options": [
+      "A. Processes voluntarily yield control of the CPU.",
+      "B. The scheduler forcibly takes control of the CPU from running processes.",
+      "C. Processes are executed in a round-robin manner only.",
+      "D. It is exclusively used in real-time operating systems."
+    ],
+    "answer": "B",
+    "correctWord": "B. The scheduler forcibly takes control of the CPU from running processes.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "cea_344",
+    "word": "Câu 344: In the context of Ethernet addressing, what is represented b...",
+    "question": "In the context of Ethernet addressing, what is represented by a MAC address?",
+    "options": [
+      "A. A logical network address.",
+      "B. A temporary address assigned by a server.",
+      "C. A hardware address for the network interface.",
+      "D. An private address used for internet routing purposes."
+    ],
+    "answer": "C",
+    "correctWord": "C. A hardware address for the network interface.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  }
+]

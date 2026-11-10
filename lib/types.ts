@@ -1,19 +1,29 @@
 /**
  * AnanQuiz Core Type Definitions
- * Inspired by OpenQuiz, SuperMemo SM-2 & modern quiz platforms
+ * Supports both Language Vocabulary Flashcards and Academic MCQ Exam Questions
  */
 
 export interface Word {
+  id?: string;
   word: string;
   ipa?: string;
-  vi?: string; // Vietnamese definition
-  ru?: string; // Russian (for backwards-compatibility with original OpenQuiz sets)
+  vi?: string; // Vietnamese definition or explanation
+  ru?: string; // Russian (for backwards-compatibility)
   definition?: string; // General English definition
-  synonyms: string[];
-  simple_examples: string[];
-  advanced_example: string;
-  confusions: string[];
+  synonyms?: string[];
+  simple_examples?: string[];
+  advanced_example?: string;
+  confusions?: string[];
   category?: string;
+
+  // Multiple Choice Question (MCQ) properties
+  question?: string;
+  options?: string[]; // Array of 4 options: ["(11000100)2", ...] or ["A. ...", ...]
+  answer?: string; // "A", "B", "C", "D"
+  correctWord?: string; // Text of the correct answer
+  explanation?: string;
+  topic?: string;
+  subject?: string;
 }
 
 export type WordStatus = 'new' | 'learning' | 'review' | 'mastered';
@@ -43,6 +53,8 @@ export interface QuizSet {
   author_name?: string;
   wordCount?: number;
   tags?: string[];
+  subject?: string;
+  topic?: string;
 }
 
 export interface CustomQuiz {
@@ -55,6 +67,8 @@ export interface CustomQuiz {
   author_name: string;
   created_at: string;
   updated_at?: string;
+  subject?: string;
+  topic?: string;
 }
 
 export type LearnRound = 'recall' | 'simple_usage' | 'contrast';
@@ -73,6 +87,7 @@ export interface DrillQuestion {
   correctWord: string;
   options: string[];
   explanation: string;
+  questionNumber?: number | string;
 }
 
 export interface DrillSession {
@@ -88,6 +103,7 @@ export interface ExamQuestion {
   correctWord: string;
   options: string[];
   explanation?: string;
+  answerKey?: string;
 }
 
 export interface ExamSession {
