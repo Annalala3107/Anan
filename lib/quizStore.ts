@@ -1,0 +1,71 @@
+import { create } from 'zustand';
+import { Word, CustomQuiz } from './types';
+import { StorageEngine } from './storage';
+
+interface QuizStoreState {
+  selectedQuizPath: string;
+  activeCustomQuiz: CustomQuiz | null;
+  words: Word[];
+  isLoadingWords: boolean;
+  soundEnabled: boolean;
+  theme: 'dark' | 'light';
+
+  setSelectedQuizPath: (path: string) => void;
+  setActiveCustomQuiz: (quiz: CustomQuiz | null) => void;
+  setWords: (words: Word[]) => void;
+  loadQuizWords: (pathOrQuiz?: string | CustomQuiz) => Promise<Word[]>;
+  toggleSound: () => void;
+  setTheme: (theme: 'dark' | 'light') => void;
+}
+
+export const useQuizStore = create<QuizStoreState>((set, get) => ({
+  selectedQuizPath: '/sat/vi-en-ielts.json',
+  activeCustomQuiz: null,
+  words: [],
+  isLoadingWords: false,
+  soundEnabled: true,
+  theme: 'dark',
+
+  setSelectedQuizPath: (path: string) => {
+    StorageEngine.setSelectedQuiz(path);
+    set({ selectedQuizPath: path, activeCustomQuiz: null });
+    get().loadQuizWords(path);
+  },
+
+  setActiveCustomQuiz: (quiz: CustomQuiz | null) => {
+    if (quiz) {
+      set({ activeCustomQuiz: quiz, words: quiz.words });
+    } else {
+      set({ activeCustomQuiz: null });
+      get().loadQuizWords(get().selectedQuizPath);
+    }
+  },
+
+  setWords: (words: Word[]) => set({ words }),
+
+  loadQuizWords: async (target) => {
+    const active = target || get().activeCustomQuiz || get().selectedQuizPath;
+    set({ isLoadingWords: true });
+
+    try {
+      if (typeof active === 'object' && active.words) {
+        set({ words: active.words, isLoadingWords: false });
+        return active.words;
+      }
+
+      const filePath = typeof active === 'string' ? active : get().selectedQuizPath;
+      const res = await fetch(filePath);
+      if (!res.ok) throw new Error('Failed to fetch quiz dataset');
+      const data: Word[] = await res.json();
+      set({ words: data, isLoadingWords: false });
+      return data;
+    } catch (err) {
+      console.error('Error loading quiz dataset:', err);
+      set({ isLoadingWords: false });
+      return [];
+    }
+  },
+
+  toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
+  setTheme: (theme) => set({ theme }),
+}));

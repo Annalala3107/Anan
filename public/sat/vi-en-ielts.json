@@ -1,0 +1,146 @@
+[
+  {
+    "word": "ubiquitous",
+    "ipa": "/juːˈbɪk.wɪ.təs/",
+    "vi": "phổ biến, có mặt ở khắp mọi nơi",
+    "synonyms": ["omnipresent", "pervasive", "everywhere"],
+    "simple_examples": [
+      "Smartphones have become ubiquitous in modern society.",
+      "Coffee shops are ubiquitous in this city."
+    ],
+    "advanced_example": "The ubiquitous influence of artificial intelligence is fundamentally reshaping contemporary economic and pedagogical landscapes.",
+    "confusions": ["unique", "ambiguous", "obsequious"]
+  },
+  {
+    "word": "eloquent",
+    "ipa": "/ˈel.ə.kwənt/",
+    "vi": "hùng hồn, lưu loát, truyền cảm",
+    "synonyms": ["articulate", "persuasive", "fluent"],
+    "simple_examples": [
+      "She gave an eloquent speech at the graduation ceremony.",
+      "His eyes were more eloquent than any words."
+    ],
+    "advanced_example": "The defense attorney delivered an eloquent argument that dismantled the prosecution's circumstantial evidence.",
+    "confusions": ["elegant", "elusive", "reluctant"]
+  },
+  {
+    "word": "pragmatic",
+    "ipa": "/præɡˈmæt.ɪk/",
+    "vi": "thực dụng, coi trọng thực tế",
+    "synonyms": ["practical", "realistic", "utilitarian"],
+    "simple_examples": [
+      "We need a pragmatic approach to solve this budget issue.",
+      "He made a pragmatic decision rather than an idealistic one."
+    ],
+    "advanced_example": "In times of geopolitical crisis, leaders must balance ethical imperatives with pragmatic statecraft to preserve stability.",
+    "confusions": ["dogmatic", "dramatic", "programmatic"]
+  },
+  {
+    "word": "ephemeral",
+    "ipa": "/ɪˈfem.ər.əl/",
+    "vi": "phù du, chóng tàn, ngắn ngủi",
+    "synonyms": ["transient", "fleeting", "short-lived"],
+    "simple_examples": [
+      "Fame in the social media era is often ephemeral.",
+      "The beauty of spring blossoms is sadly ephemeral."
+    ],
+    "advanced_example": "Financial analysts warned that the sudden surge in tech stocks was driven by ephemeral market speculation rather than fundamental value.",
+    "confusions": ["ethereal", "eternal", "empirical"]
+  },
+  {
+    "word": "meticulous",
+    "ipa": "/məˈtɪk.jə.ləs/",
+    "vi": "tỉ mỉ, cẩn thận từng chi tiết",
+    "synonyms": ["painstaking", "scrupulous", "diligent"],
+    "simple_examples": [
+      "He was meticulous about keeping his records up to date.",
+      "The painting was restored with meticulous care."
+    ],
+    "advanced_example": "The forensic investigator's meticulous documentation of the crime scene provided the pivotal evidence required for conviction.",
+    "confusions": ["miraculous", "meretricious", "malicious"]
+  },
+  {
+    "word": "lucid",
+    "ipa": "/ˈluː.sɪd/",
+    "vi": "rõ ràng, minh bạch, dễ hiểu",
+    "synonyms": ["clear", "coherent", "transparent"],
+    "simple_examples": [
+      "The professor gave a very lucid explanation of quantum physics.",
+      "Despite his high fever, he remained surprisingly lucid."
+    ],
+    "advanced_example": "Her thesis offers a lucid critique of modern macroeconomic policy that is accessible even to non-specialists.",
+    "confusions": ["ludicrous", "lurid", "liquid"]
+  },
+  {
+    "word": "mitigate",
+    "ipa": "/ˈmɪt.ɪ.ɡeɪt/",
+    "vi": "làm giảm bớt, xoa dịu, giảm thiểu (tác hại)",
+    "synonyms": ["alleviate", "lessen", "diminish"],
+    "simple_examples": [
+      "Planting trees helps mitigate the effects of climate change.",
+      "The medicine should mitigate your chronic headache."
+    ],
+    "advanced_example": "The government introduced proactive fiscal stimulus to mitigate the economic contraction anticipated from the trade embargo.",
+    "confusions": ["militate", "meditate", "instigate"]
+  },
+  {
+    "word": "tenacious",
+    "ipa": "/təˈneɪ.ʃəs/",
+    "vi": "kiên trì, bền bỉ, không bỏ cuộc",
+    "synonyms": ["persistent", "persevering", "resolute"],
+    "simple_examples": [
+      "She has a tenacious grip on her principles.",
+      "Thanks to tenacious effort, the team won the championship."
+    ],
+    "advanced_example": "Even in the face of continuous regulatory hurdles, the startup maintained a tenacious commitment to sustainable energy innovation.",
+    "confusions": ["tentative", "tenuous", "tedious"]
+  },
+  {
+    "word": "ambiguous",
+    "ipa": "/æmˈbɪɡ.ju.əs/",
+    "vi": "mơ hồ, đa nghĩa, không rõ ràng",
+    "synonyms": ["equivocal", "vague", "unclear"],
+    "simple_examples": [
+      "The legal clause was written in an ambiguous way.",
+      "His smile was ambiguous, leaving us unsure of his feelings."
+    ],
+    "advanced_example": "The contract's ambiguous termination terms led to a protracted litigation between the international consortium and its contractors.",
+    "confusions": ["ambivalent", "ambitious", "amphibious"]
+  },
+  {
+    "word": "resilient",
+    "ipa": "/rɪˈzɪl.jənt/",
+    "vi": "kiên cường, đàn hồi, phục hồi nhanh",
+    "synonyms": ["adaptable", "robust", "tough"],
+    "simple_examples": [
+      "Children are remarkably resilient after facing adversity.",
+      "We need a resilient supply chain that withstands disruptions."
+    ],
+    "advanced_example": "The nation's economy proved surprisingly resilient, rebounding within two quarters despite unprecedented energy supply shocks.",
+    "confusions": ["reluctant", "resistant", "recalcitrant"]
+  },
+  {
+    "word": "paradigm",
+    "ipa": "/ˈpær.ə.daɪm/",
+    "vi": "mô hình, khuôn mẫu chuẩn",
+    "synonyms": ["framework", "model", "archetype"],
+    "simple_examples": [
+      "The discovery caused a paradigm shift in medical science.",
+      "The company created a new paradigm for remote working."
+    ],
+    "advanced_example": "The advent of quantum computing represents an ontological paradigm shift in computational complexity and cryptography.",
+    "confusions": ["paradox", "paragon", "parameter"]
+  },
+  {
+    "word": "juxtapose",
+    "ipa": "/ˌdʒʌk.stəˈpoʊz/",
+    "vi": "đặt cạnh nhau để đối chiếu so sánh",
+    "synonyms": ["compare", "contrast", "collocate"],
+    "simple_examples": [
+      "The exhibition juxtaposes contemporary art with Renaissance masterpieces.",
+      "The essay juxtaposes wealthy urban life with rural poverty."
+    ],
+    "advanced_example": "By juxtaposing the sterile prose of bureaucratic reports with personal diaries of citizens, the author illuminates the human cost of war.",
+    "confusions": ["impose", "superimpose", "decompose"]
+  }
+]
