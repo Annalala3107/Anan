@@ -139,7 +139,7 @@ export default function LibraryPage() {
               <div
                 key={idx}
                 onClick={() => setSelectedWord(w)}
-                className="group p-5 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-indigo-500/80 cursor-pointer transition-all hover:shadow-lg flex flex-col justify-between"
+                className="group p-5 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-indigo-500/80 cursor-pointer content-auto-card gpu-card hover:shadow-lg flex flex-col justify-between touch-manipulation active:scale-[0.99]"
               >
                 <div>
                   {/* Top tags */}

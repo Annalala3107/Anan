@@ -1,19 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
   html {
-    font-family: 'Be Vietnam Pro', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-sans), 'Be Vietnam Pro', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-slate-50 dark:bg-[#080C14] text-slate-900 dark:text-slate-100 min-h-screen antialiased transition-colors duration-200 selection:bg-indigo-500/20 selection:text-indigo-400;
+  }
+
+  code, pre, kbd {
+    font-family: var(--font-mono), 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
   }
 }
 
@@ -36,7 +44,74 @@
   background: rgba(148, 163, 184, 0.5);
 }
 
-/* Glassmorphism helpers */
+/* GPU-Accelerated Glassmorphism & Layer Helpers */
 .glass-panel {
-  @apply backdrop-blur-xl bg-white/75 dark:bg-[#0F172A]/80 border border-slate-200/80 dark:border-slate-800/80 shadow-glass;
+  @apply backdrop-blur-md sm:backdrop-blur-xl bg-white/80 dark:bg-[#0F172A]/85 border border-slate-200/80 dark:border-slate-800/80 shadow-glass transform-gpu;
+}
+
+.gpu-card {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  transition: transform 0.2s var(--ease-spring), border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.18s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gpu-card:hover {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+/* Content-Visibility Optimization for Long Question Lists (120 FPS Scroll) */
+.content-auto-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 130px;
+}
+
+/* Native Browser View Transitions API Support */
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes vt-fade-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+::view-transition-old(root) {
+  animation: 140ms cubic-bezier(0.4, 0, 1, 1) both vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 200ms cubic-bezier(0.16, 1, 0.3, 1) both vt-fade-in;
+}
+
+/* Accessibility & Low Power Mode: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

@@ -199,69 +199,72 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       </div>
 
       {/* Progress Line */}
-      <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mb-8 overflow-hidden">
+      <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mb-6 sm:mb-8 overflow-hidden">
         <div
-          className="h-full bg-emerald-500 transition-all duration-300"
+          className="h-full bg-emerald-500 transition-[width] duration-300 ease-out transform-gpu"
           style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
         />
       </div>
 
-      {/* Question Card */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-6">
-        <div className="flex items-center gap-2 mb-2 text-xs font-bold text-indigo-500 uppercase tracking-wider">
-          <HelpCircle className="w-4 h-4" />
-          <span>Câu hỏi {currentIndex + 1}</span>
+      {/* Question & Choices Animated Container */}
+      <div key={currentIndex} className="animate-question-enter transform-gpu">
+        {/* Question Card */}
+        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-5 sm:mb-6">
+          <div className="flex items-center gap-2 mb-2 text-xs font-bold text-indigo-500 uppercase tracking-wider">
+            <HelpCircle className="w-4 h-4" />
+            <span>Câu hỏi {currentIndex + 1}</span>
+          </div>
+          <CodeQuestionRenderer
+            content={currentQ.sentence}
+            className="text-base sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
+          />
         </div>
-        <CodeQuestionRenderer
-          content={currentQ.sentence}
-          className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
-        />
-      </div>
 
-      {/* 4 Choices */}
-      <div className="space-y-3 mb-6">
-        {currentQ.options.map((opt, idx) => {
-          const isSelected = selectedWord === opt;
-          const isTarget = isOptionCorrect(opt);
-          let style =
-            'w-full p-4 rounded-2xl font-semibold border text-left transition-all flex items-center justify-between ';
+        {/* 4 Choices */}
+        <div className="space-y-2.5 sm:space-y-3 mb-6">
+          {currentQ.options.map((opt, idx) => {
+            const isSelected = selectedWord === opt;
+            const isTarget = isOptionCorrect(opt);
+            let style =
+              'w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-[transform,background-color,border-color,opacity] duration-150 flex items-center justify-between active:scale-[0.99] touch-manipulation select-none transform-gpu ';
 
-          if (!selectedWord) {
-            style +=
-              'bg-white dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-slate-900 dark:text-white hover:scale-[1.005]';
-          } else if (isTarget) {
-            style +=
-              'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-700 dark:text-emerald-300 shadow-glow-success font-bold';
-          } else if (isSelected && !isTarget) {
-            style +=
-              'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-700 dark:text-rose-300 font-bold';
-          } else {
-            style +=
-              'opacity-40 bg-slate-100 dark:bg-slate-800 border-transparent text-slate-500';
-          }
+            if (!selectedWord) {
+              style +=
+                'bg-white dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-slate-900 dark:text-white';
+            } else if (isTarget) {
+              style +=
+                'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-700 dark:text-emerald-300 shadow-glow-success font-bold animate-pop-correct';
+            } else if (isSelected && !isTarget) {
+              style +=
+                'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-700 dark:text-rose-300 font-bold animate-shake';
+            } else {
+              style +=
+                'opacity-40 bg-slate-100 dark:bg-slate-800 border-transparent text-slate-500';
+            }
 
-          return (
-            <button
-              key={idx}
-              disabled={isAnswered}
-              onClick={() => handleSelect(opt)}
-              className={style}
-            >
-              <div className="flex items-center gap-3">
-                <span className="w-7 h-7 rounded-xl bg-slate-100 dark:bg-slate-700/80 text-xs flex items-center justify-center font-mono font-bold text-slate-600 dark:text-slate-300 shrink-0">
-                  {String.fromCharCode(65 + idx)}
-                </span>
-                <span className="text-sm sm:text-base">{cleanOptionText(opt)}</span>
-              </div>
-              {isAnswered && isTarget && (
-                <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 ml-2" />
-              )}
-              {isAnswered && isSelected && !isTarget && (
-                <XCircle className="w-5 h-5 text-rose-500 shrink-0 ml-2" />
-              )}
-            </button>
-          );
-        })}
+            return (
+              <button
+                key={idx}
+                disabled={isAnswered}
+                onClick={() => handleSelect(opt)}
+                className={style}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="w-7 h-7 rounded-xl bg-slate-100 dark:bg-slate-700/80 text-xs flex items-center justify-center font-mono font-bold text-slate-600 dark:text-slate-300 shrink-0">
+                    {String.fromCharCode(65 + idx)}
+                  </span>
+                  <span className="text-sm sm:text-base">{cleanOptionText(opt)}</span>
+                </div>
+                {isAnswered && isTarget && (
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 ml-2" />
+                )}
+                {isAnswered && isSelected && !isTarget && (
+                  <XCircle className="w-5 h-5 text-rose-500 shrink-0 ml-2" />
+                )}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Explanation Banner */}

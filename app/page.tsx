@@ -62,8 +62,8 @@ export default function Home() {
   return (
     <div className="w-full px-3.5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-5 md:py-10 pb-28 md:pb-12 space-y-6 sm:space-y-8 animate-fade-in">
       {/* Hero Active Quiz & Progress Card */}
-      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-gradient-to-br from-indigo-900/90 via-purple-900/80 to-slate-900 border border-indigo-500/30 text-white shadow-2xl">
-        <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-gradient-to-br from-indigo-900/90 via-purple-900/80 to-slate-900 border border-indigo-500/30 text-white shadow-2xl transform-gpu">
+        <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none transform-gpu" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
           <div className="space-y-2 max-w-3xl">
@@ -99,7 +99,7 @@ export default function Home() {
           </div>
           <div className="w-full h-2.5 bg-black/40 rounded-full overflow-hidden p-0.5">
             <div
-              className="h-full bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400 rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400 rounded-full transition-[width] duration-500 ease-out transform-gpu"
               style={{ width: `${Math.max(masteredPercent, 4)}%` }}
             />
           </div>
@@ -130,25 +130,26 @@ export default function Home() {
         <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto">
           <Link
             href="/session/learn"
-            className="col-span-2 sm:col-span-1 text-xs font-bold py-2.5 px-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-sm text-center touch-manipulation active:scale-95"
+            className="col-span-2 sm:col-span-1 text-xs font-bold py-2.5 px-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition-[transform,background-color] duration-150 shadow-sm text-center touch-manipulation active:scale-95 transform-gpu"
           >
             Học Thẻ 3D & Phản Xạ 🚀 &rarr;
           </Link>
           <button
             type="button"
             onClick={() => setShowQrSync(true)}
-            className="text-xs font-bold py-2.5 px-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 transition-all text-center flex items-center justify-center gap-1 shadow-sm touch-manipulation active:scale-95"
+            className="text-xs font-bold py-2.5 px-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 transition-[transform,background-color] duration-150 text-center flex items-center justify-center gap-1 shadow-sm touch-manipulation active:scale-95 transform-gpu"
           >
             <Smartphone className="w-3.5 h-3.5 text-indigo-500" />
             <span>Đồng bộ ĐT</span>
           </button>
           <Link
             href="/quizzes"
-            className="text-xs font-bold py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-all text-center touch-manipulation active:scale-95"
+            className="text-xs font-bold py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-[transform,background-color] duration-150 text-center touch-manipulation active:scale-95 transform-gpu"
           >
             Kho Đề & Môn &rarr;
           </Link>
         </div>
+
       </div>
 
       {/* 4 Intelligent Study Modes */}
@@ -166,7 +167,7 @@ export default function Home() {
           {/* Mode 1: Learn */}
           <Link
             href="/session/learn"
-            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border-2 border-indigo-500/40 dark:border-indigo-500/40 hover:border-indigo-500 shadow-xl hover:shadow-glow transition-all duration-300 flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
+            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border-2 border-indigo-500/40 dark:border-indigo-500/40 hover:border-indigo-500 shadow-xl hover:shadow-glow gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
           >
             <div>
               <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -193,7 +194,7 @@ export default function Home() {
           {/* Mode 2: Drill */}
           <Link
             href="/session/drill"
-            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 dark:hover:border-emerald-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] transition-all duration-300 flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
+            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 dark:hover:border-emerald-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
           >
             <div>
               <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -220,7 +221,7 @@ export default function Home() {
           {/* Mode 3: Exam */}
           <Link
             href="/session/exam"
-            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-rose-500/60 dark:hover:border-rose-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(244,63,94,0.15)] transition-all duration-300 flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
+            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-rose-500/60 dark:hover:border-rose-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(244,63,94,0.15)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
           >
             <div>
               <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -247,7 +248,7 @@ export default function Home() {
           {/* Mode 4: Mistakes */}
           <Link
             href="/session/mistakes"
-            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-amber-500/60 dark:hover:border-amber-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(245,158,11,0.15)] transition-all duration-300 flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
+            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-amber-500/60 dark:hover:border-amber-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(245,158,11,0.15)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
           >
             <div>
               <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -332,7 +333,7 @@ export default function Home() {
             <div
               key={idx}
               onClick={() => setSelectedWord(w)}
-              className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 hover:border-indigo-500 cursor-pointer transition-all hover:scale-[1.01] active:scale-[0.98] touch-manipulation select-none flex flex-col justify-between"
+              className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 hover:border-indigo-500 cursor-pointer content-auto-card gpu-card active:scale-[0.98] touch-manipulation select-none flex flex-col justify-between"
             >
               <div>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-2 inline-block">

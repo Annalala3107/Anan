@@ -71,11 +71,12 @@ export default function FlashcardView({
 
       {/* 3D Flip Card Container */}
       <div
-        className="[perspective:1200px] w-full min-h-[320px] sm:min-h-[400px] select-none cursor-pointer group touch-manipulation"
+        key={`${currentQ.id || questionIndex}_${streak}`}
+        className="[perspective:1200px] w-full min-h-[320px] sm:min-h-[400px] select-none cursor-pointer group touch-manipulation animate-question-enter"
         onClick={onToggleFlip}
       >
         <div
-          className={`relative w-full min-h-[320px] sm:min-h-[400px] transition-transform duration-500 [transform-style:preserve-3d] ${
+          className={`relative w-full min-h-[320px] sm:min-h-[400px] transition-transform duration-[420ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] will-change-transform transform-gpu ${
             isFlipped ? '[transform:rotateY(180deg)]' : ''
           }`}
         >
@@ -198,21 +199,21 @@ export default function FlashcardView({
           <button
             type="button"
             onClick={onToggleFlip}
-            className="w-full py-3.5 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold flex items-center justify-center gap-2 shadow-glow text-sm transition-all active:scale-95 touch-manipulation select-none"
+            className="w-full py-3.5 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold flex items-center justify-center gap-2 shadow-glow text-sm transition-[transform,background-color] duration-150 active:scale-95 touch-manipulation select-none"
           >
             <RotateCcw className="w-4 h-4" />
             <span className="sm:hidden">Lật Thẻ Xem Đáp Án</span>
             <span className="hidden sm:inline">Lật Thẻ Xem Đáp Án [Space]</span>
           </button>
         ) : (
-          <div className="grid grid-cols-3 gap-1.5 sm:gap-3">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-3 animate-fade-in">
             <button
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 onRate(1);
               }}
-              className="p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-600 dark:text-rose-400 font-bold text-center transition-all active:scale-95 touch-manipulation select-none"
+              className="p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-600 dark:text-rose-400 font-bold text-center transition-[transform,background-color,border-color] duration-150 active:scale-95 touch-manipulation select-none"
             >
               <span className="block text-xs sm:text-base font-black">1. Chưa Nhớ</span>
               <span className="text-[9px] sm:text-xs opacity-75 block mt-0.5">Ôn lại sớm</span>
@@ -224,7 +225,7 @@ export default function FlashcardView({
                 e.stopPropagation();
                 onRate(3);
               }}
-              className="p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold text-center transition-all active:scale-95 touch-manipulation select-none"
+              className="p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-bold text-center transition-[transform,background-color,border-color] duration-150 active:scale-95 touch-manipulation select-none"
             >
               <span className="block text-xs sm:text-base font-black">2. Tạm Nhớ</span>
               <span className="text-[9px] sm:text-xs opacity-75 block mt-0.5">Ôn tiếp chu kỳ</span>
@@ -236,7 +237,7 @@ export default function FlashcardView({
                 e.stopPropagation();
                 onRate(5);
               }}
-              className="p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 font-bold text-center transition-all active:scale-95 touch-manipulation select-none"
+              className="p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 font-bold text-center transition-[transform,background-color,border-color] duration-150 active:scale-95 touch-manipulation select-none"
             >
               <span className="block text-xs sm:text-base font-black">3. Đã Thuộc</span>
               <span className="text-[9px] sm:text-xs opacity-75 block mt-0.5">Tốt nghiệp thẻ</span>

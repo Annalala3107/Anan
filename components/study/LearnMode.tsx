@@ -733,7 +733,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       {/* Graduation Progress Bar */}
       <div className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
         <div
-          className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 rounded-full transition-all duration-300"
+          className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 rounded-full transition-[width] duration-300 ease-out transform-gpu"
           style={{ width: `${Math.max(progressPercent, 4)}%` }}
         />
       </div>
@@ -756,9 +756,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       ) : (
         /* Main Flash Question Arena (Rapid Drill) */
         <div
-          className={`p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border transition-all duration-200 shadow-xl relative ${
+          key={`${currentItem.id}_${currentIndex}`}
+          className={`p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border transition-[transform,border-color,box-shadow] duration-200 shadow-xl relative transform-gpu animate-question-enter ${
             feedbackState === 'correct'
-              ? 'border-emerald-500/80 shadow-glow-success scale-[1.005]'
+              ? 'border-emerald-500/80 shadow-glow-success animate-pop-correct'
               : feedbackState === 'wrong'
               ? 'border-rose-500/80 shadow-glow-danger animate-shake'
               : 'border-slate-200 dark:border-slate-800'
@@ -806,7 +807,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                   } else if (isTrueAnswer) {
                     // VISUAL ANCHOR: The true answer GLOWS GREEN boldly!
                     optionStyle =
-                      'bg-emerald-500/20 text-emerald-400 border-2 border-emerald-500 shadow-glow-success font-black ring-2 ring-emerald-500/40 animate-pulse';
+                      'bg-emerald-500/20 text-emerald-400 border-2 border-emerald-500 shadow-glow-success font-black ring-2 ring-emerald-500/40 animate-pop-correct';
                   } else {
                     optionStyle =
                       'opacity-30 border-slate-200 dark:border-slate-800 text-slate-400';
@@ -819,7 +820,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                     type="button"
                     disabled={feedbackState !== 'idle'}
                     onClick={() => handleSelectOption(opt)}
-                    className={`p-3 sm:p-5 rounded-xl sm:rounded-2xl border text-left text-sm sm:text-base transition-all flex items-start gap-3 sm:gap-3.5 group relative active:scale-[0.98] touch-manipulation select-none ${optionStyle}`}
+                    className={`p-3 sm:p-5 rounded-xl sm:rounded-2xl border text-left text-sm sm:text-base transition-[transform,background-color,border-color,opacity] duration-150 flex items-start gap-3 sm:gap-3.5 group relative active:scale-[0.98] touch-manipulation select-none transform-gpu ${optionStyle}`}
                   >
                     <span
                       className={`w-7 h-7 rounded-xl flex items-center justify-center font-mono font-bold text-xs shrink-0 transition-colors ${

@@ -1,8 +1,23 @@
 import type { Metadata } from 'next';
+import { Be_Vietnam_Pro, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import Starfield from '@/components/Starfield';
+
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ['vietnamese', 'latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-sans',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['vietnamese', 'latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-mono',
+});
 
 export const metadata: Metadata = {
   title: 'AnanQuiz — The Open-Source Smart Quiz & Exam Prep App',
@@ -16,7 +31,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi" className="dark">
+    <html
+      lang="vi"
+      className={`dark ${beVietnamPro.variable} ${jetbrainsMono.variable}`}
+    >
       <body className="min-h-screen flex flex-col relative overflow-x-hidden">
         {/* Starfield Cosmic Background */}
         <Starfield />
