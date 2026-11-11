@@ -71,7 +71,7 @@ export default function Home() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight">
               {quizInfo.title}
             </h1>
-            <p className="text-slate-300 text-sm md:text-base">
+            <p className="text-slate-300 text-sm md:text-base max-w-2xl leading-relaxed text-balance">
               Bộ câu hỏi gồm <strong className="text-white">{totalWords}</strong> câu hỏi trắc nghiệm / từ vựng đã được chuẩn hoá với đáp án và giải thích chi tiết.
             </p>
           </div>
@@ -115,11 +115,11 @@ export default function Home() {
                 V2.0 Cập Nhật Mới
               </span>
               <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
-                Cày Phản Xạ Cao Tốc (0.4s) • Gemini Flash AI • Mở Rộng Môn Học Động
+                Thẻ Lật 3D SM-2 • Phản Xạ Thần Tốc (0.4s) • Mở Rộng Bộ Đề Động
               </span>
             </div>
-            <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-              Học vẹt trắc nghiệm ghi nhớ sắt đá, sinh đề thi bằng AI và quản lý môn học tùy chỉnh theo ý bạn!
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 max-w-2xl text-balance">
+              Ghi nhớ chủ động (Active Recall), luyện phản xạ truy xuất thần tốc (0.4s) và cá nhân hóa bộ đề ôn thi chuẩn Spaced Repetition.
             </p>
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function Home() {
             href="/session/learn"
             className="flex-1 sm:flex-none text-xs font-bold py-2 px-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-sm text-center"
           >
-            Cày Phản Xạ ⚡ &rarr;
+            Học Thẻ 3D & Phản Xạ 🚀 &rarr;
           </Link>
           <Link
             href="/quizzes"
@@ -163,18 +163,18 @@ export default function Home() {
                   <Brain className="w-6 h-6" />
                 </div>
                 <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-md bg-indigo-500 text-white shadow-sm">
-                  Cực Nhanh ⚡
+                  Thẻ 3D SM-2 ⭐
                 </span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
-                Cày Phản Xạ (Learn)
+                Học Thẻ 3D & Phản Xạ (Learn)
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
-                Cỗ máy luyện cơ bắp phản xạ: đúng qua luôn trong 0.4s, sai đập ngay đáp án chuẩn và hỏi lại sau 3 câu.
+                Lật thẻ 3D tự đánh giá [1-3] chuẩn Spaced Repetition hoặc cày phản xạ cao tốc (0.4s) trước kỳ thi.
               </p>
             </div>
             <div className="flex items-center justify-between text-xs font-bold text-indigo-600 dark:text-indigo-400 pt-2 border-t border-slate-100 dark:border-slate-800">
-              <span>Bắt đầu cày phản xạ</span>
+              <span>Bắt đầu học ngay</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>

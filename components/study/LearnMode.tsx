@@ -481,14 +481,16 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               >
                 <div className="flex items-center justify-between gap-3 mb-1.5 flex-nowrap">
                   <span className="font-black text-sm sm:text-base whitespace-nowrap">
-                    Chuẩn ghi nhớ sắt đá (Khuyên dùng)
+                    {studyMethod === 'flashcard' ? 'Chuẩn ghi nhớ sâu (Khuyên dùng)' : 'Chuẩn ghi nhớ sắt đá (Khuyên dùng)'}
                   </span>
                   <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white/20 whitespace-nowrap shrink-0">
-                    2 lần đúng
+                    2 chu kỳ
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm opacity-85 leading-relaxed">
-                  Phải chọn đúng 2 lần liên tiếp mới tính là thuộc lầu lầu. Khắc phục triệt để đoán mò.
+                  {studyMethod === 'flashcard'
+                    ? 'Đạt đánh giá [Đã thuộc lầu] hoặc tự tin nhớ đúng qua 2 lượt ôn ngắt quãng.'
+                    : 'Phải chọn đúng 2 lần liên tiếp mới tính là thuộc lầu lầu. Khắc phục triệt để đoán mò.'}
                 </p>
               </button>
 
@@ -506,11 +508,13 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                     Speed Run (Lướt nhanh)
                   </span>
                   <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white/20 whitespace-nowrap shrink-0">
-                    1 lần đúng
+                    1 chu kỳ
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm opacity-85 leading-relaxed">
-                  Bấm đúng 1 lần là qua luôn. Dành cho người đã ôn sơ qua và cần kiểm tra lại tốc độ.
+                  {studyMethod === 'flashcard'
+                    ? 'Đạt đánh giá [Đã thuộc lầu] 1 lần là hoàn thành câu ngay. Dành cho người đã ôn trước.'
+                    : 'Bấm đúng 1 lần là qua luôn. Dành cho người đã ôn sơ qua và cần kiểm tra lại tốc độ.'}
                 </p>
               </button>
             </div>
@@ -528,10 +532,19 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             <button
               type="button"
               onClick={handleStartSession}
-              className="flex-1 py-4 px-8 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:opacity-95 text-white font-black flex items-center justify-center gap-2.5 shadow-glow text-base transition-all"
+              className="flex-1 py-4 px-8 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black flex items-center justify-center gap-2.5 shadow-glow text-base transition-all"
             >
-              <Zap className="w-5 h-5 fill-current" />
-              <span>BẮT ĐẦU CÀY PHẢN XẠ [Enter]</span>
+              {studyMethod === 'flashcard' ? (
+                <>
+                  <BookOpen className="w-5 h-5" />
+                  <span>BẮT ĐẦU HỌC THẺ LẬT 3D [Enter]</span>
+                </>
+              ) : (
+                <>
+                  <Zap className="w-5 h-5 fill-current" />
+                  <span>BẮT ĐẦU CÀY PHẢN XẠ [Enter]</span>
+                </>
+              )}
             </button>
           </div>
         </div>
