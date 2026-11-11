@@ -1,6 +1,6 @@
-[
+﻿[
   {
-    "id": "ssl_23",
+    "id": "SSA_23",
     "word": "Câu 23: Which skill is NOT explicitly included in digital literacy a...",
     "question": "Which skill is NOT explicitly included in digital literacy as described in the book?",
     "options": [
@@ -12,11 +12,11 @@
     "answer": "C",
     "correctWord": "C. Understanding neural network architecture in depth",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_35",
+    "id": "SSA_35",
     "word": "Câu 35: Which practice best demonstrates responsible use of informat...",
     "question": "Which practice best demonstrates responsible use of information?",
     "options": [
@@ -28,11 +28,11 @@
     "answer": "C",
     "correctWord": "C. Integrating sources while acknowledging original authors",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_37",
+    "id": "SSA_37",
     "word": "Câu 37: Which statement best reflects the authors' view of the colle...",
     "question": "Which statement best reflects the authors' view of the college transition?",
     "options": [
@@ -44,11 +44,11 @@
     "answer": "C",
     "correctWord": "C. It involves academic, social, and personal change",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_50",
+    "id": "SSA_50",
     "word": "Câu 50: Why is relying solely on search engine rankings problematic?",
     "question": "Why is relying solely on search engine rankings problematic?",
     "options": [
@@ -60,11 +60,11 @@
     "answer": "C",
     "correctWord": "C. Popularity does not equal accuracy or reliability",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_58",
+    "id": "SSA_58",
     "word": "Câu 58: Why is transparency in AI systems important?",
     "question": "Why is transparency in AI systems important?",
     "options": [
@@ -76,11 +76,11 @@
     "answer": "C",
     "correctWord": "C. It enables accountability and trust",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_60",
+    "id": "SSA_60",
     "word": "Câu 60: Why should we review outcomes after implementing a solution?",
     "question": "Why should we review outcomes after implementing a solution?",
     "options": [
@@ -92,11 +92,11 @@
     "answer": "B",
     "correctWord": "B. To determine whether adjustments are needed",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_85",
+    "id": "SSA_85",
     "word": "Câu 85: One ethical concern about using AI as a grading tool is that...",
     "question": "One ethical concern about using AI as a grading tool is that it may:",
     "options": [
@@ -108,11 +108,11 @@
     "answer": "B",
     "correctWord": "B. Breach students' intellectual property by uploading their work to AI systems",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_96",
+    "id": "SSA_96",
     "word": "Câu 96: What is scheduling?",
     "question": "What is scheduling?",
     "options": [
@@ -124,11 +124,11 @@
     "answer": "B",
     "correctWord": "B. Planning activities",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_105",
+    "id": "SSA_105",
     "word": "Câu 105: Which of the following best reflects the relationship betwee...",
     "question": "Which of the following best reflects the relationship between digital literacy and human agency?",
     "options": [
@@ -140,11 +140,11 @@
     "answer": "C",
     "correctWord": "C. Digital literacy helps individuals navigate algorithmic influence",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_110",
+    "id": "SSA_110",
     "word": "Câu 110: A student skips classes but studies alone. What is the likel...",
     "question": "A student skips classes but studies alone. What is the likely issue?",
     "options": [
@@ -156,11 +156,11 @@
     "answer": "B",
     "correctWord": "B. Low behavioral engagement",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_114",
+    "id": "SSA_114",
     "word": "Câu 114: Mark Twain compared idea generation to:",
     "question": "Mark Twain compared idea generation to:",
     "options": [
@@ -172,11 +172,11 @@
     "answer": "B",
     "correctWord": "B. A kaleidoscope",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_115",
+    "id": "SSA_115",
     "word": "Câu 115: Tracking ideas enhances creativity because it:",
     "question": "Tracking ideas enhances creativity because it:",
     "options": [
@@ -188,11 +188,11 @@
     "answer": "B",
     "correctWord": "B. Preserves inspiration",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_121",
+    "id": "SSA_121",
     "word": "Câu 121: Which institutional response best aligns with the ethical ap...",
     "question": "Which institutional response best aligns with the ethical approach advocated in the text?",
     "options": [
@@ -204,11 +204,11 @@
     "answer": "A",
     "correctWord": "A. Developing clear AI usage policies and promoting transparency",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_122",
+    "id": "SSA_122",
     "word": "Câu 122: Why are universities described as being \"in the process\" of ...",
     "question": "Why are universities described as being \"in the process\" of developing AI policies?",
     "options": [
@@ -220,11 +220,11 @@
     "answer": "B",
     "correctWord": "B. AI is developing faster than ethical guidelines can be established",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_124",
+    "id": "SSA_124",
     "word": "Câu 124: Revisiting a resolved issue when conditions change is:",
     "question": "Revisiting a resolved issue when conditions change is:",
     "options": [
@@ -236,11 +236,11 @@
     "answer": "B",
     "correctWord": "B. Critical awareness",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_125",
+    "id": "SSA_125",
     "word": "Câu 125: What is active listening?",
     "question": "What is active listening?",
     "options": [
@@ -252,11 +252,11 @@
     "answer": "B",
     "correctWord": "B. Engaging fully",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_130",
+    "id": "SSA_130",
     "word": "Câu 130: Assembly lines (in mass production) reduced inefficiency by:",
     "question": "Assembly lines (in mass production) reduced inefficiency by:",
     "options": [
@@ -268,11 +268,11 @@
     "answer": "B",
     "correctWord": "B. Dividing labor",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_139",
+    "id": "SSA_139",
     "word": "Câu 139: What is paraphrasing?",
     "question": "What is paraphrasing?",
     "options": [
@@ -284,11 +284,11 @@
     "answer": "B",
     "correctWord": "B. Rewriting ideas",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_141",
+    "id": "SSA_141",
     "word": "Câu 141: Why should we review outcomes after implementing a solution?",
     "question": "Why should we review outcomes after implementing a solution?",
     "options": [
@@ -300,11 +300,11 @@
     "answer": "B",
     "correctWord": "B. To determine whether adjustments are needed",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_142",
+    "id": "SSA_142",
     "word": "Câu 142: Why is it important to define the problem accurately?",
     "question": "Why is it important to define the problem accurately?",
     "options": [
@@ -316,11 +316,11 @@
     "answer": "B",
     "correctWord": "B. Misidentified problems often lead to ineffective solutions",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_148",
+    "id": "SSA_148",
     "word": "Câu 148: The book suggests digital literacy programs should include t...",
     "question": "The book suggests digital literacy programs should include training on:",
     "options": [
@@ -332,11 +332,11 @@
     "answer": "B",
     "correctWord": "B. Protecting personal data and digital footprints",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_152",
+    "id": "SSA_152",
     "word": "Câu 152: Which factor contributes most to student success?",
     "question": "Which factor contributes most to student success?",
     "options": [
@@ -348,11 +348,11 @@
     "answer": "B",
     "correctWord": "B. Active engagement",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_157",
+    "id": "SSA_157",
     "word": "Câu 157: Creativity often combines:",
     "question": "Creativity often combines:",
     "options": [
@@ -364,11 +364,11 @@
     "answer": "B",
     "correctWord": "B. Old ideas in new ways",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_160",
+    "id": "SSA_160",
     "word": "Câu 160: Creativity improves thinking skills by:",
     "question": "Creativity improves thinking skills by:",
     "options": [
@@ -380,11 +380,11 @@
     "answer": "C",
     "correctWord": "C. Expanding possibilities",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_161",
+    "id": "SSA_161",
     "word": "Câu 161: Which learner behavior best reflects metacognitive awareness...",
     "question": "Which learner behavior best reflects metacognitive awareness?",
     "options": [
@@ -396,11 +396,11 @@
     "answer": "C",
     "correctWord": "C. Reflecting on what strategies worked or failed",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_170",
+    "id": "SSA_170",
     "word": "Câu 170: When planning travel during uncertainty, you should:",
     "question": "When planning travel during uncertainty, you should:",
     "options": [
@@ -412,11 +412,11 @@
     "answer": "C",
     "correctWord": "C. Prepare backup plans",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_172",
+    "id": "SSA_172",
     "word": "Câu 172: Looking at something \"with a different lens\" means:",
     "question": "Looking at something \"with a different lens\" means:",
     "options": [
@@ -428,11 +428,11 @@
     "answer": "A",
     "correctWord": "A. Reframing perspective",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_196",
+    "id": "SSA_196",
     "word": "Câu 196: What is the potential downside of creating overly complex mn...",
     "question": "What is the potential downside of creating overly complex mnemonics?",
     "options": [
@@ -444,11 +444,11 @@
     "answer": "B",
     "correctWord": "B. The reminder itself can become more difficult to remember than the information you are trying to relate it to",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_197",
+    "id": "SSA_197",
     "word": "Câu 197: What is 'Information Literacy' for college students?",
     "question": "What is 'Information Literacy' for college students?",
     "options": [
@@ -460,11 +460,11 @@
     "answer": "C",
     "correctWord": "C. The ability to weigh information, examine it for validity, and determine which information is appropriate to use",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_201",
+    "id": "SSA_201",
     "word": "Câu 201: What is the 'first year experience' described in the Chapter...",
     "question": "What is the 'first year experience' described in the Chapter 1 outline?",
     "options": [
@@ -476,11 +476,11 @@
     "answer": "C",
     "correctWord": "C. A transitional experience that requires academic, cultural, emotional, financial, intellectual, and social adjustments.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_207",
+    "id": "SSA_207",
     "word": "Câu 207: What is the 'Hidden Curriculum' as mentioned in the chapter ...",
     "question": "What is the 'Hidden Curriculum' as mentioned in the chapter outlines?",
     "options": [
@@ -492,11 +492,11 @@
     "answer": "C",
     "correctWord": "C. The unwritten, unspoken rules and expectations that students must follow to succeed in the college environment",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_216",
+    "id": "SSA_216",
     "word": "Câu 216: What is the 'simplest way' to manage time according to the t...",
     "question": "What is the 'simplest way' to manage time according to the text?",
     "options": [
@@ -508,11 +508,11 @@
     "answer": "C",
     "correctWord": "C. Accurately plan how much time a task will take and set aside that amount of time",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_221",
+    "id": "SSA_221",
     "word": "Câu 221: What should a student do with their notes immediately after ...",
     "question": "What should a student do with their notes immediately after a class session?",
     "options": [
@@ -524,11 +524,11 @@
     "answer": "B",
     "correctWord": "B. Review and rewrite them, adding in any missing details or clarifications",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_228",
+    "id": "SSA_228",
     "word": "Câu 228: How does annotating graphics differ from annotating text?",
     "question": "How does annotating graphics differ from annotating text?",
     "options": [
@@ -540,11 +540,11 @@
     "answer": "B",
     "correctWord": "B. Deciphering graphics takes time, so you might want to create a copy before annotating to avoid making the information messy.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_231",
+    "id": "SSA_231",
     "word": "Câu 231: How can 15 to 20 minutes of 'waiting time' be repurposed eff...",
     "question": "How can 15 to 20 minutes of 'waiting time' be repurposed effectively?",
     "options": [
@@ -556,11 +556,11 @@
     "answer": "A",
     "correctWord": "A. By being organized enough to complete short tasks or review notes during that brief period.",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_232",
+    "id": "SSA_232",
     "word": "Câu 232: How much can on-campus housing and meals add to the annual c...",
     "question": "How much can on-campus housing and meals add to the annual cost of college?",
     "options": [
@@ -572,11 +572,11 @@
     "answer": "A",
     "correctWord": "A. The exact cost is not stated, but the text recommends living at home (if possible) to save a significant amount of money.",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_233",
+    "id": "SSA_233",
     "word": "Câu 233: How do supporters of generative AI justify the use of copyri...",
     "question": "How do supporters of generative AI justify the use of copyrighted works in training data under the \"fair use doctrine\"?",
     "options": [
@@ -588,11 +588,11 @@
     "answer": "B",
     "correctWord": "B. They claim the use is \"non-consumptive\" because the tool learns syntax and context without reproducing the central elements of the original work",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_235",
+    "id": "SSA_235",
     "word": "Câu 235: Why is 'Evaluating' a necessary step in the financial planni...",
     "question": "Why is 'Evaluating' a necessary step in the financial planning process?",
     "options": [
@@ -604,11 +604,11 @@
     "answer": "B",
     "correctWord": "B. To assess your current financial situation (e.g., income, expenses) before making a plan.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_270",
+    "id": "SSA_270",
     "word": "Câu 270: Which of the following is NOT mentioned as a key benefit of ...",
     "question": "Which of the following is NOT mentioned as a key benefit of using an online notebook like OneNote or Evernote?",
     "options": [
@@ -620,11 +620,11 @@
     "answer": "C",
     "correctWord": "C. Automatically grade assignments",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_292",
+    "id": "SSA_292",
     "word": "Câu 292: Positive interdependence means that team members believe:",
     "question": "Positive interdependence means that team members believe:",
     "options": [
@@ -636,11 +636,11 @@
     "answer": "B",
     "correctWord": "B. They are linked together in a shared outcome; success is mutual",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_293",
+    "id": "SSA_293",
     "word": "Câu 293: What does \"group processing\" involve at the end of a working...",
     "question": "What does \"group processing\" involve at the end of a working period?",
     "options": [
@@ -652,11 +652,11 @@
     "answer": "B",
     "correctWord": "B. Evaluating the group's functioning and identifying improvements",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_301",
+    "id": "SSA_301",
     "word": "Câu 301: Which of the following is recommended as a way to engage thr...",
     "question": "Which of the following is recommended as a way to engage through direct interaction with instructors?",
     "options": [
@@ -668,11 +668,11 @@
     "answer": "B",
     "correctWord": "B. Taking advantage of face-to-face meetings or online office hours",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_305",
+    "id": "SSA_305",
     "word": "Câu 305: Which role of the online instructor involves guiding student...",
     "question": "Which role of the online instructor involves guiding students by answering questions and challenging assumptions?",
     "options": [
@@ -684,11 +684,11 @@
     "answer": "C",
     "correctWord": "C. Director",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_307",
+    "id": "SSA_307",
     "word": "Câu 307: The \"Facilitator\" role of an online instructor focuses on:",
     "question": "The \"Facilitator\" role of an online instructor focuses on:",
     "options": [
@@ -700,11 +700,11 @@
     "answer": "B",
     "correctWord": "B. Designing assignments and activities to support intellectual, personal, and professional growth",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_308",
+    "id": "SSA_308",
     "word": "Câu 308: Which action demonstrates active participation and interest ...",
     "question": "Which action demonstrates active participation and interest in the course material?",
     "options": [
@@ -716,11 +716,11 @@
     "answer": "B",
     "correctWord": "B. Participating actively in discussions and activities",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_309",
+    "id": "SSA_309",
     "word": "Câu 309: To stay aware of course expectations and changes, students s...",
     "question": "To stay aware of course expectations and changes, students should:",
     "options": [
@@ -732,11 +732,11 @@
     "answer": "B",
     "correctWord": "B. Check the course site frequently for updates",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_313",
+    "id": "SSA_313",
     "word": "Câu 313: Each course component in an online environment, according to...",
     "question": "Each course component in an online environment, according to the instructor's Facilitator role, is chosen:",
     "options": [
@@ -748,11 +748,11 @@
     "answer": "B",
     "correctWord": "B. Intentionally to contribute to student development",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_324",
+    "id": "SSA_324",
     "word": "Câu 324: When creating a daily to-do list, which three key questions ...",
     "question": "When creating a daily to-do list, which three key questions should be considered for each task?",
     "options": [
@@ -764,11 +764,11 @@
     "answer": "B",
     "correctWord": "B. When to complete, how much time required, is it a priority",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_327",
+    "id": "SSA_327",
     "word": "Câu 327: One key benefit of an online calendar (e.g., Google Calendar...",
     "question": "One key benefit of an online calendar (e.g., Google Calendar) mentioned in the text is:",
     "options": [
@@ -780,11 +780,11 @@
     "answer": "B",
     "correctWord": "B. It integrates tasks and commitments into a single view and facilitates sharing events",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_344",
+    "id": "SSA_344",
     "word": "Câu 344: If any part of the assignment requirements is unclear, the r...",
     "question": "If any part of the assignment requirements is unclear, the recommended action is to:",
     "options": [
@@ -796,11 +796,11 @@
     "answer": "B",
     "correctWord": "B. Request clarification from the instructor",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_345",
+    "id": "SSA_345",
     "word": "Câu 345: Which of the following is NOT listed as a key question to as...",
     "question": "Which of the following is NOT listed as a key question to ask when interpreting an assignment?",
     "options": [
@@ -812,11 +812,11 @@
     "answer": "C",
     "correctWord": "C. How much will this affect my final grade?",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_346",
+    "id": "SSA_346",
     "word": "Câu 346: The term \"analyze\" falls under which category of common acad...",
     "question": "The term \"analyze\" falls under which category of common academic task terms?",
     "options": [
@@ -828,11 +828,11 @@
     "answer": "C",
     "correctWord": "C. Relation terms",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_347",
+    "id": "SSA_347",
     "word": "Câu 347: Which category of academic task terms includes \"justify,\" \"p...",
     "question": "Which category of academic task terms includes \"justify,\" \"prove,\" and \"demonstrate\"?",
     "options": [
@@ -844,11 +844,11 @@
     "answer": "B",
     "correctWord": "B. Demonstration terms",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_352",
+    "id": "SSA_352",
     "word": "Câu 352: When breaking down a large assignment (e.g., a research pape...",
     "question": "When breaking down a large assignment (e.g., a research paper), each step should be:",
     "options": [
@@ -860,11 +860,11 @@
     "answer": "B",
     "correctWord": "B. Specific, realistic, and achievable within one day or a single work session",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_354",
+    "id": "SSA_354",
     "word": "Câu 354: Typical steps in a research paper assignment plan include al...",
     "question": "Typical steps in a research paper assignment plan include all of the following EXCEPT:",
     "options": [
@@ -876,11 +876,11 @@
     "answer": "D",
     "correctWord": "D. Waiting for classmates to finish first",
     "explanation": "Đáp án: D.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_361",
+    "id": "SSA_361",
     "word": "Câu 361: In Hypothes.is, annotations are public by default, but users...",
     "question": "In Hypothes.is, annotations are public by default, but users can control visibility by:",
     "options": [
@@ -892,11 +892,11 @@
     "answer": "B",
     "correctWord": "B. Creating private groups for collaborative or personal notes",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "ssl_362",
+    "id": "SSA_362",
     "word": "Câu 362: When highlighting in online texts, the text advises to avoid...",
     "question": "When highlighting in online texts, the text advises to avoid:",
     "options": [
@@ -908,7 +908,7 @@
     "answer": "B",
     "correctWord": "B. Over-highlighting; limit to essential content only",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   }
 ]

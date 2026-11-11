@@ -3,6 +3,10 @@
 import { useState, useEffect } from 'react';
 import { Word, DrillQuestion } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
+import { getQuestionKey, cleanOptionText, isAnswerMatch } from '@/lib/utils';
+import { soundFx } from '@/lib/sound';
+import { buildStandardQuestions } from '@/lib/quizHelpers';
+import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import { Volume2, ArrowRight, CheckCircle2, XCircle, Zap, RotateCcw, Trophy, HelpCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -19,54 +23,17 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   const [streak, setStreak] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  // Generate drill questions (handles both MCQ questions & vocabulary cloze)
+  // Generate drill questions using standardized builder (Zero legacy text fallback, robust MCQ)
   useEffect(() => {
     if (!words || words.length === 0) return;
-
-    const list: DrillQuestion[] = [];
-    const pool = [...words].sort(() => 0.5 - Math.random());
-    const count = Math.min(pool.length, 20);
-
-    for (let i = 0; i < count; i++) {
-      const target = pool[i];
-
-      // Case 1: Target is an MCQ question
-      if (target.question && target.options && target.options.length > 0) {
-        list.push({
-          sentence: target.question,
-          correctWord: target.correctWord || target.options[0],
-          options: target.options,
-          explanation: target.explanation || `Đáp án chính xác: ${target.answer || ''}`,
-          questionNumber: target.id || i + 1,
-        });
-      } else {
-        // Case 2: Target is a Vocabulary word
-        const rawSentence =
-          target.simple_examples?.[0] ||
-          target.advanced_example ||
-          `The committee praised his ________ approach to the complex challenge.`;
-
-        const regex = new RegExp(`\\b${target.word}\\w*`, 'gi');
-        const clozeSentence = rawSentence.replace(regex, '________');
-
-        const otherWords = words
-          .filter((w) => w.word.toLowerCase() !== target.word.toLowerCase())
-          .map((w) => w.word)
-          .sort(() => 0.5 - Math.random())
-          .slice(0, 3);
-
-        const options = [target.word, ...otherWords].sort(() => 0.5 - Math.random());
-
-        list.push({
-          sentence: clozeSentence,
-          correctWord: target.word,
-          options,
-          explanation: `${target.word} (${target.vi || target.ru || 'chính xác'}) phù hợp nhất với ngữ cảnh câu này.`,
-          questionNumber: i + 1,
-        });
-      }
-    }
-
+    const std = buildStandardQuestions(words, 20);
+    const list: DrillQuestion[] = std.map((q, idx) => ({
+      sentence: q.sentence,
+      correctWord: q.correctWord,
+      options: q.options,
+      explanation: q.explanation,
+      questionNumber: q.id || idx + 1,
+    }));
     setQuestions(list);
   }, [words]);
 
@@ -108,7 +75,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   }
 
   const isOptionCorrect = (opt: string) => {
-    return opt.trim().toLowerCase() === currentQ.correctWord.trim().toLowerCase();
+    return isAnswerMatch(opt, currentQ.correctWord);
   };
 
   const handleSelect = (choice: string) => {
@@ -116,21 +83,31 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
     setSelectedWord(choice);
 
     const isCorrect = isOptionCorrect(choice);
+    const uniqueKey = currentQ.questionNumber
+      ? `drill_q_${currentQ.questionNumber}`
+      : getQuestionKey({ question: currentQ.sentence, word: currentQ.correctWord });
+
     if (isCorrect) {
+      soundFx.playCorrect();
       setScore((s) => s + 1);
       setStreak((s) => s + 1);
-      StorageEngine.updateWordProgress(currentQ.correctWord, 5);
+      StorageEngine.updateWordProgress(uniqueKey, 5);
     } else {
+      soundFx.playWrong();
       setStreak(0);
-      StorageEngine.updateWordProgress(currentQ.correctWord, 2);
+      StorageEngine.updateWordProgress(uniqueKey, 2);
     }
   };
 
   const handleNext = () => {
+    if (isCompleted) return;
+
     if (currentIndex < questions.length - 1) {
+      soundFx.playClick();
       setCurrentIndex((i) => i + 1);
     } else {
       setIsCompleted(true);
+      soundFx.playCelebration();
       StorageEngine.recordActivity('drill', Math.round((score / questions.length) * 100));
       confetti({
         particleCount: 100,
@@ -194,7 +171,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   const isAnswered = Boolean(selectedWord);
 
   return (
-    <div className="max-w-3xl mx-auto py-6 px-4">
+    <div className="w-full max-w-4xl mx-auto py-6 px-4 sm:px-6">
       {/* Top Bar */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
@@ -235,9 +212,10 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           <HelpCircle className="w-4 h-4" />
           <span>Câu hỏi {currentIndex + 1}</span>
         </div>
-        <p className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
-          {currentQ.sentence}
-        </p>
+        <CodeQuestionRenderer
+          content={currentQ.sentence}
+          className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
+        />
       </div>
 
       {/* 4 Choices */}
@@ -273,7 +251,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                 <span className="w-7 h-7 rounded-xl bg-slate-100 dark:bg-slate-700/80 text-xs flex items-center justify-center font-mono font-bold text-slate-600 dark:text-slate-300 shrink-0">
                   {String.fromCharCode(65 + idx)}
                 </span>
-                <span className="text-sm sm:text-base">{opt}</span>
+                <span className="text-sm sm:text-base">{cleanOptionText(opt)}</span>
               </div>
               {isAnswered && isTarget && (
                 <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 ml-2" />

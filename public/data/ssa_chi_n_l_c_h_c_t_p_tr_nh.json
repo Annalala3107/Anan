@@ -1,6 +1,6 @@
-[
+﻿[
   {
-    "id": "ssl_7",
+    "id": "SSA_7",
     "word": "Câu 7: Which type of memory is primarily responsible for temporaril...",
     "question": "Which type of memory is primarily responsible for temporarily holding information while processing it?",
     "options": [
@@ -12,11 +12,11 @@
     "answer": "C",
     "correctWord": "C. Working memory",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_20",
+    "id": "SSA_20",
     "word": "Câu 20: What is one major difference between high school and college...",
     "question": "What is one major difference between high school and college learning?",
     "options": [
@@ -28,11 +28,11 @@
     "answer": "B",
     "correctWord": "B. College requires greater student responsibility and self-advocacy",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_21",
+    "id": "SSA_21",
     "word": "Câu 21: What is the main purpose of self-directed learning in online...",
     "question": "What is the main purpose of self-directed learning in online education?",
     "options": [
@@ -44,11 +44,11 @@
     "answer": "B",
     "correctWord": "B. To help students take control of their learning",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_22",
+    "id": "SSA_22",
     "word": "Câu 22: What role does environment play in effective studying?",
     "question": "What role does environment play in effective studying?",
     "options": [
@@ -60,11 +60,11 @@
     "answer": "C",
     "correctWord": "C. It can significantly affect focus and memory",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_24",
+    "id": "SSA_24",
     "word": "Câu 24: Which of the following is NOT a component of metacognition?",
     "question": "Which of the following is NOT a component of metacognition?",
     "options": [
@@ -76,11 +76,11 @@
     "answer": "D",
     "correctWord": "D. Memorizing facts without reflection",
     "explanation": "Đáp án: D.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_26",
+    "id": "SSA_26",
     "word": "Câu 26: Which of the following best describes \"college culture\"?",
     "question": "Which of the following best describes \"college culture\"?",
     "options": [
@@ -92,11 +92,11 @@
     "answer": "C",
     "correctWord": "C. Shared expectations, language, and norms within higher education",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_27",
+    "id": "SSA_27",
     "word": "Câu 27: Which of the following best defines time-on-task?",
     "question": "Which of the following best defines time-on-task?",
     "options": [
@@ -108,11 +108,11 @@
     "answer": "B",
     "correctWord": "B. The actual time required to complete a specific task",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_28",
+    "id": "SSA_28",
     "word": "Câu 28: Which of the following best describes retrieval in learning?",
     "question": "Which of the following best describes retrieval in learning?",
     "options": [
@@ -124,11 +124,11 @@
     "answer": "B",
     "correctWord": "B. Accessing and using stored knowledge when needed",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_29",
+    "id": "SSA_29",
     "word": "Câu 29: Which of the following best describes encoding in the learni...",
     "question": "Which of the following best describes encoding in the learning process?",
     "options": [
@@ -140,11 +140,11 @@
     "answer": "B",
     "correctWord": "B. Processing new information deeply so that memories are formed",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_32",
+    "id": "SSA_32",
     "word": "Câu 32: Which activity best demonstrates metacognitive awareness?",
     "question": "Which activity best demonstrates metacognitive awareness?",
     "options": [
@@ -156,11 +156,11 @@
     "answer": "B",
     "correctWord": "B. Recognizing which study strategies work best for you",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_42",
+    "id": "SSA_42",
     "word": "Câu 42: Which strategy is recommended for managing test anxiety?",
     "question": "Which strategy is recommended for managing test anxiety?",
     "options": [
@@ -172,11 +172,11 @@
     "answer": "C",
     "correctWord": "C. Using preparation and familiarity to reduce fear",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_43",
+    "id": "SSA_43",
     "word": "Câu 43: Which question reflects a metacognitive approach to learning...",
     "question": "Which question reflects a metacognitive approach to learning?",
     "options": [
@@ -188,11 +188,11 @@
     "answer": "B",
     "correctWord": "B. \"What strategy am I using, and is it effective?\"",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_44",
+    "id": "SSA_44",
     "word": "Câu 44: Which study habit is least effective for long-term learning?",
     "question": "Which study habit is least effective for long-term learning?",
     "options": [
@@ -204,11 +204,11 @@
     "answer": "C",
     "correctWord": "C. Re-reading notes repeatedly without engagement",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_49",
+    "id": "SSA_49",
     "word": "Câu 49: Why is retrieval practice effective for learning?",
     "question": "Why is retrieval practice effective for learning?",
     "options": [
@@ -220,11 +220,11 @@
     "answer": "B",
     "correctWord": "B. It strengthens memory storage and retrieval pathways",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_51",
+    "id": "SSA_51",
     "word": "Câu 51: Why is using AI for personalized feedback considered ethical...",
     "question": "Why is using AI for personalized feedback considered ethically problematic in some cases?",
     "options": [
@@ -236,11 +236,11 @@
     "answer": "B",
     "correctWord": "B. It may replace meaningful instructor-student learning relationships",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_55",
+    "id": "SSA_55",
     "word": "Câu 55: Why is metacognition considered a self-regulation skill?",
     "question": "Why is metacognition considered a self-regulation skill?",
     "options": [
@@ -252,11 +252,11 @@
     "answer": "B",
     "correctWord": "B. It allows students to manage and direct their learning",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_56",
+    "id": "SSA_56",
     "word": "Câu 56: Why is multitasking a bad habit for learning?",
     "question": "Why is multitasking a bad habit for learning?",
     "options": [
@@ -268,11 +268,11 @@
     "answer": "B",
     "correctWord": "B. It often reduces efficiency and quality of work",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_59",
+    "id": "SSA_59",
     "word": "Câu 59: Why does the author argue that using AI to do the work inste...",
     "question": "Why does the author argue that using AI to do the work instead of the student is problematic?",
     "options": [
@@ -284,11 +284,11 @@
     "answer": "B",
     "correctWord": "B. It cheats students out of the learning experience",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_61",
+    "id": "SSA_61",
     "word": "Câu 61: Why does the book emphasize higher-order thinking in online ...",
     "question": "Why does the book emphasize higher-order thinking in online learning?",
     "options": [
@@ -300,11 +300,11 @@
     "answer": "B",
     "correctWord": "B. Surface learning is ineffective for long-term learning",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_65",
+    "id": "SSA_65",
     "word": "Câu 65: AI can support memory formation primarily by:",
     "question": "AI can support memory formation primarily by:",
     "options": [
@@ -316,11 +316,11 @@
     "answer": "B",
     "correctWord": "B. Providing metaphors, emotional connections, and multisensory learning ideas",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_66",
+    "id": "SSA_66",
     "word": "Câu 66: A student feels overwhelmed during their first semester and ...",
     "question": "A student feels overwhelmed during their first semester and avoids contacting professors. Based on Chapter 1, what is the best recommended action?",
     "options": [
@@ -332,11 +332,11 @@
     "answer": "C",
     "correctWord": "C. Seek support from faculty, advisors, and campus resources",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_73",
+    "id": "SSA_73",
     "word": "Câu 73: According to the chapter, the primary goal of learning is to...",
     "question": "According to the chapter, the primary goal of learning is to:",
     "options": [
@@ -348,11 +348,11 @@
     "answer": "B",
     "correctWord": "B. Distill knowledge and skills so they can be applied in new situations",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_81",
+    "id": "SSA_81",
     "word": "Câu 81: Guerrero-Dib, Portales, and Heredia-Escorza (2020) emphasize...",
     "question": "Guerrero-Dib, Portales, and Heredia-Escorza (2020) emphasize that academic integrity extends beyond cheating because it:",
     "options": [
@@ -364,11 +364,11 @@
     "answer": "B",
     "correctWord": "B. Represents a commitment to the learning process and ethical use of resources",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_83",
+    "id": "SSA_83",
     "word": "Câu 83: Metacognition is best defined as",
     "question": "Metacognition is best defined as",
     "options": [
@@ -380,11 +380,11 @@
     "answer": "B",
     "correctWord": "B. Awareness and regulation of one's own thinking and learning",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_84",
+    "id": "SSA_84",
     "word": "Câu 84: Metacognition helps students mainly by:",
     "question": "Metacognition helps students mainly by:",
     "options": [
@@ -396,11 +396,11 @@
     "answer": "C",
     "correctWord": "C. Allowing learners to adjust strategies intentionally",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_89",
+    "id": "SSA_89",
     "word": "Câu 89: Studying in college often requires students to:",
     "question": "Studying in college often requires students to:",
     "options": [
@@ -412,11 +412,11 @@
     "answer": "B",
     "correctWord": "B. Modify old habits to meet new academic demands",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_99",
+    "id": "SSA_99",
     "word": "Câu 99: What is \"keyword searching\"?",
     "question": "What is \"keyword searching\"?",
     "options": [
@@ -428,11 +428,11 @@
     "answer": "C",
     "correctWord": "C. Using key terms",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_100",
+    "id": "SSA_100",
     "word": "Câu 100: What is information literacy?",
     "question": "What is information literacy?",
     "options": [
@@ -444,11 +444,11 @@
     "answer": "B",
     "correctWord": "B. Evaluating information",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_107",
+    "id": "SSA_107",
     "word": "Câu 107: Which AI-supported strategy best aligns with improving memor...",
     "question": "Which AI-supported strategy best aligns with improving memory storage?",
     "options": [
@@ -460,11 +460,11 @@
     "answer": "B",
     "correctWord": "B. Using AI to plan spaced practice after understanding the material",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_108",
+    "id": "SSA_108",
     "word": "Câu 108: Which of the following principle could best guides ethical s...",
     "question": "Which of the following principle could best guides ethical student use of AI?",
     "options": [
@@ -476,11 +476,11 @@
     "answer": "B",
     "correctWord": "B. Use AI to support learning goals, not replace them",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_109",
+    "id": "SSA_109",
     "word": "Câu 109: Why is using AI to complete assignments unethical?",
     "question": "Why is using AI to complete assignments unethical?",
     "options": [
@@ -492,11 +492,11 @@
     "answer": "B",
     "correctWord": "B. It replaces the intended learning process",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_111",
+    "id": "SSA_111",
     "word": "Câu 111: A student reads the syllabus carefully and plans ahead. This...",
     "question": "A student reads the syllabus carefully and plans ahead. This shows:",
     "options": [
@@ -508,11 +508,11 @@
     "answer": "C",
     "correctWord": "C. Self-management",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_112",
+    "id": "SSA_112",
     "word": "Câu 112: Which term describes taking responsibility for your own lear...",
     "question": "Which term describes taking responsibility for your own learning?",
     "options": [
@@ -524,11 +524,11 @@
     "answer": "B",
     "correctWord": "B. Academic ownership",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_116",
+    "id": "SSA_116",
     "word": "Câu 116: What is the key advantage of short, regular study sessions?",
     "question": "What is the key advantage of short, regular study sessions?",
     "options": [
@@ -540,11 +540,11 @@
     "answer": "C",
     "correctWord": "C. Focus and retention are improved",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_117",
+    "id": "SSA_117",
     "word": "Câu 117: Which type of memory is primarily responsible for temporaril...",
     "question": "Which type of memory is primarily responsible for temporarily holding information while processing it?",
     "options": [
@@ -556,11 +556,11 @@
     "answer": "C",
     "correctWord": "C. Working memory",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_118",
+    "id": "SSA_118",
     "word": "Câu 118: What is encoding in memory?",
     "question": "What is encoding in memory?",
     "options": [
@@ -572,11 +572,11 @@
     "answer": "B",
     "correctWord": "B. Converting information for storage in memory",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_119",
+    "id": "SSA_119",
     "word": "Câu 119: What is the primary benefit of reviewing graded tests?",
     "question": "What is the primary benefit of reviewing graded tests?",
     "options": [
@@ -588,11 +588,11 @@
     "answer": "C",
     "correctWord": "C. Strengthening understanding and memory",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_120",
+    "id": "SSA_120",
     "word": "Câu 120: Why are AI detection tools controversial in academic setting...",
     "question": "Why are AI detection tools controversial in academic settings?",
     "options": [
@@ -604,11 +604,11 @@
     "answer": "D",
     "correctWord": "D. They may produce inaccurate results and false accusations",
     "explanation": "Đáp án: D.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_133",
+    "id": "SSA_133",
     "word": "Câu 133: A student believes being constantly busy means they are mana...",
     "question": "A student believes being constantly busy means they are managing time well. Based on Chapter 3, why is this assumption flawed?",
     "options": [
@@ -620,11 +620,11 @@
     "answer": "B",
     "correctWord": "B. Productivity depends on purposeful prioritization, not just activity",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_136",
+    "id": "SSA_136",
     "word": "Câu 136: Why is multitasking a bad habit for learning?",
     "question": "Why is multitasking a bad habit for learning?",
     "options": [
@@ -636,11 +636,11 @@
     "answer": "B",
     "correctWord": "B. It often reduces efficiency and quality of work",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_149",
+    "id": "SSA_149",
     "word": "Câu 149: AI can support memory formation by:",
     "question": "AI can support memory formation by:",
     "options": [
@@ -652,11 +652,11 @@
     "answer": "B",
     "correctWord": "B. Providing metaphors, emotional connections, and multisensory learning ideas",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_150",
+    "id": "SSA_150",
     "word": "Câu 150: Why does the author argue that using AI to do the work inste...",
     "question": "Why does the author argue that using AI to do the work instead of the student is problematic?",
     "options": [
@@ -668,11 +668,11 @@
     "answer": "B",
     "correctWord": "B. It cheats students out of the learning experience",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_151",
+    "id": "SSA_151",
     "word": "Câu 151: Which of the following best describes \"college culture\"?",
     "question": "Which of the following best describes \"college culture\"?",
     "options": [
@@ -684,11 +684,11 @@
     "answer": "C",
     "correctWord": "C. Shared expectations, language, and norms within higher education",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_154",
+    "id": "SSA_154",
     "word": "Câu 154: Which of the following best illustrates monitoring in metaco...",
     "question": "Which of the following best illustrates monitoring in metacognition?",
     "options": [
@@ -700,11 +700,11 @@
     "answer": "B",
     "correctWord": "B. Checking comprehension while reading",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_155",
+    "id": "SSA_155",
     "word": "Câu 155: Why is metacognition considered a self-regulation skill?",
     "question": "Why is metacognition considered a self-regulation skill?",
     "options": [
@@ -716,11 +716,11 @@
     "answer": "B",
     "correctWord": "B. It allows students to manage and direct their learning",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_156",
+    "id": "SSA_156",
     "word": "Câu 156: Why is metacognition linked to academic success?",
     "question": "Why is metacognition linked to academic success?",
     "options": [
@@ -732,11 +732,11 @@
     "answer": "B",
     "correctWord": "B. Effective learners actively reflect and adapt",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_163",
+    "id": "SSA_163",
     "word": "Câu 163: Why does the book emphasize higher-order thinking in online ...",
     "question": "Why does the book emphasize higher-order thinking in online learning?",
     "options": [
@@ -748,11 +748,11 @@
     "answer": "B",
     "correctWord": "B. Surface learning is ineffective for long-term learning",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_164",
+    "id": "SSA_164",
     "word": "Câu 164: What is working memory?",
     "question": "What is working memory?",
     "options": [
@@ -764,11 +764,11 @@
     "answer": "B",
     "correctWord": "B. Temporary processing space",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_165",
+    "id": "SSA_165",
     "word": "Câu 165: Studying in college often requires students to:",
     "question": "Studying in college often requires students to:",
     "options": [
@@ -780,11 +780,11 @@
     "answer": "B",
     "correctWord": "B. Modify old habits to meet new academic demands",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_166",
+    "id": "SSA_166",
     "word": "Câu 166: A student studies 10 minutes daily instead of cramming. This...",
     "question": "A student studies 10 minutes daily instead of cramming. This uses:",
     "options": [
@@ -796,11 +796,11 @@
     "answer": "B",
     "correctWord": "B. Spaced learning",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_168",
+    "id": "SSA_168",
     "word": "Câu 168: Which method helps reduce test anxiety?",
     "question": "Which method helps reduce test anxiety?",
     "options": [
@@ -812,11 +812,11 @@
     "answer": "C",
     "correctWord": "C. Preparation",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_169",
+    "id": "SSA_169",
     "word": "Câu 169: Which action would most directly improve a student's metacog...",
     "question": "Which action would most directly improve a student's metacognitive skills?",
     "options": [
@@ -828,11 +828,11 @@
     "answer": "B",
     "correctWord": "B. Reflecting on why an exam strategy failed",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_174",
+    "id": "SSA_174",
     "word": "Câu 174: A student sets specific study hours daily. This improves:",
     "question": "A student sets specific study hours daily. This improves:",
     "options": [
@@ -844,11 +844,11 @@
     "answer": "C",
     "correctWord": "C. Consistency",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_188",
+    "id": "SSA_188",
     "word": "Câu 188: Approximately how many hours of reading per week might a ful...",
     "question": "Approximately how many hours of reading per week might a full college course load require?",
     "options": [
@@ -860,11 +860,11 @@
     "answer": "C",
     "correctWord": "C. 10–15 hours",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_193",
+    "id": "SSA_193",
     "word": "Câu 193: What is the primary purpose of recapturing 'lost moments' in...",
     "question": "What is the primary purpose of recapturing 'lost moments' in a schedule?",
     "options": [
@@ -876,11 +876,11 @@
     "answer": "C",
     "correctWord": "C. To repurpose that time for studying or completing productive tasks",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_198",
+    "id": "SSA_198",
     "word": "Câu 198: What is a significant technological challenge related to the...",
     "question": "What is a significant technological challenge related to the use of AI detection tools like Turnitin in higher education environments?",
     "options": [
@@ -892,11 +892,11 @@
     "answer": "C",
     "correctWord": "C. These tools face reliability issues as new software continually emerges to intentionally bypass detection by artificially mimicking human writing styles",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_208",
+    "id": "SSA_208",
     "word": "Câu 208: What is the purpose of the 'Rethinking' exercises at the end...",
     "question": "What is the purpose of the 'Rethinking' exercises at the end of textbook chapters?",
     "options": [
@@ -908,11 +908,11 @@
     "answer": "C",
     "correctWord": "C. To revisit initial survey questions and reflect on how your understanding has changed after learning.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_212",
+    "id": "SSA_212",
     "word": "Câu 212: What is the intended outcome of the 'After Class' task of te...",
     "question": "What is the intended outcome of the 'After Class' task of testing yourself?",
     "options": [
@@ -924,11 +924,11 @@
     "answer": "A",
     "correctWord": "A. To start the studying process and assess whether you understand the material.",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_217",
+    "id": "SSA_217",
     "word": "Câu 217: What is the recommended task regarding reading before a clas...",
     "question": "What is the recommended task regarding reading before a class session begins?",
     "options": [
@@ -940,11 +940,11 @@
     "answer": "C",
     "correctWord": "C. Read the assigned material to make the lecture and complex concepts easier to follow",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_220",
+    "id": "SSA_220",
     "word": "Câu 220: What does 'true learning' mean beyond just earning high grad...",
     "question": "What does 'true learning' mean beyond just earning high grades?",
     "options": [
@@ -956,11 +956,11 @@
     "answer": "C",
     "correctWord": "C. It is a transformative process that expands your mind, challenges your identity, and helps you handle real-world situations.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_237",
+    "id": "SSA_237",
     "word": "Câu 237: Why is it easy to forget why you set a long-term goal?",
     "question": "Why is it easy to forget why you set a long-term goal?",
     "options": [
@@ -972,11 +972,11 @@
     "answer": "B",
     "correctWord": "B. Because it is easy to become mired in the drudgery of current difficult tasks and forget the initial reason.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_238",
+    "id": "SSA_238",
     "word": "Câu 238: Why is 'pulling an all-nighter' considered a poor planning m...",
     "question": "Why is 'pulling an all-nighter' considered a poor planning method?",
     "options": [
@@ -988,11 +988,11 @@
     "answer": "C",
     "correctWord": "C. It rarely produces the best work and is often a last-minute attempt to make up for poor planning",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_239",
+    "id": "SSA_239",
     "word": "Câu 239: Why is 'Visualizing the Results' considered an effective mot...",
     "question": "Why is 'Visualizing the Results' considered an effective motivation strategy?",
     "options": [
@@ -1004,11 +1004,11 @@
     "answer": "B",
     "correctWord": "B. Keeping the benefits and end results in mind is extremely effective in keeping you motivated",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_240",
+    "id": "SSA_240",
     "word": "Câu 240: Why is 'Learning About Yourself' considered a lifelong proce...",
     "question": "Why is 'Learning About Yourself' considered a lifelong process in career planning?",
     "options": [
@@ -1020,11 +1020,11 @@
     "answer": "B",
     "correctWord": "B. Because knowing yourself as a professional by discovering interests, skills, and values is something everyone should do on an ongoing basis",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_242",
+    "id": "SSA_242",
     "word": "Câu 242: Why is it important to bring the book and reading notes to e...",
     "question": "Why is it important to bring the book and reading notes to every class session?",
     "options": [
@@ -1036,11 +1036,11 @@
     "answer": "C",
     "correctWord": "C. To engage with the material, avoid distractions, and ask critical or clarifying questions.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_244",
+    "id": "SSA_244",
     "word": "Câu 244: Why should a student avoid taking 'short cuts' in the readin...",
     "question": "Why should a student avoid taking 'short cuts' in the reading and note-taking cycle?",
     "options": [
@@ -1052,11 +1052,11 @@
     "answer": "B",
     "correctWord": "B. Because each step is a building block in the continuous learning process, helping you become a stronger expert.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_246",
+    "id": "SSA_246",
     "word": "Câu 246: When approaching a scholarly journal article for a research ...",
     "question": "When approaching a scholarly journal article for a research project, what is the recommended first step to determine if the article is relevant to your work?",
     "options": [
@@ -1068,11 +1068,11 @@
     "answer": "C",
     "correctWord": "C. You should begin by reading the abstract and the provided keywords to quickly decide if the subject matter directly aligns with your current research project's goals",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_250",
+    "id": "SSA_250",
     "word": "Câu 250: According to the foundational definitions of AI literacy, ho...",
     "question": "According to the foundational definitions of AI literacy, how do \"Neural Networks\" primarily function within deep learning systems?",
     "options": [
@@ -1084,11 +1084,11 @@
     "answer": "B",
     "correctWord": "B. They consist of interconnected nodes organized in layers that process inputs through activation functions to recognize complex patterns",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_251",
+    "id": "SSA_251",
     "word": "Câu 251: According to the Ebbinghaus Forgetting Curve research, what ...",
     "question": "According to the Ebbinghaus Forgetting Curve research, what is the most effective method for successfully storing information in long-term memory?",
     "options": [
@@ -1100,11 +1100,11 @@
     "answer": "C",
     "correctWord": "C. Actively recalling the information at strategically spaced intervals just before the brain would otherwise naturally forget the educational material",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_254",
+    "id": "SSA_254",
     "word": "Câu 254: Before class, why is it useful to record questions about the...",
     "question": "Before class, why is it useful to record questions about the assigned reading?",
     "options": [
@@ -1116,11 +1116,11 @@
     "answer": "B",
     "correctWord": "B. To establish a purpose for reading and to identify areas that need clarification during the lecture",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_255",
+    "id": "SSA_255",
     "word": "Câu 255: Based on the study by Liang et al. (2023), which group of st...",
     "question": "Based on the study by Liang et al. (2023), which group of students is at the highest risk of being falsely accused by \"AI detectors\"?",
     "options": [
@@ -1132,11 +1132,11 @@
     "answer": "D",
     "correctWord": "D. Students who are non-native English writers demonstrating lower grammatical variability",
     "explanation": "Đáp án: D.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_258",
+    "id": "SSA_258",
     "word": "Câu 258: Define 'Metacognition'.",
     "question": "Define 'Metacognition'.",
     "options": [
@@ -1148,11 +1148,11 @@
     "answer": "C",
     "correctWord": "C. The process of thinking about how you think, including planning, tracking, and assessing your own understanding",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_261",
+    "id": "SSA_261",
     "word": "Câu 261: In the context of 'Knowing Yourself' for time management, ho...",
     "question": "In the context of 'Knowing Yourself' for time management, how does fatigue affect study?",
     "options": [
@@ -1164,11 +1164,11 @@
     "answer": "C",
     "correctWord": "C. If you are tired, your attention and retention will be much poorer than if you were well-rested.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_264",
+    "id": "SSA_264",
     "word": "Câu 264: In the SQ3R strategic reading method, what specific actions ...",
     "question": "In the SQ3R strategic reading method, what specific actions should a student take during the \"Recite\" (or second \"R\") phase?",
     "options": [
@@ -1180,11 +1180,11 @@
     "answer": "D",
     "correctWord": "D. The student should say the answer to their question out loud and then write it down in their notes using their own personal words and phrasing",
     "explanation": "Đáp án: D.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_271",
+    "id": "SSA_271",
     "word": "Câu 271: Why might online learners experience information overload?",
     "question": "Why might online learners experience information overload?",
     "options": [
@@ -1196,11 +1196,11 @@
     "answer": "B",
     "correctWord": "B. The large volume of readings and abundance of digital resources",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_272",
+    "id": "SSA_272",
     "word": "Câu 272: In online learning, the role of the instructor is best descr...",
     "question": "In online learning, the role of the instructor is best described as:",
     "options": [
@@ -1212,11 +1212,11 @@
     "answer": "B",
     "correctWord": "B. A guide who directs students toward learning experiences aligned with their goals",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_273",
+    "id": "SSA_273",
     "word": "Câu 273: Which skill is NOT listed as a core skill for self-directed ...",
     "question": "Which skill is NOT listed as a core skill for self-directed (independent) learning?",
     "options": [
@@ -1228,11 +1228,11 @@
     "answer": "C",
     "correctWord": "C. Memorize all lecture slides word-for-word",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_274",
+    "id": "SSA_274",
     "word": "Câu 274: Metacognition is best defined as:",
     "question": "Metacognition is best defined as:",
     "options": [
@@ -1244,11 +1244,11 @@
     "answer": "B",
     "correctWord": "B. Thinking about your thinking",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_282",
+    "id": "SSA_282",
     "word": "Câu 282: Which reading strategy is recommended depending on the objec...",
     "question": "Which reading strategy is recommended depending on the objective of the reading activity?",
     "options": [
@@ -1260,11 +1260,11 @@
     "answer": "B",
     "correctWord": "B. Skimming, focusing on key sections, or close reading",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_283",
+    "id": "SSA_283",
     "word": "Câu 283: The text suggests that university-level learning especially ...",
     "question": "The text suggests that university-level learning especially emphasizes:",
     "options": [
@@ -1276,11 +1276,11 @@
     "answer": "B",
     "correctWord": "B. Higher-order thinking skills (applying, analyzing, evaluating, creating)",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_299",
+    "id": "SSA_299",
     "word": "Câu 299: According to the text, building an effective relationship wi...",
     "question": "According to the text, building an effective relationship with instructors primarily supports:",
     "options": [
@@ -1292,11 +1292,11 @@
     "answer": "B",
     "correctWord": "B. Success in an online learning environment",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_300",
+    "id": "SSA_300",
     "word": "Câu 300: Why is it important to understand the purpose behind learnin...",
     "question": "Why is it important to understand the purpose behind learning activities designed by the instructor?",
     "options": [
@@ -1308,11 +1308,11 @@
     "answer": "B",
     "correctWord": "B. To increase motivation, improve focus, and stay aligned with course expectations",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_304",
+    "id": "SSA_304",
     "word": "Câu 304: In an online course, the instructor's \"teaching presence\" pr...",
     "question": "In an online course, the instructor's \"teaching presence\" primarily involves:",
     "options": [
@@ -1324,11 +1324,11 @@
     "answer": "B",
     "correctWord": "B. Designing meaningful learning experiences and supporting student engagement",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_306",
+    "id": "SSA_306",
     "word": "Câu 306: In the \"Designer\" role, instructors primarily:",
     "question": "In the \"Designer\" role, instructors primarily:",
     "options": [
@@ -1340,11 +1340,11 @@
     "answer": "B",
     "correctWord": "B. Design the course structure and guide students to relevant, accurate learning resources",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_311",
+    "id": "SSA_311",
     "word": "Câu 311: The text emphasizes that effective communication with instru...",
     "question": "The text emphasizes that effective communication with instructors helps students:",
     "options": [
@@ -1356,11 +1356,11 @@
     "answer": "B",
     "correctWord": "B. Fully benefit from instructional support throughout the learning process",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_312",
+    "id": "SSA_312",
     "word": "Câu 312: In the Community of Inquiry model mentioned in Part 3, the i...",
     "question": "In the Community of Inquiry model mentioned in Part 3, the instructor's role supports:",
     "options": [
@@ -1372,11 +1372,11 @@
     "answer": "B",
     "correctWord": "B. Student engagement and the active role of learners in the environment",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_314",
+    "id": "SSA_314",
     "word": "Câu 314: Why is flexibility in online courses particularly important ...",
     "question": "Why is flexibility in online courses particularly important for many learners?",
     "options": [
@@ -1388,11 +1388,11 @@
     "answer": "B",
     "correctWord": "B. It allows balancing work, family, or other commitments while studying",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_318",
+    "id": "SSA_318",
     "word": "Câu 318: According to the text, approximately how many hours per week...",
     "question": "According to the text, approximately how many hours per week should each university course require for study?",
     "options": [
@@ -1404,11 +1404,11 @@
     "answer": "B",
     "correctWord": "B. 9–12 hours",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_319",
+    "id": "SSA_319",
     "word": "Câu 319: Why is it recommended to plan multiple shorter study session...",
     "question": "Why is it recommended to plan multiple shorter study sessions rather than one long block?",
     "options": [
@@ -1420,11 +1420,11 @@
     "answer": "B",
     "correctWord": "B. To improve focus and retention",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_322",
+    "id": "SSA_322",
     "word": "Câu 322: Studying in smaller blocks of time helps primarily by:",
     "question": "Studying in smaller blocks of time helps primarily by:",
     "options": [
@@ -1436,11 +1436,11 @@
     "answer": "B",
     "correctWord": "B. Covering material in manageable segments and reducing overload",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_323",
+    "id": "SSA_323",
     "word": "Câu 323: Which strategy is suggested for using small blocks of time p...",
     "question": "Which strategy is suggested for using small blocks of time productively during commuting?",
     "options": [
@@ -1452,11 +1452,11 @@
     "answer": "B",
     "correctWord": "B. Scanning/skimming readings, using flash cards, or listening to audio recordings",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_326",
+    "id": "SSA_326",
     "word": "Câu 326: Which is NOT listed as an advantage of a paper planner for d...",
     "question": "Which is NOT listed as an advantage of a paper planner for daily task management?",
     "options": [
@@ -1468,11 +1468,11 @@
     "answer": "C",
     "correctWord": "C. Easy to share tasks during group projects",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_328",
+    "id": "SSA_328",
     "word": "Câu 328: Online forums in courses primarily contribute to the develop...",
     "question": "Online forums in courses primarily contribute to the development of:",
     "options": [
@@ -1484,11 +1484,11 @@
     "answer": "B",
     "correctWord": "B. Social presence and cognitive presence within the learning community",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_329",
+    "id": "SSA_329",
     "word": "Câu 329: According to the Level 3 (Most Successful) rubric criteria, ...",
     "question": "According to the Level 3 (Most Successful) rubric criteria, a good forum post should:",
     "options": [
@@ -1500,11 +1500,11 @@
     "answer": "B",
     "correctWord": "B. Reflect thoughtful reflection on readings, engage with colleagues' postings, and contribute to class understanding",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_334",
+    "id": "SSA_334",
     "word": "Câu 334: Before giving feedback, it is important to:",
     "question": "Before giving feedback, it is important to:",
     "options": [
@@ -1520,11 +1520,11 @@
     "answer": "B",
     "correctWord": "B. Obtain mutual agreement to engage in feedback and gather relevant facts/perspectives",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_338",
+    "id": "SSA_338",
     "word": "Câu 338: Email is described as a primary method of communication in o...",
     "question": "Email is described as a primary method of communication in online learning because it is:",
     "options": [
@@ -1536,11 +1536,11 @@
     "answer": "B",
     "correctWord": "B. Familiar, convenient, easy to access, and supports active participation with instructors",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_339",
+    "id": "SSA_339",
     "word": "Câu 339: When writing professional emails to instructors, which pract...",
     "question": "When writing professional emails to instructors, which practice should be avoided?",
     "options": [
@@ -1552,11 +1552,11 @@
     "answer": "B",
     "correctWord": "B. Sending excessively brief messages that may seem impolite",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_342",
+    "id": "SSA_342",
     "word": "Câu 342: In forum participation, Level 1 (Unsuccessful) posts are cha...",
     "question": "In forum participation, Level 1 (Unsuccessful) posts are characterized by:",
     "options": [
@@ -1568,11 +1568,11 @@
     "answer": "B",
     "correctWord": "B. Lack of understanding of readings, no engagement with classmates, irrelevance, inconsistency, and poor writing structure",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_343",
+    "id": "SSA_343",
     "word": "Câu 343: According to the text, what should be done immediately upon ...",
     "question": "According to the text, what should be done immediately upon receiving an assignment?",
     "options": [
@@ -1584,11 +1584,11 @@
     "answer": "B",
     "correctWord": "B. Read the assignment carefully right away",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_349",
+    "id": "SSA_349",
     "word": "Câu 349: When should the rubric be reviewed for the first time accord...",
     "question": "When should the rubric be reviewed for the first time according to the text?",
     "options": [
@@ -1600,11 +1600,11 @@
     "answer": "B",
     "correctWord": "B. Carefully before beginning the assignment",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_356",
+    "id": "SSA_356",
     "word": "Câu 356: Mid-course reflection (e.g., after midterm exams or major as...",
     "question": "Mid-course reflection (e.g., after midterm exams or major assignments) is useful for:",
     "options": [
@@ -1616,11 +1616,11 @@
     "answer": "B",
     "correctWord": "B. Evaluating current performance, target grades, and effectiveness of preparation strategies, then revising approaches",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_357",
+    "id": "SSA_357",
     "word": "Câu 357: The quote \"We all need people who will give us feedback. Tha...",
     "question": "The quote \"We all need people who will give us feedback. That's how we improve.\" (Bill Gates) is used in the text to emphasize that:",
     "options": [
@@ -1632,11 +1632,11 @@
     "answer": "B",
     "correctWord": "B. Feedback is an essential component of the learning process for improvement",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_358",
+    "id": "SSA_358",
     "word": "Câu 358: Why is taking structured notes considered more effective tha...",
     "question": "Why is taking structured notes considered more effective than simply re-reading online content?",
     "options": [
@@ -1648,11 +1648,11 @@
     "answer": "B",
     "correctWord": "B. Notes enable faster review of key concepts, require critical engagement, and strengthen retention",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_359",
+    "id": "SSA_359",
     "word": "Câu 359: Which of the following is NOT mentioned as a possible note-t...",
     "question": "Which of the following is NOT mentioned as a possible note-taking method for online readings?",
     "options": [
@@ -1664,11 +1664,11 @@
     "answer": "C",
     "correctWord": "C. Recording audio summaries only",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_363",
+    "id": "SSA_363",
     "word": "Câu 363: In online learning, why is there typically a larger volume o...",
     "question": "In online learning, why is there typically a larger volume of written material compared to traditional courses?",
     "options": [
@@ -1680,11 +1680,11 @@
     "answer": "B",
     "correctWord": "B. It supports development of lifelong learning skills through purposeful selection and management",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_364",
+    "id": "SSA_364",
     "word": "Câu 364: Before beginning any text, learners should first:",
     "question": "Before beginning any text, learners should first:",
     "options": [
@@ -1696,11 +1696,11 @@
     "answer": "B",
     "correctWord": "B. Clearly define their purpose for reading to determine the appropriate strategy",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_365",
+    "id": "SSA_365",
     "word": "Câu 365: The SQ3R method is recommended because it:",
     "question": "The SQ3R method is recommended because it:",
     "options": [
@@ -1712,11 +1712,11 @@
     "answer": "B",
     "correctWord": "B. Provides a structured approach for efficient, purposeful, and active reading",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_366",
+    "id": "SSA_366",
     "word": "Câu 366: In the \"Survey\" step of SQ3R, what should learners do first?",
     "question": "In the \"Survey\" step of SQ3R, what should learners do first?",
     "options": [
@@ -1728,11 +1728,11 @@
     "answer": "B",
     "correctWord": "B. Skim the chapter, starting with Learning Objectives, headings, diagrams, and the chapter summary",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_367",
+    "id": "SSA_367",
     "word": "Câu 367: The \"Question\" step in SQ3R involves:",
     "question": "The \"Question\" step in SQ3R involves:",
     "options": [
@@ -1744,11 +1744,11 @@
     "answer": "B",
     "correctWord": "B. Formulating questions based on headings and key concepts to guide focused reading",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_368",
+    "id": "SSA_368",
     "word": "Câu 368: During the \"Read\" step of SQ3R, learners should:",
     "question": "During the \"Read\" step of SQ3R, learners should:",
     "options": [
@@ -1760,11 +1760,11 @@
     "answer": "B",
     "correctWord": "B. Read actively to locate answers to formulated questions, focusing on key paragraphs and terms",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_369",
+    "id": "SSA_369",
     "word": "Câu 369: In the \"Recite\" step, what is the key action after reading a...",
     "question": "In the \"Recite\" step, what is the key action after reading a section?",
     "options": [
@@ -1776,11 +1776,11 @@
     "answer": "B",
     "correctWord": "B. Restate main ideas in your own words (paraphrase) before recording notes",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_370",
+    "id": "SSA_370",
     "word": "Câu 370: The final \"Review\" step of SQ3R involves:",
     "question": "The final \"Review\" step of SQ3R involves:",
     "options": [
@@ -1792,11 +1792,11 @@
     "answer": "B",
     "correctWord": "B. Revisit notes for the entire chapter, identify connections, and address gaps in understanding",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   },
   {
-    "id": "ssl_371",
+    "id": "SSA_371",
     "word": "Câu 371: After determining a journal article is relevant, what is a r...",
     "question": "After determining a journal article is relevant, what is a recommended next step before detailed reading?",
     "options": [
@@ -1808,7 +1808,7 @@
     "answer": "B",
     "correctWord": "B. Scan by reviewing headings, bold/italic terms, charts/graphs, and record bibliographic information",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Chiến Lược Học Tập & Trí Nhớ"
   }
 ]

@@ -1,13 +1,22 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { useQuizStore } from '@/lib/quizStore';
 
 export default function Starfield() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const zenMode = useQuizStore((s) => s.zenMode);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    // In Zen Focus Mode, completely disable canvas drawing to save GPU/CPU cycles
+    if (zenMode) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+      return;
+    }
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -16,32 +25,45 @@ export default function Starfield() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
+    interface Star {
+      x: number;
+      y: number;
+      size: number;
+      alpha: number;
+      speed: number;
+      pulse: number;
+    }
+
+    let stars: Star[] = [];
+
+    const initStars = () => {
+      const starCount = Math.floor((width * height) / 8000);
+      stars = Array.from({ length: starCount }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 1.5 + 0.5,
+        alpha: Math.random() * 0.7 + 0.2,
+        speed: Math.random() * 0.005 + 0.002,
+        pulse: Math.random() * Math.PI,
+      }));
+    };
+
     const handleResize = () => {
       if (!canvas) return;
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      initStars();
     };
 
     window.addEventListener('resize', handleResize);
-
-    // Generate stars
-    const starCount = Math.floor((width * height) / 8000);
-    const stars = Array.from({ length: starCount }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: Math.random() * 1.5 + 0.5,
-      alpha: Math.random() * 0.7 + 0.2,
-      speed: Math.random() * 0.005 + 0.002,
-      pulse: Math.random() * Math.PI,
-    }));
+    initStars();
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
       stars.forEach((star) => {
         star.pulse += star.speed;
-        const currentAlpha =
-          star.alpha * (0.6 + 0.4 * Math.sin(star.pulse));
+        const currentAlpha = star.alpha * (0.6 + 0.4 * Math.sin(star.pulse));
 
         ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha})`;
         ctx.beginPath();
@@ -58,12 +80,16 @@ export default function Starfield() {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [zenMode]);
+
+  if (zenMode) {
+    return null;
+  }
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-60 dark:opacity-40"
+      className="fixed inset-0 pointer-events-none z-0 opacity-60 dark:opacity-40 transition-opacity duration-700"
       aria-hidden="true"
     />
   );

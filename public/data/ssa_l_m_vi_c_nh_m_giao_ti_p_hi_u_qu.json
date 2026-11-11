@@ -1,6 +1,6 @@
-[
+﻿[
   {
-    "id": "ssl_15",
+    "id": "SSA_15",
     "word": "Câu 15: Cognitive presence in the Community of Inquiry refers mainly...",
     "question": "Cognitive presence in the Community of Inquiry refers mainly to:",
     "options": [
@@ -12,11 +12,11 @@
     "answer": "B",
     "correctWord": "B. Knowledge construction through thinking",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_25",
+    "id": "SSA_25",
     "word": "Câu 25: Which of the following is identified as a common barrier to ...",
     "question": "Which of the following is identified as a common barrier to effective communication?",
     "options": [
@@ -28,11 +28,11 @@
     "answer": "C",
     "correctWord": "C. Assumptions and misinterpretations",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_33",
+    "id": "SSA_33",
     "word": "Câu 33: Which factor most strongly affects how a message is interpre...",
     "question": "Which factor most strongly affects how a message is interpreted?",
     "options": [
@@ -44,11 +44,11 @@
     "answer": "B",
     "correctWord": "B. The context in which communication occurs",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_54",
+    "id": "SSA_54",
     "word": "Câu 54: Why is intentional choice of communication method important?",
     "question": "Why is intentional choice of communication method important?",
     "options": [
@@ -60,11 +60,11 @@
     "answer": "A",
     "correctWord": "A. Different methods require different levels of formality and clarity",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_67",
+    "id": "SSA_67",
     "word": "Câu 67: A student sends an emotional email to a professor late at ni...",
     "question": "A student sends an emotional email to a professor late at night and receives a negative response. Based on Chapter 8, what principle was most likely violated?",
     "options": [
@@ -76,11 +76,11 @@
     "answer": "B",
     "correctWord": "B. Considering tone, purpose, and audience before sending",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_78",
+    "id": "SSA_78",
     "word": "Câu 78: Communication is best described as:",
     "question": "Communication is best described as:",
     "options": [
@@ -92,11 +92,11 @@
     "answer": "C",
     "correctWord": "C. A complex process influenced by context, purpose, and participants",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_97",
+    "id": "SSA_97",
     "word": "Câu 97: What tool helps prioritize tasks?",
     "question": "What tool helps prioritize tasks?",
     "options": [
@@ -108,11 +108,11 @@
     "answer": "B",
     "correctWord": "B. Priority list",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_104",
+    "id": "SSA_104",
     "word": "Câu 104: What is clarity in communication?",
     "question": "What is clarity in communication?",
     "options": [
@@ -124,11 +124,11 @@
     "answer": "C",
     "correctWord": "C. Easy understanding",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_126",
+    "id": "SSA_126",
     "word": "Câu 126: What is nonverbal communication?",
     "question": "What is nonverbal communication?",
     "options": [
@@ -140,11 +140,11 @@
     "answer": "B",
     "correctWord": "B. Body language",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_144",
+    "id": "SSA_144",
     "word": "Câu 144: What is effective communication?",
     "question": "What is effective communication?",
     "options": [
@@ -156,11 +156,11 @@
     "answer": "B",
     "correctWord": "B. Clear message exchange",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_145",
+    "id": "SSA_145",
     "word": "Câu 145: Communication is best described as:",
     "question": "Communication is best described as:",
     "options": [
@@ -172,11 +172,11 @@
     "answer": "C",
     "correctWord": "C. A complex process influenced by context, purpose, and participants",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_146",
+    "id": "SSA_146",
     "word": "Câu 146: Digital literacy enhances employability mainly because it:",
     "question": "Digital literacy enhances employability mainly because it:",
     "options": [
@@ -188,11 +188,11 @@
     "answer": "B",
     "correctWord": "B. Enables adaptation to technological change",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_162",
+    "id": "SSA_162",
     "word": "Câu 162: Which situation BEST illustrates weak social presence in an ...",
     "question": "Which situation BEST illustrates weak social presence in an online course?",
     "options": [
@@ -204,11 +204,11 @@
     "answer": "B",
     "correctWord": "B. Learners avoid responding to peers",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_176",
+    "id": "SSA_176",
     "word": "Câu 176: What is the primary role of a rubric in assignments?",
     "question": "What is the primary role of a rubric in assignments?",
     "options": [
@@ -220,11 +220,11 @@
     "answer": "C",
     "correctWord": "C. To explain grading criteria clearly",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_234",
+    "id": "SSA_234",
     "word": "Câu 234: How can a student most effectively utilize a grading rubric ...",
     "question": "How can a student most effectively utilize a grading rubric to improve their assignment before submitting the final version to their online instructor?",
     "options": [
@@ -236,11 +236,11 @@
     "answer": "B",
     "correctWord": "B. The student should put themselves in the place of the instructor and grade their own drafted assignment according to the rubric criteria to identify missing elements",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_247",
+    "id": "SSA_247",
     "word": "Câu 247: When sending an email to an online instructor, which of the ...",
     "question": "When sending an email to an online instructor, which of the following practices is recommended to ensure the communication is professional and effective?",
     "options": [
@@ -252,11 +252,11 @@
     "answer": "A",
     "correctWord": "A. You should include an informative subject line, use a formal professional greeting, and break your message into multiple paragraphs to ensure optimal readability",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_252",
+    "id": "SSA_252",
     "word": "Câu 252: According to the guidelines for giving positive feedback to ...",
     "question": "According to the guidelines for giving positive feedback to a team member, which of the following approaches is the most appropriate and effective?",
     "options": [
@@ -268,11 +268,11 @@
     "answer": "C",
     "correctWord": "C. You should begin and end the discussion by highlighting what is working well, focus on specific behaviors that can be changed, and avoid using absolutes like \"never.\"",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_284",
+    "id": "SSA_284",
     "word": "Câu 284: According to the text, which stage of team development is of...",
     "question": "According to the text, which stage of team development is often misunderstood as dysfunction but is actually a normal part?",
     "options": [
@@ -284,11 +284,11 @@
     "answer": "B",
     "correctWord": "B. Storming",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_285",
+    "id": "SSA_285",
     "word": "Câu 285: In the \"Forming\" stage, which characteristic is NOT typicall...",
     "question": "In the \"Forming\" stage, which characteristic is NOT typically present?",
     "options": [
@@ -300,11 +300,11 @@
     "answer": "C",
     "correctWord": "C. High trust among members",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_286",
+    "id": "SSA_286",
     "word": "Câu 286: During the \"Storming\" stage, what tends to increase among te...",
     "question": "During the \"Storming\" stage, what tends to increase among team members?",
     "options": [
@@ -316,11 +316,11 @@
     "answer": "B",
     "correctWord": "B. Conflict and competition",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_288",
+    "id": "SSA_288",
     "word": "Câu 288: In the Community of Inquiry framework, what are the two key ...",
     "question": "In the Community of Inquiry framework, what are the two key roles learners assume?",
     "options": [
@@ -332,11 +332,11 @@
     "answer": "B",
     "correctWord": "B. Maintaining cognitive presence and developing social presence",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_290",
+    "id": "SSA_290",
     "word": "Câu 290: Social presence is supported online by strategies such as:",
     "question": "Social presence is supported online by strategies such as:",
     "options": [
@@ -348,11 +348,11 @@
     "answer": "B",
     "correctWord": "B. Using emoticons to convey nuances and emotions",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_291",
+    "id": "SSA_291",
     "word": "Câu 291: Which of the following is NOT one of the five basic elements...",
     "question": "Which of the following is NOT one of the five basic elements of effective teamwork mentioned in the text?",
     "options": [
@@ -364,11 +364,11 @@
     "answer": "D",
     "correctWord": "D. Financial incentives",
     "explanation": "Đáp án: D.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_295",
+    "id": "SSA_295",
     "word": "Câu 295: When planning for successful teamwork, what should teams do ...",
     "question": "When planning for successful teamwork, what should teams do in the \"Forming\" stage regarding interpersonal tasks?",
     "options": [
@@ -380,11 +380,11 @@
     "answer": "B",
     "correctWord": "B. Initiate contact, build connections, and develop trust",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_296",
+    "id": "SSA_296",
     "word": "Câu 296: A team charter, as mentioned for effective communication, ty...",
     "question": "A team charter, as mentioned for effective communication, typically includes commitments to:",
     "options": [
@@ -396,11 +396,11 @@
     "answer": "B",
     "correctWord": "B. Respect, active listening, and constructive feedback",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_298",
+    "id": "SSA_298",
     "word": "Câu 298: Continuous improvement in teamwork is achieved through:",
     "question": "Continuous improvement in teamwork is achieved through:",
     "options": [
@@ -412,11 +412,11 @@
     "answer": "B",
     "correctWord": "B. Small, incremental changes with planning, implementation, and verification",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_302",
+    "id": "SSA_302",
     "word": "Câu 302: The text suggests using email to contact instructors because...",
     "question": "The text suggests using email to contact instructors because it is considered:",
     "options": [
@@ -428,11 +428,11 @@
     "answer": "B",
     "correctWord": "B. A professional communication tool",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_303",
+    "id": "SSA_303",
     "word": "Câu 303: What is the main benefit of carefully reviewing instructor f...",
     "question": "What is the main benefit of carefully reviewing instructor feedback on assignments?",
     "options": [
@@ -444,11 +444,11 @@
     "answer": "B",
     "correctWord": "B. To identify areas for improvement and support continuous skill development",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_310",
+    "id": "SSA_310",
     "word": "Câu 310: Office hours are useful for:",
     "question": "Office hours are useful for:",
     "options": [
@@ -460,11 +460,11 @@
     "answer": "B",
     "correctWord": "B. Clarifying academic difficulties and strengthening professional relationships",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_331",
+    "id": "SSA_331",
     "word": "Câu 331: Effective feedback when giving it must include all of the fo...",
     "question": "Effective feedback when giving it must include all of the following EXCEPT:",
     "options": [
@@ -476,11 +476,11 @@
     "answer": "D",
     "correctWord": "D. Compare the person's work to others in the class",
     "explanation": "Đáp án: D.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_332",
+    "id": "SSA_332",
     "word": "Câu 332: When receiving feedback, why is it important to suspend imme...",
     "question": "When receiving feedback, why is it important to suspend immediate reactions?",
     "options": [
@@ -492,11 +492,11 @@
     "answer": "B",
     "correctWord": "B. Emotional reactions like defensiveness can interfere with fully understanding the information",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_333",
+    "id": "SSA_333",
     "word": "Câu 333: Positive feedback is most effective when it is:",
     "question": "Positive feedback is most effective when it is:",
     "options": [
@@ -508,11 +508,11 @@
     "answer": "B",
     "correctWord": "B. Offered at an appropriate time, includes recognition of strengths and suggestions, targets changeable behavior, and addresses one point at a time",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_337",
+    "id": "SSA_337",
     "word": "Câu 337: Commonly mentioned tools for creating ePortfolios in the tex...",
     "question": "Commonly mentioned tools for creating ePortfolios in the text are:",
     "options": [
@@ -524,11 +524,11 @@
     "answer": "B",
     "correctWord": "B. Mahara and WordPress",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_340",
+    "id": "SSA_340",
     "word": "Câu 340: Before sending an email to an instructor, students should fi...",
     "question": "Before sending an email to an instructor, students should first:",
     "options": [
@@ -540,11 +540,11 @@
     "answer": "B",
     "correctWord": "B. Review course materials such as the syllabus, assignment descriptions, or lecture notes",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_341",
+    "id": "SSA_341",
     "word": "Câu 341: Regarding email response times from instructors, the text ad...",
     "question": "Regarding email response times from instructors, the text advises:",
     "options": [
@@ -556,11 +556,11 @@
     "answer": "B",
     "correctWord": "B. Responses may take 1–3 days, and follow-up only after at least 5 days",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_348",
+    "id": "SSA_348",
     "word": "Câu 348: A rubric is best defined as:",
     "question": "A rubric is best defined as:",
     "options": [
@@ -572,11 +572,11 @@
     "answer": "B",
     "correctWord": "B. An assessment tool outlining how the work will be graded and the criteria for success",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_350",
+    "id": "SSA_350",
     "word": "Câu 350: After completing a draft, the rubric should primarily be use...",
     "question": "After completing a draft, the rubric should primarily be used for:",
     "options": [
@@ -588,11 +588,11 @@
     "answer": "B",
     "correctWord": "B. Self-evaluation by grading the work against each criterion and revising weak areas",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_351",
+    "id": "SSA_351",
     "word": "Câu 351: One major benefit of regularly using a rubric for self-asses...",
     "question": "One major benefit of regularly using a rubric for self-assessment is that it helps:",
     "options": [
@@ -604,11 +604,11 @@
     "answer": "B",
     "correctWord": "B. Develop accurate self-assessment skills and align self-evaluation closer to instructor expectations over time",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_355",
+    "id": "SSA_355",
     "word": "Câu 355: According to the text, feedback from instructors should be v...",
     "question": "According to the text, feedback from instructors should be viewed primarily as:",
     "options": [
@@ -620,11 +620,11 @@
     "answer": "B",
     "correctWord": "B. An opportunity for development and personal growth rather than just criticism",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "ssl_360",
+    "id": "SSA_360",
     "word": "Câu 360: To use Hypothes.is for annotating online texts, what is the ...",
     "question": "To use Hypothes.is for annotating online texts, what is the first step after installing the Chrome extension?",
     "options": [
@@ -636,7 +636,7 @@
     "answer": "B",
     "correctWord": "B. Create a free account with email, username, password, and activate via email confirmation",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   }
 ]

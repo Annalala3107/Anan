@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { StorageEngine } from '@/lib/storage';
+import { useState, useEffect, useRef } from 'react';
+import { StorageEngine, ExamRecord } from '@/lib/storage';
 import { isSupabaseConfigured } from '@/lib/supabase';
+import { soundFx } from '@/lib/sound';
 import {
   Flame,
   Award,
@@ -14,7 +15,13 @@ import {
   Trash2,
   TrendingUp,
   Clock,
-  Sparkles
+  Sparkles,
+  Download,
+  Upload,
+  ShieldCheck,
+  AlertTriangle,
+  History,
+  FileJson,
 } from 'lucide-react';
 
 export default function ProfilePage() {
@@ -22,27 +29,113 @@ export default function ProfilePage() {
   const [dailyStats, setDailyStats] = useState<any>(null);
   const [wordProgressCount, setWordProgressCount] = useState(0);
   const [masteredCount, setMasteredCount] = useState(0);
+  const [examHistory, setExamHistory] = useState<ExamRecord[]>([]);
+  const [backupStatus, setBackupStatus] = useState<{
+    type: 'success' | 'error';
+    text: string;
+  } | null>(null);
 
-  useEffect(() => {
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const loadData = () => {
     setStreak(StorageEngine.getStreak());
     setDailyStats(StorageEngine.getDailyStats());
     const progress = StorageEngine.getWordProgress();
     const list = Object.values(progress);
     setWordProgressCount(list.length);
     setMasteredCount(list.filter((p) => p.status === 'mastered').length);
+    setExamHistory(StorageEngine.getExamHistory());
+  };
+
+  useEffect(() => {
+    loadData();
   }, []);
 
+  const handleExportBackup = () => {
+    try {
+      const jsonContent = StorageEngine.exportAllData();
+      const blob = new Blob([jsonContent], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const dateStr = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+
+      link.href = url;
+      link.download = `AnanQuiz_Backup_${dateStr}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      soundFx.playCelebration();
+      setBackupStatus({
+        type: 'success',
+        text: 'Đã xuất file sao lưu thành công! Hãy lưu file này vào nơi an toàn.',
+      });
+    } catch (err: any) {
+      soundFx.playWrong();
+      setBackupStatus({
+        type: 'error',
+        text: 'Không thể xuất file sao lưu: ' + (err?.message || 'Lỗi không xác định'),
+      });
+    }
+  };
+
+  const handleImportBackup = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const content = event.target?.result as string;
+      const res = StorageEngine.importAllData(content);
+
+      if (res.success) {
+        soundFx.playCorrect();
+        loadData();
+        setBackupStatus({
+          type: 'success',
+          text: res.message,
+        });
+      } else {
+        soundFx.playWrong();
+        setBackupStatus({
+          type: 'error',
+          text: res.message,
+        });
+      }
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    };
+
+    reader.onerror = () => {
+      soundFx.playWrong();
+      setBackupStatus({
+        type: 'error',
+        text: 'Không thể đọc file. Vui lòng thử lại với file .json hợp lệ.',
+      });
+    };
+
+    reader.readAsText(file);
+  };
+
   const handleResetProgress = () => {
-    if (confirm('Bạn có chắc chắn muốn xóa toàn bộ lịch sử học và bắt đầu lại?')) {
+    if (
+      confirm(
+        'CẢNH BÁO: Bạn có chắc chắn muốn xóa toàn bộ lịch sử học, streak và bắt đầu lại từ đầu? Hãy xuất file sao lưu trước nếu cần!'
+      )
+    ) {
       localStorage.removeItem('ananquiz_word_progress');
       localStorage.removeItem('ananquiz_daily_stats');
       localStorage.removeItem('ananquiz_streak');
+      localStorage.removeItem('ananquiz_exam_history');
       window.location.reload();
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6 md:py-10 space-y-8 animate-fade-in">
+    <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6 md:py-10 space-y-8 animate-fade-in">
       {/* Profile Header */}
       <div className="flex items-center gap-4 p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-xl">
         <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white text-2xl font-black shadow-glow">
@@ -99,6 +192,135 @@ export default function ProfilePage() {
         </div>
       </div>
 
+      {/* 2-column Layout on Desktop for Backup and History */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* DISASTER RECOVERY & BACKUP CENTER */}
+        <div className="p-6 md:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-xl space-y-5 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                    Trung Tâm Sao Lưu & Phục Hồi Khẩn Cấp
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Bảo vệ 100% tiến độ học tập, streak và điểm số của bạn.
+                  </p>
+                </div>
+              </div>
+              <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
+                Zod Validated
+              </span>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <button
+                onClick={handleExportBackup}
+                className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all shadow-glow text-xs"
+              >
+                <Download className="w-4 h-4" />
+                <span>Xuất File Sao Lưu (.json)</span>
+              </button>
+
+              <div>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  accept=".json"
+                  onChange={handleImportBackup}
+                  className="hidden"
+                />
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold border border-slate-200 dark:border-slate-700 transition-all text-xs"
+                >
+                  <Upload className="w-4 h-4 text-emerald-500" />
+                  <span>Khôi Phục File Backup</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Status Toast */}
+          {backupStatus && (
+            <div
+              className={`p-3.5 rounded-2xl text-xs font-semibold flex items-center gap-2.5 transition-all mt-4 ${
+                backupStatus.type === 'success'
+                  ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800'
+                  : 'bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800'
+              }`}
+            >
+              {backupStatus.type === 'success' ? (
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+              ) : (
+                <AlertTriangle className="w-4 h-4 text-rose-500 shrink-0" />
+              )}
+              <span>{backupStatus.text}</span>
+            </div>
+          )}
+        </div>
+
+        {/* RECENT EXAM HISTORY */}
+        <div className="p-6 md:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-xl space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <History className="w-5 h-5 text-indigo-500" /> Lịch Sử Thi Thử Gần Đây ({examHistory.length})
+            </h3>
+            <span className="text-xs text-slate-400">Tách biệt độc lập SRS</span>
+          </div>
+
+          {examHistory.length === 0 ? (
+            <div className="text-center py-8 text-slate-400 text-xs italic">
+              Chưa có bài thi thử nào được ghi nhận. Hãy hoàn thành một bài thi thử để theo dõi tiến độ điểm số tại đây!
+            </div>
+          ) : (
+            <div className="space-y-3 max-h-72 overflow-y-auto pr-1">
+              {examHistory.map((rec) => (
+                <div
+                  key={rec.id}
+                  className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 text-xs"
+                >
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-slate-900 dark:text-slate-100">
+                        Bài thi thử trắc nghiệm
+                      </span>
+                      <span className="text-slate-400 text-[11px]">
+                        {new Date(rec.date).toLocaleString('vi-VN')}
+                      </span>
+                    </div>
+                    <p className="text-slate-500 text-[11px]">
+                      Số câu đúng: <strong className="text-indigo-500">{rec.score}</strong>/{rec.total} câu
+                      {rec.wrongCount > 0 && (
+                        <span className="text-rose-500 ml-1">({rec.wrongCount} câu sai)</span>
+                      )}
+                    </p>
+                  </div>
+
+                  <div className="text-right">
+                    <span
+                      className={`text-base font-black ${
+                        rec.percent >= 80
+                          ? 'text-emerald-500'
+                          : rec.percent >= 50
+                          ? 'text-amber-500'
+                          : 'text-rose-500'
+                      }`}
+                    >
+                      {rec.percent}%
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
       {/* SRS Algorithm Explanation Card */}
       <div className="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-indigo-950/60 to-purple-950/40 border border-indigo-800/60 text-slate-200 space-y-4">
         <div className="flex items-center gap-3">
@@ -130,7 +352,7 @@ export default function ProfilePage() {
           </div>
           <div className="p-3 rounded-xl bg-white/5 border border-white/10">
             <span className="font-bold text-white block mb-1">3. Kháng bẫy đề thi</span>
-            Ngữ cảnh thi SAT kiểm tra khả năng phân biệt từ đồng nghĩa và từ dễ nhầm.
+            Rèn luyện phản xạ nhận diện các câu hỏi gài bẫy và đáp án gây nhiễu trong đề thi.
           </div>
         </div>
       </div>
@@ -151,7 +373,7 @@ export default function ProfilePage() {
                 Bộ nhớ cục bộ trình duyệt (Local Storage)
               </p>
               <p className="text-xs text-slate-500">
-                Đang lưu trữ {wordProgressCount} từ vựng với toàn bộ lịch sử điểm số.
+                Đang lưu trữ {wordProgressCount} câu hỏi / từ vựng với toàn bộ lịch sử điểm số.
               </p>
             </div>
           </div>
@@ -162,9 +384,13 @@ export default function ProfilePage() {
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
           <div className="flex items-center gap-3">
-            <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${
-              isSupabaseConfigured ? 'bg-indigo-500/10 text-indigo-500' : 'bg-slate-200 dark:bg-slate-700 text-slate-400'
-            }`}>
+            <div
+              className={`w-9 h-9 rounded-xl flex items-center justify-center ${
+                isSupabaseConfigured
+                  ? 'bg-indigo-500/10 text-indigo-500'
+                  : 'bg-slate-200 dark:bg-slate-700 text-slate-400'
+              }`}
+            >
               <Cloud className="w-5 h-5" />
             </div>
             <div>
@@ -178,11 +404,13 @@ export default function ProfilePage() {
               </p>
             </div>
           </div>
-          <span className={`text-xs font-bold px-3 py-1 rounded-full self-start sm:self-center ${
-            isSupabaseConfigured
-              ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40'
-              : 'text-slate-500 bg-slate-200 dark:bg-slate-700'
-          }`}>
+          <span
+            className={`text-xs font-bold px-3 py-1 rounded-full self-start sm:self-center ${
+              isSupabaseConfigured
+                ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40'
+                : 'text-slate-500 bg-slate-200 dark:bg-slate-700'
+            }`}
+          >
             {isSupabaseConfigured ? 'Đang kích hoạt' : 'Chế độ Local-First'}
           </span>
         </div>

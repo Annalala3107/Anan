@@ -1,6 +1,6 @@
-[
+﻿[
   {
-    "id": "ssl_2",
+    "id": "SSA_2",
     "word": "Câu 2: What is one common reason students procrastinate?",
     "question": "What is one common reason students procrastinate?",
     "options": [
@@ -12,11 +12,11 @@
     "answer": "A",
     "correctWord": "A. Tasks feel unimportant or overwhelming",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_3",
+    "id": "SSA_3",
     "word": "Câu 3: Which concept focuses on identifying what tasks truly matter...",
     "question": "Which concept focuses on identifying what tasks truly matter?",
     "options": [
@@ -28,11 +28,11 @@
     "answer": "C",
     "correctWord": "C. Prioritization",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_16",
+    "id": "SSA_16",
     "word": "Câu 16: Critical thinkers should:",
     "question": "Critical thinkers should:",
     "options": [
@@ -44,11 +44,11 @@
     "answer": "B",
     "correctWord": "B. Question everything",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_17",
+    "id": "SSA_17",
     "word": "Câu 17: Goal setting is most effective when goals are:",
     "question": "Goal setting is most effective when goals are:",
     "options": [
@@ -60,11 +60,11 @@
     "answer": "C",
     "correctWord": "C. Specific, realistic, and measurable",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_36",
+    "id": "SSA_36",
     "word": "Câu 36: Which statement best reflects how time management in college...",
     "question": "Which statement best reflects how time management in college differs from high school?",
     "options": [
@@ -76,11 +76,11 @@
     "answer": "C",
     "correctWord": "C. College requires students to independently plan and allocate time",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_52",
+    "id": "SSA_52",
     "word": "Câu 52: Why is understanding why you are in college considered found...",
     "question": "Why is understanding why you are in college considered foundational for success?",
     "options": [
@@ -92,11 +92,11 @@
     "answer": "B",
     "correctWord": "B. It clarifies long-term goals and increases motivation",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_80",
+    "id": "SSA_80",
     "word": "Câu 80: Effective time management in college is important primarily ...",
     "question": "Effective time management in college is important primarily because it:",
     "options": [
@@ -108,11 +108,11 @@
     "answer": "B",
     "correctWord": "B. Helps prevent a chain reaction of academic problems",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_87",
+    "id": "SSA_87",
     "word": "Câu 87: Procrastination is described as:",
     "question": "Procrastination is described as:",
     "options": [
@@ -124,11 +124,11 @@
     "answer": "B",
     "correctWord": "B. A delay that can trigger multiple academic difficulties",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_94",
+    "id": "SSA_94",
     "word": "Câu 94: What is time management?",
     "question": "What is time management?",
     "options": [
@@ -140,11 +140,11 @@
     "answer": "B",
     "correctWord": "B. Planning time use",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_95",
+    "id": "SSA_95",
     "word": "Câu 95: Which of the following best represents an effective use of a...",
     "question": "Which of the following best represents an effective use of a planner?",
     "options": [
@@ -156,11 +156,11 @@
     "answer": "C",
     "correctWord": "C. Planning tasks while considering priorities and time-on-task",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_98",
+    "id": "SSA_98",
     "word": "Câu 98: A student spends hours on low-priority tasks. What is the is...",
     "question": "A student spends hours on low-priority tasks. What is the issue?",
     "options": [
@@ -172,11 +172,11 @@
     "answer": "C",
     "correctWord": "C. Poor prioritization",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_131",
+    "id": "SSA_131",
     "word": "Câu 131: Which factor most strongly contributes to poor time manageme...",
     "question": "Which factor most strongly contributes to poor time management?",
     "options": [
@@ -188,11 +188,11 @@
     "answer": "B",
     "correctWord": "B. Underestimating how long tasks will take",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_132",
+    "id": "SSA_132",
     "word": "Câu 132: What is one benefit of regularly evaluating your time manage...",
     "question": "What is one benefit of regularly evaluating your time management habits?",
     "options": [
@@ -204,11 +204,11 @@
     "answer": "B",
     "correctWord": "B. It allows continuous adjustment and improvement",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_134",
+    "id": "SSA_134",
     "word": "Câu 134: What is a planner used for?",
     "question": "What is a planner used for?",
     "options": [
@@ -220,11 +220,11 @@
     "answer": "A",
     "correctWord": "A. Organizing time",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_135",
+    "id": "SSA_135",
     "word": "Câu 135: What is procrastination?",
     "question": "What is procrastination?",
     "options": [
@@ -236,11 +236,11 @@
     "answer": "B",
     "correctWord": "B. Delaying tasks",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_153",
+    "id": "SSA_153",
     "word": "Câu 153: Why is understanding why you are in college considered found...",
     "question": "Why is understanding why you are in college considered foundational for success?",
     "options": [
@@ -252,11 +252,11 @@
     "answer": "B",
     "correctWord": "B. It clarifies long-term goals and increases motivation",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_181",
+    "id": "SSA_181",
     "word": "Câu 181: What is the first step in the five-step financial planning p...",
     "question": "What is the first step in the five-step financial planning process?",
     "options": [
@@ -268,11 +268,11 @@
     "answer": "C",
     "correctWord": "C. Develop Personal Goals",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_182",
+    "id": "SSA_182",
     "word": "Câu 182: Which time management app uses boards to organize obligation...",
     "question": "Which time management app uses boards to organize obligations and share them with collaborators?",
     "options": [
@@ -284,11 +284,11 @@
     "answer": "B",
     "correctWord": "B. Trello",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_183",
+    "id": "SSA_183",
     "word": "Câu 183: Which motivation strategy involves adopting the mindset that...",
     "question": "Which motivation strategy involves adopting the mindset that you alone are responsible for your goals?",
     "options": [
@@ -300,11 +300,11 @@
     "answer": "C",
     "correctWord": "C. Increase Personal Responsibility",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_184",
+    "id": "SSA_184",
     "word": "Câu 184: Which motivation strategy suggests that moods and emotions c...",
     "question": "Which motivation strategy suggests that moods and emotions can be influenced by those around you?",
     "options": [
@@ -316,11 +316,11 @@
     "answer": "B",
     "correctWord": "B. Tap into Other People's Energy.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_191",
+    "id": "SSA_191",
     "word": "Câu 191: In the SMART acronym, what does 'T' usually stand for?",
     "question": "In the SMART acronym, what does 'T' usually stand for?",
     "options": [
@@ -332,11 +332,11 @@
     "answer": "C",
     "correctWord": "C. Time-bound.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_206",
+    "id": "SSA_206",
     "word": "Câu 206: What is 'Monitoring' in the financial planning process?",
     "question": "What is 'Monitoring' in the financial planning process?",
     "options": [
@@ -348,11 +348,11 @@
     "answer": "A",
     "correctWord": "A. Continually tracking your income, spending, and progress toward your financial goals.",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_209",
+    "id": "SSA_209",
     "word": "Câu 209: What is the 'Occupational Outlook Handbook' used for?",
     "question": "What is the 'Occupational Outlook Handbook' used for?",
     "options": [
@@ -364,11 +364,11 @@
     "answer": "B",
     "correctWord": "B. To research requirements for careers and identify fields with good job growth prospects.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_211",
+    "id": "SSA_211",
     "word": "Câu 211: What is one common reason people waste time during the day?",
     "question": "What is one common reason people waste time during the day?",
     "options": [
@@ -380,11 +380,11 @@
     "answer": "B",
     "correctWord": "B. Being constrained by schedules and lacking the awareness to effectively repurpose short \"waiting times\" (15-20 minutes).",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_215",
+    "id": "SSA_215",
     "word": "Câu 215: What is the first step in identifying wasted time in a daily...",
     "question": "What is the first step in identifying wasted time in a daily schedule?",
     "options": [
@@ -396,11 +396,11 @@
     "answer": "C",
     "correctWord": "C. Analyzing your schedule to identify areas where you can recapture and repurpose time",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_226",
+    "id": "SSA_226",
     "word": "Câu 226: How do academic advisors help with career exploration?",
     "question": "How do academic advisors help with career exploration?",
     "options": [
@@ -412,11 +412,11 @@
     "answer": "B",
     "correctWord": "B. They help you set educational/career goals, choose a major, and connect you with career services.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_227",
+    "id": "SSA_227",
     "word": "Câu 227: How does breaking a goal down into manageable tasks aid in c...",
     "question": "How does breaking a goal down into manageable tasks aid in completion?",
     "options": [
@@ -428,11 +428,11 @@
     "answer": "A",
     "correctWord": "A. Accomplishing the whole is easier when each part is tackled individually",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_230",
+    "id": "SSA_230",
     "word": "Câu 230: How can a balance sheet help a student in the future?",
     "question": "How can a balance sheet help a student in the future?",
     "options": [
@@ -444,11 +444,11 @@
     "answer": "B",
     "correctWord": "B. It provides a comprehensive picture (\"snapshot\") of assets and liabilities, allowing them to track financial progress at a point in time.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_245",
+    "id": "SSA_245",
     "word": "Câu 245: When creating a highly effective daily task list, which of t...",
     "question": "When creating a highly effective daily task list, which of the following practices is recommended for managing large and complex academic projects?",
     "options": [
@@ -460,11 +460,11 @@
     "answer": "B",
     "correctWord": "B. You should break the large project down into smaller, specific, and measurable tasks that can each be comfortably completed within a single hour or less",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_256",
+    "id": "SSA_256",
     "word": "Câu 256: Define the student term 'pulling an all-nighter'.",
     "question": "Define the student term 'pulling an all-nighter'.",
     "options": [
@@ -476,11 +476,11 @@
     "answer": "B",
     "correctWord": "B. Going without sleep for the entire night to use that time to finish an assignment",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_257",
+    "id": "SSA_257",
     "word": "Câu 257: During the \"Storming\" phase of Tuckman's Team Development mo...",
     "question": "During the \"Storming\" phase of Tuckman's Team Development model, what interpersonal and task-related behaviors are a team most likely to experience?",
     "options": [
@@ -492,11 +492,11 @@
     "answer": "B",
     "correctWord": "B. The members encounter anxiety regarding power and control, express differing opinions, challenge leadership, and potentially form small cliques or experience personal conflicts",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_265",
+    "id": "SSA_265",
     "word": "Câu 265: In the context of financial goals, what does it mean to 'ali...",
     "question": "In the context of financial goals, what does it mean to 'align personal and financial goals'?",
     "options": [
@@ -508,11 +508,11 @@
     "answer": "A",
     "correctWord": "A. Recognizing that personal behaviors have financial consequences and planning your finances to support what you want to achieve in life.",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_267",
+    "id": "SSA_267",
     "word": "Câu 267: In the 'Seven Ways to Stay Motivated', why is 'Rewarding You...",
     "question": "In the 'Seven Ways to Stay Motivated', why is 'Rewarding Yourself' important?",
     "options": [
@@ -524,11 +524,11 @@
     "answer": "B",
     "correctWord": "B. Humans are motivated by rewards, so rewarding yourself for a job well done helps maintain motivation and avoid procrastination.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_269",
+    "id": "SSA_269",
     "word": "Câu 269: According to the text, what plays a central role in developi...",
     "question": "According to the text, what plays a central role in developing an effective identity as an online learner?",
     "options": [
@@ -540,11 +540,11 @@
     "answer": "B",
     "correctWord": "B. Information management",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_287",
+    "id": "SSA_287",
     "word": "Câu 287: Which action step is recommended to move from \"Norming\" to \"...",
     "question": "Which action step is recommended to move from \"Norming\" to \"Performing\"?",
     "options": [
@@ -556,11 +556,11 @@
     "answer": "B",
     "correctWord": "B. Encourage shared leadership and responsibility",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_294",
+    "id": "SSA_294",
     "word": "Câu 294: In the \"Performing\" stage, teams demonstrate:",
     "question": "In the \"Performing\" stage, teams demonstrate:",
     "options": [
@@ -572,11 +572,11 @@
     "answer": "B",
     "correctWord": "B. A strong \"we\" orientation and superior performance",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_297",
+    "id": "SSA_297",
     "word": "Câu 297: In the framework for working together, a \"shared vision\" is ...",
     "question": "In the framework for working together, a \"shared vision\" is described as:",
     "options": [
@@ -588,11 +588,11 @@
     "answer": "B",
     "correctWord": "B. A future-oriented statement of purpose aligned with members' values",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_315",
+    "id": "SSA_315",
     "word": "Câu 315: What is the main purpose of creating a master semester sched...",
     "question": "What is the main purpose of creating a master semester schedule?",
     "options": [
@@ -604,11 +604,11 @@
     "answer": "B",
     "correctWord": "B. To provide an \"overview at a glance\" of all academic requirements and stay on track",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_316",
+    "id": "SSA_316",
     "word": "Câu 316: In Step 1 of designing a semester schedule, what should the ...",
     "question": "In Step 1 of designing a semester schedule, what should the table include?",
     "options": [
@@ -620,11 +620,11 @@
     "answer": "B",
     "correctWord": "B. Seven columns for days of the week and one row for each week of the semester",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_317",
+    "id": "SSA_317",
     "word": "Câu 317: When populating the semester schedule (Step 3), what should ...",
     "question": "When populating the semester schedule (Step 3), what should be recorded for graded assignments?",
     "options": [
@@ -636,11 +636,11 @@
     "answer": "B",
     "correctWord": "B. The course name, task details, and its value (points/weight)",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_320",
+    "id": "SSA_320",
     "word": "Câu 320: What should be included in a weekly schedule to support well...",
     "question": "What should be included in a weekly schedule to support well-being?",
     "options": [
@@ -652,11 +652,11 @@
     "answer": "B",
     "correctWord": "B. Daily time for physical activity and time blocks for rest/recreation on weekends",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_321",
+    "id": "SSA_321",
     "word": "Câu 321: The weekly review (WR) for each course is best scheduled:",
     "question": "The weekly review (WR) for each course is best scheduled:",
     "options": [
@@ -668,11 +668,11 @@
     "answer": "B",
     "correctWord": "B. Preferably at the end of the week",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_330",
+    "id": "SSA_330",
     "word": "Câu 330: Which tip is NOT recommended for participating effectively i...",
     "question": "Which tip is NOT recommended for participating effectively in online forums?",
     "options": [
@@ -684,11 +684,11 @@
     "answer": "B",
     "correctWord": "B. Use overly informal language to build rapport",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "ssl_353",
+    "id": "SSA_353",
     "word": "Câu 353: Why are broad goals like \"work on research paper\" considered...",
     "question": "Why are broad goals like \"work on research paper\" considered insufficient?",
     "options": [
@@ -700,7 +700,7 @@
     "answer": "B",
     "correctWord": "B. They are insufficiently defined and may increase procrastination",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   }
 ]

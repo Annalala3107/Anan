@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { Word, CustomQuiz } from './types';
 import { StorageEngine } from './storage';
+import { soundFx, AmbientSoundType } from './sound';
+import { QuizDatasetSchema } from './schema';
 
 interface QuizStoreState {
   selectedQuizPath: string;
@@ -10,21 +12,34 @@ interface QuizStoreState {
   soundEnabled: boolean;
   theme: 'dark' | 'light';
 
+  // Zen Focus Mode state
+  zenMode: boolean;
+  ambientFocusSound: boolean;
+  ambientSoundType: AmbientSoundType;
+
   setSelectedQuizPath: (path: string) => void;
   setActiveCustomQuiz: (quiz: CustomQuiz | null) => void;
   setWords: (words: Word[]) => void;
   loadQuizWords: (pathOrQuiz?: string | CustomQuiz) => Promise<Word[]>;
   toggleSound: () => void;
   setTheme: (theme: 'dark' | 'light') => void;
+
+  toggleZenMode: (val?: boolean) => void;
+  toggleAmbientFocus: () => void;
+  setAmbientSoundType: (type: AmbientSoundType) => void;
 }
 
 export const useQuizStore = create<QuizStoreState>((set, get) => ({
-  selectedQuizPath: '/sat/vi-en-ielts.json',
+  selectedQuizPath: '/data/csi106_all.json',
   activeCustomQuiz: null,
   words: [],
   isLoadingWords: false,
   soundEnabled: true,
   theme: 'dark',
+
+  zenMode: false,
+  ambientFocusSound: false,
+  ambientSoundType: 'alpha_drone',
 
   setSelectedQuizPath: (path: string) => {
     StorageEngine.setSelectedQuiz(path);
@@ -56,7 +71,12 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
       const filePath = typeof active === 'string' ? active : get().selectedQuizPath;
       const res = await fetch(filePath);
       if (!res.ok) throw new Error('Failed to fetch quiz dataset');
-      const data: Word[] = await res.json();
+      const rawData = await res.json();
+
+      // Zod Schema Validation to safeguard against corrupted or malformed questions
+      const parsed = QuizDatasetSchema.safeParse(rawData);
+      const data: Word[] = parsed.success ? (parsed.data as Word[]) : rawData;
+
       set({ words: data, isLoadingWords: false });
       return data;
     } catch (err) {
@@ -68,4 +88,32 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
 
   toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
   setTheme: (theme) => set({ theme }),
+
+  toggleZenMode: (val?: boolean) => {
+    const next = typeof val === 'boolean' ? val : !get().zenMode;
+    if (next) {
+      soundFx.playZenChime();
+    } else {
+      soundFx.stopAmbientSound();
+      set({ ambientFocusSound: false });
+    }
+    set({ zenMode: next });
+  },
+
+  toggleAmbientFocus: () => {
+    const next = !get().ambientFocusSound;
+    if (next) {
+      soundFx.startAmbientSound(get().ambientSoundType);
+    } else {
+      soundFx.stopAmbientSound();
+    }
+    set({ ambientFocusSound: next });
+  },
+
+  setAmbientSoundType: (type) => {
+    set({ ambientSoundType: type });
+    if (get().ambientFocusSound) {
+      soundFx.startAmbientSound(type);
+    }
+  },
 }));

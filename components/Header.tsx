@@ -2,14 +2,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Flame, Sparkles, Volume2, VolumeX, Moon, Sun, BookOpen, Layers } from 'lucide-react';
+import { Flame, Sparkles, Volume2, VolumeX, Moon, Sun, BookOpen, Layers, Focus } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
 import { useEffect, useState } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
-  const { soundEnabled, toggleSound, selectedQuizPath, activeCustomQuiz } = useQuizStore();
+  const { soundEnabled, toggleSound, selectedQuizPath, activeCustomQuiz, zenMode, toggleZenMode } =
+    useQuizStore();
   const [streak, setStreak] = useState(1);
   const [isDark, setIsDark] = useState(true);
 
@@ -40,22 +41,27 @@ export default function Header() {
 
   const getQuizName = () => {
     if (activeCustomQuiz) return activeCustomQuiz.name;
-    if (selectedQuizPath.includes('cea201_all')) return 'CEA201 - Full (347 câu)';
-    if (selectedQuizPath.includes('cea_')) return 'CEA201 Chuyên Đề';
-    if (selectedQuizPath.includes('ssl101_all')) return 'SSL101 - Full (370 câu)';
-    if (selectedQuizPath.includes('ssl_')) return 'SSL101 Chuyên Đề';
+    if (selectedQuizPath.includes('csi106_all') || selectedQuizPath.includes('cea201_all'))
+      return 'CSI106 - Full (347 câu)';
+    if (selectedQuizPath.includes('csi_') || selectedQuizPath.includes('cea_'))
+      return 'CSI106 Chuyên Đề';
+    if (selectedQuizPath.includes('ssa101_all') || selectedQuizPath.includes('ssl101_all'))
+      return 'SSA101 - Full (370 câu)';
+    if (selectedQuizPath.includes('ssa_') || selectedQuizPath.includes('ssl_'))
+      return 'SSA101 Chuyên Đề';
     if (selectedQuizPath.includes('prf192_all')) return 'PRF192 - C (253 câu)';
     if (selectedQuizPath.includes('prf_')) return 'PRF192 Chuyên Đề';
-    if (selectedQuizPath.includes('vi-en-ielts')) return 'IELTS/SAT Tiếng Việt';
-    if (selectedQuizPath.includes('1.json')) return 'SAT Core Set 1';
-    if (selectedQuizPath.includes('2.json')) return 'SAT Advanced Set 2';
-    if (selectedQuizPath.includes('archaic.json')) return 'Archaic Words';
-    return 'Bộ Đề Tuỳ Chọn';
+    return 'CSI106 - Full (347 câu)';
   };
+
+  // In active study session with Zen Focus Mode enabled, completely hide the global header for zero distraction
+  if (pathname?.startsWith('/session') && zenMode) {
+    return null;
+  }
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/70 dark:bg-[#090E17]/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 h-16 flex items-center justify-between">
         {/* Logo & Brand */}
         <div className="flex items-center gap-3">
           <Link
@@ -76,7 +82,7 @@ export default function Header() {
             className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60 hover:bg-indigo-100 transition-colors"
           >
             <Layers className="w-3.5 h-3.5" />
-            <span className="max-w-[160px] truncate">{getQuizName()}</span>
+            <span className="max-w-[240px] truncate">{getQuizName()}</span>
           </Link>
         </div>
 
@@ -126,6 +132,27 @@ export default function Header() {
 
         {/* Action Controls */}
         <div className="flex items-center gap-2">
+          {/* Zen Focus Quick Toggle (Especially useful when on /session) */}
+          <button
+            onClick={() => toggleZenMode()}
+            title={
+              zenMode
+                ? 'Thoát Chế độ Tập Trung Tuyệt Đối (Phím Z)'
+                : 'Bật Chế độ Tập Trung Tuyệt Đối (Phím Z)'
+            }
+            className={`px-2.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 text-xs font-bold border ${
+              zenMode
+                ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow'
+                : 'bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-indigo-400'
+            }`}
+          >
+            <Focus className={`w-3.5 h-3.5 ${zenMode ? 'animate-spin' : ''}`} />
+            <span className="hidden sm:inline">{zenMode ? 'Zen: Bật' : 'Zen Focus'}</span>
+            <kbd className="hidden lg:inline text-[10px] px-1 py-0.2 rounded bg-black/20 font-mono opacity-80">
+              Z
+            </kbd>
+          </button>
+
           {/* Streak Counter */}
           <div
             title="Chuỗi ngày học liên tục"
@@ -154,7 +181,11 @@ export default function Header() {
             title={isDark ? 'Chuyển sang giao diện Sáng' : 'Chuyển sang giao diện Tối'}
             className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
-            {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-600" />}
+            {isDark ? (
+              <Sun className="w-4 h-4 text-amber-400" />
+            ) : (
+              <Moon className="w-4 h-4 text-indigo-600" />
+            )}
           </button>
         </div>
       </div>

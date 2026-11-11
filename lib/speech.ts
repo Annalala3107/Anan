@@ -4,7 +4,7 @@
 
 export class SpeechService {
   private static synth: SpeechSynthesis | null = null;
-  private static defaultVoice: SpeechSynthesisVoice | null = null;
+  private static voices: SpeechSynthesisVoice[] = [];
 
   public static isSupported(): boolean {
     return typeof window !== 'undefined' && 'speechSynthesis' in window;
@@ -14,26 +14,23 @@ export class SpeechService {
     if (!this.isSupported()) return;
     this.synth = window.speechSynthesis;
 
-    const setVoice = () => {
-      const voices = this.synth?.getVoices() || [];
-      // Prefer standard US or UK English voices
-      this.defaultVoice =
-        voices.find(v => v.lang.startsWith('en-US') && !v.name.includes('Google')) ||
-        voices.find(v => v.lang.startsWith('en-US')) ||
-        voices.find(v => v.lang.startsWith('en-GB')) ||
-        voices[0] ||
-        null;
+    const loadVoices = () => {
+      this.voices = this.synth?.getVoices() || [];
     };
 
-    setVoice();
+    loadVoices();
     if (this.synth?.onvoiceschanged !== undefined) {
-      this.synth.onvoiceschanged = setVoice;
+      this.synth.onvoiceschanged = loadVoices;
     }
+  }
+
+  private static isVietnamese(text: string): boolean {
+    return /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(text);
   }
 
   public static speak(text: string, rate: number = 0.9): Promise<void> {
     return new Promise((resolve) => {
-      if (!this.isSupported()) {
+      if (!this.isSupported() || !text?.trim()) {
         resolve();
         return;
       }
@@ -43,18 +40,38 @@ export class SpeechService {
       }
 
       if (this.synth) {
-        this.synth.cancel(); // Stop any pending utterance
-        const utterance = new SpeechSynthesisUtterance(text);
-        if (this.defaultVoice) {
-          utterance.voice = this.defaultVoice;
+        try {
+          this.synth.cancel(); // Stop any pending utterance
+          if (this.synth.paused) {
+            this.synth.resume();
+          }
+
+          const utterance = new SpeechSynthesisUtterance(text);
+          const isVi = this.isVietnamese(text);
+
+          if (isVi) {
+            const viVoice = this.voices.find((v) => v.lang.startsWith('vi'));
+            if (viVoice) utterance.voice = viVoice;
+            utterance.lang = 'vi-VN';
+          } else {
+            const enVoice =
+              this.voices.find((v) => v.lang.startsWith('en-US') && !v.name.includes('Google')) ||
+              this.voices.find((v) => v.lang.startsWith('en-US')) ||
+              this.voices.find((v) => v.lang.startsWith('en-GB'));
+            if (enVoice) utterance.voice = enVoice;
+            utterance.lang = 'en-US';
+          }
+
+          utterance.rate = rate;
+          utterance.pitch = 1.0;
+
+          utterance.onend = () => resolve();
+          utterance.onerror = () => resolve();
+
+          this.synth.speak(utterance);
+        } catch {
+          resolve();
         }
-        utterance.rate = rate; // slightly slower for clear educational articulation
-        utterance.pitch = 1.0;
-
-        utterance.onend = () => resolve();
-        utterance.onerror = () => resolve();
-
-        this.synth.speak(utterance);
       } else {
         resolve();
       }

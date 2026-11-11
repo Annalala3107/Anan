@@ -45,7 +45,7 @@ export default function LibraryPage() {
 
     if (filterTopic !== 'all' && w.topic !== filterTopic) return false;
 
-    const prog = progressMap[w.correctWord || w.word];
+    const prog = StorageEngine.getItemProgress(w, progressMap);
     if (filterStatus === 'mastered') return prog?.status === 'mastered';
     if (filterStatus === 'learning') return prog?.status === 'learning';
     if (filterStatus === 'new') return !prog || prog.status === 'new';
@@ -54,7 +54,7 @@ export default function LibraryPage() {
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6 md:py-10 space-y-6 animate-fade-in">
+    <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6 md:py-10 space-y-6 animate-fade-in">
       {/* Title */}
       <div>
         <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
@@ -128,9 +128,9 @@ export default function LibraryPage() {
           Không tìm thấy câu hỏi nào khớp với từ khoá hoặc bộ lọc của bạn.
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
           {filteredWords.map((w, idx) => {
-            const prog = progressMap[w.correctWord || w.word];
+            const prog = StorageEngine.getItemProgress(w, progressMap);
             const strengthPercent = prog?.strength ? Math.round(prog.strength * 100) : 0;
             const isMastered = prog?.status === 'mastered';
             const isMCQ = Boolean(w.question && w.options);

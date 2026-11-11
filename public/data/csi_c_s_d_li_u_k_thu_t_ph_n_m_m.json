@@ -1,6 +1,6 @@
-[
+﻿[
   {
-    "id": "cea_41",
+    "id": "CSI_41",
     "word": "Câu 41: The ANSI/SPARC model in Database Architecture has how many l...",
     "question": "The ANSI/SPARC model in Database Architecture has how many levels?",
     "options": [
@@ -12,11 +12,11 @@
     "answer": "B",
     "correctWord": "B. 3",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_62",
+    "id": "CSI_62",
     "word": "Câu 62: Which of the following is NOT a characteristic of the relati...",
     "question": "Which of the following is NOT a characteristic of the relational database model?",
     "options": [
@@ -28,11 +28,11 @@
     "answer": "C",
     "correctWord": "C. Relationships between tables are established using pointers.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_70",
+    "id": "CSI_70",
     "word": "Câu 70: Which of the following is NOT a component of the ACID proper...",
     "question": "Which of the following is NOT a component of the ACID properties in database transactions?",
     "options": [
@@ -44,11 +44,11 @@
     "answer": "C",
     "correctWord": "C. Integrity",
     "explanation": "Đáp án: C. ACID = Atomicity, Consistency, Isolation, Durability",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_71",
+    "id": "CSI_71",
     "word": "Câu 71: Which of the following is NOT one of the four major programm...",
     "question": "Which of the following is NOT one of the four major programming paradigms?",
     "options": [
@@ -60,11 +60,11 @@
     "answer": "D",
     "correctWord": "D. Database-driven",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_93",
+    "id": "CSI_93",
     "word": "Câu 93: Unified Modeling Language (UML) is ______",
     "question": "Unified Modeling Language (UML) is ______",
     "options": [
@@ -76,11 +76,11 @@
     "answer": "D",
     "correctWord": "D. A pictorial representation of an algorithm",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_94",
+    "id": "CSI_94",
     "word": "Câu 94: What is the final stage of the four phases of the software l...",
     "question": "What is the final stage of the four phases of the software life cycle?",
     "options": [
@@ -92,11 +92,11 @@
     "answer": "A",
     "correctWord": "A. Testing",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_101",
+    "id": "CSI_101",
     "word": "Câu 101: What is one of the advantages of a database over a flat-file...",
     "question": "What is one of the advantages of a database over a flat-file system?",
     "options": [
@@ -108,11 +108,11 @@
     "answer": "A",
     "correctWord": "A. Less redundancy",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_105",
+    "id": "CSI_105",
     "word": "Câu 105: What is an example of a declarative programming language?",
     "question": "What is an example of a declarative programming language?",
     "options": [
@@ -124,11 +124,11 @@
     "answer": "B",
     "correctWord": "B. Prolog",
     "explanation": "Đáp án: B. SQL cũng là ngôn ngữ khai báo, nhưng giáo trình thường lấy Prolog làm ví dụ",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_122",
+    "id": "CSI_122",
     "word": "Câu 122: What are some geometric shapes that an entity-relationship (...",
     "question": "What are some geometric shapes that an entity-relationship (E-R) diagram uses?",
     "options": [
@@ -140,11 +140,11 @@
     "answer": "B",
     "correctWord": "B. Rectangles, ellipses, diamonds, lines",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_142",
+    "id": "CSI_142",
     "word": "Câu 142: Which of the following is the first phase in the software li...",
     "question": "Which of the following is the first phase in the software lifecycle?",
     "options": [
@@ -156,11 +156,11 @@
     "answer": "C",
     "correctWord": "C. Analysis",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_143",
+    "id": "CSI_143",
     "word": "Câu 143: Which of the following software development methodologies em...",
     "question": "Which of the following software development methodologies emphasizes iterative development, collaboration among cross-functional teams, and frequent customer feedback?",
     "options": [
@@ -172,11 +172,11 @@
     "answer": "B",
     "correctWord": "B. Agile methodology",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_144",
+    "id": "CSI_144",
     "word": "Câu 144: Which of the following UML diagram types is most suitable fo...",
     "question": "Which of the following UML diagram types is most suitable for representing the flow of control within an algorithm, including loops and conditional statements?",
     "options": [
@@ -188,11 +188,11 @@
     "answer": "C",
     "correctWord": "C. Activity diagram",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_150",
+    "id": "CSI_150",
     "word": "Câu 150: Which phase of the software lifecycle is primarily concerned...",
     "question": "Which phase of the software lifecycle is primarily concerned with coding and programming?",
     "options": [
@@ -204,11 +204,11 @@
     "answer": "C",
     "correctWord": "C. Implementation phase",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_151",
+    "id": "CSI_151",
     "word": "Câu 151: Which model completes each phase before moving to the next?",
     "question": "Which model completes each phase before moving to the next?",
     "options": [
@@ -220,11 +220,11 @@
     "answer": "A",
     "correctWord": "A. Waterfall",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_167",
+    "id": "CSI_167",
     "word": "Câu 167: When manipulating relational data, which SQL command allows ...",
     "question": "When manipulating relational data, which SQL command allows the user to introduce an additional row into an existing table?",
     "options": [
@@ -237,11 +237,11 @@
     "answer": "A",
     "correctWord": "A. Insert",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_174",
+    "id": "CSI_174",
     "word": "Câu 174: In a relational database, which of the following is a unary ...",
     "question": "In a relational database, which of the following is a unary operation?",
     "options": [
@@ -253,11 +253,11 @@
     "answer": "C",
     "correctWord": "C. project",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_179",
+    "id": "CSI_179",
     "word": "Câu 179: In which phase of the software lifecycle is the problem doma...",
     "question": "In which phase of the software lifecycle is the problem domain analyzed?",
     "options": [
@@ -269,11 +269,11 @@
     "answer": "C",
     "correctWord": "C. Analysis",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_180",
+    "id": "CSI_180",
     "word": "Câu 180: In which style of programming is the software viewed as an e...",
     "question": "In which style of programming is the software viewed as an entity that initiates actions and controls other entities that remain inactive unless acted upon?",
     "options": [
@@ -285,11 +285,11 @@
     "answer": "A",
     "correctWord": "A. Procedural paradigm",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_191",
+    "id": "CSI_191",
     "word": "Câu 191: What is the primary deliverable of the analysis phase in the...",
     "question": "What is the primary deliverable of the analysis phase in the SDLC?",
     "options": [
@@ -301,11 +301,11 @@
     "answer": "D",
     "correctWord": "D. Requirements specification document",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_192",
+    "id": "CSI_192",
     "word": "Câu 192: Which language is standardized by ANSI and ISO for use on re...",
     "question": "Which language is standardized by ANSI and ISO for use on relational databases?",
     "options": [
@@ -317,11 +317,11 @@
     "answer": "A",
     "correctWord": "A. SQL",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_206",
+    "id": "CSI_206",
     "word": "Câu 206: Which stage of the software development life cycle are data ...",
     "question": "Which stage of the software development life cycle are data flow diagrams typically created?",
     "options": [
@@ -333,11 +333,11 @@
     "answer": "C",
     "correctWord": "C. Analysis",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_207",
+    "id": "CSI_207",
     "word": "Câu 207: Which normal form ensures that every non-prime attribute of ...",
     "question": "Which normal form ensures that every non-prime attribute of a relation is fully functionally dependent on the primary key?",
     "options": [
@@ -349,11 +349,11 @@
     "answer": "B",
     "correctWord": "B. Second Normal Form (2NF)",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_211",
+    "id": "CSI_211",
     "word": "Câu 211: In which style of programming is the software viewed as an e...",
     "question": "In which style of programming is the software viewed as an entity that initiates actions and controls other entities that remain inactive unless acted upon?",
     "options": [
@@ -365,11 +365,11 @@
     "answer": "B",
     "correctWord": "B. Object-oriented paradigm",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_223",
+    "id": "CSI_223",
     "word": "Câu 223: What is the primary concern regarding the collection of pers...",
     "question": "What is the primary concern regarding the collection of personal information by private and public agencies?",
     "options": [
@@ -381,11 +381,11 @@
     "answer": "A",
     "correctWord": "A. It may pose some risks and be used commercially, conflicting with privacy rights.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_234",
+    "id": "CSI_234",
     "word": "Câu 234: What is the primary outcome of the “analysis phase” in softw...",
     "question": "What is the primary outcome of the “analysis phase” in software development?",
     "options": [
@@ -397,11 +397,11 @@
     "answer": "B",
     "correctWord": "B. A specification document outlining what the software will do, not how",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_251",
+    "id": "CSI_251",
     "word": "Câu 251: What is a key difference between glass-box testing and black...",
     "question": "What is a key difference between glass-box testing and black-box testing?",
     "options": [
@@ -413,11 +413,11 @@
     "answer": "A",
     "correctWord": "A. Glass-box testing focuses on the internal logic of the software, while black-box testing focuses on the external functionality",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_262",
+    "id": "CSI_262",
     "word": "Câu 262: Which of the following is the main challenge during the test...",
     "question": "Which of the following is the main challenge during the testing phase of the software lifecycle?",
     "options": [
@@ -429,11 +429,11 @@
     "answer": "A",
     "correctWord": "A. Ensuring complete coverage of all possible test cases",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_277",
+    "id": "CSI_277",
     "word": "Câu 277: When developing software, how would you describe the concept...",
     "question": "When developing software, how would you describe the concept of modularity in software design?",
     "options": [
@@ -445,11 +445,11 @@
     "answer": "A",
     "correctWord": "A. Dividing a project into small parts that are easier to manage.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_295",
+    "id": "CSI_295",
     "word": "Câu 295: In a relational database, what operations can we define to c...",
     "question": "In a relational database, what operations can we define to create new relationships?",
     "options": [
@@ -462,11 +462,11 @@
     "answer": "C",
     "correctWord": "C. Insert, delete, update, select, project, join, union, intersection, and difference",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_300",
+    "id": "CSI_300",
     "word": "Câu 300: In the context of software design, what is the significance ...",
     "question": "In the context of software design, what is the significance of the “Software Architecture”?",
     "options": [
@@ -478,11 +478,11 @@
     "answer": "B",
     "correctWord": "B. It defines the overall structure and organization of the software system.",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_312",
+    "id": "CSI_312",
     "word": "Câu 312: During the design phase, what distinguishes procedure-orient...",
     "question": "During the design phase, what distinguishes procedure-oriented design from object-oriented design?",
     "options": [
@@ -494,11 +494,11 @@
     "answer": "B",
     "correctWord": "B. Procedure-oriented design organizes the system around procedures, while object-oriented design organizes it around objects.",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_318",
+    "id": "CSI_318",
     "word": "Câu 318: What is the primary goal of a masquerading attack?",
     "question": "What is the primary goal of a masquerading attack?",
     "options": [
@@ -510,11 +510,11 @@
     "answer": "A",
     "correctWord": "A. To impersonate another entity.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_331",
+    "id": "CSI_331",
     "word": "Câu 331: When software is developed through gradual stages where each...",
     "question": "When software is developed through gradual stages where each part is built and integrated step-by-step, what is the most notable benefit this approach offers compared to building the entire system at once?",
     "options": [
@@ -526,11 +526,11 @@
     "answer": "A",
     "correctWord": "A. Developers can test and add functionality in steps.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   },
   {
-    "id": "cea_346",
+    "id": "CSI_346",
     "word": "Câu 346: When designing a database using an E-R (Entity-Relationship)...",
     "question": "When designing a database using an E-R (Entity-Relationship) diagram, what does a diamond shape typically represent?",
     "options": [
@@ -542,7 +542,7 @@
     "answer": "A",
     "correctWord": "A. A relationship between two or more entity sets",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cơ Sở Dữ Liệu & Kỹ Thuật Phần Mềm"
   }
 ]

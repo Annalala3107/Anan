@@ -42,13 +42,13 @@ export default function Home() {
 
   const totalWords = words.length || 1;
   const masteredCount = words.filter(
-    (w) => progressMap[w.correctWord || w.word]?.status === 'mastered'
+    (w) => StorageEngine.getItemProgress(w, progressMap)?.status === 'mastered'
   ).length;
   const learningCount = words.filter(
-    (w) => progressMap[w.correctWord || w.word]?.status === 'learning'
+    (w) => StorageEngine.getItemProgress(w, progressMap)?.status === 'learning'
   ).length;
   const needReviewCount = words.filter((w) => {
-    const p = progressMap[w.correctWord || w.word];
+    const p = StorageEngine.getItemProgress(w, progressMap);
     return p && p.nextDue <= Date.now() && p.seenCount > 0;
   }).length;
 
@@ -56,27 +56,23 @@ export default function Home() {
 
   const getActiveQuizTitle = () => {
     if (activeCustomQuiz) return activeCustomQuiz.name;
-    if (selectedQuizPath.includes('cea201_all')) return 'Kiến Trúc Máy Tính (CEA201) — Đề Tổng Hợp 347 Câu';
-    if (selectedQuizPath.includes('cea_')) return 'Kiến Trúc Máy Tính (CEA201) — Chuyên Đề Phân Loại';
-    if (selectedQuizPath.includes('ssl101_all')) return 'Kỹ Năng Đại Học & AI (SSL101) — Đề Tổng Hợp 370 Câu';
-    if (selectedQuizPath.includes('ssl_')) return 'Kỹ Năng Đại Học (SSL101) — Chuyên Đề Phân Loại';
+    if (selectedQuizPath.includes('csi106_all') || selectedQuizPath.includes('cea201_all')) return 'Kiến Trúc Máy Tính (CSI106) — Đề Tổng Hợp 347 Câu';
+    if (selectedQuizPath.includes('csi_') || selectedQuizPath.includes('cea_')) return 'Kiến Trúc Máy Tính (CSI106) — Chuyên Đề Phân Loại';
+    if (selectedQuizPath.includes('ssa101_all') || selectedQuizPath.includes('ssl101_all')) return 'Kỹ Năng Học Đại Học & Kỹ Năng Mềm (SSA101) — Đề Tổng Hợp 370 Câu';
+    if (selectedQuizPath.includes('ssa_') || selectedQuizPath.includes('ssl_')) return 'Kỹ Năng Học Đại Học (SSA101) — Chuyên Đề Phân Loại';
     if (selectedQuizPath.includes('prf192_all')) return 'Lập Trình C (PRF192) — Đề Tổng Hợp 253 Câu';
     if (selectedQuizPath.includes('prf_')) return 'Lập Trình C (PRF192) — Chuyên Đề Phân Loại';
-    if (selectedQuizPath.includes('vi-en-ielts')) return 'IELTS / SAT Tiếng Việt Chọn Lọc';
-    if (selectedQuizPath.includes('1.json')) return 'Bộ từ vựng SAT Cốt lõi (Set 1)';
-    if (selectedQuizPath.includes('2.json')) return 'Bộ từ vựng SAT Nâng cao (Set 2)';
-    if (selectedQuizPath.includes('archaic.json')) return 'Từ vựng Cổ & Văn học (Archaic)';
-    return 'Bộ Đề Tuỳ Chọn';
+    return 'Kiến Trúc Máy Tính (CSI106) — Đề Tổng Hợp';
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6 md:py-10 space-y-8 animate-fade-in">
+    <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6 md:py-10 space-y-8 animate-fade-in">
       {/* Hero Active Quiz & Progress Card */}
       <div className="relative overflow-hidden rounded-3xl p-6 md:p-8 bg-gradient-to-br from-indigo-900/90 via-purple-900/80 to-slate-900 border border-indigo-500/30 text-white shadow-2xl">
         <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-xl">
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-3xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-indigo-200 backdrop-blur-md border border-white/10">
               <Layers className="w-3.5 h-3.5" />
               <span>Đang kích hoạt</span>
@@ -84,18 +80,18 @@ export default function Home() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight">
               {getActiveQuizTitle()}
             </h1>
-            <p className="text-slate-300 text-sm">
+            <p className="text-slate-300 text-sm md:text-base">
               Bộ câu hỏi gồm <strong className="text-white">{totalWords}</strong> câu hỏi trắc nghiệm / từ vựng đã được chuẩn hoá với đáp án và giải thích chi tiết.
             </p>
           </div>
 
           {/* Quick Progress Badge */}
-          <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/10 p-4 rounded-2xl shrink-0">
+          <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/10 p-5 rounded-2xl shrink-0">
             <div>
               <p className="text-xs uppercase font-bold text-indigo-200">Đã thành thạo</p>
-              <p className="text-2xl font-black">{masteredCount} / {totalWords} câu</p>
+              <p className="text-2xl sm:text-3xl font-black">{masteredCount} / {totalWords} câu</p>
             </div>
-            <div className="w-12 h-12 rounded-full border-4 border-indigo-400 border-t-emerald-400 flex items-center justify-center font-bold text-xs">
+            <div className="w-14 h-14 rounded-full border-4 border-indigo-400 border-t-emerald-400 flex items-center justify-center font-black text-sm">
               {masteredPercent}%
             </div>
           </div>
@@ -272,8 +268,8 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {words.slice(0, 6).map((w, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-3.5">
+          {words.slice(0, 12).map((w, idx) => (
             <div
               key={idx}
               onClick={() => setSelectedWord(w)}

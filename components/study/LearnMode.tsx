@@ -1,10 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Word } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { SpeechService } from '@/lib/speech';
+import { getQuestionKey, cleanOptionText, isAnswerMatch } from '@/lib/utils';
+import { soundFx } from '@/lib/sound';
+import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
   Volume2,
   ArrowRight,
@@ -70,21 +73,22 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     );
   }
 
-  const handleFeedback = (difficulty: 'easy' | 'hard') => {
-    const quality = difficulty === 'easy' ? 5 : 2;
-    StorageEngine.updateWordProgress(currentWord.correctWord || currentWord.word, quality);
-
+  const advanceToNextStep = () => {
+    soundFx.playClick();
     if (currentIndex < sessionWords.length - 1) {
       setCurrentIndex((i) => i + 1);
     } else {
       if (round === 'recall') {
+        soundFx.playCorrect();
         setRound('usage');
         setCurrentIndex(0);
       } else if (round === 'usage') {
+        soundFx.playCorrect();
         setRound('contrast');
         setCurrentIndex(0);
       } else {
         setIsSessionComplete(true);
+        soundFx.playCelebration();
         confetti({
           particleCount: 120,
           spread: 70,
@@ -94,7 +98,18 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     }
   };
 
-  const getOptions = () => {
+  const handleFeedback = (difficulty: 'easy' | 'hard') => {
+    if (difficulty === 'easy') {
+      soundFx.playCorrect();
+    } else {
+      soundFx.playWrong();
+    }
+    const quality = difficulty === 'easy' ? 5 : 2;
+    StorageEngine.updateWordProgress(getQuestionKey(currentWord), quality);
+    advanceToNextStep();
+  };
+
+  const options = useMemo(() => {
     if (isMCQ && currentWord.options) {
       return currentWord.options;
     }
@@ -104,18 +119,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     const distractors = pool.sort(() => 0.5 - Math.random()).slice(0, 3);
     const combined = [currentWord.word, ...distractors];
     return combined.sort(() => 0.5 - Math.random());
-  };
-
-  const options = getOptions();
+  }, [currentIndex, round, currentWord, isMCQ, sessionWords]);
 
   const isCorrectChoice = (opt: string) => {
-    if (isMCQ) {
-      return (
-        opt.trim().toLowerCase() === (currentWord.correctWord || '').trim().toLowerCase() ||
-        (currentWord.answer && opt.startsWith(`${currentWord.answer}.`))
-      );
-    }
-    return opt.toLowerCase() === currentWord.word.toLowerCase();
+    return isAnswerMatch(opt, currentWord.correctWord || currentWord.word, currentWord.answer);
   };
 
   if (isSessionComplete) {
@@ -154,7 +161,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   }
 
   return (
-    <div className="max-w-2xl mx-auto py-6 px-4">
+    <div className="w-full max-w-4xl mx-auto py-6 px-4 sm:px-6">
       {/* Session Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
@@ -206,9 +213,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                   <HelpCircle className="w-3.5 h-3.5" />
                   <span>{isMCQ ? 'Câu hỏi' : 'Từ vựng'}</span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-relaxed">
-                  {currentWord.question || currentWord.word}
-                </h2>
+                <CodeQuestionRenderer
+                  content={currentWord.question || currentWord.word}
+                  className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-relaxed"
+                />
                 <p className="text-xs text-slate-400 mt-2">
                   Bạn có biết câu trả lời chính xác là gì không?
                 </p>
@@ -266,9 +274,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             <p className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 mb-2">
               {isMCQ ? 'Chọn phương án đúng nhất' : 'Điền từ thích hợp vào câu'}
             </p>
-            <p className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100 leading-relaxed">
-              {currentWord.question || currentWord.simple_examples?.[0] || currentWord.word}
-            </p>
+            <CodeQuestionRenderer
+              content={currentWord.question || currentWord.simple_examples?.[0] || currentWord.word}
+              className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100 leading-relaxed"
+            />
           </div>
 
           {/* Choices */}
@@ -299,8 +308,13 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                   disabled={Boolean(selectedOption)}
                   onClick={() => {
                     setSelectedOption(opt);
-                    const quality = isCorrect ? 5 : 1;
-                    StorageEngine.updateWordProgress(currentWord.correctWord || currentWord.word, quality);
+                    if (isCorrect) {
+                      soundFx.playCorrect();
+                    } else {
+                      soundFx.playWrong();
+                    }
+                    const quality = isCorrect ? 5 : 2;
+                    StorageEngine.updateWordProgress(getQuestionKey(currentWord), quality);
                   }}
                   className={btnStyle}
                 >
@@ -308,7 +322,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                     <span className="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-700 text-xs flex items-center justify-center font-mono font-bold text-slate-500 shrink-0">
                       {String.fromCharCode(65 + idx)}
                     </span>
-                    <span className="text-sm sm:text-base">{opt}</span>
+                    <span className="text-sm sm:text-base">{cleanOptionText(opt)}</span>
                   </div>
                   {selectedOption && isCorrect && (
                     <Check className="w-5 h-5 text-emerald-500 shrink-0 ml-2" />
@@ -329,7 +343,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 </div>
               )}
               <button
-                onClick={() => handleFeedback(isCorrectChoice(selectedOption) ? 'easy' : 'hard')}
+                onClick={advanceToNextStep}
                 className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold flex items-center justify-center gap-2 shadow-glow transition-all"
               >
                 <span>Tiếp tục câu kế tiếp</span>

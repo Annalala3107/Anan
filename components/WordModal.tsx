@@ -4,6 +4,8 @@ import { Word } from '@/lib/types';
 import { Volume2, X, Sparkles, AlertTriangle, BookOpen, CheckCircle, HelpCircle, Layers } from 'lucide-react';
 import { SpeechService } from '@/lib/speech';
 import { StorageEngine } from '@/lib/storage';
+import { cleanOptionText, isAnswerMatch } from '@/lib/utils';
+import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import { useEffect, useState } from 'react';
 
 interface WordModalProps {
@@ -17,7 +19,7 @@ export default function WordModal({ word, onClose }: WordModalProps) {
   useEffect(() => {
     if (word) {
       const all = StorageEngine.getWordProgress();
-      setProgress(all[word.word] || null);
+      setProgress(StorageEngine.getItemProgress(word, all));
     }
   }, [word]);
 
@@ -75,9 +77,10 @@ export default function WordModal({ word, onClose }: WordModalProps) {
               <span className="text-xs font-bold uppercase text-indigo-500 flex items-center gap-1.5 mb-1.5">
                 <HelpCircle className="w-3.5 h-3.5" /> Câu hỏi trắc nghiệm
               </span>
-              <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
-                {word.question}
-              </h2>
+              <CodeQuestionRenderer
+                content={word.question}
+                className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
+              />
             </div>
 
             {/* Options List */}
@@ -87,10 +90,7 @@ export default function WordModal({ word, onClose }: WordModalProps) {
               </p>
               {word.options!.map((opt, idx) => {
                 const optLetter = String.fromCharCode(65 + idx);
-                const isCorrect =
-                  (word.answer && word.answer.includes(optLetter)) ||
-                  (word.correctWord && opt.toLowerCase() === word.correctWord.toLowerCase()) ||
-                  opt.startsWith(`${optLetter}.`);
+                const isCorrect = isAnswerMatch(opt, word.correctWord, word.answer);
 
                 return (
                   <div
@@ -111,7 +111,7 @@ export default function WordModal({ word, onClose }: WordModalProps) {
                       >
                         {optLetter}
                       </span>
-                      <span>{opt}</span>
+                      <span>{cleanOptionText(opt)}</span>
                     </div>
                     {isCorrect && (
                       <span className="text-xs text-emerald-600 dark:text-emerald-400 font-extrabold uppercase shrink-0">

@@ -1,6 +1,6 @@
-[
+﻿[
   {
-    "id": "ssl_30",
+    "id": "SSA_30",
     "word": "Câu 30: Which of the following best distinguishes digital literacy f...",
     "question": "Which of the following best distinguishes digital literacy from AI literacy?",
     "options": [
@@ -12,11 +12,11 @@
     "answer": "B",
     "correctWord": "B. AI literacy includes competencies for understanding and interacting with AI systems",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_72",
+    "id": "SSA_72",
     "word": "Câu 72: According to the International Society of Academic Integrity...",
     "question": "According to the International Society of Academic Integrity (2021), academic integrity is best defined as:",
     "options": [
@@ -28,11 +28,11 @@
     "answer": "B",
     "correctWord": "B. A promise to uphold honesty, fairness, respect, responsibility, and courage",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_90",
+    "id": "SSA_90",
     "word": "Câu 90: The concept of \"hallucination\" in AI refers to:",
     "question": "The concept of \"hallucination\" in AI refers to:",
     "options": [
@@ -44,11 +44,11 @@
     "answer": "B",
     "correctWord": "B. AI producing incorrect or fabricated information",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_106",
+    "id": "SSA_106",
     "word": "Câu 106: Which term describes AI systems producing incorrect or fabri...",
     "question": "Which term describes AI systems producing incorrect or fabricated information?",
     "options": [
@@ -60,11 +60,11 @@
     "answer": "C",
     "correctWord": "C. Hallucination",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_137",
+    "id": "SSA_137",
     "word": "Câu 137: A student copies text without citation. This is:",
     "question": "A student copies text without citation. This is:",
     "options": [
@@ -76,11 +76,11 @@
     "answer": "B",
     "correctWord": "B. Plagiarism",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_147",
+    "id": "SSA_147",
     "word": "Câu 147: Which of the following best distinguishes digital literacy f...",
     "question": "Which of the following best distinguishes digital literacy from AI literacy?",
     "options": [
@@ -92,11 +92,11 @@
     "answer": "B",
     "correctWord": "B. AI literacy includes competencies for understanding and interacting with AI systems",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_178",
+    "id": "SSA_178",
     "word": "Câu 178: Which factor makes academic integrity a shared responsibilit...",
     "question": "Which factor makes academic integrity a shared responsibility?",
     "options": [
@@ -108,11 +108,11 @@
     "answer": "B",
     "correctWord": "B. Institutions must establish clear guidelines and pedagogical practices",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_199",
+    "id": "SSA_199",
     "word": "Câu 199: What is a major negative environmental impact of developing ...",
     "question": "What is a major negative environmental impact of developing and training Large Language Models (like ChatGPT-4)?",
     "options": [
@@ -124,11 +124,11 @@
     "answer": "C",
     "correctWord": "C. The training process requires continuous operation on specialized hardware for weeks, consuming massive electricity and creating a large carbon footprint",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_200",
+    "id": "SSA_200",
     "word": "Câu 200: What is the greatest risk to students' freedom of expression...",
     "question": "What is the greatest risk to students' freedom of expression when universities implement \"AI surveillance\" on school-issued devices?",
     "options": [
@@ -140,11 +140,11 @@
     "answer": "B",
     "correctWord": "B. Students' search histories on sensitive topics (e.g., politics, mental health) could be tracked, creating a persistent fear of being criminalized or exposed",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_210",
+    "id": "SSA_210",
     "word": "Câu 210: What is the risk of setting goals that are not truly your ow...",
     "question": "What is the risk of setting goals that are not truly your own?",
     "options": [
@@ -156,11 +156,11 @@
     "answer": "C",
     "correctWord": "C. You will have very little motivation to achieve them because you don't actually care.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_218",
+    "id": "SSA_218",
     "word": "Câu 218: What was the primary ethical issue discovered in the AI-base...",
     "question": "What was the primary ethical issue discovered in the AI-based recruiting tool that was implemented and subsequently scrapped by Amazon in 2018?",
     "options": [
@@ -172,11 +172,11 @@
     "answer": "B",
     "correctWord": "B. The system consistently downgraded the resumes of female candidates because it was trained on ten years of historically male-dominated data",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_219",
+    "id": "SSA_219",
     "word": "Câu 219: What does the term \"Hallucinations\" in Large Language Models...",
     "question": "What does the term \"Hallucinations\" in Large Language Models (LLMs) refer to?",
     "options": [
@@ -188,11 +188,11 @@
     "answer": "C",
     "correctWord": "C. The AI producing text responses that sound highly plausible but are actually factually incorrect or entirely fabricated by the system.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_223",
+    "id": "SSA_223",
     "word": "Câu 223: Which of the following is a recommended visual technique for...",
     "question": "Which of the following is a recommended visual technique for individuals attempting to identify hyper-realistic \"deep fake\" media?",
     "options": [
@@ -204,11 +204,11 @@
     "answer": "B",
     "correctWord": "B. Searching for subtle inconsistencies in lighting, shadows, unnatural facial movements, mismatched lip-syncing, and irregular or absent blinking patterns",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "ssl_266",
+    "id": "SSA_266",
     "word": "Câu 266: In the cases of Ellen Rae and Kris Kashtanova, why did the U...",
     "question": "In the cases of Ellen Rae and Kris Kashtanova, why did the U.S. Copyright Office grant limited copyright to Rae but completely deny Kashtanova?",
     "options": [
@@ -220,7 +220,7 @@
     "answer": "B",
     "correctWord": "B. Because Rae significantly shifted, arranged, and manipulated the AI-generated outputs, while Kashtanova simply used the raw AI images with minor editing.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   }
 ]

@@ -1,6 +1,6 @@
-[
+﻿[
   {
-    "id": "ssl_173",
+    "id": "SSA_173",
     "word": "Câu 173: What is one major purpose of college beyond career preparati...",
     "question": "What is one major purpose of college beyond career preparation?",
     "options": [
@@ -12,11 +12,11 @@
     "answer": "B",
     "correctWord": "B. Personal growth",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_179",
+    "id": "SSA_179",
     "word": "Câu 179: What is a 'Liability' example provided for college students?",
     "question": "What is a 'Liability' example provided for college students?",
     "options": [
@@ -28,11 +28,11 @@
     "answer": "B",
     "correctWord": "B. A student loan or credit card debt.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_180",
+    "id": "SSA_180",
     "word": "Câu 180: What is the mathematical formula for Net Worth?",
     "question": "What is the mathematical formula for Net Worth?",
     "options": [
@@ -44,11 +44,11 @@
     "answer": "C",
     "correctWord": "C. Assets (Owned) – Liabilities (Owed) = Net Worth",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_185",
+    "id": "SSA_185",
     "word": "Câu 185: Which career assessment tool identifies motivations by ranki...",
     "question": "Which career assessment tool identifies motivations by ranking different aspects of work?",
     "options": [
@@ -60,11 +60,11 @@
     "answer": "A",
     "correctWord": "A. MAPP Test",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_189",
+    "id": "SSA_189",
     "word": "Câu 189: In personal finance, what are 'Liabilities'?",
     "question": "In personal finance, what are 'Liabilities'?",
     "options": [
@@ -76,11 +76,11 @@
     "answer": "C",
     "correctWord": "C. Borrowed money, or debt, that you owe",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_192",
+    "id": "SSA_192",
     "word": "Câu 192: What is the 'most important' financial rule when buying an e...",
     "question": "What is the 'most important' financial rule when buying an education?",
     "options": [
@@ -91,11 +91,11 @@
     "answer": "C",
     "correctWord": "C. If you fail to plan, you are planning to fail",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_194",
+    "id": "SSA_194",
     "word": "Câu 194: According to the text, what is a 'bad practice' that leads t...",
     "question": "According to the text, what is a 'bad practice' that leads to a 'debt hole'?",
     "options": [
@@ -107,11 +107,11 @@
     "answer": "B",
     "correctWord": "B. Spending money on wants instead of saving",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_202",
+    "id": "SSA_202",
     "word": "Câu 202: What is the benefit of practicing for interviews with career...",
     "question": "What is the benefit of practicing for interviews with career counselors?",
     "options": [
@@ -123,11 +123,11 @@
     "answer": "C",
     "correctWord": "C. It helps you prepare mentally, gain experience, and learn how to communicate your skills effectively.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_203",
+    "id": "SSA_203",
     "word": "Câu 203: What is the average cost of tuition for local community coll...",
     "question": "What is the average cost of tuition for local community colleges mentioned in the text?",
     "options": [
@@ -139,11 +139,11 @@
     "answer": "C",
     "correctWord": "C. The text does not give an exact figure, but emphasizes that attending a community college for the first two years can save a lot of money.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_204",
+    "id": "SSA_204",
     "word": "Câu 204: What is the career planning step of 'Self-Awareness'?",
     "question": "What is the career planning step of 'Self-Awareness'?",
     "options": [
@@ -155,11 +155,11 @@
     "answer": "B",
     "correctWord": "B. The process of exploring your personal interests, skills, values, and personality traits to find a suitable career path.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_213",
+    "id": "SSA_213",
     "word": "Câu 213: What is the primary benefit of being 'financially literate'?",
     "question": "What is the primary benefit of being 'financially literate'?",
     "options": [
@@ -171,11 +171,11 @@
     "answer": "B",
     "correctWord": "B. It allows you to do more of what you want with your life by working hard, separating needs from wants, and avoiding debt pitfalls.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_214",
+    "id": "SSA_214",
     "word": "Câu 214: What is the 'Career Planning Cycle' used for?",
     "question": "What is the 'Career Planning Cycle' used for?",
     "options": [
@@ -187,11 +187,11 @@
     "answer": "C",
     "correctWord": "C. To apply concrete steps to figure out where you might fit into the work world and to reconsider your approach and progress",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_222",
+    "id": "SSA_222",
     "word": "Câu 222: What should a student do with their resume throughout colleg...",
     "question": "What should a student do with their resume throughout college?",
     "options": [
@@ -203,11 +203,11 @@
     "answer": "B",
     "correctWord": "B. Continuously update it as they acquire new Knowledge, Skills, Abilities (KSAs), and experiences.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_236",
+    "id": "SSA_236",
     "word": "Câu 236: Why is it important to research 'job market trends' for a ch...",
     "question": "Why is it important to research 'job market trends' for a chosen major?",
     "options": [
@@ -219,11 +219,11 @@
     "answer": "B",
     "correctWord": "B. To ensure you are preparing for a growing and promising field, rather than a declining one.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_241",
+    "id": "SSA_241",
     "word": "Câu 241: Why is 'Information Literacy' essential for modern careers?",
     "question": "Why is 'Information Literacy' essential for modern careers?",
     "options": [
@@ -235,11 +235,11 @@
     "answer": "C",
     "correctWord": "C. Workers are expected to be proficient, ethical users and producers of information to solve problems in a connected world.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_243",
+    "id": "SSA_243",
     "word": "Câu 243: Why is volunteering recommended during the 'Exploring Option...",
     "question": "Why is volunteering recommended during the 'Exploring Options' phase of career planning?",
     "options": [
@@ -251,11 +251,11 @@
     "answer": "C",
     "correctWord": "C. Because it allows you to gain additional skills and real-world experience outside the classroom.",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_249",
+    "id": "SSA_249",
     "word": "Câu 249: According to the text, what is the link between financial he...",
     "question": "According to the text, what is the link between financial health and personal life?",
     "options": [
@@ -267,11 +267,11 @@
     "answer": "B",
     "correctWord": "B. Studies show that people with stronger finances are healthier, happier, have better marriages, and better cognitive functioning.",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_259",
+    "id": "SSA_259",
     "word": "Câu 259: Define 'Net Worth' in the context of personal finance.",
     "question": "Define 'Net Worth' in the context of personal finance.",
     "options": [
@@ -283,11 +283,11 @@
     "answer": "C",
     "correctWord": "C. The total measure of your wealth, calculated by subtracting what you owe from what you own",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
-    "id": "ssl_262",
+    "id": "SSA_262",
     "word": "Câu 262: In personal finance, what are 'Assets'?",
     "question": "In personal finance, what are 'Assets'?",
     "options": [
@@ -299,7 +299,7 @@
     "answer": "A",
     "correctWord": "A. The valuable things you own, such as earnings, savings, and investments",
     "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSL101)",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   }
 ]

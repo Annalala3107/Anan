@@ -104,6 +104,8 @@ export interface ExamQuestion {
   options: string[];
   explanation?: string;
   answerKey?: string;
+  topic?: string;
+  subject?: string;
 }
 
 export interface ExamSession {

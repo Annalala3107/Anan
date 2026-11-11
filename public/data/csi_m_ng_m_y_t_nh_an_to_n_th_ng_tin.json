@@ -1,6 +1,6 @@
-[
+﻿[
   {
-    "id": "cea_9",
+    "id": "CSI_9",
     "word": "Câu 9: Which of the following IP addresses is a valid IPv4 address?",
     "question": "Which of the following IP addresses is a valid IPv4 address?",
     "options": [
@@ -12,11 +12,11 @@
     "answer": "C",
     "correctWord": "C. 172.16.254.1",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_10",
+    "id": "CSI_10",
     "word": "Câu 10: Which of the following IP addresses is invalid?",
     "question": "Which of the following IP addresses is invalid?",
     "options": [
@@ -29,11 +29,11 @@
     "answer": "A",
     "correctWord": "A. 192.168.1.256",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_15",
+    "id": "CSI_15",
     "word": "Câu 15: When employing symmetric-key encryption for data communicati...",
     "question": "When employing symmetric-key encryption for data communication between 10 hosts, how many keys are necessary to guarantee the security of all transactions?",
     "options": [
@@ -45,11 +45,11 @@
     "answer": "A",
     "correctWord": "A. 45",
     "explanation": "Đáp án: A. 10×9/2 = 45",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_37",
+    "id": "CSI_37",
     "word": "Câu 37: To guarantee secure communication among 10 hosts using asymm...",
     "question": "To guarantee secure communication among 10 hosts using asymmetric-key encryption, how many keys are necessary?",
     "options": [
@@ -61,11 +61,11 @@
     "answer": "A",
     "correctWord": "A. 20",
     "explanation": "Đáp án: A. 2 × 10 = 20",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_48",
+    "id": "CSI_48",
     "word": "Câu 48: In the TCP/IP protocol suite, which one of the following por...",
     "question": "In the TCP/IP protocol suite, which one of the following port is NOT correct?",
     "options": [
@@ -78,11 +78,11 @@
     "answer": "B",
     "correctWord": "B. 65536",
     "explanation": "Đáp án: B. port tối đa là 65535",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_57",
+    "id": "CSI_57",
     "word": "Câu 57: Which of the following is NOT a type of transmission medium ...",
     "question": "Which of the following is NOT a type of transmission medium used at the physical layer?",
     "options": [
@@ -94,11 +94,11 @@
     "answer": "D",
     "correctWord": "D. UDP packets",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_58",
+    "id": "CSI_58",
     "word": "Câu 58: Which of the following is not a type of network topology?",
     "question": "Which of the following is not a type of network topology?",
     "options": [
@@ -110,11 +110,11 @@
     "answer": "D",
     "correctWord": "D. Switch",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_66",
+    "id": "CSI_66",
     "word": "Câu 66: Which of the following is NOT one of the three traditional d...",
     "question": "Which of the following is NOT one of the three traditional database models?",
     "options": [
@@ -126,11 +126,11 @@
     "answer": "D",
     "correctWord": "D. Object-oriented",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_88",
+    "id": "CSI_88",
     "word": "Câu 88: Router is operating at ______ layer in the TCP/IP protocol s...",
     "question": "Router is operating at ______ layer in the TCP/IP protocol suite",
     "options": [
@@ -142,11 +142,11 @@
     "answer": "B",
     "correctWord": "B. Network",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_91",
+    "id": "CSI_91",
     "word": "Câu 91: The ______ layer of the TCP/IP protocol suite is responsible...",
     "question": "The ______ layer of the TCP/IP protocol suite is responsible for source-to-destination delivery of the entire message.",
     "options": [
@@ -158,11 +158,11 @@
     "answer": "A",
     "correctWord": "A. transport",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_111",
+    "id": "CSI_111",
     "word": "Câu 111: What is the meaning of the first part of a URL? (for example...",
     "question": "What is the meaning of the first part of a URL? (for example: rtsp://192.168.1.1:8080/cam1)",
     "options": [
@@ -174,11 +174,11 @@
     "answer": "A",
     "correctWord": "A. Define a protocol",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_121",
+    "id": "CSI_121",
     "word": "Câu 121: What type of network device operates at the Data Link layer ...",
     "question": "What type of network device operates at the Data Link layer of the OSI model?",
     "options": [
@@ -190,11 +190,11 @@
     "answer": "B",
     "correctWord": "B. Switch",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_126",
+    "id": "CSI_126",
     "word": "Câu 126: Which of the following database models is designed specifica...",
     "question": "Which of the following database models is designed specifically for handling data structures and organized as an inverted tree?",
     "options": [
@@ -206,11 +206,11 @@
     "answer": "D",
     "correctWord": "D. Hierarchical database model",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_129",
+    "id": "CSI_129",
     "word": "Câu 129: Which transport layer protocol is connectionless?",
     "question": "Which transport layer protocol is connectionless?",
     "options": [
@@ -222,11 +222,11 @@
     "answer": "A",
     "correctWord": "A. UDP",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_131",
+    "id": "CSI_131",
     "word": "Câu 131: Which protocol is used to send email over the Internet?",
     "question": "Which protocol is used to send email over the Internet?",
     "options": [
@@ -238,11 +238,11 @@
     "answer": "C",
     "correctWord": "C. SMTP",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_138",
+    "id": "CSI_138",
     "word": "Câu 138: Which database model organizes data in two-dimensional table...",
     "question": "Which database model organizes data in two-dimensional tables?",
     "options": [
@@ -254,11 +254,11 @@
     "answer": "A",
     "correctWord": "A. Relational model",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_149",
+    "id": "CSI_149",
     "word": "Câu 149: Which cipher replaces each letter with another based on a fi...",
     "question": "Which cipher replaces each letter with another based on a fixed rule?",
     "options": [
@@ -270,11 +270,11 @@
     "answer": "A",
     "correctWord": "A. Substitution cipher",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_152",
+    "id": "CSI_152",
     "word": "Câu 152: Which security principle ensures that sensitive information ...",
     "question": "Which security principle ensures that sensitive information is not disclosed?",
     "options": [
@@ -286,11 +286,11 @@
     "answer": "A",
     "correctWord": "A. Confidentiality",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_153",
+    "id": "CSI_153",
     "word": "Câu 153: Which cryptographic protocol forms the foundation of HTTPS f...",
     "question": "Which cryptographic protocol forms the foundation of HTTPS for secure communication over the internet?",
     "options": [
@@ -302,11 +302,11 @@
     "answer": "B",
     "correctWord": "B. SSL/TLS",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_157",
+    "id": "CSI_157",
     "word": "Câu 157: Which security goal focuses on protecting data from unauthor...",
     "question": "Which security goal focuses on protecting data from unauthorized access or disclosure?",
     "options": [
@@ -318,11 +318,11 @@
     "answer": "A",
     "correctWord": "A. Confidentiality",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_158",
+    "id": "CSI_158",
     "word": "Câu 158: Which of the following is a key feature provided by TCP that...",
     "question": "Which of the following is a key feature provided by TCP that UDP does not inherently offer?",
     "options": [
@@ -334,11 +334,11 @@
     "answer": "B",
     "correctWord": "B. Reliable data transfer",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_159",
+    "id": "CSI_159",
     "word": "Câu 159: Which layer of the TCP/IP model ensures reliable data transf...",
     "question": "Which layer of the TCP/IP model ensures reliable data transfer?",
     "options": [
@@ -350,11 +350,11 @@
     "answer": "B",
     "correctWord": "B. Transport layer",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_170",
+    "id": "CSI_170",
     "word": "Câu 170: A company stores customer data in a database that is updated...",
     "question": "A company stores customer data in a database that is updated daily. Which security goal is most critical when ensuring that authorized employees can access and update this data without delays?",
     "options": [
@@ -366,11 +366,11 @@
     "answer": "A",
     "correctWord": "A. Availability",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_172",
+    "id": "CSI_172",
     "word": "Câu 172: A packet’s length is 1000 bits, given the speed of Standard ...",
     "question": "A packet’s length is 1000 bits, given the speed of Standard Ethernet is 10Mbps (10^7 bits per second). Then, what is the maximum number of packets that can be transferred in 2 seconds:",
     "options": [
@@ -382,11 +382,11 @@
     "answer": "A",
     "correctWord": "A. 210^4 packets",
     "explanation": "Đáp án: A. 2×10⁷ / 10³ = 2×10⁴",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_173",
+    "id": "CSI_173",
     "word": "Câu 173: In the TCP/IP model, which layer corresponds to both Data Li...",
     "question": "In the TCP/IP model, which layer corresponds to both Data Link and Physical layers of the OSI model?",
     "options": [
@@ -398,11 +398,11 @@
     "answer": "A",
     "correctWord": "A. Network Access Layer",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_199",
+    "id": "CSI_199",
     "word": "Câu 199: Which layer of the OSI model is responsible for data encrypt...",
     "question": "Which layer of the OSI model is responsible for data encryption?",
     "options": [
@@ -414,11 +414,11 @@
     "answer": "D",
     "correctWord": "D. Presentation layer",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_200",
+    "id": "CSI_200",
     "word": "Câu 200: In the TCP/IP protocol suite, what is the unit of data at th...",
     "question": "In the TCP/IP protocol suite, what is the unit of data at the network layer?",
     "options": [
@@ -430,11 +430,11 @@
     "answer": "C",
     "correctWord": "C. Packet",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_209",
+    "id": "CSI_209",
     "word": "Câu 209: Applying a monoalphabetic cipher, decrypting the ciphertext ...",
     "question": "Applying a monoalphabetic cipher, decrypting the ciphertext “WTR” with key = 19.",
     "options": [
@@ -446,11 +446,11 @@
     "answer": "C",
     "correctWord": "C. DAY",
     "explanation": "Đáp án: C. W−19 = D, T−19 = A, R−19 = Y",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_210",
+    "id": "CSI_210",
     "word": "Câu 210: Which type of hacker is known for fighting back against blac...",
     "question": "Which type of hacker is known for fighting back against black hat hackers, often using aggressive methods such as disabling or destroying the attackers’ systems?",
     "options": [
@@ -462,11 +462,11 @@
     "answer": "C",
     "correctWord": "C. Red Hat",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_222",
+    "id": "CSI_222",
     "word": "Câu 222: What is the purpose of the TCP SYN-ACK handshake during conn...",
     "question": "What is the purpose of the TCP SYN-ACK handshake during connection establishment?",
     "options": [
@@ -478,11 +478,11 @@
     "answer": "B",
     "correctWord": "B. To synchronize sequence numbers and establish connection parameters",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_224",
+    "id": "CSI_224",
     "word": "Câu 224: What is the main purpose of the application layer in the TCP...",
     "question": "What is the main purpose of the application layer in the TCP/IP model?",
     "options": [
@@ -494,11 +494,11 @@
     "answer": "B",
     "correctWord": "B. To provide services directly to end-users and applications",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_233",
+    "id": "CSI_233",
     "word": "Câu 233: What is the core mechanism of the “bubble sort” algorithm fo...",
     "question": "What is the core mechanism of the “bubble sort” algorithm for ordering data?",
     "options": [
@@ -510,11 +510,11 @@
     "answer": "C",
     "correctWord": "C. Repeatedly comparing adjacent elements and swapping them if they are in the wrong order.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_236",
+    "id": "CSI_236",
     "word": "Câu 236: What is a computer network?",
     "question": "What is a computer network?",
     "options": [
@@ -526,11 +526,11 @@
     "answer": "A",
     "correctWord": "A. A group of computers connected to share data",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_237",
+    "id": "CSI_237",
     "word": "Câu 237: What is one significant advantage of choosing a linked list ...",
     "question": "What is one significant advantage of choosing a linked list instead of an array as a data structure, particularly in terms of memory management and the efficiency of inserting or deleting elements?",
     "options": [
@@ -542,11 +542,11 @@
     "answer": "D",
     "correctWord": "D. More efficient insertions and deletions.",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_239",
+    "id": "CSI_239",
     "word": "Câu 239: What is the primary purpose of a metadata-based file manager...",
     "question": "What is the primary purpose of a metadata-based file manager?",
     "options": [
@@ -558,11 +558,11 @@
     "answer": "B",
     "correctWord": "B. To store additional information about files, such as author, creation date, and keywords",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_242",
+    "id": "CSI_242",
     "word": "Câu 242: What is the main benefit of using the .jpg (JPEG) format for...",
     "question": "What is the main benefit of using the .jpg (JPEG) format for images?",
     "options": [
@@ -574,11 +574,11 @@
     "answer": "C",
     "correctWord": "C. Lossy compression, which reduces file size",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_260",
+    "id": "CSI_260",
     "word": "Câu 260: What distinguishes the Internet from an internet?",
     "question": "What distinguishes the Internet from an internet?",
     "options": [
@@ -590,11 +590,11 @@
     "answer": "A",
     "correctWord": "A. The Internet is a global network, whereas an internet is any interconnected network.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_270",
+    "id": "CSI_270",
     "word": "Câu 270: Which of the following accurately describes the differences ...",
     "question": "Which of the following accurately describes the differences between TCP and UDP in the Transport layer of the TCP/IP model?",
     "options": [
@@ -606,11 +606,11 @@
     "answer": "A",
     "correctWord": "A. TCP provides error recovery, congestion control, and flow control, while UDP provides none of these features",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_271",
+    "id": "CSI_271",
     "word": "Câu 271: Which of the following is a limitation of the network databa...",
     "question": "Which of the following is a limitation of the network database model?",
     "options": [
@@ -622,11 +622,11 @@
     "answer": "B",
     "correctWord": "B. It has a complex structure that makes it difficult to query.",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_273",
+    "id": "CSI_273",
     "word": "Câu 273: Which type of firewall operates at the application layer of ...",
     "question": "Which type of firewall operates at the application layer of the OSI model and can inspect and filter traffic based on application-specific rules?",
     "options": [
@@ -638,11 +638,11 @@
     "answer": "C",
     "correctWord": "C. Proxy firewall",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_274",
+    "id": "CSI_274",
     "word": "Câu 274: Which statement describes red hat hackers?",
     "question": "Which statement describes red hat hackers?",
     "options": [
@@ -654,11 +654,11 @@
     "answer": "B",
     "correctWord": "B. Hackers who track down black hat hackers and work to stop their activities",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_282",
+    "id": "CSI_282",
     "word": "Câu 282: How do vector graphics differ from raster graphics?",
     "question": "How do vector graphics differ from raster graphics?",
     "options": [
@@ -670,11 +670,11 @@
     "answer": "A",
     "correctWord": "A. Vector graphics store images as mathematical equations, while raster graphics store images as grids of pixels.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_283",
+    "id": "CSI_283",
     "word": "Câu 283: Why is documentation considered important in software engine...",
     "question": "Why is documentation considered important in software engineering?",
     "options": [
@@ -686,11 +686,11 @@
     "answer": "B",
     "correctWord": "B. It helps ensure that the software can be maintained, understood, and used effectively by different stakeholders",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_285",
+    "id": "CSI_285",
     "word": "Câu 285: Why is it important to transform a relation into the first n...",
     "question": "Why is it important to transform a relation into the first normal form (1NF) during database normalization?",
     "options": [
@@ -702,11 +702,11 @@
     "answer": "A",
     "correctWord": "A. To eliminate repeating groups of data in a relation",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_290",
+    "id": "CSI_290",
     "word": "Câu 290: When is a “sequential search” typically used for a list?",
     "question": "When is a “sequential search” typically used for a list?",
     "options": [
@@ -718,11 +718,11 @@
     "answer": "C",
     "correctWord": "C. Only for small lists, or lists that are not searched often, and are not ordered.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_291",
+    "id": "CSI_291",
     "word": "Câu 291: When considering encryption techniques that use asymmetric-k...",
     "question": "When considering encryption techniques that use asymmetric-key cryptography, which of the following statements represents their practical limitations?",
     "options": [
@@ -734,11 +734,11 @@
     "answer": "A",
     "correctWord": "A. It is slower for encrypting large messages.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_304",
+    "id": "CSI_304",
     "word": "Câu 304: In Transmission Control Protocol (TCP), what is a WRONG stat...",
     "question": "In Transmission Control Protocol (TCP), what is a WRONG statement?",
     "options": [
@@ -750,11 +750,11 @@
     "answer": "B",
     "correctWord": "B. TCP is a connectionless protocol",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_314",
+    "id": "CSI_314",
     "word": "Câu 314: What is the main function of the transport layer in the TCP/...",
     "question": "What is the main function of the transport layer in the TCP/IP model?",
     "options": [
@@ -766,11 +766,11 @@
     "answer": "B",
     "correctWord": "B. To deliver data end-to-end and provide error control",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_319",
+    "id": "CSI_319",
     "word": "Câu 319: What is a potential damage caused by hackers to a financial ...",
     "question": "What is a potential damage caused by hackers to a financial institution’s computer system?",
     "options": [
@@ -782,11 +782,11 @@
     "answer": "B",
     "correctWord": "B. Fraud and manipulation of data, leading to financial loss",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_320",
+    "id": "CSI_320",
     "word": "Câu 320: What is a green hat hacker?",
     "question": "What is a green hat hacker?",
     "options": [
@@ -799,11 +799,11 @@
     "answer": "C",
     "correctWord": "C. Green hat is someone who just wants to learn to hack",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_327",
+    "id": "CSI_327",
     "word": "Câu 327: What is a key difference in security considerations between ...",
     "question": "What is a key difference in security considerations between a P2P system and a system relying on dedicated servers?",
     "options": [
@@ -815,11 +815,11 @@
     "answer": "C",
     "correctWord": "C. Securing communication is more complex when services are distributed.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "cea_347",
+    "id": "CSI_347",
     "word": "Câu 347: In the field of social networking, what does a graph represe...",
     "question": "In the field of social networking, what does a graph represent?",
     "options": [
@@ -831,7 +831,7 @@
     "answer": "A",
     "correctWord": "A. Social relationships among users",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   }
 ]

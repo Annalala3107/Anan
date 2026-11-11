@@ -7,6 +7,11 @@ import { Home, Layers, BookMarked, User } from 'lucide-react';
 export default function BottomNav() {
   const pathname = usePathname();
 
+  // Hide bottom nav during active learning/exam sessions to prevent accidental exit and avoid blocking action buttons
+  if (pathname?.startsWith('/session')) {
+    return null;
+  }
+
   const navItems = [
     { label: 'Học tập', href: '/', icon: Home },
     { label: 'Bộ đề & AI', href: '/quizzes', icon: Layers },

@@ -1,6 +1,6 @@
-[
+﻿[
   {
-    "id": "cea_27",
+    "id": "CSI_27",
     "word": "Câu 27: In a steganographic algorithm, if each comma (,) in the encr...",
     "question": "In a steganographic algorithm, if each comma (,) in the encrypted message equals digit 0 and each dot (.) in the message equals digit 1. What is the hidden information in following message? “I am a human, a student. I studied hard, so I got a good score.”",
     "options": [
@@ -12,11 +12,11 @@
     "answer": "A",
     "correctWord": "A. 0101",
     "explanation": "Đáp án: A. phẩy, chấm, phẩy, chấm = 0101",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_45",
+    "id": "CSI_45",
     "word": "Câu 45: In a steganographic algorithm, if each comma (,) in the encr...",
     "question": "In a steganographic algorithm, if each comma (,) in the encrypted message equals digit 0 and each dot (.) in the message equals digit 1, what is the hidden information in the following message? “I am a human, a student. I studied hard, so I got a good score.”",
     "options": [
@@ -28,11 +28,11 @@
     "answer": "A",
     "correctWord": "A. 0101",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_54",
+    "id": "CSI_54",
     "word": "Câu 54: Which of the following is TRUE about an undirected graph?",
     "question": "Which of the following is TRUE about an undirected graph?",
     "options": [
@@ -44,11 +44,11 @@
     "answer": "A",
     "correctWord": "A. The edges have no direction",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_55",
+    "id": "CSI_55",
     "word": "Câu 55: Which is true about organizing relational data storage?",
     "question": "Which is true about organizing relational data storage?",
     "options": [
@@ -60,11 +60,11 @@
     "answer": "A",
     "correctWord": "A. The physical storage of the data is independent of the way in which the data is logically organized",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_76",
+    "id": "CSI_76",
     "word": "Câu 76: Array traversal refers to ______",
     "question": "Array traversal refers to ______",
     "options": [
@@ -76,11 +76,11 @@
     "answer": "D",
     "correctWord": "D. an operation that is applied to all elements of the array",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_84",
+    "id": "CSI_84",
     "word": "Câu 84: In hashing there is a possibility that more than one key wil...",
     "question": "In hashing there is a possibility that more than one key will hash to the same address in the file, resulting in a ______",
     "options": [
@@ -92,11 +92,11 @@
     "answer": "D",
     "correctWord": "D. Collision",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_96",
+    "id": "CSI_96",
     "word": "Câu 96: In a linked list, the ______ is the pointer that identifies ...",
     "question": "In a linked list, the ______ is the pointer that identifies the next element.",
     "options": [
@@ -108,11 +108,11 @@
     "answer": "A",
     "correctWord": "A. link",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_108",
+    "id": "CSI_108",
     "word": "Câu 108: What is Queue used for?",
     "question": "What is Queue used for?",
     "options": [
@@ -124,11 +124,11 @@
     "answer": "A",
     "correctWord": "A. Keep the same order",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_113",
+    "id": "CSI_113",
     "word": "Câu 113: What are the two primary techniques for storing images in co...",
     "question": "What are the two primary techniques for storing images in computers?",
     "options": [
@@ -140,11 +140,11 @@
     "answer": "A",
     "correctWord": "A. Raster graphics and vector graphics",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_136",
+    "id": "CSI_136",
     "word": "Câu 136: Which sorting algorithm compares adjacent items and swaps th...",
     "question": "Which sorting algorithm compares adjacent items and swaps them?",
     "options": [
@@ -156,11 +156,11 @@
     "answer": "A",
     "correctWord": "A. Bubble Sort",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_140",
+    "id": "CSI_140",
     "word": "Câu 140: Which method is used to add an element to a stack?",
     "question": "Which method is used to add an element to a stack?",
     "options": [
@@ -172,11 +172,11 @@
     "answer": "A",
     "correctWord": "A. push()",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_146",
+    "id": "CSI_146",
     "word": "Câu 146: Which software engineering principle advocates breaking down...",
     "question": "Which software engineering principle advocates breaking down complex systems into smaller, manageable components that are easier to understand, develop, and maintain?",
     "options": [
@@ -188,11 +188,11 @@
     "answer": "C",
     "correctWord": "C. Modularity",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_147",
+    "id": "CSI_147",
     "word": "Câu 147: Which access method typically requires additional space for ...",
     "question": "Which access method typically requires additional space for maintaining an index structure but provides faster access to records compared to sequential access?",
     "options": [
@@ -204,11 +204,11 @@
     "answer": "C",
     "correctWord": "C. Indexed sequential access",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_160",
+    "id": "CSI_160",
     "word": "Câu 160: Which principle of OOP encourages bundling data and methods ...",
     "question": "Which principle of OOP encourages bundling data and methods that operate on the data into a single unit, known as a class?",
     "options": [
@@ -220,11 +220,11 @@
     "answer": "B",
     "correctWord": "B. Encapsulation",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_161",
+    "id": "CSI_161",
     "word": "Câu 161: Which data structure allows dynamic memory allocation?",
     "question": "Which data structure allows dynamic memory allocation?",
     "options": [
@@ -236,11 +236,11 @@
     "answer": "C",
     "correctWord": "C. Linked List",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_165",
+    "id": "CSI_165",
     "word": "Câu 165: How is a linked list typically implemented?",
     "question": "How is a linked list typically implemented?",
     "options": [
@@ -252,11 +252,11 @@
     "answer": "D",
     "correctWord": "D. Using pointers",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_176",
+    "id": "CSI_176",
     "word": "Câu 176: In the context of sequential search, what is the main criter...",
     "question": "In the context of sequential search, what is the main criterion for stopping the search?",
     "options": [
@@ -268,11 +268,11 @@
     "answer": "A",
     "correctWord": "A. When the target is found or the end of the list is reached",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_177",
+    "id": "CSI_177",
     "word": "Câu 177: If an undirected graph has N vertices, what is the maximum n...",
     "question": "If an undirected graph has N vertices, what is the maximum number of edges it can have?",
     "options": [
@@ -285,11 +285,11 @@
     "answer": "A",
     "correctWord": "A. N(N-1)/2",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_181",
+    "id": "CSI_181",
     "word": "Câu 181: In the File Structure, Hashing works by:",
     "question": "In the File Structure, Hashing works by:",
     "options": [
@@ -301,11 +301,11 @@
     "answer": "C",
     "correctWord": "C. Calculating a key",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_219",
+    "id": "CSI_219",
     "word": "Câu 219: Which structure stores items of different types together?",
     "question": "Which structure stores items of different types together?",
     "options": [
@@ -317,11 +317,11 @@
     "answer": "B",
     "correctWord": "B. Record",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_232",
+    "id": "CSI_232",
     "word": "Câu 232: What is a “linked list” primarily characterized by?",
     "question": "What is a “linked list” primarily characterized by?",
     "options": [
@@ -333,11 +333,11 @@
     "answer": "B",
     "correctWord": "B. Each element containing a data part and a link (pointer) to the next element.",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_241",
+    "id": "CSI_241",
     "word": "Câu 241: What is the most correct statement about LAN topologies?",
     "question": "What is the most correct statement about LAN topologies?",
     "options": [
@@ -349,11 +349,11 @@
     "answer": "C",
     "correctWord": "C. Star topology is a structure that has a central switch.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_243",
+    "id": "CSI_243",
     "word": "Câu 243: What is the difference between a stack and a queue?",
     "question": "What is the difference between a stack and a queue?",
     "options": [
@@ -365,11 +365,11 @@
     "answer": "C",
     "correctWord": "C. A stack is LIFO, and a queue is FIFO",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_247",
+    "id": "CSI_247",
     "word": "Câu 247: What does the enqueue operation do in a queue ADT?",
     "question": "What does the enqueue operation do in a queue ADT?",
     "options": [
@@ -381,11 +381,11 @@
     "answer": "D",
     "correctWord": "D. Inserts an item at the rear of the queue, making it the last item",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_258",
+    "id": "CSI_258",
     "word": "Câu 258: What characteristic makes a stack a “Last In, First Out (LIF...",
     "question": "What characteristic makes a stack a “Last In, First Out (LIFO)” data structure?",
     "options": [
@@ -397,11 +397,11 @@
     "answer": "C",
     "correctWord": "C. If data is inserted into a stack and then removed, the order of the data is reversed",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_275",
+    "id": "CSI_275",
     "word": "Câu 275: Which sorting algorithm is the most efficient in terms of sp...",
     "question": "Which sorting algorithm is the most efficient in terms of space complexity, requiring only a constant amount of additional memory?",
     "options": [
@@ -413,11 +413,11 @@
     "answer": "D",
     "correctWord": "D. They all require the same amount of additional memory",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_279",
+    "id": "CSI_279",
     "word": "Câu 279: How does a queue differ from a stack?",
     "question": "How does a queue differ from a stack?",
     "options": [
@@ -429,11 +429,11 @@
     "answer": "B",
     "correctWord": "B. A queue operates on a FIFO principle, while a stack operates on a LIFO principle.",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_288",
+    "id": "CSI_288",
     "word": "Câu 288: When is an array considered a suitable data structure to use...",
     "question": "When is an array considered a suitable data structure to use?",
     "options": [
@@ -445,11 +445,11 @@
     "answer": "C",
     "correctWord": "C. When the number of deletions and insertions is small, but a lot of searching and retrieval activities are expected.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_303",
+    "id": "CSI_303",
     "word": "Câu 303: In which case would an iterative algorithm be preferred over...",
     "question": "In which case would an iterative algorithm be preferred over a recursive algorithm?",
     "options": [
@@ -461,11 +461,11 @@
     "answer": "B",
     "correctWord": "B. When stack overflow is a concern",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_307",
+    "id": "CSI_307",
     "word": "Câu 307: In computer science, what is a “stack” data structure, and w...",
     "question": "In computer science, what is a “stack” data structure, and what is the primary characteristic that defines how data is added to and removed from it?",
     "options": [
@@ -477,11 +477,11 @@
     "answer": "B",
     "correctWord": "B. A restricted linear list; Last In, First Out (LIFO).",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_325",
+    "id": "CSI_325",
     "word": "Câu 325: Which of the following is a characteristic of sequential fil...",
     "question": "Which of the following is a characteristic of sequential file organization?",
     "options": [
@@ -493,11 +493,11 @@
     "answer": "B",
     "correctWord": "B. Data is stored in the order in which it is entered and can only be accessed sequentially",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_332",
+    "id": "CSI_332",
     "word": "Câu 332: What is a major disadvantage of recursive algorithms compare...",
     "question": "What is a major disadvantage of recursive algorithms compared to iterative algorithms?",
     "options": [
@@ -509,11 +509,11 @@
     "answer": "C",
     "correctWord": "C. Recursive algorithms use more memory due to stack calls.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_333",
+    "id": "CSI_333",
     "word": "Câu 333: The primary objective of a searching algorithm is:",
     "question": "The primary objective of a searching algorithm is:",
     "options": [
@@ -525,11 +525,11 @@
     "answer": "C",
     "correctWord": "C. To locate a specific element within a data set.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "cea_334",
+    "id": "CSI_334",
     "word": "Câu 334: Which of the following statements about sequential search is...",
     "question": "Which of the following statements about sequential search is true?",
     "options": [
@@ -541,7 +541,7 @@
     "answer": "A",
     "correctWord": "A. It is efficient when searching small or unsorted datasets",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   }
 ]

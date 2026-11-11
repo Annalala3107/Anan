@@ -1,6 +1,6 @@
-[
+﻿[
   {
-    "id": "cea_1",
+    "id": "CSI_1",
     "word": "Câu 1: What is the binary equivalent of (4C)16 ?",
     "question": "What is the binary equivalent of (4C)16 ?",
     "options": [
@@ -12,11 +12,11 @@
     "answer": "D",
     "correctWord": "D. (01001100)2",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_2",
+    "id": "CSI_2",
     "word": "Câu 2: What is the range of decimal numbers that can be stored in a...",
     "question": "What is the range of decimal numbers that can be stored in a 4-bit memory location using two’s complement signed integer representation?",
     "options": [
@@ -28,11 +28,11 @@
     "answer": "C",
     "correctWord": "C. -8 to +7",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_3",
+    "id": "CSI_3",
     "word": "Câu 3: What is the minimum number of octal digits required to repre...",
     "question": "What is the minimum number of octal digits required to represent the binary number 1111101010?",
     "options": [
@@ -44,11 +44,11 @@
     "answer": "B",
     "correctWord": "B. 4",
     "explanation": "Đáp án: B. 1111101010 = 1752 trong hệ bát phân",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_4",
+    "id": "CSI_4",
     "word": "Câu 4: What is the result of the AND logic operation when applied t...",
     "question": "What is the result of the AND logic operation when applied to two bits, one with the value 1 and the other with the value 0?",
     "options": [
@@ -60,11 +60,11 @@
     "answer": "A",
     "correctWord": "A. 0",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_5",
+    "id": "CSI_5",
     "word": "Câu 5: What is the maximum number of children a node in a binary tr...",
     "question": "What is the maximum number of children a node in a binary tree can have?",
     "options": [
@@ -76,11 +76,11 @@
     "answer": "B",
     "correctWord": "B. 2",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_6",
+    "id": "CSI_6",
     "word": "Câu 6: What is the octal representation of the binary number 11010?",
     "question": "What is the octal representation of the binary number 11010?",
     "options": [
@@ -92,11 +92,11 @@
     "answer": "B hoặc C",
     "correctWord": "B. 32",
     "explanation": "Đáp án: B hoặc C. kết quả là 32; đề bị trùng hai đáp án",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_8",
+    "id": "CSI_8",
     "word": "Câu 8: Which of the following is equivalent to the 8-bit two’s comp...",
     "question": "Which of the following is equivalent to the 8-bit two’s complement representation of -31?",
     "options": [
@@ -108,11 +108,11 @@
     "answer": "C",
     "correctWord": "C. (E1)16",
     "explanation": "Đáp án: C. -31 = 1110 0001 = E1",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_12",
+    "id": "CSI_12",
     "word": "Câu 12: How is the letter ‘A’ stored using ASCII in a computer?",
     "question": "How is the letter ‘A’ stored using ASCII in a computer?",
     "options": [
@@ -124,11 +124,11 @@
     "answer": "B",
     "correctWord": "B. As an 8-bit pattern 01000001.",
     "explanation": "Đáp án: B. máy tính lưu thực tế 8 bit, thêm bit 0 ở đầu",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_16",
+    "id": "CSI_16",
     "word": "Câu 16: A floating-point value after normalization is (1.1101)₂ × 2⁷...",
     "question": "A floating-point value after normalization is (1.1101)₂ × 2⁷. What is the value of exponent section in the Excess-127 representation?",
     "options": [
@@ -140,11 +140,11 @@
     "answer": "D",
     "correctWord": "D. 134",
     "explanation": "Đáp án: D. 7 + 127 = 134",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_19",
+    "id": "CSI_19",
     "word": "Câu 19: Based on the sampling process, if an audio signal is sampled...",
     "question": "Based on the sampling process, if an audio signal is sampled at 44,100 samples per second with a bit depth of 16 bits per sample, how many bits are required to store 1 second of audio?",
     "options": [
@@ -156,11 +156,11 @@
     "answer": "A",
     "correctWord": "A. 705,600 bits",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_20",
+    "id": "CSI_20",
     "word": "Câu 20: Binary search can be appropriately performed on which of the...",
     "question": "Binary search can be appropriately performed on which of the following list?",
     "options": [
@@ -172,11 +172,11 @@
     "answer": "A",
     "correctWord": "A. [-35, -15, -10, 1, 5, 7, 12, 50]",
     "explanation": "Đáp án: A. danh sách đã sắp xếp",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_21",
+    "id": "CSI_21",
     "word": "Câu 21: Convert the binary number (10110110)₂ to hexadecimal.",
     "question": "Convert the binary number (10110110)₂ to hexadecimal.",
     "options": [
@@ -188,11 +188,11 @@
     "answer": "A",
     "correctWord": "A. (B6)₁₆",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_22",
+    "id": "CSI_22",
     "word": "Câu 22: Convert the binary number 1011011011 to decimal.",
     "question": "Convert the binary number 1011011011 to decimal.",
     "options": [
@@ -204,11 +204,11 @@
     "answer": "B",
     "correctWord": "B. 731",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_24",
+    "id": "CSI_24",
     "word": "Câu 24: Convert the decimal number 213.75 to octal",
     "question": "Convert the decimal number 213.75 to octal",
     "options": [
@@ -220,11 +220,11 @@
     "answer": "A",
     "correctWord": "A. 325.6",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_25",
+    "id": "CSI_25",
     "word": "Câu 25: Convert the hexadecimal number C9 to binary.",
     "question": "Convert the hexadecimal number C9 to binary.",
     "options": [
@@ -236,11 +236,11 @@
     "answer": "B",
     "correctWord": "B. 11001001",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_26",
+    "id": "CSI_26",
     "word": "Câu 26: In a binary positional number system, how much do consecutiv...",
     "question": "In a binary positional number system, how much do consecutive digits typically differ?",
     "options": [
@@ -252,11 +252,11 @@
     "answer": "B",
     "correctWord": "B. 2 units",
     "explanation": "Đáp án: B. hệ nhị phân, các vị trí liên tiếp hơn kém nhau hệ số 2; câu này đề hơi mơ hồ",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_28",
+    "id": "CSI_28",
     "word": "Câu 28: If a byte represents a binary number, how many different val...",
     "question": "If a byte represents a binary number, how many different values can it represent?",
     "options": [
@@ -268,11 +268,11 @@
     "answer": "C",
     "correctWord": "C. 256",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_29",
+    "id": "CSI_29",
     "word": "Câu 29: If you have 40,000 samples per second and 16 bits per sample...",
     "question": "If you have 40,000 samples per second and 16 bits per sample, what is the bit rate (R)?",
     "options": [
@@ -284,11 +284,11 @@
     "answer": "A",
     "correctWord": "A. 640,000 bits per second",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_30",
+    "id": "CSI_30",
     "word": "Câu 30: In two’s complement representation, the leftmost bit defines...",
     "question": "In two’s complement representation, the leftmost bit defines the sign of the integer. If it is ______, the integer is negative.",
     "options": [
@@ -301,11 +301,11 @@
     "answer": "A",
     "correctWord": "A. 1",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_31",
+    "id": "CSI_31",
     "word": "Câu 31: In the octal system, the base is:",
     "question": "In the octal system, the base is:",
     "options": [
@@ -317,11 +317,11 @@
     "answer": "B",
     "correctWord": "B. 8",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_35",
+    "id": "CSI_35",
     "word": "Câu 35: If you want to store the decimal number 15 in an 8-bit unsig...",
     "question": "If you want to store the decimal number 15 in an 8-bit unsigned integer, what is the binary representation?",
     "options": [
@@ -333,11 +333,11 @@
     "answer": "A",
     "correctWord": "A. 00001111",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_42",
+    "id": "CSI_42",
     "word": "Câu 42: Given a binary tree has 3 levels (including the root), how m...",
     "question": "Given a binary tree has 3 levels (including the root), how many maximum nodes can it have?",
     "options": [
@@ -349,11 +349,11 @@
     "answer": "A",
     "correctWord": "A. 7",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_43",
+    "id": "CSI_43",
     "word": "Câu 43: ________ is the mask to set the three leftmost bits of the p...",
     "question": "________ is the mask to set the three leftmost bits of the pattern 1010 0111?",
     "options": [
@@ -365,11 +365,11 @@
     "answer": "A",
     "correctWord": "A. 1110 0000",
     "explanation": "Đáp án: A. dùng phép OR",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_44",
+    "id": "CSI_44",
     "word": "Câu 44: Calculate the bit rate for an audio storage system utilizing...",
     "question": "Calculate the bit rate for an audio storage system utilizing a sampling rate of 192 kHz and a bit depth of 16 bits per sample.",
     "options": [
@@ -381,11 +381,11 @@
     "answer": "A",
     "correctWord": "A. 3072 kbps",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_47",
+    "id": "CSI_47",
     "word": "Câu 47: What is the result of 7 XOR 3 in binary?",
     "question": "What is the result of 7 XOR 3 in binary?",
     "options": [
@@ -397,11 +397,11 @@
     "answer": "A",
     "correctWord": "A. 100",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_50",
+    "id": "CSI_50",
     "word": "Câu 50: Convert the decimal number 124.02 to its binary equivalent. ...",
     "question": "Convert the decimal number 124.02 to its binary equivalent. Which of the following options is the closest approximation?",
     "options": [
@@ -413,11 +413,11 @@
     "answer": "B",
     "correctWord": "B. 1111100.000001",
     "explanation": "Đáp án: B. 0.000001₂ = 0.015625 gần 0.02 nhất",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_51",
+    "id": "CSI_51",
     "word": "Câu 51: Rewrite this IP address using binary notation: 119.10.2.8",
     "question": "Rewrite this IP address using binary notation: 119.10.2.8",
     "options": [
@@ -429,11 +429,11 @@
     "answer": "A",
     "correctWord": "A. 0111 0111 . 0000 1010 . 0000 0010 . 0000 1000",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_52",
+    "id": "CSI_52",
     "word": "Câu 52: If the ASCII code for F (70) is 100 0110, then the ASCII cod...",
     "question": "If the ASCII code for F (70) is 100 0110, then the ASCII code for f (102) is",
     "options": [
@@ -445,11 +445,11 @@
     "answer": "A",
     "correctWord": "A. 110 0110",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_53",
+    "id": "CSI_53",
     "word": "Câu 53: Which of the following statements about binary search is tru...",
     "question": "Which of the following statements about binary search is true?",
     "options": [
@@ -461,11 +461,11 @@
     "answer": "C",
     "correctWord": "C. Binary search is faster than linear search for sorted data",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_56",
+    "id": "CSI_56",
     "word": "Câu 56: Which of the following statements is true regarding search a...",
     "question": "Which of the following statements is true regarding search algorithms for a list of elements?",
     "options": [
@@ -477,11 +477,11 @@
     "answer": "A",
     "correctWord": "A. Binary search is more efficient than sequential for large lists, but it requires the list to be sorted.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_59",
+    "id": "CSI_59",
     "word": "Câu 59: Which of the following is NOT true for a nonpositional numbe...",
     "question": "Which of the following is NOT true for a nonpositional number system?",
     "options": [
@@ -493,11 +493,11 @@
     "answer": "C",
     "correctWord": "C. The value of a digit is determined by its position and base.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_61",
+    "id": "CSI_61",
     "word": "Câu 61: Which of the following processes is NOT involved in storing ...",
     "question": "Which of the following processes is NOT involved in storing audio in a computer?",
     "options": [
@@ -509,11 +509,11 @@
     "answer": "C",
     "correctWord": "C. Encryption",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_75",
+    "id": "CSI_75",
     "word": "Câu 75: ______ is stored as “1000” in two’s complement representatio...",
     "question": "______ is stored as “1000” in two’s complement representation",
     "options": [
@@ -525,11 +525,11 @@
     "answer": "D",
     "correctWord": "D. -8",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_79",
+    "id": "CSI_79",
     "word": "Câu 79: ______ is the mask to unset (clear) the four leftmost bits o...",
     "question": "______ is the mask to unset (clear) the four leftmost bits of the pattern 1010 0111?",
     "options": [
@@ -541,11 +541,11 @@
     "answer": "A",
     "correctWord": "A. 0000 1111",
     "explanation": "Đáp án: A. dùng phép AND",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_82",
+    "id": "CSI_82",
     "word": "Câu 82: Computers use the ____ language to process data",
     "question": "Computers use the ____ language to process data",
     "options": [
@@ -557,11 +557,11 @@
     "answer": "C",
     "correctWord": "C. Binary",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_85",
+    "id": "CSI_85",
     "word": "Câu 85: If we are adding two numbers, one of which has an exponent v...",
     "question": "If we are adding two numbers, one of which has an exponent value of 7 and the other an exponent value of 9, we need to shift the decimal point of the smaller number to align the exponents ______.",
     "options": [
@@ -573,11 +573,11 @@
     "answer": "C",
     "correctWord": "C. Two places to the left",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_89",
+    "id": "CSI_89",
     "word": "Câu 89: To un-set (force to 0) all the bits of a bit pattern, we ___...",
     "question": "To un-set (force to 0) all the bits of a bit pattern, we ____",
     "options": [
@@ -589,11 +589,11 @@
     "answer": "C",
     "correctWord": "C. Both a and b are correct",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_97",
+    "id": "CSI_97",
     "word": "Câu 97: In the ______ graphic method of representing an image in a c...",
     "question": "In the ______ graphic method of representing an image in a computer, re-scaling of the image creates a ragged or grainy image.",
     "options": [
@@ -605,11 +605,11 @@
     "answer": "A",
     "correctWord": "A. bitmap",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_106",
+    "id": "CSI_106",
     "word": "Câu 106: What is the time complexity of finding the height of a binar...",
     "question": "What is the time complexity of finding the height of a binary tree with n nodes?",
     "options": [
@@ -621,11 +621,11 @@
     "answer": "A",
     "correctWord": "A. O(n)",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_107",
+    "id": "CSI_107",
     "word": "Câu 107: What is the hexadecimal equivalent of the binary number (110...",
     "question": "What is the hexadecimal equivalent of the binary number (11011011)2?",
     "options": [
@@ -637,11 +637,11 @@
     "answer": "B",
     "correctWord": "B. DB",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_110",
+    "id": "CSI_110",
     "word": "Câu 110: What is the hexadecimal representation of the decimal number...",
     "question": "What is the hexadecimal representation of the decimal number 234?",
     "options": [
@@ -653,11 +653,11 @@
     "answer": "C",
     "correctWord": "C. EA",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_123",
+    "id": "CSI_123",
     "word": "Câu 123: Which is a unary operator?",
     "question": "Which is a unary operator?",
     "options": [
@@ -669,11 +669,11 @@
     "answer": "D",
     "correctWord": "D. NOT",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_134",
+    "id": "CSI_134",
     "word": "Câu 134: Which type of computer language was exclusively used at the ...",
     "question": "Which type of computer language was exclusively used at the very beginning of the computer age?",
     "options": [
@@ -685,11 +685,11 @@
     "answer": "C",
     "correctWord": "C. Machine language using binary patterns",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_137",
+    "id": "CSI_137",
     "word": "Câu 137: Which data structure uses the Last In, First Out (LIFO) prin...",
     "question": "Which data structure uses the Last In, First Out (LIFO) principle?",
     "options": [
@@ -701,11 +701,11 @@
     "answer": "B",
     "correctWord": "B. Stack",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_148",
+    "id": "CSI_148",
     "word": "Câu 148: Which IEEE standard is most commonly used for representing f...",
     "question": "Which IEEE standard is most commonly used for representing floating-point numbers in computers?",
     "options": [
@@ -717,11 +717,11 @@
     "answer": "A",
     "correctWord": "A. IEEE 754",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_155",
+    "id": "CSI_155",
     "word": "Câu 155: Which shift operation would you use to divide a signed integ...",
     "question": "Which shift operation would you use to divide a signed integer by 2?",
     "options": [
@@ -733,11 +733,11 @@
     "answer": "B",
     "correctWord": "B. Arithmetic right shift",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_162",
+    "id": "CSI_162",
     "word": "Câu 162: Which component of the CPU is responsible for performing ari...",
     "question": "Which component of the CPU is responsible for performing arithmetic and logical operations?",
     "options": [
@@ -749,11 +749,11 @@
     "answer": "C",
     "correctWord": "C. Arithmetic Logic Unit (ALU)",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_163",
+    "id": "CSI_163",
     "word": "Câu 163: How is the sign of a number represented in the sign-and-magn...",
     "question": "How is the sign of a number represented in the sign-and-magnitude format?",
     "options": [
@@ -765,11 +765,11 @@
     "answer": "A",
     "correctWord": "A. Using a separate bit for the sign",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_164",
+    "id": "CSI_164",
     "word": "Câu 164: How can shift operations be categorized based on their natur...",
     "question": "How can shift operations be categorized based on their nature?",
     "options": [
@@ -781,11 +781,11 @@
     "answer": "A",
     "correctWord": "A. As logical shifts and arithmetic shifts",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_169",
+    "id": "CSI_169",
     "word": "Câu 169: A sorting algorithm where the list is divided into sorted an...",
     "question": "A sorting algorithm where the list is divided into sorted and unsorted sublists, and the smallest element from the unsorted part is repeatedly swapped with the first element of the unsorted part is known as a:",
     "options": [
@@ -797,11 +797,11 @@
     "answer": "C",
     "correctWord": "C. Selection sort",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_184",
+    "id": "CSI_184",
     "word": "Câu 184: In a binary search tree (BST), where is the smallest element...",
     "question": "In a binary search tree (BST), where is the smallest element located?",
     "options": [
@@ -814,11 +814,11 @@
     "answer": "A",
     "correctWord": "A. Leftmost node",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_194",
+    "id": "CSI_194",
     "word": "Câu 194: Which operation sequence on a binary tree corresponds to the...",
     "question": "Which operation sequence on a binary tree corresponds to the postorder traversal pattern?",
     "options": [
@@ -830,11 +830,11 @@
     "answer": "A",
     "correctWord": "A. Process Left subtree → Right subtree → Root",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_195",
+    "id": "CSI_195",
     "word": "Câu 195: Which of the following traversal methods of a binary tree is...",
     "question": "Which of the following traversal methods of a binary tree is used to get a sorted list of elements?",
     "options": [
@@ -846,11 +846,11 @@
     "answer": "B",
     "correctWord": "B. In-order traversal",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_196",
+    "id": "CSI_196",
     "word": "Câu 196: What is the main role of a compiler?",
     "question": "What is the main role of a compiler?",
     "options": [
@@ -862,11 +862,11 @@
     "answer": "A",
     "correctWord": "A. Translate source code into machine code",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_201",
+    "id": "CSI_201",
     "word": "Câu 201: Which of the following represents the decimal number 26 in h...",
     "question": "Which of the following represents the decimal number 26 in hexadecimal?",
     "options": [
@@ -878,11 +878,11 @@
     "answer": "A",
     "correctWord": "A. 1A",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_202",
+    "id": "CSI_202",
     "word": "Câu 202: What will we repeatedly do to convert a decimal integer to b...",
     "question": "What will we repeatedly do to convert a decimal integer to base b?",
     "options": [
@@ -894,11 +894,11 @@
     "answer": "A",
     "correctWord": "A. divide by b",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_213",
+    "id": "CSI_213",
     "word": "Câu 213: If you want to convert a number from decimal to binary, whic...",
     "question": "If you want to convert a number from decimal to binary, which operation do you use?",
     "options": [
@@ -910,11 +910,11 @@
     "answer": "A",
     "correctWord": "A. Division",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_217",
+    "id": "CSI_217",
     "word": "Câu 217: In floating-point representation, what are the two main comp...",
     "question": "In floating-point representation, what are the two main components used?",
     "options": [
@@ -926,11 +926,11 @@
     "answer": "A",
     "correctWord": "A. Mantissa and Exponent",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_226",
+    "id": "CSI_226",
     "word": "Câu 226: What is the fundamental difference between machine language ...",
     "question": "What is the fundamental difference between machine language and high-level languages regarding computer understanding?",
     "options": [
@@ -942,11 +942,11 @@
     "answer": "B",
     "correctWord": "B. Machine language is directly understood by a computer, while high-level languages must be converted",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_230",
+    "id": "CSI_230",
     "word": "Câu 230: What is the role and main function of the control unit withi...",
     "question": "What is the role and main function of the control unit within the Central Processing Unit, and how does it manage and coordinate the execution of instructions?",
     "options": [
@@ -958,11 +958,11 @@
     "answer": "C",
     "correctWord": "C. Coordinate memory, ALU, and I/O operations.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_244",
+    "id": "CSI_244",
     "word": "Câu 244: What is the primary difference between sequential search and...",
     "question": "What is the primary difference between sequential search and binary search algorithms?",
     "options": [
@@ -974,11 +974,11 @@
     "answer": "B",
     "correctWord": "B. Binary search divides the search space into halves, while sequential search checks elements one by one",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_246",
+    "id": "CSI_246",
     "word": "Câu 246: What does the bit string ‘0110000101100011’ mean?",
     "question": "What does the bit string ‘0110000101100011’ mean?",
     "options": [
@@ -990,11 +990,11 @@
     "answer": "C",
     "correctWord": "C. It represents the two characters ‘a’ and ‘c’",
     "explanation": "Đáp án: C. 01100001 = ‘a’, 01100011 = ‘c’",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_255",
+    "id": "CSI_255",
     "word": "Câu 255: What distinguishes positional number systems from nonpositio...",
     "question": "What distinguishes positional number systems from nonpositional systems?",
     "options": [
@@ -1006,11 +1006,11 @@
     "answer": "B",
     "correctWord": "B. The position of a digit determines its value.",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_256",
+    "id": "CSI_256",
     "word": "Câu 256: What are the characteristics of a binary search tree (BST) i...",
     "question": "What are the characteristics of a binary search tree (BST) in terms of data order?",
     "options": [
@@ -1023,11 +1023,11 @@
     "answer": "A",
     "correctWord": "A. The data in the parent node is always larger than the data in the left child node and smaller than the data in the right child node",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_257",
+    "id": "CSI_257",
     "word": "Câu 257: What describes the hierarchical model?",
     "question": "What describes the hierarchical model?",
     "options": [
@@ -1039,11 +1039,11 @@
     "answer": "C",
     "correctWord": "C. Data is organized as an inverted tree and each entity can have several children",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_268",
+    "id": "CSI_268",
     "word": "Câu 268: Which of the following is an application area for graphs?",
     "question": "Which of the following is an application area for graphs?",
     "options": [
@@ -1055,11 +1055,11 @@
     "answer": "A",
     "correctWord": "A. Computer networks, where vertices represent nodes/hubs and edges represent routes.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_284",
+    "id": "CSI_284",
     "word": "Câu 284: Why must a floating-point number be converted to a character...",
     "question": "Why must a floating-point number be converted to a character format when stored in a text file?",
     "options": [
@@ -1071,11 +1071,11 @@
     "answer": "A",
     "correctWord": "A. To store data as character sequences",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_286",
+    "id": "CSI_286",
     "word": "Câu 286: Why do computers primarily use the binary system to store da...",
     "question": "Why do computers primarily use the binary system to store data and programs?",
     "options": [
@@ -1087,11 +1087,11 @@
     "answer": "C",
     "correctWord": "C. Computers are made of electronic switches that can have only two states (on and off)",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_289",
+    "id": "CSI_289",
     "word": "Câu 289: When storing the unsigned integer 12 in an 8-bit memory loca...",
     "question": "When storing the unsigned integer 12 in an 8-bit memory location, why are leading zeros added?",
     "options": [
@@ -1103,11 +1103,11 @@
     "answer": "A",
     "correctWord": "A. To fill the memory location to its full capacity",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_297",
+    "id": "CSI_297",
     "word": "Câu 297: In which scenario is a binary search algorithm ineffective?",
     "question": "In which scenario is a binary search algorithm ineffective?",
     "options": [
@@ -1119,11 +1119,11 @@
     "answer": "B",
     "correctWord": "B. When the data is unsorted",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_306",
+    "id": "CSI_306",
     "word": "Câu 306: In two’s complement representation, what is a key advantage ...",
     "question": "In two’s complement representation, what is a key advantage for arithmetic operations?",
     "options": [
@@ -1135,11 +1135,11 @@
     "answer": "B",
     "correctWord": "B. Simplifies addition and subtraction.",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_308",
+    "id": "CSI_308",
     "word": "Câu 308: In a “binary file,” how is data typically interpreted by an ...",
     "question": "In a “binary file,” how is data typically interpreted by an application program?",
     "options": [
@@ -1151,11 +1151,11 @@
     "answer": "C",
     "correctWord": "C. As a collection of data meaningful only if properly interpreted by the program (e.g., two bytes as one integer)",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_311",
+    "id": "CSI_311",
     "word": "Câu 311: The Arithmetic Logic Unit (ALU) in the von Neumann model is ...",
     "question": "The Arithmetic Logic Unit (ALU) in the von Neumann model is primarily responsible for:",
     "options": [
@@ -1167,11 +1167,11 @@
     "answer": "B",
     "correctWord": "B. Performing arithmetic and logic operations",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_315",
+    "id": "CSI_315",
     "word": "Câu 315: Which statement best describes a binary tree according to th...",
     "question": "Which statement best describes a binary tree according to the ADT definition?",
     "options": [
@@ -1183,11 +1183,11 @@
     "answer": "A",
     "correctWord": "A. Each node has at most two subtrees, called left and right.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_317",
+    "id": "CSI_317",
     "word": "Câu 317: Which of the following is true about the shift operation?",
     "question": "Which of the following is true about the shift operation?",
     "options": [
@@ -1199,11 +1199,11 @@
     "answer": "C",
     "correctWord": "C. The left shift operation is used to multiply an integer by two.",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_328",
+    "id": "CSI_328",
     "word": "Câu 328: What is the key characteristic of a “positional number syste...",
     "question": "What is the key characteristic of a “positional number system”?",
     "options": [
@@ -1215,11 +1215,11 @@
     "answer": "C",
     "correctWord": "C. The position a symbol occupies in the number determines the value it represents",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "cea_335",
+    "id": "CSI_335",
     "word": "Câu 335: When inserting a new element into a sorted array, what must ...",
     "question": "When inserting a new element into a sorted array, what must be done to maintain the sorted order?",
     "options": [
@@ -1231,7 +1231,7 @@
     "answer": "A",
     "correctWord": "A. Shift elements after the insertion point to create space",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CEA201)",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   }
 ]
