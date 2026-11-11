@@ -22,7 +22,9 @@ import {
   AlertTriangle,
   History,
   FileJson,
+  Smartphone,
 } from 'lucide-react';
+import QrSyncModal from '@/components/QrSyncModal';
 
 export default function ProfilePage() {
   const [streak, setStreak] = useState(1);
@@ -34,6 +36,7 @@ export default function ProfilePage() {
     type: 'success' | 'error';
     text: string;
   } | null>(null);
+  const [showQrSync, setShowQrSync] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -217,13 +220,21 @@ export default function ProfilePage() {
             </div>
 
             {/* Action Buttons */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
               <button
-                onClick={handleExportBackup}
+                onClick={() => setShowQrSync(true)}
                 className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all shadow-glow text-xs"
               >
-                <Download className="w-4 h-4" />
-                <span>Xuất File Sao Lưu (.json)</span>
+                <Smartphone className="w-4 h-4" />
+                <span>Đồng Bộ QR 1-Chạm</span>
+              </button>
+
+              <button
+                onClick={handleExportBackup}
+                className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold border border-slate-200 dark:border-slate-700 transition-all text-xs"
+              >
+                <Download className="w-4 h-4 text-indigo-500" />
+                <span>Xuất File (.json)</span>
               </button>
 
               <div>
@@ -239,7 +250,7 @@ export default function ProfilePage() {
                   className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold border border-slate-200 dark:border-slate-700 transition-all text-xs"
                 >
                   <Upload className="w-4 h-4 text-emerald-500" />
-                  <span>Khôi Phục File Backup</span>
+                  <span>Khôi Phục File</span>
                 </button>
               </div>
             </div>
@@ -426,6 +437,9 @@ export default function ProfilePage() {
           </button>
         </div>
       </div>
+
+      {/* QR Sync Device Transfer Modal */}
+      <QrSyncModal isOpen={showQrSync} onClose={() => setShowQrSync(false)} />
     </div>
   );
 }

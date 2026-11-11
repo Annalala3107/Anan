@@ -17,13 +17,15 @@ import {
   TrendingUp,
   CheckCircle2,
   Clock,
-  HelpCircle
+  HelpCircle,
+  Smartphone,
 } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
 import { getQuizDisplayName } from '@/lib/defaultBanks';
 import { Word, WordProgress } from '@/lib/types';
 import WordModal from '@/components/WordModal';
+import QrSyncModal from '@/components/QrSyncModal';
 import { SpeechService } from '@/lib/speech';
 
 export default function Home() {
@@ -33,6 +35,7 @@ export default function Home() {
   const [streak, setStreak] = useState(1);
   const [dailyStats, setDailyStats] = useState<any>(null);
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
+  const [showQrSync, setShowQrSync] = useState(false);
 
   useEffect(() => {
     loadQuizWords();
@@ -124,13 +127,21 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 w-full sm:w-auto">
+        <div className="flex items-center gap-2 w-full sm:w-auto flex-wrap sm:flex-nowrap">
           <Link
             href="/session/learn"
             className="flex-1 sm:flex-none text-xs font-bold py-2 px-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-sm text-center"
           >
             Học Thẻ 3D & Phản Xạ 🚀 &rarr;
           </Link>
+          <button
+            type="button"
+            onClick={() => setShowQrSync(true)}
+            className="flex-1 sm:flex-none text-xs font-bold py-2 px-3.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm"
+          >
+            <Smartphone className="w-3.5 h-3.5 text-indigo-500" />
+            <span>Đồng bộ ĐT (QR)</span>
+          </button>
           <Link
             href="/quizzes"
             className="flex-1 sm:flex-none text-xs font-bold py-2 px-3.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-all text-center"
@@ -342,6 +353,9 @@ export default function Home() {
 
       {/* Word / Question Detail Modal */}
       <WordModal word={selectedWord} onClose={() => setSelectedWord(null)} />
+
+      {/* QR Sync Device Transfer Modal */}
+      <QrSyncModal isOpen={showQrSync} onClose={() => setShowQrSync(false)} />
     </div>
   );
 }

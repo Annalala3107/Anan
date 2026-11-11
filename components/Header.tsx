@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Flame, Sparkles, Volume2, VolumeX, Moon, Sun, BookOpen, Layers, Focus, AlertTriangle } from 'lucide-react';
+import { Flame, Sparkles, Volume2, VolumeX, Moon, Sun, BookOpen, Layers, Focus, AlertTriangle, Smartphone } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
 import { getQuizDisplayName } from '@/lib/defaultBanks';
 import { useEffect, useState } from 'react';
+import QrSyncModal from './QrSyncModal';
 
 export default function Header() {
   const pathname = usePathname();
@@ -25,6 +26,7 @@ export default function Header() {
   const [isDark, setIsDark] = useState(true);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [pendingUrl, setPendingUrl] = useState<string | null>(null);
+  const [showQrSync, setShowQrSync] = useState(false);
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     if (isExamActive && pathname?.includes('/session/exam')) {
@@ -159,6 +161,16 @@ export default function Header() {
 
         {/* Action Controls */}
         <div className="flex items-center gap-2">
+          {/* QR Device Sync */}
+          <button
+            onClick={() => setShowQrSync(true)}
+            title="Đồng bộ 1-chạm sang điện thoại (Mã QR)"
+            className="px-2.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 text-xs font-bold border bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 shadow-sm"
+          >
+            <Smartphone className="w-3.5 h-3.5 text-indigo-500" />
+            <span className="hidden sm:inline">Đồng bộ ĐT</span>
+          </button>
+
           {/* Zen Focus Quick Toggle (Especially useful when on /session) */}
           <button
             onClick={() => toggleZenMode()}
@@ -251,6 +263,8 @@ export default function Header() {
           </div>
         </div>
       )}
+      {/* Device Transfer QR Sync Modal */}
+      <QrSyncModal isOpen={showQrSync} onClose={() => setShowQrSync(false)} />
     </header>
   );
 }
