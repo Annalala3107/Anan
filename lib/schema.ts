@@ -27,6 +27,7 @@ export const BackupDataSchema = z.object({
   data: z.object({
     wordProgress: z.record(z.string(), z.any()),
     customQuizzes: z.array(z.any()).optional().default([]),
+    customSubjects: z.array(z.any()).optional().default([]),
     dailyStats: z.any().optional(),
     streak: z.number().optional().default(1),
     selectedQuiz: z.string().optional(),

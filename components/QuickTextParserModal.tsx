@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { parseRawExamText } from '@/lib/textQuizParser';
 import { StorageEngine } from '@/lib/storage';
 import { useQuizStore } from '@/lib/quizStore';
 import { soundFx } from '@/lib/sound';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
-import { CustomQuiz, Word } from '@/lib/types';
+import { CustomQuiz, CustomSubject, Word } from '@/lib/types';
 import {
   X,
   Zap,
@@ -25,6 +25,7 @@ interface QuickTextParserModalProps {
   isOpen: boolean;
   onClose: () => void;
   onQuizCreated: (quiz: CustomQuiz) => void;
+  defaultSubject?: string;
 }
 
 const SAMPLE_TEXT = `Câu 1: ALU trong CPU là viết tắt của cụm từ nào sau đây?
@@ -60,6 +61,7 @@ export default function QuickTextParserModal({
   isOpen,
   onClose,
   onQuizCreated,
+  defaultSubject,
 }: QuickTextParserModalProps) {
   const { setActiveCustomQuiz, setSelectedQuizPath } = useQuizStore();
 
@@ -68,13 +70,22 @@ export default function QuickTextParserModal({
   const [topic, setTopic] = useState('Tổng hợp');
   const [rawText, setRawText] = useState('');
   const [activeTab, setActiveTab] = useState<'input' | 'preview'>('input');
+  const [customSubjects, setCustomSubjects] = useState<CustomSubject[]>([]);
+
+  useEffect(() => {
+    if (isOpen) {
+      const subs = StorageEngine.getCustomSubjects();
+      setCustomSubjects(subs);
+      if (defaultSubject) {
+        setSubject(defaultSubject);
+      }
+    }
+  }, [isOpen, defaultSubject]);
 
   // Real-time parsing engine
   const parsedResult = useMemo(() => {
     return parseRawExamText(rawText, subject, topic);
   }, [rawText, subject, topic]);
-
-  if (!isOpen) return null;
 
   const handleLoadSample = () => {
     setTitle('Đề Thi Thử Mẫu (Parse Tự Động)');
@@ -202,10 +213,23 @@ export default function QuickTextParserModal({
                     onChange={(e) => setSubject(e.target.value)}
                     className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   >
-                    <option value="PRF192">Lập Trình C (PRF192)</option>
-                    <option value="CSI106">Kiến Trúc Máy Tính (CSI106)</option>
-                    <option value="SSA101">Kỹ Năng Học Đại Học (SSA101)</option>
-                    <option value="Khác">Môn học khác</option>
+                    <optgroup label="Môn cơ bản mặc định">
+                      <option value="PRF192">Lập Trình C (PRF192)</option>
+                      <option value="CSI106">Kiến Trúc Máy Tính (CSI106)</option>
+                      <option value="SSA101">Kỹ Năng Học Đại Học (SSA101)</option>
+                    </optgroup>
+                    {customSubjects.length > 0 && (
+                      <optgroup label="Môn học của bạn">
+                        {customSubjects.map((cs) => (
+                          <option key={cs.id} value={cs.subjectCode}>
+                            {cs.subjectCode} — {cs.title}
+                          </option>
+                        ))}
+                      </optgroup>
+                    )}
+                    <optgroup label="Khác">
+                      <option value="Khác">Môn học khác</option>
+                    </optgroup>
                   </select>
                 </div>
 

@@ -71,6 +71,16 @@ export interface CustomQuiz {
   topic?: string;
 }
 
+export interface CustomSubject {
+  id: string;
+  title: string;
+  subjectCode: string;
+  description?: string;
+  iconName?: string;
+  color: string;
+  created_at: string;
+}
+
 export type LearnRound = 'recall' | 'simple_usage' | 'contrast';
 
 export interface LearnSession {

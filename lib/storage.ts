@@ -4,7 +4,7 @@
  * Supports transparent Supabase backend syncing when environment keys are provided.
  */
 
-import { WordProgress, CustomQuiz, DailyStats, Word } from './types';
+import { WordProgress, CustomQuiz, CustomSubject, DailyStats, Word } from './types';
 import { SRSEngine } from './srs';
 import { getQuestionKey } from './utils';
 import { BackupDataSchema } from './schema';
@@ -22,6 +22,7 @@ export interface ExamRecord {
 const STORAGE_KEYS = {
   WORD_PROGRESS: 'ananquiz_word_progress',
   CUSTOM_QUIZZES: 'ananquiz_custom_quizzes',
+  CUSTOM_SUBJECTS: 'ananquiz_custom_subjects',
   DAILY_STATS: 'ananquiz_daily_stats',
   STREAK: 'ananquiz_streak',
   LAST_ACTIVE_DATE: 'ananquiz_last_active_date',
@@ -294,6 +295,56 @@ export class StorageEngine {
     }
   }
 
+  // ---- CUSTOM SUBJECTS ----
+  public static getCustomSubjects(): CustomSubject[] {
+    if (typeof window === 'undefined') return [];
+    try {
+      const raw = localStorage.getItem(STORAGE_KEYS.CUSTOM_SUBJECTS);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  public static saveCustomSubject(
+    subject: Omit<CustomSubject, 'id' | 'created_at'>
+  ): CustomSubject {
+    const list = this.getCustomSubjects();
+    const newSubject: CustomSubject = {
+      ...subject,
+      id: 'sub_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
+      created_at: new Date().toISOString(),
+    };
+
+    list.push(newSubject);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(list));
+    }
+    return newSubject;
+  }
+
+  public static updateCustomSubject(
+    id: string,
+    updates: Partial<Omit<CustomSubject, 'id' | 'created_at'>>
+  ): CustomSubject | null {
+    const list = this.getCustomSubjects();
+    const index = list.findIndex((s) => s.id === id);
+    if (index === -1) return null;
+
+    list[index] = { ...list[index], ...updates };
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(list));
+    }
+    return list[index];
+  }
+
+  public static deleteCustomSubject(id: string): void {
+    const list = this.getCustomSubjects().filter((s) => s.id !== id);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(list));
+    }
+  }
+
   // ---- ACTIVE QUIZ SELECTION ----
   public static getSelectedQuiz(): string {
     if (typeof window === 'undefined') return '/data/csi106_all.json';
@@ -323,6 +374,7 @@ export class StorageEngine {
       data: {
         wordProgress: this.getWordProgress(),
         customQuizzes: this.getCustomQuizzes(),
+        customSubjects: this.getCustomSubjects(),
         dailyStats: this.getDailyStats(),
         streak: this.getStreak(),
         selectedQuiz: this.getSelectedQuiz(),
@@ -364,6 +416,9 @@ export class StorageEngine {
       }
       if (data.customQuizzes) {
         localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(data.customQuizzes));
+      }
+      if (data.customSubjects) {
+        localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(data.customSubjects));
       }
       if (data.dailyStats) {
         localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(data.dailyStats));

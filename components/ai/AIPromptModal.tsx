@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Word, CustomQuiz } from '@/lib/types';
+import { Word, CustomQuiz, CustomSubject } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { soundFx } from '@/lib/sound';
 import {
@@ -23,6 +23,7 @@ interface AIPromptModalProps {
   isOpen: boolean;
   onClose: () => void;
   onQuizCreated: (quiz: CustomQuiz) => void;
+  defaultSubject?: string;
 }
 
 const QUICK_TOPICS = [
@@ -37,6 +38,7 @@ export default function AIPromptModal({
   isOpen,
   onClose,
   onQuizCreated,
+  defaultSubject,
 }: AIPromptModalProps) {
   const [activeTab, setActiveTab] = useState<'direct_ai' | 'manual_json'>('direct_ai');
   const [prompt, setPrompt] = useState('');
@@ -45,6 +47,7 @@ export default function AIPromptModal({
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard'>('medium');
   const [userApiKey, setUserApiKey] = useState('');
   const [showKeyInput, setShowKeyInput] = useState(false);
+  const [customSubjects, setCustomSubjects] = useState<CustomSubject[]>([]);
 
   // Loading & Error States
   const [isLoading, setIsLoading] = useState(false);
@@ -58,6 +61,16 @@ export default function AIPromptModal({
     const savedKey = localStorage.getItem('gemini_custom_api_key');
     if (savedKey) setUserApiKey(savedKey);
   }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      const subs = StorageEngine.getCustomSubjects();
+      setCustomSubjects(subs);
+      if (defaultSubject) {
+        setSubject(defaultSubject);
+      }
+    }
+  }, [isOpen, defaultSubject]);
 
   if (!isOpen) return null;
 
@@ -280,10 +293,23 @@ export default function AIPromptModal({
                   onChange={(e) => setSubject(e.target.value)}
                   className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 >
-                  <option value="PRF192">PRF192 (Lập trình C)</option>
-                  <option value="CSI106">CSI106 (Kiến trúc MT)</option>
-                  <option value="SSA101">SSA101 (Kỹ năng ĐH)</option>
-                  <option value="Khác">Môn khác</option>
+                  <optgroup label="Môn cơ bản mặc định">
+                    <option value="PRF192">PRF192 (Lập trình C)</option>
+                    <option value="CSI106">CSI106 (Kiến trúc MT)</option>
+                    <option value="SSA101">SSA101 (Kỹ năng ĐH)</option>
+                  </optgroup>
+                  {customSubjects.length > 0 && (
+                    <optgroup label="Môn học của bạn">
+                      {customSubjects.map((cs) => (
+                        <option key={cs.id} value={cs.subjectCode}>
+                          {cs.subjectCode} — {cs.title}
+                        </option>
+                      ))}
+                    </optgroup>
+                  )}
+                  <optgroup label="Khác">
+                    <option value="Khác">Môn khác</option>
+                  </optgroup>
                 </select>
               </div>
 
