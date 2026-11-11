@@ -36,9 +36,32 @@ function SyncContent() {
   } | null>(null);
   const [countdown, setCountdown] = useState(4);
 
-  // Auto-sync if code is provided in URL query (e.g. from camera QR scan)
+  // Decompress URL-safe Base64 gzip payload from hash `#d=...` if present
+  const decompressFromHash = async (): Promise<string | null> => {
+    try {
+      if (typeof window === 'undefined' || typeof DecompressionStream === 'undefined') return null;
+      const hash = window.location.hash;
+      if (!hash.startsWith('#d=')) return null;
+      const b64 = hash.slice(3).replace(/-/g, '+').replace(/_/g, '/');
+      const pad = b64.length % 4 === 0 ? '' : '='.repeat(4 - (b64.length % 4));
+      const binary = atob(b64 + pad);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+      const ds = new DecompressionStream('gzip');
+      const writer = ds.writable.getWriter();
+      writer.write(bytes);
+      writer.close();
+      return await new Response(ds.readable).text();
+    } catch {
+      return null;
+    }
+  };
+
+  // Auto-sync if code or hash payload is provided in URL (e.g. from camera QR scan)
   useEffect(() => {
-    if (initialCode) {
+    if (initialCode || (typeof window !== 'undefined' && window.location.hash.startsWith('#d='))) {
       handlePerformSync(initialCode);
     }
   }, [initialCode]);
@@ -60,25 +83,31 @@ function SyncContent() {
   }, [syncSuccess, countdown, router]);
 
   const handlePerformSync = async (codeToUse: string) => {
-    const cleanCode = codeToUse.replace(/[^0-9]/g, '').trim();
-    if (cleanCode.length !== 6) {
-      setErrorMsg('Mã đồng bộ gồm đúng 6 chữ số (Ví dụ: 482915).');
-      return;
-    }
-
     setLoading(true);
     setErrorMsg(null);
 
     try {
-      const res = await fetch(`/api/sync/session?code=${cleanCode}`);
-      const data = await res.json();
+      let jsonStr: string | null = await decompressFromHash();
 
-      if (!res.ok || !data.success) {
-        throw new Error(data.error || 'Mã đồng bộ không hợp lệ hoặc đã hết hạn.');
+      if (!jsonStr) {
+        const cleanCode = codeToUse.replace(/[^0-9]/g, '').trim();
+        if (cleanCode.length !== 6) {
+          setErrorMsg('Mã đồng bộ gồm đúng 6 chữ số (Ví dụ: 482915).');
+          setLoading(false);
+          return;
+        }
+
+        const res = await fetch(`/api/sync/session?code=${cleanCode}`);
+        const data = await res.json();
+
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || 'Mã đồng bộ không hợp lệ hoặc đã hết hạn.');
+        }
+
+        const payload = data.payload;
+        jsonStr = typeof payload === 'string' ? payload : JSON.stringify(payload);
       }
 
-      const payload = data.payload;
-      const jsonStr = typeof payload === 'string' ? payload : JSON.stringify(payload);
       const importResult = StorageEngine.importAllData(jsonStr);
 
       if (!importResult.success) {
@@ -86,7 +115,7 @@ function SyncContent() {
       }
 
       // Extract stats for congratulation summary
-      const parsedData = typeof payload === 'string' ? JSON.parse(payload) : payload;
+      const parsedData = JSON.parse(jsonStr);
       const innerData = parsedData.data || parsedData;
       const wordsCount = Object.keys(innerData.wordProgress || {}).length;
       const streak = innerData.streak || 1;

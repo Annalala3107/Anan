@@ -10,6 +10,16 @@ interface SyncRecord {
 // Declarations outside request handler persist across warm serverless requests
 const syncStore = new Map<string, SyncRecord>();
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: corsHeaders });
+}
+
 // Helper to cleanup expired tokens periodically
 function cleanExpiredRecords() {
   const now = Date.now();
@@ -57,17 +67,20 @@ export async function POST(req: NextRequest) {
       expiresAt: now + ttlMs,
     });
 
-    return NextResponse.json({
-      success: true,
-      code,
-      expiresAt: now + ttlMs,
-      ttlSeconds: 900,
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        code,
+        expiresAt: now + ttlMs,
+        ttlSeconds: 900,
+      },
+      { headers: corsHeaders }
+    );
   } catch (err: any) {
     console.error('Error in POST /api/sync/session:', err);
     return NextResponse.json(
       { error: 'Không thể khởi tạo phiên đồng bộ: ' + (err?.message || 'Lỗi hệ thống') },
-      { status: 500 }
+      { status: 500, headers: corsHeaders }
     );
   }
 }
@@ -94,7 +107,7 @@ export async function GET(req: NextRequest) {
     if (!record) {
       return NextResponse.json(
         { error: 'Mã đồng bộ không tồn tại hoặc đã hết hạn sau 15 phút. Vui lòng quét lại mã QR trên máy tính.' },
-        { status: 404 }
+        { status: 404, headers: corsHeaders }
       );
     }
 
@@ -102,20 +115,23 @@ export async function GET(req: NextRequest) {
       syncStore.delete(code);
       return NextResponse.json(
         { error: 'Mã đồng bộ đã hết hạn. Vui lòng tạo mã mới trên máy tính.' },
-        { status: 410 }
+        { status: 410, headers: corsHeaders }
       );
     }
 
-    return NextResponse.json({
-      success: true,
-      payload: record.data,
-      transferredAt: new Date().toISOString(),
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        payload: record.data,
+        transferredAt: new Date().toISOString(),
+      },
+      { headers: corsHeaders }
+    );
   } catch (err: any) {
     console.error('Error in GET /api/sync/session:', err);
     return NextResponse.json(
       { error: 'Không thể nhận dữ liệu đồng bộ: ' + (err?.message || 'Lỗi hệ thống') },
-      { status: 500 }
+      { status: 500, headers: corsHeaders }
     );
   }
 }

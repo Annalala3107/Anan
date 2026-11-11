@@ -83,6 +83,7 @@ export default function Header() {
   }
 
   return (
+    <>
     <header className="sticky top-0 z-40 w-full backdrop-blur-md sm:backdrop-blur-xl bg-white/80 dark:bg-[#090E17]/85 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors transform-gpu">
       <div className="w-full px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12 h-14 sm:h-16 flex items-center justify-between">
         {/* Logo & Brand */}
@@ -234,7 +235,7 @@ export default function Header() {
 
       {/* Exam Exit Confirmation Modal */}
       {showExitConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fade-in">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fade-in">
           <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-rose-500/30 rounded-3xl p-6 shadow-2xl text-center space-y-4">
             <div className="w-14 h-14 rounded-2xl bg-rose-500/10 text-rose-500 mx-auto flex items-center justify-center">
               <AlertTriangle className="w-7 h-7" />
@@ -266,8 +267,9 @@ export default function Header() {
           </div>
         </div>
       )}
-      {/* Device Transfer QR Sync Modal */}
-      <QrSyncModal isOpen={showQrSync} onClose={() => setShowQrSync(false)} />
     </header>
+    {/* Device Transfer QR Sync Modal (rendered outside transformed header via Portal) */}
+    <QrSyncModal isOpen={showQrSync} onClose={() => setShowQrSync(false)} />
+    </>
   );
 }

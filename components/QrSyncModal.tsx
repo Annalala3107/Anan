@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import QRCode from 'qrcode';
 import { StorageEngine } from '@/lib/storage';
 import { soundFx } from '@/lib/sound';
@@ -33,6 +34,12 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
   const [copiedUrl, setCopiedUrl] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Initialize transfer session when modal opens
   useEffect(() => {
     if (!isOpen) return;
@@ -57,6 +64,29 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     return () => clearInterval(timer);
   }, [isOpen, timeLeft, syncCode]);
 
+  // Compress JSON string into URL-safe Base64 (gzip) when small enough for zero-server reliability
+  const compressToUrlSafeBase64 = async (text: string): Promise<string | null> => {
+    try {
+      if (typeof CompressionStream === 'undefined') return null;
+      const bytes = new TextEncoder().encode(text);
+      const cs = new CompressionStream('gzip');
+      const writer = cs.writable.getWriter();
+      writer.write(bytes);
+      writer.close();
+      const compressedBuf = await new Response(cs.readable).arrayBuffer();
+      const uint8 = new Uint8Array(compressedBuf);
+      let binary = '';
+      for (let i = 0; i < uint8.length; i++) {
+        binary += String.fromCharCode(uint8[i]);
+      }
+      const b64 = btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+      // Keep QR URL under 1800 chars so any phone camera scans it in <0.2s
+      return b64.length <= 1800 ? b64 : null;
+    } catch {
+      return null;
+    }
+  };
+
   const generateTransferSession = async () => {
     setLoading(true);
     setErrorMsg(null);
@@ -65,11 +95,35 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
 
     try {
       const backupJson = StorageEngine.exportAllData();
-      const res = await fetch('/api/sync/session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ payload: backupJson }),
-      });
+      const isLocalhost =
+        typeof window !== 'undefined' &&
+        (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+      const publicOrigin =
+        typeof window !== 'undefined' && !isLocalhost
+          ? window.location.origin
+          : 'https://anan-mocha.vercel.app';
+
+      // Post to cloud relay if on localhost so the phone scanning https://anan-mocha.vercel.app can claim the 6-digit PIN!
+      const apiEndpoint = isLocalhost
+        ? `${publicOrigin}/api/sync/session`
+        : '/api/sync/session';
+
+      let res: Response;
+      try {
+        res = await fetch(apiEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ payload: backupJson }),
+        });
+      } catch {
+        // Fallback to local API if offline
+        res = await fetch('/api/sync/session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ payload: backupJson }),
+        });
+      }
 
       const resData = await res.json();
       if (!res.ok || !resData.success) {
@@ -77,22 +131,24 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
       }
 
       const code = resData.code;
-      const origin = typeof window !== 'undefined' ? window.location.origin : 'https://anan-mocha.vercel.app';
-      const targetUrl = `${origin}/sync?code=${code}`;
+      const compressedPayload = await compressToUrlSafeBase64(backupJson);
+      const targetUrl = compressedPayload
+        ? `${publicOrigin}/sync?code=${code}#d=${compressedPayload}`
+        : `${publicOrigin}/sync?code=${code}`;
 
       // Generate sharp vector/PNG QR Code
       const qrImage = await QRCode.toDataURL(targetUrl, {
-        width: 320,
+        width: 300,
         margin: 2,
         color: {
           dark: '#0F172A', // Dark navy ink
           light: '#FFFFFF', // Pure white background
         },
-        errorCorrectionLevel: 'M',
+        errorCorrectionLevel: 'L',
       });
 
       setSyncCode(code);
-      setSyncUrl(targetUrl);
+      setSyncUrl(`${publicOrigin}/sync?code=${code}`);
       setQrDataUrl(qrImage);
       setTimeLeft(resData.ttlSeconds || 900);
       soundFx.playZenChime();
@@ -127,11 +183,17 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-lg max-h-[92vh] overflow-y-auto rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl p-4 sm:p-8 space-y-4 sm:space-y-5 animate-scale-up">
+  const modalContent = (
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md animate-fade-in overflow-y-auto"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl p-4 sm:p-6 space-y-3.5 sm:space-y-4 animate-scale-up my-auto"
+      >
         {/* Glow corner */}
         <div className="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -185,14 +247,14 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
         ) : (
           <div className="space-y-5">
             {/* QR Code Presentation Box */}
-            <div className="flex flex-col items-center justify-center p-5 rounded-3xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 relative group">
+            <div className="flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 relative group">
               {qrDataUrl && (
-                <div className="relative p-3 bg-white rounded-2xl shadow-md border border-slate-200">
+                <div className="relative p-2.5 bg-white rounded-2xl shadow-md border border-slate-200">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={qrDataUrl}
                     alt="Mã QR đồng bộ dữ liệu sang điện thoại"
-                    className="w-48 h-48 sm:w-56 sm:h-56 block rounded-lg"
+                    className="w-40 h-40 sm:w-44 sm:h-44 block rounded-lg"
                   />
 
                   {/* Expired Overlay */}
@@ -284,4 +346,6 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }
