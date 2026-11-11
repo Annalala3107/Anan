@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Word } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { isAnswerMatch } from '@/lib/utils';
@@ -10,8 +10,6 @@ import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import FlashcardView from './FlashcardView';
 import {
   Zap,
-  CheckCircle2,
-  XCircle,
   Trophy,
   RotateCcw,
   ArrowRight,
@@ -21,7 +19,6 @@ import {
   Target,
   Sparkles,
   Layers,
-  Clock,
   AlertTriangle,
   BookOpen,
 } from 'lucide-react';
@@ -32,12 +29,16 @@ interface LearnModeProps {
   onExit: () => void;
 }
 
-interface QueueItem {
+interface CardItem {
   id: string;
   question: StandardQuestion;
-  correctStreak: number; // 0, 1, 2 -> needs 2 consecutive correct to graduate
+  correctStreak: number; // 0 .. streakTarget -> graduates when correctStreak >= streakTarget
   mistakes: number;
+  attempts: number;
 }
+
+// Active working pool size (Quizlet-style mini-round rotation)
+const ACTIVE_POOL_SIZE = 5;
 
 export default function LearnMode({ words, onExit }: LearnModeProps) {
   // Setup State
@@ -47,56 +48,173 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const [batchSize, setBatchSize] = useState(15);
   const [streakTarget, setStreakTarget] = useState(2); // 1 = Speed run, 2 = Ironclad memory
 
-  // Active Session State
-  const [queue, setQueue] = useState<QueueItem[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [graduatedIds, setGraduatedIds] = useState<Set<string>>(new Set());
-  const [totalInitialCount, setTotalInitialCount] = useState(0);
+  // Active Session State (Immutable Card Dictionary + Sliding Active Pool Queue)
+  const [cards, setCards] = useState<CardItem[]>([]);
+  const [activeQueue, setActiveQueue] = useState<string[]>([]);
+  const [nextReserveIndex, setNextReserveIndex] = useState<number>(0);
+  const [turnCount, setTurnCount] = useState<number>(0);
 
   // Interaction State
   const [selectedOpt, setSelectedOpt] = useState<string | null>(null);
   const [feedbackState, setFeedbackState] = useState<'idle' | 'correct' | 'wrong'>('idle');
   const [isCompleted, setIsCompleted] = useState(false);
 
-  // Performance Metrics
+  // Performance & Gamification Metrics
   const [startTime, setStartTime] = useState<number>(0);
   const [totalAttempts, setTotalAttempts] = useState(0);
   const [correctAttempts, setCorrectAttempts] = useState(0);
+  const [sessionCombo, setSessionCombo] = useState(0);
+  const [maxCombo, setMaxCombo] = useState(0);
   const [problemQuestions, setProblemQuestions] = useState<StandardQuestion[]>([]);
 
-  // Start the Rapid Recall session
+  const advanceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Clear pending timer on unmount
+  useEffect(() => {
+    return () => {
+      if (advanceTimerRef.current) {
+        clearTimeout(advanceTimerRef.current);
+      }
+    };
+  }, []);
+
+  // Start the Rapid Recall / Flashcard session
   const handleStartSession = useCallback(() => {
     if (!words || words.length === 0) return;
+
+    if (advanceTimerRef.current) {
+      clearTimeout(advanceTimerRef.current);
+      advanceTimerRef.current = null;
+    }
 
     const count = Math.min(words.length, batchSize);
     const standardList = buildStandardQuestions(words, count);
 
-    const initialQueue: QueueItem[] = standardList.map((q, idx) => ({
-      id: `${q.id}_${idx}_${Date.now()}`,
+    const initialCards: CardItem[] = standardList.map((q, idx) => ({
+      id: `card_${idx}_${q.id}`,
       question: q,
       correctStreak: 0,
       mistakes: 0,
+      attempts: 0,
     }));
 
-    setQueue(initialQueue);
-    setTotalInitialCount(initialQueue.length);
-    setCurrentIndex(0);
-    setGraduatedIds(new Set());
+    const initialPoolCount = Math.min(ACTIVE_POOL_SIZE, initialCards.length);
+    const initialActiveQueue = initialCards.slice(0, initialPoolCount).map((c) => c.id);
+
+    setCards(initialCards);
+    setActiveQueue(initialActiveQueue);
+    setNextReserveIndex(initialPoolCount);
+    setTurnCount(0);
     setSelectedOpt(null);
     setFeedbackState('idle');
+    setIsFlipped(false);
     setIsConfiguring(false);
     setIsCompleted(false);
     setStartTime(Date.now());
     setTotalAttempts(0);
     setCorrectAttempts(0);
+    setSessionCombo(0);
+    setMaxCombo(0);
     setProblemQuestions([]);
     soundFx.playClick();
   }, [words, batchSize]);
 
-  const currentItem = queue[currentIndex];
+  const currentCardId = activeQueue[0];
+  const currentItem = cards.find((c) => c.id === currentCardId);
   const currentQ = currentItem?.question;
 
-  // Handle Option Selection
+  const finishSession = useCallback(() => {
+    if (advanceTimerRef.current) {
+      clearTimeout(advanceTimerRef.current);
+      advanceTimerRef.current = null;
+    }
+    setIsCompleted(true);
+    soundFx.playCelebration();
+    confetti({
+      particleCount: 160,
+      spread: 80,
+      origin: { y: 0.6 },
+    });
+    StorageEngine.recordActivity('learn', 100);
+  }, []);
+
+  // Rotate active pool queue to the next question
+  const advanceNext = useCallback(() => {
+    if (advanceTimerRef.current) {
+      clearTimeout(advanceTimerRef.current);
+      advanceTimerRef.current = null;
+    }
+
+    setSelectedOpt(null);
+    setFeedbackState('idle');
+    setIsFlipped(false);
+    setTurnCount((t) => t + 1);
+
+    if (activeQueue.length === 0 || !currentItem) {
+      finishSession();
+      return;
+    }
+
+    // Check if all cards have graduated
+    const allGraduated = cards.length > 0 && cards.every((c) => c.correctStreak >= streakTarget);
+    if (allGraduated) {
+      finishSession();
+      return;
+    }
+
+    const activeId = activeQueue[0];
+    const restQueue = activeQueue.slice(1);
+    const isCurrentGraduated = currentItem.correctStreak >= streakTarget;
+
+    if (isCurrentGraduated) {
+      // Current card graduated! Pull a new unseen card from reserve if available
+      let nextQueue = [...restQueue];
+      let nextReserve = nextReserveIndex;
+
+      while (nextQueue.length < ACTIVE_POOL_SIZE && nextReserve < cards.length) {
+        nextQueue.push(cards[nextReserve].id);
+        nextReserve++;
+      }
+
+      // Fallback: if queue is empty, find any ungraduated card left
+      if (nextQueue.length === 0) {
+        const remaining = cards.filter((c) => c.correctStreak < streakTarget).map((c) => c.id);
+        if (remaining.length === 0) {
+          finishSession();
+          return;
+        }
+        nextQueue = remaining.slice(0, ACTIVE_POOL_SIZE);
+      }
+
+      setActiveQueue(nextQueue);
+      setNextReserveIndex(nextReserve);
+    } else {
+      // Current card not yet graduated -> keep it rotating inside the active pool
+      if (restQueue.length === 0) {
+        // Only 1 card left in the pool; keep it on screen for the next rep
+        setActiveQueue([activeId]);
+      } else if (feedbackState === 'wrong') {
+        // Wrong answer: re-show after 2-3 cards in the active pool
+        const insertPos = Math.min(restQueue.length, 3);
+        const nextQueue = [...restQueue];
+        nextQueue.splice(insertPos, 0, activeId);
+        setActiveQueue(nextQueue);
+      } else {
+        // Correct answer (1/2): push to the back of the 5-card active pool
+        // Ensure we don't ask the exact same card back-to-back if reserve still has cards
+        let nextQueue = [...restQueue, activeId];
+        setActiveQueue(nextQueue);
+      }
+    }
+  }, [activeQueue, cards, currentItem, feedbackState, finishSession, nextReserveIndex, streakTarget]);
+
+  // Keep a ref to latest advanceNext so setTimeout never suffers from stale closures
+  const advanceNextRef = useRef(advanceNext);
+  useEffect(() => {
+    advanceNextRef.current = advanceNext;
+  }, [advanceNext]);
+
+  // Handle Option Selection in Rapid MCQ mode
   const handleSelectOption = useCallback(
     (optText: string) => {
       if (feedbackState !== 'idle' || !currentItem || !currentQ) return;
@@ -110,31 +228,44 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         soundFx.playCorrect();
         setFeedbackState('correct');
         setCorrectAttempts((prev) => prev + 1);
+        setSessionCombo((prev) => {
+          const next = prev + 1;
+          setMaxCombo((m) => Math.max(m, next));
+          return next;
+        });
 
-        const newStreak = currentItem.correctStreak + 1;
-        currentItem.correctStreak = newStreak;
+        const newStreak = Math.min(streakTarget, currentItem.correctStreak + 1);
+
+        // Immutable update of the card's streak so progress bar & HUD update immediately
+        setCards((prevCards) =>
+          prevCards.map((c) =>
+            c.id === currentItem.id
+              ? { ...c, correctStreak: newStreak, attempts: c.attempts + 1 }
+              : c
+          )
+        );
 
         // Record progress in SRS engine
         StorageEngine.updateWordProgress(currentQ.id, 5);
 
-        if (newStreak >= streakTarget) {
-          // GRADUATE THIS QUESTION!
-          setGraduatedIds((prev) => {
-            const nextSet = new Set(prev);
-            nextSet.add(currentItem.id);
-            return nextSet;
-          });
-        }
-
         // Auto-advance quickly after 420ms for rapid muscle memory conditioning
-        setTimeout(() => {
-          advanceNext();
+        if (advanceTimerRef.current) clearTimeout(advanceTimerRef.current);
+        advanceTimerRef.current = setTimeout(() => {
+          advanceNextRef.current();
         }, 420);
       } else {
         soundFx.playWrong();
         setFeedbackState('wrong');
-        currentItem.correctStreak = 0;
-        currentItem.mistakes += 1;
+        setSessionCombo(0);
+
+        // Immutable reset of this card's streak & increment mistakes
+        setCards((prevCards) =>
+          prevCards.map((c) =>
+            c.id === currentItem.id
+              ? { ...c, correctStreak: 0, mistakes: c.mistakes + 1, attempts: c.attempts + 1 }
+              : c
+          )
+        );
 
         // Track as problem question
         setProblemQuestions((prev) => {
@@ -146,52 +277,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
         // Record mistake in SRS
         StorageEngine.recordMistakeOnly(currentQ.id);
-
-        // FORCED ACTIVE RECALL: Re-insert this question 3 positions ahead in the queue!
-        setQueue((prevQueue) => {
-          const newQueue = [...prevQueue];
-          const reinsertIdx = Math.min(newQueue.length, currentIndex + 4);
-          newQueue.splice(reinsertIdx, 0, {
-            ...currentItem,
-            correctStreak: 0,
-          });
-          return newQueue;
-        });
       }
     },
-    [feedbackState, currentItem, currentQ, streakTarget, currentIndex]
+    [feedbackState, currentItem, currentQ, streakTarget]
   );
-
-  // Advance to next available question in queue
-  const advanceNext = useCallback(() => {
-    setSelectedOpt(null);
-    setFeedbackState('idle');
-    setIsFlipped(false);
-
-    // Check if all original questions have graduated
-    if (graduatedIds.size >= totalInitialCount && totalInitialCount > 0) {
-      finishSession();
-      return;
-    }
-
-    // Find next un-graduated question in queue
-    let nextIdx = currentIndex + 1;
-    while (nextIdx < queue.length && graduatedIds.has(queue[nextIdx].id)) {
-      nextIdx++;
-    }
-
-    if (nextIdx < queue.length) {
-      setCurrentIndex(nextIdx);
-    } else {
-      // Loop back to find any remaining un-graduated questions
-      const remainingIdx = queue.findIndex((item) => !graduatedIds.has(item.id));
-      if (remainingIdx !== -1) {
-        setCurrentIndex(remainingIdx);
-      } else {
-        finishSession();
-      }
-    }
-  }, [currentIndex, queue, graduatedIds, totalInitialCount]);
 
   // Flashcard Self-Rating (SM-2 Quality 1, 3, 5)
   const handleRateFlashcard = useCallback(
@@ -199,25 +288,64 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       if (!currentItem || !currentQ) return;
       setTotalAttempts((prev) => prev + 1);
 
+      const activeId = currentItem.id;
+      const restQueue = activeQueue.slice(1);
+
       if (quality >= 3) {
         soundFx.playCorrect();
         setCorrectAttempts((prev) => prev + 1);
-        const newStreak = currentItem.correctStreak + 1;
-        currentItem.correctStreak = newStreak;
+        setSessionCombo((prev) => {
+          const next = prev + 1;
+          setMaxCombo((m) => Math.max(m, next));
+          return next;
+        });
 
+        const newStreak =
+          quality === 5 ? streakTarget : Math.min(streakTarget, currentItem.correctStreak + 1);
+        const didGraduate = newStreak >= streakTarget;
+
+        const updatedCards = cards.map((c) =>
+          c.id === activeId
+            ? { ...c, correctStreak: newStreak, attempts: c.attempts + 1 }
+            : c
+        );
+        setCards(updatedCards);
         StorageEngine.updateWordProgress(currentQ.id, quality);
 
-        if (newStreak >= streakTarget || quality === 5) {
-          setGraduatedIds((prev) => {
-            const nextSet = new Set(prev);
-            nextSet.add(currentItem.id);
-            return nextSet;
-          });
+        if (updatedCards.every((c) => c.correctStreak >= streakTarget)) {
+          finishSession();
+          return;
+        }
+
+        if (didGraduate) {
+          let nextQueue = [...restQueue];
+          let nextReserve = nextReserveIndex;
+          while (nextQueue.length < ACTIVE_POOL_SIZE && nextReserve < updatedCards.length) {
+            nextQueue.push(updatedCards[nextReserve].id);
+            nextReserve++;
+          }
+          if (nextQueue.length === 0) {
+            const remaining = updatedCards
+              .filter((c) => c.correctStreak < streakTarget)
+              .map((c) => c.id);
+            nextQueue = remaining.slice(0, ACTIVE_POOL_SIZE);
+          }
+          setActiveQueue(nextQueue);
+          setNextReserveIndex(nextReserve);
+        } else {
+          setActiveQueue(restQueue.length > 0 ? [...restQueue, activeId] : [activeId]);
         }
       } else {
         soundFx.playWrong();
-        currentItem.correctStreak = 0;
-        currentItem.mistakes += 1;
+        setSessionCombo(0);
+
+        setCards((prevCards) =>
+          prevCards.map((c) =>
+            c.id === activeId
+              ? { ...c, correctStreak: 0, mistakes: c.mistakes + 1, attempts: c.attempts + 1 }
+              : c
+          )
+        );
 
         setProblemQuestions((prev) => {
           if (!prev.some((pq) => pq.id === currentQ.id)) {
@@ -228,33 +356,21 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
         StorageEngine.recordMistakeOnly(currentQ.id);
 
-        // FORCED ACTIVE RECALL: Re-insert this question 3 positions ahead
-        setQueue((prevQueue) => {
-          const newQueue = [...prevQueue];
-          const reinsertIdx = Math.min(newQueue.length, currentIndex + 4);
-          newQueue.splice(reinsertIdx, 0, {
-            ...currentItem,
-            correctStreak: 0,
-          });
-          return newQueue;
-        });
+        if (restQueue.length === 0) {
+          setActiveQueue([activeId]);
+        } else {
+          const insertPos = Math.min(restQueue.length, 3);
+          const nextQueue = [...restQueue];
+          nextQueue.splice(insertPos, 0, activeId);
+          setActiveQueue(nextQueue);
+        }
       }
 
-      advanceNext();
+      setIsFlipped(false);
+      setTurnCount((t) => t + 1);
     },
-    [currentItem, currentQ, streakTarget, currentIndex, advanceNext]
+    [activeQueue, cards, currentItem, currentQ, finishSession, nextReserveIndex, streakTarget]
   );
-
-  const finishSession = () => {
-    setIsCompleted(true);
-    soundFx.playCelebration();
-    confetti({
-      particleCount: 160,
-      spread: 80,
-      origin: { y: 0.6 },
-    });
-    StorageEngine.recordActivity('learn', 100);
-  };
 
   // Global Keyboard listener: Flashcard Space / 1-3, Rapid Recall 1-4 / A-D
   useEffect(() => {
@@ -582,6 +698,12 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     );
   }
 
+  const totalInitialCount = cards.length;
+  const graduatedCount = cards.filter((c) => c.correctStreak >= streakTarget).length;
+  const learningCount = cards.filter(
+    (c) => c.correctStreak > 0 && c.correctStreak < streakTarget
+  ).length;
+
   // =========================================================================
   // VIEW 2: COMPLETION SCREEN
   // =========================================================================
@@ -604,11 +726,17 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           </p>
 
           {/* Quick Metrics */}
-          <div className="grid grid-cols-3 gap-3 my-6 max-w-xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6 max-w-2xl mx-auto">
             <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
               <p className="text-[10px] font-bold text-slate-400 uppercase">Đã thành thạo</p>
               <p className="text-2xl font-black text-emerald-500 mt-0.5">
                 {totalInitialCount} câu
+              </p>
+            </div>
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
+              <p className="text-[10px] font-bold text-slate-400 uppercase">Combo kỷ lục</p>
+              <p className="text-2xl font-black text-amber-500 mt-0.5">
+                🔥 {maxCombo}
               </p>
             </div>
             <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
@@ -682,8 +810,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     return <div className="text-center py-20 text-slate-500">Đang chuẩn bị câu hỏi phản xạ...</div>;
   }
 
-  const graduatedCount = graduatedIds.size;
-  const progressPercent = totalInitialCount > 0 ? Math.round((graduatedCount / totalInitialCount) * 100) : 0;
+  const graduatedPercent =
+    totalInitialCount > 0 ? (graduatedCount / totalInitialCount) * 100 : 0;
+  const learningPercent =
+    totalInitialCount > 0 ? (learningCount / totalInitialCount) * 100 : 0;
 
   return (
     <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-4 sm:py-6 px-3 sm:px-8 animate-fade-in space-y-3 sm:space-y-5">
@@ -694,31 +824,74 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             {studyMethod === 'flashcard' ? <Sparkles className="w-4 h-4" /> : <Zap className="w-4 h-4" />}
           </div>
           <div>
-            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-              {studyMethod === 'flashcard' ? 'Thẻ Ghi Nhớ 3D' : 'Phản xạ cao tốc'}
-            </span>
-            <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-white">
-              <span>Đã thuộc: <strong className="text-emerald-500">{graduatedCount}</strong>/{totalInitialCount}</span>
-              <span className="hidden sm:inline text-slate-400">•</span>
-              <span className="hidden sm:inline text-slate-400">
-                {studyMethod === 'flashcard' ? 'Phím: [Space] Lật thẻ, [1/2/3] Đánh giá' : 'Phím: [1-4] hoặc [A-D]'}
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                {studyMethod === 'flashcard' ? 'Thẻ Ghi Nhớ 3D' : 'Phản xạ xoay tua 5 câu'}
               </span>
+              <span className="hidden md:inline text-[10px] font-medium text-slate-400">
+                • {studyMethod === 'flashcard' ? 'Phím: [Space] Lật thẻ, [1/2/3] Đánh giá' : 'Phím: [1-4] hoặc [A-D]'}
+              </span>
+            </div>
+            <div className="flex items-center gap-2.5 text-xs font-bold text-slate-900 dark:text-white flex-wrap">
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
+                Đã thuộc: <strong className="text-emerald-500">{graduatedCount}</strong>/{totalInitialCount}
+              </span>
+              {streakTarget > 1 && (
+                <>
+                  <span className="text-slate-300 dark:text-slate-700">•</span>
+                  <span className="flex items-center gap-1 text-amber-600 dark:text-amber-400">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 inline-block" />
+                    Đang nhớ (1/{streakTarget}): <strong>{learningCount}</strong>
+                  </span>
+                </>
+              )}
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          {/* Current question consecutive streak counter */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Global Session Combo Streak */}
+          {sessionCombo > 0 && (
+            <div
+              className="px-2.5 py-1 rounded-full text-xs font-black flex items-center gap-1 bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 animate-fade-in"
+              title="Chuỗi trả lời đúng liên tiếp trong phiên này"
+            >
+              <Flame className="w-3.5 h-3.5 fill-current text-amber-500" />
+              <span>Combo: {sessionCombo}</span>
+            </div>
+          )}
+
+          {/* Current card mastery progress dots */}
           <div
-            className={`px-3 py-1 rounded-full text-xs font-black flex items-center gap-1 border ${
-              currentItem.correctStreak > 0
-                ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'
+            className={`px-3 py-1 rounded-full text-xs font-black flex items-center gap-1.5 border transition-colors ${
+              currentItem.correctStreak >= streakTarget
+                ? 'bg-emerald-500 text-white border-emerald-500 shadow-sm'
+                : currentItem.correctStreak > 0
+                ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700'
             }`}
-            title={`Cần ${streakTarget} lần đúng liên tiếp để tốt nghiệp câu này`}
+            title={`Mỗi câu trong nhóm 5 câu cần đúng ${streakTarget} lần để tốt nghiệp`}
           >
-            <Flame className={`w-3.5 h-3.5 ${currentItem.correctStreak > 0 ? 'fill-current text-emerald-500' : ''}`} />
-            <span>Đúng liên tiếp: {currentItem.correctStreak}/{streakTarget}</span>
+            <span className="flex items-center gap-1">
+              {Array.from({ length: streakTarget }).map((_, i) => (
+                <span
+                  key={i}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    i < currentItem.correctStreak
+                      ? currentItem.correctStreak >= streakTarget
+                        ? 'bg-white scale-110'
+                        : 'bg-amber-500 scale-110'
+                      : 'bg-slate-300 dark:bg-slate-600'
+                  }`}
+                />
+              ))}
+            </span>
+            <span>
+              {currentItem.correctStreak >= streakTarget
+                ? 'Đã thuộc!'
+                : `Độ thuộc câu này: ${currentItem.correctStreak}/${streakTarget}`}
+            </span>
           </div>
 
           <button
@@ -730,12 +903,22 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         </div>
       </div>
 
-      {/* Graduation Progress Bar */}
-      <div className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
-        <div
-          className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 rounded-full transition-[width] duration-300 ease-out transform-gpu"
-          style={{ width: `${Math.max(progressPercent, 4)}%` }}
-        />
+      {/* Multi-segment Graduation & Learning Progress Bar */}
+      <div className="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden flex p-0.5 gap-0.5">
+        {graduatedPercent > 0 && (
+          <div
+            className="h-full bg-emerald-500 rounded-l-full first:rounded-l-full last:rounded-r-full transition-[width] duration-300 ease-out transform-gpu"
+            style={{ width: `${graduatedPercent}%` }}
+            title={`Đã thuộc: ${graduatedCount}/${totalInitialCount}`}
+          />
+        )}
+        {learningPercent > 0 && (
+          <div
+            className="h-full bg-amber-400 first:rounded-l-full last:rounded-r-full transition-[width] duration-300 ease-out transform-gpu"
+            style={{ width: `${learningPercent}%` }}
+            title={`Đang nhớ (1/${streakTarget}): ${learningCount} câu`}
+          />
+        )}
       </div>
 
       {/* Main Study Arena: 3D Flashcard or Rapid MCQ */}
@@ -756,7 +939,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       ) : (
         /* Main Flash Question Arena (Rapid Drill) */
         <div
-          key={`${currentItem.id}_${currentIndex}`}
+          key={`${currentItem.id}_${turnCount}`}
           className={`p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border transition-[transform,border-color,box-shadow] duration-200 shadow-xl relative transform-gpu animate-question-enter ${
             feedbackState === 'correct'
               ? 'border-emerald-500/80 shadow-glow-success animate-pop-correct'
@@ -790,7 +973,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
             {currentQ.options &&
               currentQ.options.map((opt, idx) => {
-                const letter = String.fromCharCode(65 + idx);
                 const isSelected = selectedOpt === opt;
                 const isTrueAnswer = isAnswerMatch(opt, currentQ.correctWord, currentQ.answerKey);
 
@@ -861,7 +1043,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                 <span>
-                  Nhìn kỹ đáp án màu <strong className="text-emerald-400 font-bold">Xanh Lá</strong> ở trên! Câu này sẽ xuất hiện lại sau <strong>3 câu nữa</strong>.
+                  Nhìn kỹ đáp án màu <strong className="text-emerald-400 font-bold">Xanh Lá</strong> ở trên! Câu này sẽ xuất hiện lại trong nhóm xoay tua sau <strong>3 câu nữa</strong>.
                 </span>
               </div>
 

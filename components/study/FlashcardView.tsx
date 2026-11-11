@@ -57,14 +57,14 @@ export default function FlashcardView({
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1 text-amber-500 font-mono font-bold">
+          <div className="flex items-center gap-1.5 text-amber-500 font-mono font-bold">
             <Flame className="w-4 h-4 fill-current" />
             <span>
-              {streak}/{streakTarget} lần
+              Độ thuộc thẻ này: {streak}/{streakTarget}
             </span>
           </div>
           <span className="text-slate-400 font-mono">
-            Thẻ {questionIndex + 1} / {totalCount}
+            Đã thuộc {questionIndex} / {totalCount}
           </span>
         </div>
       </div>
