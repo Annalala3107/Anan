@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { StorageEngine, ExamRecord } from '@/lib/storage';
-import { isSupabaseConfigured } from '@/lib/supabase';
 import { soundFx } from '@/lib/sound';
 import {
   Flame,
@@ -395,34 +394,20 @@ export default function ProfilePage() {
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
           <div className="flex items-center gap-3">
-            <div
-              className={`w-9 h-9 rounded-xl flex items-center justify-center ${
-                isSupabaseConfigured
-                  ? 'bg-indigo-500/10 text-indigo-500'
-                  : 'bg-slate-200 dark:bg-slate-700 text-slate-400'
-              }`}
-            >
-              <Cloud className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-indigo-500/10 text-indigo-500">
+              <Smartphone className="w-5 h-5" />
             </div>
             <div>
               <p className="text-sm font-bold text-slate-900 dark:text-white">
-                Đồng bộ Supabase PostgreSQL (Cloud Sync)
+                Đồng bộ 1-Chạm đa thiết bị (QR Code & Gzip Hash)
               </p>
               <p className="text-xs text-slate-500">
-                {isSupabaseConfigured
-                  ? 'Đã kết nối thành công với Supabase URL & Key.'
-                  : 'Chưa cấu hình Supabase keys trong file .env.local (Không bắt buộc).'}
+                Truyền trực tiếp 100% tiến độ SRS, bộ đề tự tạo và streak sang điện thoại không cần tài khoản.
               </p>
             </div>
           </div>
-          <span
-            className={`text-xs font-bold px-3 py-1 rounded-full self-start sm:self-center ${
-              isSupabaseConfigured
-                ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40'
-                : 'text-slate-500 bg-slate-200 dark:bg-slate-700'
-            }`}
-          >
-            {isSupabaseConfigured ? 'Đang kích hoạt' : 'Chế độ Local-First'}
+          <span className="text-xs font-bold px-3 py-1 rounded-full self-start sm:self-center text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40">
+            Đang kích hoạt
           </span>
         </div>
 

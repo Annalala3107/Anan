@@ -3,7 +3,6 @@ import { Be_Vietnam_Pro, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
-import Starfield from '@/components/Starfield';
 
 const beVietnamPro = Be_Vietnam_Pro({
   subsets: ['vietnamese', 'latin'],
@@ -36,8 +35,11 @@ export default function RootLayout({
       className={`dark ${beVietnamPro.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen flex flex-col relative overflow-x-hidden">
-        {/* Starfield Cosmic Background */}
-        <Starfield />
+        {/* Cosmic Dot-Grid Background */}
+        <div
+          className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-40"
+          aria-hidden="true"
+        />
 
         {/* Global Desktop Header */}
         <Header />

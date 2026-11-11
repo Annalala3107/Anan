@@ -1,6 +1,0 @@
-<USER_REQUEST>
-nhập những câu hỏi này vào và chia thành từng chủ đề phù hợp
-</USER_REQUEST>
-<ADDITIONAL_METADATA>
-The current local time is: 2026-11-10T23:10:51+07:00.
-</ADDITIONAL_METADATA>
