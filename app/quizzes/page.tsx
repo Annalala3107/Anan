@@ -531,7 +531,7 @@ export default function QuizzesPage() {
             title="Thêm môn học mới theo chương trình của bạn"
           >
             <FolderPlus className="w-4 h-4" />
-            <span>+ Thêm Môn Học</span>
+            <span>Thêm Môn Học Mới</span>
           </button>
 
           <button
@@ -607,14 +607,15 @@ export default function QuizzesPage() {
 
         {/* Quick Add Subject Tab Button */}
         <button
+          type="button"
           onClick={() => {
             setEditingSubject(null);
             setIsSubjectModalOpen(true);
           }}
-          className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold border border-dashed border-indigo-400/60 dark:border-indigo-500/40 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 transition-all shrink-0"
+          className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-dashed border-indigo-400/60 dark:border-indigo-500/40 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:border-indigo-500 transition-all shrink-0 cursor-pointer"
         >
-          <Plus className="w-3.5 h-3.5" />
-          <span>+ Thêm Môn</span>
+          <Plus className="w-4 h-4" />
+          <span>Thêm Môn</span>
         </button>
       </div>
 
@@ -658,7 +659,7 @@ export default function QuizzesPage() {
                   title="Nhập đề trắc nghiệm cho môn học này"
                 >
                   <FileText className="w-3.5 h-3.5" />
-                  <span>+ Nhập Đề</span>
+                  <span>Nhập Đề</span>
                 </button>
 
                 <button
@@ -755,7 +756,7 @@ export default function QuizzesPage() {
                     title={`Thêm đề thi cho môn ${section.subjectCode}`}
                   >
                     <FileText className="w-3.5 h-3.5" />
-                    <span>+ Thêm Đề</span>
+                    <span>Thêm Đề</span>
                   </button>
                 </div>
               </div>
@@ -863,9 +864,10 @@ export default function QuizzesPage() {
 
             <button
               onClick={() => handleOpenAddQuiz(undefined, 'parser')}
-              className="text-xs font-bold text-indigo-400 hover:underline"
+              className="text-xs font-bold text-indigo-400 hover:underline flex items-center gap-1"
             >
-              + Nhập thêm đề
+              <Plus className="w-3.5 h-3.5" />
+              <span>Nhập thêm đề</span>
             </button>
           </div>
 
