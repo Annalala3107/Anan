@@ -7,6 +7,7 @@ import { isAnswerMatch } from '@/lib/utils';
 import { soundFx } from '@/lib/sound';
 import { buildStandardQuestions, StandardQuestion } from '@/lib/quizHelpers';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
+import FlashcardView from './FlashcardView';
 import {
   Zap,
   CheckCircle2,
@@ -22,6 +23,7 @@ import {
   Layers,
   Clock,
   AlertTriangle,
+  BookOpen,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -40,6 +42,8 @@ interface QueueItem {
 export default function LearnMode({ words, onExit }: LearnModeProps) {
   // Setup State
   const [isConfiguring, setIsConfiguring] = useState(true);
+  const [studyMethod, setStudyMethod] = useState<'flashcard' | 'rapid'>('flashcard');
+  const [isFlipped, setIsFlipped] = useState(false);
   const [batchSize, setBatchSize] = useState(15);
   const [streakTarget, setStreakTarget] = useState(2); // 1 = Speed run, 2 = Ironclad memory
 
@@ -162,6 +166,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const advanceNext = useCallback(() => {
     setSelectedOpt(null);
     setFeedbackState('idle');
+    setIsFlipped(false);
 
     // Check if all original questions have graduated
     if (graduatedIds.size >= totalInitialCount && totalInitialCount > 0) {
@@ -188,6 +193,58 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     }
   }, [currentIndex, queue, graduatedIds, totalInitialCount]);
 
+  // Flashcard Self-Rating (SM-2 Quality 1, 3, 5)
+  const handleRateFlashcard = useCallback(
+    (quality: 1 | 3 | 5) => {
+      if (!currentItem || !currentQ) return;
+      setTotalAttempts((prev) => prev + 1);
+
+      if (quality >= 3) {
+        soundFx.playCorrect();
+        setCorrectAttempts((prev) => prev + 1);
+        const newStreak = currentItem.correctStreak + 1;
+        currentItem.correctStreak = newStreak;
+
+        StorageEngine.updateWordProgress(currentQ.id, quality);
+
+        if (newStreak >= streakTarget || quality === 5) {
+          setGraduatedIds((prev) => {
+            const nextSet = new Set(prev);
+            nextSet.add(currentItem.id);
+            return nextSet;
+          });
+        }
+      } else {
+        soundFx.playWrong();
+        currentItem.correctStreak = 0;
+        currentItem.mistakes += 1;
+
+        setProblemQuestions((prev) => {
+          if (!prev.some((pq) => pq.id === currentQ.id)) {
+            return [...prev, currentQ];
+          }
+          return prev;
+        });
+
+        StorageEngine.recordMistakeOnly(currentQ.id);
+
+        // FORCED ACTIVE RECALL: Re-insert this question 3 positions ahead
+        setQueue((prevQueue) => {
+          const newQueue = [...prevQueue];
+          const reinsertIdx = Math.min(newQueue.length, currentIndex + 4);
+          newQueue.splice(reinsertIdx, 0, {
+            ...currentItem,
+            correctStreak: 0,
+          });
+          return newQueue;
+        });
+      }
+
+      advanceNext();
+    },
+    [currentItem, currentQ, streakTarget, currentIndex, advanceNext]
+  );
+
   const finishSession = () => {
     setIsCompleted(true);
     soundFx.playCelebration();
@@ -199,13 +256,38 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     StorageEngine.recordActivity('learn', 100);
   };
 
-  // Global Keyboard listener: 1-4, A-D, Space / Enter
+  // Global Keyboard listener: Flashcard Space / 1-3, Rapid Recall 1-4 / A-D
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isConfiguring || isCompleted || !currentQ) return;
 
       if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) return;
 
+      // FLASHCARD MODE HOTKEYS
+      if (studyMethod === 'flashcard') {
+        if (e.code === 'Space') {
+          e.preventDefault();
+          setIsFlipped((f) => !f);
+          soundFx.playClick();
+          return;
+        }
+
+        if (isFlipped) {
+          if (e.key === '1') {
+            e.preventDefault();
+            handleRateFlashcard(1);
+          } else if (e.key === '2') {
+            e.preventDefault();
+            handleRateFlashcard(3);
+          } else if (e.key === '3') {
+            e.preventDefault();
+            handleRateFlashcard(5);
+          }
+        }
+        return;
+      }
+
+      // RAPID RECALL MODE HOTKEYS
       // When wrong feedback is showing: press Space / Enter to advance
       if (feedbackState === 'wrong') {
         if (e.code === 'Space' || e.key === 'Enter') {
@@ -242,8 +324,11 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   }, [
     isConfiguring,
     isCompleted,
+    studyMethod,
+    isFlipped,
     feedbackState,
     currentQ,
+    handleRateFlashcard,
     handleSelectOption,
     advanceNext,
   ]);
@@ -279,14 +364,66 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           {/* Core Philosophy explanation */}
           <div className="p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/60 dark:border-indigo-800/60 text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-2 leading-relaxed">
             <p className="font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-2 text-sm sm:text-base">
-              <Target className="w-4 h-4 shrink-0 text-indigo-500" /> Cơ chế học vẹt cưỡng chế phản xạ:
+              <Target className="w-4 h-4 shrink-0 text-indigo-500" /> Phương pháp học tập Spaced Repetition:
             </p>
             <p className="pl-6">
-              • Nhìn câu hỏi → Bấm đáp án ngay (Phím số <strong>1 - 4</strong> hoặc phím chữ <strong>A - D</strong>). Chọn đúng sẽ tự động lướt qua cực nhanh trong <strong>0.4s</strong>.
+              • <strong>Thẻ Lật 3D</strong>: Đọc câu hỏi, lật mặt sau ngẫm nghĩ và tự đánh giá độ nhớ [1-3] theo thuật toán SM-2 giúp ghi nhớ sâu bản chất.
             </p>
             <p className="pl-6">
-              • Bấm <strong>SAI</strong>: Hệ thống đập ngay đáp án chuẩn màu xanh vào mắt để não ghi nhớ mặt chữ, và <strong>bắt buộc bạn phải làm lại câu đó sau 3 câu nữa</strong> cho đến khi thuộc lầu lầu!
+              • <strong>Cày Phản Xạ</strong>: Bấm đáp án A-D tốc độ cao, đúng tự lướt qua trong 0.4s, sai bị ép làm lại sau 3 câu.
             </p>
+          </div>
+
+          {/* Method Selector: Flashcard 3D vs Speed MCQ */}
+          <div>
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-indigo-500" /> Chọn hình thức học đợt này
+            </label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <button
+                type="button"
+                onClick={() => setStudyMethod('flashcard')}
+                className={`p-5 rounded-2xl border text-left transition-all ${
+                  studyMethod === 'flashcard'
+                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow scale-[1.005]'
+                    : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+                }`}
+              >
+                <div className="flex items-center justify-between gap-3 mb-1.5">
+                  <span className="font-black text-sm sm:text-base flex items-center gap-2">
+                    <BookOpen className="w-4 h-4" /> Thẻ Lật 3D (Khuyên dùng)
+                  </span>
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-white/20 whitespace-nowrap">
+                    Chuẩn SRS SM-2
+                  </span>
+                </div>
+                <p className="text-xs opacity-85 leading-relaxed">
+                  Lật thẻ 3D, đọc giải thích chi tiết và tự đánh giá [1-3]. Giúp hiểu sâu bản chất và ghi nhớ bền vững vào trí nhớ dài hạn.
+                </p>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setStudyMethod('rapid')}
+                className={`p-5 rounded-2xl border text-left transition-all ${
+                  studyMethod === 'rapid'
+                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow scale-[1.005]'
+                    : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+                }`}
+              >
+                <div className="flex items-center justify-between gap-3 mb-1.5">
+                  <span className="font-black text-sm sm:text-base flex items-center gap-2">
+                    <Zap className="w-4 h-4" /> Cày Phản Xạ Trắc Nghiệm
+                  </span>
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-white/20 whitespace-nowrap">
+                    Tốc độ 0.4s
+                  </span>
+                </div>
+                <p className="text-xs opacity-85 leading-relaxed">
+                  Chọn nhanh 1-4, đúng tự lướt qua trong 0.4s, sai bị ép làm lại sau 3 câu để rèn phản xạ nhanh trước kỳ thi.
+                </p>
+              </button>
+            </div>
           </div>
 
           {/* Batch Size Selector */}
@@ -511,16 +648,18 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-sm">
-            <Zap className="w-4 h-4" />
+            {studyMethod === 'flashcard' ? <Sparkles className="w-4 h-4" /> : <Zap className="w-4 h-4" />}
           </div>
           <div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-              Phản xạ cao tốc
+              {studyMethod === 'flashcard' ? 'Thẻ Ghi Nhớ 3D (Spaced Repetition)' : 'Phản xạ cao tốc'}
             </span>
             <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-white">
               <span>Đã thuộc: <strong className="text-emerald-500">{graduatedCount}</strong>/{totalInitialCount}</span>
               <span className="text-slate-400">•</span>
-              <span className="text-slate-400">Phím tắt: [1-4] hoặc [A-D]</span>
+              <span className="text-slate-400">
+                {studyMethod === 'flashcard' ? 'Phím: [Space] Lật thẻ, [1/2/3] Đánh giá' : 'Phím: [1-4] hoặc [A-D]'}
+              </span>
             </div>
           </div>
         </div>
@@ -556,127 +695,144 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         />
       </div>
 
-      {/* Main Flash Question Arena */}
-      <div
-        className={`p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border transition-all duration-200 shadow-xl relative ${
-          feedbackState === 'correct'
-            ? 'border-emerald-500/80 shadow-glow-success scale-[1.005]'
-            : feedbackState === 'wrong'
-            ? 'border-rose-500/80 shadow-glow-danger animate-shake'
-            : 'border-slate-200 dark:border-slate-800'
-        }`}
-      >
-        {/* Topic Tag */}
-        <div className="flex items-center justify-between mb-4">
-          <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60">
-            {currentQ.topic || currentQ.subject || 'Câu hỏi'}
-          </span>
-
-          {currentItem.mistakes > 0 && (
-            <span className="text-[10px] font-bold text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">
-              Đã bấm sai {currentItem.mistakes} lần
+      {/* Main Study Arena: 3D Flashcard or Rapid MCQ */}
+      {studyMethod === 'flashcard' ? (
+        <FlashcardView
+          currentQ={currentQ}
+          questionIndex={graduatedCount}
+          totalCount={totalInitialCount}
+          streak={currentItem.correctStreak}
+          streakTarget={streakTarget}
+          isFlipped={isFlipped}
+          onToggleFlip={() => {
+            setIsFlipped((f) => !f);
+            soundFx.playClick();
+          }}
+          onRate={handleRateFlashcard}
+        />
+      ) : (
+        /* Main Flash Question Arena (Rapid Drill) */
+        <div
+          className={`p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border transition-all duration-200 shadow-xl relative ${
+            feedbackState === 'correct'
+              ? 'border-emerald-500/80 shadow-glow-success scale-[1.005]'
+              : feedbackState === 'wrong'
+              ? 'border-rose-500/80 shadow-glow-danger animate-shake'
+              : 'border-slate-200 dark:border-slate-800'
+          }`}
+        >
+          {/* Topic Tag */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60">
+              {currentQ.topic || currentQ.subject || 'Câu hỏi'}
             </span>
+
+            {currentItem.mistakes > 0 && (
+              <span className="text-[10px] font-bold text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">
+                Đã bấm sai {currentItem.mistakes} lần
+              </span>
+            )}
+          </div>
+
+          {/* Question Content (With Syntax Highlighting for C code) */}
+          <div className="mb-6">
+            <CodeQuestionRenderer
+              content={currentQ.sentence}
+              className="text-base sm:text-lg md:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
+            />
+          </div>
+
+          {/* 4 Options Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            {currentQ.options &&
+              currentQ.options.map((opt, idx) => {
+                const letter = String.fromCharCode(65 + idx);
+                const isSelected = selectedOpt === opt;
+                const isTrueAnswer = isAnswerMatch(opt, currentQ.correctWord, currentQ.answerKey);
+
+                let optionStyle =
+                  'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 hover:border-indigo-500 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/30';
+
+                if (feedbackState === 'correct' && isSelected) {
+                  optionStyle =
+                    'bg-emerald-500 text-white border-emerald-500 shadow-glow font-bold scale-[1.01]';
+                } else if (feedbackState === 'wrong') {
+                  if (isSelected) {
+                    optionStyle =
+                      'bg-rose-500 text-white border-rose-500 shadow-glow line-through opacity-90';
+                  } else if (isTrueAnswer) {
+                    // VISUAL ANCHOR: The true answer GLOWS GREEN boldly!
+                    optionStyle =
+                      'bg-emerald-500/20 text-emerald-400 border-2 border-emerald-500 shadow-glow-success font-black ring-2 ring-emerald-500/40 animate-pulse';
+                  } else {
+                    optionStyle =
+                      'opacity-30 border-slate-200 dark:border-slate-800 text-slate-400';
+                  }
+                }
+
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    disabled={feedbackState !== 'idle'}
+                    onClick={() => handleSelectOption(opt)}
+                    className={`p-4 sm:p-5 rounded-2xl border text-left text-sm sm:text-base transition-all flex items-start gap-3.5 group relative ${optionStyle}`}
+                  >
+                    <span
+                      className={`w-7 h-7 rounded-xl flex items-center justify-center font-mono font-bold text-xs shrink-0 transition-colors ${
+                        feedbackState === 'correct' && isSelected
+                          ? 'bg-white/20 text-white'
+                          : feedbackState === 'wrong' && isTrueAnswer
+                          ? 'bg-emerald-500 text-white'
+                          : 'bg-black/5 dark:bg-white/10 text-slate-600 dark:text-slate-300'
+                      }`}
+                    >
+                      {idx + 1}
+                    </span>
+
+                    <span className="flex-1 font-medium leading-relaxed">
+                      {opt}
+                    </span>
+
+                    {/* Feedback Badge */}
+                    {feedbackState === 'correct' && isSelected && (
+                      <Check className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                    )}
+                    {feedbackState === 'wrong' && isSelected && (
+                      <X className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                    )}
+                    {feedbackState === 'wrong' && isTrueAnswer && (
+                      <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-emerald-500 text-white shrink-0 shadow-sm whitespace-nowrap mt-0.5">
+                        Đáp án đúng ⭐
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+          </div>
+
+          {/* Wrong Feedback Anchor Action Bar */}
+          {feedbackState === 'wrong' && (
+            <div className="mt-6 p-4 rounded-2xl bg-slate-900 border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-3 animate-fade-in">
+              <div className="flex items-center gap-2 text-xs text-slate-300">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                <span>
+                  Nhìn kỹ đáp án màu <strong className="text-emerald-400 font-bold">Xanh Lá</strong> ở trên! Câu này sẽ xuất hiện lại sau <strong>3 câu nữa</strong>.
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={advanceNext}
+                className="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-glow transition-all"
+              >
+                <span>Đã Nhớ, Tiếp Tục [Space]</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
           )}
         </div>
-
-        {/* Question Content (With Syntax Highlighting for C code) */}
-        <div className="mb-6">
-          <CodeQuestionRenderer
-            content={currentQ.sentence}
-            className="text-base sm:text-lg md:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
-          />
-        </div>
-
-        {/* 4 Options Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-          {currentQ.options &&
-            currentQ.options.map((opt, idx) => {
-              const letter = String.fromCharCode(65 + idx);
-              const isSelected = selectedOpt === opt;
-              const isTrueAnswer = isAnswerMatch(opt, currentQ.correctWord, currentQ.answerKey);
-
-              let optionStyle =
-                'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 hover:border-indigo-500 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/30';
-
-              if (feedbackState === 'correct' && isSelected) {
-                optionStyle =
-                  'bg-emerald-500 text-white border-emerald-500 shadow-glow font-bold scale-[1.01]';
-              } else if (feedbackState === 'wrong') {
-                if (isSelected) {
-                  optionStyle =
-                    'bg-rose-500 text-white border-rose-500 shadow-glow line-through opacity-90';
-                } else if (isTrueAnswer) {
-                  // VISUAL ANCHOR: The true answer GLOWS GREEN boldly!
-                  optionStyle =
-                    'bg-emerald-500/20 text-emerald-400 border-2 border-emerald-500 shadow-glow-success font-black ring-2 ring-emerald-500/40 animate-pulse';
-                } else {
-                  optionStyle =
-                    'opacity-30 border-slate-200 dark:border-slate-800 text-slate-400';
-                }
-              }
-
-              return (
-                <button
-                  key={idx}
-                  type="button"
-                  disabled={feedbackState !== 'idle'}
-                  onClick={() => handleSelectOption(opt)}
-                  className={`p-4 sm:p-5 rounded-2xl border text-left text-sm sm:text-base transition-all flex items-start gap-3.5 group relative ${optionStyle}`}
-                >
-                  <span
-                    className={`w-7 h-7 rounded-xl flex items-center justify-center font-mono font-bold text-xs shrink-0 transition-colors ${
-                      feedbackState === 'correct' && isSelected
-                        ? 'bg-white/20 text-white'
-                        : feedbackState === 'wrong' && isTrueAnswer
-                        ? 'bg-emerald-500 text-white'
-                        : 'bg-black/5 dark:bg-white/10 text-slate-600 dark:text-slate-300'
-                    }`}
-                  >
-                    {idx + 1}
-                  </span>
-
-                  <span className="flex-1 font-medium leading-relaxed">
-                    {opt}
-                  </span>
-
-                  {/* Feedback Badge */}
-                  {feedbackState === 'correct' && isSelected && (
-                    <Check className="w-5 h-5 text-white shrink-0 mt-0.5" />
-                  )}
-                  {feedbackState === 'wrong' && isSelected && (
-                    <X className="w-5 h-5 text-white shrink-0 mt-0.5" />
-                  )}
-                  {feedbackState === 'wrong' && isTrueAnswer && (
-                    <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-emerald-500 text-white shrink-0 shadow-sm whitespace-nowrap mt-0.5">
-                      Đáp án đúng ⭐
-                    </span>
-                  )}
-                </button>
-              );
-            })}
-        </div>
-
-        {/* Wrong Feedback Anchor Action Bar */}
-        {feedbackState === 'wrong' && (
-          <div className="mt-6 p-4 rounded-2xl bg-slate-900 border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-3 animate-fade-in">
-            <div className="flex items-center gap-2 text-xs text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-              <span>
-                Nhìn kỹ đáp án màu <strong className="text-emerald-400 font-bold">Xanh Lá</strong> ở trên! Câu này sẽ xuất hiện lại sau <strong>3 câu nữa</strong>.
-              </span>
-            </div>
-
-            <button
-              type="button"
-              onClick={advanceNext}
-              className="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-glow transition-all"
-            >
-              <span>Đã Nhớ, Tiếp Tục [Space]</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-        )}
-      </div>
+      )}
     </div>
   );
 }

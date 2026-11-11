@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
+import { getQuizDisplayName } from '@/lib/defaultBanks';
 import { Word, WordProgress } from '@/lib/types';
 import WordModal from '@/components/WordModal';
 import { SpeechService } from '@/lib/speech';
@@ -53,17 +54,7 @@ export default function Home() {
   }).length;
 
   const masteredPercent = Math.round((masteredCount / totalWords) * 100);
-
-  const getActiveQuizTitle = () => {
-    if (activeCustomQuiz) return activeCustomQuiz.name;
-    if (selectedQuizPath.includes('csi106_all') || selectedQuizPath.includes('cea201_all')) return 'Kiến Trúc Máy Tính (CSI106) — Đề Tổng Hợp 347 Câu';
-    if (selectedQuizPath.includes('csi_') || selectedQuizPath.includes('cea_')) return 'Kiến Trúc Máy Tính (CSI106) — Chuyên Đề Phân Loại';
-    if (selectedQuizPath.includes('ssa101_all') || selectedQuizPath.includes('ssl101_all')) return 'Kỹ Năng Học Đại Học & Kỹ Năng Mềm (SSA101) — Đề Tổng Hợp 370 Câu';
-    if (selectedQuizPath.includes('ssa_') || selectedQuizPath.includes('ssl_')) return 'Kỹ Năng Học Đại Học (SSA101) — Chuyên Đề Phân Loại';
-    if (selectedQuizPath.includes('prf192_all')) return 'Lập Trình C (PRF192) — Đề Tổng Hợp 253 Câu';
-    if (selectedQuizPath.includes('prf_')) return 'Lập Trình C (PRF192) — Chuyên Đề Phân Loại';
-    return 'Kiến Trúc Máy Tính (CSI106) — Đề Tổng Hợp';
-  };
+  const quizInfo = getQuizDisplayName(selectedQuizPath, activeCustomQuiz, words);
 
   return (
     <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6 md:py-10 space-y-8 animate-fade-in">
@@ -78,7 +69,7 @@ export default function Home() {
               <span>Đang kích hoạt</span>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight">
-              {getActiveQuizTitle()}
+              {quizInfo.title}
             </h1>
             <p className="text-slate-300 text-sm md:text-base">
               Bộ câu hỏi gồm <strong className="text-white">{totalWords}</strong> câu hỏi trắc nghiệm / từ vựng đã được chuẩn hoá với đáp án và giải thích chi tiết.

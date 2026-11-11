@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Flame, Sparkles, Volume2, VolumeX, Moon, Sun, BookOpen, Layers, Focus, AlertTriangle } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
+import { getQuizDisplayName } from '@/lib/defaultBanks';
 import { useEffect, useState } from 'react';
 
 export default function Header() {
@@ -72,20 +73,7 @@ export default function Header() {
     }
   };
 
-  const getQuizName = () => {
-    if (activeCustomQuiz) return activeCustomQuiz.name;
-    if (selectedQuizPath.includes('csi106_all') || selectedQuizPath.includes('cea201_all'))
-      return 'CSI106 - Full (347 câu)';
-    if (selectedQuizPath.includes('csi_') || selectedQuizPath.includes('cea_'))
-      return 'CSI106 Chuyên Đề';
-    if (selectedQuizPath.includes('ssa101_all') || selectedQuizPath.includes('ssl101_all'))
-      return 'SSA101 - Full (370 câu)';
-    if (selectedQuizPath.includes('ssa_') || selectedQuizPath.includes('ssl_'))
-      return 'SSA101 Chuyên Đề';
-    if (selectedQuizPath.includes('prf192_all')) return 'PRF192 - C (253 câu)';
-    if (selectedQuizPath.includes('prf_')) return 'PRF192 Chuyên Đề';
-    return 'CSI106 - Full (347 câu)';
-  };
+  const quizInfo = getQuizDisplayName(selectedQuizPath, activeCustomQuiz);
 
   // In active study session with Zen Focus Mode enabled, completely hide the global header for zero distraction
   if (pathname?.startsWith('/session') && zenMode) {
@@ -117,7 +105,7 @@ export default function Header() {
             className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60 hover:bg-indigo-100 transition-colors"
           >
             <Layers className="w-3.5 h-3.5" />
-            <span className="max-w-[240px] truncate">{getQuizName()}</span>
+            <span className="max-w-[240px] truncate">{quizInfo.shortName}</span>
           </Link>
         </div>
 

@@ -21,6 +21,10 @@ interface QuizStoreState {
   isExamActive: boolean;
   setIsExamActive: (val: boolean) => void;
 
+  // Visual Aesthetics state
+  starfieldEnabled: boolean;
+  toggleStarfield: () => void;
+
   setSelectedQuizPath: (path: string) => void;
   setActiveCustomQuiz: (quiz: CustomQuiz | null) => void;
   setWords: (words: Word[]) => void;
@@ -46,6 +50,8 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
   ambientSoundType: 'alpha_drone',
   isExamActive: false,
   setIsExamActive: (isExamActive: boolean) => set({ isExamActive }),
+  starfieldEnabled: false,
+  toggleStarfield: () => set((state) => ({ starfieldEnabled: !state.starfieldEnabled })),
 
   setSelectedQuizPath: (path: string) => {
     StorageEngine.setSelectedQuiz(path);

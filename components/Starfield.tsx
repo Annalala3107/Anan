@@ -6,17 +6,13 @@ import { useQuizStore } from '@/lib/quizStore';
 export default function Starfield() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const zenMode = useQuizStore((s) => s.zenMode);
+  const starfieldEnabled = useQuizStore((s) => s.starfieldEnabled);
 
   useEffect(() => {
+    if (!starfieldEnabled || zenMode) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
-
-    // In Zen Focus Mode, completely disable canvas drawing to save GPU/CPU cycles
-    if (zenMode) {
-      const ctx = canvas.getContext('2d');
-      if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
-      return;
-    }
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -80,10 +76,19 @@ export default function Starfield() {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationId);
     };
-  }, [zenMode]);
+  }, [starfieldEnabled, zenMode]);
 
   if (zenMode) {
     return null;
+  }
+
+  if (!starfieldEnabled) {
+    return (
+      <div
+        className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-40 transition-opacity duration-500"
+        aria-hidden="true"
+      />
+    );
   }
 
   return (
