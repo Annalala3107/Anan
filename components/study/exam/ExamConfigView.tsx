@@ -36,8 +36,8 @@ export default function ExamConfigView({
   onStartExam,
 }: ExamConfigViewProps) {
   return (
-    <div className="w-full max-w-4xl mx-auto py-6 px-4 sm:px-6 animate-fade-in">
-      <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6">
+    <div className="w-full max-w-4xl mx-auto py-4 sm:py-6 px-3.5 sm:px-6 animate-fade-in">
+      <div className="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl space-y-5 sm:space-y-6">
         {/* Header */}
         <div className="flex items-center gap-3.5 border-b border-slate-100 dark:border-slate-800 pb-5">
           <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center font-bold shadow-sm">
@@ -233,11 +233,11 @@ export default function ExamConfigView({
         </div>
 
         {/* Action buttons */}
-        <div className="flex items-center gap-3 pt-2">
+        <div className="flex flex-col-reverse sm:flex-row items-center gap-2.5 sm:gap-3 pt-2">
           <button
             type="button"
             onClick={onExit}
-            className="py-3.5 px-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm"
+            className="w-full sm:w-auto py-3.5 px-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm active:scale-95 touch-manipulation"
           >
             Quay lại
           </button>
@@ -245,10 +245,11 @@ export default function ExamConfigView({
             type="button"
             disabled={filteredAvailableCount === 0}
             onClick={onStartExam}
-            className="flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rose-600 to-indigo-600 hover:from-rose-700 hover:to-indigo-700 text-white font-black flex items-center justify-center gap-2 shadow-glow text-sm transition-all disabled:opacity-50"
+            className="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rose-600 to-indigo-600 hover:from-rose-700 hover:to-indigo-700 text-white font-black flex items-center justify-center gap-2 shadow-glow text-sm transition-all disabled:opacity-50 active:scale-95 touch-manipulation select-none"
           >
             <Play className="w-4 h-4 fill-current" />
-            <span>BẮT ĐẦU LÀM BÀI [Enter]</span>
+            <span className="sm:hidden">BẮT ĐẦU LÀM BÀI THI</span>
+            <span className="hidden sm:inline">BẮT ĐẦU LÀM BÀI [Enter]</span>
           </button>
         </div>
       </div>

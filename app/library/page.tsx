@@ -54,7 +54,7 @@ export default function LibraryPage() {
   });
 
   return (
-    <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6 md:py-10 space-y-6 animate-fade-in">
+    <div className="w-full px-3.5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-5 md:py-10 pb-28 md:pb-12 space-y-5 sm:space-y-6 animate-fade-in">
       {/* Title */}
       <div>
         <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-3">

@@ -56,6 +56,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   const [timeLeft, setTimeLeft] = useState(600); // in seconds, or -1 for untimed
   const [elapsedSeconds, setElapsedSeconds] = useState(0); // counts up when untimed
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false); // Collapsible navigator on mobile
 
   // Result Review Filter States (Tính năng 2: Lọc xem câu hỏi theo chuyên đề & câu sai)
   const [resultFilterMode, setResultFilterMode] = useState<'all' | 'wrong' | 'flagged'>('all');
@@ -524,12 +525,30 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
         </div>
       </div>
 
-      {/* Filter Toolbar & Statistics */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+      {/* Mobile Question Navigator Toggle */}
+      <div className="flex sm:hidden items-center justify-between p-2.5 rounded-2xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 mb-3 select-none">
+        <button
+          type="button"
+          onClick={() => setIsNavOpen(!isNavOpen)}
+          className="flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 active:scale-95 touch-manipulation"
+        >
+          <Layers className="w-3.5 h-3.5 text-indigo-500" />
+          <span>Bảng câu ({answeredCount}/{questions.length})</span>
+          <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 font-bold">
+            {isNavOpen ? '▲ Thu gọn' : '▼ Mở rộng'}
+          </span>
+        </button>
+        <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400">
+          Câu {currentIndex + 1}/{questions.length}
+        </span>
+      </div>
+
+      {/* Filter Toolbar & Statistics (Collapsible on mobile when closed) */}
+      <div className={`${isNavOpen ? 'flex' : 'hidden sm:flex'} flex-wrap items-center justify-between gap-2 mb-3 animate-fade-in`}>
         <div className="flex items-center gap-1 p-1 rounded-xl bg-slate-100 dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 text-xs">
           <button
             onClick={() => setFilterView('all')}
-            className={`px-3 py-1 rounded-lg font-semibold transition-all ${
+            className={`px-2.5 sm:px-3 py-1 rounded-lg font-semibold transition-all ${
               filterView === 'all'
                 ? 'bg-indigo-600 text-white font-bold shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -539,7 +558,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
           </button>
           <button
             onClick={() => setFilterView('unanswered')}
-            className={`px-3 py-1 rounded-lg font-semibold transition-all ${
+            className={`px-2.5 sm:px-3 py-1 rounded-lg font-semibold transition-all ${
               filterView === 'unanswered'
                 ? 'bg-amber-600 text-white font-bold shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -549,14 +568,14 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
           </button>
           <button
             onClick={() => setFilterView('flagged')}
-            className={`px-3 py-1 rounded-lg font-semibold transition-all flex items-center gap-1 ${
+            className={`px-2.5 sm:px-3 py-1 rounded-lg font-semibold transition-all flex items-center gap-1 ${
               filterView === 'flagged'
                 ? 'bg-rose-600 text-white font-bold shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <Flag className="w-3 h-3 fill-current" />
-            Đã gắn cờ ({flaggedCount})
+            <span className="hidden sm:inline">Đã gắn cờ</span> ({flaggedCount})
           </button>
         </div>
 
@@ -567,8 +586,8 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
         </div>
       </div>
 
-      {/* Question Navigator Grid */}
-      <div className="flex flex-wrap gap-1.5 mb-6 p-3 rounded-2xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 max-h-36 overflow-y-auto">
+      {/* Question Navigator Grid (Collapsible on mobile) */}
+      <div className={`${isNavOpen ? 'flex' : 'hidden sm:flex'} flex-wrap gap-1.5 mb-5 p-3 rounded-2xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 max-h-36 overflow-y-auto animate-fade-in`}>
         {questions.map((_, idx) => {
           const isAnswered = Boolean(answers[idx]);
           const isFlagged = Boolean(flags[idx]);
@@ -580,8 +599,11 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
           return (
             <button
               key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              className={`relative w-10 h-10 sm:w-9 sm:h-9 rounded-xl text-xs font-bold transition-all flex items-center justify-center ${
+              onClick={() => {
+                setCurrentIndex(idx);
+                if (window.innerWidth < 640) setIsNavOpen(false);
+              }}
+              className={`relative w-9 h-9 sm:w-9 sm:h-9 rounded-xl text-xs font-bold transition-all flex items-center justify-center active:scale-95 touch-manipulation select-none ${
                 isCurrent
                   ? 'bg-indigo-600 text-white ring-2 ring-indigo-400 shadow-md scale-105 z-10'
                   : isFlagged
@@ -604,11 +626,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
 
         {filterView === 'flagged' && flaggedCount === 0 && (
           <div className="w-full text-center py-2 text-xs text-slate-400 italic">
-            Chưa có câu hỏi nào được gắn cờ. Bấm phím{' '}
-            <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] text-slate-600 dark:text-slate-300">
-              F
-            </kbd>{' '}
-            hoặc nút &quot;Gắn cờ&quot; để đánh dấu xem lại.
+            Chưa có câu hỏi nào được gắn cờ. Bấm nút &quot;Gắn cờ&quot; để đánh dấu xem lại.
           </div>
         )}
         {filterView === 'unanswered' && unansweredCount === 0 && (
@@ -617,6 +635,37 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
           </div>
         )}
       </div>
+
+      {/* Horizontal Strip on Mobile when closed */}
+      {!isNavOpen && (
+        <div className="flex sm:hidden items-center gap-1.5 overflow-x-auto pb-2.5 mb-3 px-1">
+          {questions.map((_, idx) => {
+            const isAnswered = Boolean(answers[idx]);
+            const isFlagged = Boolean(flags[idx]);
+            const isCurrent = idx === currentIndex;
+            return (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`w-8 h-8 rounded-lg text-xs font-bold shrink-0 transition-all flex items-center justify-center active:scale-95 touch-manipulation select-none relative ${
+                  isCurrent
+                    ? 'bg-indigo-600 text-white ring-2 ring-indigo-400'
+                    : isFlagged
+                    ? 'bg-amber-500/20 text-amber-500 border border-amber-500/60'
+                    : isAnswered
+                    ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
+                }`}
+              >
+                {idx + 1}
+                {isFlagged && (
+                  <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-amber-500 ring-1 ring-white dark:ring-[#131D31]" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {/* Question Card */}
       <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-6">
@@ -657,7 +706,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       </div>
 
       {/* Choices */}
-      <div className="space-y-3 mb-6">
+      <div className="space-y-2.5 sm:space-y-3 mb-6">
         {currentQ.options.map((opt, idx) => {
           const isChosen = answers[currentIndex] === opt;
           return (
@@ -667,13 +716,13 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
                 soundFx.playClick();
                 setAnswers((prev) => ({ ...prev, [currentIndex]: opt }));
               }}
-              className={`w-full p-4 rounded-2xl font-semibold border text-left transition-all flex items-center justify-between ${
+              className={`w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-all flex items-center justify-between active:scale-[0.99] touch-manipulation select-none ${
                 isChosen
                   ? 'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-500 text-indigo-700 dark:text-indigo-300 shadow-glow font-bold'
                   : 'bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-slate-400'
               }`}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5 sm:gap-3">
                 <span
                   className={`w-7 h-7 rounded-xl text-xs flex items-center justify-center font-mono font-bold shrink-0 ${
                     isChosen
@@ -683,7 +732,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
                 >
                   {String.fromCharCode(65 + idx)}
                 </span>
-                <span className="text-sm sm:text-base">{cleanOptionText(opt)}</span>
+                <span className="text-sm sm:text-base leading-relaxed">{cleanOptionText(opt)}</span>
               </div>
               <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500 hidden sm:inline-block">
                 [{String.fromCharCode(65 + idx)}]
@@ -693,29 +742,29 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
         })}
       </div>
 
-      {/* Navigation Controls */}
-      <div className="flex items-center justify-between pt-2">
+      {/* Sticky Bottom Thumb-Friendly Navigation Controls on Mobile */}
+      <div className="sticky bottom-0 -mx-4 sm:mx-0 p-3 sm:p-0 bg-white/95 dark:bg-[#090E17]/95 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none border-t border-slate-200/80 dark:border-slate-800/80 sm:border-0 flex items-center justify-between gap-2.5 shadow-glass sm:shadow-none z-20 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-0">
         <button
           disabled={currentIndex === 0}
           onClick={() => setCurrentIndex((i) => i - 1)}
-          className="py-3 px-5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold disabled:opacity-30 flex items-center gap-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          className="flex-1 sm:flex-none py-3 px-4 sm:px-5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold disabled:opacity-30 flex items-center justify-center gap-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-xs sm:text-sm active:scale-95 touch-manipulation select-none"
         >
-          <ArrowLeft className="w-4 h-4" /> Câu trước
+          <ArrowLeft className="w-4 h-4" /> <span>Câu trước</span>
         </button>
 
         {currentIndex < questions.length - 1 ? (
           <button
             onClick={() => setCurrentIndex((i) => i + 1)}
-            className="py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold flex items-center gap-2 shadow-glow transition-all"
+            className="flex-1 sm:flex-none py-3 px-5 sm:px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold flex items-center justify-center gap-1.5 shadow-glow transition-all text-xs sm:text-sm active:scale-95 touch-manipulation select-none"
           >
-            Câu tiếp theo <ArrowRight className="w-4 h-4" />
+            <span>Câu tiếp theo</span> <ArrowRight className="w-4 h-4" />
           </button>
         ) : (
           <button
             onClick={handleRequestSubmit}
-            className="py-3 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold flex items-center gap-2 shadow-glow-success transition-all"
+            className="flex-1 sm:flex-none py-3 px-5 sm:px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold flex items-center justify-center gap-1.5 shadow-glow-success transition-all text-xs sm:text-sm active:scale-95 touch-manipulation select-none"
           >
-            Nộp bài thi <CheckCircle2 className="w-4 h-4" />
+            <span>Nộp bài thi</span> <CheckCircle2 className="w-4 h-4" />
           </button>
         )}
       </div>

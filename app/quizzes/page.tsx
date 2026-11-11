@@ -228,46 +228,46 @@ export default function QuizzesPage() {
   };
 
   return (
-    <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6 md:py-10 space-y-8 animate-fade-in">
+    <div className="w-full px-3.5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-5 md:py-10 pb-28 md:pb-12 space-y-6 sm:space-y-8 animate-fade-in">
       {/* Top Banner */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
-            <Layers className="w-8 h-8 text-indigo-500" />
-            Ngân Hàng Đề Thi & Chuyên Đề Phân Loại
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5 sm:gap-3">
+            <Layers className="w-7 h-7 sm:w-8 sm:h-8 text-indigo-500 shrink-0" />
+            <span>Ngân Hàng Đề Thi & Chuyên Đề</span>
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
+          <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">
             Quản lý linh hoạt môn học, đề thi chuyên đề chính khóa và các môn tùy chỉnh (MAD101, SWE201, MAS291...)
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5 flex-wrap self-start lg:self-auto">
+        <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full lg:w-auto">
           <button
             onClick={() => {
               setEditingSubject(null);
               setIsSubjectModalOpen(true);
             }}
-            className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold shadow-md hover:shadow-indigo-500/20 active:scale-95 transition-all text-sm"
+            className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold shadow-md hover:shadow-indigo-500/20 active:scale-95 touch-manipulation transition-all text-xs sm:text-sm text-center"
             title="Thêm môn học mới theo chương trình của bạn"
           >
-            <FolderPlus className="w-4 h-4" />
-            <span>Thêm Môn Học Mới</span>
+            <FolderPlus className="w-4 h-4 shrink-0" />
+            <span>Thêm Môn Học</span>
           </button>
 
           <button
             onClick={() => handleOpenAddQuiz(undefined, 'parser')}
-            className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-md hover:shadow-emerald-500/20 active:scale-95 transition-all text-sm"
+            className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-md hover:shadow-emerald-500/20 active:scale-95 touch-manipulation transition-all text-xs sm:text-sm text-center"
             title="Dán nội dung từ Word, PDF, Web để tự động bóc tách thành bộ đề thi"
           >
-            <FileText className="w-4 h-4" />
-            <span>Nhập Đề Nhanh (Word/Text)</span>
+            <FileText className="w-4 h-4 shrink-0" />
+            <span>Nhập Đề Word/Text</span>
           </button>
 
           <button
             onClick={() => handleOpenAddQuiz(undefined, 'ai')}
-            className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 text-white font-bold shadow-glow hover:opacity-95 active:scale-95 transition-all text-sm"
+            className="col-span-2 sm:col-span-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 text-white font-bold shadow-glow hover:opacity-95 active:scale-95 touch-manipulation transition-all text-xs sm:text-sm text-center"
           >
-            <Sparkles className="w-4 h-4 animate-pulse" />
+            <Sparkles className="w-4 h-4 animate-pulse shrink-0" />
             <span>Tạo Bộ Đề Bằng AI</span>
           </button>
         </div>

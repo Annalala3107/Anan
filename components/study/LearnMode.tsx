@@ -489,19 +489,19 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <button
                 type="button"
                 onClick={() => setStreakTarget(2)}
-                className={`p-5 rounded-2xl border-2 text-left transition-all relative cursor-pointer ${
+                className={`p-4 sm:p-5 rounded-2xl border-2 text-left transition-all relative cursor-pointer touch-manipulation select-none active:scale-[0.99] ${
                   streakTarget === 2
                     ? 'bg-indigo-500/10 dark:bg-indigo-950/40 border-indigo-500 shadow-[0_0_25px_rgba(99,102,241,0.25)] text-slate-900 dark:text-white scale-[1.01]'
                     : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
                 }`}
               >
-                <div className="flex items-center justify-between gap-3 mb-1.5 flex-nowrap">
-                  <span className={`font-black text-sm sm:text-base whitespace-nowrap ${
+                <div className="flex items-start sm:items-center justify-between gap-2 mb-1.5">
+                  <span className={`font-black text-sm sm:text-base ${
                     streakTarget === 2 ? 'text-indigo-600 dark:text-indigo-300' : 'text-slate-800 dark:text-slate-200'
                   }`}>
                     {studyMethod === 'flashcard' ? 'Chuẩn ghi nhớ sâu (Khuyên dùng)' : 'Chuẩn ghi nhớ sắt đá (Khuyên dùng)'}
                   </span>
-                  <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
                     streakTarget === 2
                       ? 'bg-indigo-500 text-white shadow-sm'
                       : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
@@ -519,19 +519,19 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <button
                 type="button"
                 onClick={() => setStreakTarget(1)}
-                className={`p-5 rounded-2xl border-2 text-left transition-all relative cursor-pointer ${
+                className={`p-4 sm:p-5 rounded-2xl border-2 text-left transition-all relative cursor-pointer touch-manipulation select-none active:scale-[0.99] ${
                   streakTarget === 1
                     ? 'bg-indigo-500/10 dark:bg-indigo-950/40 border-indigo-500 shadow-[0_0_25px_rgba(99,102,241,0.25)] text-slate-900 dark:text-white scale-[1.01]'
                     : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
                 }`}
               >
-                <div className="flex items-center justify-between gap-3 mb-1.5 flex-nowrap">
-                  <span className={`font-black text-sm sm:text-base whitespace-nowrap ${
+                <div className="flex items-start sm:items-center justify-between gap-2 mb-1.5">
+                  <span className={`font-black text-sm sm:text-base ${
                     streakTarget === 1 ? 'text-indigo-600 dark:text-indigo-300' : 'text-slate-800 dark:text-slate-200'
                   }`}>
                     Speed Run (Lướt nhanh)
                   </span>
-                  <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
                     streakTarget === 1
                       ? 'bg-indigo-500 text-white shadow-sm'
                       : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
@@ -549,28 +549,30 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           </div>
 
           {/* Action buttons */}
-          <div className="flex items-center gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex flex-col-reverse sm:flex-row items-center gap-3 sm:gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
             <button
               type="button"
               onClick={onExit}
-              className="py-4 px-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm"
+              className="w-full sm:w-auto py-3.5 sm:py-4 px-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm active:scale-95 touch-manipulation"
             >
               Quay lại
             </button>
             <button
               type="button"
               onClick={handleStartSession}
-              className="flex-1 py-4 px-8 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black flex items-center justify-center gap-2.5 shadow-glow text-base transition-all"
+              className="w-full sm:flex-1 py-4 px-6 sm:px-8 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black flex items-center justify-center gap-2.5 shadow-glow text-sm sm:text-base transition-all active:scale-95 touch-manipulation select-none"
             >
               {studyMethod === 'flashcard' ? (
                 <>
                   <BookOpen className="w-5 h-5" />
-                  <span>BẮT ĐẦU HỌC THẺ LẬT 3D [Enter]</span>
+                  <span className="sm:hidden">BẮT ĐẦU HỌC THẺ 3D</span>
+                  <span className="hidden sm:inline">BẮT ĐẦU HỌC THẺ LẬT 3D [Enter]</span>
                 </>
               ) : (
                 <>
                   <Zap className="w-5 h-5 fill-current" />
-                  <span>BẮT ĐẦU CÀY PHẢN XẠ [Enter]</span>
+                  <span className="sm:hidden">BẮT ĐẦU CÀY PHẢN XẠ</span>
+                  <span className="hidden sm:inline">BẮT ĐẦU CÀY PHẢN XẠ [Enter]</span>
                 </>
               )}
             </button>
@@ -684,21 +686,21 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const progressPercent = totalInitialCount > 0 ? Math.round((graduatedCount / totalInitialCount) * 100) : 0;
 
   return (
-    <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-6 px-4 sm:px-8 animate-fade-in space-y-5">
+    <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-4 sm:py-6 px-3 sm:px-8 animate-fade-in space-y-3 sm:space-y-5">
       {/* Top HUD Bar */}
-      <div className="flex items-center justify-between gap-3 flex-wrap">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-sm">
+      <div className="flex items-center justify-between gap-2.5 flex-wrap">
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          <div className="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-sm shrink-0">
             {studyMethod === 'flashcard' ? <Sparkles className="w-4 h-4" /> : <Zap className="w-4 h-4" />}
           </div>
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-              {studyMethod === 'flashcard' ? 'Thẻ Ghi Nhớ 3D (Spaced Repetition)' : 'Phản xạ cao tốc'}
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+              {studyMethod === 'flashcard' ? 'Thẻ Ghi Nhớ 3D' : 'Phản xạ cao tốc'}
             </span>
             <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-white">
               <span>Đã thuộc: <strong className="text-emerald-500">{graduatedCount}</strong>/{totalInitialCount}</span>
-              <span className="text-slate-400">•</span>
-              <span className="text-slate-400">
+              <span className="hidden sm:inline text-slate-400">•</span>
+              <span className="hidden sm:inline text-slate-400">
                 {studyMethod === 'flashcard' ? 'Phím: [Space] Lật thẻ, [1/2/3] Đánh giá' : 'Phím: [1-4] hoặc [A-D]'}
               </span>
             </div>
@@ -817,7 +819,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                     type="button"
                     disabled={feedbackState !== 'idle'}
                     onClick={() => handleSelectOption(opt)}
-                    className={`p-4 sm:p-5 rounded-2xl border text-left text-sm sm:text-base transition-all flex items-start gap-3.5 group relative ${optionStyle}`}
+                    className={`p-3 sm:p-5 rounded-xl sm:rounded-2xl border text-left text-sm sm:text-base transition-all flex items-start gap-3 sm:gap-3.5 group relative active:scale-[0.98] touch-manipulation select-none ${optionStyle}`}
                   >
                     <span
                       className={`w-7 h-7 rounded-xl flex items-center justify-center font-mono font-bold text-xs shrink-0 transition-colors ${

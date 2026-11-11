@@ -84,16 +84,16 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/70 dark:bg-[#090E17]/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 h-16 flex items-center justify-between">
+      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12 h-14 sm:h-16 flex items-center justify-between">
         {/* Logo & Brand */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/"
             onClick={(e) => handleNavClick(e, '/')}
-            className="flex items-center gap-2.5 font-extrabold text-xl tracking-tight text-slate-900 dark:text-white group"
+            className="flex items-center gap-2 font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white group"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-              <Sparkles className="w-5 h-5 text-white animate-pulse" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-pulse" />
             </div>
             <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-black">
               AnanQuiz
@@ -160,12 +160,12 @@ export default function Header() {
         </nav>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           {/* QR Device Sync */}
           <button
             onClick={() => setShowQrSync(true)}
             title="Đồng bộ 1-chạm sang điện thoại (Mã QR)"
-            className="px-2.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 text-xs font-bold border bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 shadow-sm"
+            className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl transition-all flex items-center gap-1.5 text-xs font-bold border bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 shadow-sm active:scale-95 touch-manipulation"
           >
             <Smartphone className="w-3.5 h-3.5 text-indigo-500" />
             <span className="hidden sm:inline">Đồng bộ ĐT</span>
@@ -179,7 +179,7 @@ export default function Header() {
                 ? 'Thoát Chế độ Tập Trung Tuyệt Đối (Phím Z)'
                 : 'Bật Chế độ Tập Trung Tuyệt Đối (Phím Z)'
             }
-            className={`px-2.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 text-xs font-bold border ${
+            className={`p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl transition-all flex items-center gap-1.5 text-xs font-bold border active:scale-95 touch-manipulation ${
               zenMode
                 ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow'
                 : 'bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-indigo-400'
@@ -195,17 +195,20 @@ export default function Header() {
           {/* Streak Counter */}
           <div
             title="Chuỗi ngày học liên tục"
-            className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-bold shadow-sm"
+            className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-bold shadow-sm select-none"
           >
-            <Flame className="w-4 h-4 fill-amber-500 text-amber-500 animate-bounce" />
-            <span>{streak} ngày</span>
+            <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-500 text-amber-500 animate-bounce" />
+            <span>
+              <strong className="font-mono">{streak}</strong>
+              <span className="hidden sm:inline"> ngày</span>
+            </span>
           </div>
 
           {/* Sound Toggle */}
           <button
             onClick={toggleSound}
             title={soundEnabled ? 'Tắt âm thanh phát âm' : 'Bật âm thanh phát âm'}
-            className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="p-1.5 sm:p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 touch-manipulation"
           >
             {soundEnabled ? (
               <Volume2 className="w-4 h-4 text-indigo-500" />
@@ -218,7 +221,7 @@ export default function Header() {
           <button
             onClick={toggleTheme}
             title={isDark ? 'Chuyển sang giao diện Sáng' : 'Chuyển sang giao diện Tối'}
-            className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="p-1.5 sm:p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 touch-manipulation"
           >
             {isDark ? (
               <Sun className="w-4 h-4 text-amber-400" />
