@@ -32,6 +32,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       correctWord: q.correctWord,
       options: q.options,
       explanation: q.explanation,
+      answerKey: q.answerKey,
       questionNumber: q.id || idx + 1,
     }));
     setQuestions(list);
@@ -49,7 +50,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       if (isCompleted || !currentQ) return;
 
       if (!selectedWord) {
-        if (['1', '2', '3', '4'].includes(e.key)) {
+        if (['1', '2', '3', '4', '5', '6'].includes(e.key)) {
           const idx = parseInt(e.key, 10) - 1;
           if (currentQ.options[idx]) {
             handleSelect(currentQ.options[idx]);
@@ -75,7 +76,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   }
 
   const isOptionCorrect = (opt: string) => {
-    return isAnswerMatch(opt, currentQ.correctWord);
+    return isAnswerMatch(opt, currentQ.correctWord, currentQ.answerKey);
   };
 
   const handleSelect = (choice: string) => {

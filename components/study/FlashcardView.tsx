@@ -161,7 +161,15 @@ export default function FlashcardView({
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2 text-xs">
                     {currentQ.options.map((opt, idx) => {
-                      const isTargetCorrect = opt.includes(currentQ.correctWord) || (currentQ.answerKey && opt.startsWith(currentQ.answerKey));
+                      const optLetter = String.fromCharCode(65 + idx);
+                      const validAnswerKeys = (currentQ.answerKey || '')
+                        .split(/[,/;\s]+/)
+                        .map((k) => k.trim().toUpperCase())
+                        .filter(Boolean);
+                      const isTargetCorrect =
+                        opt.includes(currentQ.correctWord) ||
+                        validAnswerKeys.includes(optLetter) ||
+                        (currentQ.answerKey && opt.startsWith(`${currentQ.answerKey}.`));
                       return (
                         <div
                           key={idx}

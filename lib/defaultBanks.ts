@@ -1,4 +1,4 @@
-import { Cpu, GraduationCap, Code2 } from 'lucide-react';
+import { Cpu, GraduationCap, Code2, Layers } from 'lucide-react';
 import { QuizSet, CustomQuiz, Word } from './types';
 
 export interface SubjectSection {
@@ -11,6 +11,92 @@ export interface SubjectSection {
 }
 
 export const QUESTION_BANKS: SubjectSection[] = [
+  {
+    id: 'cea201',
+    title: 'Tổ Chức & Kiến Trúc Máy Tính (CEA201)',
+    subjectCode: 'CEA201',
+    icon: Layers,
+    color: 'from-violet-600 to-indigo-600',
+    quizzes: [
+      {
+        id: 'cea_all',
+        name: 'CEA201 — Đề Thi Tổng Hợp Toàn Bộ 318 Câu',
+        description: 'Trọn bộ 318 câu hỏi trắc nghiệm ôn tập thi cuối kỳ môn Tổ chức và Kiến trúc máy tính (CEA201).',
+        file_path: '/data/cea201_all.json',
+        is_public: true,
+        wordCount: 318,
+        tags: ['Full Exam', '318 Câu', 'Official'],
+        subject: 'CEA201',
+        topic: 'Tổng Hợp'
+      },
+      {
+        id: 'cea_mem',
+        name: 'Chuyên Đề 1: Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính',
+        description: 'Ánh xạ Cache (Direct, Associative, Set-Associative), Hamming ECC, SRAM/DRAM/SDRAM/DDR, RAID 0-5, SSD & HDD.',
+        file_path: '/data/cea_memory_cache_raid.json',
+        is_public: true,
+        wordCount: 86,
+        tags: ['Cache Mapping', 'Hamming ECC', 'RAID'],
+        subject: 'CEA201',
+        topic: 'Cache, RAID & Lưu Trữ'
+      },
+      {
+        id: 'cea_isa',
+        name: 'Chuyên Đề 2: Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU',
+        description: 'Chế độ định địa chỉ (Addressing modes), chu trình lệnh, thanh ghi MAR/MBR/PC/IR, RISC vs CISC, Pipelining, MASM32.',
+        file_path: '/data/cea_isa_cpu_pipeline.json',
+        is_public: true,
+        wordCount: 65,
+        tags: ['Addressing', 'RISC/CISC', 'Pipeline'],
+        subject: 'CEA201',
+        topic: 'ISA, CPU & Pipeline'
+      },
+      {
+        id: 'cea_overview',
+        name: 'Chuyên Đề 3: Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song',
+        description: 'Kiến trúc Von Neumann & IAS, các thế hệ máy tính, định luật Amdahl, MIPS, phân loại Flynn (SISD, SIMD, MIMD), SMP & NUMA.',
+        file_path: '/data/cea_overview_parallel.json',
+        is_public: true,
+        wordCount: 54,
+        tags: ['Amdahl', 'Flynn', 'Von Neumann'],
+        subject: 'CEA201',
+        topic: 'Hiệu Năng & Song Song'
+      },
+      {
+        id: 'cea_os',
+        name: 'Chuyên Đề 4: Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo',
+        description: 'Tiến trình (Process states), lập lịch (Long/Medium/Short-term scheduling), Phân trang (Paging), Phân đoạn, TLB, MMU, API & ABI.',
+        file_path: '/data/cea_os_virtual_memory.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['Scheduling', 'Paging', 'TLB/MMU'],
+        subject: 'CEA201',
+        topic: 'HĐH & Bộ Nhớ Ảo'
+      },
+      {
+        id: 'cea_io',
+        name: 'Chuyên Đề 5: Hệ Thống Vào/Ra (I/O), Ngắt & Bus',
+        description: 'Programmed I/O, Interrupt-driven I/O, DMA, Memory-mapped vs Isolated I/O, Daisy chain, cấu trúc Bus hệ thống.',
+        file_path: '/data/cea_io_bus_interrupt.json',
+        is_public: true,
+        wordCount: 33,
+        tags: ['DMA', 'Interrupts', 'System Bus'],
+        subject: 'CEA201',
+        topic: 'I/O, Ngắt & Bus'
+      },
+      {
+        id: 'cea_logic',
+        name: 'Chuyên Đề 6: Đại Số Boolean & Mạch Logic Số',
+        description: 'Cổng logic (AND, OR, NOT, NAND, NOR, XOR), định lý DeMorgan, bìa Karnaugh (K-map), dịch bit, xoay bit, số bù 2.',
+        file_path: '/data/cea_boolean_logic.json',
+        is_public: true,
+        wordCount: 30,
+        tags: ['Boolean', 'K-Map', 'Bitwise'],
+        subject: 'CEA201',
+        topic: 'Boolean & Mạch Logic'
+      }
+    ]
+  },
   {
     id: 'csi106',
     title: 'Kiến Trúc Máy Tính (CSI106)',
@@ -331,8 +417,8 @@ export function getQuizDisplayName(
   }
 
   return {
-    title: 'Kiến Trúc Máy Tính (CSI106) — Đề Tổng Hợp',
-    shortName: 'CSI106 - Full (347 câu)',
-    subject: 'CSI106',
+    title: 'Tổ Chức & Kiến Trúc Máy Tính (CEA201) — Đề Tổng Hợp',
+    shortName: 'CEA201 - Full (318 câu)',
+    subject: 'CEA201',
   };
 }

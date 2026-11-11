@@ -51,15 +51,18 @@ export function parseRawExamText(
   blocks.forEach((block, index) => {
     const qNum = index + 1;
     try {
-      // 1. Detect Answer line (e.g. "Đáp án: A", "Answer: B", "Key: C", "Đ/A: D")
+      // 1. Detect Answer line (e.g. "Đáp án: A", "Answer: B, C", "Key: C", "Đ/A: D")
       let detectedAnswerLetter: string | null = null;
       let explanation = '';
 
       const answerMatch = block.match(
-        /(?:^|\n)\s*(?:Đáp\s*án|Answer|Key|Đ\/A|ĐA|Correct)\s*[\:\=]?\s*([A-Da-d])\b/i
+        /(?:^|\n|\s)\s*(?:Đáp\s*án|Answer|Key|Đ\/A|ĐA|Correct)\s*[\:\=]?\s*([A-Fa-f](?:\s*,\s*[A-Fa-f])*)\b/i
       );
       if (answerMatch) {
-        detectedAnswerLetter = answerMatch[1].toUpperCase();
+        detectedAnswerLetter = answerMatch[1]
+          .split(',')
+          .map((s) => s.trim().toUpperCase())
+          .join(', ');
       }
 
       // Detect Explanation line
@@ -86,7 +89,7 @@ export function parseRawExamText(
       let asteriskAnswerLetter: string | null = null;
       let currentOption: { letter: string; text: string } | null = null;
 
-      const optionPrefixRegex = /^\s*(\*)?\s*([A-Da-d])[\.\:\)](.*)$/;
+      const optionPrefixRegex = /^\s*(\*)?\s*([A-Fa-f])[\.\:\)](.*)$/;
 
       for (const line of lines) {
         const optMatch = line.match(optionPrefixRegex);
@@ -117,7 +120,7 @@ export function parseRawExamText(
 
       // If options couldn't be extracted line-by-line, try horizontal single-line options: A. ... B. ...
       if (options.length < 2) {
-        const inlineRegex = /(?:^|\s+)(\*)?\s*([A-Da-d])[\.\:\)]\s*([\s\S]*?)(?=(?:\s+[A-Da-d][\.\:\)]|$))/g;
+        const inlineRegex = /(?:^|\s+)(\*)?\s*([A-Fa-f])[\.\:\)]\s*([\s\S]*?)(?=(?:\s+[A-Fa-f][\.\:\)]\s+|$))/g;
         const inlineOptions: { letter: string; text: string; hasAsterisk: boolean }[] = [];
         let inlineMatch;
         while ((inlineMatch = inlineRegex.exec(cleanBlock)) !== null) {
@@ -134,7 +137,7 @@ export function parseRawExamText(
             options.push(`${opt.letter}. ${opt.text}`);
           }
           const firstOptLetter = inlineOptions[0].letter;
-          const firstIdx = cleanBlock.search(new RegExp(`(?:^|\\s+)\\*?\\s*${firstOptLetter}[\\.\\:\\)]`));
+          const firstIdx = cleanBlock.search(new RegExp(`(?:^|\\s+)\\*?\\s*${firstOptLetter}[\\.\\:\\)]\\s+`));
           if (firstIdx >= 0) {
             questionStem = cleanBlock.substring(0, firstIdx).trim();
           }
@@ -146,15 +149,16 @@ export function parseRawExamText(
         .replace(/^(?:Câu\s*\d+|Question\s*\d+|\d+)[\.\:\)]\s*/i, '')
         .trim();
 
-      // Finalize answer letter
+      // Finalize answer letter(s)
       const finalAnswerLetter = asteriskAnswerLetter || detectedAnswerLetter || 'A';
+      const answerLetters = finalAnswerLetter.split(',').map((s) => s.trim());
 
-      // Find full text of the correct option
-      let correctOptionText = options[0] || '';
-      const matchedOpt = options.find((opt) => opt.startsWith(`${finalAnswerLetter}.`));
-      if (matchedOpt) {
-        correctOptionText = matchedOpt;
-      }
+      // Find full text of the correct option(s)
+      const matchedOpts = options.filter((opt) =>
+        answerLetters.some((letter) => opt.startsWith(`${letter}.`))
+      );
+      const correctOptionText =
+        matchedOpts.length > 0 ? matchedOpts.join(' | ') : options[0] || '';
 
       // Validation
       if (!questionStem) {

@@ -34,7 +34,7 @@ interface QuizStoreState {
 }
 
 export const useQuizStore = create<QuizStoreState>((set, get) => ({
-  selectedQuizPath: '/data/csi106_all.json',
+  selectedQuizPath: '/data/cea201_all.json',
   activeCustomQuiz: null,
   words: [],
   isLoadingWords: false,

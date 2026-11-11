@@ -1,0 +1,486 @@
+[
+  {
+    "id": "CEA_1",
+    "word": "Câu 1: Viết biểu thức Boolean cho mạch logic sau (xem hình mạch logic đã...",
+    "question": "Viết biểu thức Boolean cho mạch logic sau (xem hình mạch logic đã vẽ ở trên).",
+    "options": [
+      "A. F = A’B’D’ + AC’D + ABD",
+      "B. F = A’B’D + AC’D + ABD",
+      "C. F = A’B’D + AC’D’ + ABD",
+      "D. F = A’B’D + A’C’D + ABD"
+    ],
+    "answer": "C",
+    "correctWord": "C. F = A’B’D + AC’D’ + ABD",
+    "explanation": "Đáp án đúng: C (C. F = A’B’D + AC’D’ + ABD)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_19",
+    "word": "Câu 19: What is result of 10100101 xor 11001001?",
+    "question": "What is result of 10100101 xor 11001001?",
+    "options": [
+      "A. 11101101",
+      "B. 10000001",
+      "C. 01101100",
+      "D. 10101100"
+    ],
+    "answer": "C",
+    "correctWord": "C. 01101100",
+    "explanation": "Đáp án đúng: C (C. 01101100)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_20",
+    "word": "Câu 20: (R1) = 01110110, (R2) = 11011111, the result of (R1) XOR (R2) is:",
+    "question": "(R1) = 01110110, (R2) = 11011111, the result of (R1) XOR (R2) is:",
+    "options": [
+      "A. 11011011",
+      "B. 00010110",
+      "C. 10101001",
+      "D. 11001101"
+    ],
+    "answer": "C",
+    "correctWord": "C. 10101001",
+    "explanation": "Đáp án đúng: C (C. 10101001)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_21",
+    "word": "Câu 21: What is result left rotate of 10110101 by 2 bit?",
+    "question": "What is result left rotate of 10110101 by 2 bit?",
+    "options": [
+      "A. 01101011",
+      "B. 10101101",
+      "C. 01101101",
+      "D. 11010110",
+      "E. 11010100"
+    ],
+    "answer": "D",
+    "correctWord": "D. 11010110",
+    "explanation": "Đáp án đúng: D (D. 11010110)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_22",
+    "word": "Câu 22: What is result logical right shift of 10110000 by 2 bit?",
+    "question": "What is result logical right shift of 10110000 by 2 bit?",
+    "options": [
+      "A. 00101100",
+      "B. 01011000",
+      "C. 01001100",
+      "D. 00110000"
+    ],
+    "answer": "A",
+    "correctWord": "A. 00101100",
+    "explanation": "Đáp án đúng: A (A. 00101100)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_23",
+    "word": "Câu 23: What is the output of Left Shift Operator << on (00011000<<2)?",
+    "question": "What is the output of Left Shift Operator << on (00011000<<2)?",
+    "options": [
+      "A. 01100000",
+      "B. 11000000",
+      "C. 00000110",
+      "D. 00000011"
+    ],
+    "answer": "A",
+    "correctWord": "A. 01100000",
+    "explanation": "Đáp án đúng: A (A. 01100000)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_24",
+    "word": "Câu 24: Express an integer number +18 (using 8-bits length) in twos compl...",
+    "question": "Express an integer number +18 (using 8-bits length) in twos complement representation.",
+    "options": [
+      "A. 00010010",
+      "B. 10010010",
+      "C. 00001101",
+      "D. 10011101"
+    ],
+    "answer": "A",
+    "correctWord": "A. 00010010",
+    "explanation": "Đáp án đúng: A (A. 00010010)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_25",
+    "word": "Câu 25: (Choose 1 answer) If you have an integer number +18 in sign magni...",
+    "question": "(Choose 1 answer) If you have an integer number +18 in sign magnitude representation, which is 00010010, what is the correct option for -18?",
+    "options": [
+      "A. 00010010",
+      "B. 10010010",
+      "C. 11110010",
+      "D. 01110010"
+    ],
+    "answer": "B",
+    "correctWord": "B. 10010010",
+    "explanation": "Đáp án đúng: B (B. 10010010)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_26",
+    "word": "Câu 26: Convert the 64 from decimal to their binary number equivalents.",
+    "question": "Convert the 64 from decimal to their binary number equivalents.",
+    "options": [
+      "A. 100000",
+      "B. 100100",
+      "C. 111000",
+      "D. 101010"
+    ],
+    "answer": "A",
+    "correctWord": "A. 100000",
+    "explanation": "Đáp án đúng: A (A. 100000)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_28",
+    "word": "Câu 28: For the following Boolean expressions: AB + AB’ and the truth tab...",
+    "question": "For the following Boolean expressions: AB + AB’ and the truth table (A, B, B’, output): 1 0 1 ? 1 1 0 ? 0 0 1 ? 0 1 0 ? Choose the correct option to replace at “?” (order top to bottom).",
+    "options": [
+      "A. 1,1,1,0",
+      "B. 1,1,1,1",
+      "C. 1,0,1,0",
+      "D. 0,1,1,0"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1,1,1,0",
+    "explanation": "Đáp án đúng: A (A. 1,1,1,0)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_29",
+    "word": "Câu 29: What is the output of a NOT gate when the input is 0?",
+    "question": "What is the output of a NOT gate when the input is 0?",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. Undefined",
+      "D. 2"
+    ],
+    "answer": "B",
+    "correctWord": "B. 1",
+    "explanation": "Đáp án đúng: B (B. 1)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_30",
+    "word": "Câu 30: When both inputs are 0, what is the result of a NOR gate?",
+    "question": "When both inputs are 0, what is the result of a NOR gate?",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 2",
+      "D. Undefined",
+      "E. #NA"
+    ],
+    "answer": "B",
+    "correctWord": "B. 1",
+    "explanation": "Đáp án đúng: B (B. 1)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_31",
+    "word": "Câu 31: When both inputs are 1, what is the result of a NAND gate?",
+    "question": "When both inputs are 1, what is the result of a NAND gate?",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 2",
+      "D. Undefined",
+      "E. #NA"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Đáp án đúng: A (A. 0)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_39",
+    "word": "Câu 39: If you have a boolean function with 3 variables, how many rows ar...",
+    "question": "If you have a boolean function with 3 variables, how many rows are there in the truth table?",
+    "options": [
+      "A. 8 rows",
+      "B. 3 rows",
+      "C. 6 rows",
+      "D. 12 rows"
+    ],
+    "answer": "A",
+    "correctWord": "A. 8 rows",
+    "explanation": "Đáp án đúng: A (A. 8 rows)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_61",
+    "word": "Câu 61: In any Boolean algebra, what values are used for all variables an...",
+    "question": "In any Boolean algebra, what values are used for all variables and operations? (Choose two correct answers)",
+    "options": [
+      "A. Values are 1, 0",
+      "B. Values are true, false",
+      "C. Values are decimal numbers",
+      "D. Values are 1, 0, true, false, and others"
+    ],
+    "answer": "A, B",
+    "correctWord": "A. Values are 1, 0 | B. Values are true, false",
+    "explanation": "Đáp án đúng: A, B (A. Values are 1, 0 | B. Values are true, false)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_73",
+    "word": "Câu 73: Given the following Karnaugh map, what is the optimal expression ...",
+    "question": "Given the following Karnaugh map, what is the optimal expression in the sum of product format (X’ means Not X)? K-map (hàng A, cột BC theo thứ tự 00 01 11 10): A = 0: 0 0 1 1 A = 1: 1 0 1 1",
+    "options": [
+      "A. B + AC’",
+      "B. B + AB’C’",
+      "C. B + AC",
+      "D. AB + B’C"
+    ],
+    "answer": "A",
+    "correctWord": "A. B + AC’",
+    "explanation": "Đáp án đúng: A (A. B + AC’)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_74",
+    "word": "Câu 74: (Choose 1 answer) Given the following Karnaugh map, what is the o...",
+    "question": "(Choose 1 answer) Given the following Karnaugh map, what is the optimal expression in the sum of product format (X’ means Not X)? K-map (hàng AB, cột CD theo thứ tự 00 01 11 10): AB = 00: 0 0 0 0 AB = 01: 1 1 1 1 AB = 11: 0 1 0 1 AB = 10: 0 1 0 1",
+    "options": [
+      "A. A’B + AC’D + ACD’",
+      "B. AB + AC’ + ACD’",
+      "C. AB’ + AD + ACD’",
+      "D. A’B + C’D + BCD’"
+    ],
+    "answer": "A",
+    "correctWord": "A. A’B + AC’D + ACD’",
+    "explanation": "Đáp án đúng: A (A. A’B + AC’D + ACD’)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_75",
+    "word": "Câu 75: Given the following Karnaugh map, what is the optimal expression ...",
+    "question": "Given the following Karnaugh map, what is the optimal expression in the sum of product format (X’ means Not X)? K-map (hàng A, cột BC theo thứ tự 00 01 11 10): A = 0: 1 1 1 1 A = 1: 1 0 0 1",
+    "options": [
+      "A. A’ + C’",
+      "B. A + B",
+      "C. B + C’",
+      "D. A + B’C’ + BC’"
+    ],
+    "answer": "A",
+    "correctWord": "A. A’ + C’",
+    "explanation": "Đáp án đúng: A (A. A’ + C’)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_76",
+    "word": "Câu 76: Consider the expression: NOT(A + B) = ? Apply DeMorgan’s Theorem ...",
+    "question": "Consider the expression: NOT(A + B) = ? Apply DeMorgan’s Theorem to replace at “?”.",
+    "options": [
+      "A. NOT A AND NOT B",
+      "B. NOT A OR NOT B",
+      "C. NOT A AND B",
+      "D. A OR NOT B"
+    ],
+    "answer": "A",
+    "correctWord": "A. NOT A AND NOT B",
+    "explanation": "Đáp án đúng: A (A. NOT A AND NOT B)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_78",
+    "word": "Câu 78: Assume that a truth table (X, Y, OUTPUT): 1 1 1; 1 0 1; 0 1 1; 0 ...",
+    "question": "Assume that a truth table (X, Y, OUTPUT): 1 1 1; 1 0 1; 0 1 1; 0 0 0. Which basic operator matches the table above?",
+    "options": [
+      "A. AND",
+      "B. OR",
+      "C. NAND",
+      "D. NOR"
+    ],
+    "answer": "B",
+    "correctWord": "B. OR",
+    "explanation": "Đáp án đúng: B (B. OR)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_79",
+    "word": "Câu 79: The operation ______ yields true (binary value 1) if and only if ...",
+    "question": "The operation ______ yields true (binary value 1) if and only if both of its operands are true.",
+    "options": [
+      "A. OR",
+      "B. AND",
+      "C. XOR",
+      "D. NAND"
+    ],
+    "answer": "B",
+    "correctWord": "B. AND",
+    "explanation": "Đáp án đúng: B (B. AND)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_101",
+    "word": "Câu 101: In an arithmetic left shift operation, what is appended to the ri...",
+    "question": "In an arithmetic left shift operation, what is appended to the rightmost bits?",
+    "options": [
+      "A. Zeros",
+      "B. Ones",
+      "C. The original leftmost bit",
+      "D. Random bits"
+    ],
+    "answer": "A",
+    "correctWord": "A. Zeros",
+    "explanation": "Đáp án đúng: A (A. Zeros)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_103",
+    "word": "Câu 103: Consider the truth table (A, B, F): 0 0 1; 0 1 0; 1 0 0; 1 1 0. C...",
+    "question": "Consider the truth table (A, B, F): 0 0 1; 0 1 0; 1 0 0; 1 1 0. Choose the correct Algebraic Functions matches with given truth table.",
+    "options": [
+      "A. F = NOT (A + B)",
+      "B. F = A XOR B",
+      "C. F = A AND NOT B",
+      "D. F = NOT A AND B"
+    ],
+    "answer": "A",
+    "correctWord": "A. F = NOT (A + B)",
+    "explanation": "Đáp án đúng: A (A. F = NOT (A + B))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_137",
+    "word": "Câu 137: Which component defines the system call interface to the operatin...",
+    "question": "Which component defines the system call interface to the operating system and facilitates binary portability?",
+    "options": [
+      "A. Application Binary Interface",
+      "B. Application Programming Interface",
+      "C. Instruction Set Architecture",
+      "D. Central Processing Unit"
+    ],
+    "answer": "A",
+    "correctWord": "A. Application Binary Interface",
+    "explanation": "Đáp án đúng: A (A. Application Binary Interface)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_145",
+    "word": "Câu 145: Which of the following is a characteristic of sequential circuits...",
+    "question": "Which of the following is a characteristic of sequential circuits compared to combinational circuits?",
+    "options": [
+      "A. Do not use gates",
+      "B. Output depends only on current inputs",
+      "C. Output depends on current inputs and past inputs",
+      "D. Simpler to design and implement"
+    ],
+    "answer": "C",
+    "correctWord": "C. Output depends on current inputs and past inputs",
+    "explanation": "Đáp án đúng: C (C. Output depends on current inputs and past inputs)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_154",
+    "word": "Câu 154: A combinational circuit receives two 4-bit binary numbers as inpu...",
+    "question": "A combinational circuit receives two 4-bit binary numbers as inputs and produces a single-bit output. Which of the following circuit types must be used if the output represents whether the first number is greater than the second?",
+    "options": [
+      "A. Full Adder",
+      "B. Multiplexer",
+      "C. Comparator",
+      "D. Decoder"
+    ],
+    "answer": "C",
+    "correctWord": "C. Comparator",
+    "explanation": "Đáp án đúng: C (C. Comparator)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_156",
+    "word": "Câu 156: Boolean algebra involves treating x and y as numeric variables. C...",
+    "question": "Boolean algebra involves treating x and y as numeric variables. Choose the option that contains two equivalent expressions.",
+    "options": [
+      "A. NOT (x > 10 AND y > 15), x <= 10 OR y <= 15",
+      "B. NOT (x > 10 AND y > 15), x <= 10 AND y <= 15",
+      "C. NOT (x > 10 AND y > 15), x < 10 OR y < 15",
+      "D. NOT (x > 10 AND y > 15), x < 10 AND y < 15"
+    ],
+    "answer": "A",
+    "correctWord": "A. NOT (x > 10 AND y > 15), x <= 10 OR y <= 15",
+    "explanation": "Đáp án đúng: A (A. NOT (x > 10 AND y > 15), x <= 10 OR y <= 15)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_188",
+    "word": "Câu 188: Which logic gate produces a high output (1) only when all of its ...",
+    "question": "Which logic gate produces a high output (1) only when all of its inputs are high?",
+    "options": [
+      "A. XOR",
+      "B. AND",
+      "C. OR",
+      "D. NOT"
+    ],
+    "answer": "B",
+    "correctWord": "B. AND",
+    "explanation": "Đáp án đúng: B (B. AND)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_246",
+    "word": "Câu 246: What are the key differences in the architecture of NOR and NAND ...",
+    "question": "What are the key differences in the architecture of NOR and NAND flash memory?",
+    "options": [
+      "A. NOR flash memory cells are connected in series, while NAND flash memory cells are connected in parallel",
+      "B. NOR flash memory cells are connected in parallel, while NAND flash memory cells are connected in series",
+      "C. Both NOR and NAND flash memory cells are connected in series",
+      "D. Both NOR and NAND flash memory cells are connected in parallel",
+      "E. All of the mentioned are wrong"
+    ],
+    "answer": "B",
+    "correctWord": "B. NOR flash memory cells are connected in parallel, while NAND flash memory cells are connected in series",
+    "explanation": "Đáp án đúng: B (B. NOR flash memory cells are connected in parallel, while NAND flash memory cells are connected in series)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  },
+  {
+    "id": "CEA_264",
+    "word": "Câu 264: How does Boolean algebra contribute to the design of digital circ...",
+    "question": "How does Boolean algebra contribute to the design of digital circuits?",
+    "options": [
+      "A. It simplifies the implementation of desired functions",
+      "B. It helps in the analysis of economic data",
+      "C. It facilitates the design of analog circuits",
+      "D. It is primarily used for chemical engineering and physical engineering"
+    ],
+    "answer": "A",
+    "correctWord": "A. It simplifies the implementation of desired functions",
+    "explanation": "Đáp án đúng: A (A. It simplifies the implementation of desired functions)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Đại Số Boolean & Mạch Logic Số"
+  }
+]

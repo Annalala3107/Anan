@@ -228,6 +228,8 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       else if (key === 'B' || key === '2') chosenIdx = 1;
       else if (key === 'C' || key === '3') chosenIdx = 2;
       else if (key === 'D' || key === '4') chosenIdx = 3;
+      else if (key === 'E' || key === '5') chosenIdx = 4;
+      else if (key === '6') chosenIdx = 5;
 
       if (chosenIdx >= 0 && chosenIdx < currentQ.options.length) {
         e.preventDefault();

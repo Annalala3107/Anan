@@ -144,6 +144,7 @@ export default function QuizzesPage() {
 
   // Unassigned custom quizzes (quizzes not matching custom subjects or default subjects)
   const knownCodes = new Set([
+    'CEA201',
     'CSI106',
     'SSA101',
     'PRF192',

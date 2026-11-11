@@ -8,7 +8,7 @@
  */
 export function cleanOptionText(text?: string): string {
   if (!text) return '';
-  return text.replace(/^[A-Da-d][.)\s:]+\s*/, '').trim();
+  return text.replace(/^[A-Fa-f][.)\s:]+\s*/, '').trim();
 }
 
 /**
@@ -17,13 +17,13 @@ export function cleanOptionText(text?: string): string {
  */
 export function extractOptionKey(text?: string): string | null {
   if (!text) return null;
-  const match = text.trim().match(/^[A-Da-d](?=[.)\s:])/);
+  const match = text.trim().match(/^[A-Fa-f](?=[.)\s:])/);
   return match ? match[0].toUpperCase() : null;
 }
 
 /**
  * Accurately compares user's choice with the question's correct answer,
- * handling letter keys ('A', 'B'), full options ('A. Option 1'), and clean text ('Option 1').
+ * handling letter keys ('A', 'B', or 'B, C'), full options ('A. Option 1'), and clean text ('Option 1').
  */
 export function isAnswerMatch(
   userChoice?: string,
@@ -39,15 +39,21 @@ export function isAnswerMatch(
   // 1. Exact raw match
   if (userRaw === correctRaw) return true;
 
-  // 2. Answer key letter match (e.g. user selected "B. 4", answer key is "B")
+  // 2. Answer key letter match (supports single key "B" or multiple keys "B, C" / "B hoặc C")
   const userKey = extractOptionKey(userChoice)?.toLowerCase();
-  if (keyRaw && userKey === keyRaw) return true;
+  if (keyRaw && userKey) {
+    const validKeys = keyRaw
+      .split(/[,/;\s]+|hoặc|or|and/)
+      .map((k) => k.trim())
+      .filter((k) => /^[a-f]$/.test(k));
+    if (validKeys.includes(userKey)) return true;
+  }
 
-  // 3. Extracted key matches correctWord key
+  // 3. Extracted key matches correctWord key(s)
   const correctOptionKey = extractOptionKey(correctWord)?.toLowerCase();
   if (userKey && correctOptionKey && userKey === correctOptionKey) return true;
 
-  // 4. Cleaned text match (without A., B., C., D.)
+  // 4. Cleaned text match (without A., B., C., D., E., F.)
   const userClean = cleanOptionText(userChoice).toLowerCase();
   const correctClean = cleanOptionText(correctWord).toLowerCase();
   if (userClean && correctClean && userClean === correctClean) return true;

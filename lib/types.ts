@@ -97,6 +97,7 @@ export interface DrillQuestion {
   correctWord: string;
   options: string[];
   explanation: string;
+  answerKey?: string;
   questionNumber?: number | string;
 }
 

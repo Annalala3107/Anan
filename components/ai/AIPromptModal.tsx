@@ -27,6 +27,7 @@ interface AIPromptModalProps {
 }
 
 const QUICK_TOPICS = [
+  { label: 'Cache Mapping, Hamming ECC & RAID 0-5', subject: 'CEA201', count: 10, difficulty: 'medium' },
   { label: 'Con trỏ & Mảng 2 chiều', subject: 'PRF192', count: 10, difficulty: 'hard' },
   { label: 'Hệ thống số & Biểu diễn Bù 2', subject: 'CSI106', count: 10, difficulty: 'medium' },
   { label: 'Kiến trúc Von Neumann & CPU Cache', subject: 'CSI106', count: 10, difficulty: 'medium' },
@@ -316,6 +317,7 @@ export default function AIPromptModal({
                   className="w-full p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 >
                   <optgroup label="Môn cơ bản mặc định">
+                    <option value="CEA201">CEA201 (Tổ chức & Kiến trúc MT)</option>
                     <option value="PRF192">PRF192 (Lập trình C)</option>
                     <option value="CSI106">CSI106 (Kiến trúc MT)</option>
                     <option value="SSA101">SSA101 (Kỹ năng ĐH)</option>

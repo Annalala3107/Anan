@@ -299,8 +299,8 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
       if (feedbackState !== 'idle') return;
 
-      // Hotkey 1, 2, 3, 4
-      if (['1', '2', '3', '4'].includes(e.key)) {
+      // Hotkey 1, 2, 3, 4, 5, 6
+      if (['1', '2', '3', '4', '5', '6'].includes(e.key)) {
         e.preventDefault();
         const idx = Number(e.key) - 1;
         if (currentQ.options && currentQ.options[idx]) {
@@ -308,9 +308,9 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         }
       }
 
-      // Hotkey A, B, C, D
+      // Hotkey A, B, C, D, E, F
       const keyUpper = e.key.toUpperCase();
-      if (['A', 'B', 'C', 'D'].includes(keyUpper)) {
+      if (['A', 'B', 'C', 'D', 'E', 'F'].includes(keyUpper)) {
         e.preventDefault();
         const optLetterIdx = keyUpper.charCodeAt(0) - 65;
         if (currentQ.options && currentQ.options[optLetterIdx]) {

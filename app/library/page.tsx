@@ -168,10 +168,14 @@ export default function LibraryPage() {
                   {/* Options Preview */}
                   {isMCQ && w.options && (
                     <div className="space-y-1 mb-3">
-                      {w.options.slice(0, 4).map((opt, i) => {
+                      {w.options.slice(0, 6).map((opt, i) => {
                         const optLetter = String.fromCharCode(65 + i);
+                        const validKeys = (w.answer || '')
+                          .split(/[,/;\s]+/)
+                          .map((k) => k.trim().toUpperCase())
+                          .filter(Boolean);
                         const isCorrect =
-                          (w.answer && w.answer.includes(optLetter)) ||
+                          validKeys.includes(optLetter) ||
                           (w.correctWord && opt.toLowerCase() === w.correctWord.toLowerCase());
 
                         return (

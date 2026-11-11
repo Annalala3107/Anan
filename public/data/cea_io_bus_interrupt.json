@@ -1,0 +1,532 @@
+[
+  {
+    "id": "CEA_54",
+    "word": "Câu 54: What is the primary role of the I/O module? (choose two correct a...",
+    "question": "What is the primary role of the I/O module? (choose two correct answers)",
+    "options": [
+      "A. Its role is data transfer, it will transfer data to and from peripheral devices.",
+      "B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals.",
+      "C. Its role is data formatting and converting analog signals into digital audio data for CPU.",
+      "D. Its role is protecting data from user, ensuring that sensitive information is not lost or intercepted."
+    ],
+    "answer": "A, B",
+    "correctWord": "A. Its role is data transfer, it will transfer data to and from peripheral devices. | B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals.",
+    "explanation": "Đáp án đúng: A, B (A. Its role is data transfer, it will transfer data to and from peripheral devices. | B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_60",
+    "word": "Câu 60: In the computer, what categories do external devices include? (ch...",
+    "question": "In the computer, what categories do external devices include? (choose 3 correct answers)",
+    "options": [
+      "A. Human readable",
+      "B. Communication",
+      "C. Data Conversion",
+      "D. Machine readable"
+    ],
+    "answer": "A, B, D",
+    "correctWord": "A. Human readable | B. Communication | D. Machine readable",
+    "explanation": "Đáp án đúng: A, B, D (A. Human readable | B. Communication | D. Machine readable)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_66",
+    "word": "Câu 66: ______ refers to the operational units and their interconnections...",
+    "question": "______ refers to the operational units and their interconnections that realize the architectural specifications.",
+    "options": [
+      "A. Computer architecture",
+      "B. Computer function",
+      "C. Computer organization",
+      "D. Instruction set architecture"
+    ],
+    "answer": "C",
+    "correctWord": "C. Computer organization",
+    "explanation": "Đáp án đúng: C (C. Computer organization)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_95",
+    "word": "Câu 95: (Choose 1 answer) What are basic registers that help CPU establis...",
+    "question": "(Choose 1 answer) What are basic registers that help CPU establish a connection with an I/O device?",
+    "options": [
+      "A. I/OAR, I/OBR",
+      "B. I/OAR, MAR",
+      "C. I/OBR, MBR",
+      "D. MAR, MBR"
+    ],
+    "answer": "A",
+    "correctWord": "A. I/OAR, I/OBR",
+    "explanation": "Đáp án đúng: A (A. I/OAR, I/OBR)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_115",
+    "word": "Câu 115: Which type of interrupt is exemplified by “division by zero, atte...",
+    "question": "Which type of interrupt is exemplified by “division by zero, attempt to execute an illegal machine instruction”?",
+    "options": [
+      "A. Program",
+      "B. Timer",
+      "C. I/O",
+      "D. Hardware failure"
+    ],
+    "answer": "A",
+    "correctWord": "A. Program",
+    "explanation": "Đáp án đúng: A (A. Program)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_120",
+    "word": "Câu 120: Which mechanism enables communication between the CPU, main memor...",
+    "question": "Which mechanism enables communication between the CPU, main memory, and I/O in a computer system?",
+    "options": [
+      "A. USB Port",
+      "B. Buffer",
+      "C. System Interconnection",
+      "D. Data Bus"
+    ],
+    "answer": "C",
+    "correctWord": "C. System Interconnection",
+    "explanation": "Đáp án đúng: C (C. System Interconnection)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_126",
+    "word": "Câu 126: Which of the following is a DISADVANTAGE of using programmed I/O?",
+    "question": "Which of the following is a DISADVANTAGE of using programmed I/O?",
+    "options": [
+      "A. Increases system efficiency",
+      "B. Reduces CPU involvement in I/O operations",
+      "C. Requires the CPU to be constantly busy with I/O tasks",
+      "D. Increases system complexity"
+    ],
+    "answer": "C",
+    "correctWord": "C. Requires the CPU to be constantly busy with I/O tasks",
+    "explanation": "Đáp án đúng: C (C. Requires the CPU to be constantly busy with I/O tasks)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_144",
+    "word": "Câu 144: Which type is not an Interconnection bus?",
+    "question": "Which type is not an Interconnection bus?",
+    "options": [
+      "A. Data lines",
+      "B. Control lines",
+      "C. Signal lines",
+      "D. Address lines"
+    ],
+    "answer": "C",
+    "correctWord": "C. Signal lines",
+    "explanation": "Đáp án đúng: C (C. Signal lines)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_148",
+    "word": "Câu 148: Which of the following is NOT a typical requirement of an I/O mod...",
+    "question": "Which of the following is NOT a typical requirement of an I/O module?",
+    "options": [
+      "A. Device communication.",
+      "B. Error detection.",
+      "C. Processor communication.",
+      "D. Memory management."
+    ],
+    "answer": "D",
+    "correctWord": "D. Memory management.",
+    "explanation": "Đáp án đúng: D (D. Memory management.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_150",
+    "word": "Câu 150: Which component connects CPU, memory, and I/O devices in a comput...",
+    "question": "Which component connects CPU, memory, and I/O devices in a computer system?",
+    "options": [
+      "A. Control Unit",
+      "B. ALU",
+      "C. Bus",
+      "D. Register File"
+    ],
+    "answer": "C",
+    "correctWord": "C. Bus",
+    "explanation": "Đáp án đúng: C (C. Bus)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_158",
+    "word": "Câu 158: For interrupts, all I/O modules share a common interrupt request ...",
+    "question": "For interrupts, all I/O modules share a common interrupt request line. When the processor senses an interrupt, it sends out an interrupt acknowledge. This signal propagates through a series of I/O modules until it gets to a requesting module. Which kind of interrupt technique is it?",
+    "options": [
+      "A. Multiple interrupt lines",
+      "B. Software poll",
+      "C. Daisy chain",
+      "D. Bus arbitration"
+    ],
+    "answer": "C",
+    "correctWord": "C. Daisy chain",
+    "explanation": "Đáp án đúng: C (C. Daisy chain)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_160",
+    "word": "Câu 160: The Program Status Word (PSW) typically contains condition codes,...",
+    "question": "The Program Status Word (PSW) typically contains condition codes, the sign of the last result, and other status information like interrupt enable/disable flags.",
+    "options": [
+      "A. True",
+      "B. False"
+    ],
+    "answer": "A",
+    "correctWord": "A. True",
+    "explanation": "Đáp án đúng: A (A. True)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_161",
+    "word": "Câu 161: From a structural point of view, the external devices are control...",
+    "question": "From a structural point of view, the external devices are controlled by ______.",
+    "options": [
+      "A. Control signals",
+      "B. Peripheral device",
+      "C. I/O modules",
+      "D. Remote devices"
+    ],
+    "answer": "C",
+    "correctWord": "C. I/O modules",
+    "explanation": "Đáp án đúng: C (C. I/O modules)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_165",
+    "word": "Câu 165: In which I/O technique does an I/O channel or processor manage tr...",
+    "question": "In which I/O technique does an I/O channel or processor manage transfer of data, thus freeing the CPU?",
+    "options": [
+      "A. Programmed I/O",
+      "B. Interrupt-driven I/O",
+      "C. Channel I/O",
+      "D. Memory-mapped I/O"
+    ],
+    "answer": "C",
+    "correctWord": "C. Channel I/O",
+    "explanation": "Đáp án đúng: C (C. Channel I/O)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_171",
+    "word": "Câu 171: “Multiple processors share a single memory or pool of memory by m...",
+    "question": "“Multiple processors share a single memory or pool of memory by means of a shared bus or other interconnection mechanism; a distinguishing feature is that the memory access time to any region of memory is approximately the same for each processor”. Which concept does the statement belong to?",
+    "options": [
+      "A. Symmetric multiprocessor (SMP)",
+      "B. Nonuniform memory access (NUMA)",
+      "C. Cluster",
+      "D. Single instruction, multiple data (SIMD)"
+    ],
+    "answer": "A",
+    "correctWord": "A. Symmetric multiprocessor (SMP)",
+    "explanation": "Đáp án đúng: A (A. Symmetric multiprocessor (SMP))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_178",
+    "word": "Câu 178: The I/O technique where the processor busy waits for an I/O opera...",
+    "question": "The I/O technique where the processor busy waits for an I/O operation to complete is called ______.",
+    "options": [
+      "A. Programmed I/O or DMA",
+      "B. Interrupt-driven I/O",
+      "C. Direct Memory Access (DMA)",
+      "D. Programmed I/O"
+    ],
+    "answer": "D",
+    "correctWord": "D. Programmed I/O",
+    "explanation": "Đáp án đúng: D (D. Programmed I/O)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_184",
+    "word": "Câu 184: (Choose 1 answer) The decision as to which process’s pending I/O ...",
+    "question": "(Choose 1 answer) The decision as to which process’s pending I/O request shall be handled by an available I/O device",
+    "options": [
+      "A. Medium-term scheduling",
+      "B. Short-term scheduling",
+      "C. I/O scheduling",
+      "D. Long-term scheduling"
+    ],
+    "answer": "C",
+    "correctWord": "C. I/O scheduling",
+    "explanation": "Đáp án đúng: C (C. I/O scheduling)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_196",
+    "word": "Câu 196: What are the main functions or requirements for an I/O module?",
+    "question": "What are the main functions or requirements for an I/O module?",
+    "options": [
+      "A. Control and timing",
+      "B. Data buffering",
+      "C. Processor communication",
+      "D. All of the mentioned"
+    ],
+    "answer": "D",
+    "correctWord": "D. All of the mentioned",
+    "explanation": "Đáp án đúng: D (D. All of the mentioned)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_201",
+    "word": "Câu 201: What is the main advantage of using DMA over Programmed I/O or In...",
+    "question": "What is the main advantage of using DMA over Programmed I/O or Interrupt-Driven I/O?",
+    "options": [
+      "A. DMA reduces the CPU involvement and overhead in data transfer",
+      "B. DMA increases the data transfer rate and efficiency",
+      "C. DMA allows concurrent execution of CPU and I/O operations",
+      "D. All of the mentioned"
+    ],
+    "answer": "D",
+    "correctWord": "D. All of the mentioned",
+    "explanation": "Đáp án đúng: D (D. All of the mentioned)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_212",
+    "word": "Câu 212: What are the most basic functions of an I/O module?",
+    "question": "What are the most basic functions of an I/O module?",
+    "options": [
+      "A. Control and timing, processor communication, device communication, data buffering, error detection.",
+      "B. Control and timing, processor communication, data buffering, error detection, writing data to memory.",
+      "C. Control and timing, processor communication, device communication, data buffering, blocking device.",
+      "D. Control and timing, processor communication, device communication, error detection, data processing."
+    ],
+    "answer": "A",
+    "correctWord": "A. Control and timing, processor communication, device communication, data buffering, error detection.",
+    "explanation": "Đáp án đúng: A (A. Control and timing, processor communication, device communication, data buffering, error detection.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_216",
+    "word": "Câu 216: What is an interrupt vector?",
+    "question": "What is an interrupt vector?",
+    "options": [
+      "A. Part of memory which contains the addresses of interrupt handlers",
+      "B. A signal an I/O device sends to CPU",
+      "C. A signal an I/O software sends to CPU",
+      "D. None of the mentioned"
+    ],
+    "answer": "A",
+    "correctWord": "A. Part of memory which contains the addresses of interrupt handlers",
+    "explanation": "Đáp án đúng: A (A. Part of memory which contains the addresses of interrupt handlers)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_218",
+    "word": "Câu 218: What is the function of the bus system in the computer?",
+    "question": "What is the function of the bus system in the computer?",
+    "options": [
+      "A. Extend the communication function of the computer",
+      "B. Connect components in the computer",
+      "C. Control peripherals",
+      "D. Transform signals in the computer",
+      "E. All of the mentioned"
+    ],
+    "answer": "B",
+    "correctWord": "B. Connect components in the computer",
+    "explanation": "Đáp án đúng: B (B. Connect components in the computer)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_225",
+    "word": "Câu 225: What is the most important characteristic of the Synchronous Bus?",
+    "question": "What is the most important characteristic of the Synchronous Bus?",
+    "options": [
+      "A. Data is transmitted at the same time",
+      "B. The occurrence of one event on a bus follows and depends on the occurrence of a previous event.",
+      "C. The occurrence of events on the bus is determined by a clock",
+      "D. No common clock signal controlling operation"
+    ],
+    "answer": "C",
+    "correctWord": "C. The occurrence of events on the bus is determined by a clock",
+    "explanation": "Đáp án đúng: C (C. The occurrence of events on the bus is determined by a clock)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_232",
+    "word": "Câu 232: What is the main distinction between Interrupt-Driven I/O and Dir...",
+    "question": "What is the main distinction between Interrupt-Driven I/O and Direct Memory Access (DMA)?",
+    "options": [
+      "A. Interrupt-Driven I/O involves the CPU in every data transfer, while DMA bypasses the CPU and transfers data directly between I/O device and memory",
+      "B. Interrupt-Driven I/O requires special hardware and software support, while DMA does not need any additional components",
+      "C. Interrupt-Driven I/O is suitable for small and frequent data transfers, while DMA is suitable for large and infrequent data transfers",
+      "D. All of the mentioned"
+    ],
+    "answer": "A",
+    "correctWord": "A. Interrupt-Driven I/O involves the CPU in every data transfer, while DMA bypasses the CPU and transfers data directly between I/O device and memory",
+    "explanation": "Đáp án đúng: A (A. Interrupt-Driven I/O involves the CPU in every data transfer, while DMA bypasses the CPU and transfers data directly between I/O device and memory)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_253",
+    "word": "Câu 253: Which of the following determines the Bus Width?",
+    "question": "Which of the following determines the Bus Width?",
+    "options": [
+      "A. The clock speed of the CPU",
+      "B. The number of cores in the processor",
+      "C. The size of the motherboard",
+      "D. The number of parallel lines in the data bus",
+      "E. Number of components connected to Bus"
+    ],
+    "answer": "D",
+    "correctWord": "D. The number of parallel lines in the data bus",
+    "explanation": "Đáp án đúng: D (D. The number of parallel lines in the data bus)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_261",
+    "word": "Câu 261: Which statement is correct in memory-mapped I/O?",
+    "question": "Which statement is correct in memory-mapped I/O?",
+    "options": [
+      "A. The I/O devices and the memory share the same address space",
+      "B. The I/O devices have a separate address space",
+      "C. The memory and I/O devices have an associated address space",
+      "D. A part of the memory is specifically set aside for the I/O operation"
+    ],
+    "answer": "A",
+    "correctWord": "A. The I/O devices and the memory share the same address space",
+    "explanation": "Đáp án đúng: A (A. The I/O devices and the memory share the same address space)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_262",
+    "word": "Câu 262: Which statement best describes the role of an I/O processor (IOP)...",
+    "question": "Which statement best describes the role of an I/O processor (IOP) in a computer system?",
+    "options": [
+      "A. An IOP executes complex arithmetic and logic operations to offload the CPU",
+      "B. An IOP acts as an independent processor dedicated to handling I/O operations",
+      "C. An IOP is a simple buffer between peripherals and the CPU, managing only data flow",
+      "D. An IOP is used only in embedded systems where real-time processing is required"
+    ],
+    "answer": "B",
+    "correctWord": "B. An IOP acts as an independent processor dedicated to handling I/O operations",
+    "explanation": "Đáp án đúng: B (B. An IOP acts as an independent processor dedicated to handling I/O operations)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_270",
+    "word": "Câu 270: When an interrupt is about to execute next, where is the Program ...",
+    "question": "When an interrupt is about to execute next, where is the Program Counter (PC) positioned?",
+    "options": [
+      "A. Add 1 to PC",
+      "B. At the address of the last executed instruction",
+      "C. Jump to random unknown position",
+      "D. At the started address of an interrupt handler routine",
+      "E. At the beginning of the memory address space"
+    ],
+    "answer": "D",
+    "correctWord": "D. At the started address of an interrupt handler routine",
+    "explanation": "Đáp án đúng: D (D. At the started address of an interrupt handler routine)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_280",
+    "word": "Câu 280: In a computer system bus, the control lines are responsible for:",
+    "question": "In a computer system bus, the control lines are responsible for:",
+    "options": [
+      "A. Transferring actual binary data between components.",
+      "B. Specifying the location in memory to read/write.",
+      "C. Coordinating and managing the use of the data and address lines.",
+      "D. Storing frequently accessed instructions."
+    ],
+    "answer": "C",
+    "correctWord": "C. Coordinating and managing the use of the data and address lines.",
+    "explanation": "Đáp án đúng: C (C. Coordinating and managing the use of the data and address lines.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_282",
+    "word": "Câu 282: In programmed I/O, who does initialize the transfer of data?",
+    "question": "In programmed I/O, who does initialize the transfer of data?",
+    "options": [
+      "A. I/O controller",
+      "B. CPU",
+      "C. DMA controller",
+      "D. Operating system"
+    ],
+    "answer": "B",
+    "correctWord": "B. CPU",
+    "explanation": "Đáp án đúng: B (B. CPU)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_290",
+    "word": "Câu 290: In isolated I/O, ____________",
+    "question": "In isolated I/O, ____________",
+    "options": [
+      "A. The I/O devices and the memory share the same address space",
+      "B. The I/O devices have a separate address space from memory",
+      "C. The memory and I/O devices have an associated address space",
+      "D. A part of the memory is specifically set aside for the I/O operation",
+      "E. None of the mentioned"
+    ],
+    "answer": "B",
+    "correctWord": "B. The I/O devices have a separate address space from memory",
+    "explanation": "Đáp án đúng: B (B. The I/O devices have a separate address space from memory)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_298",
+    "word": "Câu 298: The advantage of interrupt driven I/O over programmed I/O is ____...",
+    "question": "The advantage of interrupt driven I/O over programmed I/O is __________.",
+    "options": [
+      "A. the latter offers faster transfer of data",
+      "B. the former does not have to wait until I/O operation is complete",
+      "C. the devices have to deal with fewer address lines",
+      "D. no advantage as such"
+    ],
+    "answer": "B",
+    "correctWord": "B. the former does not have to wait until I/O operation is complete",
+    "explanation": "Đáp án đúng: B (B. the former does not have to wait until I/O operation is complete)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_304",
+    "word": "Câu 304: How does interrupt-driven I/O improve system performance compared...",
+    "question": "How does interrupt-driven I/O improve system performance compared to programmed I/O?",
+    "options": [
+      "A. It eliminates the need for a data bus.",
+      "B. It requires fewer control lines for communication.",
+      "C. It does not involve saving the context of the program being executed.",
+      "D. It allows the processor to execute other tasks while waiting for I/O readiness."
+    ],
+    "answer": "D",
+    "correctWord": "D. It allows the processor to execute other tasks while waiting for I/O readiness.",
+    "explanation": "Đáp án đúng: D (D. It allows the processor to execute other tasks while waiting for I/O readiness.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  }
+]

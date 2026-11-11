@@ -1,0 +1,804 @@
+[
+  {
+    "id": "CEA_38",
+    "word": "Câu 38: How many general-purpose registers are there in the Microprocesso...",
+    "question": "How many general-purpose registers are there in the Microprocessor Register Organizations of Intel 80386–Pentium 4?",
+    "options": [
+      "A. 8",
+      "B. 16",
+      "C. 4",
+      "D. 12"
+    ],
+    "answer": "A",
+    "correctWord": "A. 8",
+    "explanation": "Đáp án đúng: A (A. 8)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_40",
+    "word": "Câu 40: Follow the Amdahl’s law for multiprocessors, if only 10% of the c...",
+    "question": "Follow the Amdahl’s law for multiprocessors, if only 10% of the code is inherently serial (f = 0.9), running the program on a multicore system with 4 processors, a performance gain (speedup factor) would be ______.",
+    "options": [
+      "A. 307%",
+      "B. 297%",
+      "C. 317%",
+      "D. 327%"
+    ],
+    "answer": "A",
+    "correctWord": "A. 307%",
+    "explanation": "Đáp án đúng: A (A. 307%)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_41",
+    "word": "Câu 41: Follow the Amdahl’s law for multiprocessors, if only 20% of the c...",
+    "question": "Follow the Amdahl’s law for multiprocessors, if only 20% of the code is inherently serial (f = 0.8), running the program on a multicore system with 8 processors, a performance gain (speedup factor) would be ______.",
+    "options": [
+      "A. 333%",
+      "B. 303%",
+      "C. 313%",
+      "D. 323%"
+    ],
+    "answer": "A",
+    "correctWord": "A. 333%",
+    "explanation": "Đáp án đúng: A (A. 333%)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_42",
+    "word": "Câu 42: A benchmark program is running on a 400 MHz processor. The execut...",
+    "question": "A benchmark program is running on a 400 MHz processor. The executed program consists of 500 instruction executions, with the following instruction mix and clock cycle count in Table below: Instruction type / Instruction count / Cycles per Instruction Arithmetic / 300 / 1 Data transfer / 100 / 2 Control transfer / 100 / 2 Calculate MIPS rate for this case.",
+    "options": [
+      "A. MIPS rate = 285.7",
+      "B. MIPS rate = 275.7",
+      "C. MIPS rate = 265.7",
+      "D. MIPS rate = 295.7"
+    ],
+    "answer": "A",
+    "correctWord": "A. MIPS rate = 285.7",
+    "explanation": "Đáp án đúng: A (A. MIPS rate = 285.7)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_49",
+    "word": "Câu 49: What is the typical size of a page in virtual memory?",
+    "question": "What is the typical size of a page in virtual memory?",
+    "options": [
+      "A. 1–2 KB",
+      "B. 4–8 KB",
+      "C. 16–32 KB",
+      "D. 64–128 KB"
+    ],
+    "answer": "B",
+    "correctWord": "B. 4–8 KB",
+    "explanation": "Đáp án đúng: B (B. 4–8 KB)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_52",
+    "word": "Câu 52: If 95% of a program can be parallelized, what is the speedup when...",
+    "question": "If 95% of a program can be parallelized, what is the speedup when using 10 processors?",
+    "options": [
+      "A. 6.89",
+      "B. 7.20",
+      "C. 7.50",
+      "D. 8.00"
+    ],
+    "answer": "A",
+    "correctWord": "A. 6.89",
+    "explanation": "Đáp án đúng: A (A. 6.89)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_58",
+    "word": "Câu 58: Which memory management technique provides the best trade-off bet...",
+    "question": "Which memory management technique provides the best trade-off between efficient memory utilization and performance in a system with high process variability?",
+    "options": [
+      "A. Contiguous memory allocation",
+      "B. Paging",
+      "C. Fixed-size partitioning",
+      "D. Single-user system allocation"
+    ],
+    "answer": "B",
+    "correctWord": "B. Paging",
+    "explanation": "Đáp án đúng: B (B. Paging)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_64",
+    "word": "Câu 64: ______ is a set of physical disk drives viewed by the operating s...",
+    "question": "______ is a set of physical disk drives viewed by the operating system as a single logical drive.",
+    "options": [
+      "A. CLV",
+      "B. SSD",
+      "C. RAID",
+      "D. CAV"
+    ],
+    "answer": "C",
+    "correctWord": "C. RAID",
+    "explanation": "Đáp án đúng: C (C. RAID)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_71",
+    "word": "Câu 71: ______ is (are) determined by the number of instructions that can...",
+    "question": "______ is (are) determined by the number of instructions that can be fetched and executed at the same time (the number of parallel pipelines) and by the speed and sophistication of the mechanisms that the processor uses to find independent instructions.",
+    "options": [
+      "A. Instruction-level parallelism",
+      "B. Machine parallelism",
+      "C. Both instruction-level parallelism and machine parallelism",
+      "D. None of the mentioned"
+    ],
+    "answer": "B",
+    "correctWord": "B. Machine parallelism",
+    "explanation": "Đáp án đúng: B (B. Machine parallelism)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_72",
+    "word": "Câu 72: ______: Read instruction from its memory location into the proces...",
+    "question": "______: Read instruction from its memory location into the processor.",
+    "options": [
+      "A. Instruction fetch",
+      "B. Instruction operation decoding",
+      "C. Operand address calculation",
+      "D. Data operation"
+    ],
+    "answer": "A",
+    "correctWord": "A. Instruction fetch",
+    "explanation": "Đáp án đúng: A (A. Instruction fetch)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_91",
+    "word": "Câu 91: Which technique involves dividing physical memory into fixed-size...",
+    "question": "Which technique involves dividing physical memory into fixed-size or variable-size blocks to allocate memory to processes?",
+    "options": [
+      "A. Partitioning",
+      "B. Swapping",
+      "C. Paging",
+      "D. Translation Lookaside Buffer"
+    ],
+    "answer": "A",
+    "correctWord": "A. Partitioning",
+    "explanation": "Đáp án đúng: A (A. Partitioning)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_97",
+    "word": "Câu 97: Choose an operation in which no operating system’s utility is cal...",
+    "question": "Choose an operation in which no operating system’s utility is called.",
+    "options": [
+      "A. Y = 10 + 7",
+      "B. Read an integer from the keyboard.",
+      "C. Print data to monitor.",
+      "D. Read data from a file.",
+      "E. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. Y = 10 + 7",
+    "explanation": "Đáp án đúng: A (A. Y = 10 + 7)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_102",
+    "word": "Câu 102: Consider some computer generations: 1: the first computer generat...",
+    "question": "Consider some computer generations: 1: the first computer generation; 2: the second computer generation; 3: the third computer generation. And some technologies are used in computer generations: A: Vacuum Tubes; B: Transistors; C: Integrated Circuits (IC); D: Microprocessors. Select the main technology applied in each computer generation.",
+    "options": [
+      "A. 1-D; 2-C; 3-B",
+      "B. 1-A; 2-C; 3-D",
+      "C. 1-A; 2-B; 3-C",
+      "D. 1-D; 2-B; 3-C"
+    ],
+    "answer": "C",
+    "correctWord": "C. 1-A; 2-B; 3-C",
+    "explanation": "Đáp án đúng: C (C. 1-A; 2-B; 3-C)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_104",
+    "word": "Câu 104: What is the initial state of a process when it is admitted by the...",
+    "question": "What is the initial state of a process when it is admitted by the high-level scheduler, but not yet ready to execute?",
+    "options": [
+      "A. New",
+      "B. Ready",
+      "C. Running",
+      "D. Halted"
+    ],
+    "answer": "A",
+    "correctWord": "A. New",
+    "explanation": "Đáp án đúng: A (A. New)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_107",
+    "word": "Câu 107: What is the primary purpose of index registers within the processor?",
+    "question": "What is the primary purpose of index registers within the processor?",
+    "options": [
+      "A. To manage control signals",
+      "B. To hold condition codes",
+      "C. To facilitate indexed addressing",
+      "D. To execute arithmetic operations"
+    ],
+    "answer": "C",
+    "correctWord": "C. To facilitate indexed addressing",
+    "explanation": "Đáp án đúng: C (C. To facilitate indexed addressing)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_110",
+    "word": "Câu 110: What electronic component is used to govern operations such as fe...",
+    "question": "What electronic component is used to govern operations such as fetching, decoding, and performing arithmetic operations executed by a processor?",
+    "options": [
+      "A. Using a system clock",
+      "B. Using a quartz crystal",
+      "C. Using a analog to digital converter",
+      "D. Using a counter"
+    ],
+    "answer": "A",
+    "correctWord": "A. Using a system clock",
+    "explanation": "Đáp án đúng: A (A. Using a system clock)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_117",
+    "word": "Câu 117: Which is the correct choice for the description: “A single machin...",
+    "question": "Which is the correct choice for the description: “A single machine instruction controls the simultaneous execution of a number of processing elements such as vector and array processors”?",
+    "options": [
+      "A. Single instruction, single data (SISD)",
+      "B. Single instruction, multiple data (SIMD)",
+      "C. Multiple instruction, single data (MISD)",
+      "D. Multiple instruction, multiple data (MIMD)"
+    ],
+    "answer": "B",
+    "correctWord": "B. Single instruction, multiple data (SIMD)",
+    "explanation": "Đáp án đúng: B (B. Single instruction, multiple data (SIMD))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_118",
+    "word": "Câu 118: Which computing model is characterized by a large number of proce...",
+    "question": "Which computing model is characterized by a large number of processors working on different parts of a problem simultaneously?",
+    "options": [
+      "A. Single instruction, single data (SISD)",
+      "B. Single instruction, multiple data (SIMD)",
+      "C. Multiple instruction, multiple data (MIMD)",
+      "D. Multiple instruction, single data (MISD)"
+    ],
+    "answer": "C",
+    "correctWord": "C. Multiple instruction, multiple data (MIMD)",
+    "explanation": "Đáp án đúng: C (C. Multiple instruction, multiple data (MIMD))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_119",
+    "word": "Câu 119: Which of the following component does not belong to central proce...",
+    "question": "Which of the following component does not belong to central processing unit?",
+    "options": [
+      "A. System interconnection",
+      "B. Arithmetic and logic unit",
+      "C. Registers",
+      "D. Control unit",
+      "E. CPU interconnection"
+    ],
+    "answer": "A",
+    "correctWord": "A. System interconnection",
+    "explanation": "Đáp án đúng: A (A. System interconnection)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_128",
+    "word": "Câu 128: Which of the following types of processors typically offer better...",
+    "question": "Which of the following types of processors typically offer better performance for parallel processing?",
+    "options": [
+      "A. Single-core processors",
+      "B. Multi-core processors",
+      "C. Microelectronics",
+      "D. Digital signal processors (DSPs)"
+    ],
+    "answer": "B",
+    "correctWord": "B. Multi-core processors",
+    "explanation": "Đáp án đúng: B (B. Multi-core processors)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_136",
+    "word": "Câu 136: Which state indicates that a process is currently being executed ...",
+    "question": "Which state indicates that a process is currently being executed by the processor?",
+    "options": [
+      "A. Running",
+      "B. Ready",
+      "C. NewBorn",
+      "D. Halted"
+    ],
+    "answer": "A",
+    "correctWord": "A. Running",
+    "explanation": "Đáp án đúng: A (A. Running)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_149",
+    "word": "Câu 149: Which scheduling algorithm would be least effective in a system t...",
+    "question": "Which scheduling algorithm would be least effective in a system that requires real-time task execution with strict deadlines?",
+    "options": [
+      "A. First-Come, First-Served (FCFS)",
+      "B. Earliest Deadline First (EDF)",
+      "C. Rate Monotonic Scheduling (RMS)",
+      "D. Round-Robin (RR)"
+    ],
+    "answer": "A",
+    "correctWord": "A. First-Come, First-Served (FCFS)",
+    "explanation": "Đáp án đúng: A (A. First-Come, First-Served (FCFS))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_155",
+    "word": "Câu 155: Control and status registers are used by which entities to contro...",
+    "question": "Control and status registers are used by which entities to control the operation of the processor?",
+    "options": [
+      "A. Privileged, operating system programs",
+      "B. Machine or assembly language programmers",
+      "C. External I/O devices",
+      "D. Main memory modules"
+    ],
+    "answer": "A",
+    "correctWord": "A. Privileged, operating system programs",
+    "explanation": "Đáp án đúng: A (A. Privileged, operating system programs)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_172",
+    "word": "Câu 172: Performs the computer’s data processing functions is ______?",
+    "question": "Performs the computer’s data processing functions is ______?",
+    "options": [
+      "A. Arithmetic and logic unit (ALU)",
+      "B. Control unit",
+      "C. CPU interconnection",
+      "D. Registers"
+    ],
+    "answer": "A",
+    "correctWord": "A. Arithmetic and logic unit (ALU)",
+    "explanation": "Đáp án đúng: A (A. Arithmetic and logic unit (ALU))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_176",
+    "word": "Câu 176: The ______ scheduler executes relatively infrequently and makes t...",
+    "question": "The ______ scheduler executes relatively infrequently and makes the coarse-grained decision of whether or not to take on a new process, and which one to take. The ______ scheduler, also known as the dispatcher, executes frequently and makes the fine-grained decision of which job to execute next.",
+    "options": [
+      "A. short-term; medium-term",
+      "B. medium-term; short-term",
+      "C. long-term; short-term",
+      "D. long-term; medium-term"
+    ],
+    "answer": "C",
+    "correctWord": "C. long-term; short-term",
+    "explanation": "Đáp án đúng: C (C. long-term; short-term)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_181",
+    "word": "Câu 181: To enhance performance in a superscalar processor, which method(s...",
+    "question": "To enhance performance in a superscalar processor, which method(s) should we apply?",
+    "options": [
+      "A. Duplication of resources.",
+      "B. Out-of-order issue.",
+      "C. Renaming registers.",
+      "D. All of the mentioned."
+    ],
+    "answer": "D",
+    "correctWord": "D. All of the mentioned.",
+    "explanation": "Đáp án đúng: D (D. All of the mentioned.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_186",
+    "word": "Câu 186: We have a long-term queue of process requests, typically stored o...",
+    "question": "We have a long-term queue of process requests, typically stored on ______.",
+    "options": [
+      "A. main memory",
+      "B. disk",
+      "C. cache memory",
+      "D. registers"
+    ],
+    "answer": "B",
+    "correctWord": "B. disk",
+    "explanation": "Đáp án đúng: B (B. disk)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_197",
+    "word": "Câu 197: Which processor architecture uses a large register file and simpl...",
+    "question": "Which processor architecture uses a large register file and simple instructions?",
+    "options": [
+      "A. CISC",
+      "B. VLIW",
+      "C. Superscalar",
+      "D. RISC"
+    ],
+    "answer": "D",
+    "correctWord": "D. RISC",
+    "explanation": "Đáp án đúng: D (D. RISC)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_200",
+    "word": "Câu 200: What is the main performance benefit of multicore processors?",
+    "question": "What is the main performance benefit of multicore processors?",
+    "options": [
+      "A. Reduced power consumption",
+      "B. Higher clock speed",
+      "C. Improved serial performance",
+      "D. Parallel task execution"
+    ],
+    "answer": "D",
+    "correctWord": "D. Parallel task execution",
+    "explanation": "Đáp án đúng: D (D. Parallel task execution)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_208",
+    "word": "Câu 208: When a program is executed, what is the first step which is carri...",
+    "question": "When a program is executed, what is the first step which is carried out by an operating system?",
+    "options": [
+      "A. Program’s instructions and data must be loaded to the computer’s main memory.",
+      "B. Program’s instructions and data must be loaded to the Operator System’s monitor memory.",
+      "C. Program’s instructions and data must be splitted into frames and loaded into level 1 cache memory.",
+      "D. Program’s instructions and data must be loaded to long-term queue."
+    ],
+    "answer": "D",
+    "correctWord": "D. Program’s instructions and data must be loaded to long-term queue.",
+    "explanation": "Đáp án đúng: D (D. Program’s instructions and data must be loaded to long-term queue.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_213",
+    "word": "Câu 213: What is the primary purpose of the “Fetch instruction” phase in t...",
+    "question": "What is the primary purpose of the “Fetch instruction” phase in the operation of a processor?",
+    "options": [
+      "A. To read an instruction from memory",
+      "B. To interpret the instruction",
+      "C. To perform arithmetic operations on data",
+      "D. To write data to memory"
+    ],
+    "answer": "A",
+    "correctWord": "A. To read an instruction from memory",
+    "explanation": "Đáp án đúng: A (A. To read an instruction from memory)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_214",
+    "word": "Câu 214: What is the purpose of using an API?",
+    "question": "What is the purpose of using an API?",
+    "options": [
+      "A. To enable application software to be ported easily to other systems that support the same API",
+      "B. To define the repertoire of machine language instructions",
+      "C. To standardize binary portability across programs",
+      "D. To manage system resources"
+    ],
+    "answer": "A",
+    "correctWord": "A. To enable application software to be ported easily to other systems that support the same API",
+    "explanation": "Đáp án đúng: A (A. To enable application software to be ported easily to other systems that support the same API)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_215",
+    "word": "Câu 215: What is the main benefit of using ARM processors over other proce...",
+    "question": "What is the main benefit of using ARM processors over other processors?",
+    "options": [
+      "A. Low cost and low power consumption",
+      "B. Higher degree of multi-tasking",
+      "C. Lower error or glitches",
+      "D. Efficient memory management"
+    ],
+    "answer": "A",
+    "correctWord": "A. Low cost and low power consumption",
+    "explanation": "Đáp án đúng: A (A. Low cost and low power consumption)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_220",
+    "word": "Câu 220: What is the primary function of the Arithmetic and Logic Unit (AL...",
+    "question": "What is the primary function of the Arithmetic and Logic Unit (ALU) in a processor?",
+    "options": [
+      "A. Perform actual computations and data processing",
+      "B. Control the movement of data and instructions",
+      "C. Act as an interface to the system bus",
+      "D. Manage the internal processor memory"
+    ],
+    "answer": "A",
+    "correctWord": "A. Perform actual computations and data processing",
+    "explanation": "Đáp án đúng: A (A. Perform actual computations and data processing)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_229",
+    "word": "Câu 229: What is one way to control power density in microprocessor chips?",
+    "question": "What is one way to control power density in microprocessor chips?",
+    "options": [
+      "A. Increase the clock speed of the chip.",
+      "B. Use more of the chip area for cache memory.",
+      "C. Reduce the size of the chip die.",
+      "D. Use more transistors for logic operations."
+    ],
+    "answer": "B",
+    "correctWord": "B. Use more of the chip area for cache memory.",
+    "explanation": "Đáp án đúng: B (B. Use more of the chip area for cache memory.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_238",
+    "word": "Câu 238: What is the role of the registers in a processor?",
+    "question": "What is the role of the registers in a processor?",
+    "options": [
+      "A. Registers in a processor provide fast, temporary storage for data and instructions, facilitating efficient access during instruction execution",
+      "B. Registers are only used to store data temporarily during the execution of a program and do not contribute to the processing of instructions",
+      "C. Registers are solely responsible for storing data from the main memory and have no involvement in holding instructions or facilitating data manipulation",
+      "D. Registers are only necessary when the CPU is idle and have no impact on the speed or efficiency of instruction execution"
+    ],
+    "answer": "A",
+    "correctWord": "A. Registers in a processor provide fast, temporary storage for data and instructions, facilitating efficient access during instruction execution",
+    "explanation": "Đáp án đúng: A (A. Registers in a processor provide fast, temporary storage for data and instructions, facilitating efficient access during instruction execution)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_239",
+    "word": "Câu 239: What is the role of the control unit in a processor?",
+    "question": "What is the role of the control unit in a processor?",
+    "options": [
+      "A. The control unit’s primary role is to perform arithmetic and logical operations within the processor, orchestrating the manipulation of data",
+      "B. The control unit only manages the flow of data between the CPU and external devices and does not play a significant role in executing instructions",
+      "C. The control unit is solely responsible for managing the flow of instructions from secondary storage to RAM and does not have a role in the internal operation of the CPU",
+      "D. The control unit in a processor directs and coordinates the execution of instructions, interpreting and managing the flow of operations within the CPU"
+    ],
+    "answer": "D",
+    "correctWord": "D. The control unit in a processor directs and coordinates the execution of instructions, interpreting and managing the flow of operations within the CPU",
+    "explanation": "Đáp án đúng: D (D. The control unit in a processor directs and coordinates the execution of instructions, interpreting and managing the flow of operations within the CPU)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_249",
+    "word": "Câu 249: What role does an Application Programming Interface (API) play in...",
+    "question": "What role does an Application Programming Interface (API) play in software development?",
+    "options": [
+      "A. It allows program access to hardware resources using high-level language libraries",
+      "B. It defines low-level machine instructions",
+      "C. It provides a standard for binary portability",
+      "D. It manages system resources for the operating system and machine language instructions"
+    ],
+    "answer": "A",
+    "correctWord": "A. It allows program access to hardware resources using high-level language libraries",
+    "explanation": "Đáp án đúng: A (A. It allows program access to hardware resources using high-level language libraries)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_250",
+    "word": "Câu 250: What role does branch prediction play in superscalar processors?",
+    "question": "What role does branch prediction play in superscalar processors?",
+    "options": [
+      "A. It reduces the need for registers",
+      "B. It prevents the execution of any branches",
+      "C. It minimizes pipeline stalling by guessing the paths of branches",
+      "D. It reduces the number of functional units required"
+    ],
+    "answer": "C",
+    "correctWord": "C. It minimizes pipeline stalling by guessing the paths of branches",
+    "explanation": "Đáp án đúng: C (C. It minimizes pipeline stalling by guessing the paths of branches)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_252",
+    "word": "Câu 252: Which of the following statements is incorrect about Translation ...",
+    "question": "Which of the following statements is incorrect about Translation Look-aside Buffer (TLB)?",
+    "options": [
+      "A. The use of TLB eliminates the need for keeping a page table in memory",
+      "B. TLB only maintains a subset of the entries stored in the full memory-based page table",
+      "C. When there is a TLB miss the system needs to access the page table",
+      "D. A translation lookaside buffer (TLB) is a memory cache that stores the recent translations of virtual memory to physical memory"
+    ],
+    "answer": "A",
+    "correctWord": "A. The use of TLB eliminates the need for keeping a page table in memory",
+    "explanation": "Đáp án đúng: A (A. The use of TLB eliminates the need for keeping a page table in memory)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_266",
+    "word": "Câu 266: How does multithreading improve the performance of a processor?",
+    "question": "How does multithreading improve the performance of a processor?",
+    "options": [
+      "A. It increases the instruction-level parallelism by issuing multiple instructions from different threads in the same cycle",
+      "B. It increases the thread-level parallelism by executing multiple threads on different cores or processors",
+      "C. It increases the utilization of the processor resources by hiding the latency of long-latency events such as cache misses or branch mispredictions",
+      "D. All of the mentioned"
+    ],
+    "answer": "D",
+    "correctWord": "D. All of the mentioned",
+    "explanation": "Đáp án đúng: D (D. All of the mentioned)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_273",
+    "word": "Câu 273: Choose an INCORRECT trend in contemporary processor designs.",
+    "question": "Choose an INCORRECT trend in contemporary processor designs.",
+    "options": [
+      "A. The number of processes accepted is infinitive.",
+      "B. The number of integrated transistors is getting increasing and more larger.",
+      "C. Higher clock frequency is applied.",
+      "D. More cores are integrated in one chip."
+    ],
+    "answer": "A",
+    "correctWord": "A. The number of processes accepted is infinitive.",
+    "explanation": "Đáp án đúng: A (A. The number of processes accepted is infinitive.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_275",
+    "word": "Câu 275: Central processing unit (CPU) of IAS computer consists of ________.",
+    "question": "Central processing unit (CPU) of IAS computer consists of ________.",
+    "options": [
+      "A. Main memory and ALU (arithmetic and logic unit)",
+      "B. ALU (Arithmetic and Logic Unit) and CU (Control Unit)",
+      "C. CU (Control Unit) and IO Module",
+      "D. ALU (Arithmetic and Logic Unit) and IO Module"
+    ],
+    "answer": "B",
+    "correctWord": "B. ALU (Arithmetic and Logic Unit) and CU (Control Unit)",
+    "explanation": "Đáp án đúng: B (B. ALU (Arithmetic and Logic Unit) and CU (Control Unit))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_276",
+    "word": "Câu 276: During the development process of the computer, which of the foll...",
+    "question": "During the development process of the computer, which of the following statements is false?",
+    "options": [
+      "A. The second generation uses transistors",
+      "B. The first generation uses vacuum tubes",
+      "C. The fourth generation uses integrated circuit",
+      "D. The third generation uses transistor"
+    ],
+    "answer": "D",
+    "correctWord": "D. The third generation uses transistor",
+    "explanation": "Đáp án đúng: D (D. The third generation uses transistor)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_289",
+    "word": "Câu 289: In SuperScalar computer architecture, the primary goal of utilizi...",
+    "question": "In SuperScalar computer architecture, the primary goal of utilizing multiple processors concurrently is to",
+    "options": [
+      "A. Increase processing speed by increasing CPU frequency.",
+      "B. Improve performance by executing more than one instruction per machine cycle.",
+      "C. Reduce the size of the CPU to conserve energy.",
+      "D. Enhance computational power by increasing the number of CPU cores."
+    ],
+    "answer": "B",
+    "correctWord": "B. Improve performance by executing more than one instruction per machine cycle.",
+    "explanation": "Đáp án đúng: B (B. Improve performance by executing more than one instruction per machine cycle.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_291",
+    "word": "Câu 291: In parallel processor architectures, what type do uni-processor c...",
+    "question": "In parallel processor architectures, what type do uni-processor computers fall into?",
+    "options": [
+      "A. Multiple instruction streams, single data stream.",
+      "B. Multiple instruction streams, multiple data streams.",
+      "C. Single instruction stream, single data stream.",
+      "D. Single instruction stream, multiple data streams."
+    ],
+    "answer": "C",
+    "correctWord": "C. Single instruction stream, single data stream.",
+    "explanation": "Đáp án đúng: C (C. Single instruction stream, single data stream.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_292",
+    "word": "Câu 292: In a heterogeneous multicore processor, some cores are high-perfo...",
+    "question": "In a heterogeneous multicore processor, some cores are high-performance (big cores) while others are low-power (small cores). What is the primary challenge in efficiently utilizing this architecture?",
+    "options": [
+      "A. Balancing workload distribution between big and small cores.",
+      "B. Increasing the number of small cores to match the performance of big cores.",
+      "C. Using identical instruction sets for all cores.",
+      "D. Reducing the physical size of big cores."
+    ],
+    "answer": "A",
+    "correctWord": "A. Balancing workload distribution between big and small cores.",
+    "explanation": "Đáp án đúng: A (A. Balancing workload distribution between big and small cores.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_305",
+    "word": "Câu 305: What does the program setup process typically involve?",
+    "question": "What does the program setup process typically involve?",
+    "options": [
+      "A. Automatically loading and linking the compiled program without user input.",
+      "B. Mounting/dismounting tapes and setting up card decks for each step.",
+      "C. Delegating the setup process entirely to the processor.",
+      "D. Running the program directly without compilation or linking."
+    ],
+    "answer": "B",
+    "correctWord": "B. Mounting/dismounting tapes and setting up card decks for each step.",
+    "explanation": "Đáp án đúng: B (B. Mounting/dismounting tapes and setting up card decks for each step.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_309",
+    "word": "Câu 309: Which factor is the most significant limitation when increasing i...",
+    "question": "Which factor is the most significant limitation when increasing instruction-level parallelism (ILP) in a superscalar processor?",
+    "options": [
+      "A. The number of execution units available in the processor.",
+      "B. The presence of data and control dependencies between instructions.",
+      "C. The amount of cache memory available to store frequently used instructions.",
+      "D. The ability of the compiler to optimize code for ILP."
+    ],
+    "answer": "B",
+    "correctWord": "B. The presence of data and control dependencies between instructions.",
+    "explanation": "Đáp án đúng: B (B. The presence of data and control dependencies between instructions.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  },
+  {
+    "id": "CEA_318",
+    "word": "Câu 318: What is the significance of the Intel 8080 microprocessor?",
+    "question": "What is the significance of the Intel 8080 microprocessor?",
+    "options": [
+      "A. It was the first microprocessor with a built-in cooling system.",
+      "B. It was designed for specific applications, not general computing.",
+      "C. It was the first general-purpose microprocessor.",
+      "D. It introduced the concept of Instruction Set Architecture."
+    ],
+    "answer": "C",
+    "correctWord": "C. It was the first general-purpose microprocessor.",
+    "explanation": "Đáp án đúng: C (C. It was the first general-purpose microprocessor.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+  }
+]

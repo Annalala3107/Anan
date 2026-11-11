@@ -348,10 +348,10 @@ export class StorageEngine {
 
   // ---- ACTIVE QUIZ SELECTION ----
   public static getSelectedQuiz(): string {
-    if (typeof window === 'undefined') return '/data/csi106_all.json';
+    if (typeof window === 'undefined') return '/data/cea201_all.json';
     const saved = localStorage.getItem(STORAGE_KEYS.SELECTED_QUIZ);
     if (!saved || saved.includes('/sat/')) {
-      return '/data/csi106_all.json';
+      return '/data/cea201_all.json';
     }
     return saved;
   }

@@ -1,0 +1,1395 @@
+[
+  {
+    "id": "CEA_3",
+    "word": "Câu 3: Indirect addressing, the length of the address field is usually g...",
+    "question": "Indirect addressing, the length of the address field is usually greater than the word length, because unlimiting the address range.",
+    "options": [
+      "A. True",
+      "B. False"
+    ],
+    "answer": "B",
+    "correctWord": "B. False",
+    "explanation": "Đáp án đúng: B (B. False)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_4",
+    "word": "Câu 4: How many check bits are needed if the Hamming error correction co...",
+    "question": "How many check bits are needed if the Hamming error correction code is used to detect single bit error in a 128-bit data word?",
+    "options": [
+      "A. 6 bits",
+      "B. 7 bits",
+      "C. 8 bits",
+      "D. 9 bits",
+      "E. 5 bits"
+    ],
+    "answer": "C",
+    "correctWord": "C. 8 bits",
+    "explanation": "Đáp án đúng: C (C. 8 bits)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_5",
+    "word": "Câu 5: How many check bits are needed for a Hamming error correction cod...",
+    "question": "How many check bits are needed for a Hamming error correction code to detect single-error correction in a 1 KByte data word?",
+    "options": [
+      "A. 11 bits",
+      "B. 12 bits",
+      "C. 13 bits",
+      "D. 14 bits",
+      "E. 15 bits"
+    ],
+    "answer": "D",
+    "correctWord": "D. 14 bits",
+    "explanation": "Đáp án đúng: D (D. 14 bits)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_6",
+    "word": "Câu 6: How many bytes of data does each sector in the Winchester hard dr...",
+    "question": "How many bytes of data does each sector in the Winchester hard drive disk have?",
+    "options": [
+      "A. 128 bytes",
+      "B. 256 bytes",
+      "C. 512 bytes",
+      "D. 1024 bytes",
+      "E. 4096 bytes"
+    ],
+    "answer": "C",
+    "correctWord": "C. 512 bytes",
+    "explanation": "Đáp án đúng: C (C. 512 bytes)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_7",
+    "word": "Câu 7: A byte addressable microprocessor has 24 bit address. What is max...",
+    "question": "A byte addressable microprocessor has 24 bit address. What is maximum memory capacity?",
+    "options": [
+      "A. 4 MegaByte",
+      "B. 8 MegaByte",
+      "C. 16 MegaByte",
+      "D. 32 MegaByte"
+    ],
+    "answer": "C",
+    "correctWord": "C. 16 MegaByte",
+    "explanation": "Đáp án đúng: C (C. 16 MegaByte)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_8",
+    "word": "Câu 8: What is the maximum addressable memory of a 32-bit microprocessor...",
+    "question": "What is the maximum addressable memory of a 32-bit microprocessor with 24-bit address?",
+    "options": [
+      "A. 16 GB",
+      "B. 16 MB",
+      "C. 16 Gbits",
+      "D. 16 Mbits"
+    ],
+    "answer": "B",
+    "correctWord": "B. 16 MB",
+    "explanation": "Đáp án đúng: B (B. 16 MB)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_9",
+    "word": "Câu 9: A two-way set-associative cache has lines of 16 bytes and a total...",
+    "question": "A two-way set-associative cache has lines of 16 bytes and a total size of 8 Kbytes. The 64-Mbyte main memory is byte addressable. How many bits are there in the set field of the cache?",
+    "options": [
+      "A. 5",
+      "B. 6",
+      "C. 7",
+      "D. 8",
+      "E. 9"
+    ],
+    "answer": "D",
+    "correctWord": "D. 8",
+    "explanation": "Đáp án đúng: D (D. 8)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_11",
+    "word": "Câu 11: A EPROM has 20 address lines and 8 bit data lines, what is maximu...",
+    "question": "A EPROM has 20 address lines and 8 bit data lines, what is maximum memory capacity of this chip?",
+    "options": [
+      "A. 1 Mbits",
+      "B. 2 Mbits",
+      "C. 4 Mbits",
+      "D. 8 Mbits",
+      "E. 16 Mbits"
+    ],
+    "answer": "D",
+    "correctWord": "D. 8 Mbits",
+    "explanation": "Đáp án đúng: D (D. 8 Mbits)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_12",
+    "word": "Câu 12: Consider a 5-drive, 200 GBytes-per-drive RAID array. What is the ...",
+    "question": "Consider a 5-drive, 200 GBytes-per-drive RAID array. What is the available data storage capacity for each of the RAID levels 5?",
+    "options": [
+      "A. 200 GBytes",
+      "B. 400 GBytes",
+      "C. 600 GBytes",
+      "D. 800 GBytes",
+      "E. None of the mentioned"
+    ],
+    "answer": "D",
+    "correctWord": "D. 800 GBytes",
+    "explanation": "Đáp án đúng: D (D. 800 GBytes)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_13",
+    "word": "Câu 13: Consider a 5-drive, 100 GBytes-per-drive RAID array. What is the ...",
+    "question": "Consider a 5-drive, 100 GBytes-per-drive RAID array. What is the available data storage capacity for each of the RAID levels 5?",
+    "options": [
+      "A. 400 GBytes",
+      "B. 200 GBytes",
+      "C. 300 GBytes",
+      "D. 500 GBytes"
+    ],
+    "answer": "A",
+    "correctWord": "A. 400 GBytes",
+    "explanation": "Đáp án đúng: A (A. 400 GBytes)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_14",
+    "word": "Câu 14: In the direct mapping method from 256MB main memory with 512KB ca...",
+    "question": "In the direct mapping method from 256MB main memory with 512KB cache, what is the number of bits for the TAG element in the address?",
+    "options": [
+      "A. 6",
+      "B. 7",
+      "C. 8",
+      "D. 9"
+    ],
+    "answer": "D",
+    "correctWord": "D. 9",
+    "explanation": "Đáp án đúng: D (D. 9)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_15",
+    "word": "Câu 15: In error correcting code (single ECC), how many bits are used to ...",
+    "question": "In error correcting code (single ECC), how many bits are used to correct one bit in 8-bit data?",
+    "options": [
+      "A. 4",
+      "B. 5",
+      "C. 6",
+      "D. 7"
+    ],
+    "answer": "A",
+    "correctWord": "A. 4",
+    "explanation": "Đáp án đúng: A (A. 4)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_27",
+    "word": "Câu 27: Using Hamming Code with one error correction to store a 12-bit wo...",
+    "question": "Using Hamming Code with one error correction to store a 12-bit word in memory, the stored word 111001001101 consists of 8 bits data and 4 bits parity check. What are the parity bits?",
+    "options": [
+      "A. 0110",
+      "B. 0111",
+      "C. 1110",
+      "D. 0101",
+      "E. None of the mentioned"
+    ],
+    "answer": "D",
+    "correctWord": "D. 0101",
+    "explanation": "Đáp án đúng: D (D. 0101)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_32",
+    "word": "Câu 32: A set-associative cache consists of 64 lines, divided into four-l...",
+    "question": "A set-associative cache consists of 64 lines, divided into four-line sets. 2^19-words main memory contains 4K blocks of 128 words each. How many bits are there in the tag field of the cache?",
+    "options": [
+      "A. 5",
+      "B. 6",
+      "C. 7",
+      "D. 8",
+      "E. 9"
+    ],
+    "answer": "D",
+    "correctWord": "D. 8",
+    "explanation": "Đáp án đúng: D (D. 8)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_33",
+    "word": "Câu 33: Consider a machine with a byte addressable main memory of 2^16 by...",
+    "question": "Consider a machine with a byte addressable main memory of 2^16 bytes and block size of 8 bytes. Assume that a direct mapped cache consisting of 32 lines is used with this machine. How many bits are there in the line field of the cache?",
+    "options": [
+      "A. 3",
+      "B. 4",
+      "C. 5",
+      "D. 6",
+      "E. 7"
+    ],
+    "answer": "C",
+    "correctWord": "C. 5",
+    "explanation": "Đáp án đúng: C (C. 5)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_34",
+    "word": "Câu 34: The instruction, which adds 1 to the value in a memory location, ...",
+    "question": "The instruction, which adds 1 to the value in a memory location, has five stages: fetch opcode (four cycles), fetch operand address (three cycles), fetch operand (three cycles), add 1 to operand (three cycles), and store operand (three cycles). An interrupt sends request at beginning of fetch operand stage. How many cycles does the processor enter the interrupt processing cycle?",
+    "options": [
+      "A. 6",
+      "B. 7",
+      "C. 8",
+      "D. 9",
+      "E. 10"
+    ],
+    "answer": "D",
+    "correctWord": "D. 9",
+    "explanation": "Đáp án đúng: D (D. 9)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_35",
+    "word": "Câu 35: The instruction, which adds 1 to the value in a memory location, ...",
+    "question": "The instruction, which adds 1 to the value in a memory location, has five stages: fetch opcode (2 bus cycles), fetch operand address (2 bus cycles), fetch operand (2 bus cycles), add 1 to operand (1 bus cycle), and store operand (3 bus cycles). An interrupt sends request at beginning of fetch operand address stage. How many cycles does the processor enter the interrupt processing cycle?",
+    "options": [
+      "A. 6",
+      "B. 7",
+      "C. 8",
+      "D. 9",
+      "E. 5"
+    ],
+    "answer": "C",
+    "correctWord": "C. 8",
+    "explanation": "Đáp án đúng: C (C. 8)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_43",
+    "word": "Câu 43: (Choose 1 answer) In one-cache system using direct mapping techni...",
+    "question": "(Choose 1 answer) In one-cache system using direct mapping technique, with the cache containing 10 lines, which memory block’s data can be transferred to the cache line 7?",
+    "options": [
+      "A. 7, 17, 27, 37, ...",
+      "B. 0, 1, 2, 3, 4, 5, 6, 7, ...",
+      "C. 0, 7, 17, 27, 37, ...",
+      "D. 0, 7, 77, 777, ..."
+    ],
+    "answer": "A",
+    "correctWord": "A. 7, 17, 27, 37, ...",
+    "explanation": "Đáp án đúng: A (A. 7, 17, 27, 37, ...)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_44",
+    "word": "Câu 44: A two-way set-associative cache has lines of 16 bytes and a total...",
+    "question": "A two-way set-associative cache has lines of 16 bytes and a total size of 8 Kbytes. The 64-Mbyte main memory is byte addressable. What are the values of Tag, Set and Byte offset fields?",
+    "options": [
+      "A. 14/8/4",
+      "B. 16/6/4",
+      "C. 12/10/4",
+      "D. 15/7/4",
+      "E. 13/9/4"
+    ],
+    "answer": "A",
+    "correctWord": "A. 14/8/4",
+    "explanation": "Đáp án đúng: A (A. 14/8/4)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_45",
+    "word": "Câu 45: Using Hamming Code with one error correction to store a 12-bit wo...",
+    "question": "Using Hamming Code with one error correction to store a 12-bit word in memory, the stored word 101001011101 consists of 8 bits data and 4 bits parity check. What are the data bits?",
+    "options": [
+      "A. 01001101",
+      "B. 10100100",
+      "C. 10101011",
+      "D. 01011101",
+      "E. None of the mentioned"
+    ],
+    "answer": "C",
+    "correctWord": "C. 10101011",
+    "explanation": "Đáp án đúng: C (C. 10101011)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_46",
+    "word": "Câu 46: What is the minimum number of disks used for RAID 5?",
+    "question": "What is the minimum number of disks used for RAID 5?",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4",
+      "E. 5"
+    ],
+    "answer": "C",
+    "correctWord": "C. 3",
+    "explanation": "Đáp án đúng: C (C. 3)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_48",
+    "word": "Câu 48: In a system with an 8-bit address bus, how many unique memory loc...",
+    "question": "In a system with an 8-bit address bus, how many unique memory locations can be addressed?",
+    "options": [
+      "A. 64",
+      "B. 128",
+      "C. 256",
+      "D. 512"
+    ],
+    "answer": "C",
+    "correctWord": "C. 256",
+    "explanation": "Đáp án đúng: C (C. 256)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_50",
+    "word": "Câu 50: According to Hamming code in the case of Single-Error Correction ...",
+    "question": "According to Hamming code in the case of Single-Error Correction (SEC), how many check bits are needed for 20 data bits?",
+    "options": [
+      "A. 3 check bits",
+      "B. 4 check bits",
+      "C. 5 check bits",
+      "D. 6 check bits"
+    ],
+    "answer": "C",
+    "correctWord": "C. 5 check bits",
+    "explanation": "Đáp án đúng: C (C. 5 check bits)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_55",
+    "word": "Câu 55: Which of the following issues are peculiar to SSDs compared to HD...",
+    "question": "Which of the following issues are peculiar to SSDs compared to HDDs? (choose two correct answers)",
+    "options": [
+      "A. Performance slows down as the device is used.",
+      "B. A certain number of writes make the flash memory unusable.",
+      "C. They are more vulnerable to physical damage.",
+      "D. They require defragmentation to maintain performance.",
+      "E. They are slower at data retrieval compared to HDDs."
+    ],
+    "answer": "A, B",
+    "correctWord": "A. Performance slows down as the device is used. | B. A certain number of writes make the flash memory unusable.",
+    "explanation": "Đáp án đúng: A, B (A. Performance slows down as the device is used. | B. A certain number of writes make the flash memory unusable.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_59",
+    "word": "Câu 59: Why is cache design used in high-performance computing (HPC)? (Ch...",
+    "question": "Why is cache design used in high-performance computing (HPC)? (Choose three correct answers)",
+    "options": [
+      "A. Because there is a significant speed gap between the processor and the internal memory in HPC.",
+      "B. Because applications in HPC often require a large bandwidth to support intensive data processing.",
+      "C. Because power consumption can be a significant operational cost in HPC environments.",
+      "D. Because multiple processors are often working in parallel, caches provide a way to efficiently manage data required by these processors."
+    ],
+    "answer": "A, B, D",
+    "correctWord": "A. Because there is a significant speed gap between the processor and the internal memory in HPC. | B. Because applications in HPC often require a large bandwidth to support intensive data processing. | D. Because multiple processors are often working in parallel, caches provide a way to efficiently manage data required by these processors.",
+    "explanation": "Đáp án đúng: A, B, D (A. Because there is a significant speed gap between the processor and the internal memory in HPC. | B. Because applications in HPC often require a large bandwidth to support intensive data processing. | D. Because multiple processors are often working in parallel, caches provide a way to efficiently manage data required by these processors.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_63",
+    "word": "Câu 63: Which replacement algorithms are common in cache management? (Cho...",
+    "question": "Which replacement algorithms are common in cache management? (Choose three correct answers).",
+    "options": [
+      "A. FIFO",
+      "B. Random",
+      "C. LRU",
+      "D. DFS"
+    ],
+    "answer": "A, B, C",
+    "correctWord": "A. FIFO | B. Random | C. LRU",
+    "explanation": "Đáp án đúng: A, B, C (A. FIFO | B. Random | C. LRU)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_68",
+    "word": "Câu 68: ______: If the operation involves reference to an operand in memo...",
+    "question": "______: If the operation involves reference to an operand in memory or available via I/O, then determine the address of the operand.",
+    "options": [
+      "A. Operand fetch",
+      "B. Data operation",
+      "C. Operand store",
+      "D. Operand address calculation"
+    ],
+    "answer": "D",
+    "correctWord": "D. Operand address calculation",
+    "explanation": "Đáp án đúng: D (D. Operand address calculation)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_69",
+    "word": "Câu 69: (Choose 1 answer) ______ can exchange data directly with the proc...",
+    "question": "(Choose 1 answer) ______ can exchange data directly with the processor. Just as the processor can initiate a read or write with memory, designating the address of a specific location, the processor can also read data from or write data to ______.",
+    "options": [
+      "A. I/O module / Memory",
+      "B. Interrupts / I/O module",
+      "C. I/O module / Interrupts",
+      "D. Interrupts / Interrupts",
+      "E. Memory / I/O module"
+    ],
+    "answer": "E",
+    "correctWord": "E. Memory / I/O module",
+    "explanation": "Đáp án đúng: E (E. Memory / I/O module)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_70",
+    "word": "Câu 70: ______: Determine the address of the next instruction to be execu...",
+    "question": "______: Determine the address of the next instruction to be executed. Usually, this involves adding a fixed number to the address of the previous instruction.",
+    "options": [
+      "A. Instruction fetch",
+      "B. Instruction operation decoding",
+      "C. Instruction address calculation",
+      "D. Operand fetch",
+      "E. Operand address calculation"
+    ],
+    "answer": "C",
+    "correctWord": "C. Instruction address calculation",
+    "explanation": "Đáp án đúng: C (C. Instruction address calculation)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_82",
+    "word": "Câu 82: The effective address of ______ is EA = A + (R), (R) = (R) + 1.",
+    "question": "The effective address of ______ is EA = A + (R), (R) = (R) + 1.",
+    "options": [
+      "A. relative addressing",
+      "B. autoindexing",
+      "C. postindexing",
+      "D. preindexing"
+    ],
+    "answer": "B",
+    "correctWord": "B. autoindexing",
+    "explanation": "Đáp án đúng: B (B. autoindexing)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_83",
+    "word": "Câu 83: The effective address of Register indirect addressing mode is ___...",
+    "question": "The effective address of Register indirect addressing mode is ______.",
+    "options": [
+      "A. EA = R",
+      "B. EA = (R)",
+      "C. EA = (R) + A",
+      "D. EA = (R) + (A)"
+    ],
+    "answer": "B",
+    "correctWord": "B. EA = (R)",
+    "explanation": "Đáp án đúng: B (B. EA = (R))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_85",
+    "word": "Câu 85: Which RAID level uses striping technique with a minimum of 3 disk...",
+    "question": "Which RAID level uses striping technique with a minimum of 3 disks and provides fault tolerance through the use of parity bit?",
+    "options": [
+      "A. RAID 0",
+      "B. RAID 1",
+      "C. RAID 2",
+      "D. RAID 3"
+    ],
+    "answer": "D",
+    "correctWord": "D. RAID 3",
+    "explanation": "Đáp án đúng: D (D. RAID 3)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_87",
+    "word": "Câu 87: Which register is the memory address register?",
+    "question": "Which register is the memory address register?",
+    "options": [
+      "A. MAR",
+      "B. MBR",
+      "C. IR",
+      "D. PC"
+    ],
+    "answer": "A",
+    "correctWord": "A. MAR",
+    "explanation": "Đáp án đúng: A (A. MAR)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_94",
+    "word": "Câu 94: For reads to and writes from main memory, ______ translates each ...",
+    "question": "For reads to and writes from main memory, ______ translates each virtual address into a physical address in main memory.",
+    "options": [
+      "A. MAR",
+      "B. MMU",
+      "C. Overlays",
+      "D. TLB",
+      "E. Accumulator"
+    ],
+    "answer": "B",
+    "correctWord": "B. MMU",
+    "explanation": "Đáp án đúng: B (B. MMU)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_98",
+    "word": "Câu 98: Choose the appropriate words to fill in the corresponding blanks ...",
+    "question": "Choose the appropriate words to fill in the corresponding blanks in the following definitions: ______ contains a word to be stored in memory or sent to the I/O unit, or is used to receive a word from memory or from the I/O unit. ______ specifies the address in memory of the word to be written from or read into the MBR. ______ is employed to hold temporarily the right hand instruction from a word in memory.",
+    "options": [
+      "A. MBR; MAR; IBR",
+      "B. AC; MAR; IR",
+      "C. MAR; MBR; IBR",
+      "D. AC; MBR; MAR"
+    ],
+    "answer": "A",
+    "correctWord": "A. MBR; MAR; IBR",
+    "explanation": "Đáp án đúng: A (A. MBR; MAR; IBR)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_105",
+    "word": "Câu 105: What is the most common mapping technique used in cache memory in...",
+    "question": "What is the most common mapping technique used in cache memory in modern computers?",
+    "options": [
+      "A. Direct Mapping",
+      "B. Fully Associative",
+      "C. Set Associative",
+      "D. None of the mentioned"
+    ],
+    "answer": "C",
+    "correctWord": "C. Set Associative",
+    "explanation": "Đáp án đúng: C (C. Set Associative)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_106",
+    "word": "Câu 106: What is the cache memory level that is integrated into the proces...",
+    "question": "What is the cache memory level that is integrated into the processor chip and has the lowest latency?",
+    "options": [
+      "A. L1 cache",
+      "B. L2 cache",
+      "C. L3 cache",
+      "D. L4 cache"
+    ],
+    "answer": "A",
+    "correctWord": "A. L1 cache",
+    "explanation": "Đáp án đúng: A (A. L1 cache)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_108",
+    "word": "Câu 108: What is the primary advantage of indirect addressing mode?",
+    "question": "What is the primary advantage of indirect addressing mode?",
+    "options": [
+      "A. Faster access to operands",
+      "B. Ability to access a larger data set",
+      "C. Flexibility in data location",
+      "D. Reduced instruction size"
+    ],
+    "answer": "B",
+    "correctWord": "B. Ability to access a larger data set",
+    "explanation": "Đáp án đúng: B (B. Ability to access a larger data set)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_112",
+    "word": "Câu 112: What type of addressing is primarily used by almost all RISC inst...",
+    "question": "What type of addressing is primarily used by almost all RISC instructions?",
+    "options": [
+      "A. Immediate addressing",
+      "B. Register addressing",
+      "C. Indirect addressing",
+      "D. Direct addressing"
+    ],
+    "answer": "B",
+    "correctWord": "B. Register addressing",
+    "explanation": "Đáp án đúng: B (B. Register addressing)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_113",
+    "word": "Câu 113: What does RAID stand for in the context of disk storage systems?",
+    "question": "What does RAID stand for in the context of disk storage systems?",
+    "options": [
+      "A. Redundant Array of Independent Disks.",
+      "B. Reliable Array of Integrated Drives.",
+      "C. Random Access Integrated Database.",
+      "D. Redundant Access Independent Database."
+    ],
+    "answer": "A",
+    "correctWord": "A. Redundant Array of Independent Disks.",
+    "explanation": "Đáp án đúng: A (A. Redundant Array of Independent Disks.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_116",
+    "word": "Câu 116: Which cache is not a shared cache?",
+    "question": "Which cache is not a shared cache?",
+    "options": [
+      "A. L4 cache",
+      "B. L3 cache",
+      "C. L2 cache",
+      "D. L1 cache"
+    ],
+    "answer": "D",
+    "correctWord": "D. L1 cache",
+    "explanation": "Đáp án đúng: D (D. L1 cache)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_124",
+    "word": "Câu 124: Which of the following algorithms is not typically used in cache ...",
+    "question": "Which of the following algorithms is not typically used in cache memory replacement?",
+    "options": [
+      "A. Least Recently Used (LRU)",
+      "B. First-In-First-Out (FIFO)",
+      "C. Least Frequently Used (LFU)",
+      "D. Round Robin (RR)"
+    ],
+    "answer": "D",
+    "correctWord": "D. Round Robin (RR)",
+    "explanation": "Đáp án đúng: D (D. Round Robin (RR))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_129",
+    "word": "Câu 129: Which addressing mode allows direct specification of the memory a...",
+    "question": "Which addressing mode allows direct specification of the memory address within the instruction?",
+    "options": [
+      "A. Direct",
+      "B. Indirect",
+      "C. Register Indirect",
+      "D. Displacement"
+    ],
+    "answer": "A",
+    "correctWord": "A. Direct",
+    "explanation": "Đáp án đúng: A (A. Direct)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_132",
+    "word": "Câu 132: Which write technique in which all write operations are made to m...",
+    "question": "Which write technique in which all write operations are made to main memory as well as to the cache, ensuring that main memory is always valid.",
+    "options": [
+      "A. Write through",
+      "B. Write back",
+      "C. Write around",
+      "D. No write allocate"
+    ],
+    "answer": "A",
+    "correctWord": "A. Write through",
+    "explanation": "Đáp án đúng: A (A. Write through)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_138",
+    "word": "Câu 138: Which method of accessing units of data is used to copy a block i...",
+    "question": "Which method of accessing units of data is used to copy a block in main memory into cache memory?",
+    "options": [
+      "A. Direct access",
+      "B. Random access",
+      "C. Sequential access",
+      "D. Associative"
+    ],
+    "answer": "D",
+    "correctWord": "D. Associative",
+    "explanation": "Đáp án đúng: D (D. Associative)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_139",
+    "word": "Câu 139: Which method allows the programmer to view memory as consisting o...",
+    "question": "Which method allows the programmer to view memory as consisting of multiple address spaces and is used to map logical addresses of variable length onto physical memory?",
+    "options": [
+      "A. Paging",
+      "B. Overlays",
+      "C. Segmentation",
+      "D. Paging with segmentation"
+    ],
+    "answer": "C",
+    "correctWord": "C. Segmentation",
+    "explanation": "Đáp án đúng: C (C. Segmentation)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_140",
+    "word": "Câu 140: Which component inside an HDD is responsible for reading and writ...",
+    "question": "Which component inside an HDD is responsible for reading and writing data?",
+    "options": [
+      "A. The platter",
+      "B. The spindle motor",
+      "C. Read/Write Head",
+      "D. The power supply"
+    ],
+    "answer": "C",
+    "correctWord": "C. Read/Write Head",
+    "explanation": "Đáp án đúng: C (C. Read/Write Head)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_142",
+    "word": "Câu 142: Which kind of cache mapping maps each block of main memory into o...",
+    "question": "Which kind of cache mapping maps each block of main memory into one unique line of the cache?",
+    "options": [
+      "A. Direct mapping",
+      "B. Set associative mapping",
+      "C. Fully associative mapping",
+      "D. Direct access"
+    ],
+    "answer": "A",
+    "correctWord": "A. Direct mapping",
+    "explanation": "Đáp án đúng: A (A. Direct mapping)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_143",
+    "word": "Câu 143: Which factor has the most significant impact on the average acces...",
+    "question": "Which factor has the most significant impact on the average access time of a magnetic disk drive?",
+    "options": [
+      "A. The rotational speed of the disk",
+      "B. The size of the disk platter",
+      "C. The type of file system used",
+      "D. The material composition of the disk surface"
+    ],
+    "answer": "A",
+    "correctWord": "A. The rotational speed of the disk",
+    "explanation": "Đáp án đúng: A (A. The rotational speed of the disk)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_146",
+    "word": "Câu 146: Which cache mapping technique divides the cache into a number of ...",
+    "question": "Which cache mapping technique divides the cache into a number of sets, and each main memory block can map into any line within a specific set?",
+    "options": [
+      "A. Set-associative mapping",
+      "B. Direct mapping",
+      "C. Associative mapping",
+      "D. Fully-associative mapping"
+    ],
+    "answer": "A",
+    "correctWord": "A. Set-associative mapping",
+    "explanation": "Đáp án đúng: A (A. Set-associative mapping)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_152",
+    "word": "Câu 152: A DDR memory transfers 64 bits per clock cycle at 200 MHz. What i...",
+    "question": "A DDR memory transfers 64 bits per clock cycle at 200 MHz. What is the peak bandwidth?",
+    "options": [
+      "A. 3.2 GB/s",
+      "B. 1.6 GB/s",
+      "C. 2.4 GB/s",
+      "D. 6.4 GB/s"
+    ],
+    "answer": "B",
+    "correctWord": "B. 1.6 GB/s",
+    "explanation": "Đáp án đúng: B (B. 1.6 GB/s)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_153",
+    "word": "Câu 153: (1) An I/O module must recognize one unique address for each peri...",
+    "question": "(1) An I/O module must recognize one unique address for each peripheral it controls. (2) I/O channels are commonly seen on microcomputers, whereas I/O controllers are used on mainframes. The statement (1) is ______ and (2) is ______.",
+    "options": [
+      "A. true, false",
+      "B. true, true",
+      "C. false, true",
+      "D. false, false"
+    ],
+    "answer": "A",
+    "correctWord": "A. true, false",
+    "explanation": "Đáp án đúng: A (A. true, false)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_159",
+    "word": "Câu 159: EEPROM is read-mostly-memory and volatile.",
+    "question": "EEPROM is read-mostly-memory and volatile.",
+    "options": [
+      "A. True",
+      "B. False"
+    ],
+    "answer": "B",
+    "correctWord": "B. False",
+    "explanation": "Đáp án đúng: B (B. False)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_164",
+    "word": "Câu 164: In the immediate addressing mode of a machine instruction, if thi...",
+    "question": "In the immediate addressing mode of a machine instruction, if this field is allocated a 10-bit length, what is the valid range of signed integer?",
+    "options": [
+      "A. [-512, 511]",
+      "B. [-108, 107]",
+      "C. [-32768, 32767]",
+      "D. Any integral value."
+    ],
+    "answer": "A",
+    "correctWord": "A. [-512, 511]",
+    "explanation": "Đáp án đúng: A (A. [-512, 511])",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_166",
+    "word": "Câu 166: If the address received when accessing the cache memory includes ...",
+    "question": "If the address received when accessing the cache memory includes Tag, Line, Word. At that time, what mapping technique is the system using?",
+    "options": [
+      "A. Direct mapping",
+      "B. Set-direct mapping",
+      "C. Associative mapping",
+      "D. Set-associative mapping"
+    ],
+    "answer": "A",
+    "correctWord": "A. Direct mapping",
+    "explanation": "Đáp án đúng: A (A. Direct mapping)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_167",
+    "word": "Câu 167: In terms of organization, what is the basic element of semiconduc...",
+    "question": "In terms of organization, what is the basic element of semiconductor memory?",
+    "options": [
+      "A. Memory capacity",
+      "B. Memory block",
+      "C. Memory cell",
+      "D. Memory location"
+    ],
+    "answer": "C",
+    "correctWord": "C. Memory cell",
+    "explanation": "Đáp án đúng: C (C. Memory cell)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_169",
+    "word": "Câu 169: In a set-associative cache design, what is the primary reason for...",
+    "question": "In a set-associative cache design, what is the primary reason for increasing the number of cache sets (higher associativity)?",
+    "options": [
+      "A. To decrease the cache size",
+      "B. To improve cache replacement policy performance",
+      "C. To reduce conflict misses",
+      "D. To increase cache access speed"
+    ],
+    "answer": "C",
+    "correctWord": "C. To reduce conflict misses",
+    "explanation": "Đáp án đúng: C (C. To reduce conflict misses)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_177",
+    "word": "Câu 177: The effective address of ______ is EA = top of stack.",
+    "question": "The effective address of ______ is EA = top of stack.",
+    "options": [
+      "A. Immediate",
+      "B. Direct",
+      "C. Indirect",
+      "D. Displacement",
+      "E. Implicit"
+    ],
+    "answer": "E",
+    "correctWord": "E. Implicit",
+    "explanation": "Đáp án đúng: E (E. Implicit)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_185",
+    "word": "Câu 185: With the hard disk data layout, the set of all the tracks in the ...",
+    "question": "With the hard disk data layout, the set of all the tracks in the same relative position on the platter, is called ______.",
+    "options": [
+      "A. Cylinder",
+      "B. Tracks",
+      "C. Inter-track gap",
+      "D. Sector"
+    ],
+    "answer": "A",
+    "correctWord": "A. Cylinder",
+    "explanation": "Đáp án đúng: A (A. Cylinder)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_191",
+    "word": "Câu 191: Which magnetic disk data organization method allows for greater o...",
+    "question": "Which magnetic disk data organization method allows for greater overall storage capacity by dividing the surface into concentric zones, with each zone having a constant number of bits per track, and zones farther from the center containing more bits?",
+    "options": [
+      "A. Multiple Zone Recording (MZR)",
+      "B. Constant Linear Velocity (CLV)",
+      "C. Constant Angular Velocity (CAV)",
+      "D. Serpentine recording"
+    ],
+    "answer": "A",
+    "correctWord": "A. Multiple Zone Recording (MZR)",
+    "explanation": "Đáp án đúng: A (A. Multiple Zone Recording (MZR))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_195",
+    "word": "Câu 195: In the MESI protocols which are used in multiprocessor systems, w...",
+    "question": "In the MESI protocols which are used in multiprocessor systems, which state of the following specifies that the line in the cache is the same as that in the main memory and in another cache?",
+    "options": [
+      "A. Exclusive",
+      "B. Shared",
+      "C. Invalid",
+      "D. Modified"
+    ],
+    "answer": "B",
+    "correctWord": "B. Shared",
+    "explanation": "Đáp án đúng: B (B. Shared)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_206",
+    "word": "Câu 206: The speed of data delivery is your main concern when configuring ...",
+    "question": "The speed of data delivery is your main concern when configuring a RAID drive for a Media Streaming Server. This server has two hard disks installed. What type of RAID should you install, and what type of data will be stored on Disk 1 and Disk 2?",
+    "options": [
+      "A. RAID 0 - Disk 1 (Stripe) and Disk 2 (Stripe)",
+      "B. RAID 0 - Disk 1 (Mirror) and Disk 2 (Mirror)",
+      "C. RAID 1 - Disk 1 (Stripe) and Disk 2 (Stripe)",
+      "D. RAID 1 - Disk 1 (Mirror) and Disk 2 (Mirror)"
+    ],
+    "answer": "A",
+    "correctWord": "A. RAID 0 - Disk 1 (Stripe) and Disk 2 (Stripe)",
+    "explanation": "Đáp án đúng: A (A. RAID 0 - Disk 1 (Stripe) and Disk 2 (Stripe))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_219",
+    "word": "Câu 219: What is the special feature of Memory Cache?",
+    "question": "What is the special feature of Memory Cache?",
+    "options": [
+      "A. Allows faster access than DRAM memory",
+      "B. Memory cache is outboard storage memory",
+      "C. Allows faster access than CPU registers",
+      "D. Fixed memory - Read Only Memory",
+      "E. Has a larger capacity than HDD"
+    ],
+    "answer": "A",
+    "correctWord": "A. Allows faster access than DRAM memory",
+    "explanation": "Đáp án đúng: A (A. Allows faster access than DRAM memory)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_224",
+    "word": "Câu 224: What is the benefit of cache memory in terms of computer performa...",
+    "question": "What is the benefit of cache memory in terms of computer performance?",
+    "options": [
+      "A. It reduces the computer’s power consumption.",
+      "B. It speeds up data access and improves system performance.",
+      "C. It increases the storage capacity of the computer.",
+      "D. It serves as a backup storage for critical files."
+    ],
+    "answer": "B",
+    "correctWord": "B. It speeds up data access and improves system performance.",
+    "explanation": "Đáp án đúng: B (B. It speeds up data access and improves system performance.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_233",
+    "word": "Câu 233: What is Memory Address Register (MAR)?",
+    "question": "What is Memory Address Register (MAR)?",
+    "options": [
+      "A. Contains a word to be stored in memory or sent to the I/O unit, or is used to receive a word from memory or from the I/O unit.",
+      "B. Employed to hold temporarily the righthand instruction from a word in memory.",
+      "C. Contains the address in memory of the word to be written from or read into the MBR.",
+      "D. Contains the address of the next instruction pair to be fetched from memory."
+    ],
+    "answer": "C",
+    "correctWord": "C. Contains the address in memory of the word to be written from or read into the MBR.",
+    "explanation": "Đáp án đúng: C (C. Contains the address in memory of the word to be written from or read into the MBR.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_237",
+    "word": "Câu 237: What is incorrect about SSDs have the following advantages over H...",
+    "question": "What is incorrect about SSDs have the following advantages over HDDs?",
+    "options": [
+      "A. Higher access times and latency rates: Over 10 times slower than the HDD.",
+      "B. Durability: Less susceptible to physical shock and vibration.",
+      "C. Longer lifespan: SSDs are not susceptible to mechanical wear.",
+      "D. Lower power consumption: SSDs use considerably less power than comparable-size HDDs.",
+      "E. Quieter and cooler running capabilities: Less space required, lower energy costs, and a greener enterprise."
+    ],
+    "answer": "A",
+    "correctWord": "A. Higher access times and latency rates: Over 10 times slower than the HDD.",
+    "explanation": "Đáp án đúng: A (A. Higher access times and latency rates: Over 10 times slower than the HDD.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_240",
+    "word": "Câu 240: What is the main idea of using Hamming code for error correction?",
+    "question": "What is the main idea of using Hamming code for error correction?",
+    "options": [
+      "A. Adding extra parity bits to the data bits such that the number of 1s in each subset of bits is even",
+      "B. Adding extra parity bits to the data bits such that the number of 1s in each subset of bits is odd",
+      "C. Adding extra parity bits to the data bits such that the parity bits form a binary number indicating the position of the error bit",
+      "D. Adding extra parity bits to the data bits such that the parity bits form a binary number indicating the number of error bits"
+    ],
+    "answer": "C",
+    "correctWord": "C. Adding extra parity bits to the data bits such that the parity bits form a binary number indicating the position of the error bit",
+    "explanation": "Đáp án đúng: C (C. Adding extra parity bits to the data bits such that the parity bits form a binary number indicating the position of the error bit)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_241",
+    "word": "Câu 241: What is the role of the memory address register (MAR) in a comput...",
+    "question": "What is the role of the memory address register (MAR) in a computer system?",
+    "options": [
+      "A. It holds data being transferred between memory and the processor.",
+      "B. It specifies the address in memory for the next read or write operation.",
+      "C. It performs arithmetic operations on data stored in memory.",
+      "D. It stores program instructions after they are executed."
+    ],
+    "answer": "B",
+    "correctWord": "B. It specifies the address in memory for the next read or write operation.",
+    "explanation": "Đáp án đúng: B (B. It specifies the address in memory for the next read or write operation.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_242",
+    "word": "Câu 242: What is the key advantage of double-data-rate SDRAM compared to s...",
+    "question": "What is the key advantage of double-data-rate SDRAM compared to standard SDRAM?",
+    "options": [
+      "A. It has a larger memory capacity.",
+      "B. It can send data twice per clock cycle.",
+      "C. It uses less power than SDRAM.",
+      "D. It is only compatible with desktop computers."
+    ],
+    "answer": "B",
+    "correctWord": "B. It can send data twice per clock cycle.",
+    "explanation": "Đáp án đúng: B (B. It can send data twice per clock cycle.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_251",
+    "word": "Câu 251: Which is incorrect about RAID?",
+    "question": "Which is incorrect about RAID?",
+    "options": [
+      "A. RAID is a set of physical disk drives viewed by the operating system as a single logical drive.",
+      "B. Data are distributed across the physical drives of an array in a scheme known as striping, described subsequently.",
+      "C. RAID is only used for Windows OS",
+      "D. Redundant disk capacity is used to store parity information, which guarantees data recoverability in case of a disk failure."
+    ],
+    "answer": "C",
+    "correctWord": "C. RAID is only used for Windows OS",
+    "explanation": "Đáp án đúng: C (C. RAID is only used for Windows OS)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_259",
+    "word": "Câu 259: Which of the following statement is correct about addressing modes?",
+    "question": "Which of the following statement is correct about addressing modes?",
+    "options": [
+      "A. They define how the operands of an instruction are specified, including immediate, register, direct, and indirect addressing modes",
+      "B. Addressing modes are irrelevant in computer architecture, and all instructions only operate on values stored in registers",
+      "C. Addressing modes are limited to only immediate and direct modes; register and indirect addressing modes are not used in modern computer systems",
+      "D. All instructions in computer architecture use indirect addressing modes, making it the only relevant mode for operand specification"
+    ],
+    "answer": "A",
+    "correctWord": "A. They define how the operands of an instruction are specified, including immediate, register, direct, and indirect addressing modes",
+    "explanation": "Đáp án đúng: A (A. They define how the operands of an instruction are specified, including immediate, register, direct, and indirect addressing modes)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_263",
+    "word": "Câu 263: How do data registers and address registers differ in some comput...",
+    "question": "How do data registers and address registers differ in some computer systems?",
+    "options": [
+      "A. Address registers can be employed in calculating operand addresses, while data registers hold data.",
+      "B. Data registers are only used for stack-related operations",
+      "C. Data registers are used for indexed addressing, while address registers are used for data storage",
+      "D. Address registers are reserved for segmented addressing, while data registers are general-purpose"
+    ],
+    "answer": "A",
+    "correctWord": "A. Address registers can be employed in calculating operand addresses, while data registers hold data.",
+    "explanation": "Đáp án đúng: A (A. Address registers can be employed in calculating operand addresses, while data registers hold data.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_267",
+    "word": "Câu 267: How many techniques are there for dealing with an update to a cac...",
+    "question": "How many techniques are there for dealing with an update to a cache line? What are their names?",
+    "options": [
+      "A. There are 2 techniques and their names are write through, write back",
+      "B. There are 3 techniques and their names are write through, write back, and write allocate",
+      "C. There is only one technique and its name is “write not allocate”",
+      "D. There are 4 techniques and their names are write through, write back, write allocate, write not allocate"
+    ],
+    "answer": "A",
+    "correctWord": "A. There are 2 techniques and their names are write through, write back",
+    "explanation": "Đáp án đúng: A (A. There are 2 techniques and their names are write through, write back)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_268",
+    "word": "Câu 268: Why does segmented address space lend itself well to sharing amon...",
+    "question": "Why does segmented address space lend itself well to sharing among processes?",
+    "options": [
+      "A. It requires all processes to be recompiled before sharing data.",
+      "B. It forces all processes to use the same memory segment.",
+      "C. It allows a programmer to place shared utilities or data in a segment accessible by other processes.",
+      "D. It allows a programmer to place shared utilities or data in a segment accessible by other processes."
+    ],
+    "answer": "C",
+    "correctWord": "C. It allows a programmer to place shared utilities or data in a segment accessible by other processes.",
+    "explanation": "Đáp án đúng: C (C. It allows a programmer to place shared utilities or data in a segment accessible by other processes.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_279",
+    "word": "Câu 279: In the context of addressing modes with both indirect addressing ...",
+    "question": "In the context of addressing modes with both indirect addressing and indexing, what is postindexing?",
+    "options": [
+      "A. Indexing is performed after the indirection",
+      "B. Indexing is performed before the indirection",
+      "C. Both indexing and indirection are avoided",
+      "D. Indexing and indirection occur simultaneously"
+    ],
+    "answer": "A",
+    "correctWord": "A. Indexing is performed after the indirection",
+    "explanation": "Đáp án đúng: A (A. Indexing is performed after the indirection)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_281",
+    "word": "Câu 281: In a memory hierarchy system, which factor primarily influences t...",
+    "question": "In a memory hierarchy system, which factor primarily influences the decision to implement a multi-level cache rather than a single-level cache?",
+    "options": [
+      "A. The complexity of the cache replacement algorithm",
+      "B. The need to reduce the cache hit rate",
+      "C. The trade-off between access time and cache capacity",
+      "D. The cost of DRAM compared to SRAM"
+    ],
+    "answer": "C",
+    "correctWord": "C. The trade-off between access time and cache capacity",
+    "explanation": "Đáp án đúng: C (C. The trade-off between access time and cache capacity)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_286",
+    "word": "Câu 286: In terms of performance, what is the main advantage of a solid st...",
+    "question": "In terms of performance, what is the main advantage of a solid state drive over a magnetic disk?",
+    "options": [
+      "A. A solid state drive has faster access time, lower latency, and higher reliability",
+      "B. A solid state drive has larger capacity, lower power consumption, and lower cost",
+      "C. A solid state drive has better compatibility, longer lifespan, and higher security",
+      "D. A solid state drive has none of the mentioned advantages over a magnetic disk"
+    ],
+    "answer": "A",
+    "correctWord": "A. A solid state drive has faster access time, lower latency, and higher reliability",
+    "explanation": "Đáp án đúng: A (A. A solid state drive has faster access time, lower latency, and higher reliability)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_288",
+    "word": "Câu 288: In terms of data storage, what is the main distinction between a ...",
+    "question": "In terms of data storage, what is the main distinction between a solid state drive and a magnetic disk?",
+    "options": [
+      "A. A magnetic disk uses a spinning platter and a read/write head, while a solid state drive uses flash memory chips",
+      "B. A magnetic disk uses flash memory chips, while a solid state drive uses a spinning platter and a read/write head",
+      "C. A magnetic disk and a solid state drive both use flash memory chips, but with different interfaces",
+      "D. A magnetic disk and a solid state drive both use a spinning platter and a read/write head, but with different speeds"
+    ],
+    "answer": "A",
+    "correctWord": "A. A magnetic disk uses a spinning platter and a read/write head, while a solid state drive uses flash memory chips",
+    "explanation": "Đáp án đúng: A (A. A magnetic disk uses a spinning platter and a read/write head, while a solid state drive uses flash memory chips)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_293",
+    "word": "Câu 293: In modern processors, why is cache memory typically organized int...",
+    "question": "In modern processors, why is cache memory typically organized into multiple levels, such as L1, L2, and L3 caches?",
+    "options": [
+      "A. To balance the trade-off between speed and size by having different cache levels",
+      "B. To conserve chip area by reducing the cache size and increasing the memory size",
+      "C. To provide redundancy in case of cache failures",
+      "D. To improve cache coherence in multi-processor systems"
+    ],
+    "answer": "A",
+    "correctWord": "A. To balance the trade-off between speed and size by having different cache levels",
+    "explanation": "Đáp án đúng: A (A. To balance the trade-off between speed and size by having different cache levels)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_299",
+    "word": "Câu 299: The primary purpose of Hamming code is to:",
+    "question": "The primary purpose of Hamming code is to:",
+    "options": [
+      "A. Detect single-bit errors only.",
+      "B. Correct single-bit errors and detect double-bit errors.",
+      "C. Detect burst errors.",
+      "D. Increase memory capacity."
+    ],
+    "answer": "B",
+    "correctWord": "B. Correct single-bit errors and detect double-bit errors.",
+    "explanation": "Đáp án đúng: B (B. Correct single-bit errors and detect double-bit errors.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_307",
+    "word": "Câu 307: With respect to elements of a machine instruction, including an i...",
+    "question": "With respect to elements of a machine instruction, including an instruction code and addresses, the value in a memory location will be moved to a register. Choose the correct statement",
+    "options": [
+      "A. Both memory location and register are specified in addresses.",
+      "B. Register is specified in the instruction code and memory cell is specified in the address field.",
+      "C. Memory location is specified in the instruction code and register is specified in the address field.",
+      "D. Both memory location and register are specified in the instruction code."
+    ],
+    "answer": "B",
+    "correctWord": "B. Register is specified in the instruction code and memory cell is specified in the address field.",
+    "explanation": "Đáp án đúng: B (B. Register is specified in the instruction code and memory cell is specified in the address field.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_310",
+    "word": "Câu 310: Which situation would most likely trigger a transition to the Inv...",
+    "question": "Which situation would most likely trigger a transition to the Invalid (I) state in the MESI (Modified, Exclusive, Shared, Invalid) cache coherence protocol?",
+    "options": [
+      "A. Another processor writes to a cache line that was previously in the Shared (S) state in multiple caches.",
+      "B. The processor reads a memory location that is already in the Modified (M) state in another cache.",
+      "C. The cache controller detects a bus read request from another processor while the line is in the Exclusive (E) state.",
+      "D. A cache line remains unused for an extended period and is evicted due to a capacity replacement policy."
+    ],
+    "answer": "A",
+    "correctWord": "A. Another processor writes to a cache line that was previously in the Shared (S) state in multiple caches.",
+    "explanation": "Đáp án đúng: A (A. Another processor writes to a cache line that was previously in the Shared (S) state in multiple caches.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_312",
+    "word": "Câu 312: In an error-correcting memory system, which scenario would most l...",
+    "question": "In an error-correcting memory system, which scenario would most likely require a more advanced ECC mechanism instead of simple parity bits?",
+    "options": [
+      "A. A system experiencing occasional single-bit errors due to electromagnetic interference",
+      "B. A system running mission-critical applications where error detection alone is insufficient",
+      "C. A memory module designed for consumer laptops rather than enterprise servers",
+      "D. A CPU cache where speed is prioritized over data integrity"
+    ],
+    "answer": "B",
+    "correctWord": "B. A system running mission-critical applications where error detection alone is insufficient",
+    "explanation": "Đáp án đúng: B (B. A system running mission-critical applications where error detection alone is insufficient)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_314",
+    "word": "Câu 314: Which best explains why modern synchronous DRAM (SDRAM) achieves ...",
+    "question": "Which best explains why modern synchronous DRAM (SDRAM) achieves higher performance than traditional asynchronous DRAM?",
+    "options": [
+      "A. SDRAM reduces latency by dynamically adjusting the refresh rate based on workload.",
+      "B. SDRAM synchronizes with the CPU clock, allowing pipelined memory accesses.",
+      "C. SDRAM has larger memory cells, enabling higher storage capacity per chip.",
+      "D. SDRAM eliminates the need for precharge cycles, reducing access time."
+    ],
+    "answer": "B",
+    "correctWord": "B. SDRAM synchronizes with the CPU clock, allowing pipelined memory accesses.",
+    "explanation": "Đáp án đúng: B (B. SDRAM synchronizes with the CPU clock, allowing pipelined memory accesses.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_316",
+    "word": "Câu 316: For the associative and set-associative techniques, least recentl...",
+    "question": "For the associative and set-associative techniques, least recently used (LRU) is a replacement algorithm to ________.",
+    "options": [
+      "A. Replace a block in the set that has been in the cache longest.",
+      "B. Replace a block in the set that has experienced the fewest references.",
+      "C. Replace a block in the set that has been in the cache longest with no reference to it.",
+      "D. Replace a block randomly."
+    ],
+    "answer": "C",
+    "correctWord": "C. Replace a block in the set that has been in the cache longest with no reference to it.",
+    "explanation": "Đáp án đúng: C (C. Replace a block in the set that has been in the cache longest with no reference to it.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  },
+  {
+    "id": "CEA_317",
+    "word": "Câu 317: Which of the following statements best describes random access me...",
+    "question": "Which of the following statements best describes random access memory?",
+    "options": [
+      "A. Access time depends on the sequence of prior accesses.",
+      "B. Each addressable location is accessed based on a portion of its contents.",
+      "C. Access time is constant and independent of the sequence of prior accesses.",
+      "D. It uses a shared read-write mechanism for retrieval."
+    ],
+    "answer": "C",
+    "correctWord": "C. Access time is constant and independent of the sequence of prior accesses.",
+    "explanation": "Đáp án đúng: C (C. Access time is constant and independent of the sequence of prior accesses.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+  }
+]
