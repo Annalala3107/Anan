@@ -1,19 +1,22 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuizStore } from '@/lib/quizStore';
 import LearnMode from '@/components/study/LearnMode';
 import DrillMode from '@/components/study/DrillMode';
 import ExamMode from '@/components/study/ExamMode';
 import MistakesMode from '@/components/study/MistakesMode';
 import ZenFocusHUD from '@/components/study/ZenFocusHUD';
+import { AlertTriangle } from 'lucide-react';
 
 export default function SessionPage() {
   const params = useParams();
   const router = useRouter();
   const mode = params?.mode as string;
-  const { words, loadQuizWords, isLoadingWords, zenMode, toggleZenMode } = useQuizStore();
+  const { words, loadQuizWords, isLoadingWords, zenMode, toggleZenMode, isExamActive, setIsExamActive } =
+    useQuizStore();
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
 
   useEffect(() => {
     loadQuizWords();
@@ -38,6 +41,17 @@ export default function SessionPage() {
   }, [zenMode, toggleZenMode]);
 
   const handleExit = () => {
+    if (isExamActive && mode === 'exam') {
+      setShowExitConfirm(true);
+      return;
+    }
+    if (zenMode) toggleZenMode(false);
+    router.push('/');
+  };
+
+  const confirmExit = () => {
+    setIsExamActive(false);
+    setShowExitConfirm(false);
     if (zenMode) toggleZenMode(false);
     router.push('/');
   };
@@ -75,6 +89,41 @@ export default function SessionPage() {
         {mode === 'exam' && <ExamMode words={words} onExit={handleExit} />}
         {mode === 'mistakes' && <MistakesMode words={words} onExit={handleExit} />}
       </div>
+
+      {/* Exam Exit Confirmation Modal */}
+      {showExitConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+          <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-rose-500/30 rounded-3xl p-6 shadow-2xl text-center space-y-4">
+            <div className="w-14 h-14 rounded-2xl bg-rose-500/10 text-rose-500 mx-auto flex items-center justify-center">
+              <AlertTriangle className="w-7 h-7" />
+            </div>
+            <div>
+              <h3 className="text-xl font-black text-slate-900 dark:text-white">
+                Bạn đang trong phòng thi!
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                Rời khỏi trang lúc này sẽ hủy bỏ toàn bộ kết quả bài thi hiện tại và không được lưu. Bạn có chắc chắn muốn thoát không?
+              </p>
+            </div>
+            <div className="flex items-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowExitConfirm(false)}
+                className="flex-1 py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm"
+              >
+                Tiếp tục làm bài
+              </button>
+              <button
+                type="button"
+                onClick={confirmExit}
+                className="flex-1 py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold transition-colors text-sm shadow-sm"
+              >
+                Hủy bài & Thoát
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

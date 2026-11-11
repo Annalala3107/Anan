@@ -17,6 +17,10 @@ interface QuizStoreState {
   ambientFocusSound: boolean;
   ambientSoundType: AmbientSoundType;
 
+  // Active Exam Guard state
+  isExamActive: boolean;
+  setIsExamActive: (val: boolean) => void;
+
   setSelectedQuizPath: (path: string) => void;
   setActiveCustomQuiz: (quiz: CustomQuiz | null) => void;
   setWords: (words: Word[]) => void;
@@ -40,6 +44,8 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
   zenMode: false,
   ambientFocusSound: false,
   ambientSoundType: 'alpha_drone',
+  isExamActive: false,
+  setIsExamActive: (isExamActive: boolean) => set({ isExamActive }),
 
   setSelectedQuizPath: (path: string) => {
     StorageEngine.setSelectedQuiz(path);

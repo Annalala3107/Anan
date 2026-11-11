@@ -1,5 +1,6 @@
 import { Word, ExamQuestion, DrillQuestion } from './types';
 import { WordSchema } from './schema';
+import { getQuestionKey } from './utils';
 
 export interface StandardQuestion {
   id: string;
@@ -37,7 +38,7 @@ export function buildStandardQuestions(
     // Case 1: Standard Multiple Choice Question (CSI106, SSA101, PRF192)
     if (target.question && target.options && target.options.length > 0) {
       list.push({
-        id: String(target.id || `q_${i}_${Date.now()}`),
+        id: String(target.id || getQuestionKey(target)),
         sentence: target.question,
         correctWord: target.correctWord || target.options[0],
         options: target.options,
@@ -62,7 +63,7 @@ export function buildStandardQuestions(
       const options = [target.word, ...otherWords].sort(() => 0.5 - Math.random());
 
       list.push({
-        id: String(target.id || `term_${i}`),
+        id: String(target.id || getQuestionKey(target)),
         sentence: sentence.includes(target.word)
           ? sentence.replace(new RegExp(`\\b${target.word}\\w*`, 'gi'), '________')
           : sentence,

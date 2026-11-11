@@ -84,7 +84,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
 
     const isCorrect = isOptionCorrect(choice);
     const uniqueKey = currentQ.questionNumber
-      ? `drill_q_${currentQ.questionNumber}`
+      ? String(currentQ.questionNumber)
       : getQuestionKey({ question: currentQ.sentence, word: currentQ.correctWord });
 
     if (isCorrect) {

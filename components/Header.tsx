@@ -1,18 +1,51 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Flame, Sparkles, Volume2, VolumeX, Moon, Sun, BookOpen, Layers, Focus } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { Flame, Sparkles, Volume2, VolumeX, Moon, Sun, BookOpen, Layers, Focus, AlertTriangle } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
 import { useEffect, useState } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
-  const { soundEnabled, toggleSound, selectedQuizPath, activeCustomQuiz, zenMode, toggleZenMode } =
-    useQuizStore();
+  const router = useRouter();
+  const {
+    soundEnabled,
+    toggleSound,
+    selectedQuizPath,
+    activeCustomQuiz,
+    zenMode,
+    toggleZenMode,
+    isExamActive,
+    setIsExamActive,
+  } = useQuizStore();
   const [streak, setStreak] = useState(1);
   const [isDark, setIsDark] = useState(true);
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
+  const [pendingUrl, setPendingUrl] = useState<string | null>(null);
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    if (isExamActive && pathname?.includes('/session/exam')) {
+      e.preventDefault();
+      setPendingUrl(href);
+      setShowExitConfirm(true);
+    }
+  };
+
+  const confirmExitExam = () => {
+    setIsExamActive(false);
+    setShowExitConfirm(false);
+    if (pendingUrl) {
+      router.push(pendingUrl);
+      setPendingUrl(null);
+    }
+  };
+
+  const cancelExitExam = () => {
+    setShowExitConfirm(false);
+    setPendingUrl(null);
+  };
 
   useEffect(() => {
     setStreak(StorageEngine.getStreak());
@@ -66,6 +99,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/"
+            onClick={(e) => handleNavClick(e, '/')}
             className="flex items-center gap-2.5 font-extrabold text-xl tracking-tight text-slate-900 dark:text-white group"
           >
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
@@ -79,6 +113,7 @@ export default function Header() {
           {/* Active Quiz Indicator */}
           <Link
             href="/quizzes"
+            onClick={(e) => handleNavClick(e, '/quizzes')}
             className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60 hover:bg-indigo-100 transition-colors"
           >
             <Layers className="w-3.5 h-3.5" />
@@ -90,6 +125,7 @@ export default function Header() {
         <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
           <Link
             href="/"
+            onClick={(e) => handleNavClick(e, '/')}
             className={`px-3.5 py-1.5 rounded-lg transition-colors ${
               pathname === '/'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
@@ -100,6 +136,7 @@ export default function Header() {
           </Link>
           <Link
             href="/quizzes"
+            onClick={(e) => handleNavClick(e, '/quizzes')}
             className={`px-3.5 py-1.5 rounded-lg transition-colors ${
               pathname === '/quizzes'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
@@ -110,6 +147,7 @@ export default function Header() {
           </Link>
           <Link
             href="/library"
+            onClick={(e) => handleNavClick(e, '/library')}
             className={`px-3.5 py-1.5 rounded-lg transition-colors ${
               pathname === '/library'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
@@ -120,6 +158,7 @@ export default function Header() {
           </Link>
           <Link
             href="/profile"
+            onClick={(e) => handleNavClick(e, '/profile')}
             className={`px-3.5 py-1.5 rounded-lg transition-colors ${
               pathname === '/profile'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
@@ -189,6 +228,41 @@ export default function Header() {
           </button>
         </div>
       </div>
+
+      {/* Exam Exit Confirmation Modal */}
+      {showExitConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fade-in">
+          <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-rose-500/30 rounded-3xl p-6 shadow-2xl text-center space-y-4">
+            <div className="w-14 h-14 rounded-2xl bg-rose-500/10 text-rose-500 mx-auto flex items-center justify-center">
+              <AlertTriangle className="w-7 h-7" />
+            </div>
+            <div>
+              <h3 className="text-xl font-black text-slate-900 dark:text-white">
+                Bạn đang trong phòng thi!
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                Rời khỏi trang lúc này sẽ hủy bỏ toàn bộ kết quả bài thi hiện tại và không được lưu. Bạn có chắc chắn muốn thoát không?
+              </p>
+            </div>
+            <div className="flex items-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={cancelExitExam}
+                className="flex-1 py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm"
+              >
+                Tiếp tục làm bài
+              </button>
+              <button
+                type="button"
+                onClick={confirmExitExam}
+                className="flex-1 py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold transition-colors text-sm shadow-sm"
+              >
+                Hủy bài & Thoát
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

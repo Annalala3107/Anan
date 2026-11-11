@@ -52,6 +52,7 @@ export class StorageEngine {
     const key = getQuestionKey(item);
     return (
       map[key] ||
+      (item.id ? map[item.id] : null) ||
       (item.word ? map[item.word] : null) ||
       (item.correctWord ? map[item.correctWord] : null) ||
       null

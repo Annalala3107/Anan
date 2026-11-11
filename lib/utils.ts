@@ -56,32 +56,55 @@ export function isAnswerMatch(
 }
 
 /**
+ * Fast, deterministic 32-bit FNV-1a hash algorithm.
+ * Converts any arbitrary text string into a clean, collision-resistant 8-char hex hash.
+ */
+export function hashString(str: string): string {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(16).padStart(8, '0');
+}
+
+/**
  * Generates an infallible, collision-resistant unique key for SRS progress tracking.
- * Prevents questions with identical short answers (e.g. "B. 4" or "True") from overwriting each other.
+ * Combines question stem, options signature, and answer/definition to prevent collisions
+ * across questions with identical starting prompts or short answer keys.
  */
 export function getQuestionKey(item: {
-  id?: string;
+  id?: string | number;
   question?: string;
   word?: string;
+  options?: string[];
   correctWord?: string;
+  answer?: string;
 }): string {
-  if (item.id && item.id.trim()) {
-    return item.id.trim();
+  if (item.id !== undefined && item.id !== null && String(item.id).trim() !== '') {
+    return String(item.id).trim();
   }
 
+  // If question exists, create a deterministic composite signature
   if (item.question && item.question.trim()) {
-    // Generate deterministic hash slug from question text
-    const slug = item.question
-      .trim()
-      .slice(0, 60)
+    const qText = item.question.trim();
+    const optSignature = Array.isArray(item.options) ? item.options.join('|') : '';
+    const answerSig = item.correctWord || item.answer || item.word || '';
+    const composite = `${qText}::${optSignature}::${answerSig}`;
+
+    // Create readable slug prefix + deterministic hash suffix
+    const slugPrefix = qText
+      .slice(0, 32)
       .replace(/[^a-zA-Z0-9]/g, '_')
-      .replace(/_+/g, '_');
-    return `q_${slug}`;
+      .replace(/_+/g, '_')
+      .replace(/^_|_$/g, '');
+
+    return `q_${slugPrefix || 'mcq'}_${hashString(composite)}`;
   }
 
   if (item.word && item.word.trim()) {
-    return `w_${item.word.trim().toLowerCase()}`;
+    return `w_${hashString(item.word.trim().toLowerCase())}`;
   }
 
-  return `item_${Math.random().toString(36).substring(2, 9)}`;
+  return `item_${hashString(JSON.stringify(item))}`;
 }

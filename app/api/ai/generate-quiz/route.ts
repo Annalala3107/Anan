@@ -61,8 +61,8 @@ QUY TẮC BẮT BUỘC:
   }
 ]`;
 
-    // Try gemini-3.5-flash-lite, fallback to gemini-3.5-flash
-    const models = ['gemini-3.5-flash-lite', 'gemini-3.5-flash'];
+    // Official production Google Gemini models with priority fallbacks
+    const models = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
     let lastError = null;
     let textResponse = '';
 

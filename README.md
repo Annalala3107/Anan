@@ -1,56 +1,60 @@
-# 🌟 AnanQuiz — Open-Source Smart Quiz & Flashcard Platform
+# 🌟 AnanQuiz — Nền Tảng Ôn Thi Trắc Nghiệm Học Thuật & Đề Thi Đại Học Thông Minh
 
-> Dự án mã nguồn mở thay thế toàn diện cho Quizlet và Anki, tối ưu cho ôn luyện từ vựng SAT, IELTS, TOEIC và học thuật. Được thiết kế với kiến trúc **Next.js 14 App Router**, thuật toán **Spaced Repetition (SM-2)**, giao diện **Cosmic Dark & Glassmorphism**, và khả năng **tạo đề trắc nghiệm bằng AI chỉ trong 1 click**.
+> Hệ thống luyện thi trắc nghiệm học thuật mã nguồn mở, hoạt động theo triết lý **Local-First**, hỗ trợ thuật toán **Spaced Repetition (SuperMemo SM-2)**, tích hợp **Tạo đề thi bằng AI (Google Gemini Flash)**, **Bộ bóc tách đề thi từ văn bản thô (Quick Text Parser)**, và bộ giải mã cú pháp code C chuyên biệt.
 
 ![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?style=for-the-badge&logo=tailwindcss)
-![Supabase](https://img.shields.io/badge/Supabase-Optional%20Sync-3ecf8e?style=for-the-badge&logo=supabase)
+![Google Gemini](https://img.shields.io/badge/Google%20Gemini-Flash%20AI-8e75ff?style=for-the-badge&logo=google)
 
 ---
 
 ## 🎯 Mục Đích & Triết Lý Dự Án
 
-Thị trường học từ vựng hiện nay tràn ngập các ứng dụng thu phí đắt đỏ hoặc giới hạn tính năng (Quizlet Plus, Memrise, Anki giao diện cũ). **AnanQuiz** được phát triển nhằm mục đích:
-1. **100% Miễn Phí & Mã Nguồn Mở**: Phục vụ cộng đồng học sinh, sinh viên và lập trình viên.
-2. **Kiến Trúc Chuẩn Công Nghệ Mới**: Làm tài liệu học tập thực chiến về Next.js 14 App Router, TypeScript, Zustand, Tailwind CSS, và Web Speech API.
-3. **Local-First (Chạy Ngay Không Cần Cấu Hình)**: Hoạt động mượt mà ngay trên LocalStorage/IndexedDB mà không bắt buộc phải có tài khoản đám mây hay API key. Khi cần, có thể kích hoạt Supabase PostgreSQL chỉ với 2 dòng biến môi trường.
-4. **Trải Nghiệm UX/UI Đẳng Cấp**: Phong cách Cosmic Space hiện đại, thẻ lật 3D, âm thanh phát âm bản ngữ, phím tắt nhanh và hiệu ứng chúc mừng (confetti).
+Sinh viên đại học khối ngành Công nghệ & Kỹ thuật thường xuyên phải đối mặt với các kỳ thi trắc nghiệm chuyên ngành nặng tính lý thuyết lẫn bài tập lập trình (Kiến trúc máy tính, Hệ số bù 2, Con trỏ C, Quản lý bộ nhớ...). **AnanQuiz** được thiết kế nhằm giải quyết bài toán ôn thi hiệu quả, tối ưu thời gian với các tiêu chí cốt lõi:
+
+1. **100% Miễn Phí & Mã Nguồn Mở**: Phục vụ cộng đồng học sinh, sinh viên các trường đại học và cao đẳng.
+2. **Local-First (Chạy Ngay Không Cần Máy Chủ)**: Hoạt động trơn tru ngay trên trình duyệt thông qua LocalStorage. Dữ liệu tiến độ học tập, lịch sử thi cử được lưu trữ bảo mật trên thiết bị của bạn với tính năng Xuất/Nhập file JSON sao lưu 1-click.
+3. **Ngân Hàng Đề Thi Chuẩn Hóa Sẵn Có (970+ Câu Hỏi)**:
+   * **CSI106 / CEA201**: Kiến trúc máy tính (347 câu: Hệ thống số, Bù 2, Von Neumann, Mạng, OS, CTDL&GT).
+   * **PRF192**: Lập trình C căn bản & nâng cao (253 câu: Vòng lặp, Con trỏ, Cấp phát động, Chuỗi, File I/O).
+   * **SSA101 / SSL101**: Kỹ năng học tập đại học & Tư duy phản biện (370 câu: Bloom, Trí nhớ, AI Literacy, Quản lý thời gian, SMART).
+4. **Tích Hợp Công Cụ Soạn Đề Mạnh Mẽ**: Tự động sinh đề qua Google Gemini API hoặc dán trực tiếp văn bản thô từ Word/PDF vào ứng dụng.
+5. **Âm Thanh Học Tập Không Độ Trễ**: Sử dụng Web Audio API tổng hợp âm thanh hiệu ứng (SFX) và sóng não Alpha (`alpha_drone`) hỗ trợ tập trung mà không tốn dung lượng tải file âm thanh.
 
 ---
 
-## ✨ 4 Chế Độ Học Thông Minh (Intelligent Study Modes)
+## ✨ 4 Chế Độ Học & Ôn Thi Chuyên Sâu
 
-| Chế độ | Biểu tượng | Mô tả kỹ thuật & Trải nghiệm học |
+| Chế độ | Biểu tượng | Mô tả trải nghiệm & Cơ chế vận hành |
 | :--- | :---: | :--- |
-| **Học Tập (Learn)** | 🧠 | **Phương pháp 3 bước vi mô (Microlearning)**:<br>• **Vòng 1 (Recall)**: Lật thẻ 3D ghi nhớ từ, phát âm bản xứ, đánh giá [1] Chưa nhớ / [2] Đã thuộc.<br>• **Vòng 2 (Simple Usage)**: Điền từ vào câu ví dụ thực tế.<br>• **Vòng 3 (Contrast)**: Phân biệt từ vựng với các từ đồng nghĩa và từ dễ gây nhầm lẫn. |
-| **Luyện Ngữ Cảnh (Drill)** | 🏋️ | Điền từ vào ngữ cảnh học thuật với **giải thích chi tiết tức thì** (tại sao chọn từ này, bẫy nằm ở đâu). Hỗ trợ phím tắt `1, 2, 3, 4` và `Enter`. |
-| **Thi Thử SAT (Exam)** | 🏆 | Mô phỏng bài thi SAT chuẩn hoá: Có đồng hồ đếm ngược, bảng điều hướng câu hỏi, chấm điểm tự động và bảng phân tích chi tiết từng câu làm đúng/sai. |
-| **Khắc Phục Lỗi (Mistakes)** | ⚠️ | Thuật toán SRS tự động gom các từ bạn từng làm sai hoặc có chỉ số ghi nhớ thấp để củng cố đến khi hoàn toàn thành thạo. |
+| **Cày Phản Xạ (Learn)** | ⚡ | **Cơ chế ghi nhớ phản xạ cao tốc (Rapid Muscle Memory)**:<br>• Nhìn câu hỏi → Bấm phím chọn đáp án ngay (`1-4` hoặc `A-D`). Khi chọn đúng, hệ thống tự động lướt qua câu mới cực nhanh trong **0.4 giây**.<br>• Khi chọn **SAI**, đáp án chuẩn lập tức hiển thị và câu hỏi sẽ **tự động chèn lại sau 3 câu nữa** cho đến khi bạn nhớ chính xác mặt chữ và bản chất. |
+| **Luyện Trắc Nghiệm (Drill)** | 🏋️ | Làm trắc nghiệm có **giải thích chi tiết tức thì**: Phân tích vì sao đáp án đó đúng, các phương án nhiễu sai ở đâu. Hỗ trợ phím tắt số `1, 2, 3, 4` và `Enter` để sang câu tiếp theo. |
+| **Thi Thử Bấm Giờ (Exam)** | 🏆 | **Mô phỏng kỳ thi trắc nghiệm chuẩn hóa**:<br>• Đồng hồ đếm ngược linh hoạt (hoặc chế độ tự do không giới hạn thời gian).<br>• Đánh dấu câu phân vân (`Flag - Phím F`), bảng điều hướng câu hỏi trực quan.<br>• Cơ chế bảo vệ phòng thi (**Exam Guard**): Ngăn chặn việc bấm nhầm link thoát trang làm mất kết quả thi.<br>• **Bảng phân tích lỗ hổng kiến thức**: Tự động xếp hạng các chuyên đề bạn còn yếu để luyện tập lại ngay lập tức. |
+| **Khắc Phục Lỗi (Mistakes)** | ⚠️ | Thuật toán SRS tự động truy vết và gom các câu hỏi bạn từng trả lời sai, có chuỗi sai liên tiếp hoặc độ bền trí nhớ thấp để củng cố đến khi hoàn toàn thành thạo. |
 
 ---
 
-## 🤖 Tạo Bộ Đề Bằng AI (ChatGPT / Claude / Gemini)
+## 🤖 2 Cơ Chế Tạo Đề Thi Linh Hoạt
 
-Bạn có thể tự tạo bộ đề ôn luyện về bất kỳ chủ đề nào (SAT, IELTS 8.0, Y khoa, Lập trình...) chỉ bằng cách gửi prompt sau cho bất kỳ AI nào:
+### 1. Tạo Đề Bằng Google Gemini AI
+* Hỗ trợ gọi trực tiếp mô hình thế hệ mới: **`gemini-2.5-flash`**, **`gemini-2.0-flash`**, **`gemini-1.5-flash`**.
+* Nhập môn học, chủ đề mong muốn và số lượng câu hỏi &rarr; AI tự động biên soạn câu hỏi trắc nghiệm kèm 4 phương án, đáp án chuẩn xác và giải thích sư phạm.
+* Lưu API Key trực tiếp trên thiết bị của bạn hoặc cấu hình qua biến môi trường.
 
+### 2. Bộ Bóc Tách Đề Thi Từ Văn Bản Thô (Quick Text Parser)
+Không cần viết code hay định dạng phức tạp! Bạn chỉ cần copy bất kỳ đề thi dạng văn bản nào từ tài liệu Word, PDF hoặc bài giảng web:
 ```text
-Give me 15 advanced SAT/IELTS vocabulary words about "Technology and Society". Format the response STRICTLY as a valid JSON array like this:
-[
-  {
-    "word": "ubiquitous",
-    "ipa": "/juːˈbɪk.wɪ.təs/",
-    "vi": "phổ biến, có mặt ở khắp mọi nơi",
-    "synonyms": ["omnipresent", "pervasive"],
-    "simple_examples": ["Smartphones have become ubiquitous in daily life."],
-    "advanced_example": "The ubiquitous adoption of AI has restructured modern academic discourse.",
-    "confusions": ["unique", "ambiguous"]
-  }
-]
-Do not include any markdown backticks or text outside the JSON array.
+Câu 1: Đoạn code C sau đây sẽ in ra màn hình giá trị gì?
+int x = 5;
+printf("%d", ++x);
+*A. 6
+B. 5
+C. 7
+D. Lỗi biên dịch
+Giải thích: Toán tử tiền tố ++x tăng x lên 1 trước khi giá trị được in ra.
 ```
-
-Sau đó bấm **"Tạo Bộ Đề Bằng AI"** trong app &rarr; Dán JSON &rarr; Bắt đầu học ngay lập tức!
+Bấm **"Bóc tách & Tạo đề"** &rarr; Hệ thống tự động nhận diện câu hỏi stem, khối code C, các phương án `A, B, C, D`, dấu sao đáp án `*A` hoặc dòng `Đáp án: A`, và lời giải thích!
 
 ---
 
@@ -60,39 +64,45 @@ Trong file `lib/srs.ts`, hệ thống áp dụng biến thể của thuật toá
 * **Hệ số dễ (Ease Factor - $EF$)**: Mặc định $2.5$.
 * **Khoảng cách ôn tập ($I$)**:
   $$I(1) = 1 \text{ ngày}, \quad I(2) = 3 \text{ ngày}, \quad I(n) = I(n-1) \times EF$$
-* Khi trả lời đúng chất lượng cao (Easy / Correct), $EF$ tăng và khoảng cách ôn dài ra.
-* Khi trả lời sai (Hard / Wrong), từ vựng bị reset về chu kỳ 1 ngày và tăng điểm phạt chuỗi sai (`wrongStreak`).
-* Từ đạt độ nhớ $\ge 80\%$ qua ít nhất 3 lần kiểm tra sẽ được chứng nhận **Đã Thành Thạo (Mastered)**.
+* Định danh câu hỏi dựa trên giải thuật băm FNV-1a đa trường (Question stem + Options + Answer), triệt tiêu hoàn toàn nguy cơ đụng độ khóa (Key Collision) khi lưu trữ tiến trình.
+* Khi trả lời đúng (Pass/Mastered), độ bền trí nhớ tăng dần và kéo dài khoảng cách ngày ôn tập.
+* Khi làm sai, câu hỏi bị hạ chỉ số ghi nhớ và đưa vào danh sách ưu tiên của chế độ **Mistakes**.
 
 ---
 
-## 🎨 Hệ Thống Thiết Kế UX/UI (Design System Tokens)
+## ⌨️ Phím Tắt Tiện Dụng (Keyboard Shortcuts)
 
-* **Primary (Cosmic Indigo)**: `#6366F1`
-* **Success (Emerald Green)**: `#10B981` (Dùng cho câu trả lời đúng, thẻ hoàn thành)
-* **Warning (Amber Gold)**: `#F59E0B` (Dùng cho chuỗi streak, từ cần củng cố)
-* **Danger (Rose Red)**: `#EF4444` (Dùng cho lỗi sai, đếm ngược thi)
-* **Background**: `#080C14` (Cosmic Slate Dark) kèm canvas hạt sao chuyển động nhẹ (`Starfield.tsx`).
-* **Typography**: `Plus Jakarta Sans` cho nội dung tổng thể và `JetBrains Mono` cho phiên âm quốc tế & phím tắt.
-* **Tương tác**: Phím tắt `Space` lật thẻ, `1, 2, 3, 4` chọn đáp án, `Enter` qua câu mới.
+| Phím tắt | Tác dụng | Chế độ áp dụng |
+| :---: | :--- | :--- |
+| **`1, 2, 3, 4`** hoặc **`A, B, C, D`** | Chọn phương án tương ứng | Learn, Drill, Exam, Mistakes |
+| **`Enter`** | Chuyển sang câu hỏi tiếp theo / Bắt đầu thi | Learn, Drill, Exam |
+| **`Space`** | Lướt qua câu sai sau khi đã đọc đáp án | Learn Mode |
+| **`F`** | Bật / tắt cờ đánh dấu câu hỏi phân vân | Exam Mode |
+| **`←` / `→`** | Điều hướng câu hỏi trước / câu hỏi sau | Exam Mode |
+| **`Z`** | Bật / tắt chế độ tập trung tuyệt đối (Zen Focus HUD) | Toàn bộ phiên học |
+| **`Esc`** | Thoát chế độ Zen Focus hoặc đóng Modal | Toàn hệ thống |
 
 ---
 
-## 🚀 Cài Đặt & Chạy Dự Án
+## 🚀 Cài Đặt & Khởi Chạy
 
 ### Yêu Cầu Hệ Thống:
-* Node.js $\ge 18$
-* Trình duyệt hiện đại (Chrome, Edge, Firefox, Safari)
+* Node.js $\ge 18.x$
+* Trình duyệt hiện đại (Chrome, Edge, Firefox, Brave)
 
-### Khởi Chạy Local:
+### Các Bước Cài Đặt:
 ```bash
 # 1. Di chuyển vào thư mục dự án
 cd e:\AnanQuiz
 
-# 2. Cài đặt thư viện (nếu chưa cài)
+# 2. Cài đặt các gói phụ thuộc
 npm install
 
-# 3. Khởi chạy máy chủ phát triển
+# 3. Cấu hình biến môi trường (Tùy chọn cho tính năng AI)
+cp .env.example .env.local
+# Điền GEMINI_API_KEY nếu muốn dùng key mặc định cho server
+
+# 4. Chạy máy chủ phát triển
 npm run dev
 ```
 
@@ -105,52 +115,46 @@ Truy cập: [http://localhost:3000](http://localhost:3000)
 ```
 e:\AnanQuiz/
 ├── app/
-│   ├── layout.tsx             # Layout chung, Starfield canvas, Header, BottomNav
-│   ├── globals.css            # Tailwind directives, glassmorphism, scrollbar
-│   ├── page.tsx               # Dashboard: Tiến độ, 4 thẻ học, tra cứu từ vựng
-│   ├── quizzes/page.tsx       # Quản lý bộ đề có sẵn, bộ đề tự tạo, mở modal AI
-│   ├── library/page.tsx       # Kho từ vựng, tìm kiếm, lọc theo trạng thái
-│   ├── profile/page.tsx       # Phân tích thống kê SRS, trạng thái Local/Supabase
-│   └── session/[mode]/page.tsx# Điều hướng động cho 4 chế độ luyện tập
+│   ├── layout.tsx             # Layout gốc, Header, BottomNav, Canvas nền
+│   ├── globals.css            # Tailwind directives, CSS variables, typography
+│   ├── page.tsx               # Dashboard tổng quan, tiến độ SRS, điều hướng 4 chế độ
+│   ├── quizzes/page.tsx       # Quản lý ngân hàng đề CSI, SSA, PRF & môn tự tạo
+│   ├── library/page.tsx       # Tra cứu ngân hàng câu hỏi, bộ lọc chuyên đề & trạng thái
+│   ├── profile/page.tsx       # Báo cáo thống kê học tập, xuất/nhập sao lưu JSON
+│   ├── session/[mode]/page.tsx# Bộ định tuyến phiên học (learn, drill, exam, mistakes)
+│   └── api/ai/generate-quiz/  # API route xử lý sinh đề thi qua Google Gemini API
 ├── components/
-│   ├── Header.tsx             # Thanh menu, badge streak, nút bật tắt âm thanh & theme
-│   ├── BottomNav.tsx          # Thanh điều hướng ngón tay cái cho màn hình di động
-│   ├── Starfield.tsx          # Hiệu ứng nền vũ trụ không gian
-│   ├── WordModal.tsx          # Modal chi tiết từ vựng, phát âm, ví dụ, từ gây bẫy
-│   ├── LaTeX.tsx              # Hỗ trợ hiển thị công thức toán/khoa học qua KaTeX
+│   ├── Header.tsx             # Menu chính, chỉ báo môn học, kiểm soát thoát phòng thi
+│   ├── BottomNav.tsx          # Thanh điều hướng di động (tự ẩn trong bài thi)
+│   ├── CodeQuestionRenderer.tsx# Lexer highlight cú pháp ngôn ngữ C/C++ siêu nhẹ
+│   ├── QuickTextParserModal.tsx# Giao diện bóc tách đề thi văn bản thô
+│   ├── CustomSubjectModal.tsx # Modal tạo và chỉnh sửa môn học cá nhân
+│   ├── WordModal.tsx          # Modal xem chi tiết câu hỏi, giải thích và phương án
 │   ├── study/
-│   │   ├── LearnMode.tsx      # Chế độ 3 bước: Thẻ lật 3D, ngữ cảnh, phân biệt
-│   │   ├── DrillMode.tsx      # Luyện điền từ với giải thích chi tiết tức thì
-│   │   ├── ExamMode.tsx       # Thi thử tính giờ SAT, phiếu điểm chi tiết
-│   │   └── MistakesMode.tsx   # Tập trung ôn các từ hay sai theo SRS
+│   │   ├── LearnMode.tsx      # Chế độ cày phản xạ cao tốc (Rapid Active Recall)
+│   │   ├── DrillMode.tsx      # Chế độ luyện trắc nghiệm kèm giải thích tức thì
+│   │   ├── ExamMode.tsx       # Phòng thi bấm giờ, đánh dấu cờ, phân tích chuyên đề yếu
+│   │   ├── MistakesMode.tsx   # Chế độ ôn tập câu sai theo thuật toán SRS
+│   │   └── ZenFocusHUD.tsx    # Thanh công cụ Zen, âm thanh sóng não Alpha & bấm giờ
 │   └── ai/
-│       └── AIPromptModal.tsx  # Copy prompt 1-click & import JSON từ AI
+│       └── AIPromptModal.tsx  # Modal tạo đề thi bằng Gemini AI & Import JSON
 ├── lib/
 │   ├── types.ts               # Định nghĩa TypeScript toàn diện
 │   ├── srs.ts                 # Thuật toán Spaced Repetition (SuperMemo SM-2)
-│   ├── storage.ts             # Bộ xử lý LocalStorage kèm cấu trúc đồng bộ
-│   ├── speech.ts              # Trình đọc phát âm bản ngữ (Web Speech API)
-│   ├── quizStore.ts           # State store quản lý qua Zustand
-│   └── supabase.ts            # Client Supabase với cơ chế fallback tự động
-├── public/sat/
-│   ├── vi-en-ielts.json       # Bộ từ vựng IELTS/SAT Tiếng Việt đặc sắc
-│   ├── 1.json                 # SAT Core Set 1
-│   ├── 2.json                 # SAT Advanced Set 2
-│   └── archaic.json           # Từ vựng văn học cổ
-└── supabase_schema.sql        # Kịch bản tạo bảng PostgreSQL và RLS policies
+│   ├── storage.ts             # StorageEngine cục bộ kèm kiểm tra an toàn dữ liệu
+│   ├── utils.ts               # Hàm băm FNV-1a, tạo khóa chống đụng độ, so khớp đáp án
+│   ├── quizHelpers.ts         # Chuẩn hóa câu hỏi thi cử cho các chế độ học
+│   ├── sound.ts               # Bộ phát âm thanh Web Audio API thuần (SFX & Binaural)
+│   ├── textQuizParser.ts      # Bộ phân tích văn bản thô thông minh client-side
+│   └── quizStore.ts           # State store quản lý qua Zustand
+└── public/data/               # Ngân hàng đề thi chính thức:
+    ├── csi106_all.json        # CSI106 - Trọn bộ 347 câu hỏi Kiến trúc máy tính
+    ├── prf192_all.json        # PRF192 - Trọn bộ 253 câu hỏi Lập trình C
+    ├── ssa101_all.json        # SSA101 - Trọn bộ 370 câu hỏi Kỹ năng đại học
+    └── ...                    # Các file chuyên đề chia nhỏ theo chương
 ```
 
 ---
 
-## 🎓 Bài Tập Mở Rộng Dành Cho Lập Trình Viên Học Tập
-
-Nếu bạn clone dự án này để rèn luyện kỹ năng, hãy thử thách bản thân với các bài tập sau:
-1. **Thêm Audio Ghi Âm Của Người Học**: Dùng `MediaRecorder API` để người học thu âm giọng đọc và so sánh với phát âm mẫu.
-2. **Xuất Thẻ Sang File Anki (`.apkg`)**: Viết một tiện ích chuyển đổi danh sách từ vựng thành định dạng Anki deck.
-3. **Thêm Gemini API Key Trực Tiếp**: Tích hợp gọi trực tiếp `@google/genai` để người dùng không cần copy-paste mà AI sinh đề ngay trong ứng dụng.
-4. **Chia Sẻ Bộ Đề Bằng Mã QR**: Dùng thư viện sinh QR code để quét và mở bộ đề trên điện thoại.
-
----
-
 ## 📄 Bản Quyền
-Phát hành theo giấy phép **MIT License**. Tự do sử dụng, chỉnh sửa và đóng góp cho cộng đồng!
+Dự án được phát hành theo giấy phép **MIT License**. Tự do sử dụng, chỉnh sửa và đóng góp cho cộng đồng sinh viên!

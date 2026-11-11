@@ -5,6 +5,7 @@ import { Word, ExamQuestion } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { getQuestionKey, cleanOptionText, isAnswerMatch } from '@/lib/utils';
 import { soundFx } from '@/lib/sound';
+import { useQuizStore } from '@/lib/quizStore';
 import { buildStandardQuestions } from '@/lib/quizHelpers';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
@@ -35,6 +36,8 @@ interface ExamModeProps {
 }
 
 export default function ExamMode({ words, onExit }: ExamModeProps) {
+  const setIsExamActive = useQuizStore((s) => s.setIsExamActive);
+
   // Configuration State
   const [isConfiguring, setIsConfiguring] = useState(true);
   const [targetCount, setTargetCount] = useState(25);
@@ -146,9 +149,10 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     setShowSubmitConfirm(false);
     setIsSubmitted(false);
     setIsConfiguring(false);
+    setIsExamActive(true);
 
     soundFx.playZenChime();
-  }, [words, targetCount, targetMinutes, selectedTopics, availableTopics.length]);
+  }, [words, targetCount, targetMinutes, selectedTopics, availableTopics.length, setIsExamActive]);
 
   // Hotkey Enter on Configuration Screen
   useEffect(() => {
@@ -356,10 +360,18 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     }
   };
 
+  // Ensure exam active state resets on component unmount
+  useEffect(() => {
+    return () => {
+      setIsExamActive(false);
+    };
+  }, [setIsExamActive]);
+
   const executeSubmit = () => {
     setShowSubmitConfirm(false);
     if (isSubmitted) return;
     setIsSubmitted(true);
+    setIsExamActive(false);
 
     let correctCount = 0;
     const wrongKeys: string[] = [];
