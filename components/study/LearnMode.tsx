@@ -255,51 +255,51 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     const availableCount = words.length;
 
     return (
-      <div className="w-full max-w-3xl mx-auto py-8 px-4 sm:px-6 animate-fade-in">
-        <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6">
-          <div className="flex items-center gap-3.5 pb-5 border-b border-slate-100 dark:border-slate-800">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold shadow-glow">
-              <Zap className="w-6 h-6 animate-pulse" />
+      <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-8 px-4 sm:px-8 animate-fade-in">
+        <div className="p-6 sm:p-8 md:p-10 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl space-y-7">
+          <div className="flex items-center gap-4 pb-5 border-b border-slate-100 dark:border-slate-800">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold shadow-glow shrink-0">
+              <Zap className="w-7 h-7 animate-pulse" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">
-                  Tốc độ cao • Không giải thích dông dài
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20 whitespace-nowrap">
+                  ⚡ Tốc độ cao • Không giải thích dông dài
                 </span>
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-slate-400 font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 whitespace-nowrap">
                   {words[0]?.subject || 'Ngân hàng câu hỏi'}
                 </span>
               </div>
-              <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-0.5">
+              <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1 tracking-tight">
                 Chế Độ Cày Phản Xạ (Rapid Muscle Memory)
               </h1>
             </div>
           </div>
 
           {/* Core Philosophy explanation */}
-          <div className="p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/60 dark:border-indigo-800/60 text-xs text-slate-700 dark:text-slate-300 space-y-1.5 leading-relaxed">
-            <p className="font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
-              <Target className="w-4 h-4" /> Cơ chế học vẹt cưỡng chế phản xạ:
+          <div className="p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/60 dark:border-indigo-800/60 text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-2 leading-relaxed">
+            <p className="font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-2 text-sm sm:text-base">
+              <Target className="w-4 h-4 shrink-0 text-indigo-500" /> Cơ chế học vẹt cưỡng chế phản xạ:
             </p>
-            <p>
-              • Nhìn câu hỏi → Bấm đáp án ngay (Phím 1-4 hoặc A-D). Đúng sẽ lướt qua cực nhanh trong <strong>0.4s</strong>.
+            <p className="pl-6">
+              • Nhìn câu hỏi → Bấm đáp án ngay (Phím số <strong>1 - 4</strong> hoặc phím chữ <strong>A - D</strong>). Chọn đúng sẽ tự động lướt qua cực nhanh trong <strong>0.4s</strong>.
             </p>
-            <p>
+            <p className="pl-6">
               • Bấm <strong>SAI</strong>: Hệ thống đập ngay đáp án chuẩn màu xanh vào mắt để não ghi nhớ mặt chữ, và <strong>bắt buộc bạn phải làm lại câu đó sau 3 câu nữa</strong> cho đến khi thuộc lầu lầu!
             </p>
           </div>
 
           {/* Batch Size Selector */}
           <div>
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5 flex items-center justify-between">
-              <span className="flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-indigo-500" /> Chọn số lượng câu muốn cày đợt này
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+              <span className="flex items-center gap-2">
+                <Layers className="w-4 h-4 text-indigo-500" /> Chọn số lượng câu muốn cày đợt này
               </span>
               <span className="text-indigo-500 font-bold font-mono text-sm">
-                {Math.min(batchSize, availableCount)} / {availableCount} câu
+                {Math.min(batchSize, availableCount)} / {availableCount} câu khả dụng
               </span>
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
               {[10, 15, 25, 50].map((num) => {
                 const disabled = num > availableCount && availableCount >= 10;
                 const isSelected = batchSize === num;
@@ -309,16 +309,16 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                     type="button"
                     disabled={disabled}
                     onClick={() => setBatchSize(num)}
-                    className={`p-3.5 rounded-2xl border font-bold text-xs transition-all text-center ${
+                    className={`p-4 rounded-2xl border font-bold transition-all text-center ${
                       isSelected
-                        ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow'
+                        ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow scale-[1.01]'
                         : disabled
                         ? 'opacity-30 border-slate-200 dark:border-slate-800 text-slate-400 cursor-not-allowed'
                         : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
                     }`}
                   >
-                    <span className="text-xl font-black block">{num}</span>
-                    <span className="text-[11px] font-normal opacity-80">
+                    <span className="text-2xl sm:text-3xl font-black block">{num}</span>
+                    <span className="text-xs font-semibold opacity-85 mt-1 block whitespace-nowrap">
                       {num === 10 ? 'Cực nhanh (5p)' : num === 15 ? 'Chuẩn đợt học' : num === 25 ? 'Chuyên sâu' : 'Cày marathon'}
                     </span>
                   </button>
@@ -329,24 +329,28 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
           {/* Mastery Threshold Selector */}
           <div>
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-              <Flame className="w-3.5 h-3.5 text-amber-500" /> Tiêu chuẩn tốt nghiệp mỗi câu
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <Flame className="w-4 h-4 text-amber-500" /> Tiêu chuẩn tốt nghiệp mỗi câu
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
                 type="button"
                 onClick={() => setStreakTarget(2)}
-                className={`p-3.5 rounded-2xl border text-left transition-all ${
+                className={`p-5 rounded-2xl border text-left transition-all ${
                   streakTarget === 2
-                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow'
-                    : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow scale-[1.005]'
+                    : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
                 }`}
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-black text-sm">Chuẩn ghi nhớ sắt đá (Khuyên dùng)</span>
-                  <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-white/20">2 lần đúng</span>
+                <div className="flex items-center justify-between gap-3 mb-1.5 flex-nowrap">
+                  <span className="font-black text-sm sm:text-base whitespace-nowrap">
+                    Chuẩn ghi nhớ sắt đá (Khuyên dùng)
+                  </span>
+                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white/20 whitespace-nowrap shrink-0">
+                    2 lần đúng
+                  </span>
                 </div>
-                <p className="text-xs opacity-80 leading-relaxed">
+                <p className="text-xs sm:text-sm opacity-85 leading-relaxed">
                   Phải chọn đúng 2 lần liên tiếp mới tính là thuộc lầu lầu. Khắc phục triệt để đoán mò.
                 </p>
               </button>
@@ -354,17 +358,21 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <button
                 type="button"
                 onClick={() => setStreakTarget(1)}
-                className={`p-3.5 rounded-2xl border text-left transition-all ${
+                className={`p-5 rounded-2xl border text-left transition-all ${
                   streakTarget === 1
-                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow'
-                    : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow scale-[1.005]'
+                    : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
                 }`}
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-black text-sm">Speed Run (Lướt nhanh)</span>
-                  <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-white/20">1 lần đúng</span>
+                <div className="flex items-center justify-between gap-3 mb-1.5 flex-nowrap">
+                  <span className="font-black text-sm sm:text-base whitespace-nowrap">
+                    Speed Run (Lướt nhanh)
+                  </span>
+                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white/20 whitespace-nowrap shrink-0">
+                    1 lần đúng
+                  </span>
                 </div>
-                <p className="text-xs opacity-80 leading-relaxed">
+                <p className="text-xs sm:text-sm opacity-85 leading-relaxed">
                   Bấm đúng 1 lần là qua luôn. Dành cho người đã ôn sơ qua và cần kiểm tra lại tốc độ.
                 </p>
               </button>
@@ -372,20 +380,20 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           </div>
 
           {/* Action buttons */}
-          <div className="flex items-center gap-3 pt-3">
+          <div className="flex items-center gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
             <button
               type="button"
               onClick={onExit}
-              className="py-3.5 px-5 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm"
+              className="py-4 px-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm"
             >
               Quay lại
             </button>
             <button
               type="button"
               onClick={handleStartSession}
-              className="flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:opacity-95 text-white font-black flex items-center justify-center gap-2 shadow-glow text-sm transition-all"
+              className="flex-1 py-4 px-8 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:opacity-95 text-white font-black flex items-center justify-center gap-2.5 shadow-glow text-base transition-all"
             >
-              <Zap className="w-4 h-4 fill-current" />
+              <Zap className="w-5 h-5 fill-current" />
               <span>BẮT ĐẦU CÀY PHẢN XẠ [Enter]</span>
             </button>
           </div>
@@ -403,7 +411,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     const accuracy = totalAttempts > 0 ? Math.round((correctAttempts / totalAttempts) * 100) : 100;
 
     return (
-      <div className="w-full max-w-3xl mx-auto py-8 px-4 sm:px-6 animate-fade-in space-y-6">
+      <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-8 px-4 sm:px-8 animate-fade-in space-y-6">
         <div className="text-center p-8 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-white mx-auto flex items-center justify-center mb-4 shadow-glow-success">
             <Trophy className="w-8 h-8 animate-bounce" />
@@ -498,7 +506,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const progressPercent = totalInitialCount > 0 ? Math.round((graduatedCount / totalInitialCount) * 100) : 0;
 
   return (
-    <div className="w-full max-w-4xl mx-auto py-6 px-4 sm:px-6 animate-fade-in space-y-4">
+    <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-6 px-4 sm:px-8 animate-fade-in space-y-5">
       {/* Top HUD Bar */}
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-2.5">
@@ -580,7 +588,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         </div>
 
         {/* 4 Options Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
           {currentQ.options &&
             currentQ.options.map((opt, idx) => {
               const letter = String.fromCharCode(65 + idx);
@@ -613,10 +621,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                   type="button"
                   disabled={feedbackState !== 'idle'}
                   onClick={() => handleSelectOption(opt)}
-                  className={`p-4 rounded-2xl border text-left text-sm transition-all flex items-start gap-3 group relative ${optionStyle}`}
+                  className={`p-4 sm:p-5 rounded-2xl border text-left text-sm sm:text-base transition-all flex items-start gap-3.5 group relative ${optionStyle}`}
                 >
                   <span
-                    className={`w-6 h-6 rounded-lg flex items-center justify-center font-mono font-bold text-xs shrink-0 transition-colors ${
+                    className={`w-7 h-7 rounded-xl flex items-center justify-center font-mono font-bold text-xs shrink-0 transition-colors ${
                       feedbackState === 'correct' && isSelected
                         ? 'bg-white/20 text-white'
                         : feedbackState === 'wrong' && isTrueAnswer
@@ -633,13 +641,13 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
                   {/* Feedback Badge */}
                   {feedbackState === 'correct' && isSelected && (
-                    <Check className="w-5 h-5 text-white shrink-0" />
+                    <Check className="w-5 h-5 text-white shrink-0 mt-0.5" />
                   )}
                   {feedbackState === 'wrong' && isSelected && (
-                    <X className="w-5 h-5 text-white shrink-0" />
+                    <X className="w-5 h-5 text-white shrink-0 mt-0.5" />
                   )}
                   {feedbackState === 'wrong' && isTrueAnswer && (
-                    <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-emerald-500 text-white shrink-0 shadow-sm">
+                    <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-emerald-500 text-white shrink-0 shadow-sm whitespace-nowrap mt-0.5">
                       Đáp án đúng ⭐
                     </span>
                   )}

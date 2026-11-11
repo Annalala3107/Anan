@@ -58,7 +58,7 @@ export default function SessionPage() {
       className={`min-h-screen transition-all duration-500 ${
         zenMode
           ? 'bg-[#06080E] text-slate-100 py-4 px-2 sm:px-6 fixed inset-0 z-50 overflow-y-auto'
-          : 'py-2 px-2'
+          : 'w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4'
       }`}
     >
       {/* Zen Focus HUD Bar */}
@@ -67,7 +67,7 @@ export default function SessionPage() {
       {/* Main Study Session View */}
       <div
         className={`transition-all duration-500 ${
-          zenMode ? 'max-w-4xl mx-auto pt-2 pb-16 scale-[1.01]' : ''
+          zenMode ? 'max-w-5xl xl:max-w-6xl mx-auto pt-2 pb-16 scale-[1.01]' : 'w-full'
         }`}
       >
         {mode === 'learn' && <LearnMode words={words} onExit={handleExit} />}
