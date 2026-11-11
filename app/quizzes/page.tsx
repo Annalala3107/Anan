@@ -876,46 +876,52 @@ export default function QuizzesPage() {
       )}
 
       {/* Custom Subject Create/Edit Modal */}
-      <CustomSubjectModal
-        isOpen={isSubjectModalOpen}
-        editingSubject={editingSubject}
-        onClose={() => {
-          setIsSubjectModalOpen(false);
-          setEditingSubject(null);
-        }}
-        onSubjectSaved={(saved) => {
-          refreshData();
-          setActiveSubjectTab(`custom_${saved.id}`);
-        }}
-      />
+      {isSubjectModalOpen && (
+        <CustomSubjectModal
+          isOpen={isSubjectModalOpen}
+          editingSubject={editingSubject}
+          onClose={() => {
+            setIsSubjectModalOpen(false);
+            setEditingSubject(null);
+          }}
+          onSubjectSaved={(saved) => {
+            refreshData();
+            setActiveSubjectTab(`custom_${saved.id}`);
+          }}
+        />
+      )}
 
       {/* AI Prompt Modal */}
-      <AIPromptModal
-        isOpen={isAIModalOpen}
-        defaultSubject={modalDefaultSubject}
-        onClose={() => {
-          setIsAIModalOpen(false);
-          setModalDefaultSubject(undefined);
-        }}
-        onQuizCreated={(quiz) => {
-          refreshData();
-          setActiveCustomQuiz(quiz);
-        }}
-      />
+      {isAIModalOpen && (
+        <AIPromptModal
+          isOpen={isAIModalOpen}
+          defaultSubject={modalDefaultSubject}
+          onClose={() => {
+            setIsAIModalOpen(false);
+            setModalDefaultSubject(undefined);
+          }}
+          onQuizCreated={(quiz) => {
+            refreshData();
+            setActiveCustomQuiz(quiz);
+          }}
+        />
+      )}
 
       {/* Quick Text / Word Parser Modal */}
-      <QuickTextParserModal
-        isOpen={isTextParserOpen}
-        defaultSubject={modalDefaultSubject}
-        onClose={() => {
-          setIsTextParserOpen(false);
-          setModalDefaultSubject(undefined);
-        }}
-        onQuizCreated={(quiz) => {
-          refreshData();
-          setActiveCustomQuiz(quiz);
-        }}
-      />
+      {isTextParserOpen && (
+        <QuickTextParserModal
+          isOpen={isTextParserOpen}
+          defaultSubject={modalDefaultSubject}
+          onClose={() => {
+            setIsTextParserOpen(false);
+            setModalDefaultSubject(undefined);
+          }}
+          onQuizCreated={(quiz) => {
+            refreshData();
+            setActiveCustomQuiz(quiz);
+          }}
+        />
+      )}
     </div>
   );
 }

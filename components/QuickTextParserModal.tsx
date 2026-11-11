@@ -134,6 +134,8 @@ export default function QuickTextParserModal({
     }
   };
 
+  if (!isOpen) return null;
+
   return (
     <div
       onClick={onClose}
