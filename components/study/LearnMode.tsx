@@ -383,21 +383,27 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <button
                 type="button"
                 onClick={() => setStudyMethod('flashcard')}
-                className={`p-5 rounded-2xl border text-left transition-all ${
+                className={`p-5 rounded-2xl border-2 text-left transition-all relative cursor-pointer ${
                   studyMethod === 'flashcard'
-                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow scale-[1.005]'
-                    : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+                    ? 'bg-indigo-500/10 dark:bg-indigo-950/40 border-indigo-500 shadow-[0_0_25px_rgba(99,102,241,0.25)] text-slate-900 dark:text-white scale-[1.01]'
+                    : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
                 }`}
               >
                 <div className="flex items-center justify-between gap-3 mb-1.5">
-                  <span className="font-black text-sm sm:text-base flex items-center gap-2">
-                    <BookOpen className="w-4 h-4" /> Thẻ Lật 3D (Khuyên dùng)
+                  <span className={`font-black text-sm sm:text-base flex items-center gap-2 ${
+                    studyMethod === 'flashcard' ? 'text-indigo-600 dark:text-indigo-300' : 'text-slate-800 dark:text-slate-200'
+                  }`}>
+                    <BookOpen className="w-4 h-4 text-indigo-500" /> Thẻ Lật 3D (Khuyên dùng)
                   </span>
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-white/20 whitespace-nowrap">
+                  <span className={`text-[11px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap ${
+                    studyMethod === 'flashcard'
+                      ? 'bg-indigo-500 text-white shadow-sm'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                  }`}>
                     Chuẩn SRS SM-2
                   </span>
                 </div>
-                <p className="text-xs opacity-85 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mt-1">
                   Lật thẻ 3D, đọc giải thích chi tiết và tự đánh giá [1-3]. Giúp hiểu sâu bản chất và ghi nhớ bền vững vào trí nhớ dài hạn.
                 </p>
               </button>
@@ -405,21 +411,27 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <button
                 type="button"
                 onClick={() => setStudyMethod('rapid')}
-                className={`p-5 rounded-2xl border text-left transition-all ${
+                className={`p-5 rounded-2xl border-2 text-left transition-all relative cursor-pointer ${
                   studyMethod === 'rapid'
-                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow scale-[1.005]'
-                    : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+                    ? 'bg-indigo-500/10 dark:bg-indigo-950/40 border-indigo-500 shadow-[0_0_25px_rgba(99,102,241,0.25)] text-slate-900 dark:text-white scale-[1.01]'
+                    : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
                 }`}
               >
                 <div className="flex items-center justify-between gap-3 mb-1.5">
-                  <span className="font-black text-sm sm:text-base flex items-center gap-2">
-                    <Zap className="w-4 h-4" /> Cày Phản Xạ Trắc Nghiệm
+                  <span className={`font-black text-sm sm:text-base flex items-center gap-2 ${
+                    studyMethod === 'rapid' ? 'text-indigo-600 dark:text-indigo-300' : 'text-slate-800 dark:text-slate-200'
+                  }`}>
+                    <Zap className="w-4 h-4 text-amber-500" /> Cày Phản Xạ Trắc Nghiệm
                   </span>
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-white/20 whitespace-nowrap">
+                  <span className={`text-[11px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap ${
+                    studyMethod === 'rapid'
+                      ? 'bg-amber-500 text-white shadow-sm'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                  }`}>
                     Tốc độ 0.4s
                   </span>
                 </div>
-                <p className="text-xs opacity-85 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mt-1">
                   Chọn nhanh 1-4, đúng tự lướt qua trong 0.4s, sai bị ép làm lại sau 3 câu để rèn phản xạ nhanh trước kỳ thi.
                 </p>
               </button>
@@ -446,16 +458,20 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                     type="button"
                     disabled={disabled}
                     onClick={() => setBatchSize(num)}
-                    className={`p-4 rounded-2xl border font-bold transition-all text-center ${
+                    className={`p-4 rounded-2xl border-2 font-bold transition-all text-center cursor-pointer ${
                       isSelected
-                        ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow scale-[1.01]'
+                        ? 'bg-indigo-500/15 dark:bg-indigo-950/50 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.2)] scale-[1.02]'
                         : disabled
-                        ? 'opacity-30 border-slate-200 dark:border-slate-800 text-slate-400 cursor-not-allowed'
-                        : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+                        ? 'opacity-30 border-slate-200 dark:border-slate-800 text-slate-400 cursor-not-allowed bg-slate-50 dark:bg-slate-900/30'
+                        : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
                     }`}
                   >
-                    <span className="text-2xl sm:text-3xl font-black block">{num}</span>
-                    <span className="text-xs font-semibold opacity-85 mt-1 block whitespace-nowrap">
+                    <span className={`text-2xl sm:text-3xl font-black block ${
+                      isSelected ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-900 dark:text-white'
+                    }`}>{num}</span>
+                    <span className={`text-xs font-semibold mt-1 block whitespace-nowrap ${
+                      isSelected ? 'text-indigo-600 dark:text-indigo-300 font-bold' : 'text-slate-500 dark:text-slate-400'
+                    }`}>
                       {num === 10 ? 'Cực nhanh (5p)' : num === 15 ? 'Chuẩn đợt học' : num === 25 ? 'Chuyên sâu' : 'Cày marathon'}
                     </span>
                   </button>
@@ -473,21 +489,27 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <button
                 type="button"
                 onClick={() => setStreakTarget(2)}
-                className={`p-5 rounded-2xl border text-left transition-all ${
+                className={`p-5 rounded-2xl border-2 text-left transition-all relative cursor-pointer ${
                   streakTarget === 2
-                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow scale-[1.005]'
-                    : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+                    ? 'bg-indigo-500/10 dark:bg-indigo-950/40 border-indigo-500 shadow-[0_0_25px_rgba(99,102,241,0.25)] text-slate-900 dark:text-white scale-[1.01]'
+                    : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
                 }`}
               >
                 <div className="flex items-center justify-between gap-3 mb-1.5 flex-nowrap">
-                  <span className="font-black text-sm sm:text-base whitespace-nowrap">
+                  <span className={`font-black text-sm sm:text-base whitespace-nowrap ${
+                    streakTarget === 2 ? 'text-indigo-600 dark:text-indigo-300' : 'text-slate-800 dark:text-slate-200'
+                  }`}>
                     {studyMethod === 'flashcard' ? 'Chuẩn ghi nhớ sâu (Khuyên dùng)' : 'Chuẩn ghi nhớ sắt đá (Khuyên dùng)'}
                   </span>
-                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white/20 whitespace-nowrap shrink-0">
+                  <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
+                    streakTarget === 2
+                      ? 'bg-indigo-500 text-white shadow-sm'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                  }`}>
                     2 chu kỳ
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm opacity-85 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-1">
                   {studyMethod === 'flashcard'
                     ? 'Đạt đánh giá [Đã thuộc lầu] hoặc tự tin nhớ đúng qua 2 lượt ôn ngắt quãng.'
                     : 'Phải chọn đúng 2 lần liên tiếp mới tính là thuộc lầu lầu. Khắc phục triệt để đoán mò.'}
@@ -497,21 +519,27 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <button
                 type="button"
                 onClick={() => setStreakTarget(1)}
-                className={`p-5 rounded-2xl border text-left transition-all ${
+                className={`p-5 rounded-2xl border-2 text-left transition-all relative cursor-pointer ${
                   streakTarget === 1
-                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow scale-[1.005]'
-                    : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+                    ? 'bg-indigo-500/10 dark:bg-indigo-950/40 border-indigo-500 shadow-[0_0_25px_rgba(99,102,241,0.25)] text-slate-900 dark:text-white scale-[1.01]'
+                    : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
                 }`}
               >
                 <div className="flex items-center justify-between gap-3 mb-1.5 flex-nowrap">
-                  <span className="font-black text-sm sm:text-base whitespace-nowrap">
+                  <span className={`font-black text-sm sm:text-base whitespace-nowrap ${
+                    streakTarget === 1 ? 'text-indigo-600 dark:text-indigo-300' : 'text-slate-800 dark:text-slate-200'
+                  }`}>
                     Speed Run (Lướt nhanh)
                   </span>
-                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white/20 whitespace-nowrap shrink-0">
+                  <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
+                    streakTarget === 1
+                      ? 'bg-indigo-500 text-white shadow-sm'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                  }`}>
                     1 chu kỳ
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm opacity-85 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-1">
                   {studyMethod === 'flashcard'
                     ? 'Đạt đánh giá [Đã thuộc lầu] 1 lần là hoàn thành câu ngay. Dành cho người đã ôn trước.'
                     : 'Bấm đúng 1 lần là qua luôn. Dành cho người đã ôn sơ qua và cần kiểm tra lại tốc độ.'}

@@ -78,16 +78,16 @@ export default function ExamConfigView({
                   type="button"
                   disabled={disabled}
                   onClick={() => setTargetCount(num)}
-                  className={`p-3.5 rounded-2xl border font-bold text-xs transition-all text-center ${
+                  className={`p-3.5 rounded-2xl border-2 font-bold text-xs transition-all text-center cursor-pointer ${
                     isSelected
-                      ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow'
+                      ? 'bg-indigo-500/15 dark:bg-indigo-950/50 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.2)] scale-[1.02]'
                       : disabled
-                      ? 'opacity-30 border-slate-200 dark:border-slate-800 text-slate-400 cursor-not-allowed'
-                      : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+                      ? 'opacity-30 border-slate-200 dark:border-slate-800 text-slate-400 cursor-not-allowed bg-slate-50 dark:bg-slate-900/30'
+                      : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
                   }`}
                 >
-                  <span className="text-xl font-black block">{num}</span>
-                  <span className="text-[11px] font-normal opacity-80">
+                  <span className={`text-xl font-black block ${isSelected ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-900 dark:text-white'}`}>{num}</span>
+                  <span className={`text-[11px] ${isSelected ? 'text-indigo-600 dark:text-indigo-300 font-bold' : 'text-slate-500 dark:text-slate-400'}`}>
                     {num === 25 ? 'Thi nhanh' : num === 50 ? 'Chuẩn kỳ thi' : 'Đề chính quy'}
                   </span>
                 </button>
@@ -96,14 +96,14 @@ export default function ExamConfigView({
             <button
               type="button"
               onClick={() => setTargetCount(filteredAvailableCount)}
-              className={`p-3.5 rounded-2xl border font-bold text-xs transition-all text-center ${
+              className={`p-3.5 rounded-2xl border-2 font-bold text-xs transition-all text-center cursor-pointer ${
                 targetCount === filteredAvailableCount
-                  ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow'
-                  : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-indigo-400'
+                  ? 'bg-indigo-500/15 dark:bg-indigo-950/50 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.2)] scale-[1.02]'
+                  : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
               }`}
             >
-              <span className="text-xl font-black block">Tất cả</span>
-              <span className="text-[11px] font-normal opacity-80">
+              <span className={`text-xl font-black block ${targetCount === filteredAvailableCount ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-900 dark:text-white'}`}>Tất cả</span>
+              <span className={`text-[11px] ${targetCount === filteredAvailableCount ? 'text-indigo-600 dark:text-indigo-300 font-bold' : 'text-slate-500 dark:text-slate-400'}`}>
                 {filteredAvailableCount} câu (Speed Run)
               </span>
             </button>
@@ -128,14 +128,14 @@ export default function ExamConfigView({
                   key={mins}
                   type="button"
                   onClick={() => setTargetMinutes(mins)}
-                  className={`p-3.5 rounded-2xl border font-bold text-xs transition-all text-center ${
+                  className={`p-3.5 rounded-2xl border-2 font-bold text-xs transition-all text-center cursor-pointer ${
                     isSelected
-                      ? 'bg-rose-600 text-white border-rose-500 shadow-glow-danger'
-                      : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-rose-400'
+                      ? 'bg-rose-500/15 dark:bg-rose-950/50 border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.2)] text-rose-600 dark:text-rose-300 scale-[1.02]'
+                      : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
                   }`}
                 >
-                  <span className="text-xl font-black block">{mins}&apos;</span>
-                  <span className="text-[11px] font-normal opacity-80">
+                  <span className={`text-xl font-black block ${isSelected ? 'text-rose-600 dark:text-rose-400' : 'text-slate-900 dark:text-white'}`}>{mins}&apos;</span>
+                  <span className={`text-[11px] ${isSelected ? 'text-rose-600 dark:text-rose-300 font-bold' : 'text-slate-500 dark:text-slate-400'}`}>
                     {mins === 10 ? 'Tốc độ cao' : mins === 45 ? 'Chuẩn 50 câu' : 'Vừa phải'}
                   </span>
                 </button>
@@ -144,10 +144,10 @@ export default function ExamConfigView({
             <button
               type="button"
               onClick={() => setTargetMinutes(-1)}
-              className={`col-span-2 sm:col-span-4 p-3 rounded-2xl border font-bold text-xs transition-all text-center flex items-center justify-center gap-2 ${
+              className={`col-span-2 sm:col-span-4 p-3 rounded-2xl border-2 font-bold text-xs transition-all text-center flex items-center justify-center gap-2 cursor-pointer ${
                 targetMinutes === -1
-                  ? 'bg-emerald-600 text-white border-emerald-500 shadow-glow-success'
-                  : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-emerald-400'
+                  ? 'bg-emerald-500/15 dark:bg-emerald-950/50 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.2)] text-emerald-600 dark:text-emerald-300 scale-[1.01]'
+                  : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
               }`}
             >
               <span>∞ Không giới hạn thời gian (Tự luyện thong thả)</span>

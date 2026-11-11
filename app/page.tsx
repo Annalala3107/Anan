@@ -182,11 +182,16 @@ export default function Home() {
           {/* Mode 2: Drill */}
           <Link
             href="/session/drill"
-            className="group relative p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 dark:hover:border-emerald-500/60 shadow-lg hover:shadow-glow-success transition-all duration-300 flex flex-col justify-between"
+            className="group relative p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 dark:hover:border-emerald-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] transition-all duration-300 flex flex-col justify-between"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Dumbbell className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Dumbbell className="w-6 h-6" />
+                </div>
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                  Giải Thích Tức Thì
+                </span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
                 Luyện Trắc Nghiệm (Drill)
@@ -204,7 +209,7 @@ export default function Home() {
           {/* Mode 3: Exam */}
           <Link
             href="/session/exam"
-            className="group relative p-6 rounded-3xl bg-white dark:bg-[#0F172A] border-2 border-rose-500/40 dark:border-rose-500/40 hover:border-rose-500 shadow-xl hover:shadow-glow-danger transition-all duration-300 flex flex-col justify-between"
+            className="group relative p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-rose-500/60 dark:hover:border-rose-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(244,63,94,0.15)] transition-all duration-300 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -231,11 +236,16 @@ export default function Home() {
           {/* Mode 4: Mistakes */}
           <Link
             href="/session/mistakes"
-            className="group relative p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-amber-500/60 dark:hover:border-amber-500/60 shadow-lg hover:shadow-glow transition-all duration-300 flex flex-col justify-between"
+            className="group relative p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-amber-500/60 dark:hover:border-amber-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(245,158,11,0.15)] transition-all duration-300 flex flex-col justify-between"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <AlertTriangle className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <AlertTriangle className="w-6 h-6" />
+                </div>
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                  Củng Cố Điểm Yếu
+                </span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
                 Khắc Phục Lỗi (Mistakes)
