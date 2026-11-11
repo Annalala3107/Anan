@@ -103,6 +103,43 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Update Highlights Banner */}
+      <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md">
+            <Sparkles className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-500 text-white">
+                V2.0 Cập Nhật Mới
+              </span>
+              <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                Cày Phản Xạ Cao Tốc (0.4s) • Gemini Flash AI • Mở Rộng Môn Học Động
+              </span>
+            </div>
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
+              Học vẹt trắc nghiệm ghi nhớ sắt đá, sinh đề thi bằng AI và quản lý môn học tùy chỉnh theo ý bạn!
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          <Link
+            href="/session/learn"
+            className="flex-1 sm:flex-none text-xs font-bold py-2 px-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-sm text-center"
+          >
+            Cày Phản Xạ ⚡ &rarr;
+          </Link>
+          <Link
+            href="/quizzes"
+            className="flex-1 sm:flex-none text-xs font-bold py-2 px-3.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-all text-center"
+          >
+            Kho Đề & Môn Học &rarr;
+          </Link>
+        </div>
+      </div>
+
       {/* 4 Intelligent Study Modes */}
       <div>
         <div className="flex items-center justify-between mb-4">
@@ -118,21 +155,26 @@ export default function Home() {
           {/* Mode 1: Learn */}
           <Link
             href="/session/learn"
-            className="group relative p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-indigo-500/60 dark:hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 flex flex-col justify-between"
+            className="group relative p-6 rounded-3xl bg-white dark:bg-[#0F172A] border-2 border-indigo-500/40 dark:border-indigo-500/40 hover:border-indigo-500 shadow-xl hover:shadow-glow transition-all duration-300 flex flex-col justify-between"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Brain className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Brain className="w-6 h-6" />
+                </div>
+                <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-md bg-indigo-500 text-white shadow-sm">
+                  Cực Nhanh ⚡
+                </span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
-                Chế độ Học (Learn)
+                Cày Phản Xạ (Learn)
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
-                3 bước vi mô: Lật thẻ nhớ, điền ngữ cảnh và phân biệt đáp án bẫy.
+                Cỗ máy luyện cơ bắp phản xạ: đúng qua luôn trong 0.4s, sai đập ngay đáp án chuẩn và hỏi lại sau 3 câu.
               </p>
             </div>
-            <div className="flex items-center justify-between text-xs font-bold text-indigo-600 dark:text-indigo-400">
-              <span>Bắt đầu học</span>
+            <div className="flex items-center justify-between text-xs font-bold text-indigo-600 dark:text-indigo-400 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <span>Bắt đầu cày phản xạ</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
@@ -153,7 +195,7 @@ export default function Home() {
                 Làm trắc nghiệm có phản hồi giải thích đúng/sai tức thì kèm phím tắt 1-4.
               </p>
             </div>
-            <div className="flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400">
+            <div className="flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400 pt-2 border-t border-slate-100 dark:border-slate-800">
               <span>Luyện tập ngay</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -162,21 +204,26 @@ export default function Home() {
           {/* Mode 3: Exam */}
           <Link
             href="/session/exam"
-            className="group relative p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-rose-500/60 dark:hover:border-rose-500/60 shadow-lg hover:shadow-glow-danger transition-all duration-300 flex flex-col justify-between"
+            className="group relative p-6 rounded-3xl bg-white dark:bg-[#0F172A] border-2 border-rose-500/40 dark:border-rose-500/40 hover:border-rose-500 shadow-xl hover:shadow-glow-danger transition-all duration-300 flex flex-col justify-between"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Award className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Award className="w-6 h-6" />
+                </div>
+                <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-md bg-rose-500 text-white shadow-sm">
+                  Cấu Hình Mới ⭐
+                </span>
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
                 Thi Thử Tính Giờ (Exam)
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
-                Đề thi 25 câu tính giờ chuẩn kỳ thi, xuất phiếu điểm và xem lại từng câu.
+                Tự chọn chuyên đề, căn thời gian, chống thoát nhầm và xem phân tích lỗ hổng kiến thức.
               </p>
             </div>
-            <div className="flex items-center justify-between text-xs font-bold text-rose-600 dark:text-rose-400">
-              <span>Vào phòng thi</span>
+            <div className="flex items-center justify-between text-xs font-bold text-rose-600 dark:text-rose-400 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <span>Vào phòng thi mới</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
@@ -197,7 +244,7 @@ export default function Home() {
                 Thuật toán SRS tự động gom các câu bạn từng làm sai để luyện lại.
               </p>
             </div>
-            <div className="flex items-center justify-between text-xs font-bold text-amber-600 dark:text-amber-400">
+            <div className="flex items-center justify-between text-xs font-bold text-amber-600 dark:text-amber-400 pt-2 border-t border-slate-100 dark:border-slate-800">
               <span>Củng cố điểm yếu</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
