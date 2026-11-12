@@ -1,11 +1,15 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { Word } from '@/lib/types';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { Word, WordProgress } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { isAnswerMatch } from '@/lib/utils';
 import { soundFx } from '@/lib/sound';
-import { buildStandardQuestions, StandardQuestion } from '@/lib/quizHelpers';
+import {
+  buildStandardQuestions,
+  StandardQuestion,
+  QuestionSelectionMode,
+} from '@/lib/quizHelpers';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import FlashcardView from './FlashcardView';
 import {
@@ -21,6 +25,8 @@ import {
   Layers,
   AlertTriangle,
   BookOpen,
+  Shuffle,
+  ListOrdered,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -45,8 +51,12 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const [isConfiguring, setIsConfiguring] = useState(true);
   const [studyMethod, setStudyMethod] = useState<'flashcard' | 'rapid'>('flashcard');
   const [isFlipped, setIsFlipped] = useState(false);
-  const [batchSize, setBatchSize] = useState(15);
+  const [batchMode, setBatchMode] = useState<'preset' | 'all' | 'remaining'>('preset');
+  const [batchSize, setBatchSize] = useState(20);
+  const [selectionMode, setSelectionMode] = useState<QuestionSelectionMode>('smart');
+  const [shuffleChoices, setShuffleChoices] = useState(false);
   const [streakTarget, setStreakTarget] = useState(2); // 1 = Speed run, 2 = Ironclad memory
+  const [progressMap, setProgressMap] = useState<Record<string, WordProgress>>({});
 
   // Active Session State (Immutable Card Dictionary + Sliding Active Pool Queue)
   const [cards, setCards] = useState<CardItem[]>([]);
@@ -69,55 +79,110 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
   const advanceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Clear pending timer on unmount
+  const refreshProgress = useCallback(() => {
+    setProgressMap(StorageEngine.getWordProgress());
+  }, []);
+
+  // Clear pending timer on unmount & load initial progress
   useEffect(() => {
+    refreshProgress();
     return () => {
       if (advanceTimerRef.current) {
         clearTimeout(advanceTimerRef.current);
       }
     };
-  }, []);
+  }, [refreshProgress]);
+
+  // Compute deck-wide mastery stats
+  const { availableCount, masteredCount, unmasteredCount, mistakeCount } = useMemo(() => {
+    const total = words.length;
+    let mastered = 0;
+    let mistakes = 0;
+    for (const w of words) {
+      const p = StorageEngine.getItemProgress(w, progressMap);
+      if (p?.status === 'mastered') {
+        mastered++;
+      }
+      if (p && ((p.mistakesCount || 0) > 0 || (p.wrongStreak || 0) > 0)) {
+        mistakes++;
+      }
+    }
+    return {
+      availableCount: total,
+      masteredCount: mastered,
+      unmasteredCount: Math.max(0, total - mastered),
+      mistakeCount: mistakes,
+    };
+  }, [words, progressMap]);
+
+  // Calculate effective question count for the selected batch mode
+  const effectiveTargetCount = useMemo(() => {
+    if (batchMode === 'all') return availableCount;
+    if (batchMode === 'remaining') return unmasteredCount > 0 ? unmasteredCount : availableCount;
+    return Math.min(batchSize, availableCount);
+  }, [batchMode, batchSize, availableCount, unmasteredCount]);
 
   // Start the Rapid Recall / Flashcard session
+  const startSessionWithConfig = useCallback(
+    (overrideCount?: number, forceOnlyUnmastered?: boolean) => {
+      if (!words || words.length === 0) return;
+
+      if (advanceTimerRef.current) {
+        clearTimeout(advanceTimerRef.current);
+        advanceTimerRef.current = null;
+      }
+
+      const freshMap = StorageEngine.getWordProgress();
+      setProgressMap(freshMap);
+
+      const countToUse =
+        overrideCount !== undefined ? overrideCount : effectiveTargetCount;
+      const onlyUnmastered =
+        forceOnlyUnmastered !== undefined
+          ? forceOnlyUnmastered
+          : batchMode === 'remaining';
+
+      const standardList = buildStandardQuestions(words, countToUse, {
+        mode: selectionMode,
+        progressMap: freshMap,
+        onlyUnmastered,
+        shuffleChoices,
+      });
+
+      const initialCards: CardItem[] = standardList.map((q, idx) => ({
+        id: `card_${idx}_${q.id}`,
+        question: q,
+        correctStreak: 0,
+        mistakes: 0,
+        attempts: 0,
+      }));
+
+      const initialPoolCount = Math.min(ACTIVE_POOL_SIZE, initialCards.length);
+      const initialActiveQueue = initialCards.slice(0, initialPoolCount).map((c) => c.id);
+
+      setCards(initialCards);
+      setActiveQueue(initialActiveQueue);
+      setNextReserveIndex(initialPoolCount);
+      setTurnCount(0);
+      setSelectedOpt(null);
+      setFeedbackState('idle');
+      setIsFlipped(false);
+      setIsConfiguring(false);
+      setIsCompleted(false);
+      setStartTime(Date.now());
+      setTotalAttempts(0);
+      setCorrectAttempts(0);
+      setSessionCombo(0);
+      setMaxCombo(0);
+      setProblemQuestions([]);
+      soundFx.playClick();
+    },
+    [words, effectiveTargetCount, batchMode, selectionMode, shuffleChoices]
+  );
+
   const handleStartSession = useCallback(() => {
-    if (!words || words.length === 0) return;
-
-    if (advanceTimerRef.current) {
-      clearTimeout(advanceTimerRef.current);
-      advanceTimerRef.current = null;
-    }
-
-    const count = Math.min(words.length, batchSize);
-    const standardList = buildStandardQuestions(words, count);
-
-    const initialCards: CardItem[] = standardList.map((q, idx) => ({
-      id: `card_${idx}_${q.id}`,
-      question: q,
-      correctStreak: 0,
-      mistakes: 0,
-      attempts: 0,
-    }));
-
-    const initialPoolCount = Math.min(ACTIVE_POOL_SIZE, initialCards.length);
-    const initialActiveQueue = initialCards.slice(0, initialPoolCount).map((c) => c.id);
-
-    setCards(initialCards);
-    setActiveQueue(initialActiveQueue);
-    setNextReserveIndex(initialPoolCount);
-    setTurnCount(0);
-    setSelectedOpt(null);
-    setFeedbackState('idle');
-    setIsFlipped(false);
-    setIsConfiguring(false);
-    setIsCompleted(false);
-    setStartTime(Date.now());
-    setTotalAttempts(0);
-    setCorrectAttempts(0);
-    setSessionCombo(0);
-    setMaxCombo(0);
-    setProblemQuestions([]);
-    soundFx.playClick();
-  }, [words, batchSize]);
+    startSessionWithConfig();
+  }, [startSessionWithConfig]);
 
   const currentCardId = activeQueue[0];
   const currentItem = cards.find((c) => c.id === currentCardId);
@@ -128,6 +193,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       clearTimeout(advanceTimerRef.current);
       advanceTimerRef.current = null;
     }
+    refreshProgress();
     setIsCompleted(true);
     soundFx.playCelebration();
     confetti({
@@ -136,7 +202,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       origin: { y: 0.6 },
     });
     StorageEngine.recordActivity('learn', 100);
-  }, []);
+  }, [refreshProgress]);
 
   // Rotate active pool queue to the next question
   const advanceNext = useCallback(() => {
@@ -191,24 +257,19 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     } else {
       // Current card not yet graduated -> keep it rotating inside the active pool
       if (restQueue.length === 0) {
-        // Only 1 card left in the pool; keep it on screen for the next rep
         setActiveQueue([activeId]);
       } else if (feedbackState === 'wrong') {
-        // Wrong answer: re-show after 2-3 cards in the active pool
         const insertPos = Math.min(restQueue.length, 3);
         const nextQueue = [...restQueue];
         nextQueue.splice(insertPos, 0, activeId);
         setActiveQueue(nextQueue);
       } else {
-        // Correct answer (1/2): push to the back of the 5-card active pool
-        // Ensure we don't ask the exact same card back-to-back if reserve still has cards
-        let nextQueue = [...restQueue, activeId];
+        const nextQueue = [...restQueue, activeId];
         setActiveQueue(nextQueue);
       }
     }
   }, [activeQueue, cards, currentItem, feedbackState, finishSession, nextReserveIndex, streakTarget]);
 
-  // Keep a ref to latest advanceNext so setTimeout never suffers from stale closures
   const advanceNextRef = useRef(advanceNext);
   useEffect(() => {
     advanceNextRef.current = advanceNext;
@@ -236,7 +297,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
         const newStreak = Math.min(streakTarget, currentItem.correctStreak + 1);
 
-        // Immutable update of the card's streak so progress bar & HUD update immediately
         setCards((prevCards) =>
           prevCards.map((c) =>
             c.id === currentItem.id
@@ -245,10 +305,8 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           )
         );
 
-        // Record progress in SRS engine
         StorageEngine.updateWordProgress(currentQ.id, 5);
 
-        // Auto-advance quickly after 420ms for rapid muscle memory conditioning
         if (advanceTimerRef.current) clearTimeout(advanceTimerRef.current);
         advanceTimerRef.current = setTimeout(() => {
           advanceNextRef.current();
@@ -258,7 +316,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         setFeedbackState('wrong');
         setSessionCombo(0);
 
-        // Immutable reset of this card's streak & increment mistakes
         setCards((prevCards) =>
           prevCards.map((c) =>
             c.id === currentItem.id
@@ -267,7 +324,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           )
         );
 
-        // Track as problem question
         setProblemQuestions((prev) => {
           if (!prev.some((pq) => pq.id === currentQ.id)) {
             return [...prev, currentQ];
@@ -275,7 +331,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           return prev;
         });
 
-        // Record mistake in SRS
         StorageEngine.recordMistakeOnly(currentQ.id);
       }
     },
@@ -372,12 +427,37 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     [activeQueue, cards, currentItem, currentQ, finishSession, nextReserveIndex, streakTarget]
   );
 
-  // Global Keyboard listener: Flashcard Space / 1-3, Rapid Recall 1-4 / A-D
+  // Global Keyboard listener: Setup Enter, Flashcard Space / 1-3, Rapid Recall 1-6 / A-F
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isConfiguring || isCompleted || !currentQ) return;
-
       if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) return;
+
+      if (isConfiguring) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleStartSession();
+        }
+        return;
+      }
+
+      if (isCompleted) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (unmasteredCount > 0) {
+            const nextCount =
+              batchMode === 'all' || batchMode === 'remaining'
+                ? unmasteredCount
+                : Math.min(batchSize, unmasteredCount);
+            startSessionWithConfig(nextCount, true);
+          } else {
+            refreshProgress();
+            setIsConfiguring(true);
+          }
+        }
+        return;
+      }
+
+      if (!currentQ) return;
 
       // FLASHCARD MODE HOTKEYS
       if (studyMethod === 'flashcard') {
@@ -404,7 +484,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       }
 
       // RAPID RECALL MODE HOTKEYS
-      // When wrong feedback is showing: press Space / Enter to advance
       if (feedbackState === 'wrong') {
         if (e.code === 'Space' || e.key === 'Enter') {
           e.preventDefault();
@@ -415,7 +494,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
       if (feedbackState !== 'idle') return;
 
-      // Hotkey 1, 2, 3, 4, 5, 6
       if (['1', '2', '3', '4', '5', '6'].includes(e.key)) {
         e.preventDefault();
         const idx = Number(e.key) - 1;
@@ -424,7 +502,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         }
       }
 
-      // Hotkey A, B, C, D, E, F
       const keyUpper = e.key.toUpperCase();
       if (['A', 'B', 'C', 'D', 'E', 'F'].includes(keyUpper)) {
         e.preventDefault();
@@ -444,6 +521,12 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     isFlipped,
     feedbackState,
     currentQ,
+    unmasteredCount,
+    batchMode,
+    batchSize,
+    handleStartSession,
+    startSessionWithConfig,
+    refreshProgress,
     handleRateFlashcard,
     handleSelectOption,
     advanceNext,
@@ -453,47 +536,52 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   // VIEW 1: SETUP SCREEN
   // =========================================================================
   if (isConfiguring) {
-    const availableCount = words.length;
+    const overallPct =
+      availableCount > 0 ? Math.round((masteredCount / availableCount) * 100) : 0;
+    const presetNumbers = [10, 20, 35].filter((n) => n < availableCount);
+    const hasPartialRemaining =
+      unmasteredCount > 0 && unmasteredCount < availableCount;
 
     return (
-      <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-8 px-4 sm:px-8 animate-fade-in">
-        <div className="p-6 sm:p-8 md:p-10 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl space-y-7">
-          <div className="flex items-center gap-4 pb-5 border-b border-slate-100 dark:border-slate-800">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold shadow-glow shrink-0">
-              <Zap className="w-7 h-7 animate-pulse" />
+      <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-6 sm:py-8 px-4 sm:px-8 animate-fade-in">
+        <div className="p-6 sm:p-8 md:p-10 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6">
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold shadow-glow shrink-0">
+                <Zap className="w-7 h-7 animate-pulse" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20 whitespace-nowrap">
+                    ⚡ Không Sót Câu Lẻ • Cày Hết Đề
+                  </span>
+                  <span className="text-xs text-slate-400 font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 whitespace-nowrap">
+                    {words[0]?.subject || 'Ngân hàng câu hỏi'} • {availableCount} câu
+                  </span>
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1 tracking-tight">
+                  Chế Độ Thẻ Lật 3D & Cày Phản Xạ (Rapid Muscle Memory)
+                </h1>
+              </div>
             </div>
-            <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20 whitespace-nowrap">
-                  ⚡ Tốc độ cao • Không giải thích dông dài
-                </span>
-                <span className="text-xs text-slate-400 font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 whitespace-nowrap">
-                  {words[0]?.subject || 'Ngân hàng câu hỏi'}
+
+            {/* Live Deck Mastery Pill */}
+            <div className="px-4 py-2.5 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 flex items-center gap-3 self-start sm:self-center">
+              <Trophy className="w-4 h-4 text-indigo-400 shrink-0" />
+              <div className="text-xs">
+                <span className="text-slate-400 font-semibold block">Tiến độ bộ đề này:</span>
+                <span className="font-black text-indigo-600 dark:text-indigo-300">
+                  Đã thuộc {masteredCount}/{availableCount} câu ({overallPct}%)
                 </span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1 tracking-tight">
-                Chế Độ Cày Phản Xạ (Rapid Muscle Memory)
-              </h1>
             </div>
-          </div>
-
-          {/* Core Philosophy explanation */}
-          <div className="p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/60 dark:border-indigo-800/60 text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-2 leading-relaxed">
-            <p className="font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-2 text-sm sm:text-base">
-              <Target className="w-4 h-4 shrink-0 text-indigo-500" /> Phương pháp học tập Spaced Repetition:
-            </p>
-            <p className="pl-6">
-              • <strong>Thẻ Lật 3D</strong>: Đọc câu hỏi, lật mặt sau ngẫm nghĩ và tự đánh giá độ nhớ [1-3] theo thuật toán SM-2 giúp ghi nhớ sâu bản chất.
-            </p>
-            <p className="pl-6">
-              • <strong>Cày Phản Xạ</strong>: Bấm đáp án A-D tốc độ cao, đúng tự lướt qua trong 0.4s, sai bị ép làm lại sau 3 câu.
-            </p>
           </div>
 
           {/* Method Selector: Flashcard 3D vs Speed MCQ */}
           <div>
             <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-indigo-500" /> Chọn hình thức học đợt này
+              <Sparkles className="w-4 h-4 text-indigo-500" /> 1. Chọn hình thức học đợt này
             </label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
@@ -506,16 +594,22 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 }`}
               >
                 <div className="flex items-center justify-between gap-3 mb-1.5">
-                  <span className={`font-black text-sm sm:text-base flex items-center gap-2 ${
-                    studyMethod === 'flashcard' ? 'text-indigo-600 dark:text-indigo-300' : 'text-slate-800 dark:text-slate-200'
-                  }`}>
+                  <span
+                    className={`font-black text-sm sm:text-base flex items-center gap-2 ${
+                      studyMethod === 'flashcard'
+                        ? 'text-indigo-600 dark:text-indigo-300'
+                        : 'text-slate-800 dark:text-slate-200'
+                    }`}
+                  >
                     <BookOpen className="w-4 h-4 text-indigo-500" /> Thẻ Lật 3D (Khuyên dùng)
                   </span>
-                  <span className={`text-[11px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap ${
-                    studyMethod === 'flashcard'
-                      ? 'bg-indigo-500 text-white shadow-sm'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
-                  }`}>
+                  <span
+                    className={`text-[11px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap ${
+                      studyMethod === 'flashcard'
+                        ? 'bg-indigo-500 text-white shadow-sm'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                    }`}
+                  >
                     Chuẩn SRS SM-2
                   </span>
                 </div>
@@ -534,16 +628,22 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 }`}
               >
                 <div className="flex items-center justify-between gap-3 mb-1.5">
-                  <span className={`font-black text-sm sm:text-base flex items-center gap-2 ${
-                    studyMethod === 'rapid' ? 'text-indigo-600 dark:text-indigo-300' : 'text-slate-800 dark:text-slate-200'
-                  }`}>
+                  <span
+                    className={`font-black text-sm sm:text-base flex items-center gap-2 ${
+                      studyMethod === 'rapid'
+                        ? 'text-indigo-600 dark:text-indigo-300'
+                        : 'text-slate-800 dark:text-slate-200'
+                    }`}
+                  >
                     <Zap className="w-4 h-4 text-amber-500" /> Cày Phản Xạ Trắc Nghiệm
                   </span>
-                  <span className={`text-[11px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap ${
-                    studyMethod === 'rapid'
-                      ? 'bg-amber-500 text-white shadow-sm'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
-                  }`}>
+                  <span
+                    className={`text-[11px] font-bold px-2 py-0.5 rounded-md whitespace-nowrap ${
+                      studyMethod === 'rapid'
+                        ? 'bg-amber-500 text-white shadow-sm'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                    }`}
+                  >
                     Tốc độ 0.4s
                   </span>
                 </div>
@@ -554,52 +654,202 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             </div>
           </div>
 
-          {/* Batch Size Selector */}
+          {/* Upgraded Batch Size Selector (With Full Deck & Remaining Unmastered Options!) */}
           <div>
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center justify-between flex-wrap gap-2">
               <span className="flex items-center gap-2">
-                <Layers className="w-4 h-4 text-indigo-500" /> Chọn số lượng câu muốn cày đợt này
+                <Layers className="w-4 h-4 text-indigo-500" /> 2. Chọn số lượng câu muốn cày đợt này
               </span>
-              <span className="text-indigo-500 font-bold font-mono text-sm">
-                {Math.min(batchSize, availableCount)} / {availableCount} câu khả dụng
+              <span className="text-indigo-500 font-bold font-mono text-xs sm:text-sm">
+                Đợt này: {effectiveTargetCount} / {availableCount} câu
+                {unmasteredCount > 0 && unmasteredCount < availableCount
+                  ? ` (Còn ${unmasteredCount} câu chưa thuộc)`
+                  : ''}
               </span>
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-              {[10, 15, 25, 50].map((num) => {
-                const disabled = num > availableCount && availableCount >= 10;
-                const isSelected = batchSize === num;
+
+            <div
+              className={`grid grid-cols-2 ${
+                hasPartialRemaining ? 'sm:grid-cols-5' : 'sm:grid-cols-4'
+              } gap-3`}
+            >
+              {presetNumbers.map((num) => {
+                const isSelected = batchMode === 'preset' && batchSize === num;
                 return (
                   <button
                     key={num}
                     type="button"
-                    disabled={disabled}
-                    onClick={() => setBatchSize(num)}
-                    className={`p-4 rounded-2xl border-2 font-bold transition-all text-center cursor-pointer ${
+                    onClick={() => {
+                      setBatchMode('preset');
+                      setBatchSize(num);
+                    }}
+                    className={`p-3.5 sm:p-4 rounded-2xl border-2 font-bold transition-all text-center cursor-pointer ${
                       isSelected
                         ? 'bg-indigo-500/15 dark:bg-indigo-950/50 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.2)] scale-[1.02]'
-                        : disabled
-                        ? 'opacity-30 border-slate-200 dark:border-slate-800 text-slate-400 cursor-not-allowed bg-slate-50 dark:bg-slate-900/30'
                         : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-[#131D31]'
                     }`}
                   >
-                    <span className={`text-2xl sm:text-3xl font-black block ${
-                      isSelected ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-900 dark:text-white'
-                    }`}>{num}</span>
-                    <span className={`text-xs font-semibold mt-1 block whitespace-nowrap ${
-                      isSelected ? 'text-indigo-600 dark:text-indigo-300 font-bold' : 'text-slate-500 dark:text-slate-400'
-                    }`}>
-                      {num === 10 ? 'Cực nhanh (5p)' : num === 15 ? 'Chuẩn đợt học' : num === 25 ? 'Chuyên sâu' : 'Cày marathon'}
+                    <span
+                      className={`text-2xl sm:text-3xl font-black block ${
+                        isSelected
+                          ? 'text-indigo-600 dark:text-indigo-400'
+                          : 'text-slate-900 dark:text-white'
+                      }`}
+                    >
+                      {num}
+                    </span>
+                    <span
+                      className={`text-xs font-semibold mt-1 block whitespace-nowrap ${
+                        isSelected
+                          ? 'text-indigo-600 dark:text-indigo-300 font-bold'
+                          : 'text-slate-500 dark:text-slate-400'
+                      }`}
+                    >
+                      {num === 10 ? 'Cực nhanh (5p)' : num === 20 ? 'Chuẩn đợt học' : 'Chuyên sâu'}
                     </span>
                   </button>
                 );
               })}
+
+              {/* Dynamic "Remaining Unmastered" Button (Prevents orphan questions!) */}
+              {hasPartialRemaining && (
+                <button
+                  type="button"
+                  onClick={() => setBatchMode('remaining')}
+                  className={`p-3.5 sm:p-4 rounded-2xl border-2 font-bold transition-all text-center cursor-pointer relative overflow-hidden ${
+                    batchMode === 'remaining'
+                      ? 'bg-emerald-500/15 dark:bg-emerald-950/50 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.25)] scale-[1.02]'
+                      : 'bg-emerald-500/5 dark:bg-emerald-950/20 border-emerald-500/40 text-slate-700 dark:text-slate-200 hover:border-emerald-500'
+                  }`}
+                >
+                  <span
+                    className={`text-2xl sm:text-3xl font-black block ${
+                      batchMode === 'remaining'
+                        ? 'text-emerald-600 dark:text-emerald-400'
+                        : 'text-emerald-600 dark:text-emerald-400'
+                    }`}
+                  >
+                    Còn {unmasteredCount}
+                  </span>
+                  <span className="text-xs font-bold mt-1 block whitespace-nowrap text-emerald-600 dark:text-emerald-300">
+                    ⚡ Quét nốt câu lẻ
+                  </span>
+                </button>
+              )}
+
+              {/* Always-available "Full Deck / Tất cả" Button */}
+              <button
+                type="button"
+                onClick={() => setBatchMode('all')}
+                className={`p-3.5 sm:p-4 rounded-2xl border-2 font-bold transition-all text-center cursor-pointer ${
+                  batchMode === 'all'
+                    ? 'bg-indigo-500/15 dark:bg-indigo-950/50 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.25)] scale-[1.02]'
+                    : 'bg-white/60 dark:bg-[#0F172A]/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-indigo-400 hover:bg-slate-50 dark:hover:bg-[#131D31]'
+                }`}
+              >
+                <span
+                  className={`text-2xl sm:text-3xl font-black block ${
+                    batchMode === 'all'
+                      ? 'text-indigo-600 dark:text-indigo-400'
+                      : 'text-slate-900 dark:text-white'
+                  }`}
+                >
+                  Tất cả ({availableCount})
+                </span>
+                <span
+                  className={`text-xs font-semibold mt-1 block whitespace-nowrap ${
+                    batchMode === 'all'
+                      ? 'text-indigo-600 dark:text-indigo-300 font-bold'
+                      : 'text-slate-500 dark:text-slate-400'
+                  }`}
+                >
+                  🔥 Làm hết cả đề
+                </span>
+              </button>
+            </div>
+          </div>
+
+          {/* Smart Queue Order & Anti-Rote Option Shuffle */}
+          <div>
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+              <Target className="w-4 h-4 text-emerald-500" /> 3. Chế độ bốc câu & Chống học vẹt vị trí
+            </label>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <button
+                type="button"
+                onClick={() => setSelectionMode('smart')}
+                className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
+                  selectionMode === 'smart'
+                    ? 'bg-indigo-500/10 border-indigo-500 text-slate-900 dark:text-white shadow-sm'
+                    : 'bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 text-slate-500'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-black flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-indigo-500" /> Ưu tiên Chưa thuộc
+                  </span>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-400">
+                    Mặc định
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Tự lấy các câu chưa học & hay sai theo thứ tự, không lặp lại câu đã thuộc ở đợt trước.
+                </p>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setSelectionMode('sequential')}
+                className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
+                  selectionMode === 'sequential'
+                    ? 'bg-indigo-500/10 border-indigo-500 text-slate-900 dark:text-white shadow-sm'
+                    : 'bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 text-slate-500'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-black flex items-center gap-1.5">
+                    <ListOrdered className="w-3.5 h-3.5 text-emerald-500" /> Tuần tự (Câu 1 &rarr; {availableCount})
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Đi lần lượt từ Câu 1 đến hết theo đúng thứ tự trong đề gốc.
+                </p>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShuffleChoices((v) => !v)}
+                className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
+                  shuffleChoices
+                    ? 'bg-amber-500/10 border-amber-500 text-slate-900 dark:text-white shadow-sm'
+                    : 'bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 text-slate-500'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-black flex items-center gap-1.5">
+                    <Shuffle className="w-3.5 h-3.5 text-amber-500" /> Đảo vị trí đáp án A–D
+                  </span>
+                  <span
+                    className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                      shuffleChoices
+                        ? 'bg-amber-500 text-white'
+                        : 'bg-slate-200 dark:bg-slate-800 text-slate-400'
+                    }`}
+                  >
+                    {shuffleChoices ? 'ĐANG BẬT' : 'TẮT'}
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Trộn ngẫu nhiên thứ tự 4 lựa chọn A/B/C/D để chống học vẹt vị trí đáp án.
+                </p>
+              </button>
             </div>
           </div>
 
           {/* Mastery Threshold Selector */}
           <div>
             <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-              <Flame className="w-4 h-4 text-amber-500" /> Tiêu chuẩn tốt nghiệp mỗi câu
+              <Flame className="w-4 h-4 text-amber-500" /> 4. Tiêu chuẩn tốt nghiệp mỗi câu
             </label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
@@ -612,16 +862,24 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 }`}
               >
                 <div className="flex items-start sm:items-center justify-between gap-2 mb-1.5">
-                  <span className={`font-black text-sm sm:text-base ${
-                    streakTarget === 2 ? 'text-indigo-600 dark:text-indigo-300' : 'text-slate-800 dark:text-slate-200'
-                  }`}>
-                    {studyMethod === 'flashcard' ? 'Chuẩn ghi nhớ sâu (Khuyên dùng)' : 'Chuẩn ghi nhớ sắt đá (Khuyên dùng)'}
+                  <span
+                    className={`font-black text-sm sm:text-base ${
+                      streakTarget === 2
+                        ? 'text-indigo-600 dark:text-indigo-300'
+                        : 'text-slate-800 dark:text-slate-200'
+                    }`}
+                  >
+                    {studyMethod === 'flashcard'
+                      ? 'Chuẩn ghi nhớ sâu (Khuyên dùng)'
+                      : 'Chuẩn ghi nhớ sắt đá (Khuyên dùng)'}
                   </span>
-                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
-                    streakTarget === 2
-                      ? 'bg-indigo-500 text-white shadow-sm'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
-                  }`}>
+                  <span
+                    className={`text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
+                      streakTarget === 2
+                        ? 'bg-indigo-500 text-white shadow-sm'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                    }`}
+                  >
                     2 chu kỳ
                   </span>
                 </div>
@@ -642,16 +900,22 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 }`}
               >
                 <div className="flex items-start sm:items-center justify-between gap-2 mb-1.5">
-                  <span className={`font-black text-sm sm:text-base ${
-                    streakTarget === 1 ? 'text-indigo-600 dark:text-indigo-300' : 'text-slate-800 dark:text-slate-200'
-                  }`}>
+                  <span
+                    className={`font-black text-sm sm:text-base ${
+                      streakTarget === 1
+                        ? 'text-indigo-600 dark:text-indigo-300'
+                        : 'text-slate-800 dark:text-slate-200'
+                    }`}
+                  >
                     Speed Run (Lướt nhanh)
                   </span>
-                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
-                    streakTarget === 1
-                      ? 'bg-indigo-500 text-white shadow-sm'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
-                  }`}>
+                  <span
+                    className={`text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
+                      streakTarget === 1
+                        ? 'bg-indigo-500 text-white shadow-sm'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                    }`}
+                  >
                     1 chu kỳ
                   </span>
                 </div>
@@ -676,19 +940,27 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             <button
               type="button"
               onClick={handleStartSession}
-              className="w-full sm:flex-1 py-4 px-6 sm:px-8 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black flex items-center justify-center gap-2.5 shadow-glow text-sm sm:text-base transition-all active:scale-95 touch-manipulation select-none"
+              className="w-full sm:flex-1 py-4 px-6 sm:px-8 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black flex items-center justify-center gap-2.5 shadow-glow text-sm sm:text-base transition-all active:scale-95 touch-manipulation select-none cursor-pointer"
             >
               {studyMethod === 'flashcard' ? (
                 <>
                   <BookOpen className="w-5 h-5" />
-                  <span className="sm:hidden">BẮT ĐẦU HỌC THẺ 3D</span>
-                  <span className="hidden sm:inline">BẮT ĐẦU HỌC THẺ LẬT 3D [Enter]</span>
+                  <span className="sm:hidden">
+                    HỌC THẺ 3D ({effectiveTargetCount} CÂU)
+                  </span>
+                  <span className="hidden sm:inline">
+                    BẮT ĐẦU HỌC THẺ LẬT 3D ({effectiveTargetCount} CÂU) [Enter]
+                  </span>
                 </>
               ) : (
                 <>
                   <Zap className="w-5 h-5 fill-current" />
-                  <span className="sm:hidden">BẮT ĐẦU CÀY PHẢN XẠ</span>
-                  <span className="hidden sm:inline">BẮT ĐẦU CÀY PHẢN XẠ [Enter]</span>
+                  <span className="sm:hidden">
+                    CÀY PHẢN XẠ ({effectiveTargetCount} CÂU)
+                  </span>
+                  <span className="hidden sm:inline">
+                    BẮT ĐẦU CÀY PHẢN XẠ ({effectiveTargetCount} CÂU) [Enter]
+                  </span>
                 </>
               )}
             </button>
@@ -711,6 +983,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     const elapsedSeconds = Math.round((Date.now() - startTime) / 1000);
     const avgSecsPerQ = totalAttempts > 0 ? (elapsedSeconds / totalAttempts).toFixed(1) : '1.5';
     const accuracy = totalAttempts > 0 ? Math.round((correctAttempts / totalAttempts) * 100) : 100;
+    const nextBatchCount =
+      batchMode === 'all' || batchMode === 'remaining'
+        ? unmasteredCount
+        : Math.min(batchSize, unmasteredCount);
 
     return (
       <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-8 px-4 sm:px-8 animate-fade-in space-y-6">
@@ -719,18 +995,22 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             <Trophy className="w-8 h-8 animate-bounce" />
           </div>
           <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2">
-            ĐÃ THUỘC LẦU LẦU 100%!
+            {unmasteredCount === 0
+              ? 'ĐÃ PHÁ ĐẢO TRỌN VẸN 100% CẢ ĐỀ!'
+              : `ĐÃ THUỘC LẦU ĐỢT NÀY (${totalInitialCount} CÂU)!`}
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-sm max-w-lg mx-auto">
-            Toàn bộ {totalInitialCount} câu hỏi đã được in sâu vào phản xạ cơ bắp. Bạn sẵn sàng xử đẹp bất kỳ bài kiểm tra nào!
+            {unmasteredCount === 0
+              ? `Tuyệt đỉnh! Bạn đã thuộc sạch sẽ ${availableCount}/${availableCount} câu của bộ đề này mà không sót bất kỳ câu lẻ nào.`
+              : `Bạn đã thuộc tổng cộng ${masteredCount}/${availableCount} câu trong bộ đề. Còn ${unmasteredCount} câu chưa thuộc đang chờ bạn quét sạch!`}
           </p>
 
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6 max-w-2xl mx-auto">
             <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
-              <p className="text-[10px] font-bold text-slate-400 uppercase">Đã thành thạo</p>
+              <p className="text-[10px] font-bold text-slate-400 uppercase">Tiến độ cả đề</p>
               <p className="text-2xl font-black text-emerald-500 mt-0.5">
-                {totalInitialCount} câu
+                {masteredCount}/{availableCount}
               </p>
             </div>
             <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
@@ -782,18 +1062,35 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
           {/* Actions */}
           <div className="flex flex-col sm:flex-row items-center gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+            {unmasteredCount > 0 && (
+              <button
+                type="button"
+                onClick={() => startSessionWithConfig(nextBatchCount, true)}
+                className="w-full sm:flex-1 py-4 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black transition-all shadow-glow-success text-sm flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <Zap className="w-4 h-4 fill-white" />
+                <span>
+                  Học tiếp {nextBatchCount} câu chưa thuộc còn lại (Còn {unmasteredCount} câu) [Enter]
+                </span>
+              </button>
+            )}
+
             <button
+              type="button"
               onClick={() => {
+                refreshProgress();
                 setIsConfiguring(true);
                 soundFx.playClick();
               }}
-              className="w-full sm:flex-1 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all shadow-glow text-sm flex items-center justify-center gap-2"
+              className="w-full sm:w-auto py-3.5 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all shadow-glow text-sm flex items-center justify-center gap-2 cursor-pointer"
             >
-              <RotateCcw className="w-4 h-4" /> Cày tiếp đợt khác
+              <RotateCcw className="w-4 h-4" /> Tuỳ chỉnh đợt mới
             </button>
+
             <button
+              type="button"
               onClick={onExit}
-              className="w-full sm:w-auto py-3.5 px-6 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-sm"
+              className="w-full sm:w-auto py-3.5 px-6 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-sm cursor-pointer"
             >
               Về Trang chủ
             </button>
@@ -851,7 +1148,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Global Session Combo Streak */}
           {sessionCombo > 0 && (
             <div
               className="px-2.5 py-1 rounded-full text-xs font-black flex items-center gap-1 bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 animate-fade-in"
@@ -862,7 +1158,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             </div>
           )}
 
-          {/* Current card mastery progress dots */}
           <div
             className={`px-3 py-1 rounded-full text-xs font-black flex items-center gap-1.5 border transition-colors ${
               currentItem.correctStreak >= streakTarget
@@ -948,11 +1243,18 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               : 'border-slate-200 dark:border-slate-800'
           }`}
         >
-          {/* Topic Tag */}
+          {/* Topic & Original Question Number Tag */}
           <div className="flex items-center justify-between mb-4">
-            <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60">
-              {currentQ.topic || currentQ.subject || 'Câu hỏi'}
-            </span>
+            <div className="flex items-center gap-2">
+              {currentQ.originalNumber && (
+                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                  Câu #{currentQ.originalNumber}
+                </span>
+              )}
+              <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60">
+                {currentQ.topic || currentQ.subject || 'Câu hỏi'}
+              </span>
+            </div>
 
             {currentItem.mistakes > 0 && (
               <span className="text-[10px] font-bold text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20">
@@ -961,7 +1263,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             )}
           </div>
 
-          {/* Question Content (With Syntax Highlighting for C code) */}
+          {/* Question Content */}
           <div className="mb-6">
             <CodeQuestionRenderer
               content={currentQ.sentence}
@@ -969,7 +1271,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             />
           </div>
 
-          {/* 4 Options Grid */}
+          {/* Options Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
             {currentQ.options &&
               currentQ.options.map((opt, idx) => {
@@ -987,7 +1289,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                     optionStyle =
                       'bg-rose-500 text-white border-rose-500 shadow-glow line-through opacity-90';
                   } else if (isTrueAnswer) {
-                    // VISUAL ANCHOR: The true answer GLOWS GREEN boldly!
                     optionStyle =
                       'bg-emerald-500/20 text-emerald-400 border-2 border-emerald-500 shadow-glow-success font-black ring-2 ring-emerald-500/40 animate-pop-correct';
                   } else {
@@ -1020,7 +1321,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                       {opt}
                     </span>
 
-                    {/* Feedback Badge */}
                     {feedbackState === 'correct' && isSelected && (
                       <Check className="w-5 h-5 text-white shrink-0 mt-0.5" />
                     )}

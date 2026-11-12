@@ -1,9 +1,10 @@
-import { Word, ExamQuestion, DrillQuestion } from './types';
-import { WordSchema } from './schema';
-import { getQuestionKey } from './utils';
+import { Word, WordProgress } from './types';
+import { getQuestionKey, cleanOptionText } from './utils';
+import { StorageEngine } from './storage';
 
 export interface StandardQuestion {
   id: string;
+  originalNumber?: number;
   sentence: string;
   correctWord: string;
   options: string[];
@@ -13,37 +14,120 @@ export interface StandardQuestion {
   topic?: string;
 }
 
+export type QuestionSelectionMode = 'smart' | 'sequential' | 'random';
+
+export interface BuildQuestionsOptions {
+  mode?: QuestionSelectionMode;
+  progressMap?: Record<string, WordProgress>;
+  onlyUnmastered?: boolean;
+  shuffleChoices?: boolean;
+}
+
+function shuffleArray<T>(arr: T[]): T[] {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 /**
  * Standardized question builder for all quiz & study modes.
- * Eliminates duplicate generator logic and cleans out all legacy fallback artifacts.
+ * Supports Smart SRS Queue (prioritizing unseen & mistake items without random duplication),
+ * Sequential deck order (Q1 -> QN), or Random shuffle.
  */
 export function buildStandardQuestions(
   rawWords: Word[],
-  limit: number = 25
+  limit: number = 25,
+  buildOpts?: BuildQuestionsOptions
 ): StandardQuestion[] {
   if (!rawWords || rawWords.length === 0) return [];
 
-  // Filter valid items using schema
-  const validWords = rawWords.filter((w) => {
-    return Boolean((w.question && w.options?.length) || w.word);
-  });
+  const mode: QuestionSelectionMode = buildOpts?.mode || 'random';
+  const progressMap = buildOpts?.progressMap || StorageEngine.getWordProgress();
+  const onlyUnmastered = Boolean(buildOpts?.onlyUnmastered);
+  const shuffleChoices = Boolean(buildOpts?.shuffleChoices);
 
-  const pool = [...validWords].sort(() => 0.5 - Math.random());
-  const count = Math.min(pool.length, limit);
+  // Attach original 1-based deck number before filtering/sorting
+  const indexedWords = rawWords
+    .map((w, idx) => ({ word: w, originalNumber: idx + 1 }))
+    .filter(({ word }) => Boolean((word.question && word.options?.length) || word.word));
+
+  let candidatePool = indexedWords;
+
+  if (onlyUnmastered) {
+    const unmastered = indexedWords.filter(({ word }) => {
+      const p = StorageEngine.getItemProgress(word, progressMap);
+      return p?.status !== 'mastered';
+    });
+    if (unmastered.length > 0) {
+      candidatePool = unmastered;
+    }
+  }
+
+  let orderedPool = [...candidatePool];
+
+  if (mode === 'sequential') {
+    // Keep exact original order (Câu 1 -> Câu N)
+    orderedPool.sort((a, b) => a.originalNumber - b.originalNumber);
+  } else if (mode === 'smart') {
+    // Tiered priority:
+    // Tier 0: Active mistakes / wrongStreak > 0 (not mastered)
+    // Tier 1: Unseen questions (seenCount === 0) in sequential order so batches never skip or repeat
+    // Tier 2: In-progress learning questions (status !== 'mastered')
+    // Tier 3: Already mastered questions (sorted by oldest lastSeen first)
+    const getTier = (w: Word): number => {
+      const p = StorageEngine.getItemProgress(w, progressMap);
+      if (!p || p.seenCount === 0) return 1;
+      if (p.status !== 'mastered' && ((p.wrongStreak || 0) > 0 || (p.mistakesCount || 0) > 0)) {
+        return 0;
+      }
+      if (p.status !== 'mastered') return 2;
+      return 3;
+    };
+
+    orderedPool.sort((a, b) => {
+      const tierA = getTier(a.word);
+      const tierB = getTier(b.word);
+      if (tierA !== tierB) return tierA - tierB;
+
+      if (tierA === 3) {
+        const pA = StorageEngine.getItemProgress(a.word, progressMap);
+        const pB = StorageEngine.getItemProgress(b.word, progressMap);
+        return (pA?.lastSeen || 0) - (pB?.lastSeen || 0);
+      }
+      return a.originalNumber - b.originalNumber;
+    });
+  } else {
+    // 'random' mode
+    orderedPool = shuffleArray(orderedPool);
+  }
+
+  const effectiveLimit = limit <= 0 ? orderedPool.length : Math.min(orderedPool.length, limit);
   const list: StandardQuestion[] = [];
 
-  for (let i = 0; i < count; i++) {
-    const target = pool[i];
+  for (let i = 0; i < effectiveLimit; i++) {
+    const { word: target, originalNumber } = orderedPool[i];
 
-    // Case 1: Standard Multiple Choice Question (CSI106, SSA101, PRF192)
+    // Case 1: Standard Multiple Choice Question (CSI106, CEA201, SSA101, PRF192)
     if (target.question && target.options && target.options.length > 0) {
+      const rawOptions = target.options;
+      const rawCorrect = target.correctWord || rawOptions[0];
+
+      const finalOptions = shuffleChoices
+        ? shuffleArray(rawOptions).map((opt) => cleanOptionText(opt))
+        : rawOptions;
+      const finalCorrect = shuffleChoices ? cleanOptionText(rawCorrect) : rawCorrect;
+
       list.push({
         id: String(target.id || getQuestionKey(target)),
+        originalNumber,
         sentence: target.question,
-        correctWord: target.correctWord || target.options[0],
-        options: target.options,
-        explanation: target.explanation || `Đáp án đúng: ${target.answer || target.options[0]}`,
-        answerKey: target.answer,
+        correctWord: finalCorrect,
+        options: finalOptions,
+        explanation: target.explanation || `Đáp án đúng: ${target.answer || rawOptions[0]}`,
+        answerKey: shuffleChoices ? undefined : target.answer,
         subject: target.subject,
         topic: target.topic,
       });
@@ -54,16 +138,17 @@ export function buildStandardQuestions(
         target.advanced_example ||
         `Khái niệm hoặc thuật ngữ nào sau đây tương ứng với: "${target.vi || target.word}"?`;
 
-      const otherWords = validWords
-        .filter((w) => w.word && w.word.toLowerCase() !== target.word.toLowerCase())
-        .map((w) => w.word)
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 3);
+      const otherWords = shuffleArray(
+        indexedWords
+          .filter((item) => item.word.word && item.word.word.toLowerCase() !== target.word.toLowerCase())
+          .map((item) => item.word.word)
+      ).slice(0, 3);
 
-      const options = [target.word, ...otherWords].sort(() => 0.5 - Math.random());
+      const options = shuffleArray([target.word, ...otherWords]);
 
       list.push({
         id: String(target.id || getQuestionKey(target)),
+        originalNumber,
         sentence: sentence.includes(target.word)
           ? sentence.replace(new RegExp(`\\b${target.word}\\w*`, 'gi'), '________')
           : sentence,
