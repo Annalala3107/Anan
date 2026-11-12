@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Flame, Sparkles, Volume2, VolumeX, Moon, Sun, BookOpen, Layers, Focus, AlertTriangle, Smartphone } from 'lucide-react';
+import { Flame, Sparkles, Volume2, VolumeX, Moon, Sun, Layers, AlertTriangle, Smartphone } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
 import { getQuizDisplayName } from '@/lib/defaultBanks';
@@ -17,8 +17,6 @@ export default function Header() {
     toggleSound,
     selectedQuizPath,
     activeCustomQuiz,
-    zenMode,
-    toggleZenMode,
     isExamActive,
     setIsExamActive,
   } = useQuizStore();
@@ -76,11 +74,6 @@ export default function Header() {
   };
 
   const quizInfo = getQuizDisplayName(selectedQuizPath, activeCustomQuiz);
-
-  // In active study session with Zen Focus Mode enabled, completely hide the global header for zero distraction
-  if (pathname?.startsWith('/session') && zenMode) {
-    return null;
-  }
 
   return (
     <>
@@ -172,27 +165,6 @@ export default function Header() {
             <span className="hidden sm:inline">Đồng bộ ĐT</span>
           </button>
 
-          {/* Zen Focus Quick Toggle (Especially useful when on /session) */}
-          <button
-            onClick={() => toggleZenMode()}
-            title={
-              zenMode
-                ? 'Thoát Chế độ Tập Trung Tuyệt Đối (Phím Z)'
-                : 'Bật Chế độ Tập Trung Tuyệt Đối (Phím Z)'
-            }
-            className={`p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl transition-[transform,background-color,border-color] duration-150 flex items-center gap-1.5 text-xs font-bold border active:scale-95 touch-manipulation ${
-              zenMode
-                ? 'bg-indigo-600 text-white border-indigo-500 shadow-glow'
-                : 'bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-indigo-400'
-            }`}
-          >
-            <Focus className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">{zenMode ? 'Zen: Bật' : 'Zen Focus'}</span>
-            <kbd className="hidden lg:inline text-[10px] px-1 py-0.2 rounded bg-black/20 font-mono opacity-80">
-              Z
-            </kbd>
-          </button>
-
           {/* Streak Counter */}
           <div
             title="Chuỗi ngày học liên tục"
@@ -208,7 +180,7 @@ export default function Header() {
           {/* Sound Toggle */}
           <button
             onClick={toggleSound}
-            title={soundEnabled ? 'Tắt âm thanh phát âm' : 'Bật âm thanh phát âm'}
+            title={soundEnabled ? 'Tắt âm thanh hiệu ứng' : 'Bật âm thanh hiệu ứng'}
             className="p-1.5 sm:p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 touch-manipulation"
           >
             {soundEnabled ? (

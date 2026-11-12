@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { Word, CustomQuiz } from './types';
 import { StorageEngine } from './storage';
-import { soundFx, AmbientSoundType } from './sound';
 import { QuizDatasetSchema } from './schema';
 
 interface QuizStoreState {
@@ -11,11 +10,6 @@ interface QuizStoreState {
   isLoadingWords: boolean;
   soundEnabled: boolean;
   theme: 'dark' | 'light';
-
-  // Zen Focus Mode state
-  zenMode: boolean;
-  ambientFocusSound: boolean;
-  ambientSoundType: AmbientSoundType;
 
   // Active Exam Guard state
   isExamActive: boolean;
@@ -27,10 +21,6 @@ interface QuizStoreState {
   loadQuizWords: (pathOrQuiz?: string | CustomQuiz) => Promise<Word[]>;
   toggleSound: () => void;
   setTheme: (theme: 'dark' | 'light') => void;
-
-  toggleZenMode: (val?: boolean) => void;
-  toggleAmbientFocus: () => void;
-  setAmbientSoundType: (type: AmbientSoundType) => void;
 }
 
 export const useQuizStore = create<QuizStoreState>((set, get) => ({
@@ -41,9 +31,6 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
   soundEnabled: true,
   theme: 'dark',
 
-  zenMode: false,
-  ambientFocusSound: false,
-  ambientSoundType: 'alpha_drone',
   isExamActive: false,
   setIsExamActive: (isExamActive: boolean) => set({ isExamActive }),
 
@@ -94,32 +81,4 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
 
   toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
   setTheme: (theme) => set({ theme }),
-
-  toggleZenMode: (val?: boolean) => {
-    const next = typeof val === 'boolean' ? val : !get().zenMode;
-    if (next) {
-      soundFx.playZenChime();
-    } else {
-      soundFx.stopAmbientSound();
-      set({ ambientFocusSound: false });
-    }
-    set({ zenMode: next });
-  },
-
-  toggleAmbientFocus: () => {
-    const next = !get().ambientFocusSound;
-    if (next) {
-      soundFx.startAmbientSound(get().ambientSoundType);
-    } else {
-      soundFx.stopAmbientSound();
-    }
-    set({ ambientFocusSound: next });
-  },
-
-  setAmbientSoundType: (type) => {
-    set({ ambientSoundType: type });
-    if (get().ambientFocusSound) {
-      soundFx.startAmbientSound(type);
-    }
-  },
 }));

@@ -1,19 +1,13 @@
 /**
  * Web Audio API Sound Engine
- * Synthesizes high-fidelity, zero-latency educational audio feedback & ambient focus sounds
+ * Synthesizes high-fidelity, zero-latency educational audio feedback
  * without downloading external MP3/WAV files.
  */
 
 import { useQuizStore } from './quizStore';
 
-export type AmbientSoundType = 'alpha_drone' | 'pink_noise';
-
 class SoundEngine {
   private ctx: AudioContext | null = null;
-  private ambientGain: GainNode | null = null;
-  private ambientSource: AudioNode | null = null;
-  private ambientType: AmbientSoundType = 'alpha_drone';
-  private isAmbientPlaying: boolean = false;
 
   private getContext(): AudioContext | null {
     if (typeof window === 'undefined') return null;
@@ -158,144 +152,10 @@ class SoundEngine {
   }
 
   /**
-   * Soothing Tibetan singing bowl / meditation chime when toggling Zen mode
+   * Soft chime when starting an exam or syncing
    */
   public playZenChime() {
-    if (!this.isEnabled()) return;
-    const ctx = this.getContext();
-    if (!ctx) return;
-
-    const now = ctx.currentTime;
-    const freqs = [432, 864, 1296];
-    const gains = [0.08, 0.03, 0.01];
-
-    freqs.forEach((freq, i) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, now);
-
-      gain.gain.setValueAtTime(0.001, now);
-      gain.gain.exponentialRampToValueAtTime(gains[i], now + 0.04);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start(now);
-      osc.stop(now + 1.9);
-    });
-  }
-
-  // ---- ZEN AMBIENT FOCUS AUDIO GENERATOR (PURE WEB AUDIO API) ----
-
-  public toggleAmbientSound(type: AmbientSoundType = 'alpha_drone'): boolean {
-    if (this.isAmbientPlaying) {
-      this.stopAmbientSound();
-      return false;
-    } else {
-      this.startAmbientSound(type);
-      return true;
-    }
-  }
-
-  public startAmbientSound(type: AmbientSoundType = 'alpha_drone') {
-    if (typeof window === 'undefined') return;
-    const ctx = this.getContext();
-    if (!ctx) return;
-
-    this.stopAmbientSound();
-    this.ambientType = type;
-
-    const masterGain = ctx.createGain();
-    masterGain.gain.setValueAtTime(0.001, ctx.currentTime);
-    masterGain.gain.exponentialRampToValueAtTime(0.035, ctx.currentTime + 1.5); // Soft fade-in
-    masterGain.connect(ctx.destination);
-    this.ambientGain = masterGain;
-
-    if (type === 'alpha_drone') {
-      // Warm, binaural calming drone (432Hz harmonic base + 10Hz alpha wave difference)
-      const osc1 = ctx.createOscillator();
-      const osc2 = ctx.createOscillator();
-      const filter = ctx.createBiquadFilter();
-
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(320, ctx.currentTime);
-
-      osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(216, ctx.currentTime); // Fundamental A3
-
-      osc2.type = 'sine';
-      osc2.frequency.setValueAtTime(226, ctx.currentTime); // 10Hz Alpha beat
-
-      osc1.connect(filter);
-      osc2.connect(filter);
-      filter.connect(masterGain);
-
-      osc1.start();
-      osc2.start();
-
-      this.ambientSource = filter;
-    } else {
-      // Pink Noise generator (soft rainfall / white-pink noise)
-      const bufferSize = ctx.sampleRate * 3;
-      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-      let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
-
-      for (let i = 0; i < bufferSize; i++) {
-        const white = Math.random() * 2 - 1;
-        b0 = 0.99886 * b0 + white * 0.0555179;
-        b1 = 0.99332 * b1 + white * 0.0750759;
-        b2 = 0.96900 * b2 + white * 0.1538520;
-        b3 = 0.86650 * b3 + white * 0.3104856;
-        b4 = 0.55000 * b4 + white * 0.5329522;
-        b5 = -0.7616 * b5 - white * 0.0168980;
-        data[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.06;
-        b6 = white * 0.115926;
-      }
-
-      const noiseSource = ctx.createBufferSource();
-      noiseSource.buffer = buffer;
-      noiseSource.loop = true;
-
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(500, ctx.currentTime);
-
-      noiseSource.connect(filter);
-      filter.connect(masterGain);
-
-      noiseSource.start();
-      this.ambientSource = noiseSource;
-    }
-
-    this.isAmbientPlaying = true;
-  }
-
-  public stopAmbientSound() {
-    if (!this.isAmbientPlaying || !this.ctx) return;
-    try {
-      if (this.ambientGain) {
-        this.ambientGain.gain.setValueAtTime(this.ambientGain.gain.value, this.ctx.currentTime);
-        this.ambientGain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.4);
-      }
-      setTimeout(() => {
-        if (this.ambientSource && 'stop' in this.ambientSource) {
-          (this.ambientSource as AudioScheduledSourceNode).stop();
-        }
-        this.ambientSource = null;
-        this.ambientGain = null;
-      }, 450);
-    } catch {
-      // Ignore cleanup error
-    }
-    this.isAmbientPlaying = false;
-  }
-
-  public isAmbientActive(): boolean {
-    return this.isAmbientPlaying;
+    this.playClick();
   }
 }
 

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import {
   Brain,
   Dumbbell,
@@ -16,24 +15,17 @@ import {
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
 import { getQuizDisplayName } from '@/lib/defaultBanks';
-import { Word, WordProgress } from '@/lib/types';
-import WordModal from '@/components/WordModal';
+import { WordProgress } from '@/lib/types';
 import QrSyncModal from '@/components/QrSyncModal';
 
 export default function Home() {
-  const router = useRouter();
   const { words, loadQuizWords, selectedQuizPath, activeCustomQuiz } = useQuizStore();
   const [progressMap, setProgressMap] = useState<Record<string, WordProgress>>({});
-  const [streak, setStreak] = useState(1);
-  const [dailyStats, setDailyStats] = useState<any>(null);
-  const [selectedWord, setSelectedWord] = useState<Word | null>(null);
   const [showQrSync, setShowQrSync] = useState(false);
 
   useEffect(() => {
     loadQuizWords();
     setProgressMap(StorageEngine.getWordProgress());
-    setStreak(StorageEngine.getStreak());
-    setDailyStats(StorageEngine.getDailyStats());
   }, []);
 
   const totalWords = words.length || 1;
@@ -299,52 +291,6 @@ export default function Home() {
           <p className="text-[11px] text-slate-400 mt-1">Trong bộ đề hiện tại</p>
         </div>
       </div>
-
-      {/* Quick Question Preview Spotlight */}
-      <div className="p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-              Xem Nhanh Các Câu Hỏi Trong Bộ Đề
-            </h3>
-            <p className="text-xs text-slate-500">
-              Nhấp vào câu hỏi bất kỳ để xem các phương án, đáp án đúng và giải thích chi tiết.
-            </p>
-          </div>
-          <Link
-            href="/library"
-            className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
-          >
-            Mở ngân hàng câu hỏi <ChevronRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-3.5">
-          {words.slice(0, 12).map((w, idx) => (
-            <div
-              key={idx}
-              onClick={() => setSelectedWord(w)}
-              className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 hover:border-indigo-500 cursor-pointer content-auto-card gpu-card active:scale-[0.98] touch-manipulation select-none flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-2 inline-block">
-                  {w.topic || 'Câu hỏi ' + (idx + 1)}
-                </span>
-                <p className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white line-clamp-2 mb-2">
-                  {w.question || w.word}
-                </p>
-              </div>
-              <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800/80">
-                <span>Đáp án: <strong className="text-emerald-500">{w.answer || w.correctWord || ''}</strong></span>
-                <span className="text-indigo-500 font-semibold hover:underline">Chi tiết &rarr;</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Word / Question Detail Modal */}
-      <WordModal word={selectedWord} onClose={() => setSelectedWord(null)} />
 
       {/* QR Sync Device Transfer Modal */}
       <QrSyncModal isOpen={showQrSync} onClose={() => setShowQrSync(false)} />
