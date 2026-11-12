@@ -11,7 +11,7 @@
     ],
     "answer": "C",
     "correctWord": "C. F = A’B’D + AC’D’ + ABD",
-    "explanation": "Đáp án đúng: C (C. F = A’B’D + AC’D’ + ABD)",
+    "explanation": "Đáp án đúng: C (C. F = A’B’D + AC’D’ + ABD). (Lưu ý: Đề gốc thiếu ảnh sơ đồ mạch logic kèm theo).",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Đại Số Boolean & Mạch Logic Số"
   },
@@ -41,7 +41,7 @@
     "correctWord": "B. False",
     "explanation": "Đáp án đúng: B (B. False)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_4",
@@ -255,7 +255,7 @@
     "correctWord": "B. 0000 0101",
     "explanation": "Đáp án đúng: B (B. 0000 0101)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Đại Số Boolean & Mạch Logic Số"
   },
   {
     "id": "CEA_17",
@@ -271,7 +271,7 @@
     "correctWord": "B. 1111 1010",
     "explanation": "Đáp án đúng: B (B. 1111 1010)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Đại Số Boolean & Mạch Logic Số"
   },
   {
     "id": "CEA_18",
@@ -287,7 +287,7 @@
     "correctWord": "A. 1000 0000",
     "explanation": "Đáp án đúng: A (A. 1000 0000)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Đại Số Boolean & Mạch Logic Số"
   },
   {
     "id": "CEA_19",
@@ -407,14 +407,14 @@
     "word": "Câu 26: Convert the 64 from decimal to their binary number equivalents.",
     "question": "Convert the 64 from decimal to their binary number equivalents.",
     "options": [
-      "A. 100000",
+      "A. 1000000",
       "B. 100100",
       "C. 111000",
       "D. 101010"
     ],
     "answer": "A",
-    "correctWord": "A. 100000",
-    "explanation": "Đáp án đúng: A (A. 100000)",
+    "correctWord": "A. 1000000",
+    "explanation": "Đáp án đúng: A (A. 1000000) — Lưu ý: 64(10) = 2^6 = 1000000(2) gồm 7 bit (đề gốc ghi thiếu một số 0 thành 100000).",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Đại Số Boolean & Mạch Logic Số"
   },
@@ -550,7 +550,7 @@
     "correctWord": "D. 9",
     "explanation": "Đáp án đúng: D (D. 9)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
   {
     "id": "CEA_35",
@@ -567,7 +567,7 @@
     "correctWord": "C. 8",
     "explanation": "Đáp án đúng: C (C. 8)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
   {
     "id": "CEA_36",
@@ -615,7 +615,7 @@
     "correctWord": "A. 8",
     "explanation": "Đáp án đúng: A (A. 8)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_39",
@@ -647,7 +647,7 @@
     "correctWord": "A. 307%",
     "explanation": "Đáp án đúng: A (A. 307%)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_41",
@@ -663,7 +663,7 @@
     "correctWord": "A. 333%",
     "explanation": "Đáp án đúng: A (A. 333%)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_42",
@@ -679,7 +679,7 @@
     "correctWord": "A. MIPS rate = 285.7",
     "explanation": "Đáp án đúng: A (A. MIPS rate = 285.7)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_43",
@@ -842,7 +842,7 @@
     "correctWord": "A. 6.89",
     "explanation": "Đáp án đúng: A (A. 6.89)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_53",
@@ -1039,7 +1039,7 @@
     "correctWord": "C. RAID",
     "explanation": "Đáp án đúng: C (C. RAID)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_65",
@@ -1071,7 +1071,7 @@
     "correctWord": "C. Computer organization",
     "explanation": "Đáp án đúng: C (C. Computer organization)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_67",
@@ -1104,7 +1104,7 @@
     "correctWord": "D. Operand address calculation",
     "explanation": "Đáp án đúng: D (D. Operand address calculation)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_69",
@@ -1121,7 +1121,7 @@
     "correctWord": "E. Memory / I/O module",
     "explanation": "Đáp án đúng: E (E. Memory / I/O module)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
   {
     "id": "CEA_70",
@@ -1138,7 +1138,7 @@
     "correctWord": "C. Instruction address calculation",
     "explanation": "Đáp án đúng: C (C. Instruction address calculation)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_71",
@@ -1154,7 +1154,7 @@
     "correctWord": "B. Machine parallelism",
     "explanation": "Đáp án đúng: B (B. Machine parallelism)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_72",
@@ -1170,7 +1170,7 @@
     "correctWord": "A. Instruction fetch",
     "explanation": "Đáp án đúng: A (A. Instruction fetch)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_73",
@@ -1250,7 +1250,7 @@
     "correctWord": "A. A NOR B",
     "explanation": "Đáp án đúng: A (A. A NOR B)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Đại Số Boolean & Mạch Logic Số"
   },
   {
     "id": "CEA_78",
@@ -1298,7 +1298,7 @@
     "correctWord": "B. DRAM",
     "explanation": "Đáp án đúng: B (B. DRAM)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_81",
@@ -1314,7 +1314,7 @@
     "correctWord": "A. NOT gate",
     "explanation": "Đáp án đúng: A (A. NOT gate)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Đại Số Boolean & Mạch Logic Số"
   },
   {
     "id": "CEA_82",
@@ -1330,7 +1330,7 @@
     "correctWord": "B. autoindexing",
     "explanation": "Đáp án đúng: B (B. autoindexing)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_83",
@@ -1346,7 +1346,7 @@
     "correctWord": "B. EA = (R)",
     "explanation": "Đáp án đúng: B (B. EA = (R))",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_84",
@@ -1410,7 +1410,7 @@
     "correctWord": "A. MAR",
     "explanation": "Đáp án đúng: A (A. MAR)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_88",
@@ -1524,7 +1524,7 @@
     "correctWord": "B. MMU",
     "explanation": "Đáp án đúng: B (B. MMU)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
   },
   {
     "id": "CEA_95",
@@ -1589,7 +1589,7 @@
     "correctWord": "A. MBR; MAR; IBR",
     "explanation": "Đáp án đúng: A (A. MBR; MAR; IBR)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_99",
@@ -1605,7 +1605,7 @@
     "correctWord": "A. (A + B).(A + C)",
     "explanation": "Đáp án đúng: A (A. (A + B).(A + C))",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Đại Số Boolean & Mạch Logic Số"
   },
   {
     "id": "CEA_100",
@@ -1653,7 +1653,7 @@
     "correctWord": "C. 1-A; 2-B; 3-C",
     "explanation": "Đáp án đúng: C (C. 1-A; 2-B; 3-C)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_103",
@@ -1733,7 +1733,7 @@
     "correctWord": "C. To facilitate indexed addressing",
     "explanation": "Đáp án đúng: C (C. To facilitate indexed addressing)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_108",
@@ -1749,7 +1749,7 @@
     "correctWord": "B. Ability to access a larger data set",
     "explanation": "Đáp án đúng: B (B. Ability to access a larger data set)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_109",
@@ -1781,7 +1781,7 @@
     "correctWord": "A. Using a system clock",
     "explanation": "Đáp án đúng: A (A. Using a system clock)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_111",
@@ -1813,7 +1813,7 @@
     "correctWord": "B. Register addressing",
     "explanation": "Đáp án đúng: B (B. Register addressing)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_113",
@@ -1893,7 +1893,7 @@
     "correctWord": "B. Single instruction, multiple data (SIMD)",
     "explanation": "Đáp án đúng: B (B. Single instruction, multiple data (SIMD))",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_118",
@@ -1909,7 +1909,7 @@
     "correctWord": "C. Multiple instruction, multiple data (MIMD)",
     "explanation": "Đáp án đúng: C (C. Multiple instruction, multiple data (MIMD))",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_119",
@@ -1926,7 +1926,7 @@
     "correctWord": "A. System interconnection",
     "explanation": "Đáp án đúng: A (A. System interconnection)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_120",
@@ -1959,7 +1959,7 @@
     "correctWord": "C. Magnetic tape",
     "explanation": "Đáp án đúng: C (C. Magnetic tape)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_122",
@@ -2071,7 +2071,7 @@
     "correctWord": "B. Multi-core processors",
     "explanation": "Đáp án đúng: B (B. Multi-core processors)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_129",
@@ -2087,7 +2087,7 @@
     "correctWord": "A. Direct",
     "explanation": "Đáp án đúng: A (A. Direct)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_130",
@@ -2119,7 +2119,7 @@
     "correctWord": "A. Cache",
     "explanation": "Đáp án đúng: A (A. Cache)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_132",
@@ -2183,7 +2183,7 @@
     "correctWord": "B. 2’s complement",
     "explanation": "Đáp án đúng: B (B. 2’s complement)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Đại Số Boolean & Mạch Logic Số"
   },
   {
     "id": "CEA_136",
@@ -2215,7 +2215,7 @@
     "correctWord": "A. Application Binary Interface",
     "explanation": "Đáp án đúng: A (A. Application Binary Interface)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Đại Số Boolean & Mạch Logic Số"
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
   },
   {
     "id": "CEA_138",
@@ -2247,7 +2247,7 @@
     "correctWord": "C. Segmentation",
     "explanation": "Đáp án đúng: C (C. Segmentation)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
   },
   {
     "id": "CEA_140",
@@ -2375,7 +2375,7 @@
     "correctWord": "D. Gate control signal from the control unit.",
     "explanation": "Đáp án đúng: D (D. Gate control signal from the control unit.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_148",
@@ -2439,7 +2439,7 @@
     "correctWord": "A. 11s",
     "explanation": "Đáp án đúng: A (A. 11s)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_152",
@@ -2453,7 +2453,7 @@
     ],
     "answer": "B",
     "correctWord": "B. 1.6 GB/s",
-    "explanation": "Đáp án đúng: B (B. 1.6 GB/s)",
+    "explanation": "Đáp án đúng theo đề: B (B. 1.6 GB/s). (Lưu ý chuẩn kiến thức: RAM DDR truyền dữ liệu 2 lần mỗi chu kỳ xung nhịp, nên băng thông đỉnh chuẩn là 200 MHz × 2 × 8 bytes = 3.2 GB/s [phương án A]; một số bộ đề CEA201 vẫn chấm đáp án B = 1.6 GB/s theo công thức 1× clock).",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
@@ -2471,7 +2471,7 @@
     "correctWord": "A. true, false",
     "explanation": "Đáp án đúng: A (A. true, false)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
   {
     "id": "CEA_154",
@@ -2579,7 +2579,7 @@
     "correctWord": "A. True",
     "explanation": "Đáp án đúng: A (A. True)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_161",
@@ -2627,7 +2627,7 @@
     "correctWord": "D. Cache Memory",
     "explanation": "Đáp án đúng: D (D. Cache Memory)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_164",
@@ -2643,7 +2643,7 @@
     "correctWord": "A. [-512, 511]",
     "explanation": "Đáp án đúng: A (A. [-512, 511])",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_165",
@@ -2755,7 +2755,7 @@
     "correctWord": "A. Symmetric multiprocessor (SMP)",
     "explanation": "Đáp án đúng: A (A. Symmetric multiprocessor (SMP))",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_172",
@@ -2771,21 +2771,21 @@
     "correctWord": "A. Arithmetic and logic unit (ALU)",
     "explanation": "Đáp án đúng: A (A. Arithmetic and logic unit (ALU))",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_173",
-    "word": "Câu 173: The pulse rate in the ck system is known as the ______.",
-    "question": "The pulse rate in the ck system is known as the ______.",
+    "word": "Câu 173: The pulse rate in the clock system is known as the ______.",
+    "question": "The pulse rate in the clock system is known as the ______.",
     "options": [
-      "A. ck cycle",
-      "B. ck speed",
-      "C. ck time",
-      "D. ck tick"
+      "A. clock cycle",
+      "B. clock speed",
+      "C. clock time",
+      "D. clock tick"
     ],
     "answer": "B",
-    "correctWord": "B. ck speed",
-    "explanation": "Đáp án đúng: B (B. ck speed)",
+    "correctWord": "B. clock speed",
+    "explanation": "Đáp án đúng: B (B. clock speed)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -2803,7 +2803,7 @@
     "correctWord": "D. XOR",
     "explanation": "Đáp án đúng: D (D. XOR)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+    "topic": "Đại Số Boolean & Mạch Logic Số"
   },
   {
     "id": "CEA_175",
@@ -2852,7 +2852,7 @@
     "correctWord": "E. Implicit",
     "explanation": "Đáp án đúng: E (E. Implicit)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_178",
@@ -2884,7 +2884,7 @@
     "correctWord": "B. Memory management",
     "explanation": "Đáp án đúng: B (B. Memory management)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
   },
   {
     "id": "CEA_180",
@@ -2916,7 +2916,7 @@
     "correctWord": "D. All of the mentioned.",
     "explanation": "Đáp án đúng: D (D. All of the mentioned.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_182",
@@ -2932,7 +2932,7 @@
     "correctWord": "B. interrupt",
     "explanation": "Đáp án đúng: B (B. interrupt)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
   {
     "id": "CEA_183",
@@ -2949,7 +2949,7 @@
     "correctWord": "C. Paging",
     "explanation": "Đáp án đúng: C (C. Paging)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
   },
   {
     "id": "CEA_184",
@@ -3045,7 +3045,7 @@
     "correctWord": "A. Read-only memory",
     "explanation": "Đáp án đúng: A (A. Read-only memory)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_190",
@@ -3061,7 +3061,7 @@
     "correctWord": "C. DDR",
     "explanation": "Đáp án đúng: C (C. DDR)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_191",
@@ -3093,7 +3093,7 @@
     "correctWord": "A. LRU",
     "explanation": "Đáp án đúng: A (A. LRU)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_193",
@@ -3173,7 +3173,7 @@
     "correctWord": "D. RISC",
     "explanation": "Đáp án đúng: D (D. RISC)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_198",
@@ -3222,7 +3222,7 @@
     "correctWord": "D. Parallel task execution",
     "explanation": "Đáp án đúng: D (D. Parallel task execution)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_201",
@@ -3271,7 +3271,7 @@
     "correctWord": "A. Registers > Cache > RAM > SSD",
     "explanation": "Đáp án đúng: A (A. Registers > Cache > RAM > SSD)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_204",
@@ -3287,7 +3287,7 @@
     "correctWord": "A. HDD - Main Memory - L2 cache - L1 cache",
     "explanation": "Đáp án đúng: A (A. HDD - Main Memory - L2 cache - L1 cache)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_205",
@@ -3303,7 +3303,7 @@
     "correctWord": "B. Hard Disk - NAND Flash - DRAM - SRAM",
     "explanation": "Đáp án đúng: B (B. Hard Disk - NAND Flash - DRAM - SRAM)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_206",
@@ -3367,7 +3367,7 @@
     "correctWord": "C. Sequential access, Direct access, Random access, Associative",
     "explanation": "Đáp án đúng: C (C. Sequential access, Direct access, Random access, Associative)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_210",
@@ -3381,7 +3381,7 @@
     ],
     "answer": "A",
     "correctWord": "A. Main memory, CPU, I/O modules and system interconnection",
-    "explanation": "Đáp án đúng: A (A. Main memory, CPU, I/O modules and system interconnection)",
+    "explanation": "Đáp án đúng: A (A. Main memory, CPU, I/O modules and system interconnection). (Lưu ý: Đề gốc có phương án nhiễu B và D trùng nội dung).",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -3399,7 +3399,7 @@
     "correctWord": "C. Magnetic Disk < SSD < Main Memory < Cache Memory",
     "explanation": "Đáp án đúng: C (C. Magnetic Disk < SSD < Main Memory < Cache Memory)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_212",
@@ -3431,7 +3431,7 @@
     "correctWord": "A. To read an instruction from memory",
     "explanation": "Đáp án đúng: A (A. To read an instruction from memory)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_214",
@@ -3463,7 +3463,7 @@
     "correctWord": "A. Low cost and low power consumption",
     "explanation": "Đáp án đúng: A (A. Low cost and low power consumption)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_216",
@@ -3545,7 +3545,7 @@
     "correctWord": "A. Perform actual computations and data processing",
     "explanation": "Đáp án đúng: A (A. Perform actual computations and data processing)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_221",
@@ -3690,7 +3690,7 @@
     "correctWord": "B. Use more of the chip area for cache memory.",
     "explanation": "Đáp án đúng: B (B. Use more of the chip area for cache memory.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_230",
@@ -3754,7 +3754,7 @@
     "correctWord": "C. Contains the address in memory of the word to be written from or read into the MBR.",
     "explanation": "Đáp án đúng: C (C. Contains the address in memory of the word to be written from or read into the MBR.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_234",
@@ -3835,7 +3835,7 @@
     "correctWord": "A. Registers in a processor provide fast, temporary storage for data and instructions, facilitating efficient access during instruction execution",
     "explanation": "Đáp án đúng: A (A. Registers in a processor provide fast, temporary storage for data and instructions, facilitating efficient access during instruction execution)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_239",
@@ -3851,7 +3851,7 @@
     "correctWord": "D. The control unit in a processor directs and coordinates the execution of instructions, interpreting and managing the flow of operations within the CPU",
     "explanation": "Đáp án đúng: D (D. The control unit in a processor directs and coordinates the execution of instructions, interpreting and managing the flow of operations within the CPU)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_240",
@@ -3883,7 +3883,7 @@
     "correctWord": "B. It specifies the address in memory for the next read or write operation.",
     "explanation": "Đáp án đúng: B (B. It specifies the address in memory for the next read or write operation.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_242",
@@ -3907,7 +3907,7 @@
     "question": "What is a drawback of Instruction Pipelining?",
     "options": [
       "A. It increases the instruction throughput",
-      "B. It allows more CPU throughput than a multicycle computer at a given ck rate",
+      "B. It allows more CPU throughput than a multicycle computer at a given clock rate",
       "C. It may increase latency due to the added overhead of the pipelining process itself",
       "D. It decreases the complexity of the computer system"
     ],
@@ -3964,7 +3964,7 @@
     "correctWord": "B. NOR flash memory cells are connected in parallel, while NAND flash memory cells are connected in series",
     "explanation": "Đáp án đúng: B (B. NOR flash memory cells are connected in parallel, while NAND flash memory cells are connected in series)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Đại Số Boolean & Mạch Logic Số"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_247",
@@ -4028,7 +4028,7 @@
     "correctWord": "C. It minimizes pipeline stalling by guessing the paths of branches",
     "explanation": "Đáp án đúng: C (C. It minimizes pipeline stalling by guessing the paths of branches)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_251",
@@ -4093,7 +4093,7 @@
     "correctWord": "C. Both static and dynamic RAMs requires the supporting refresh circuitry",
     "explanation": "Đáp án đúng: C (C. Both static and dynamic RAMs requires the supporting refresh circuitry)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_255",
@@ -4113,8 +4113,8 @@
   },
   {
     "id": "CEA_256",
-    "word": "Câu 256: Which of the following statements is NOT part of the Von Newmann ...",
-    "question": "Which of the following statements is NOT part of the Von Newmann principle?",
+    "word": "Câu 256: Which of the following statements is NOT part of the Von Neu...",
+    "question": "Which of the following statements is NOT part of the Von Neumann principle?",
     "options": [
       "A. Computers can operate according to a stored program",
       "B. The computer uses a program counter to indicate the location of the next statement",
@@ -4129,8 +4129,8 @@
   },
   {
     "id": "CEA_257",
-    "word": "Câu 257: Which of the following statements is part of the Von Newmann prin...",
-    "question": "Which of the following statements is part of the Von Newmann principle?",
+    "word": "Câu 257: Which of the following statements is part of the Von Neumann...",
+    "question": "Which of the following statements is part of the Von Neumann principle?",
     "options": [
       "A. The computer uses a program counter to indicate the location of the next statement",
       "B. Computer can control all operations with a single program",
@@ -4173,7 +4173,7 @@
     "correctWord": "A. They define how the operands of an instruction are specified, including immediate, register, direct, and indirect addressing modes",
     "explanation": "Đáp án đúng: A (A. They define how the operands of an instruction are specified, including immediate, register, direct, and indirect addressing modes)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_260",
@@ -4237,7 +4237,7 @@
     "correctWord": "A. Address registers can be employed in calculating operand addresses, while data registers hold data.",
     "explanation": "Đáp án đúng: A (A. Address registers can be employed in calculating operand addresses, while data registers hold data.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_264",
@@ -4285,7 +4285,7 @@
     "correctWord": "D. All of the mentioned",
     "explanation": "Đáp án đúng: D (D. All of the mentioned)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_267",
@@ -4315,9 +4315,9 @@
     ],
     "answer": "C",
     "correctWord": "C. It allows a programmer to place shared utilities or data in a segment accessible by other processes.",
-    "explanation": "Đáp án đúng: C (C. It allows a programmer to place shared utilities or data in a segment accessible by other processes.)",
+    "explanation": "Đáp án đúng: C (C. It allows a programmer to place shared utilities or data in a segment accessible by other processes.). (Lưu ý: Đề gốc có phương án C và D trùng hệt nhau — hệ thống chấm đúng cả hai khi chọn).",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
   },
   {
     "id": "CEA_269",
@@ -4343,12 +4343,12 @@
       "A. Add 1 to PC",
       "B. At the address of the last executed instruction",
       "C. Jump to random unknown position",
-      "D. At the started address of an interrupt handler routine",
+      "D. At the starting address of an interrupt handler routine",
       "E. At the beginning of the memory address space"
     ],
     "answer": "D",
-    "correctWord": "D. At the started address of an interrupt handler routine",
-    "explanation": "Đáp án đúng: D (D. At the started address of an interrupt handler routine)",
+    "correctWord": "D. At the starting address of an interrupt handler routine",
+    "explanation": "Đáp án đúng: D (D. At the starting address of an interrupt handler routine)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
@@ -4398,7 +4398,7 @@
     "correctWord": "A. The number of processes accepted is infinitive.",
     "explanation": "Đáp án đúng: A (A. The number of processes accepted is infinitive.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_274",
@@ -4430,7 +4430,7 @@
     "correctWord": "B. ALU (Arithmetic and Logic Unit) and CU (Control Unit)",
     "explanation": "Đáp án đúng: B (B. ALU (Arithmetic and Logic Unit) and CU (Control Unit))",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_276",
@@ -4446,7 +4446,7 @@
     "correctWord": "D. The third generation uses transistor",
     "explanation": "Đáp án đúng: D (D. The third generation uses transistor)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_277",
@@ -4494,7 +4494,7 @@
     "correctWord": "A. Indexing is performed after the indirection",
     "explanation": "Đáp án đúng: A (A. Indexing is performed after the indirection)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_280",
@@ -4654,7 +4654,7 @@
     "correctWord": "B. Improve performance by executing more than one instruction per machine cycle.",
     "explanation": "Đáp án đúng: B (B. Improve performance by executing more than one instruction per machine cycle.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_290",
@@ -4687,7 +4687,7 @@
     "correctWord": "C. Single instruction stream, single data stream.",
     "explanation": "Đáp án đúng: C (C. Single instruction stream, single data stream.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_292",
@@ -4703,7 +4703,7 @@
     "correctWord": "A. Balancing workload distribution between big and small cores.",
     "explanation": "Đáp án đúng: A (A. Balancing workload distribution between big and small cores.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_293",
@@ -4735,7 +4735,7 @@
     "correctWord": "C. The ability to execute multiple operations simultaneously.",
     "explanation": "Đáp án đúng: C (C. The ability to execute multiple operations simultaneously.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
     "id": "CEA_295",
@@ -4751,7 +4751,7 @@
     "correctWord": "A. They are managed by the current operating system.",
     "explanation": "Đáp án đúng: A (A. They are managed by the current operating system.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
   },
   {
     "id": "CEA_296",
@@ -4943,7 +4943,7 @@
     "correctWord": "B. Register is specified in the instruction code and memory cell is specified in the address field.",
     "explanation": "Đáp án đúng: B (B. Register is specified in the instruction code and memory cell is specified in the address field.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_308",
@@ -4975,7 +4975,7 @@
     "correctWord": "B. The presence of data and control dependencies between instructions.",
     "explanation": "Đáp án đúng: B (B. The presence of data and control dependencies between instructions.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
     "id": "CEA_310",
@@ -5005,7 +5005,7 @@
     ],
     "answer": "D",
     "correctWord": "D. They contain the address used by the instruction.",
-    "explanation": "Đáp án đúng: D (D. They contain the address used by the instruction.)",
+    "explanation": "Đáp án đúng: D (D. They contain the address used by the instruction.). (Lưu ý: Đề gốc thiếu ảnh minh họa khuôn dạng lệnh IAS/16-bit kèm theo).",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -5039,7 +5039,7 @@
     "correctWord": "A. Seek time, rotational latency, and data transfer time.",
     "explanation": "Đáp án đúng: A (A. Seek time, rotational latency, and data transfer time.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+    "topic": "Bộ Nhớ Cache, RAID & Lưu Trữ Từ Tính"
   },
   {
     "id": "CEA_314",
@@ -5119,6 +5119,6 @@
     "correctWord": "C. It was the first general-purpose microprocessor.",
     "explanation": "Đáp án đúng: C (C. It was the first general-purpose microprocessor.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hỗ Trợ Hệ Điều Hành & Quản Lý Bộ Nhớ Ảo"
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   }
 ]

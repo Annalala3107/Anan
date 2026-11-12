@@ -1,5 +1,39 @@
 [
   {
+    "id": "CEA_34",
+    "word": "Câu 34: The instruction, which adds 1 to the value in a memory location, ...",
+    "question": "The instruction, which adds 1 to the value in a memory location, has five stages: fetch opcode (four cycles), fetch operand address (three cycles), fetch operand (three cycles), add 1 to operand (three cycles), and store operand (three cycles). An interrupt sends request at beginning of fetch operand stage. How many cycles does the processor enter the interrupt processing cycle?",
+    "options": [
+      "A. 6",
+      "B. 7",
+      "C. 8",
+      "D. 9",
+      "E. 10"
+    ],
+    "answer": "D",
+    "correctWord": "D. 9",
+    "explanation": "Đáp án đúng: D (D. 9)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_35",
+    "word": "Câu 35: The instruction, which adds 1 to the value in a memory location, ...",
+    "question": "The instruction, which adds 1 to the value in a memory location, has five stages: fetch opcode (2 bus cycles), fetch operand address (2 bus cycles), fetch operand (2 bus cycles), add 1 to operand (1 bus cycle), and store operand (3 bus cycles). An interrupt sends request at beginning of fetch operand address stage. How many cycles does the processor enter the interrupt processing cycle?",
+    "options": [
+      "A. 6",
+      "B. 7",
+      "C. 8",
+      "D. 9",
+      "E. 5"
+    ],
+    "answer": "C",
+    "correctWord": "C. 8",
+    "explanation": "Đáp án đúng: C (C. 8)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
     "id": "CEA_54",
     "word": "Câu 54: What is the primary role of the I/O module? (choose two correct a...",
     "question": "What is the primary role of the I/O module? (choose two correct answers)",
@@ -32,18 +66,19 @@
     "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
   {
-    "id": "CEA_66",
-    "word": "Câu 66: ______ refers to the operational units and their interconnections...",
-    "question": "______ refers to the operational units and their interconnections that realize the architectural specifications.",
+    "id": "CEA_69",
+    "word": "Câu 69: (Choose 1 answer) ______ can exchange data directly with the proc...",
+    "question": "(Choose 1 answer) ______ can exchange data directly with the processor. Just as the processor can initiate a read or write with memory, designating the address of a specific location, the processor can also read data from or write data to ______.",
     "options": [
-      "A. Computer architecture",
-      "B. Computer function",
-      "C. Computer organization",
-      "D. Instruction set architecture"
+      "A. I/O module / Memory",
+      "B. Interrupts / I/O module",
+      "C. I/O module / Interrupts",
+      "D. Interrupts / Interrupts",
+      "E. Memory / I/O module"
     ],
-    "answer": "C",
-    "correctWord": "C. Computer organization",
-    "explanation": "Đáp án đúng: C (C. Computer organization)",
+    "answer": "E",
+    "correctWord": "E. Memory / I/O module",
+    "explanation": "Đáp án đúng: E (E. Memory / I/O module)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
@@ -160,6 +195,22 @@
     "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
   {
+    "id": "CEA_153",
+    "word": "Câu 153: (1) An I/O module must recognize one unique address for each peri...",
+    "question": "(1) An I/O module must recognize one unique address for each peripheral it controls. (2) I/O channels are commonly seen on microcomputers, whereas I/O controllers are used on mainframes. The statement (1) is ______ and (2) is ______.",
+    "options": [
+      "A. true, false",
+      "B. true, true",
+      "C. false, true",
+      "D. false, false"
+    ],
+    "answer": "A",
+    "correctWord": "A. true, false",
+    "explanation": "Đáp án đúng: A (A. true, false)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
     "id": "CEA_158",
     "word": "Câu 158: For interrupts, all I/O modules share a common interrupt request ...",
     "question": "For interrupts, all I/O modules share a common interrupt request line. When the processor senses an interrupt, it sends out an interrupt acknowledge. This signal propagates through a series of I/O modules until it gets to a requesting module. Which kind of interrupt technique is it?",
@@ -172,20 +223,6 @@
     "answer": "C",
     "correctWord": "C. Daisy chain",
     "explanation": "Đáp án đúng: C (C. Daisy chain)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
-  },
-  {
-    "id": "CEA_160",
-    "word": "Câu 160: The Program Status Word (PSW) typically contains condition codes,...",
-    "question": "The Program Status Word (PSW) typically contains condition codes, the sign of the last result, and other status information like interrupt enable/disable flags.",
-    "options": [
-      "A. True",
-      "B. False"
-    ],
-    "answer": "A",
-    "correctWord": "A. True",
-    "explanation": "Đáp án đúng: A (A. True)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
@@ -222,22 +259,6 @@
     "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
   {
-    "id": "CEA_171",
-    "word": "Câu 171: “Multiple processors share a single memory or pool of memory by m...",
-    "question": "“Multiple processors share a single memory or pool of memory by means of a shared bus or other interconnection mechanism; a distinguishing feature is that the memory access time to any region of memory is approximately the same for each processor”. Which concept does the statement belong to?",
-    "options": [
-      "A. Symmetric multiprocessor (SMP)",
-      "B. Nonuniform memory access (NUMA)",
-      "C. Cluster",
-      "D. Single instruction, multiple data (SIMD)"
-    ],
-    "answer": "A",
-    "correctWord": "A. Symmetric multiprocessor (SMP)",
-    "explanation": "Đáp án đúng: A (A. Symmetric multiprocessor (SMP))",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
-  },
-  {
     "id": "CEA_178",
     "word": "Câu 178: The I/O technique where the processor busy waits for an I/O opera...",
     "question": "The I/O technique where the processor busy waits for an I/O operation to complete is called ______.",
@@ -250,6 +271,22 @@
     "answer": "D",
     "correctWord": "D. Programmed I/O",
     "explanation": "Đáp án đúng: D (D. Programmed I/O)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
+  },
+  {
+    "id": "CEA_182",
+    "word": "Câu 182: The hardware mechanism that allows a device to notify the CPU is ...",
+    "question": "The hardware mechanism that allows a device to notify the CPU is called ______.",
+    "options": [
+      "A. polling",
+      "B. interrupt",
+      "C. driver",
+      "D. controlling"
+    ],
+    "answer": "B",
+    "correctWord": "B. interrupt",
+    "explanation": "Đáp án đúng: B (B. interrupt)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },
@@ -439,12 +476,12 @@
       "A. Add 1 to PC",
       "B. At the address of the last executed instruction",
       "C. Jump to random unknown position",
-      "D. At the started address of an interrupt handler routine",
+      "D. At the starting address of an interrupt handler routine",
       "E. At the beginning of the memory address space"
     ],
     "answer": "D",
-    "correctWord": "D. At the started address of an interrupt handler routine",
-    "explanation": "Đáp án đúng: D (D. At the started address of an interrupt handler routine)",
+    "correctWord": "D. At the starting address of an interrupt handler routine",
+    "explanation": "Đáp án đúng: D (D. At the starting address of an interrupt handler routine)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Hệ Thống Vào/Ra (I/O), Ngắt & Bus"
   },

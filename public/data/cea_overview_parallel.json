@@ -1,53 +1,5 @@
 [
   {
-    "id": "CEA_16",
-    "word": "Câu 16: Consider an expression: NOT (1111 1010). What is the result of th...",
-    "question": "Consider an expression: NOT (1111 1010). What is the result of this expression?",
-    "options": [
-      "A. 0000 1010",
-      "B. 0000 0101",
-      "C. 1111 0101",
-      "D. 1111 1010"
-    ],
-    "answer": "B",
-    "correctWord": "B. 0000 0101",
-    "explanation": "Đáp án đúng: B (B. 0000 0101)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_17",
-    "word": "Câu 17: Consider an expression: 1000 0000 OR 1111 1010. What is the resul...",
-    "question": "Consider an expression: 1000 0000 OR 1111 1010. What is the result of this expression?",
-    "options": [
-      "A. 1000 0000",
-      "B. 1111 1010",
-      "C. 1001 1010",
-      "D. 1001 0101"
-    ],
-    "answer": "B",
-    "correctWord": "B. 1111 1010",
-    "explanation": "Đáp án đúng: B (B. 1111 1010)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_18",
-    "word": "Câu 18: (Choose 1 answer) Consider an expression: 1000 0000 AND 1111 1010...",
-    "question": "(Choose 1 answer) Consider an expression: 1000 0000 AND 1111 1010. What is the result of this expression?",
-    "options": [
-      "A. 1000 0000",
-      "B. 1111 0000",
-      "C. 1001 1010",
-      "D. 1001 0101"
-    ],
-    "answer": "A",
-    "correctWord": "A. 1000 0000",
-    "explanation": "Đáp án đúng: A (A. 1000 0000)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
     "id": "CEA_37",
     "word": "Câu 37: How many common classifications of parallel systems are there as ...",
     "question": "How many common classifications of parallel systems are there as proposed by Flynn?",
@@ -64,6 +16,54 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
+    "id": "CEA_40",
+    "word": "Câu 40: Follow the Amdahl’s law for multiprocessors, if only 10% of the c...",
+    "question": "Follow the Amdahl’s law for multiprocessors, if only 10% of the code is inherently serial (f = 0.9), running the program on a multicore system with 4 processors, a performance gain (speedup factor) would be ______.",
+    "options": [
+      "A. 307%",
+      "B. 297%",
+      "C. 317%",
+      "D. 327%"
+    ],
+    "answer": "A",
+    "correctWord": "A. 307%",
+    "explanation": "Đáp án đúng: A (A. 307%)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
+    "id": "CEA_41",
+    "word": "Câu 41: Follow the Amdahl’s law for multiprocessors, if only 20% of the c...",
+    "question": "Follow the Amdahl’s law for multiprocessors, if only 20% of the code is inherently serial (f = 0.8), running the program on a multicore system with 8 processors, a performance gain (speedup factor) would be ______.",
+    "options": [
+      "A. 333%",
+      "B. 303%",
+      "C. 313%",
+      "D. 323%"
+    ],
+    "answer": "A",
+    "correctWord": "A. 333%",
+    "explanation": "Đáp án đúng: A (A. 333%)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
+    "id": "CEA_42",
+    "word": "Câu 42: A benchmark program is running on a 400 MHz processor. The execut...",
+    "question": "A benchmark program is running on a 400 MHz processor. The executed program consists of 500 instruction executions, with the following instruction mix and clock cycle count in Table below: Instruction type / Instruction count / Cycles per Instruction Arithmetic / 300 / 1 Data transfer / 100 / 2 Control transfer / 100 / 2 Calculate MIPS rate for this case.",
+    "options": [
+      "A. MIPS rate = 285.7",
+      "B. MIPS rate = 275.7",
+      "C. MIPS rate = 265.7",
+      "D. MIPS rate = 295.7"
+    ],
+    "answer": "A",
+    "correctWord": "A. MIPS rate = 285.7",
+    "explanation": "Đáp án đúng: A (A. MIPS rate = 285.7)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
     "id": "CEA_47",
     "word": "Câu 47: Three computers complete the same task at rates of 4, 5, and 10 t...",
     "question": "Three computers complete the same task at rates of 4, 5, and 10 tasks per second. What is the harmonic mean rate?",
@@ -76,6 +76,22 @@
     "answer": "A",
     "correctWord": "A. 5.45",
     "explanation": "Đáp án đúng: A (A. 5.45)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
+    "id": "CEA_52",
+    "word": "Câu 52: If 95% of a program can be parallelized, what is the speedup when...",
+    "question": "If 95% of a program can be parallelized, what is the speedup when using 10 processors?",
+    "options": [
+      "A. 6.89",
+      "B. 7.20",
+      "C. 7.50",
+      "D. 8.00"
+    ],
+    "answer": "A",
+    "correctWord": "A. 6.89",
+    "explanation": "Đáp án đúng: A (A. 6.89)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -115,50 +131,18 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_77",
-    "word": "Câu 77: (Choose 1 answer) Consider an expression: NOT (A OR B). Choose th...",
-    "question": "(Choose 1 answer) Consider an expression: NOT (A OR B). Choose the correct expression that is equal to the given expression.",
+    "id": "CEA_66",
+    "word": "Câu 66: ______ refers to the operational units and their interconnections...",
+    "question": "______ refers to the operational units and their interconnections that realize the architectural specifications.",
     "options": [
-      "A. A NOR B",
-      "B. A NAND B",
-      "C. NOT A NOR B",
-      "D. NOT A OR B"
+      "A. Computer architecture",
+      "B. Computer function",
+      "C. Computer organization",
+      "D. Instruction set architecture"
     ],
-    "answer": "A",
-    "correctWord": "A. A NOR B",
-    "explanation": "Đáp án đúng: A (A. A NOR B)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_80",
-    "word": "Câu 80: ______ is made with cells that store data as charge on capacitors.",
-    "question": "______ is made with cells that store data as charge on capacitors.",
-    "options": [
-      "A. SRAM",
-      "B. DRAM",
-      "C. RDRAM",
-      "D. CDRAM"
-    ],
-    "answer": "B",
-    "correctWord": "B. DRAM",
-    "explanation": "Đáp án đúng: B (B. DRAM)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_81",
-    "word": "Câu 81: (Choose 1 answer) Which gate can be used to create an inverted ou...",
-    "question": "(Choose 1 answer) Which gate can be used to create an inverted output of an input signal in digital logic?",
-    "options": [
-      "A. NOT gate",
-      "B. OR gate",
-      "C. AND gate",
-      "D. XOR gate"
-    ],
-    "answer": "A",
-    "correctWord": "A. NOT gate",
-    "explanation": "Đáp án đúng: A (A. NOT gate)",
+    "answer": "C",
+    "correctWord": "C. Computer organization",
+    "explanation": "Đáp án đúng: C (C. Computer organization)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -195,35 +179,67 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_99",
-    "word": "Câu 99: Consider an expression: A + (B.C). What expression is equal to th...",
-    "question": "Consider an expression: A + (B.C). What expression is equal to the given expression?",
+    "id": "CEA_102",
+    "word": "Câu 102: Consider some computer generations: 1: the first computer generat...",
+    "question": "Consider some computer generations: 1: the first computer generation; 2: the second computer generation; 3: the third computer generation. And some technologies are used in computer generations: A: Vacuum Tubes; B: Transistors; C: Integrated Circuits (IC); D: Microprocessors. Select the main technology applied in each computer generation.",
     "options": [
-      "A. (A + B).(A + C)",
-      "B. (A + B).C",
-      "C. A.(B + C)",
-      "D. NOT (A.(B + C))"
+      "A. 1-D; 2-C; 3-B",
+      "B. 1-A; 2-C; 3-D",
+      "C. 1-A; 2-B; 3-C",
+      "D. 1-D; 2-B; 3-C"
     ],
-    "answer": "A",
-    "correctWord": "A. (A + B).(A + C)",
-    "explanation": "Đáp án đúng: A (A. (A + B).(A + C))",
+    "answer": "C",
+    "correctWord": "C. 1-A; 2-B; 3-C",
+    "explanation": "Đáp án đúng: C (C. 1-A; 2-B; 3-C)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_121",
-    "word": "Câu 121: Which of the following memory devices has the lowest access speed?",
-    "question": "Which of the following memory devices has the lowest access speed?",
+    "id": "CEA_117",
+    "word": "Câu 117: Which is the correct choice for the description: “A single machin...",
+    "question": "Which is the correct choice for the description: “A single machine instruction controls the simultaneous execution of a number of processing elements such as vector and array processors”?",
     "options": [
-      "A. ROM",
-      "B. Flash memory",
-      "C. Magnetic tape",
-      "D. HDD",
-      "E. Cache"
+      "A. Single instruction, single data (SISD)",
+      "B. Single instruction, multiple data (SIMD)",
+      "C. Multiple instruction, single data (MISD)",
+      "D. Multiple instruction, multiple data (MIMD)"
+    ],
+    "answer": "B",
+    "correctWord": "B. Single instruction, multiple data (SIMD)",
+    "explanation": "Đáp án đúng: B (B. Single instruction, multiple data (SIMD))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
+    "id": "CEA_118",
+    "word": "Câu 118: Which computing model is characterized by a large number of proce...",
+    "question": "Which computing model is characterized by a large number of processors working on different parts of a problem simultaneously?",
+    "options": [
+      "A. Single instruction, single data (SISD)",
+      "B. Single instruction, multiple data (SIMD)",
+      "C. Multiple instruction, multiple data (MIMD)",
+      "D. Multiple instruction, single data (MISD)"
     ],
     "answer": "C",
-    "correctWord": "C. Magnetic tape",
-    "explanation": "Đáp án đúng: C (C. Magnetic tape)",
+    "correctWord": "C. Multiple instruction, multiple data (MIMD)",
+    "explanation": "Đáp án đúng: C (C. Multiple instruction, multiple data (MIMD))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
+    "id": "CEA_119",
+    "word": "Câu 119: Which of the following component does not belong to central proce...",
+    "question": "Which of the following component does not belong to central processing unit?",
+    "options": [
+      "A. System interconnection",
+      "B. Arithmetic and logic unit",
+      "C. Registers",
+      "D. Control unit",
+      "E. CPU interconnection"
+    ],
+    "answer": "A",
+    "correctWord": "A. System interconnection",
+    "explanation": "Đáp án đúng: A (A. System interconnection)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -244,18 +260,18 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_131",
-    "word": "Câu 131: Which memory has the fastest speed and smallest capacity?",
-    "question": "Which memory has the fastest speed and smallest capacity?",
+    "id": "CEA_128",
+    "word": "Câu 128: Which of the following types of processors typically offer better...",
+    "question": "Which of the following types of processors typically offer better performance for parallel processing?",
     "options": [
-      "A. Cache",
-      "B. Main memory",
-      "C. HDD",
-      "D. Magnetic Disk"
+      "A. Single-core processors",
+      "B. Multi-core processors",
+      "C. Microelectronics",
+      "D. Digital signal processors (DSPs)"
     ],
-    "answer": "A",
-    "correctWord": "A. Cache",
-    "explanation": "Đáp án đúng: A (A. Cache)",
+    "answer": "B",
+    "correctWord": "B. Multi-core processors",
+    "explanation": "Đáp án đúng: B (B. Multi-core processors)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -276,50 +292,18 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_135",
-    "word": "Câu 135: Which representation is most efficient to perform arithmetic oper...",
-    "question": "Which representation is most efficient to perform arithmetic operations on the signed integer numbers?",
+    "id": "CEA_151",
+    "word": "Câu 151: A benchmark is run 4 times on a computer with execution times: 8s...",
+    "question": "A benchmark is run 4 times on a computer with execution times: 8s, 10s, 12s, 14s. What is the arithmetic mean?",
     "options": [
-      "A. Sign-magnitude",
-      "B. 2’s complement",
-      "C. 1’s & 2’s compliment",
-      "D. 1’s complement"
+      "A. 11s",
+      "B. 10.5s",
+      "C. 11.5s",
+      "D. 12s"
     ],
-    "answer": "B",
-    "correctWord": "B. 2’s complement",
-    "explanation": "Đáp án đúng: B (B. 2’s complement)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_147",
-    "word": "Câu 147: Which control signal is responsible for temporarily opening the g...",
-    "question": "Which control signal is responsible for temporarily opening the gate to allow data to pass in the data path?",
-    "options": [
-      "A. System bus data transfer signal.",
-      "B. Memory buffer control signal.",
-      "C. ALU activation signal.",
-      "D. Gate control signal from the control unit."
-    ],
-    "answer": "D",
-    "correctWord": "D. Gate control signal from the control unit.",
-    "explanation": "Đáp án đúng: D (D. Gate control signal from the control unit.)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_163",
-    "word": "Câu 163: In modern computers, which devices among the memory types usually...",
-    "question": "In modern computers, which devices among the memory types usually have the smallest capacity?",
-    "options": [
-      "A. RAM",
-      "B. Magnetic Tape",
-      "C. Hard Disk Drive",
-      "D. Cache Memory"
-    ],
-    "answer": "D",
-    "correctWord": "D. Cache Memory",
-    "explanation": "Đáp án đúng: D (D. Cache Memory)",
+    "answer": "A",
+    "correctWord": "A. 11s",
+    "explanation": "Đáp án đúng: A (A. 11s)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -340,18 +324,34 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_173",
-    "word": "Câu 173: The pulse rate in the ck system is known as the ______.",
-    "question": "The pulse rate in the ck system is known as the ______.",
+    "id": "CEA_171",
+    "word": "Câu 171: “Multiple processors share a single memory or pool of memory by m...",
+    "question": "“Multiple processors share a single memory or pool of memory by means of a shared bus or other interconnection mechanism; a distinguishing feature is that the memory access time to any region of memory is approximately the same for each processor”. Which concept does the statement belong to?",
     "options": [
-      "A. ck cycle",
-      "B. ck speed",
-      "C. ck time",
-      "D. ck tick"
+      "A. Symmetric multiprocessor (SMP)",
+      "B. Nonuniform memory access (NUMA)",
+      "C. Cluster",
+      "D. Single instruction, multiple data (SIMD)"
+    ],
+    "answer": "A",
+    "correctWord": "A. Symmetric multiprocessor (SMP)",
+    "explanation": "Đáp án đúng: A (A. Symmetric multiprocessor (SMP))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
+    "id": "CEA_173",
+    "word": "Câu 173: The pulse rate in the clock system is known as the ______.",
+    "question": "The pulse rate in the clock system is known as the ______.",
+    "options": [
+      "A. clock cycle",
+      "B. clock speed",
+      "C. clock time",
+      "D. clock tick"
     ],
     "answer": "B",
-    "correctWord": "B. ck speed",
-    "explanation": "Đáp án đúng: B (B. ck speed)",
+    "correctWord": "B. clock speed",
+    "explanation": "Đáp án đúng: B (B. clock speed)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -368,103 +368,6 @@
     "answer": "D",
     "correctWord": "D. Vacuum Tubes",
     "explanation": "Đáp án đúng: D (D. Vacuum Tubes)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_179",
-    "word": "Câu 179: The task of subdivision is carried out dynamically by the OS and ...",
-    "question": "The task of subdivision is carried out dynamically by the OS and is known as ______?",
-    "options": [
-      "A. Scheduling",
-      "B. Memory management",
-      "C. Virtual Memory",
-      "D. All of the mentioned"
-    ],
-    "answer": "B",
-    "correctWord": "B. Memory management",
-    "explanation": "Đáp án đúng: B (B. Memory management)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_182",
-    "word": "Câu 182: The hardware mechanism that allows a device to notify the CPU is ...",
-    "question": "The hardware mechanism that allows a device to notify the CPU is called ______.",
-    "options": [
-      "A. polling",
-      "B. interrupt",
-      "C. driver",
-      "D. controlling"
-    ],
-    "answer": "B",
-    "correctWord": "B. interrupt",
-    "explanation": "Đáp án đúng: B (B. interrupt)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_183",
-    "word": "Câu 183: The chunks of a program, known as pages, could be assigned to ava...",
-    "question": "The chunks of a program, known as pages, could be assigned to available chunks of memory, known as frames, is called ______.",
-    "options": [
-      "A. Swapping",
-      "B. Partitioning",
-      "C. Paging",
-      "D. Virtual Memory",
-      "E. Segmentation"
-    ],
-    "answer": "C",
-    "correctWord": "C. Paging",
-    "explanation": "Đáp án đúng: C (C. Paging)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_189",
-    "word": "Câu 189: Which type of memory cannot be altered except by destroying the s...",
-    "question": "Which type of memory cannot be altered except by destroying the storage unit?",
-    "options": [
-      "A. Read-only memory",
-      "B. Nonvolatile memory",
-      "C. Erasable memory",
-      "D. Volatile memory"
-    ],
-    "answer": "A",
-    "correctWord": "A. Read-only memory",
-    "explanation": "Đáp án đúng: A (A. Read-only memory)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_190",
-    "word": "Câu 190: What is the type of RAM that synchronizes its operations with the...",
-    "question": "What is the type of RAM that synchronizes its operations with the system clock and can transfer data twice per clock cycle?",
-    "options": [
-      "A. SRAM",
-      "B. SDRAM",
-      "C. DDR",
-      "D. None of the mentioned"
-    ],
-    "answer": "C",
-    "correctWord": "C. DDR",
-    "explanation": "Đáp án đúng: C (C. DDR)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_192",
-    "word": "Câu 192: In a workload with frequent reuse of a small working set, which r...",
-    "question": "In a workload with frequent reuse of a small working set, which replacement policy gives the best performance?",
-    "options": [
-      "A. LRU",
-      "B. FIFO",
-      "C. LFU",
-      "D. Random"
-    ],
-    "answer": "A",
-    "correctWord": "A. LRU",
-    "explanation": "Đáp án đúng: A (A. LRU)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -502,51 +405,18 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_203",
-    "word": "Câu 203: What is the correct order of memory access speed from fastest to ...",
-    "question": "What is the correct order of memory access speed from fastest to slowest?",
+    "id": "CEA_200",
+    "word": "Câu 200: What is the main performance benefit of multicore processors?",
+    "question": "What is the main performance benefit of multicore processors?",
     "options": [
-      "A. Registers > Cache > RAM > SSD",
-      "B. Cache > Registers > RAM > SSD",
-      "C. Registers > Cache > SSD > RAM",
-      "D. Cache > Registers > SSD > RAM",
-      "E. All of the mentioned are wrong"
+      "A. Reduced power consumption",
+      "B. Higher clock speed",
+      "C. Improved serial performance",
+      "D. Parallel task execution"
     ],
-    "answer": "A",
-    "correctWord": "A. Registers > Cache > RAM > SSD",
-    "explanation": "Đáp án đúng: A (A. Registers > Cache > RAM > SSD)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_204",
-    "word": "Câu 204: Sort the following memory types in ascending order by access speed:",
-    "question": "Sort the following memory types in ascending order by access speed:",
-    "options": [
-      "A. HDD - Main Memory - L2 cache - L1 cache",
-      "B. HDD - Main Memory - L1 cache - L2 cache",
-      "C. HDD - L2 cache - L1 cache - Main Memory",
-      "D. Main Memory - L2 cache - L1 cache - HDD"
-    ],
-    "answer": "A",
-    "correctWord": "A. HDD - Main Memory - L2 cache - L1 cache",
-    "explanation": "Đáp án đúng: A (A. HDD - Main Memory - L2 cache - L1 cache)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
-    "id": "CEA_205",
-    "word": "Câu 205: What is correct about increasing performance and endurance?",
-    "question": "What is correct about increasing performance and endurance?",
-    "options": [
-      "A. Hard Disk - DRAM - NAND Flash - SRAM",
-      "B. Hard Disk - NAND Flash - DRAM - SRAM",
-      "C. NAND Flash - Hard Disk - SRAM - DRAM",
-      "D. Hard Disk - DRAM - SRAM - NAND Flash"
-    ],
-    "answer": "B",
-    "correctWord": "B. Hard Disk - NAND Flash - DRAM - SRAM",
-    "explanation": "Đáp án đúng: B (B. Hard Disk - NAND Flash - DRAM - SRAM)",
+    "answer": "D",
+    "correctWord": "D. Parallel task execution",
+    "explanation": "Đáp án đúng: D (D. Parallel task execution)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -567,22 +437,6 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_209",
-    "word": "Câu 209: What methods can be used to access units of data in memory?",
-    "question": "What methods can be used to access units of data in memory?",
-    "options": [
-      "A. Indirect access, Direct access, Random access, Associative",
-      "B. Sequential access, Indirect access, Random access, Associative",
-      "C. Sequential access, Direct access, Random access, Associative",
-      "D. Sequential access, Direct access, Random access, Indirect access"
-    ],
-    "answer": "C",
-    "correctWord": "C. Sequential access, Direct access, Random access, Associative",
-    "explanation": "Đáp án đúng: C (C. Sequential access, Direct access, Random access, Associative)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
     "id": "CEA_210",
     "word": "Câu 210: The basic components of a computer are:",
     "question": "The basic components of a computer are:",
@@ -594,23 +448,23 @@
     ],
     "answer": "A",
     "correctWord": "A. Main memory, CPU, I/O modules and system interconnection",
-    "explanation": "Đáp án đúng: A (A. Main memory, CPU, I/O modules and system interconnection)",
+    "explanation": "Đáp án đúng: A (A. Main memory, CPU, I/O modules and system interconnection). (Lưu ý: Đề gốc có phương án nhiễu B và D trùng nội dung).",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_211",
-    "word": "Câu 211: Which is the correct choice for sorting in increasing speed avera...",
-    "question": "Which is the correct choice for sorting in increasing speed average of memory?",
+    "id": "CEA_215",
+    "word": "Câu 215: What is the main benefit of using ARM processors over other proce...",
+    "question": "What is the main benefit of using ARM processors over other processors?",
     "options": [
-      "A. SSD < Main Memory < Cache Memory < Magnetic Tape",
-      "B. Magnetic Tape < SSD < Cache Memory < Main Memory",
-      "C. Magnetic Disk < SSD < Main Memory < Cache Memory",
-      "D. Magnetic Disk < Magnetic Tape < Main Memory < Cache Memory"
+      "A. Low cost and low power consumption",
+      "B. Higher degree of multi-tasking",
+      "C. Lower error or glitches",
+      "D. Efficient memory management"
     ],
-    "answer": "C",
-    "correctWord": "C. Magnetic Disk < SSD < Main Memory < Cache Memory",
-    "explanation": "Đáp án đúng: C (C. Magnetic Disk < SSD < Main Memory < Cache Memory)",
+    "answer": "A",
+    "correctWord": "A. Low cost and low power consumption",
+    "explanation": "Đáp án đúng: A (A. Low cost and low power consumption)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -663,6 +517,22 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
+    "id": "CEA_229",
+    "word": "Câu 229: What is one way to control power density in microprocessor chips?",
+    "question": "What is one way to control power density in microprocessor chips?",
+    "options": [
+      "A. Increase the clock speed of the chip.",
+      "B. Use more of the chip area for cache memory.",
+      "C. Reduce the size of the chip die.",
+      "D. Use more transistors for logic operations."
+    ],
+    "answer": "B",
+    "correctWord": "B. Use more of the chip area for cache memory.",
+    "explanation": "Đáp án đúng: B (B. Use more of the chip area for cache memory.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
     "id": "CEA_234",
     "word": "Câu 234: What is false about the von Neumann architecture?",
     "question": "What is false about the von Neumann architecture?",
@@ -695,22 +565,6 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_254",
-    "word": "Câu 254: Which one of the following is an invalid about RAM?",
-    "question": "Which one of the following is an invalid about RAM?",
-    "options": [
-      "A. Both static and dynamic RAMs are volatile; that is, power must be continuously supplied to the memory to preserve the bit values.",
-      "B. A dynamic memory cell is simpler and smaller than a static memory cell.",
-      "C. Both static and dynamic RAMs requires the supporting refresh circuitry",
-      "D. SRAMs are somewhat faster than DRAMs"
-    ],
-    "answer": "C",
-    "correctWord": "C. Both static and dynamic RAMs requires the supporting refresh circuitry",
-    "explanation": "Đáp án đúng: C (C. Both static and dynamic RAMs requires the supporting refresh circuitry)",
-    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
-  },
-  {
     "id": "CEA_255",
     "word": "Câu 255: Which of the following statements is true for Von Neumann archite...",
     "question": "Which of the following statements is true for Von Neumann architecture?",
@@ -728,8 +582,8 @@
   },
   {
     "id": "CEA_256",
-    "word": "Câu 256: Which of the following statements is NOT part of the Von Newmann ...",
-    "question": "Which of the following statements is NOT part of the Von Newmann principle?",
+    "word": "Câu 256: Which of the following statements is NOT part of the Von Neu...",
+    "question": "Which of the following statements is NOT part of the Von Neumann principle?",
     "options": [
       "A. Computers can operate according to a stored program",
       "B. The computer uses a program counter to indicate the location of the next statement",
@@ -744,8 +598,8 @@
   },
   {
     "id": "CEA_257",
-    "word": "Câu 257: Which of the following statements is part of the Von Newmann prin...",
-    "question": "Which of the following statements is part of the Von Newmann principle?",
+    "word": "Câu 257: Which of the following statements is part of the Von Neumann...",
+    "question": "Which of the following statements is part of the Von Neumann principle?",
     "options": [
       "A. The computer uses a program counter to indicate the location of the next statement",
       "B. Computer can control all operations with a single program",
@@ -755,6 +609,22 @@
     "answer": "A",
     "correctWord": "A. The computer uses a program counter to indicate the location of the next statement",
     "explanation": "Đáp án đúng: A (A. The computer uses a program counter to indicate the location of the next statement)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
+    "id": "CEA_266",
+    "word": "Câu 266: How does multithreading improve the performance of a processor?",
+    "question": "How does multithreading improve the performance of a processor?",
+    "options": [
+      "A. It increases the instruction-level parallelism by issuing multiple instructions from different threads in the same cycle",
+      "B. It increases the thread-level parallelism by executing multiple threads on different cores or processors",
+      "C. It increases the utilization of the processor resources by hiding the latency of long-latency events such as cache misses or branch mispredictions",
+      "D. All of the mentioned"
+    ],
+    "answer": "D",
+    "correctWord": "D. All of the mentioned",
+    "explanation": "Đáp án đúng: D (D. All of the mentioned)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -775,6 +645,22 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
+    "id": "CEA_273",
+    "word": "Câu 273: Choose an INCORRECT trend in contemporary processor designs.",
+    "question": "Choose an INCORRECT trend in contemporary processor designs.",
+    "options": [
+      "A. The number of processes accepted is infinitive.",
+      "B. The number of integrated transistors is getting increasing and more larger.",
+      "C. Higher clock frequency is applied.",
+      "D. More cores are integrated in one chip."
+    ],
+    "answer": "A",
+    "correctWord": "A. The number of processes accepted is infinitive.",
+    "explanation": "Đáp án đúng: A (A. The number of processes accepted is infinitive.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
     "id": "CEA_274",
     "word": "Câu 274: Choose an INCORRECT statement about high-level programming langua...",
     "question": "Choose an INCORRECT statement about high-level programming languages (HLLs).",
@@ -791,18 +677,66 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_295",
-    "word": "Câu 295: If a program accesses data in a specified file, how to manage the...",
-    "question": "If a program accesses data in a specified file, how to manage the file’s properties such as disk position, file’s attributes?",
+    "id": "CEA_276",
+    "word": "Câu 276: During the development process of the computer, which of the foll...",
+    "question": "During the development process of the computer, which of the following statements is false?",
     "options": [
-      "A. They are managed by the current operating system.",
-      "B. They are managed using variables of the running program.",
-      "C. They are stored on the hard disk.",
-      "D. They are managed by the programmer."
+      "A. The second generation uses transistors",
+      "B. The first generation uses vacuum tubes",
+      "C. The fourth generation uses integrated circuit",
+      "D. The third generation uses transistor"
+    ],
+    "answer": "D",
+    "correctWord": "D. The third generation uses transistor",
+    "explanation": "Đáp án đúng: D (D. The third generation uses transistor)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
+    "id": "CEA_291",
+    "word": "Câu 291: In parallel processor architectures, what type do uni-processor c...",
+    "question": "In parallel processor architectures, what type do uni-processor computers fall into?",
+    "options": [
+      "A. Multiple instruction streams, single data stream.",
+      "B. Multiple instruction streams, multiple data streams.",
+      "C. Single instruction stream, single data stream.",
+      "D. Single instruction stream, multiple data streams."
+    ],
+    "answer": "C",
+    "correctWord": "C. Single instruction stream, single data stream.",
+    "explanation": "Đáp án đúng: C (C. Single instruction stream, single data stream.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
+    "id": "CEA_292",
+    "word": "Câu 292: In a heterogeneous multicore processor, some cores are high-perfo...",
+    "question": "In a heterogeneous multicore processor, some cores are high-performance (big cores) while others are low-power (small cores). What is the primary challenge in efficiently utilizing this architecture?",
+    "options": [
+      "A. Balancing workload distribution between big and small cores.",
+      "B. Increasing the number of small cores to match the performance of big cores.",
+      "C. Using identical instruction sets for all cores.",
+      "D. Reducing the physical size of big cores."
     ],
     "answer": "A",
-    "correctWord": "A. They are managed by the current operating system.",
-    "explanation": "Đáp án đúng: A (A. They are managed by the current operating system.)",
+    "correctWord": "A. Balancing workload distribution between big and small cores.",
+    "explanation": "Đáp án đúng: A (A. Balancing workload distribution between big and small cores.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
+  },
+  {
+    "id": "CEA_294",
+    "word": "Câu 294: In parallel ALUs, what is the primary factor determining performa...",
+    "question": "In parallel ALUs, what is the primary factor determining performance improvement?",
+    "options": [
+      "A. The number of registers in the system.",
+      "B. The size of the instruction cache.",
+      "C. The ability to execute multiple operations simultaneously.",
+      "D. The clock speed of the processor."
+    ],
+    "answer": "C",
+    "correctWord": "C. The ability to execute multiple operations simultaneously.",
+    "explanation": "Đáp án đúng: C (C. The ability to execute multiple operations simultaneously.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
@@ -855,18 +789,18 @@
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   },
   {
-    "id": "CEA_313",
-    "word": "Câu 313: Which of the following contributes to disk access time?",
-    "question": "Which of the following contributes to disk access time?",
+    "id": "CEA_318",
+    "word": "Câu 318: What is the significance of the Intel 8080 microprocessor?",
+    "question": "What is the significance of the Intel 8080 microprocessor?",
     "options": [
-      "A. Seek time, rotational latency, and data transfer time.",
-      "B. Cache size and bus width only.",
-      "C. Number of platters and spindle speed only.",
-      "D. File system type and cluster size."
+      "A. It was the first microprocessor with a built-in cooling system.",
+      "B. It was designed for specific applications, not general computing.",
+      "C. It was the first general-purpose microprocessor.",
+      "D. It introduced the concept of Instruction Set Architecture."
     ],
-    "answer": "A",
-    "correctWord": "A. Seek time, rotational latency, and data transfer time.",
-    "explanation": "Đáp án đúng: A (A. Seek time, rotational latency, and data transfer time.)",
+    "answer": "C",
+    "correctWord": "C. It was the first general-purpose microprocessor.",
+    "explanation": "Đáp án đúng: C (C. It was the first general-purpose microprocessor.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tổng Quan Kiến Trúc, Hiệu Năng & Xử Lý Song Song"
   }

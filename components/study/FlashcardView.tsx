@@ -140,8 +140,20 @@ export default function FlashcardView({
                   Đáp án chính xác:
                 </p>
                 <p className="text-base sm:text-lg font-black text-emerald-700 dark:text-emerald-300">
-                  {currentQ.answerKey ? `${currentQ.answerKey}. ` : ''}
-                  {currentQ.correctWord}
+                  {(() => {
+                    const correctText = (currentQ.correctWord || '').trim();
+                    const keyText = (currentQ.answerKey || '').trim();
+                    const hasOptionPrefix =
+                      /^[A-Fa-f]\.\s/.test(correctText) ||
+                      (keyText !== '' &&
+                        correctText.toLowerCase().startsWith(`${keyText.toLowerCase()}.`));
+                    return (
+                      <>
+                        {keyText && !hasOptionPrefix ? `${keyText}. ` : ''}
+                        {currentQ.correctWord}
+                      </>
+                    );
+                  })()}
                 </p>
               </div>
 

@@ -1,4 +1,20 @@
-﻿[
+[
+  {
+    "id": "SSA_20",
+    "word": "Câu 20: What is one major difference between high school and college...",
+    "question": "What is one major difference between high school and college learning?",
+    "options": [
+      "A. College instructors monitor students' progress more closely",
+      "B. College requires greater student responsibility and self-advocacy",
+      "C. College courses require fewer assessments but much more difficult",
+      "D. College learning focuses less on independent work"
+    ],
+    "answer": "B",
+    "correctWord": "B. College requires greater student responsibility and self-advocacy",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
   {
     "id": "SSA_23",
     "word": "Câu 23: Which skill is NOT explicitly included in digital literacy a...",
@@ -16,17 +32,17 @@
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_35",
-    "word": "Câu 35: Which practice best demonstrates responsible use of informat...",
-    "question": "Which practice best demonstrates responsible use of information?",
+    "id": "SSA_26",
+    "word": "Câu 26: Which of the following best describes \"college culture\"?",
+    "question": "Which of the following best describes \"college culture\"?",
     "options": [
-      "A. Copying text when sources are cited without any form of paraphrasing",
-      "B. Paraphrasing without attribution",
-      "C. Integrating sources while acknowledging original authors",
-      "D. Using only one strong source"
+      "A. A fixed set of rules identical across all academic institutions",
+      "B. A system focused only on academic performance and science of knowledge",
+      "C. Shared expectations, language, and norms within higher education",
+      "D. A social environment unrelated to learning"
     ],
     "answer": "C",
-    "correctWord": "C. Integrating sources while acknowledging original authors",
+    "correctWord": "C. Shared expectations, language, and norms within higher education",
     "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
@@ -64,65 +80,113 @@
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_58",
-    "word": "Câu 58: Why is transparency in AI systems important?",
-    "question": "Why is transparency in AI systems important?",
+    "id": "SSA_63",
+    "word": "Câu 63: According to the American Library Association (2011), digita...",
+    "question": "According to the American Library Association (2011), digital literacy primarily refers to the ability to:",
     "options": [
-      "A. It increases software profits",
-      "B. It allows users to modify algorithms directly",
-      "C. It enables accountability and trust",
-      "D. It eliminates the need for regulation"
+      "A. Program artificial intelligence systems to get the most productive information system",
+      "B. Use information and communication technologies to find, evaluate, create, and communicate information",
+      "C. Detect AI-generated content",
+      "D. Replace human judgment with algorithms"
+    ],
+    "answer": "B",
+    "correctWord": "B. Use information and communication technologies to find, evaluate, create, and communicate information",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_66",
+    "word": "Câu 66: A student feels overwhelmed during their first semester and ...",
+    "question": "A student feels overwhelmed during their first semester and avoids contacting professors. Based on Chapter 1, what is the best recommended action?",
+    "options": [
+      "A. Focus only on independent study",
+      "B. Wait until grades are released",
+      "C. Seek support from faculty, advisors, and campus resources",
+      "D. Reduce course load immediately"
     ],
     "answer": "C",
-    "correctWord": "C. It enables accountability and trust",
+    "correctWord": "C. Seek support from faculty, advisors, and campus resources",
     "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_60",
-    "word": "Câu 60: Why should we review outcomes after implementing a solution?",
-    "question": "Why should we review outcomes after implementing a solution?",
+    "id": "SSA_79",
+    "word": "Câu 79: Digital literacy is described as important because it:",
+    "question": "Digital literacy is described as important because it:",
     "options": [
-      "A. To assign blame",
-      "B. To determine whether adjustments are needed",
-      "C. To prove effort was sufficient and possible",
-      "D. To avoid repeating the process"
+      "A. Is only useful for students in technology majors",
+      "B. Helps individuals critically evaluate online content",
+      "C. Removes the need for critical thinking and metacognition",
+      "D. Guarantees employment"
     ],
     "answer": "B",
-    "correctWord": "B. To determine whether adjustments are needed",
+    "correctWord": "B. Helps individuals critically evaluate online content",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_85",
-    "word": "Câu 85: One ethical concern about using AI as a grading tool is that...",
-    "question": "One ethical concern about using AI as a grading tool is that it may:",
+    "id": "SSA_82",
+    "word": "Câu 82: Information literacy is defined as the ability to:",
+    "question": "Information literacy is defined as the ability to:",
     "options": [
-      "A. Improve consistency too much",
-      "B. Breach students' intellectual property by uploading their work to AI systems",
-      "C. Reduce grading speed",
-      "D. Require excessive faculty training"
+      "A. Memorize academic content efficiently",
+      "B. Locate, evaluate, and use information effectively",
+      "C. Rely on digital sources for research and study",
+      "D. Avoid biased information entirely and consistently"
     ],
     "answer": "B",
-    "correctWord": "B. Breach students' intellectual property by uploading their work to AI systems",
+    "correctWord": "B. Locate, evaluate, and use information effectively",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_96",
-    "word": "Câu 96: What is scheduling?",
-    "question": "What is scheduling?",
+    "id": "SSA_89",
+    "word": "Câu 89: Studying in college often requires students to:",
+    "question": "Studying in college often requires students to:",
     "options": [
-      "A. Ignoring time",
-      "B. Planning activities",
-      "C. Avoiding tasks",
-      "D. Doing tasks randomly without any structure or order"
+      "A. Study only before exams",
+      "B. Modify old habits to meet new academic demands",
+      "C. Depend on memorization alone",
+      "D. Avoid collaborative learning"
     ],
     "answer": "B",
-    "correctWord": "B. Planning activities",
+    "correctWord": "B. Modify old habits to meet new academic demands",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_99",
+    "word": "Câu 99: What is \"keyword searching\"?",
+    "question": "What is \"keyword searching\"?",
+    "options": [
+      "A. Writing essays",
+      "B. Reading books strategically",
+      "C. Using key terms",
+      "D. Copying text"
+    ],
+    "answer": "C",
+    "correctWord": "C. Using key terms",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_100",
+    "word": "Câu 100: What is information literacy?",
+    "question": "What is information literacy?",
+    "options": [
+      "A. Reading and present articles professionally",
+      "B. Evaluating information",
+      "C. Memorizing data",
+      "D. Copying content"
+    ],
+    "answer": "B",
+    "correctWord": "B. Evaluating information",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
@@ -160,166 +224,6 @@
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_114",
-    "word": "Câu 114: Mark Twain compared idea generation to:",
-    "question": "Mark Twain compared idea generation to:",
-    "options": [
-      "A. A journey",
-      "B. A kaleidoscope",
-      "C. A puzzle",
-      "D. A dream-making machine"
-    ],
-    "answer": "B",
-    "correctWord": "B. A kaleidoscope",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_115",
-    "word": "Câu 115: Tracking ideas enhances creativity because it:",
-    "question": "Tracking ideas enhances creativity because it:",
-    "options": [
-      "A. Eliminates imagination",
-      "B. Preserves inspiration",
-      "C. Avoids reflection and conclusion",
-      "D. Reduces novelty"
-    ],
-    "answer": "B",
-    "correctWord": "B. Preserves inspiration",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_121",
-    "word": "Câu 121: Which institutional response best aligns with the ethical ap...",
-    "question": "Which institutional response best aligns with the ethical approach advocated in the text?",
-    "options": [
-      "A. Developing clear AI usage policies and promoting transparency",
-      "B. Banning all AI tools immediately because AI will destroy students' independent thinking",
-      "C. Ignoring AI-related misconduct",
-      "D. Replacing instructors with AI graders"
-    ],
-    "answer": "A",
-    "correctWord": "A. Developing clear AI usage policies and promoting transparency",
-    "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_122",
-    "word": "Câu 122: Why are universities described as being \"in the process\" of ...",
-    "question": "Why are universities described as being \"in the process\" of developing AI policies?",
-    "options": [
-      "A. AI adoption is declining",
-      "B. AI is developing faster than ethical guidelines can be established",
-      "C. Faculty resistance has ended and AI become a popular tool accepted everywhere",
-      "D. Students no longer use AI"
-    ],
-    "answer": "B",
-    "correctWord": "B. AI is developing faster than ethical guidelines can be established",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_124",
-    "word": "Câu 124: Revisiting a resolved issue when conditions change is:",
-    "question": "Revisiting a resolved issue when conditions change is:",
-    "options": [
-      "A. Weakness",
-      "B. Critical awareness",
-      "C. Confusion",
-      "D. Creativity"
-    ],
-    "answer": "B",
-    "correctWord": "B. Critical awareness",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_125",
-    "word": "Câu 125: What is active listening?",
-    "question": "What is active listening?",
-    "options": [
-      "A. Hearing only",
-      "B. Engaging fully",
-      "C. Interrupting to clarify if needed",
-      "D. Ignoring speaker"
-    ],
-    "answer": "B",
-    "correctWord": "B. Engaging fully",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_130",
-    "word": "Câu 130: Assembly lines (in mass production) reduced inefficiency by:",
-    "question": "Assembly lines (in mass production) reduced inefficiency by:",
-    "options": [
-      "A. Eliminating thinking",
-      "B. Dividing labor",
-      "C. Increasing chaos",
-      "D. Slowing production"
-    ],
-    "answer": "B",
-    "correctWord": "B. Dividing labor",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_139",
-    "word": "Câu 139: What is paraphrasing?",
-    "question": "What is paraphrasing?",
-    "options": [
-      "A. Copying text",
-      "B. Rewriting ideas",
-      "C. Quoting directly",
-      "D. Ignoring source"
-    ],
-    "answer": "B",
-    "correctWord": "B. Rewriting ideas",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_141",
-    "word": "Câu 141: Why should we review outcomes after implementing a solution?",
-    "question": "Why should we review outcomes after implementing a solution?",
-    "options": [
-      "A. To assign blame",
-      "B. To determine whether adjustments are needed",
-      "C. To prove effort was sufficient and possible",
-      "D. To avoid repeating the process"
-    ],
-    "answer": "B",
-    "correctWord": "B. To determine whether adjustments are needed",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_142",
-    "word": "Câu 142: Why is it important to define the problem accurately?",
-    "question": "Why is it important to define the problem accurately?",
-    "options": [
-      "A. It limits the number of possible solutions and reduces cost accordingly",
-      "B. Misidentified problems often lead to ineffective solutions",
-      "C. It saves time and energy during implementation",
-      "D. It reduces the need for evaluation"
-    ],
-    "answer": "B",
-    "correctWord": "B. Misidentified problems often lead to ineffective solutions",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
     "id": "SSA_148",
     "word": "Câu 148: The book suggests digital literacy programs should include t...",
     "question": "The book suggests digital literacy programs should include training on:",
@@ -352,97 +256,33 @@
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_157",
-    "word": "Câu 157: Creativity often combines:",
-    "question": "Creativity often combines:",
+    "id": "SSA_176",
+    "word": "Câu 176: What is the primary role of a rubric in assignments?",
+    "question": "What is the primary role of a rubric in assignments?",
     "options": [
-      "A. Only new ideas",
-      "B. Old ideas in new ways",
-      "C. Unrelated facts and information",
-      "D. Strict repetition"
+      "A. To limit creativity",
+      "B. To replace instructor's guideline and comments",
+      "C. To explain grading criteria clearly",
+      "D. To rank students"
+    ],
+    "answer": "C",
+    "correctWord": "C. To explain grading criteria clearly",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_190",
+    "word": "Câu 190: In the SIFT method used to evaluate the accuracy of informat...",
+    "question": "In the SIFT method used to evaluate the accuracy of information on the internet, what does the letter \"I\" stand for?",
+    "options": [
+      "A. Identify the initial author.",
+      "B. Investigate the source.",
+      "C. Imitate the main claim.",
+      "D. Inform the general public"
     ],
     "answer": "B",
-    "correctWord": "B. Old ideas in new ways",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_160",
-    "word": "Câu 160: Creativity improves thinking skills by:",
-    "question": "Creativity improves thinking skills by:",
-    "options": [
-      "A. Limiting scope",
-      "B. Narrowing vision",
-      "C. Expanding possibilities",
-      "D. Avoiding challenge"
-    ],
-    "answer": "C",
-    "correctWord": "C. Expanding possibilities",
-    "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_161",
-    "word": "Câu 161: Which learner behavior best reflects metacognitive awareness...",
-    "question": "Which learner behavior best reflects metacognitive awareness?",
-    "options": [
-      "A. Completing tasks quickly",
-      "B. Following instructions exactly",
-      "C. Reflecting on what strategies worked or failed",
-      "D. Memorizing lecture slides"
-    ],
-    "answer": "C",
-    "correctWord": "C. Reflecting on what strategies worked or failed",
-    "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_170",
-    "word": "Câu 170: When planning travel during uncertainty, you should:",
-    "question": "When planning travel during uncertainty, you should:",
-    "options": [
-      "A. Ignore risk",
-      "B. Assume success",
-      "C. Prepare backup plans",
-      "D. Avoid thinking"
-    ],
-    "answer": "C",
-    "correctWord": "C. Prepare backup plans",
-    "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_172",
-    "word": "Câu 172: Looking at something \"with a different lens\" means:",
-    "question": "Looking at something \"with a different lens\" means:",
-    "options": [
-      "A. Reframing perspective",
-      "B. Criticizing it",
-      "C. Ignoring details",
-      "D. Avoiding structure"
-    ],
-    "answer": "A",
-    "correctWord": "A. Reframing perspective",
-    "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_196",
-    "word": "Câu 196: What is the potential downside of creating overly complex mn...",
-    "question": "What is the potential downside of creating overly complex mnemonics?",
-    "options": [
-      "A. They are too easy to remember and thus boring.",
-      "B. The reminder itself can become more difficult to remember than the information you are trying to relate it to",
-      "C. They only work for math problems.",
-      "D. Instructors generally forbid their use during exams."
-    ],
-    "answer": "B",
-    "correctWord": "B. The reminder itself can become more difficult to remember than the information you are trying to relate it to",
+    "correctWord": "B. Investigate the source.",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
@@ -496,161 +336,113 @@
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_216",
-    "word": "Câu 216: What is the 'simplest way' to manage time according to the t...",
-    "question": "What is the 'simplest way' to manage time according to the text?",
+    "id": "SSA_234",
+    "word": "Câu 234: How can a student most effectively utilize a grading rubric ...",
+    "question": "How can a student most effectively utilize a grading rubric to improve their assignment before submitting the final version to their online instructor?",
     "options": [
-      "A. Use a digital calendar with automated reminders",
-      "B. Multitask by doing several assignments at once",
-      "C. Accurately plan how much time a task will take and set aside that amount of time",
-      "D. Prioritize tasks based on which are the most enjoyable"
+      "A. The student should completely ignore the rubric until after receiving the final grade, using it only to argue for additional points if the instructor made a mistake",
+      "B. The student should put themselves in the place of the instructor and grade their own drafted assignment according to the rubric criteria to identify missing elements",
+      "C. The student should copy the exact phrasing found within the highest scoring column of the rubric and paste it directly into their assignment to guarantee top marks",
+      "D. The student should only read the rubric after finishing the entire writing process to avoid feeling overwhelmed or restricted by the instructor's specific guidelines"
+    ],
+    "answer": "B",
+    "correctWord": "B. The student should put themselves in the place of the instructor and grade their own drafted assignment according to the rubric criteria to identify missing elements",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_246",
+    "word": "Câu 246: When approaching a scholarly journal article for a research ...",
+    "question": "When approaching a scholarly journal article for a research project, what is the recommended first step to determine if the article is relevant to your work?",
+    "options": [
+      "A. You should immediately read the discussion section in its entirety, as this section contains the most detailed and comprehensive explanation of the research findings",
+      "B. You should carefully review the literature review section to gather historical background information and find older reference materials related to your specific topic",
+      "C. You should begin by reading the abstract and the provided keywords to quickly decide if the subject matter directly aligns with your current research project's goals",
+      "D. You should focus primarily on the methodology section to understand exactly how the researchers gathered their data and determine if their statistical analysis is flawed"
     ],
     "answer": "C",
-    "correctWord": "C. Accurately plan how much time a task will take and set aside that amount of time",
+    "correctWord": "C. You should begin by reading the abstract and the provided keywords to quickly decide if the subject matter directly aligns with your current research project's goals",
     "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_221",
-    "word": "Câu 221: What should a student do with their notes immediately after ...",
-    "question": "What should a student do with their notes immediately after a class session?",
+    "id": "SSA_269",
+    "word": "Câu 269: According to the text, what plays a central role in developi...",
+    "question": "According to the text, what plays a central role in developing an effective identity as an online learner?",
     "options": [
-      "A. Put them in a folder and do not look at them until the midterm",
-      "B. Review and rewrite them, adding in any missing details or clarifications",
-      "C. Type them out word-for-word to ensure they are neat",
-      "D. Share them immediately with a classmate who missed the lecture"
+      "A. Time management skills",
+      "B. Information management",
+      "C. Social networking",
+      "D. Memorization techniques"
     ],
     "answer": "B",
-    "correctWord": "B. Review and rewrite them, adding in any missing details or clarifications",
+    "correctWord": "B. Information management",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_228",
-    "word": "Câu 228: How does annotating graphics differ from annotating text?",
-    "question": "How does annotating graphics differ from annotating text?",
+    "id": "SSA_271",
+    "word": "Câu 271: Why might online learners experience information overload?",
+    "question": "Why might online learners experience information overload?",
     "options": [
-      "A. Graphics do not need any annotations.",
-      "B. Deciphering graphics takes time, so you might want to create a copy before annotating to avoid making the information messy.",
-      "C. Graphics should only be highlighted in yellow.",
-      "D. Graphics should be memorized instead of annotated."
+      "A. Too few digital resources are available",
+      "B. The large volume of readings and abundance of digital resources",
+      "C. Lack of internet connection",
+      "D. Limited course materials provided by instructors"
     ],
     "answer": "B",
-    "correctWord": "B. Deciphering graphics takes time, so you might want to create a copy before annotating to avoid making the information messy.",
+    "correctWord": "B. The large volume of readings and abundance of digital resources",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_231",
-    "word": "Câu 231: How can 15 to 20 minutes of 'waiting time' be repurposed eff...",
-    "question": "How can 15 to 20 minutes of 'waiting time' be repurposed effectively?",
+    "id": "SSA_272",
+    "word": "Câu 272: In online learning, the role of the instructor is best descr...",
+    "question": "In online learning, the role of the instructor is best described as:",
     "options": [
-      "A. By being organized enough to complete short tasks or review notes during that brief period.",
-      "B. By taking a quick nap to catch up on sleep.",
-      "C. By scrolling social media to relax the brain.",
-      "D. By finishing an entire research paper."
-    ],
-    "answer": "A",
-    "correctWord": "A. By being organized enough to complete short tasks or review notes during that brief period.",
-    "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_232",
-    "word": "Câu 232: How much can on-campus housing and meals add to the annual c...",
-    "question": "How much can on-campus housing and meals add to the annual cost of college?",
-    "options": [
-      "A. The exact cost is not stated, but the text recommends living at home (if possible) to save a significant amount of money.",
-      "B. It is always cheaper than living at home.",
-      "C. An extra $50,000 per year.",
-      "D. Universities do not charge for room and board."
-    ],
-    "answer": "A",
-    "correctWord": "A. The exact cost is not stated, but the text recommends living at home (if possible) to save a significant amount of money.",
-    "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_233",
-    "word": "Câu 233: How do supporters of generative AI justify the use of copyri...",
-    "question": "How do supporters of generative AI justify the use of copyrighted works in training data under the \"fair use doctrine\"?",
-    "options": [
-      "A. They argue that AI algorithms completely destroy the original market value of the copyrighted works, forcing the creation of entirely new markets",
-      "B. They claim the use is \"non-consumptive\" because the tool learns syntax and context without reproducing the central elements of the original work",
-      "C. They state that the original creators automatically forfeit their intellectual property rights once their works are uploaded to public internet servers",
-      "D. They emphasize that the developers are utilizing the copyrighted materials exclusively for non-profit, government-sponsored educational programs"
+      "A. The central figure who determines all content and direction",
+      "B. A guide who directs students toward learning experiences aligned with their goals",
+      "C. The person solely responsible for grading",
+      "D. Someone who replaces peer support entirely"
     ],
     "answer": "B",
-    "correctWord": "B. They claim the use is \"non-consumptive\" because the tool learns syntax and context without reproducing the central elements of the original work",
+    "correctWord": "B. A guide who directs students toward learning experiences aligned with their goals",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_235",
-    "word": "Câu 235: Why is 'Evaluating' a necessary step in the financial planni...",
-    "question": "Why is 'Evaluating' a necessary step in the financial planning process?",
+    "id": "SSA_299",
+    "word": "Câu 299: According to the text, building an effective relationship wi...",
+    "question": "According to the text, building an effective relationship with instructors primarily supports:",
     "options": [
-      "A. To judge other people's spending habits.",
-      "B. To assess your current financial situation (e.g., income, expenses) before making a plan.",
-      "C. To calculate bank interest rates.",
-      "D. To decide which bank to choose."
+      "A. Avoiding all course assignments",
+      "B. Success in an online learning environment",
+      "C. Reducing the need for feedback",
+      "D. Limiting communication to email only"
     ],
     "answer": "B",
-    "correctWord": "B. To assess your current financial situation (e.g., income, expenses) before making a plan.",
+    "correctWord": "B. Success in an online learning environment",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_270",
-    "word": "Câu 270: Which of the following is NOT mentioned as a key benefit of ...",
-    "question": "Which of the following is NOT mentioned as a key benefit of using an online notebook like OneNote or Evernote?",
+    "id": "SSA_300",
+    "word": "Câu 300: Why is it important to understand the purpose behind learnin...",
+    "question": "Why is it important to understand the purpose behind learning activities designed by the instructor?",
     "options": [
-      "A. Synchronize notes across multiple devices",
-      "B. Clip and save relevant information from web sources",
-      "C. Automatically grade assignments",
-      "D. Store PDFs and course documents for long-term access"
-    ],
-    "answer": "C",
-    "correctWord": "C. Automatically grade assignments",
-    "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_292",
-    "word": "Câu 292: Positive interdependence means that team members believe:",
-    "question": "Positive interdependence means that team members believe:",
-    "options": [
-      "A. Individual success is possible without group success",
-      "B. They are linked together in a shared outcome; success is mutual",
-      "C. Only the leader is responsible for results",
-      "D. Competition among members drives performance"
+      "A. To skip unnecessary readings",
+      "B. To increase motivation, improve focus, and stay aligned with course expectations",
+      "C. To memorize content faster",
+      "D. To avoid participating in discussions"
     ],
     "answer": "B",
-    "correctWord": "B. They are linked together in a shared outcome; success is mutual",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_293",
-    "word": "Câu 293: What does \"group processing\" involve at the end of a working...",
-    "question": "What does \"group processing\" involve at the end of a working period?",
-    "options": [
-      "A. Ignoring past performance",
-      "B. Evaluating the group's functioning and identifying improvements",
-      "C. Assigning blame to individuals",
-      "D. Focusing only on final grades"
-    ],
-    "answer": "B",
-    "correctWord": "B. Evaluating the group's functioning and identifying improvements",
+    "correctWord": "B. To increase motivation, improve focus, and stay aligned with course expectations",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
@@ -672,6 +464,22 @@
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
+    "id": "SSA_304",
+    "word": "Câu 304: In an online course, the instructor's \"teaching presence\" pr...",
+    "question": "In an online course, the instructor's \"teaching presence\" primarily involves:",
+    "options": [
+      "A. Avoiding all student questions",
+      "B. Designing meaningful learning experiences and supporting student engagement",
+      "C. Letting students design the course structure",
+      "D. Focusing only on final exams"
+    ],
+    "answer": "B",
+    "correctWord": "B. Designing meaningful learning experiences and supporting student engagement",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
     "id": "SSA_305",
     "word": "Câu 305: Which role of the online instructor involves guiding student...",
     "question": "Which role of the online instructor involves guiding students by answering questions and challenging assumptions?",
@@ -684,6 +492,22 @@
     "answer": "C",
     "correctWord": "C. Director",
     "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_306",
+    "word": "Câu 306: In the \"Designer\" role, instructors primarily:",
+    "question": "In the \"Designer\" role, instructors primarily:",
+    "options": [
+      "A. Ignore course objectives",
+      "B. Design the course structure and guide students to relevant, accurate learning resources",
+      "C. Only grade assignments",
+      "D. Avoid selecting readings"
+    ],
+    "answer": "B",
+    "correctWord": "B. Design the course structure and guide students to relevant, accurate learning resources",
+    "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
@@ -736,6 +560,38 @@
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
+    "id": "SSA_311",
+    "word": "Câu 311: The text emphasizes that effective communication with instru...",
+    "question": "The text emphasizes that effective communication with instructors helps students:",
+    "options": [
+      "A. Avoid learning the content",
+      "B. Fully benefit from instructional support throughout the learning process",
+      "C. Reduce the amount of work required",
+      "D. Focus only on grades"
+    ],
+    "answer": "B",
+    "correctWord": "B. Fully benefit from instructional support throughout the learning process",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_312",
+    "word": "Câu 312: In the Community of Inquiry model mentioned in Part 3, the i...",
+    "question": "In the Community of Inquiry model mentioned in Part 3, the instructor's role supports:",
+    "options": [
+      "A. Passive learning only",
+      "B. Student engagement and the active role of learners in the environment",
+      "C. Elimination of all assignments",
+      "D. Instructor-centered lectures exclusively"
+    ],
+    "answer": "B",
+    "correctWord": "B. Student engagement and the active role of learners in the environment",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
     "id": "SSA_313",
     "word": "Câu 313: Each course component in an online environment, according to...",
     "question": "Each course component in an online environment, according to the instructor's Facilitator role, is chosen:",
@@ -752,33 +608,81 @@
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_324",
-    "word": "Câu 324: When creating a daily to-do list, which three key questions ...",
-    "question": "When creating a daily to-do list, which three key questions should be considered for each task?",
+    "id": "SSA_314",
+    "word": "Câu 314: Why is flexibility in online courses particularly important ...",
+    "question": "Why is flexibility in online courses particularly important for many learners?",
     "options": [
-      "A. Who, what, where",
-      "B. When to complete, how much time required, is it a priority",
-      "C. Why, how, if",
-      "D. Cost, location, people involved"
+      "A. It eliminates the need for any schedule",
+      "B. It allows balancing work, family, or other commitments while studying",
+      "C. It reduces the total workload automatically",
+      "D. It requires less effort in planning"
     ],
     "answer": "B",
-    "correctWord": "B. When to complete, how much time required, is it a priority",
+    "correctWord": "B. It allows balancing work, family, or other commitments while studying",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
-    "id": "SSA_327",
-    "word": "Câu 327: One key benefit of an online calendar (e.g., Google Calendar...",
-    "question": "One key benefit of an online calendar (e.g., Google Calendar) mentioned in the text is:",
+    "id": "SSA_335",
+    "word": "Câu 335: ePortfolios emphasize reflection on:",
+    "question": "ePortfolios emphasize reflection on:",
     "options": [
-      "A. It cannot be accessed on multiple devices",
-      "B. It integrates tasks and commitments into a single view and facilitates sharing events",
-      "C. It only handles small tasks well",
-      "D. It requires payment for basic use"
+      "A. Only the final product or grade",
+      "B. The learning process rather than focusing solely on final products",
+      "C. Technical tool usage exclusively",
+      "D. Competition with other students"
     ],
     "answer": "B",
-    "correctWord": "B. It integrates tasks and commitments into a single view and facilitates sharing events",
+    "correctWord": "B. The learning process rather than focusing solely on final products",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_336",
+    "word": "Câu 336: Which of the following is a key benefit of maintaining an eP...",
+    "question": "Which of the following is a key benefit of maintaining an ePortfolio?",
+    "options": [
+      "A. It replaces the need for any course assignments",
+      "B. It provides documented evidence of learning for future study programs or employment",
+      "C. It focuses only on weekly grades",
+      "D. It eliminates the need for reflection"
+    ],
+    "answer": "B",
+    "correctWord": "B. It provides documented evidence of learning for future study programs or employment",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_337",
+    "word": "Câu 337: Commonly mentioned tools for creating ePortfolios in the tex...",
+    "question": "Commonly mentioned tools for creating ePortfolios in the text are:",
+    "options": [
+      "A. Microsoft Word and Excel",
+      "B. Mahara and WordPress",
+      "C. Email and forums only",
+      "D. Paper notebooks"
+    ],
+    "answer": "B",
+    "correctWord": "B. Mahara and WordPress",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_343",
+    "word": "Câu 343: According to the text, what should be done immediately upon ...",
+    "question": "According to the text, what should be done immediately upon receiving an assignment?",
+    "options": [
+      "A. Start writing without reading it fully",
+      "B. Read the assignment carefully right away",
+      "C. Wait until the deadline approaches",
+      "D. Ask classmates for the requirements"
+    ],
+    "answer": "B",
+    "correctWord": "B. Read the assignment carefully right away",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
@@ -848,6 +752,70 @@
     "topic": "Kỹ Năng Học Đại Học Chung"
   },
   {
+    "id": "SSA_348",
+    "word": "Câu 348: A rubric is best defined as:",
+    "question": "A rubric is best defined as:",
+    "options": [
+      "A. A list of optional suggestions for the assignment",
+      "B. An assessment tool outlining how the work will be graded and the criteria for success",
+      "C. The final grade sheet from the instructor",
+      "D. A template for formatting the paper"
+    ],
+    "answer": "B",
+    "correctWord": "B. An assessment tool outlining how the work will be graded and the criteria for success",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_349",
+    "word": "Câu 349: When should the rubric be reviewed for the first time accord...",
+    "question": "When should the rubric be reviewed for the first time according to the text?",
+    "options": [
+      "A. Only after submitting the assignment",
+      "B. Carefully before beginning the assignment",
+      "C. During the final proofreading stage",
+      "D. After receiving the graded feedback"
+    ],
+    "answer": "B",
+    "correctWord": "B. Carefully before beginning the assignment",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_350",
+    "word": "Câu 350: After completing a draft, the rubric should primarily be use...",
+    "question": "After completing a draft, the rubric should primarily be used for:",
+    "options": [
+      "A. Ignoring minor issues",
+      "B. Self-evaluation by grading the work against each criterion and revising weak areas",
+      "C. Sharing with classmates only",
+      "D. Calculating the expected grade without changes"
+    ],
+    "answer": "B",
+    "correctWord": "B. Self-evaluation by grading the work against each criterion and revising weak areas",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
+    "id": "SSA_351",
+    "word": "Câu 351: One major benefit of regularly using a rubric for self-asses...",
+    "question": "One major benefit of regularly using a rubric for self-assessment is that it helps:",
+    "options": [
+      "A. Avoid all instructor feedback",
+      "B. Develop accurate self-assessment skills and align self-evaluation closer to instructor expectations over time",
+      "C. Reduce the need to revise work",
+      "D. Focus only on final products"
+    ],
+    "answer": "B",
+    "correctWord": "B. Develop accurate self-assessment skills and align self-evaluation closer to instructor expectations over time",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Kỹ Năng Học Đại Học Chung"
+  },
+  {
     "id": "SSA_352",
     "word": "Câu 352: When breaking down a large assignment (e.g., a research pape...",
     "question": "When breaking down a large assignment (e.g., a research paper), each step should be:",
@@ -876,38 +844,6 @@
     "answer": "D",
     "correctWord": "D. Waiting for classmates to finish first",
     "explanation": "Đáp án: D.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_361",
-    "word": "Câu 361: In Hypothes.is, annotations are public by default, but users...",
-    "question": "In Hypothes.is, annotations are public by default, but users can control visibility by:",
-    "options": [
-      "A. Deleting them after use",
-      "B. Creating private groups for collaborative or personal notes",
-      "C. Making all annotations invisible",
-      "D. Avoiding highlighting altogether"
-    ],
-    "answer": "B",
-    "correctWord": "B. Creating private groups for collaborative or personal notes",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Kỹ Năng Học Đại Học Chung"
-  },
-  {
-    "id": "SSA_362",
-    "word": "Câu 362: When highlighting in online texts, the text advises to avoid...",
-    "question": "When highlighting in online texts, the text advises to avoid:",
-    "options": [
-      "A. Highlighting any key information",
-      "B. Over-highlighting; limit to essential content only",
-      "C. Using annotations alongside highlights",
-      "D. Collaborating on highlights"
-    ],
-    "answer": "B",
-    "correctWord": "B. Over-highlighting; limit to essential content only",
-    "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Kỹ Năng Học Đại Học Chung"
   }

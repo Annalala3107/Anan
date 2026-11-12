@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "id": "CSI_1",
     "word": "Câu 1: What is the binary equivalent of (4C)16 ?",
@@ -64,22 +64,6 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_5",
-    "word": "Câu 5: What is the maximum number of children a node in a binary tr...",
-    "question": "What is the maximum number of children a node in a binary tree can have?",
-    "options": [
-      "A. 1",
-      "B. 2",
-      "C. 3",
-      "D. Any number of children"
-    ],
-    "answer": "B",
-    "correctWord": "B. 2",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
     "id": "CSI_6",
     "word": "Câu 6: What is the octal representation of the binary number 11010?",
     "question": "What is the octal representation of the binary number 11010?",
@@ -92,6 +76,22 @@
     "answer": "B hoặc C",
     "correctWord": "B. 32",
     "explanation": "Đáp án: B hoặc C. kết quả là 32; đề bị trùng hai đáp án",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
+  },
+  {
+    "id": "CSI_7",
+    "word": "Câu 7: Which of the following representations is erroneous?",
+    "question": "Which of the following representations is erroneous?",
+    "options": [
+      "A. (10111)2",
+      "B. (349)8",
+      "C. (3AB)16",
+      "D. 2656"
+    ],
+    "answer": "B",
+    "correctWord": "B. (349)8",
+    "explanation": "Đáp án: B. hệ bát phân không có chữ số 9",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
@@ -156,22 +156,6 @@
     "answer": "A",
     "correctWord": "A. 705,600 bits",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_20",
-    "word": "Câu 20: Binary search can be appropriately performed on which of the...",
-    "question": "Binary search can be appropriately performed on which of the following list?",
-    "options": [
-      "A. [-35, -15, -10, 1, 5, 7, 12, 50]",
-      "B. [-60, 37, 42, -63, 59, 53, -78, 57]",
-      "C. [3, 1, 2]",
-      "D. [1, 2, 3, 4, 5, 6, 7, 9, 0]"
-    ],
-    "answer": "A",
-    "correctWord": "A. [-35, -15, -10, 1, 5, 7, 12, 50]",
-    "explanation": "Đáp án: A. danh sách đã sắp xếp",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
@@ -321,6 +305,22 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
+    "id": "CSI_34",
+    "word": "Câu 34: In the True-Color (RGB) model for encoding pixels in digital...",
+    "question": "In the True-Color (RGB) model for encoding pixels in digital image storage, where the color Red is represented by the tuple (255, 0, 0), determine the RGB encoding for the color White.",
+    "options": [
+      "A. (0, 0, 0)",
+      "B. (255, 255, 255)",
+      "C. (0, 255, 0)",
+      "D. (0, 0, 255)"
+    ],
+    "answer": "B",
+    "correctWord": "B. (255, 255, 255)",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
+  },
+  {
     "id": "CSI_35",
     "word": "Câu 35: If you want to store the decimal number 15 in an 8-bit unsig...",
     "question": "If you want to store the decimal number 15 in an 8-bit unsigned integer, what is the binary representation?",
@@ -337,17 +337,17 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_42",
-    "word": "Câu 42: Given a binary tree has 3 levels (including the root), how m...",
-    "question": "Given a binary tree has 3 levels (including the root), how many maximum nodes can it have?",
+    "id": "CSI_36",
+    "word": "Câu 36: Given a program declares 5 integer variables (each 4 bytes) ...",
+    "question": "Given a program declares 5 integer variables (each 4 bytes) and 3 float variables (each 4 bytes), how much total memory is required in bytes?",
     "options": [
-      "A. 7",
-      "B. 4",
-      "C. 8",
-      "D. 10"
+      "A. 32",
+      "B. 12",
+      "C. 20",
+      "D. 28"
     ],
     "answer": "A",
-    "correctWord": "A. 7",
+    "correctWord": "A. 32",
     "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
@@ -401,6 +401,22 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
+    "id": "CSI_49",
+    "word": "Câu 49: In an 8-bit memory location we can only store an unsigned in...",
+    "question": "In an 8-bit memory location we can only store an unsigned integer between:",
+    "options": [
+      "A. 1 and 255",
+      "B. 1 and 256",
+      "C. 0 and 255",
+      "D. 0 and 256"
+    ],
+    "answer": "C",
+    "correctWord": "C. 0 and 255",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
+  },
+  {
     "id": "CSI_50",
     "word": "Câu 50: Convert the decimal number 124.02 to its binary equivalent. ...",
     "question": "Convert the decimal number 124.02 to its binary equivalent. Which of the following options is the closest approximation?",
@@ -417,22 +433,6 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_51",
-    "word": "Câu 51: Rewrite this IP address using binary notation: 119.10.2.8",
-    "question": "Rewrite this IP address using binary notation: 119.10.2.8",
-    "options": [
-      "A. 0111 0111 . 0000 1010 . 0000 0010 . 0000 1000",
-      "B. 0111 0110 . 0000 1010 . 0000 0010 . 0000 1000",
-      "C. 0111 0111 . 0000 1010 . 0000 0010 . 0000 0100",
-      "D. 0111 0111 . 10 . 0000 0010 . 0000 1000"
-    ],
-    "answer": "A",
-    "correctWord": "A. 0111 0111 . 0000 1010 . 0000 0010 . 0000 1000",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
     "id": "CSI_52",
     "word": "Câu 52: If the ASCII code for F (70) is 100 0110, then the ASCII cod...",
     "question": "If the ASCII code for F (70) is 100 0110, then the ASCII code for f (102) is",
@@ -444,38 +444,6 @@
     ],
     "answer": "A",
     "correctWord": "A. 110 0110",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_53",
-    "word": "Câu 53: Which of the following statements about binary search is tru...",
-    "question": "Which of the following statements about binary search is true?",
-    "options": [
-      "A. Binary search can be used on unsorted data",
-      "B. Binary search divides the search space into three parts",
-      "C. Binary search is faster than linear search for sorted data",
-      "D. Binary search has a time complexity of O(n)"
-    ],
-    "answer": "C",
-    "correctWord": "C. Binary search is faster than linear search for sorted data",
-    "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_56",
-    "word": "Câu 56: Which of the following statements is true regarding search a...",
-    "question": "Which of the following statements is true regarding search algorithms for a list of elements?",
-    "options": [
-      "A. Binary search is more efficient than sequential for large lists, but it requires the list to be sorted.",
-      "B. Binary search can be used on an unsorted list to improve search efficiency compared to sequential search.",
-      "C. Sequential search requires fewer comparisons than binary search in the worst case, regardless of whether the list is sorted or not.",
-      "D. Sequential search and binary search require the same number of comparisons in the worst case if the list is sorted."
-    ],
-    "answer": "A",
-    "correctWord": "A. Binary search is more efficient than sequential for large lists, but it requires the list to be sorted.",
     "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
@@ -609,22 +577,6 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_106",
-    "word": "Câu 106: What is the time complexity of finding the height of a binar...",
-    "question": "What is the time complexity of finding the height of a binary tree with n nodes?",
-    "options": [
-      "A. O(n)",
-      "B. O(log n)",
-      "C. O(n²)",
-      "D. O(n log n)"
-    ],
-    "answer": "A",
-    "correctWord": "A. O(n)",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
     "id": "CSI_107",
     "word": "Câu 107: What is the hexadecimal equivalent of the binary number (110...",
     "question": "What is the hexadecimal equivalent of the binary number (11011011)2?",
@@ -657,6 +609,22 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
+    "id": "CSI_113",
+    "word": "Câu 113: What are the two primary techniques for storing images in co...",
+    "question": "What are the two primary techniques for storing images in computers?",
+    "options": [
+      "A. Raster graphics and vector graphics",
+      "B. Raster graphics and animation",
+      "C. Vector graphics and text encoding",
+      "D. Image scanning and color depth"
+    ],
+    "answer": "A",
+    "correctWord": "A. Raster graphics and vector graphics",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
+  },
+  {
     "id": "CSI_123",
     "word": "Câu 123: Which is a unary operator?",
     "question": "Which is a unary operator?",
@@ -669,38 +637,6 @@
     "answer": "D",
     "correctWord": "D. NOT",
     "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_134",
-    "word": "Câu 134: Which type of computer language was exclusively used at the ...",
-    "question": "Which type of computer language was exclusively used at the very beginning of the computer age?",
-    "options": [
-      "A. High-level languages",
-      "B. Symbolic languages",
-      "C. Machine language using binary patterns",
-      "D. Object-oriented languages"
-    ],
-    "answer": "C",
-    "correctWord": "C. Machine language using binary patterns",
-    "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_137",
-    "word": "Câu 137: Which data structure uses the Last In, First Out (LIFO) prin...",
-    "question": "Which data structure uses the Last In, First Out (LIFO) principle?",
-    "options": [
-      "A. Queue",
-      "B. Stack",
-      "C. Linked List",
-      "D. Binary Tree"
-    ],
-    "answer": "B",
-    "correctWord": "B. Stack",
-    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
@@ -737,18 +673,18 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_162",
-    "word": "Câu 162: Which component of the CPU is responsible for performing ari...",
-    "question": "Which component of the CPU is responsible for performing arithmetic and logical operations?",
+    "id": "CSI_156",
+    "word": "Câu 156: Which file format is commonly used for storing vector images...",
+    "question": "Which file format is commonly used for storing vector images?",
     "options": [
-      "A. Control Unit",
-      "B. Memory Unit",
-      "C. Arithmetic Logic Unit (ALU)",
-      "D. Input/Output Unit"
+      "A. .jpg",
+      "B. .svg",
+      "C. .gif",
+      "D. .mp4"
     ],
-    "answer": "C",
-    "correctWord": "C. Arithmetic Logic Unit (ALU)",
-    "explanation": "Đáp án: C.",
+    "answer": "B",
+    "correctWord": "B. .svg",
+    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
@@ -785,83 +721,18 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_169",
-    "word": "Câu 169: A sorting algorithm where the list is divided into sorted an...",
-    "question": "A sorting algorithm where the list is divided into sorted and unsorted sublists, and the smallest element from the unsorted part is repeatedly swapped with the first element of the unsorted part is known as a:",
+    "id": "CSI_171",
+    "word": "Câu 171: According to operator precedence, which operation is perform...",
+    "question": "According to operator precedence, which operation is performed first in the expression (A OR B) AND C?",
     "options": [
-      "A. Bubble sort",
-      "B. Insertion sort",
-      "C. Selection sort",
-      "D. Binary sort"
-    ],
-    "answer": "C",
-    "correctWord": "C. Selection sort",
-    "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_184",
-    "word": "Câu 184: In a binary search tree (BST), where is the smallest element...",
-    "question": "In a binary search tree (BST), where is the smallest element located?",
-    "options": [
-      "A. Leftmost node",
-      "B. Root",
-      "C. Rightmost node",
-      "D. Complete binary tree",
-      "E. Any leaf node"
+      "A. OR, then AND",
+      "B. AND, then OR",
+      "C. Both at the same time",
+      "D. Depends on the hardware"
     ],
     "answer": "A",
-    "correctWord": "A. Leftmost node",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_194",
-    "word": "Câu 194: Which operation sequence on a binary tree corresponds to the...",
-    "question": "Which operation sequence on a binary tree corresponds to the postorder traversal pattern?",
-    "options": [
-      "A. Process Left subtree → Right subtree → Root",
-      "B. Process Root → Left subtree → Right subtree",
-      "C. Process Root → Right subtree → Left subtree",
-      "D. Process Right subtree → Root → Left subtree"
-    ],
-    "answer": "A",
-    "correctWord": "A. Process Left subtree → Right subtree → Root",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_195",
-    "word": "Câu 195: Which of the following traversal methods of a binary tree is...",
-    "question": "Which of the following traversal methods of a binary tree is used to get a sorted list of elements?",
-    "options": [
-      "A. Pre-order traversal",
-      "B. In-order traversal",
-      "C. Post-order traversal",
-      "D. Level-order traversal"
-    ],
-    "answer": "B",
-    "correctWord": "B. In-order traversal",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_196",
-    "word": "Câu 196: What is the main role of a compiler?",
-    "question": "What is the main role of a compiler?",
-    "options": [
-      "A. Translate source code into machine code",
-      "B. Optimize hardware performance",
-      "C. Translate binary code into assembly",
-      "D. Execute source code directly"
-    ],
-    "answer": "A",
-    "correctWord": "A. Translate source code into machine code",
-    "explanation": "Đáp án: A.",
+    "correctWord": "A. OR, then AND",
+    "explanation": "Đáp án: A. dấu ngoặc nên OR làm trước",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
@@ -930,50 +801,18 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_226",
-    "word": "Câu 226: What is the fundamental difference between machine language ...",
-    "question": "What is the fundamental difference between machine language and high-level languages regarding computer understanding?",
+    "id": "CSI_242",
+    "word": "Câu 242: What is the main benefit of using the .jpg (JPEG) format for...",
+    "question": "What is the main benefit of using the .jpg (JPEG) format for images?",
     "options": [
-      "A. Machine language uses symbols, while high-level languages use binary patterns",
-      "B. Machine language is directly understood by a computer, while high-level languages must be converted",
-      "C. Machine language is portable, while high-level languages are machine-dependent.",
-      "D. High-level languages are tedious to write, while machine language is easier."
-    ],
-    "answer": "B",
-    "correctWord": "B. Machine language is directly understood by a computer, while high-level languages must be converted",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_230",
-    "word": "Câu 230: What is the role and main function of the control unit withi...",
-    "question": "What is the role and main function of the control unit within the Central Processing Unit, and how does it manage and coordinate the execution of instructions?",
-    "options": [
-      "A. To perform arithmetic and logical operations.",
-      "B. To store data and program instructions.",
-      "C. Coordinate memory, ALU, and I/O operations.",
-      "D. To connect the CPU to external networks."
+      "A. Lossless compression",
+      "B. High-quality video storage",
+      "C. Lossy compression, which reduces file size",
+      "D. Support for animation"
     ],
     "answer": "C",
-    "correctWord": "C. Coordinate memory, ALU, and I/O operations.",
+    "correctWord": "C. Lossy compression, which reduces file size",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_244",
-    "word": "Câu 244: What is the primary difference between sequential search and...",
-    "question": "What is the primary difference between sequential search and binary search algorithms?",
-    "options": [
-      "A. Sequential search requires the data to be sorted in ascending order, while binary search can work on unsorted data as well",
-      "B. Binary search divides the search space into halves, while sequential search checks elements one by one",
-      "C. Sequential search exhibits greater efficiency and speed compared to binary search when applied to large datasets containing a significant number of elements",
-      "D. Binary search is a versatile algorithm that can be applied to various types of data structures, such as arrays, linked lists, and trees, while sequential search is specifically designed to work only with arrays"
-    ],
-    "answer": "B",
-    "correctWord": "B. Binary search divides the search space into halves, while sequential search checks elements one by one",
-    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
@@ -1010,50 +849,66 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_256",
-    "word": "Câu 256: What are the characteristics of a binary search tree (BST) i...",
-    "question": "What are the characteristics of a binary search tree (BST) in terms of data order?",
+    "id": "CSI_263",
+    "word": "Câu 263: Which of the following best describes a unary operation?",
+    "question": "Which of the following best describes a unary operation?",
     "options": [
-      "A. The data in the parent node is always larger than the data in the left child node and smaller than the data in the right child node",
-      "B. The data in the parent node is always smaller than the data in the left child node and larger than the data in the right child node",
-      "C. The data at the nodes does not have any order",
-      "D. The data in the left child node and right child node are always equal",
-      "E. None of the others"
-    ],
-    "answer": "A",
-    "correctWord": "A. The data in the parent node is always larger than the data in the left child node and smaller than the data in the right child node",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_257",
-    "word": "Câu 257: What describes the hierarchical model?",
-    "question": "What describes the hierarchical model?",
-    "options": [
-      "A. Data is organized as a binary tree and each entity can have several children",
-      "B. Data is organized as a binary tree and each entity have only one children",
-      "C. Data is organized as an inverted tree and each entity can have several children",
-      "D. Data is organized as an inverted tree and each entity have only one child"
+      "A. An operation involving multiple operands.",
+      "B. An operation that always results in zero.",
+      "C. An operation with a single operand.",
+      "D. An operation performed on two different data types."
     ],
     "answer": "C",
-    "correctWord": "C. Data is organized as an inverted tree and each entity can have several children",
+    "correctWord": "C. An operation with a single operand.",
     "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_268",
-    "word": "Câu 268: Which of the following is an application area for graphs?",
-    "question": "Which of the following is an application area for graphs?",
+    "id": "CSI_266",
+    "word": "Câu 266: Which of the following scenarios is most likely to require t...",
+    "question": "Which of the following scenarios is most likely to require the use of larger memory locations and other presentations due to the risk of truncation error?",
     "options": [
-      "A. Computer networks, where vertices represent nodes/hubs and edges represent routes.",
-      "B. Storing student records in a school.",
-      "C. Implementing stacks and queues.",
-      "D. Decimal to binary conversion."
+      "A. Performing calculations for a space mission",
+      "B. Calculating the total sales of a small business",
+      "C. Determining the average temperature of a city",
+      "D. Counting the number of students in a university."
     ],
     "answer": "A",
-    "correctWord": "A. Computer networks, where vertices represent nodes/hubs and edges represent routes.",
+    "correctWord": "A. Performing calculations for a space mission",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
+  },
+  {
+    "id": "CSI_278",
+    "word": "Câu 278: How does a computer system interpret a sequence of bits to r...",
+    "question": "How does a computer system interpret a sequence of bits to represent a symbol in a character encoding scheme?",
+    "options": [
+      "A. By following a predefined code table to determine the symbol",
+      "B. By mapping each bit to a corresponding word in a dictionary",
+      "C. By interpreting bits as colors in a display",
+      "D. By using random bit sequences to represent symbols",
+      "E. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. By following a predefined code table to determine the symbol",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
+  },
+  {
+    "id": "CSI_282",
+    "word": "Câu 282: How do vector graphics differ from raster graphics?",
+    "question": "How do vector graphics differ from raster graphics?",
+    "options": [
+      "A. Vector graphics store images as mathematical equations, while raster graphics store images as grids of pixels.",
+      "B. Raster graphics are faster to render than vector graphics.",
+      "C. Vector graphics are limited to black and white, while raster supports color.",
+      "D. Raster graphics are more scalable than vector graphics."
+    ],
+    "answer": "A",
+    "correctWord": "A. Vector graphics store images as mathematical equations, while raster graphics store images as grids of pixels.",
     "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
@@ -1107,22 +962,6 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_297",
-    "word": "Câu 297: In which scenario is a binary search algorithm ineffective?",
-    "question": "In which scenario is a binary search algorithm ineffective?",
-    "options": [
-      "A. When the data is sorted",
-      "B. When the data is unsorted",
-      "C. When the data is in an array",
-      "D. When the data is in a linked list"
-    ],
-    "answer": "B",
-    "correctWord": "B. When the data is unsorted",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
     "id": "CSI_306",
     "word": "Câu 306: In two’s complement representation, what is a key advantage ...",
     "question": "In two’s complement representation, what is a key advantage for arithmetic operations?",
@@ -1139,50 +978,18 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_308",
-    "word": "Câu 308: In a “binary file,” how is data typically interpreted by an ...",
-    "question": "In a “binary file,” how is data typically interpreted by an application program?",
+    "id": "CSI_316",
+    "word": "Câu 316: What do logic operations refer to in the context of computer...",
+    "question": "What do logic operations refer to in the context of computer data manipulation?",
     "options": [
-      "A. Always as individual characters.",
-      "B. As plain, human-readable text.",
-      "C. As a collection of data meaningful only if properly interpreted by the program (e.g., two bytes as one integer)",
-      "D. As a sorted list of alphanumeric symbols"
-    ],
-    "answer": "C",
-    "correctWord": "C. As a collection of data meaningful only if properly interpreted by the program (e.g., two bytes as one integer)",
-    "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_311",
-    "word": "Câu 311: The Arithmetic Logic Unit (ALU) in the von Neumann model is ...",
-    "question": "The Arithmetic Logic Unit (ALU) in the von Neumann model is primarily responsible for:",
-    "options": [
-      "A. Controlling the execution of a program",
-      "B. Performing arithmetic and logic operations",
-      "C. Managing input and output operations",
-      "D. Storing data and programs"
+      "A. Operations that change the data type of a bit pattern.",
+      "B. Operations that apply the same basic operation on individual bits of a pattern, or on two corresponding bits in two patterns.",
+      "C. Operations that physically move bit patterns between memory locations.",
+      "D. Operations that perform mathematical calculations on entire bit patterns as a whole."
     ],
     "answer": "B",
-    "correctWord": "B. Performing arithmetic and logic operations",
+    "correctWord": "B. Operations that apply the same basic operation on individual bits of a pattern, or on two corresponding bits in two patterns.",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
-  },
-  {
-    "id": "CSI_315",
-    "word": "Câu 315: Which statement best describes a binary tree according to th...",
-    "question": "Which statement best describes a binary tree according to the ADT definition?",
-    "options": [
-      "A. Each node has at most two subtrees, called left and right.",
-      "B. Every node must have exactly two children and each must be a prime number.",
-      "C. A binary tree is only used in graphical user interfaces for drawing.",
-      "D. Every leaf connects to every other node via hidden arcs."
-    ],
-    "answer": "A",
-    "correctWord": "A. Each node has at most two subtrees, called left and right.",
-    "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
@@ -1219,18 +1026,18 @@
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   },
   {
-    "id": "CSI_335",
-    "word": "Câu 335: When inserting a new element into a sorted array, what must ...",
-    "question": "When inserting a new element into a sorted array, what must be done to maintain the sorted order?",
+    "id": "CSI_336",
+    "word": "Câu 336: What is the purpose of encoding in digital audio?",
+    "question": "What is the purpose of encoding in digital audio?",
     "options": [
-      "A. Shift elements after the insertion point to create space",
-      "B. Shift all elements to the left to create space at the beginning",
-      "C. Replace the last element with the new element",
-      "D. Reorganize the array into a linked list structure"
+      "A. To improve the quality of the sound",
+      "B. To convert audio into a format suitable for storage or transmission",
+      "C. To increase the speed of audio playback",
+      "D. To reduce the number of channels used in the audio"
     ],
-    "answer": "A",
-    "correctWord": "A. Shift elements after the insertion point to create space",
-    "explanation": "Đáp án: A.",
+    "answer": "B",
+    "correctWord": "B. To convert audio into a format suitable for storage or transmission",
+    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Thống Số & Biểu Diễn Dữ Liệu"
   }

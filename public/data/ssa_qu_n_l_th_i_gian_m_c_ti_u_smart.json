@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "id": "SSA_2",
     "word": "Câu 2: What is one common reason students procrastinate?",
@@ -28,22 +28,6 @@
     "answer": "C",
     "correctWord": "C. Prioritization",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
-  },
-  {
-    "id": "SSA_16",
-    "word": "Câu 16: Critical thinkers should:",
-    "question": "Critical thinkers should:",
-    "options": [
-      "A. Accept everything",
-      "B. Question everything",
-      "C. Avoid research",
-      "D. Being smart in all situations"
-    ],
-    "answer": "B",
-    "correctWord": "B. Question everything",
-    "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
@@ -160,6 +144,38 @@
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
+    "id": "SSA_96",
+    "word": "Câu 96: What is scheduling?",
+    "question": "What is scheduling?",
+    "options": [
+      "A. Ignoring time",
+      "B. Planning activities",
+      "C. Avoiding tasks",
+      "D. Doing tasks randomly without any structure or order"
+    ],
+    "answer": "B",
+    "correctWord": "B. Planning activities",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "SSA_97",
+    "word": "Câu 97: What tool helps prioritize tasks?",
+    "question": "What tool helps prioritize tasks?",
+    "options": [
+      "A. Calendar only",
+      "B. Priority list",
+      "C. Social media",
+      "D. Email inbox"
+    ],
+    "answer": "B",
+    "correctWord": "B. Priority list",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
     "id": "SSA_98",
     "word": "Câu 98: A student spends hours on low-priority tasks. What is the is...",
     "question": "A student spends hours on low-priority tasks. What is the issue?",
@@ -208,6 +224,22 @@
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
+    "id": "SSA_133",
+    "word": "Câu 133: A student believes being constantly busy means they are mana...",
+    "question": "A student believes being constantly busy means they are managing time well. Based on Chapter 3, why is this assumption flawed?",
+    "options": [
+      "A. Being busy always reduces learning quality and knowledge retention",
+      "B. Productivity depends on purposeful prioritization, not just activity",
+      "C. Time management only applies to academic tasks",
+      "D. Busy students are more likely to procrastinate and ask for external support"
+    ],
+    "answer": "B",
+    "correctWord": "B. Productivity depends on purposeful prioritization, not just activity",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
     "id": "SSA_134",
     "word": "Câu 134: What is a planner used for?",
     "question": "What is a planner used for?",
@@ -235,54 +267,6 @@
     ],
     "answer": "B",
     "correctWord": "B. Delaying tasks",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
-  },
-  {
-    "id": "SSA_153",
-    "word": "Câu 153: Why is understanding why you are in college considered found...",
-    "question": "Why is understanding why you are in college considered foundational for success?",
-    "options": [
-      "A. It helps students choose easier and low-cost courses",
-      "B. It clarifies long-term goals and increases motivation",
-      "C. It allows students to reduce academic workload",
-      "D. It guarantees higher grades"
-    ],
-    "answer": "B",
-    "correctWord": "B. It clarifies long-term goals and increases motivation",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
-  },
-  {
-    "id": "SSA_181",
-    "word": "Câu 181: What is the first step in the five-step financial planning p...",
-    "question": "What is the first step in the five-step financial planning process?",
-    "options": [
-      "A. Monitor and Adjust the Plan",
-      "B. Implement the Plan",
-      "C. Develop Personal Goals",
-      "D. Write My Financial Plan"
-    ],
-    "answer": "C",
-    "correctWord": "C. Develop Personal Goals",
-    "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
-  },
-  {
-    "id": "SSA_182",
-    "word": "Câu 182: Which time management app uses boards to organize obligation...",
-    "question": "Which time management app uses boards to organize obligations and share them with collaborators?",
-    "options": [
-      "A. Toggl",
-      "B. Trello",
-      "C. Sticky Notes",
-      "D. Google Calendar"
-    ],
-    "answer": "B",
-    "correctWord": "B. Trello",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
@@ -336,34 +320,34 @@
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "SSA_206",
-    "word": "Câu 206: What is 'Monitoring' in the financial planning process?",
-    "question": "What is 'Monitoring' in the financial planning process?",
+    "id": "SSA_193",
+    "word": "Câu 193: What is the primary purpose of recapturing 'lost moments' in...",
+    "question": "What is the primary purpose of recapturing 'lost moments' in a schedule?",
     "options": [
-      "A. Continually tracking your income, spending, and progress toward your financial goals.",
-      "B. Watching the stock market daily.",
-      "C. Letting the bank manage all your money.",
-      "D. Setting a goal and never looking back."
+      "A. To increase the amount of time spent on social media",
+      "B. To find time for napping during the day",
+      "C. To repurpose that time for studying or completing productive tasks",
+      "D. To allow for more travel time between classes"
     ],
-    "answer": "A",
-    "correctWord": "A. Continually tracking your income, spending, and progress toward your financial goals.",
-    "explanation": "Đáp án: A.",
+    "answer": "C",
+    "correctWord": "C. To repurpose that time for studying or completing productive tasks",
+    "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "SSA_209",
-    "word": "Câu 209: What is the 'Occupational Outlook Handbook' used for?",
-    "question": "What is the 'Occupational Outlook Handbook' used for?",
+    "id": "SSA_210",
+    "word": "Câu 210: What is the risk of setting goals that are not truly your ow...",
+    "question": "What is the risk of setting goals that are not truly your own?",
     "options": [
-      "A. To find the easiest classes in college.",
-      "B. To research requirements for careers and identify fields with good job growth prospects.",
-      "C. To apply for financial aid.",
-      "D. To track your daily schedule."
+      "A. You will complete them too quickly.",
+      "B. You will be accused of plagiarism.",
+      "C. You will have very little motivation to achieve them because you don't actually care.",
+      "D. Your academic advisor will not approve them."
     ],
-    "answer": "B",
-    "correctWord": "B. To research requirements for careers and identify fields with good job growth prospects.",
-    "explanation": "Đáp án: B.",
+    "answer": "C",
+    "correctWord": "C. You will have very little motivation to achieve them because you don't actually care.",
+    "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
@@ -400,18 +384,18 @@
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "SSA_226",
-    "word": "Câu 226: How do academic advisors help with career exploration?",
-    "question": "How do academic advisors help with career exploration?",
+    "id": "SSA_216",
+    "word": "Câu 216: What is the 'simplest way' to manage time according to the t...",
+    "question": "What is the 'simplest way' to manage time according to the text?",
     "options": [
-      "A. They guarantee you a job right after graduation.",
-      "B. They help you set educational/career goals, choose a major, and connect you with career services.",
-      "C. They write your resume and cover letter for you.",
-      "D. They provide loans to pay for your tuition."
+      "A. Use a digital calendar with automated reminders",
+      "B. Multitask by doing several assignments at once",
+      "C. Accurately plan how much time a task will take and set aside that amount of time",
+      "D. Prioritize tasks based on which are the most enjoyable"
     ],
-    "answer": "B",
-    "correctWord": "B. They help you set educational/career goals, choose a major, and connect you with career services.",
-    "explanation": "Đáp án: B.",
+    "answer": "C",
+    "correctWord": "C. Accurately plan how much time a task will take and set aside that amount of time",
+    "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
@@ -432,17 +416,65 @@
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "SSA_230",
-    "word": "Câu 230: How can a balance sheet help a student in the future?",
-    "question": "How can a balance sheet help a student in the future?",
+    "id": "SSA_231",
+    "word": "Câu 231: How can 15 to 20 minutes of 'waiting time' be repurposed eff...",
+    "question": "How can 15 to 20 minutes of 'waiting time' be repurposed effectively?",
     "options": [
-      "A. It helps balance their class schedule.",
-      "B. It provides a comprehensive picture (\"snapshot\") of assets and liabilities, allowing them to track financial progress at a point in time.",
-      "C. It automatically pays bills.",
-      "D. It prevents students from getting into debt."
+      "A. By being organized enough to complete short tasks or review notes during that brief period.",
+      "B. By taking a quick nap to catch up on sleep.",
+      "C. By scrolling social media to relax the brain.",
+      "D. By finishing an entire research paper."
+    ],
+    "answer": "A",
+    "correctWord": "A. By being organized enough to complete short tasks or review notes during that brief period.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "SSA_237",
+    "word": "Câu 237: Why is it easy to forget why you set a long-term goal?",
+    "question": "Why is it easy to forget why you set a long-term goal?",
+    "options": [
+      "A. Because short-term memory erases long-term goals.",
+      "B. Because it is easy to become mired in the drudgery of current difficult tasks and forget the initial reason.",
+      "C. Because long-term goals are usually not SMART goals.",
+      "D. Because friends and family often distract you."
     ],
     "answer": "B",
-    "correctWord": "B. It provides a comprehensive picture (\"snapshot\") of assets and liabilities, allowing them to track financial progress at a point in time.",
+    "correctWord": "B. Because it is easy to become mired in the drudgery of current difficult tasks and forget the initial reason.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "SSA_238",
+    "word": "Câu 238: Why is 'pulling an all-nighter' considered a poor planning m...",
+    "question": "Why is 'pulling an all-nighter' considered a poor planning method?",
+    "options": [
+      "A. It ensures you have too much energy the next day",
+      "B. It is the best way to utilize long-term memory",
+      "C. It rarely produces the best work and is often a last-minute attempt to make up for poor planning",
+      "D. It allows you to finish assignments early so you can socialize"
+    ],
+    "answer": "C",
+    "correctWord": "C. It rarely produces the best work and is often a last-minute attempt to make up for poor planning",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "SSA_239",
+    "word": "Câu 239: Why is 'Visualizing the Results' considered an effective mot...",
+    "question": "Why is 'Visualizing the Results' considered an effective motivation strategy?",
+    "options": [
+      "A. It helps you fall asleep faster after studying",
+      "B. Keeping the benefits and end results in mind is extremely effective in keeping you motivated",
+      "C. It allows you to skip the planning phase of goal setting",
+      "D. It guarantees you will get an A in the class"
+    ],
+    "answer": "B",
+    "correctWord": "B. Keeping the benefits and end results in mind is extremely effective in keeping you motivated",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
@@ -480,34 +512,18 @@
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "SSA_257",
-    "word": "Câu 257: During the \"Storming\" phase of Tuckman's Team Development mo...",
-    "question": "During the \"Storming\" phase of Tuckman's Team Development model, what interpersonal and task-related behaviors are a team most likely to experience?",
+    "id": "SSA_261",
+    "word": "Câu 261: In the context of 'Knowing Yourself' for time management, ho...",
+    "question": "In the context of 'Knowing Yourself' for time management, how does fatigue affect study?",
     "options": [
-      "A. The members establish base-level expectations, identify common similarities, develop initial trust, and depend heavily on the team leader for overall project direction",
-      "B. The members encounter anxiety regarding power and control, express differing opinions, challenge leadership, and potentially form small cliques or experience personal conflicts",
-      "C. The members successfully negotiate their specific roles, build strong mutual appreciation, establish open feedback channels, and commit to the shared goals of the team",
-      "D. The members operate extremely efficiently with high motivation, share leadership roles based on individual strengths, and take tremendous pride in their collective success"
+      "A. It makes you read faster.",
+      "B. It helps your brain absorb information automatically.",
+      "C. If you are tired, your attention and retention will be much poorer than if you were well-rested.",
+      "D. It prevents test anxiety."
     ],
-    "answer": "B",
-    "correctWord": "B. The members encounter anxiety regarding power and control, express differing opinions, challenge leadership, and potentially form small cliques or experience personal conflicts",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
-  },
-  {
-    "id": "SSA_265",
-    "word": "Câu 265: In the context of financial goals, what does it mean to 'ali...",
-    "question": "In the context of financial goals, what does it mean to 'align personal and financial goals'?",
-    "options": [
-      "A. Recognizing that personal behaviors have financial consequences and planning your finances to support what you want to achieve in life.",
-      "B. Putting all your money into a savings account.",
-      "C. Borrowing as much money as possible to fund your personal lifestyle.",
-      "D. Choosing a career based solely on salary."
-    ],
-    "answer": "A",
-    "correctWord": "A. Recognizing that personal behaviors have financial consequences and planning your finances to support what you want to achieve in life.",
-    "explanation": "Đáp án: A.",
+    "answer": "C",
+    "correctWord": "C. If you are tired, your attention and retention will be much poorer than if you were well-rested.",
+    "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
@@ -523,70 +539,6 @@
     ],
     "answer": "B",
     "correctWord": "B. Humans are motivated by rewards, so rewarding yourself for a job well done helps maintain motivation and avoid procrastination.",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
-  },
-  {
-    "id": "SSA_269",
-    "word": "Câu 269: According to the text, what plays a central role in developi...",
-    "question": "According to the text, what plays a central role in developing an effective identity as an online learner?",
-    "options": [
-      "A. Time management skills",
-      "B. Information management",
-      "C. Social networking",
-      "D. Memorization techniques"
-    ],
-    "answer": "B",
-    "correctWord": "B. Information management",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
-  },
-  {
-    "id": "SSA_287",
-    "word": "Câu 287: Which action step is recommended to move from \"Norming\" to \"...",
-    "question": "Which action step is recommended to move from \"Norming\" to \"Performing\"?",
-    "options": [
-      "A. Define the team mission and goals",
-      "B. Encourage shared leadership and responsibility",
-      "C. Clarify roles during initial meetings",
-      "D. Actively reinforce positive behavior to reduce conflict"
-    ],
-    "answer": "B",
-    "correctWord": "B. Encourage shared leadership and responsibility",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
-  },
-  {
-    "id": "SSA_294",
-    "word": "Câu 294: In the \"Performing\" stage, teams demonstrate:",
-    "question": "In the \"Performing\" stage, teams demonstrate:",
-    "options": [
-      "A. High dependency on the leader",
-      "B. A strong \"we\" orientation and superior performance",
-      "C. Frequent unresolved conflicts",
-      "D. Unclear shared goals"
-    ],
-    "answer": "B",
-    "correctWord": "B. A strong \"we\" orientation and superior performance",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
-  },
-  {
-    "id": "SSA_297",
-    "word": "Câu 297: In the framework for working together, a \"shared vision\" is ...",
-    "question": "In the framework for working together, a \"shared vision\" is described as:",
-    "options": [
-      "A. A past-oriented summary of achievements",
-      "B. A future-oriented statement of purpose aligned with members' values",
-      "C. An administrative job description",
-      "D. A list of unrelated personal goals"
-    ],
-    "answer": "B",
-    "correctWord": "B. A future-oriented statement of purpose aligned with members' values",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
@@ -672,17 +624,81 @@
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
   },
   {
-    "id": "SSA_330",
-    "word": "Câu 330: Which tip is NOT recommended for participating effectively i...",
-    "question": "Which tip is NOT recommended for participating effectively in online forums?",
+    "id": "SSA_323",
+    "word": "Câu 323: Which strategy is suggested for using small blocks of time p...",
+    "question": "Which strategy is suggested for using small blocks of time productively during commuting?",
     "options": [
-      "A. Establish a regular posting schedule",
-      "B. Use overly informal language to build rapport",
-      "C. Make explicit connections between posts and course content",
-      "D. Respond respectfully and constructively, even with alternative viewpoints"
+      "A. Ignoring study completely",
+      "B. Scanning/skimming readings, using flash cards, or listening to audio recordings",
+      "C. Watching full-length movies",
+      "D. Only social media browsing"
     ],
     "answer": "B",
-    "correctWord": "B. Use overly informal language to build rapport",
+    "correctWord": "B. Scanning/skimming readings, using flash cards, or listening to audio recordings",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "SSA_324",
+    "word": "Câu 324: When creating a daily to-do list, which three key questions ...",
+    "question": "When creating a daily to-do list, which three key questions should be considered for each task?",
+    "options": [
+      "A. Who, what, where",
+      "B. When to complete, how much time required, is it a priority",
+      "C. Why, how, if",
+      "D. Cost, location, people involved"
+    ],
+    "answer": "B",
+    "correctWord": "B. When to complete, how much time required, is it a priority",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "SSA_325",
+    "word": "Câu 325: At the end of the day, what should be done with incomplete t...",
+    "question": "At the end of the day, what should be done with incomplete tasks on the to-do list?",
+    "options": [
+      "A. Ignore them permanently",
+      "B. Evaluate, reschedule to another day if necessary, or remove if no longer important",
+      "C. Blame external factors only",
+      "D. Double the workload tomorrow"
+    ],
+    "answer": "B",
+    "correctWord": "B. Evaluate, reschedule to another day if necessary, or remove if no longer important",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "SSA_326",
+    "word": "Câu 326: Which is NOT listed as an advantage of a paper planner for d...",
+    "question": "Which is NOT listed as an advantage of a paper planner for daily task management?",
+    "options": [
+      "A. Does not require learning new technology",
+      "B. Reduces distractions from digital apps",
+      "C. Easy to share tasks during group projects",
+      "D. Flexible and adaptable to preferences"
+    ],
+    "answer": "C",
+    "correctWord": "C. Easy to share tasks during group projects",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"
+  },
+  {
+    "id": "SSA_327",
+    "word": "Câu 327: One key benefit of an online calendar (e.g., Google Calendar...",
+    "question": "One key benefit of an online calendar (e.g., Google Calendar) mentioned in the text is:",
+    "options": [
+      "A. It cannot be accessed on multiple devices",
+      "B. It integrates tasks and commitments into a single view and facilitates sharing events",
+      "C. It only handles small tasks well",
+      "D. It requires payment for basic use"
+    ],
+    "answer": "B",
+    "correctWord": "B. It integrates tasks and commitments into a single view and facilitates sharing events",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Quản Lý Thời Gian & Mục Tiêu SMART"

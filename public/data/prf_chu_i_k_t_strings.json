@@ -17,22 +17,6 @@
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_6",
-    "word": "Câu 6: Which of the following is used for single character I/O?",
-    "question": "Which of the following is used for single character I/O?",
-    "options": [
-      "A. getchar() and putchar()",
-      "B. gets() and puts()",
-      "C. scanf() and printf()",
-      "D. fgets() and fputs()"
-    ],
-    "answer": "A",
-    "correctWord": "A. getchar() and putchar()",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
     "id": "prf_8",
     "word": "Câu 8: Which of the following declaration is not supported by C?",
     "question": "Which of the following declaration is not supported by C?",
@@ -50,18 +34,18 @@
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_26",
-    "word": "Câu 26: The function which will compute the average of two real numb...",
-    "question": "The function which will compute the average of two real numbers should be prototyped as:",
+    "id": "prf_28",
+    "word": "Câu 28: How can you initialize a character array in C?",
+    "question": "How can you initialize a character array in C?",
     "options": [
-      "A. int average( double, double);",
-      "B. double average( double, double);",
-      "C. char average( double, double);",
-      "D. void average( double, double);"
+      "A. char arr[] = \"Hello\";",
+      "B. char arr[] = ['H', 'e', 'l', 'l', 'o','/e'];",
+      "C. Char[] arr = \"Hello\";",
+      "D. Char[] arr = {'H', 'e', 'l', 'l', 'o','/0'};"
     ],
-    "answer": "B",
-    "correctWord": "B. double average( double, double);",
-    "explanation": "Đáp án: B.",
+    "answer": "A",
+    "correctWord": "A. char arr[] = \"Hello\";",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -78,38 +62,6 @@
     "answer": "B",
     "correctWord": "B. char c2 = 066; printf(\"%c\",c2);",
     "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_32",
-    "word": "Câu 32: Which function writes the character value of the argument c ...",
-    "question": "Which function writes the character value of the argument c to the output stream referenced by fp?",
-    "options": [
-      "A. int fputc( int c, FILE *fp );",
-      "B. int fputs( const char *s, FILE *fp );",
-      "C. int fgetc( FILE *fp );",
-      "D. char *fgets( char *buf, int n, FILE *fp );"
-    ],
-    "answer": "A",
-    "correctWord": "A. int fputc( int c, FILE *fp );",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_40",
-    "word": "Câu 40: Which library should you include to work with the FILE data ...",
-    "question": "Which library should you include to work with the FILE data type in C?",
-    "options": [
-      "A. stdio.h",
-      "B. stdlib.h",
-      "C. string.h",
-      "D. type.h"
-    ],
-    "answer": "A",
-    "correctWord": "A. stdio.h",
-    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -225,6 +177,22 @@
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
+    "id": "prf_74",
+    "word": "Câu 74: What is the maximum index of the last character in a charact...",
+    "question": "What is the maximum index of the last character in a character array initialized with a size is 10?",
+    "options": [
+      "A. 9",
+      "B. 10",
+      "C. 8",
+      "D. It depends on the contents of the array"
+    ],
+    "answer": "A",
+    "correctWord": "A. 9",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
     "id": "prf_97",
     "word": "Câu 97: What will be the output of the following C code?\n#include <s...",
     "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main()\n{\n    char result = 125;\n    result = result + 5;\n    printf(\"%d\", result);\n}",
@@ -236,22 +204,6 @@
     ],
     "answer": "D",
     "correctWord": "D. -126",
-    "explanation": "Đáp án: D.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_109",
-    "word": "Câu 109: What will be printed when the following code is executed?\n#i...",
-    "question": "What will be printed when the following code is executed?\n#include <stdio.h>\nint main()\n{\n    int a[]={7,4,8,5,9};\n    int* b=a;\n    b++;\n    printf(\"%d %d\", *(b++), *(a+3));\n    getchar();\n    return 0;\n}",
-    "options": [
-      "A. 8 8",
-      "B. 4 8",
-      "C. 8 5",
-      "D. 4 5"
-    ],
-    "answer": "D",
-    "correctWord": "D. 4 5",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
@@ -273,22 +225,6 @@
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_135",
-    "word": "Câu 135: What the matter is the following C code?\n#include <stdio.h>\n...",
-    "question": "What the matter is the following C code?\n#include <stdio.h>\nint main() {\n    int a=1,b=2,c=3;\n    printf(\"%d %d %d\");\n    return 0;\n}",
-    "options": [
-      "A. The program outputs undefined values.",
-      "B. The program has compile errors but still prints 1 2 3",
-      "C. The program output 3 2 1.",
-      "D. The program runtime error."
-    ],
-    "answer": "A",
-    "correctWord": "A. The program outputs undefined values.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
     "id": "prf_140",
     "word": "Câu 140: What is the results will be displayed on the screen after ex...",
     "question": "What is the results will be displayed on the screen after executing the following code:\nchar a[] = \"Ab\";\nchar *s = a;\nint t = 1;\nfor (; *s; ++s)\n    t *= *s;\nprintf(\"%d\", t);",
@@ -297,7 +233,8 @@
       "B. 0",
       "C. Compiler error",
       "D. 6370",
-      "E. 65\nF. 98"
+      "E. 65",
+      "F. 98"
     ],
     "answer": "D",
     "correctWord": "D. 6370",
@@ -317,22 +254,6 @@
     ],
     "answer": "A",
     "correctWord": "A. Runtime error.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_158",
-    "word": "Câu 158: What is the size of the char data type in bytes?",
-    "question": "What is the size of the char data type in bytes?",
-    "options": [
-      "A. 1 byte",
-      "B. 2 bytes",
-      "C. 4 bytes",
-      "D. It depends on the system"
-    ],
-    "answer": "A",
-    "correctWord": "A. 1 byte",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
@@ -475,7 +396,8 @@
       "B. Ad",
       "C. Compiler error",
       "D. AbCdEfdEf",
-      "E. AbC\nF. dEf"
+      "E. AbC",
+      "F. dEf"
     ],
     "answer": "D",
     "correctWord": "D. AbCdEfdEf",
@@ -500,65 +422,33 @@
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_370",
-    "word": "Câu 370: Which of the following about the switch case statement is tr...",
-    "question": "Which of the following about the switch case statement is true?",
+    "id": "prf_365",
+    "word": "Câu 365: Which of the following statements about the strstr() functio...",
+    "question": "Which of the following statements about the strstr() function in C is true?",
     "options": [
-      "A. It can only be used with integer or character type expressions.",
-      "B. It can be used with any data type.",
-      "C. It can only be used in functions.",
-      "D. It can only have one case statement inside."
-    ],
-    "answer": "A",
-    "correctWord": "A. It can only be used with integer or character type expressions.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_371",
-    "word": "Câu 371: Which of the following statements is correct regarding the f...",
-    "question": "Which of the following statements is correct regarding the first character of an identifier?",
-    "options": [
-      "A. The first character of an identifier can be a number",
-      "B. The first character of an identifier must be a special symbol",
-      "C. The first character of an identifier must be a letter or an underscore",
-      "D. The first character of an identifier can be a space"
-    ],
-    "answer": "C",
-    "correctWord": "C. The first character of an identifier must be a letter or an underscore",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_381",
-    "word": "Câu 381: Choose the correct definition for \"Simple data types\" in C p...",
-    "question": "Choose the correct definition for \"Simple data types\" in C programming.",
-    "options": [
-      "A. Changing from one form of representation to another",
-      "B. A category of data that represents individual, non-complex elements such as integers, floating-point numbers, and characters",
-      "C. Performing operations and expressions on data",
-      "D. Storing a collection of elements accessible by an index or a key"
+      "A. Compare two strings",
+      "B. Returns the pointer to the first occurrence of the given substring in the main string",
+      "C. Concatenate source string to the end of destination string",
+      "D. Copy source string to destination string"
     ],
     "answer": "B",
-    "correctWord": "B. A category of data that represents individual, non-complex elements such as integers, floating-point numbers, and characters",
+    "correctWord": "B. Returns the pointer to the first occurrence of the given substring in the main string",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_405",
-    "word": "Câu 405: What characteristic defines low \"coupling\" in module design?",
-    "question": "What characteristic defines low \"coupling\" in module design?",
+    "id": "prf_374",
+    "word": "Câu 374: How are strings typically represented in C?",
+    "question": "How are strings typically represented in C?",
     "options": [
-      "A. A module performs its tasks independently.",
-      "B. A module shares performance with other modules.",
-      "C. A module accesses global data.",
-      "D. A module depends on many other modules."
+      "A. As an array of characters",
+      "B. As an array of strings",
+      "C. As individual characters",
+      "D. As integers referencing ASCII values"
     ],
     "answer": "A",
-    "correctWord": "A. A module performs its tasks independently.",
+    "correctWord": "A. As an array of characters",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
@@ -575,6 +465,22 @@
     ],
     "answer": "A",
     "correctWord": "A. Takes a line of input into names[0]",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_408",
+    "word": "Câu 408: What does the '\\0' character in a string represent?",
+    "question": "What does the '\\0' character in a string represent?",
+    "options": [
+      "A. The null terminator in C strings",
+      "B. A whitespace character",
+      "C. A printable character",
+      "D. A NULL pointer value"
+    ],
+    "answer": "A",
+    "correctWord": "A. The null terminator in C strings",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
@@ -597,10 +503,9 @@
   },
   {
     "id": "prf_415",
-    "word": "Câu 415: Consider two strings s1 and s2 in",
-    "question": "Consider two strings s1 and s2 in",
+    "word": "Câu 415: Consider two strings s1 and s2 in C. How can you determine i...",
+    "question": "Consider two strings s1 and s2 in C. How can you determine if s1 is greater than or equal to s2?",
     "options": [
-      "C. How can you determine if s1 is greater than or equal to s2?",
       "A. if (strcmp(s1, s2) >= 0)",
       "B. if (strcmp(s1, s2) < 0)",
       "C. if (strlen(s1) >= strlen(s2))",
@@ -609,6 +514,22 @@
     "answer": "A",
     "correctWord": "A. if (strcmp(s1, s2) >= 0)",
     "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_416",
+    "word": "Câu 416: Given the variable arr declared as follow\nchar arr[16];\nWhat...",
+    "question": "Given the variable arr declared as follow\nchar arr[16];\nWhat is the maximum number of characters you can store in arr to represent a null-terminated strings?",
+    "options": [
+      "A. 13",
+      "B. 14",
+      "C. 15",
+      "D. 16"
+    ],
+    "answer": "C",
+    "correctWord": "C. 15",
+    "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   }

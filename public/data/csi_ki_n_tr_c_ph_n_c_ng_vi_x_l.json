@@ -1,4 +1,20 @@
-﻿[
+[
+  {
+    "id": "CSI_18",
+    "word": "Câu 18: A memory with 128 kilobytes and a word size of 1 byte has an...",
+    "question": "A memory with 128 kilobytes and a word size of 1 byte has an address space that ranges from ______ to ______.",
+    "options": [
+      "A. 0; 131 071",
+      "B. 1; 131 071",
+      "C. 0; 131 072",
+      "D. 1; 131 072"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0; 131 071",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
   {
     "id": "CSI_23",
     "word": "Câu 23: Computers built on the Von Neumann model divide the computer...",
@@ -16,34 +32,18 @@
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
   {
-    "id": "CSI_38",
-    "word": "Câu 38: Suppose the following sequence of values is pushed into a st...",
-    "question": "Suppose the following sequence of values is pushed into a stack: 5, 15, 10, 20. What would be the order of removal?",
+    "id": "CSI_32",
+    "word": "Câu 32: If a memory has an address space that ranges from 0 to 4095,...",
+    "question": "If a memory has an address space that ranges from 0 to 4095, and each addressable location stores 1 byte, what is the total memory?",
     "options": [
-      "A. 20, 10, 15, 5",
-      "B. 5, 10, 15, 20",
-      "C. 10, 15, 20, 5",
-      "D. 15, 10, 5, 20"
+      "A. 4 KB",
+      "B. 2 KB",
+      "C. 1 KB",
+      "D. 6 KB"
     ],
     "answer": "A",
-    "correctWord": "A. 20, 10, 15, 5",
+    "correctWord": "A. 4 KB",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_40",
-    "word": "Câu 40: Based on the waterfall model, if each phase (requirement ana...",
-    "question": "Based on the waterfall model, if each phase (requirement analysis, design, implementation, testing, documentation, evaluation) takes 2 weeks, how many weeks are required to complete the entire process, assuming no overlap?",
-    "options": [
-      "A. 12",
-      "B. 14",
-      "C. 8",
-      "D. 10"
-    ],
-    "answer": "A",
-    "correctWord": "A. 12",
-    "explanation": "Đáp án: A. 6 phase × 2 tuần",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
@@ -64,54 +64,6 @@
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
   {
-    "id": "CSI_60",
-    "word": "Câu 60: What does the file manager NOT control?",
-    "question": "What does the file manager NOT control?",
-    "options": [
-      "A. CPU scheduling",
-      "B. File access permissions",
-      "C. File creation and deletion",
-      "D. File storage and backups"
-    ],
-    "answer": "A",
-    "correctWord": "A. CPU scheduling",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_63",
-    "word": "Câu 63: In glass-box testing, which of the following criteria is NOT...",
-    "question": "In glass-box testing, which of the following criteria is NOT required to be tested?",
-    "options": [
-      "A. All user input values",
-      "B. All independent paths in every module",
-      "C. All decision constructs on each branch.",
-      "D. Each loop construct"
-    ],
-    "answer": "A",
-    "correctWord": "A. All user input values",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_67",
-    "word": "Câu 67: Which of the following is NOT a component of a database mana...",
-    "question": "Which of the following is NOT a component of a database management system (DBMS)?",
-    "options": [
-      "A. Hardware",
-      "B. Software",
-      "C. Network",
-      "D. Data"
-    ],
-    "answer": "C",
-    "correctWord": "C. Network",
-    "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
     "id": "CSI_74",
     "word": "Câu 74: ______ is a stand-alone storage location that holds data tem...",
     "question": "______ is a stand-alone storage location that holds data temporarily.",
@@ -124,22 +76,6 @@
     "answer": "B",
     "correctWord": "B. A register",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_77",
-    "word": "Câu 77: A program is a set of instructions that tells the computer w...",
-    "question": "A program is a set of instructions that tells the computer what to do with ______",
-    "options": [
-      "A. Computer",
-      "B. Program",
-      "C. Algorithm",
-      "D. Data"
-    ],
-    "answer": "D",
-    "correctWord": "D. Data",
-    "explanation": "Đáp án: D.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
@@ -176,34 +112,33 @@
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
   {
-    "id": "CSI_117",
-    "word": "Câu 117: What components make up an element in a linked list?",
-    "question": "What components make up an element in a linked list?",
+    "id": "CSI_104",
+    "word": "Câu 104: What is the name of the first electronic computer designed f...",
+    "question": "What is the name of the first electronic computer designed for a special-purpose?",
     "options": [
-      "A. Data value and the address of the next element",
-      "B. Data value and the index of the element",
-      "C. Index of the previous and next element",
-      "D. Only the data value",
-      "E. None of the others"
+      "A. Pascal",
+      "B. Pascaline",
+      "C. ABC",
+      "D. ENIAC"
     ],
-    "answer": "A",
-    "correctWord": "A. Data value and the address of the next element",
-    "explanation": "Đáp án: A.",
+    "answer": "C",
+    "correctWord": "C. ABC",
+    "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
   {
-    "id": "CSI_118",
-    "word": "Câu 118: What are the two parts of a node in a linked list?",
-    "question": "What are the two parts of a node in a linked list?",
+    "id": "CSI_114",
+    "word": "Câu 114: What was the name of the first electronic general-purpose co...",
+    "question": "What was the name of the first electronic general-purpose computer?",
     "options": [
-      "A. Data and a pointer to the next node",
-      "B. Data and an index of the current node",
-      "C. Data and the next node’s value",
-      "D. Data and the size of the list"
+      "A. ENIAC",
+      "B. UNIVAC",
+      "C. IBM PC",
+      "D. Apple I"
     ],
     "answer": "A",
-    "correctWord": "A. Data and a pointer to the next node",
+    "correctWord": "A. ENIAC",
     "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
@@ -237,6 +172,22 @@
     "answer": "B",
     "correctWord": "B. ROM",
     "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "CSI_125",
+    "word": "Câu 125: Which of the following is considered an input/output storage...",
+    "question": "Which of the following is considered an input/output storage device?",
+    "options": [
+      "A. Keyboard",
+      "B. Monitor",
+      "C. Magnetic disk",
+      "D. Printer"
+    ],
+    "answer": "C",
+    "correctWord": "C. Magnetic disk",
+    "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
@@ -305,6 +256,22 @@
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
   {
+    "id": "CSI_162",
+    "word": "Câu 162: Which component of the CPU is responsible for performing ari...",
+    "question": "Which component of the CPU is responsible for performing arithmetic and logical operations?",
+    "options": [
+      "A. Control Unit",
+      "B. Memory Unit",
+      "C. Arithmetic Logic Unit (ALU)",
+      "D. Input/Output Unit"
+    ],
+    "answer": "C",
+    "correctWord": "C. Arithmetic Logic Unit (ALU)",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
     "id": "CSI_166",
     "word": "Câu 166: Who is known as the “Father of the Computer”?",
     "question": "Who is known as the “Father of the Computer”?",
@@ -337,22 +304,6 @@
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
   {
-    "id": "CSI_171",
-    "word": "Câu 171: According to operator precedence, which operation is perform...",
-    "question": "According to operator precedence, which operation is performed first in the expression (A OR B) AND C?",
-    "options": [
-      "A. OR, then AND",
-      "B. AND, then OR",
-      "C. Both at the same time",
-      "D. Depends on the hardware"
-    ],
-    "answer": "A",
-    "correctWord": "A. OR, then AND",
-    "explanation": "Đáp án: A. dấu ngoặc nên OR làm trước",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
     "id": "CSI_182",
     "word": "Câu 182: In a memory hierarchy, which memory type has the highest acc...",
     "question": "In a memory hierarchy, which memory type has the highest access speed?",
@@ -365,22 +316,6 @@
     "answer": "C",
     "correctWord": "C. Registers",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_185",
-    "word": "Câu 185: In a singly linked list, each node has:",
-    "question": "In a singly linked list, each node has:",
-    "options": [
-      "A. Data and a link",
-      "B. Data and an index code",
-      "C. Data and a hash code",
-      "D. Data and a value"
-    ],
-    "answer": "A",
-    "correctWord": "A. Data and a link",
-    "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
@@ -401,22 +336,6 @@
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
   {
-    "id": "CSI_197",
-    "word": "Câu 197: In the Turing model, the output data depends on the combinat...",
-    "question": "In the Turing model, the output data depends on the combination of two factors:",
-    "options": [
-      "A. The processor and the memory",
-      "B. The input data and the program",
-      "C. The hardware and the software",
-      "D. The control unit and the I/O"
-    ],
-    "answer": "B",
-    "correctWord": "B. The input data and the program",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
     "id": "CSI_198",
     "word": "Câu 198: Which of the following is a non-volatile storage device?",
     "question": "Which of the following is a non-volatile storage device?",
@@ -433,35 +352,18 @@
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
   {
-    "id": "CSI_212",
-    "word": "Câu 212: In the physical layer, what hardware has a mission to conver...",
-    "question": "In the physical layer, what hardware has a mission to convert signal from analog to digital signal",
+    "id": "CSI_218",
+    "word": "Câu 218: What is the earliest computers built on the von Neumann model...",
+    "question": "What is the earliest computers built on the von Neumann model?",
     "options": [
-      "A. Discrete Filter Transform",
-      "B. ADC",
-      "C. DAC",
-      "D. Quantization filtering circuits"
+      "A. Pascal",
+      "B. Pascaline",
+      "C. ABC",
+      "D. EDVAC"
     ],
-    "answer": "B",
-    "correctWord": "B. ADC",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_215",
-    "word": "Câu 215: Which of the following is a common definition of an operatin...",
-    "question": "Which of the following is a common definition of an operating system?",
-    "options": [
-      "A. An interface between hardware and users",
-      "B. A specific application program",
-      "C. A document outlining system policies",
-      "D. A type of computer hardware",
-      "E. None of the others"
-    ],
-    "answer": "A",
-    "correctWord": "A. An interface between hardware and users",
-    "explanation": "Đáp án: A.",
+    "answer": "D",
+    "correctWord": "D. EDVAC",
+    "explanation": "Đáp án: D.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
@@ -482,147 +384,34 @@
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
   {
-    "id": "CSI_229",
-    "word": "Câu 229: What is a significant limitation of monoprogramming in terms...",
-    "question": "What is a significant limitation of monoprogramming in terms of CPU utilization?",
+    "id": "CSI_230",
+    "word": "Câu 230: What is the role and main function of the control unit withi...",
+    "question": "What is the role and main function of the control unit within the Central Processing Unit, and how does it manage and coordinate the execution of instructions?",
     "options": [
-      "A. The CPU remains idle during input/output operations because no other program is in memory",
-      "B. The CPU continuously runs multiple programs, leading to overheating",
-      "C. The CPU is only able to process user requests but cannot manage system resources efficiency",
-      "D. The CPU cannot perform arithmetic operations when a program is executing or waiting"
+      "A. To perform arithmetic and logical operations.",
+      "B. To store data and program instructions.",
+      "C. Coordinate memory, ALU, and I/O operations.",
+      "D. To connect the CPU to external networks."
+    ],
+    "answer": "C",
+    "correctWord": "C. Coordinate memory, ALU, and I/O operations.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
+  },
+  {
+    "id": "CSI_253",
+    "word": "Câu 253: What does the term ‘bus’ refer to in a computer system?",
+    "question": "What does the term ‘bus’ refer to in a computer system?",
+    "options": [
+      "A. A physical path used for data transmission between components",
+      "B. A type of memory",
+      "C. A backup storage system",
+      "D. A processor’s internal clock"
     ],
     "answer": "A",
-    "correctWord": "A. The CPU remains idle during input/output operations because no other program is in memory",
+    "correctWord": "A. A physical path used for data transmission between components",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_235",
-    "word": "Câu 235: What is the main characteristic of the procedural programmin...",
-    "question": "What is the main characteristic of the procedural programming paradigm?",
-    "options": [
-      "A. It structures programs as a sequence of instructions acting on passive data",
-      "B. It focuses on objects and their interactions",
-      "C. It defines functions based on mathematical logic",
-      "D. It allows programs to make decisions based on logical rules and focuses on objects"
-    ],
-    "answer": "A",
-    "correctWord": "A. It structures programs as a sequence of instructions acting on passive data",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_238",
-    "word": "Câu 238: What are the five necessary components of a Database Managem...",
-    "question": "What are the five necessary components of a Database Management System (DBMS)?",
-    "options": [
-      "A. CPU, Memory, I/O devices, Network, Operating System",
-      "B. Hardware, Software, Data, Users, and Procedures",
-      "C. Application programs, End users, Database administrators, Data analysts, and System architects",
-      "D. Tables, Rows, Columns, Keys, and Indexes"
-    ],
-    "answer": "B",
-    "correctWord": "B. Hardware, Software, Data, Users, and Procedures",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_240",
-    "word": "Câu 240: What is the correct answer for an expert system?",
-    "question": "What is the correct answer for an expert system?",
-    "options": [
-      "A. Machines can learn knowledge without instructions from experts",
-      "B. Experts use machines to talk with remote patients",
-      "C. Machine use searching algorithms on databases to respond to patients",
-      "D. Machine learns knowledge given by experts and responds to patients",
-      "E. None of the others"
-    ],
-    "answer": "D",
-    "correctWord": "D. Machine learns knowledge given by experts and responds to patients",
-    "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_248",
-    "word": "Câu 248: What is an algorithm?",
-    "question": "What is an algorithm?",
-    "options": [
-      "A. A set of programming commands or instructions that are executed in a specific order to perform a task",
-      "B. A step-by-step procedure to solve a problem or accomplish a task",
-      "C. A program that is loaded into the computer’s memory and is ready for execution",
-      "D. A method for compressing data to reduce its size for efficient storage or transmission"
-    ],
-    "answer": "B",
-    "correctWord": "B. A step-by-step procedure to solve a problem or accomplish a task",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_250",
-    "word": "Câu 250: What is a major difference between procedural and object-ori...",
-    "question": "What is a major difference between procedural and object-oriented programming?",
-    "options": [
-      "A. Procedural programming uses functions, while object-oriented programming uses loops.",
-      "B. Object-oriented programming organizes code into objects, while procedural programming uses a linear sequence of instructions.",
-      "C. Procedural programming supports inheritance, while object-oriented programming does not.",
-      "D. Object-oriented programming does not allow code reuse, while procedural programming does."
-    ],
-    "answer": "B",
-    "correctWord": "B. Object-oriented programming organizes code into objects, while procedural programming uses a linear sequence of instructions.",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_252",
-    "word": "Câu 252: What is the primary key in a relational database table?",
-    "question": "What is the primary key in a relational database table?",
-    "options": [
-      "A. A column that can store null values",
-      "B. A column or combination of columns that uniquely identify each row in the table",
-      "C. A column used for indexing",
-      "D. A foreign key reference in another table"
-    ],
-    "answer": "B",
-    "correctWord": "B. A column or combination of columns that uniquely identify each row in the table",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_254",
-    "word": "Câu 254: What are the two major design goals of an operating system?",
-    "question": "What are the two major design goals of an operating system?",
-    "options": [
-      "A. Efficient hardware use and ease of resource use.",
-      "B. Data compression and user authentication.",
-      "C. High-speed processing and minimal memory use.",
-      "D. Application development and network connectivity."
-    ],
-    "answer": "A",
-    "correctWord": "A. Efficient hardware use and ease of resource use.",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_264",
-    "word": "Câu 264: Which of the following best describes hashed files?",
-    "question": "Which of the following best describes hashed files?",
-    "options": [
-      "A. Files that store data in a fixed order",
-      "B. Files where data is stored based on a computed hash value, which determines the location of the data",
-      "C. Files that are encrypted for security purposes",
-      "D. Files that contain only textual information"
-    ],
-    "answer": "B",
-    "correctWord": "B. Files where data is stored based on a computed hash value, which determines the location of the data",
-    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
@@ -643,129 +432,17 @@
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   },
   {
-    "id": "CSI_267",
-    "word": "Câu 267: Which of the following is a responsibility of the process ma...",
-    "question": "Which of the following is a responsibility of the process manager in an operating system?",
+    "id": "CSI_311",
+    "word": "Câu 311: The Arithmetic Logic Unit (ALU) in the von Neumann model is ...",
+    "question": "The Arithmetic Logic Unit (ALU) in the von Neumann model is primarily responsible for:",
     "options": [
-      "A. Managing the communication between hardware and software",
-      "B. Scheduling processes for execution",
-      "C. Encrypting and decrypting data files",
-      "D. Loading the operating system during boot"
+      "A. Controlling the execution of a program",
+      "B. Performing arithmetic and logic operations",
+      "C. Managing input and output operations",
+      "D. Storing data and programs"
     ],
     "answer": "B",
-    "correctWord": "B. Scheduling processes for execution",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_269",
-    "word": "Câu 269: Which of the following examples demonstrates the “repetition...",
-    "question": "Which of the following examples demonstrates the “repetition” construct in an algorithm?",
-    "options": [
-      "A. Assigning a value to a variable",
-      "B. Evaluating a condition once",
-      "C. Using a for loop to iterate over a list",
-      "D. Breaking out of a loop"
-    ],
-    "answer": "C",
-    "correctWord": "C. Using a for loop to iterate over a list",
-    "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_293",
-    "word": "Câu 293: In a computer based on the Turing model, what is the specifi...",
-    "question": "In a computer based on the Turing model, what is the specific role of a “program”?",
-    "options": [
-      "A. To define the hardware architecture.",
-      "B. To manage memory allocation.",
-      "C. To provide a set of instructions that dictates what to do with data",
-      "D. To establish communication protocols between devices"
-    ],
-    "answer": "C",
-    "correctWord": "C. To provide a set of instructions that dictates what to do with data",
-    "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_298",
-    "word": "Câu 298: Inside the ADT (abstract data type) are two different parts ...",
-    "question": "Inside the ADT (abstract data type) are two different parts of the model:",
-    "options": [
-      "A. Hardware and software",
-      "B. Database and operations",
-      "C. Data structure and algorithms",
-      "D. Data structure and operations"
-    ],
-    "answer": "D",
-    "correctWord": "D. Data structure and operations",
-    "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_310",
-    "word": "Câu 310: In the context of software development, what does the term “...",
-    "question": "In the context of software development, what does the term “refactoring” refer to?",
-    "options": [
-      "A. Rewriting code from scratch to improve performance",
-      "B. Adding new features to existing software without changing its external behavior",
-      "C. Optimizing code to reduce memory usage",
-      "D. Restructuring existing code to improve readability, maintainability, and efficiency"
-    ],
-    "answer": "D",
-    "correctWord": "D. Restructuring existing code to improve readability, maintainability, and efficiency",
-    "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_313",
-    "word": "Câu 313: In a relational database, what is the primary reason for usi...",
-    "question": "In a relational database, what is the primary reason for using a primary key in a relation?",
-    "options": [
-      "A. To ensure each tuple can be uniquely identified",
-      "B. To allow multiple tuples to have identical values for all attributes",
-      "C. To reduce the number of attributes in a relation",
-      "D. To link the relation to the conceptual schema"
-    ],
-    "answer": "A",
-    "correctWord": "A. To ensure each tuple can be uniquely identified",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_322",
-    "word": "Câu 322: Which of the following BEST describes the Turing model of a ...",
-    "question": "Which of the following BEST describes the Turing model of a computer?",
-    "options": [
-      "A. A machine capable of performing multiple tasks simultaneously",
-      "B. A machine processing data with external programming",
-      "C. A universal computational device using a program and data",
-      "D. A machine limited to performing simple arithmetic operations"
-    ],
-    "answer": "C",
-    "correctWord": "C. A universal computational device using a program and data",
-    "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_323",
-    "word": "Câu 323: Which of the following best describes the Turing model of a ...",
-    "question": "Which of the following best describes the Turing model of a computer?",
-    "options": [
-      "A. A model that includes hardware, software, and data",
-      "B. A mathematical model of computation that defines what can be computed",
-      "C. A hardware-centric architecture for data processing",
-      "D. A model emphasizing the interaction between users and computers"
-    ],
-    "answer": "B",
-    "correctWord": "B. A mathematical model of computation that defines what can be computed",
+    "correctWord": "B. Performing arithmetic and logic operations",
     "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
@@ -783,102 +460,6 @@
     "answer": "A",
     "correctWord": "A. Programs and data in the same memory",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_326",
-    "word": "Câu 326: What is an address collision in the context of hashed files?",
-    "question": "What is an address collision in the context of hashed files?",
-    "options": [
-      "A. When two different data items are assigned the same hash value, leading to the same storage location",
-      "B. When data cannot be accessed due to file corruption",
-      "C. When a file grows beyond its maximum size",
-      "D. When an index points to a non-existent location in a file"
-    ],
-    "answer": "A",
-    "correctWord": "A. When two different data items are assigned the same hash value, leading to the same storage location",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_329",
-    "word": "Câu 329: What is the primary purpose of an operating system?",
-    "question": "What is the primary purpose of an operating system?",
-    "options": [
-      "A. To design and develop software applications and tools for various purposes",
-      "B. To manage system hardware and software resources efficiently",
-      "C. To establish connections and facilitate communication between multiple computers in a network",
-      "D. To encrypt user data and protect it from unauthorized access and threats"
-    ],
-    "answer": "B",
-    "correctWord": "B. To manage system hardware and software resources efficiently",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_337",
-    "word": "Câu 337: Among the values that guide professional conduct in the fiel...",
-    "question": "Among the values that guide professional conduct in the field of computer science, which of the following best represents a key ethical principle?",
-    "options": [
-      "A. Honesty in reporting data and respecting user privacy.",
-      "B. Sharing all user information publicly without consent to promote transparency.",
-      "C. Ignoring software errors because fixing them costs time and money.",
-      "D. Using any means necessary to bypass security as long as it helps you learn."
-    ],
-    "answer": "A",
-    "correctWord": "A. Honesty in reporting data and respecting user privacy.",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_338",
-    "word": "Câu 338: In the “declarative paradigm,” how are problems typically so...",
-    "question": "In the “declarative paradigm,” how are problems typically solved?",
-    "options": [
-      "A. By writing a sequence of instructions to manipulate data",
-      "B. By creating objects that encapsulate data and methods",
-      "C. By defining functions that transform data without side effects.",
-      "D. By stating facts and rules, allowing the system to use logical reasoning to answer queries"
-    ],
-    "answer": "D",
-    "correctWord": "D. By stating facts and rules, allowing the system to use logical reasoning to answer queries",
-    "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_339",
-    "word": "Câu 339: Which of the following is a characteristic feature of preemp...",
-    "question": "Which of the following is a characteristic feature of preemptive multitasking?",
-    "options": [
-      "A. Processes voluntarily yield control of the CPU.",
-      "B. The scheduler forcibly takes control of the CPU from running processes.",
-      "C. Processes are executed in a round-robin manner only.",
-      "D. It is exclusively used in real-time operating systems."
-    ],
-    "answer": "B",
-    "correctWord": "B. The scheduler forcibly takes control of the CPU from running processes.",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
-  },
-  {
-    "id": "CSI_344",
-    "word": "Câu 344: In the context of Ethernet addressing, what is represented b...",
-    "question": "In the context of Ethernet addressing, what is represented by a MAC address?",
-    "options": [
-      "A. A logical network address.",
-      "B. A temporary address assigned by a server.",
-      "C. A hardware address for the network interface.",
-      "D. An private address used for internet routing purposes."
-    ],
-    "answer": "C",
-    "correctWord": "C. A hardware address for the network interface.",
-    "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Kiến Trúc Phần Cứng & Vi Xử Lý"
   }

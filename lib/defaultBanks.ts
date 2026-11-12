@@ -35,7 +35,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Ánh xạ Cache (Direct, Associative, Set-Associative), Hamming ECC, SRAM/DRAM/SDRAM/DDR, RAID 0-5, SSD & HDD.',
         file_path: '/data/cea_memory_cache_raid.json',
         is_public: true,
-        wordCount: 86,
+        wordCount: 77,
         tags: ['Cache Mapping', 'Hamming ECC', 'RAID'],
         subject: 'CEA201',
         topic: 'Cache, RAID & Lưu Trữ'
@@ -46,7 +46,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Chế độ định địa chỉ (Addressing modes), chu trình lệnh, thanh ghi MAR/MBR/PC/IR, RISC vs CISC, Pipelining, MASM32.',
         file_path: '/data/cea_isa_cpu_pipeline.json',
         is_public: true,
-        wordCount: 65,
+        wordCount: 98,
         tags: ['Addressing', 'RISC/CISC', 'Pipeline'],
         subject: 'CEA201',
         topic: 'ISA, CPU & Pipeline'
@@ -57,7 +57,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Kiến trúc Von Neumann & IAS, các thế hệ máy tính, định luật Amdahl, MIPS, phân loại Flynn (SISD, SIMD, MIMD), SMP & NUMA.',
         file_path: '/data/cea_overview_parallel.json',
         is_public: true,
-        wordCount: 54,
+        wordCount: 50,
         tags: ['Amdahl', 'Flynn', 'Von Neumann'],
         subject: 'CEA201',
         topic: 'Hiệu Năng & Song Song'
@@ -68,7 +68,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Tiến trình (Process states), lập lịch (Long/Medium/Short-term scheduling), Phân trang (Paging), Phân đoạn, TLB, MMU, API & ABI.',
         file_path: '/data/cea_os_virtual_memory.json',
         is_public: true,
-        wordCount: 50,
+        wordCount: 22,
         tags: ['Scheduling', 'Paging', 'TLB/MMU'],
         subject: 'CEA201',
         topic: 'HĐH & Bộ Nhớ Ảo'
@@ -79,7 +79,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Programmed I/O, Interrupt-driven I/O, DMA, Memory-mapped vs Isolated I/O, Daisy chain, cấu trúc Bus hệ thống.',
         file_path: '/data/cea_io_bus_interrupt.json',
         is_public: true,
-        wordCount: 33,
+        wordCount: 35,
         tags: ['DMA', 'Interrupts', 'System Bus'],
         subject: 'CEA201',
         topic: 'I/O, Ngắt & Bus'
@@ -90,7 +90,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Cổng logic (AND, OR, NOT, NAND, NOR, XOR), định lý DeMorgan, bìa Karnaugh (K-map), dịch bit, xoay bit, số bù 2.',
         file_path: '/data/cea_boolean_logic.json',
         is_public: true,
-        wordCount: 30,
+        wordCount: 36,
         tags: ['Boolean', 'K-Map', 'Bitwise'],
         subject: 'CEA201',
         topic: 'Boolean & Mạch Logic'
@@ -106,12 +106,12 @@ export const QUESTION_BANKS: SubjectSection[] = [
     quizzes: [
       {
         id: 'csi_all',
-        name: 'CSI106 — Đề Thi Tổng Hợp Toàn Diện',
-        description: 'Trọn bộ 347 câu hỏi trắc nghiệm ôn tập thi cuối kỳ môn Kiến trúc máy tính (CSI106).',
+        name: 'CSI106 — Đề Thi Tổng Hợp Toàn Bộ 344 Câu',
+        description: 'Trọn bộ 344 câu hỏi trắc nghiệm ôn tập thi cuối kỳ môn Kiến trúc máy tính (CSI106).',
         file_path: '/data/csi106_all.json',
         is_public: true,
-        wordCount: 347,
-        tags: ['Full Exam', '347 Câu', 'Official'],
+        wordCount: 344,
+        tags: ['Full Exam', '344 Câu', 'Official'],
         subject: 'CSI106',
         topic: 'Tổng Hợp'
       },
@@ -121,7 +121,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Chuyển đổi Nhị phân, Bát phân, Thập lục phân, Số bù 2, Dấu phẩy động Excess-127, Phép toán logic.',
         file_path: '/data/csi_h_th_ng_s_bi_u_di_n_d_li_u.json',
         is_public: true,
-        wordCount: 77,
+        wordCount: 65,
         tags: ['Hệ Nhị Phân', 'Bù 2', 'Logic'],
         subject: 'CSI106',
         topic: 'Hệ Thống Số'
@@ -132,7 +132,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Mô hình Von Neumann, Turing, chức năng CPU, ALU, Control Unit, Thanh ghi (Registers), Cache 80-20.',
         file_path: '/data/csi_ki_n_tr_c_ph_n_c_ng_vi_x_l.json',
         is_public: true,
-        wordCount: 55,
+        wordCount: 29,
         tags: ['Von Neumann', 'CPU', 'ALU'],
         subject: 'CSI106',
         topic: 'Phần Cứng & CPU'
@@ -143,7 +143,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Giao thức TCP/IP, UDP, Địa chỉ IPv4/MAC, Port, Mật mã học đối xứng/bất đối xứng, Tường lửa, Loại hacker.',
         file_path: '/data/csi_m_ng_m_y_t_nh_an_to_n_th_ng_tin.json',
         is_public: true,
-        wordCount: 52,
+        wordCount: 56,
         tags: ['TCP/IP', 'Security', 'OSI'],
         subject: 'CSI106',
         topic: 'Mạng & Bảo Mật'
@@ -154,7 +154,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Phân trang (Paging), Phân đoạn (Segmentation), Bộ nhớ ảo, Đa chương (Multiprogramming), RTOS, Unix.',
         file_path: '/data/csi_h_i_u_h_nh_qu_n_l_b_nh.json',
         is_public: true,
-        wordCount: 33,
+        wordCount: 38,
         tags: ['Paging', 'Virtual Memory', 'OS'],
         subject: 'CSI106',
         topic: 'Hệ Điều Hành'
@@ -165,7 +165,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Cây nhị phân, BST, Stack (LIFO), Queue (FIFO), Danh sách liên kết (Linked list), Graph, Sắp xếp & Tìm kiếm.',
         file_path: '/data/csi_c_u_tr_c_d_li_u_gi_i_thu_t.json',
         is_public: true,
-        wordCount: 34,
+        wordCount: 62,
         tags: ['Binary Tree', 'Stack', 'Queue'],
         subject: 'CSI106',
         topic: 'CTDL & GT'
@@ -176,10 +176,21 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Mô hình CSDL quan hệ, ERD, ACID, Chuẩn hóa 1NF/2NF, Quy trình SDLC, Mô hình Thác nước (Waterfall), Agile, Testing.',
         file_path: '/data/csi_c_s_d_li_u_k_thu_t_ph_n_m_m.json',
         is_public: true,
-        wordCount: 34,
+        wordCount: 75,
         tags: ['Relational DB', 'SDLC', 'Agile'],
         subject: 'CSI106',
         topic: 'CSDL & Phần Mềm'
+      },
+      {
+        id: 'csi_gen',
+        name: 'Chuyên Đề 7: Kiến Trúc Máy Tính Chung',
+        description: 'Mô hình Turing, Đạo đức CNTT (Computer Ethics), Sở hữu trí tuệ (Intellectual Property) & Trí tuệ nhân tạo (AI).',
+        file_path: '/data/csi_ki_n_tr_c_m_y_t_nh_chung.json',
+        is_public: true,
+        wordCount: 19,
+        tags: ['Turing Model', 'Ethics', 'AI'],
+        subject: 'CSI106',
+        topic: 'Kiến Trúc Máy Tính Chung'
       }
     ]
   },
@@ -192,12 +203,12 @@ export const QUESTION_BANKS: SubjectSection[] = [
     quizzes: [
       {
         id: 'ssa_all',
-        name: 'SSA101 — Đề Thi Tổng Hợp Toàn Bộ 370 Câu',
-        description: 'Toàn bộ ngân hàng câu hỏi trắc nghiệm ôn tập môn Kỹ năng học tập đại học và ứng dụng AI (SSA101).',
+        name: 'SSA101 — Đề Thi Tổng Hợp Toàn Bộ 355 Câu',
+        description: 'Trọn bộ 355 câu hỏi trắc nghiệm ôn tập môn Kỹ năng học tập đại học và ứng dụng AI (SSA101).',
         file_path: '/data/ssa101_all.json',
         is_public: true,
-        wordCount: 370,
-        tags: ['Full Exam', '370 Câu', 'Official'],
+        wordCount: 355,
+        tags: ['Full Exam', '355 Câu', 'Official'],
         subject: 'SSA101',
         topic: 'Tổng Hợp'
       },
@@ -207,7 +218,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Analytical thinking, Critical thinking, Thang đo Bloom, Giải quyết vấn đề (Problem-solving), Đánh giá nguồn tin.',
         file_path: '/data/ssa_t_duy_ph_n_bi_n_ph_n_t_ch.json',
         is_public: true,
-        wordCount: 83,
+        wordCount: 69,
         tags: ['Critical Thinking', 'Bloom', 'Analysis'],
         subject: 'SSA101',
         topic: 'Tư Duy Phản Biện'
@@ -218,7 +229,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Metacognition (Nhận thức về tư duy), Trí nhớ làm việc (Working memory), Đường cong quên lãng Ebbinghaus, Phương pháp SQ3R.',
         file_path: '/data/ssa_chi_n_l_c_h_c_t_p_tr_nh.json',
         is_public: true,
-        wordCount: 113,
+        wordCount: 75,
         tags: ['Metacognition', 'Memory', 'SQ3R'],
         subject: 'SSA101',
         topic: 'Trí Nhớ & Học Tập'
@@ -229,7 +240,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Hiểu biết về Trí tuệ nhân tạo, Hallucination (ảo giác AI), Liêm chính học thuật (Academic Integrity), Turnitin, Deepfake.',
         file_path: '/data/ssa_ai_literacy_o_c_h_c_thu_t.json',
         is_public: true,
-        wordCount: 14,
+        wordCount: 35,
         tags: ['AI Literacy', 'Ethics', 'Hallucination'],
         subject: 'SSA101',
         topic: 'AI & Đạo Đức'
@@ -240,7 +251,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Mục tiêu SMART, Trì hoãn (Procrastination), Lập kế hoạch theo tuần/kỳ, Tác hại của All-nighter và Multitasking.',
         file_path: '/data/ssa_qu_n_l_th_i_gian_m_c_ti_u_smart.json',
         is_public: true,
-        wordCount: 44,
+        wordCount: 45,
         tags: ['Time Management', 'SMART Goals'],
         subject: 'SSA101',
         topic: 'Quản Lý Thời Gian'
@@ -251,7 +262,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Mô hình phát triển nhóm Tuckman (Forming, Storming, Norming, Performing), Lắng nghe tích cực, Kỹ năng phản hồi.',
         file_path: '/data/ssa_l_m_vi_c_nh_m_giao_ti_p_hi_u_qu.json',
         is_public: true,
-        wordCount: 40,
+        wordCount: 49,
         tags: ['Tuckman', 'Teamwork', 'Communication'],
         subject: 'SSA101',
         topic: 'Làm Việc Nhóm'
@@ -262,10 +273,21 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Tài sản (Assets), Nợ (Liabilities), Giá trị ròng (Net Worth), Hoạch định tài chính sinh viên, Chu trình nghề nghiệp.',
         file_path: '/data/ssa_t_i_ch_nh_c_nh_n_nh_h_ng_ngh_nghi_p.json',
         is_public: true,
-        wordCount: 19,
+        wordCount: 29,
         tags: ['Finance', 'Net Worth', 'Career'],
         subject: 'SSA101',
         topic: 'Tài Chính & Nghề Nghiệp'
+      },
+      {
+        id: 'ssa_gen',
+        name: 'Chuyên Đề 7: Kỹ Năng Học Đại Học Chung',
+        description: 'Chuyển tiếp lên đại học, Chương trình ẩn (Hidden Curriculum), Digital Literacy, Học trực tuyến & ePortfolio.',
+        file_path: '/data/ssa_k_n_ng_h_c_i_h_c_chung.json',
+        is_public: true,
+        wordCount: 53,
+        tags: ['College Life', 'Digital Literacy', 'ePortfolio'],
+        subject: 'SSA101',
+        topic: 'Kỹ Năng Học Đại Học Chung'
       }
     ]
   },
@@ -293,7 +315,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Vòng lặp for, while, do-while, cấu trúc rẽ nhánh if-else, switch-case, break và continue.',
         file_path: '/data/prf_c_u_tr_c_i_u_khi_n_v_ng_l_p.json',
         is_public: true,
-        wordCount: 62,
+        wordCount: 49,
         tags: ['Loops', 'Switch Case', 'If-Else'],
         subject: 'PRF192',
         topic: 'Vòng Lặp & Điều Khiển'
@@ -304,7 +326,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Toán tử con trỏ *, &, số học con trỏ, con trỏ cấp 2, hàm malloc(), calloc(), realloc(), free().',
         file_path: '/data/prf_con_tr_qu_n_l_b_nh.json',
         is_public: true,
-        wordCount: 44,
+        wordCount: 29,
         tags: ['Pointers', 'Malloc', 'Memory'],
         subject: 'PRF192',
         topic: 'Con Trỏ'
@@ -315,7 +337,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Mảng ký tự, ký tự kết thúc chuỗi \\0, các hàm strcmp, strcpy, strcat, strlen, gets, puts.',
         file_path: '/data/prf_chu_i_k_t_strings.json',
         is_public: true,
-        wordCount: 38,
+        wordCount: 33,
         tags: ['Strings', 'strcmp', 'strcpy'],
         subject: 'PRF192',
         topic: 'Chuỗi Ký Tự'
@@ -326,7 +348,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Toán tử bitwise &, |, ^, dịch bit <<, >>, toán tử điều kiện ?:, độ ưu tiên toán tử, ép kiểu dữ liệu.',
         file_path: '/data/prf_c_ph_p_ki_u_d_li_u_to_n_t.json',
         is_public: true,
-        wordCount: 33,
+        wordCount: 66,
         tags: ['Data Types', 'Bitwise', 'Operators'],
         subject: 'PRF192',
         topic: 'Toán Tử & Kiểu Dữ Liệu'
@@ -337,7 +359,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Khai báo nguyên mẫu hàm (Prototype), truyền tham trị vs truyền tham chiếu, biến local vs global.',
         file_path: '/data/prf_h_m_ph_m_vi_bi_n.json',
         is_public: true,
-        wordCount: 28,
+        wordCount: 34,
         tags: ['Functions', 'Scope', 'Parameters'],
         subject: 'PRF192',
         topic: 'Hàm'
@@ -348,7 +370,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Mảng 1 chiều, mảng 2 chiều (matrix), duyệt mảng, tìm kiếm tuần tự (linear), nhị phân, Bubble/Selection sort.',
         file_path: '/data/prf_m_ng_gi_i_thu_t_c_b_n.json',
         is_public: true,
-        wordCount: 26,
+        wordCount: 30,
         tags: ['Arrays', 'Matrix', 'Sorting'],
         subject: 'PRF192',
         topic: 'Mảng'
@@ -359,7 +381,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Mở file fopen, chế độ r, w, a, a+, wb, đọc ghi file fprintf, fscanf, fgetc, fputc, hàm feof, rewind.',
         file_path: '/data/prf_t_p_tin_file_i_o.json',
         is_public: true,
-        wordCount: 14,
+        wordCount: 12,
         tags: ['File I/O', 'fopen', 'rewind'],
         subject: 'PRF192',
         topic: 'Tệp Tin'

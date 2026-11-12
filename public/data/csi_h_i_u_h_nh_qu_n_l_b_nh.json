@@ -1,11 +1,9 @@
-﻿[
+[
   {
     "id": "CSI_33",
     "word": "Câu 33: In the context of demand paging and demand segmentation, a m...",
-    "question": "In the context of demand paging and demand segmentation, a memory size of 100 MB can execute ten programs, each of size 30 MB, for a total of 300 M",
+    "question": "In the context of demand paging and demand segmentation, a memory size of 100 MB can execute ten programs, each of size 30 MB, for a total of 300 MB. At any moment, 100 MB of the ten programs are in memory and 200 MB are on disk. There is therefore a virtual memory size of ______ MB.",
     "options": [
-      "B. At any moment, 100 MB of the ten programs are in memory and 200 MB are on disk. There is therefore a virtual memory size of ______ M",
-      "B. ",
       "A. 300",
       "B. 100",
       "C. 200",
@@ -18,18 +16,18 @@
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "CSI_68",
-    "word": "Câu 68: Which of the following is not an advantage of AI?",
-    "question": "Which of the following is not an advantage of AI?",
+    "id": "CSI_60",
+    "word": "Câu 60: What does the file manager NOT control?",
+    "question": "What does the file manager NOT control?",
     "options": [
-      "A. Reduces the time taken to perform a task",
-      "B. Decision-making by making the process faster and smarter",
-      "C. Increased Automation",
-      "D. The cost hight to develop, implement, and maintain AI systems"
+      "A. CPU scheduling",
+      "B. File access permissions",
+      "C. File creation and deletion",
+      "D. File storage and backups"
     ],
-    "answer": "D",
-    "correctWord": "D. The cost hight to develop, implement, and maintain AI systems",
-    "explanation": "Đáp án: D.",
+    "answer": "A",
+    "correctWord": "A. CPU scheduling",
+    "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
@@ -50,34 +48,18 @@
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "CSI_90",
-    "word": "Câu 90: The first duty of a transport-layer protocol is to provide p...",
-    "question": "The first duty of a transport-layer protocol is to provide process-to-process communication. To define the processes, we need identifiers, called ______",
+    "id": "CSI_87",
+    "word": "Câu 87: Multi-programming requires a ______ operating-system.",
+    "question": "Multi-programming requires a ______ operating-system.",
     "options": [
-      "A. MAC addresses",
-      "B. IP addresses",
-      "C. Process names",
-      "D. Port numbers"
+      "A. batch",
+      "B. Time-sharing",
+      "C. parallel",
+      "D. distributed"
     ],
-    "answer": "D",
-    "correctWord": "D. Port numbers",
-    "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "CSI_92",
-    "word": "Câu 92: The development process in the software lifecycle involves _...",
-    "question": "The development process in the software lifecycle involves ______",
-    "options": [
-      "A. 2 phases: implementation and testing",
-      "B. 3 phases: design, implementation and testing",
-      "C. 4 phases: analysis, design, implementation and testing",
-      "D. 5 phases: planning, analysis, design, implementation and testing"
-    ],
-    "answer": "C",
-    "correctWord": "C. 4 phases: analysis, design, implementation and testing",
-    "explanation": "Đáp án: C.",
+    "answer": "B",
+    "correctWord": "B. Time-sharing",
+    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
@@ -114,6 +96,38 @@
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
+    "id": "CSI_132",
+    "word": "Câu 132: Which file system is most commonly associated with Linux?",
+    "question": "Which file system is most commonly associated with Linux?",
+    "options": [
+      "A. NTFS",
+      "B. FAT32",
+      "C. ext4",
+      "D. HFS+"
+    ],
+    "answer": "C",
+    "correctWord": "C. ext4",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "CSI_135",
+    "word": "Câu 135: Which file structure allows direct access to a specific reco...",
+    "question": "Which file structure allows direct access to a specific record without retrieving all preceding records?",
+    "options": [
+      "A. Indexed file structure",
+      "B. Sequential file structure",
+      "C. Text file structure",
+      "D. Stream file structure"
+    ],
+    "answer": "A",
+    "correctWord": "A. Indexed file structure",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
     "id": "CSI_139",
     "word": "Câu 139: Which memory management technique divides the memory into va...",
     "question": "Which memory management technique divides the memory into variable-sized segments?",
@@ -130,18 +144,18 @@
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "CSI_145",
-    "word": "Câu 145: Which data structure is commonly used for First-In, First-Ou...",
-    "question": "Which data structure is commonly used for First-In, First-Out (FIFO) data processing?",
+    "id": "CSI_147",
+    "word": "Câu 147: Which access method typically requires additional space for ...",
+    "question": "Which access method typically requires additional space for maintaining an index structure but provides faster access to records compared to sequential access?",
     "options": [
-      "A. Stack",
-      "B. Queue",
-      "C. Tree",
-      "D. Linked list"
+      "A. Sequential access",
+      "B. Direct access",
+      "C. Indexed sequential access",
+      "D. Hashing"
     ],
-    "answer": "B",
-    "correctWord": "B. Queue",
-    "explanation": "Đáp án: B.",
+    "answer": "C",
+    "correctWord": "C. Indexed sequential access",
+    "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
@@ -194,33 +208,33 @@
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "CSI_188",
-    "word": "Câu 188: The network layer is responsible for?",
-    "question": "The network layer is responsible for?",
+    "id": "CSI_181",
+    "word": "Câu 181: In the File Structure, Hashing works by:",
+    "question": "In the File Structure, Hashing works by:",
     "options": [
-      "A. Host-to-host delivery",
-      "B. Application-to-application communication",
-      "C. Process-to-process communication",
-      "D. Physical transmission"
+      "A. Sorting files by Index",
+      "B. Compress a normal file",
+      "C. Calculating a key",
+      "D. Adding lines to the file"
     ],
-    "answer": "A",
-    "correctWord": "A. Host-to-host delivery",
-    "explanation": "Đáp án: A.",
+    "answer": "C",
+    "correctWord": "C. Calculating a key",
+    "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "CSI_193",
-    "word": "Câu 193: Which of the following pseudo-code constructs is commonly us...",
-    "question": "Which of the following pseudo-code constructs is commonly used to represent a repetitive process until a certain condition is met?",
+    "id": "CSI_183",
+    "word": "Câu 183: If we need to access one specific record without having to r...",
+    "question": "If we need to access one specific record without having to retrieve all records before it, we use a ______",
     "options": [
-      "A. FOR loop",
-      "B. WHILE loop",
-      "C. IF statement",
-      "D. SWITCH statement"
+      "A. sequential file structure",
+      "B. random file structure",
+      "C. Both a and b are correct",
+      "D. Both a and b are incorrect"
     ],
     "answer": "B",
-    "correctWord": "B. WHILE loop",
+    "correctWord": "B. random file structure",
     "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
@@ -290,6 +304,23 @@
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
+    "id": "CSI_215",
+    "word": "Câu 215: Which of the following is a common definition of an operatin...",
+    "question": "Which of the following is a common definition of an operating system?",
+    "options": [
+      "A. An interface between hardware and users",
+      "B. A specific application program",
+      "C. A document outlining system policies",
+      "D. A type of computer hardware",
+      "E. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. An interface between hardware and users",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
     "id": "CSI_220",
     "word": "Câu 220: What is the fundamental difference in memory usage between m...",
     "question": "What is the fundamental difference in memory usage between monoprogramming and multiprogramming?",
@@ -322,33 +353,49 @@
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "CSI_245",
-    "word": "Câu 245: What is the order of steps to design a database?",
-    "question": "What is the order of steps to design a database?",
+    "id": "CSI_229",
+    "word": "Câu 229: What is a significant limitation of monoprogramming in terms...",
+    "question": "What is a significant limitation of monoprogramming in terms of CPU utilization?",
     "options": [
-      "A. Collect the information needed to be stored → Build an entity-relation model → Normalization",
-      "B. Collect the information needed to be stored → Normalization → Build an entity-relation model",
-      "C. Build an entity-relation model → Normalization → Collect the information needed to be stored",
-      "D. Not need be done through a step-by-step process."
+      "A. The CPU remains idle during input/output operations because no other program is in memory",
+      "B. The CPU continuously runs multiple programs, leading to overheating",
+      "C. The CPU is only able to process user requests but cannot manage system resources efficiency",
+      "D. The CPU cannot perform arithmetic operations when a program is executing or waiting"
     ],
     "answer": "A",
-    "correctWord": "A. Collect the information needed to be stored → Build an entity-relation model → Normalization",
+    "correctWord": "A. The CPU remains idle during input/output operations because no other program is in memory",
     "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "CSI_253",
-    "word": "Câu 253: What does the term ‘bus’ refer to in a computer system?",
-    "question": "What does the term ‘bus’ refer to in a computer system?",
+    "id": "CSI_239",
+    "word": "Câu 239: What is the primary purpose of a metadata-based file manager...",
+    "question": "What is the primary purpose of a metadata-based file manager?",
     "options": [
-      "A. A physical path used for data transmission between components",
-      "B. A type of memory",
-      "C. A backup storage system",
-      "D. A processor’s internal clock"
+      "A. To organize files based on their content type",
+      "B. To store additional information about files, such as author, creation date, and keywords",
+      "C. To encrypt files for enhanced security",
+      "D. To compress files to save disk space"
+    ],
+    "answer": "B",
+    "correctWord": "B. To store additional information about files, such as author, creation date, and keywords",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "CSI_254",
+    "word": "Câu 254: What are the two major design goals of an operating system?",
+    "question": "What are the two major design goals of an operating system?",
+    "options": [
+      "A. Efficient hardware use and ease of resource use.",
+      "B. Data compression and user authentication.",
+      "C. High-speed processing and minimal memory use.",
+      "D. Application development and network connectivity."
     ],
     "answer": "A",
-    "correctWord": "A. A physical path used for data transmission between components",
+    "correctWord": "A. Efficient hardware use and ease of resource use.",
     "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
@@ -366,6 +413,38 @@
     "answer": "A",
     "correctWord": "A. The program’s memory space is reallocated to another program.",
     "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "CSI_264",
+    "word": "Câu 264: Which of the following best describes hashed files?",
+    "question": "Which of the following best describes hashed files?",
+    "options": [
+      "A. Files that store data in a fixed order",
+      "B. Files where data is stored based on a computed hash value, which determines the location of the data",
+      "C. Files that are encrypted for security purposes",
+      "D. Files that contain only textual information"
+    ],
+    "answer": "B",
+    "correctWord": "B. Files where data is stored based on a computed hash value, which determines the location of the data",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "CSI_267",
+    "word": "Câu 267: Which of the following is a responsibility of the process ma...",
+    "question": "Which of the following is a responsibility of the process manager in an operating system?",
+    "options": [
+      "A. Managing the communication between hardware and software",
+      "B. Scheduling processes for execution",
+      "C. Encrypting and decrypting data files",
+      "D. Loading the operating system during boot"
+    ],
+    "answer": "B",
+    "correctWord": "B. Scheduling processes for execution",
+    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
@@ -402,54 +481,6 @@
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "CSI_287",
-    "word": "Câu 287: When it comes to protecting information within computer syst...",
-    "question": "When it comes to protecting information within computer systems, what is the main purpose of confidentiality?",
-    "options": [
-      "A. To keep data secret from unauthorized users.",
-      "B. To ensure data can be accessed by everyone for maximum transparency at all times regardless of user permission.",
-      "C. To allow users to modify data freely without any controls or logging.",
-      "D. To speed up encryption processes significantly even if it compromises data safety."
-    ],
-    "answer": "A",
-    "correctWord": "A. To keep data secret from unauthorized users.",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "CSI_294",
-    "word": "Câu 294: In cryptographic systems where a single piece of confidentia...",
-    "question": "In cryptographic systems where a single piece of confidential information controls both the process of converting plain data into secured form and reversing it back, what key-related mechanism is typically employed?",
-    "options": [
-      "A. The same secret key for both operations.",
-      "B. Public and private keys exchanged via secured network to ensure trustworthiness.",
-      "C. No key at all.",
-      "D. Public and private keys."
-    ],
-    "answer": "A",
-    "correctWord": "A. The same secret key for both operations.",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "CSI_301",
-    "word": "Câu 301: In which scenario is a real-time operating system (RTOS) typ...",
-    "question": "In which scenario is a real-time operating system (RTOS) typically used?",
-    "options": [
-      "A. Running a word processor",
-      "B. Controlling embedded systems like autopilots",
-      "C. Browsing the Internet",
-      "D. Editing videos."
-    ],
-    "answer": "B",
-    "correctWord": "B. Controlling embedded systems like autopilots",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
-  },
-  {
     "id": "CSI_305",
     "word": "Câu 305: In a multiprogramming system, how are multiple programs typi...",
     "question": "In a multiprogramming system, how are multiple programs typically managed in memory and executed?",
@@ -466,18 +497,82 @@
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "CSI_321",
-    "word": "Câu 321: What is a common use case for functional programming languag...",
-    "question": "What is a common use case for functional programming languages?",
+    "id": "CSI_308",
+    "word": "Câu 308: In a “binary file,” how is data typically interpreted by an ...",
+    "question": "In a “binary file,” how is data typically interpreted by an application program?",
     "options": [
-      "A. Web development",
-      "B. Writing operating systems",
-      "C. Performing mathematical and data analysis tasks",
-      "D. Building relational databases"
+      "A. Always as individual characters.",
+      "B. As plain, human-readable text.",
+      "C. As a collection of data meaningful only if properly interpreted by the program (e.g., two bytes as one integer)",
+      "D. As a sorted list of alphanumeric symbols"
     ],
     "answer": "C",
-    "correctWord": "C. Performing mathematical and data analysis tasks",
+    "correctWord": "C. As a collection of data meaningful only if properly interpreted by the program (e.g., two bytes as one integer)",
     "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "CSI_325",
+    "word": "Câu 325: Which of the following is a characteristic of sequential fil...",
+    "question": "Which of the following is a characteristic of sequential file organization?",
+    "options": [
+      "A. Data is stored in random order within the file, and access to specific records is achieved using a key or index",
+      "B. Data is stored in the order in which it is entered and can only be accessed sequentially",
+      "C. Data is stored using a linked list structure, where each record contains a pointer to the location of the next record in the sequence",
+      "D. Data is organized with an index that allows for quick searching and retrieval of records based on keys or identifiers"
+    ],
+    "answer": "B",
+    "correctWord": "B. Data is stored in the order in which it is entered and can only be accessed sequentially",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "CSI_326",
+    "word": "Câu 326: What is an address collision in the context of hashed files?",
+    "question": "What is an address collision in the context of hashed files?",
+    "options": [
+      "A. When two different data items are assigned the same hash value, leading to the same storage location",
+      "B. When data cannot be accessed due to file corruption",
+      "C. When a file grows beyond its maximum size",
+      "D. When an index points to a non-existent location in a file"
+    ],
+    "answer": "A",
+    "correctWord": "A. When two different data items are assigned the same hash value, leading to the same storage location",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "CSI_329",
+    "word": "Câu 329: What is the primary purpose of an operating system?",
+    "question": "What is the primary purpose of an operating system?",
+    "options": [
+      "A. To design and develop software applications and tools for various purposes",
+      "B. To manage system hardware and software resources efficiently",
+      "C. To establish connections and facilitate communication between multiple computers in a network",
+      "D. To encrypt user data and protect it from unauthorized access and threats"
+    ],
+    "answer": "B",
+    "correctWord": "B. To manage system hardware and software resources efficiently",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "CSI_339",
+    "word": "Câu 339: Which of the following is a characteristic feature of preemp...",
+    "question": "Which of the following is a characteristic feature of preemptive multitasking?",
+    "options": [
+      "A. Processes voluntarily yield control of the CPU.",
+      "B. The scheduler forcibly takes control of the CPU from running processes.",
+      "C. Processes are executed in a round-robin manner only.",
+      "D. It is exclusively used in real-time operating systems."
+    ],
+    "answer": "B",
+    "correctWord": "B. The scheduler forcibly takes control of the CPU from running processes.",
+    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   },
@@ -510,22 +605,6 @@
     "answer": "B",
     "correctWord": "B. Efficient utilization of system resources",
     "explanation": "Đáp án: B. câu này hơi lạ, các phương án khác đều thuộc multiprogramming nên mình chọn theo phương pháp loại trừ",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "CSI_343",
-    "word": "Câu 343: In object-oriented analysis, what does a use-case diagram pr...",
-    "question": "In object-oriented analysis, what does a use-case diagram primarily show?",
-    "options": [
-      "A. The user’s interaction with the system",
-      "B. The movement of data within the system",
-      "C. The relationships between entities in a database",
-      "D. The sequence of events in a process"
-    ],
-    "answer": "A",
-    "correctWord": "A. The user’s interaction with the system",
-    "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Hệ Điều Hành & Quản Lý Bộ Nhớ"
   }

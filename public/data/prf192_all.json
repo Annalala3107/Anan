@@ -94,7 +94,7 @@
     "correctWord": "A. getchar() and putchar()",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_7",
@@ -301,7 +301,7 @@
     ],
     "answer": "C",
     "correctWord": "C. int minus (int a, int b) {return (a - b);};",
-    "explanation": "Đáp án: C.",
+    "explanation": "Đáp án: C. (Lưu ý đề gốc: phương án B và D bị trùng hệt nhau \"int minus (int a, b)...\").",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Hàm & Phạm Vi Biến"
   },
@@ -335,7 +335,7 @@
     "correctWord": "D. 0",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_22",
@@ -383,7 +383,7 @@
     "correctWord": "A. double result = sqrt(9);",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_25",
@@ -399,7 +399,7 @@
     "correctWord": "A. abs()",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_26",
@@ -415,7 +415,7 @@
     "correctWord": "B. double average( double, double);",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_27",
@@ -447,7 +447,7 @@
     "correctWord": "A. char arr[] = \"Hello\";",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
+    "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
     "id": "prf_29",
@@ -511,7 +511,7 @@
     "correctWord": "A. int fputc( int c, FILE *fp );",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_33",
@@ -543,7 +543,7 @@
     "correctWord": "A. double",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_35",
@@ -573,7 +573,7 @@
       "E. FILE *f = fopen(\"output.txt\", \"w\" );"
     ],
     "answer": "B, C",
-    "correctWord": "B. FILE *f = fopen(\"output.txt\", \"a\" );",
+    "correctWord": "B. FILE *f = fopen(\"output.txt\", \"a\" ); | C. FILE *f = fopen(\"output.txt\", \"a+\" );",
     "explanation": "Đáp án: B, C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
@@ -642,7 +642,7 @@
     "correctWord": "A. stdio.h",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_41",
@@ -674,7 +674,7 @@
     "correctWord": "D. All the above",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_43",
@@ -690,7 +690,7 @@
     "correctWord": "B. 6 -45 2 10 5",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_44",
@@ -722,7 +722,7 @@
     "correctWord": "A. 1254",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_46",
@@ -738,7 +738,7 @@
     "correctWord": "D. Runs at least once",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_47",
@@ -754,7 +754,7 @@
     "correctWord": "B. 0b10100010",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Lập Trình C Chung"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_48",
@@ -770,7 +770,7 @@
     "correctWord": "A. 0000 0000 1111 1011(2)",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Lập Trình C Chung"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_49",
@@ -849,7 +849,7 @@
     "correctWord": "A. 0",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_54",
@@ -913,7 +913,7 @@
     "correctWord": "A. 14 7 and -4 8",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_58",
@@ -940,7 +940,8 @@
       "B. 1.500000",
       "C. 1.0",
       "D. 1.5",
-      "E. 1\nF. Compiler error"
+      "E. 1",
+      "F. Compiler error"
     ],
     "answer": "A",
     "correctWord": "A. 1.000000",
@@ -994,7 +995,7 @@
     "correctWord": "A. 4 2 2",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_63",
@@ -1010,7 +1011,7 @@
     "correctWord": "A. 5 12",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_64",
@@ -1138,7 +1139,7 @@
     "correctWord": "A. 3",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_72",
@@ -1186,7 +1187,7 @@
     "correctWord": "A. 9",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
+    "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
     "id": "prf_75",
@@ -1202,7 +1203,7 @@
     "correctWord": "A. 0",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Lập Trình C Chung"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_76",
@@ -1280,9 +1281,9 @@
     ],
     "answer": "B",
     "correctWord": "B. 1.00, 1.00, 1.25: a triangle",
-    "explanation": "Đáp án: B.",
+    "explanation": "Đáp án: B. (Lưu ý đề gốc: printf có dấu chấm cuối \"a triangle.\" nhưng phương án B viết lược bỏ dấu chấm).",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_81",
@@ -1459,7 +1460,7 @@
     ],
     "answer": "C",
     "correctWord": "C. 37",
-    "explanation": "Đáp án: C.",
+    "explanation": "Đáp án: C (C. 37). (Lưu ý đề gốc: thiếu \"z =\" trước \"b++ * ++c + --a;\"; tính theo phép gán: 6 * 5 + 7 = 37).",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
@@ -1477,7 +1478,7 @@
     "correctWord": "A. 78",
     "explanation": "Đáp án: A. đề có lỗi: 0101010 = 42 không có trong đáp án, 78 tương ứng 1001110, bạn nên kiểm tra lại đề gốc",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Lập Trình C Chung"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_93",
@@ -1587,9 +1588,9 @@
     ],
     "answer": "D",
     "correctWord": "D. 4 4",
-    "explanation": "Đáp án: D.",
+    "explanation": "Đáp án: D (D. 4 4). (Lưu ý đề gốc: printf có dấu phẩy \"%d, %d\" nên output đúng chuẩn là \"4, 4\", nhưng đáp án D bỏ dấu phẩy thành \"4 4\").",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_100",
@@ -1621,7 +1622,7 @@
     "correctWord": "B. a = 5, b = 6\n   a = 6, b = 5\n   a = 7, b = 4",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_102",
@@ -1669,7 +1670,7 @@
     "correctWord": "A. 1 11 10",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_105",
@@ -1701,7 +1702,7 @@
     "correctWord": "B. 1 2 1",
     "explanation": "Đáp án: B. đề có lỗi: tính ra 1 2 2, không có trong đáp án, B gần nhất",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_107",
@@ -1711,11 +1712,11 @@
       "A. 15 5",
       "B. 15 6",
       "C. 12 5",
-      "D. 12 6\nĐáp án đúng: không khớp đáp án nào (tính ra 9 7), bạn nên kiểm tra lại đề gốc"
+      "D. 12 6"
     ],
     "answer": "A",
     "correctWord": "A. 15 5",
-    "explanation": "Đáp án: A.",
+    "explanation": "Đáp án ngân hàng đề ghi tạm: A (A. 15 5). (Lưu ý đề gốc bị lỗi: chạy code C thực tế s+=m, n++ trong while(h > n++) ra kết quả \"9 7\", không khớp bất kỳ phương án A/B/C/D nào).",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
@@ -1749,7 +1750,7 @@
     "correctWord": "D. 4 5",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_110",
@@ -1781,7 +1782,7 @@
     "correctWord": "A. 0",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_112",
@@ -1797,7 +1798,7 @@
     "correctWord": "A. -1 5 3",
     "explanation": "Đáp án: A. đề có lỗi: tính ra -1 3 6, chỉ A khớp giá trị x = -1",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_113",
@@ -1814,7 +1815,7 @@
     "correctWord": "A. 4 13",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_114",
@@ -1862,7 +1863,7 @@
     "correctWord": "A. -20;90;8",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_117",
@@ -1926,7 +1927,7 @@
     "correctWord": "A. 0 1 1 2 3 3",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_121",
@@ -1937,7 +1938,8 @@
       "B. 1.000000",
       "C. 1.500000",
       "D. 1.0",
-      "E. 1.5\nF. 1"
+      "E. 1.5",
+      "F. 1"
     ],
     "answer": "A",
     "correctWord": "A. Compiler error",
@@ -1975,7 +1977,7 @@
     "correctWord": "D. Garbage value",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_124",
@@ -1991,7 +1993,7 @@
     "correctWord": "D. 2.000000",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_125",
@@ -2039,7 +2041,7 @@
     "correctWord": "A. Compile time error",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_128",
@@ -2055,7 +2057,7 @@
     "correctWord": "B. 1",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_129",
@@ -2071,7 +2073,7 @@
     "correctWord": "C. 4",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_130",
@@ -2087,7 +2089,7 @@
     "correctWord": "C. 1",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_131",
@@ -2103,7 +2105,7 @@
     "correctWord": "C. Compilation error.",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_132",
@@ -2135,7 +2137,7 @@
     "correctWord": "A. Compile time error",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_134",
@@ -2167,7 +2169,7 @@
     "correctWord": "A. The program outputs undefined values.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_136",
@@ -2215,7 +2217,7 @@
     "correctWord": "A. 10",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_139",
@@ -2242,7 +2244,8 @@
       "B. 0",
       "C. Compiler error",
       "D. 6370",
-      "E. 65\nF. 98"
+      "E. 65",
+      "F. 98"
     ],
     "answer": "D",
     "correctWord": "D. 6370",
@@ -2282,7 +2285,7 @@
     "correctWord": "C. 8",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_143",
@@ -2346,7 +2349,7 @@
     "correctWord": "A. The output will be: 12 22",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_147",
@@ -2373,7 +2376,8 @@
       "B. Compiler error",
       "C. x = 5, y = 10",
       "D. x = 10, y = 5",
-      "E. x = 10, y = 10\nF. x = 5, y = 5"
+      "E. x = 10, y = 10",
+      "F. x = 5, y = 5"
     ],
     "answer": "B",
     "correctWord": "B. Compiler error",
@@ -2395,7 +2399,7 @@
     "correctWord": "A. 'c'",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_150",
@@ -2475,7 +2479,7 @@
     "correctWord": "A. typedef struct {\n       dataType1 field1;\n       dataType2 field2;\n   } structName;",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_155",
@@ -2539,7 +2543,7 @@
     "correctWord": "A. 1 byte",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_159",
@@ -2619,7 +2623,7 @@
     "correctWord": "A. -6 and 5",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Lập Trình C Chung"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_164",
@@ -2699,7 +2703,7 @@
     "correctWord": "B. 29",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_169",
@@ -2858,7 +2862,7 @@
     ],
     "answer": "A",
     "correctWord": "A. The value of p is 4",
-    "explanation": "Đáp án: A.",
+    "explanation": "Đáp án: A (A. The value of p is 4). (Lưu ý đề gốc: câu lệnh printf(\"%d\", p) chỉ in số \"4\", không có cụm chữ \"The value of p is \").",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
@@ -2887,7 +2891,8 @@
       "B. Ad",
       "C. Compiler error",
       "D. AbCdEfdEf",
-      "E. AbC\nF. dEf"
+      "E. AbC",
+      "F. dEf"
     ],
     "answer": "D",
     "correctWord": "D. AbCdEfdEf",
@@ -3022,7 +3027,7 @@
     "correctWord": "B. A reference to a memory location",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_352",
@@ -3038,7 +3043,7 @@
     "correctWord": "A. Bring the pointer fp back to the beginning of the file",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_353",
@@ -3084,7 +3089,7 @@
     ],
     "answer": "B",
     "correctWord": "B. Loop infinitely",
-    "explanation": "Đáp án: B.",
+    "explanation": "Đáp án: B. (Lưu ý đề gốc: câu hỏi bị gõ thiếu động từ \"update/change\" sau cụm \"does NOT\").",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
@@ -3150,7 +3155,7 @@
     "correctWord": "A. It improves code portability",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Lập Trình C Chung"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_360",
@@ -3198,7 +3203,7 @@
     "correctWord": "B. double and goto are keyword for declaring data type.",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_363",
@@ -3246,7 +3251,7 @@
     "correctWord": "B. Returns the pointer to the first occurrence of the given substring in the main string",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
     "id": "prf_366",
@@ -3262,7 +3267,7 @@
     "correctWord": "A. C has object-oriented features.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Lập Trình C Chung"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_367",
@@ -3278,7 +3283,7 @@
     "correctWord": "A. It is visible only within the function where it's declared.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_368",
@@ -3326,7 +3331,7 @@
     "correctWord": "A. It can only be used with integer or character type expressions.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_371",
@@ -3342,7 +3347,7 @@
     "correctWord": "C. The first character of an identifier must be a letter or an underscore",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_372",
@@ -3390,7 +3395,7 @@
     "correctWord": "A. As an array of characters",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
+    "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
     "id": "prf_375",
@@ -3406,7 +3411,7 @@
     "correctWord": "C. It describes values used to define information",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_376",
@@ -3422,7 +3427,7 @@
     "correctWord": "A. Compilation involves converting source code to machine code, while interpretation involves executing code line by line.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_377",
@@ -3438,7 +3443,7 @@
     "correctWord": "A. A \"for\" loop is used for iterating over a sequence of elements, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_378",
@@ -3452,10 +3457,10 @@
       "E. The scope of a variable is the range of program statements that can't access that variable."
     ],
     "answer": "A, B",
-    "correctWord": "B. To declare a variable you specify its name and data type it can store.",
+    "correctWord": "A. All variables must be declared before we use them in C program. | B. To declare a variable you specify its name and data type it can store.",
     "explanation": "Đáp án: A, B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_379",
@@ -3487,7 +3492,7 @@
     "correctWord": "D. scanf will expect two integers inputted by user separated by a comma, and write the first integer to variable a, the second integer to variable b.",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_381",
@@ -3503,7 +3508,7 @@
     "correctWord": "B. A category of data that represents individual, non-complex elements such as integers, floating-point numbers, and characters",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_383",
@@ -3519,7 +3524,7 @@
     "correctWord": "C. Comments are removed in the pre-processing step.",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_384",
@@ -3535,7 +3540,7 @@
     "correctWord": "A. Check the day of the week.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_385",
@@ -3597,10 +3602,10 @@
       "E. All answers are correct."
     ],
     "answer": "E",
-    "correctWord": "A. Decimal number system (Base-10).",
+    "correctWord": "E. All answers are correct.",
     "explanation": "Đáp án: E.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Lập Trình C Chung"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_389",
@@ -3659,13 +3664,14 @@
       "B. Generating random integer from min to max.",
       "C. Generating random float from min to max.",
       "D. Generating random float.",
-      "E. Generating random double.\nF. Generating random double from min to max."
+      "E. Generating random double.",
+      "F. Generating random double from min to max."
     ],
     "answer": "A",
     "correctWord": "A. Generating random integer.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_393",
@@ -3692,13 +3698,14 @@
       "B. OR two bit sequences.",
       "C. AND two bit sequences.",
       "D. SHIFT UP a bit sequences.",
-      "E. NOT a bit sequences.\nF. Calculate the exponential value, for example 2^3 = 8."
+      "E. NOT a bit sequences.",
+      "F. Calculate the exponential value, for example 2^3 = 8."
     ],
     "answer": "A",
     "correctWord": "A. XOR two bit sequences.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_395",
@@ -3746,7 +3753,7 @@
     "correctWord": "B. A procedure used for solving a problem or performing a computation.",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
     "id": "prf_398",
@@ -3762,7 +3769,7 @@
     "correctWord": "A. To define how values are stored and how operations are performed",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_399",
@@ -3778,7 +3785,7 @@
     "correctWord": "A. Local variables within a function are declared and initialized each time the function is called.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_400",
@@ -3810,7 +3817,7 @@
     "correctWord": "A. To carry out a specific function and may be used alone or combined with other modules to create a program",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_403",
@@ -3858,7 +3865,7 @@
     "correctWord": "A. A module performs its tasks independently.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_406",
@@ -3874,7 +3881,7 @@
     "correctWord": "C. Read an integer input",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   },
   {
     "id": "prf_407",
@@ -3906,7 +3913,7 @@
     "correctWord": "A. The null terminator in C strings",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
     "id": "prf_409",
@@ -3922,7 +3929,7 @@
     "correctWord": "C. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp. If the file does not exist, a new file named employee.dat will be created and its address will be assigned to fp.",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_410",
@@ -4002,14 +4009,13 @@
     "correctWord": "A. math.h",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_415",
-    "word": "Câu 415: Consider two strings s1 and s2 in",
-    "question": "Consider two strings s1 and s2 in",
+    "word": "Câu 415: Consider two strings s1 and s2 in C. How can you determine i...",
+    "question": "Consider two strings s1 and s2 in C. How can you determine if s1 is greater than or equal to s2?",
     "options": [
-      "C. How can you determine if s1 is greater than or equal to s2?",
       "A. if (strcmp(s1, s2) >= 0)",
       "B. if (strcmp(s1, s2) < 0)",
       "C. if (strlen(s1) >= strlen(s2))",
@@ -4035,7 +4041,7 @@
     "correctWord": "C. 15",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
+    "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
     "id": "prf_417",
@@ -4051,7 +4057,7 @@
     "correctWord": "A. Pass by value",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Hàm & Phạm Vi Biến"
   },
   {
     "id": "prf_418",
@@ -4067,6 +4073,6 @@
     "correctWord": "A. (x < 10 || x > 20)",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+    "topic": "Cú Pháp, Kiểu Dữ Liệu & Toán Tử"
   }
 ]

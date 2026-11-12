@@ -1,4 +1,20 @@
-﻿[
+[
+  {
+    "id": "SSA_146",
+    "word": "Câu 146: Digital literacy enhances employability mainly because it:",
+    "question": "Digital literacy enhances employability mainly because it:",
+    "options": [
+      "A. Guarantees higher salaries",
+      "B. Enables adaptation to technological change",
+      "C. Eliminates workplace stress and enhance mental health",
+      "D. Replaces teamwork skills"
+    ],
+    "answer": "B",
+    "correctWord": "B. Enables adaptation to technological change",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
+  },
   {
     "id": "SSA_173",
     "word": "Câu 173: What is one major purpose of college beyond career preparati...",
@@ -43,6 +59,22 @@
     ],
     "answer": "C",
     "correctWord": "C. Assets (Owned) – Liabilities (Owed) = Net Worth",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
+  },
+  {
+    "id": "SSA_181",
+    "word": "Câu 181: What is the first step in the five-step financial planning p...",
+    "question": "What is the first step in the five-step financial planning process?",
+    "options": [
+      "A. Monitor and Adjust the Plan",
+      "B. Implement the Plan",
+      "C. Develop Personal Goals",
+      "D. Write My Financial Plan"
+    ],
+    "answer": "C",
+    "correctWord": "C. Develop Personal Goals",
     "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
@@ -159,6 +191,38 @@
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
+    "id": "SSA_206",
+    "word": "Câu 206: What is 'Monitoring' in the financial planning process?",
+    "question": "What is 'Monitoring' in the financial planning process?",
+    "options": [
+      "A. Continually tracking your income, spending, and progress toward your financial goals.",
+      "B. Watching the stock market daily.",
+      "C. Letting the bank manage all your money.",
+      "D. Setting a goal and never looking back."
+    ],
+    "answer": "A",
+    "correctWord": "A. Continually tracking your income, spending, and progress toward your financial goals.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
+  },
+  {
+    "id": "SSA_209",
+    "word": "Câu 209: What is the 'Occupational Outlook Handbook' used for?",
+    "question": "What is the 'Occupational Outlook Handbook' used for?",
+    "options": [
+      "A. To find the easiest classes in college.",
+      "B. To research requirements for careers and identify fields with good job growth prospects.",
+      "C. To apply for financial aid.",
+      "D. To track your daily schedule."
+    ],
+    "answer": "B",
+    "correctWord": "B. To research requirements for careers and identify fields with good job growth prospects.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
+  },
+  {
     "id": "SSA_213",
     "word": "Câu 213: What is the primary benefit of being 'financially literate'?",
     "question": "What is the primary benefit of being 'financially literate'?",
@@ -207,6 +271,70 @@
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
   },
   {
+    "id": "SSA_226",
+    "word": "Câu 226: How do academic advisors help with career exploration?",
+    "question": "How do academic advisors help with career exploration?",
+    "options": [
+      "A. They guarantee you a job right after graduation.",
+      "B. They help you set educational/career goals, choose a major, and connect you with career services.",
+      "C. They write your resume and cover letter for you.",
+      "D. They provide loans to pay for your tuition."
+    ],
+    "answer": "B",
+    "correctWord": "B. They help you set educational/career goals, choose a major, and connect you with career services.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
+  },
+  {
+    "id": "SSA_230",
+    "word": "Câu 230: How can a balance sheet help a student in the future?",
+    "question": "How can a balance sheet help a student in the future?",
+    "options": [
+      "A. It helps balance their class schedule.",
+      "B. It provides a comprehensive picture (\"snapshot\") of assets and liabilities, allowing them to track financial progress at a point in time.",
+      "C. It automatically pays bills.",
+      "D. It prevents students from getting into debt."
+    ],
+    "answer": "B",
+    "correctWord": "B. It provides a comprehensive picture (\"snapshot\") of assets and liabilities, allowing them to track financial progress at a point in time.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
+  },
+  {
+    "id": "SSA_232",
+    "word": "Câu 232: How much can on-campus housing and meals add to the annual c...",
+    "question": "How much can on-campus housing and meals add to the annual cost of college?",
+    "options": [
+      "A. The exact cost is not stated, but the text recommends living at home (if possible) to save a significant amount of money.",
+      "B. It is always cheaper than living at home.",
+      "C. An extra $50,000 per year.",
+      "D. Universities do not charge for room and board."
+    ],
+    "answer": "A",
+    "correctWord": "A. The exact cost is not stated, but the text recommends living at home (if possible) to save a significant amount of money.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
+  },
+  {
+    "id": "SSA_235",
+    "word": "Câu 235: Why is 'Evaluating' a necessary step in the financial planni...",
+    "question": "Why is 'Evaluating' a necessary step in the financial planning process?",
+    "options": [
+      "A. To judge other people's spending habits.",
+      "B. To assess your current financial situation (e.g., income, expenses) before making a plan.",
+      "C. To calculate bank interest rates.",
+      "D. To decide which bank to choose."
+    ],
+    "answer": "B",
+    "correctWord": "B. To assess your current financial situation (e.g., income, expenses) before making a plan.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
+  },
+  {
     "id": "SSA_236",
     "word": "Câu 236: Why is it important to research 'job market trends' for a ch...",
     "question": "Why is it important to research 'job market trends' for a chosen major?",
@@ -218,6 +346,22 @@
     ],
     "answer": "B",
     "correctWord": "B. To ensure you are preparing for a growing and promising field, rather than a declining one.",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
+  },
+  {
+    "id": "SSA_240",
+    "word": "Câu 240: Why is 'Learning About Yourself' considered a lifelong proce...",
+    "question": "Why is 'Learning About Yourself' considered a lifelong process in career planning?",
+    "options": [
+      "A. Because career tests are unreliable",
+      "B. Because knowing yourself as a professional by discovering interests, skills, and values is something everyone should do on an ongoing basis",
+      "C. Because employers require you to retake personality tests every year",
+      "D. Because it is required to maintain professional licensure"
+    ],
+    "answer": "B",
+    "correctWord": "B. Because knowing yourself as a professional by discovering interests, skills, and values is something everyone should do on an ongoing basis",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
@@ -298,6 +442,22 @@
     ],
     "answer": "A",
     "correctWord": "A. The valuable things you own, such as earnings, savings, and investments",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"
+  },
+  {
+    "id": "SSA_265",
+    "word": "Câu 265: In the context of financial goals, what does it mean to 'ali...",
+    "question": "In the context of financial goals, what does it mean to 'align personal and financial goals'?",
+    "options": [
+      "A. Recognizing that personal behaviors have financial consequences and planning your finances to support what you want to achieve in life.",
+      "B. Putting all your money into a savings account.",
+      "C. Borrowing as much money as possible to fund your personal lifestyle.",
+      "D. Choosing a career based solely on salary."
+    ],
+    "answer": "A",
+    "correctWord": "A. Recognizing that personal behaviors have financial consequences and planning your finances to support what you want to achieve in life.",
     "explanation": "Đáp án: A.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tài Chính Cá Nhân & Định Hướng Nghề Nghiệp"

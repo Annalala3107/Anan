@@ -1,33 +1,81 @@
-﻿[
+[
   {
-    "id": "CSI_27",
-    "word": "Câu 27: In a steganographic algorithm, if each comma (,) in the encr...",
-    "question": "In a steganographic algorithm, if each comma (,) in the encrypted message equals digit 0 and each dot (.) in the message equals digit 1. What is the hidden information in following message? “I am a human, a student. I studied hard, so I got a good score.”",
+    "id": "CSI_5",
+    "word": "Câu 5: What is the maximum number of children a node in a binary tr...",
+    "question": "What is the maximum number of children a node in a binary tree can have?",
     "options": [
-      "A. 0101",
-      "B. 1010",
-      "C. 0011",
-      "D. 1100"
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. Any number of children"
     ],
-    "answer": "A",
-    "correctWord": "A. 0101",
-    "explanation": "Đáp án: A. phẩy, chấm, phẩy, chấm = 0101",
+    "answer": "B",
+    "correctWord": "B. 2",
+    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "CSI_45",
-    "word": "Câu 45: In a steganographic algorithm, if each comma (,) in the encr...",
-    "question": "In a steganographic algorithm, if each comma (,) in the encrypted message equals digit 0 and each dot (.) in the message equals digit 1, what is the hidden information in the following message? “I am a human, a student. I studied hard, so I got a good score.”",
+    "id": "CSI_20",
+    "word": "Câu 20: Binary search can be appropriately performed on which of the...",
+    "question": "Binary search can be appropriately performed on which of the following list?",
     "options": [
-      "A. 0101",
-      "B. 1010",
-      "C. 0011",
-      "D. 1100"
+      "A. [-35, -15, -10, 1, 5, 7, 12, 50]",
+      "B. [-60, 37, 42, -63, 59, 53, -78, 57]",
+      "C. [3, 1, 2]",
+      "D. [1, 2, 3, 4, 5, 6, 7, 9, 0]"
     ],
     "answer": "A",
-    "correctWord": "A. 0101",
+    "correctWord": "A. [-35, -15, -10, 1, 5, 7, 12, 50]",
+    "explanation": "Đáp án: A. danh sách đã sắp xếp",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_38",
+    "word": "Câu 38: Suppose the following sequence of values is pushed into a st...",
+    "question": "Suppose the following sequence of values is pushed into a stack: 5, 15, 10, 20. What would be the order of removal?",
+    "options": [
+      "A. 20, 10, 15, 5",
+      "B. 5, 10, 15, 20",
+      "C. 10, 15, 20, 5",
+      "D. 15, 10, 5, 20"
+    ],
+    "answer": "A",
+    "correctWord": "A. 20, 10, 15, 5",
     "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_42",
+    "word": "Câu 42: Given a binary tree has 3 levels (including the root), how m...",
+    "question": "Given a binary tree has 3 levels (including the root), how many maximum nodes can it have?",
+    "options": [
+      "A. 7",
+      "B. 4",
+      "C. 8",
+      "D. 10"
+    ],
+    "answer": "A",
+    "correctWord": "A. 7",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_53",
+    "word": "Câu 53: Which of the following statements about binary search is tru...",
+    "question": "Which of the following statements about binary search is true?",
+    "options": [
+      "A. Binary search can be used on unsorted data",
+      "B. Binary search divides the search space into three parts",
+      "C. Binary search is faster than linear search for sorted data",
+      "D. Binary search has a time complexity of O(n)"
+    ],
+    "answer": "C",
+    "correctWord": "C. Binary search is faster than linear search for sorted data",
+    "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
@@ -48,17 +96,17 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "CSI_55",
-    "word": "Câu 55: Which is true about organizing relational data storage?",
-    "question": "Which is true about organizing relational data storage?",
+    "id": "CSI_56",
+    "word": "Câu 56: Which of the following statements is true regarding search a...",
+    "question": "Which of the following statements is true regarding search algorithms for a list of elements?",
     "options": [
-      "A. The physical storage of the data is independent of the way in which the data is logically organized",
-      "B. The abstract storage of the data is independent of the way in which the data is logically organized",
-      "C. The logical storage of the data is independent of the way in which the data is logically organized",
-      "D. The virtual storage of the data is independent of the way in which the data is logically organized"
+      "A. Binary search is more efficient than sequential for large lists, but it requires the list to be sorted.",
+      "B. Binary search can be used on an unsorted list to improve search efficiency compared to sequential search.",
+      "C. Sequential search requires fewer comparisons than binary search in the worst case, regardless of whether the list is sorted or not.",
+      "D. Sequential search and binary search require the same number of comparisons in the worst case if the list is sorted."
     ],
     "answer": "A",
-    "correctWord": "A. The physical storage of the data is independent of the way in which the data is logically organized",
+    "correctWord": "A. Binary search is more efficient than sequential for large lists, but it requires the list to be sorted.",
     "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
@@ -80,6 +128,22 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
+    "id": "CSI_83",
+    "word": "Câu 83: Each element in a record is called a(n) ______",
+    "question": "Each element in a record is called a(n) ______",
+    "options": [
+      "A. Cell",
+      "B. Word",
+      "C. Item",
+      "D. Field"
+    ],
+    "answer": "D",
+    "correctWord": "D. Field",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
     "id": "CSI_84",
     "word": "Câu 84: In hashing there is a possibility that more than one key wil...",
     "question": "In hashing there is a possibility that more than one key will hash to the same address in the file, resulting in a ______",
@@ -91,6 +155,22 @@
     ],
     "answer": "D",
     "correctWord": "D. Collision",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_95",
+    "word": "Câu 95: ______ is an ordered set of unambiguous steps that produces ...",
+    "question": "______ is an ordered set of unambiguous steps that produces a result and terminates in a finite time.",
+    "options": [
+      "A. A construct",
+      "B. A recursion",
+      "C. An iteration",
+      "D. An algorithm"
+    ],
+    "answer": "D",
+    "correctWord": "D. An algorithm",
     "explanation": "Đáp án: D.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
@@ -112,6 +192,38 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
+    "id": "CSI_102",
+    "word": "Câu 102: What is a recursive algorithm?",
+    "question": "What is a recursive algorithm?",
+    "options": [
+      "A. An algorithm that calls itself",
+      "B. An algorithm that runs only once",
+      "C. An algorithm that sorts data",
+      "D. An algorithm that stores data"
+    ],
+    "answer": "A",
+    "correctWord": "A. An algorithm that calls itself",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_106",
+    "word": "Câu 106: What is the time complexity of finding the height of a binar...",
+    "question": "What is the time complexity of finding the height of a binary tree with n nodes?",
+    "options": [
+      "A. O(n)",
+      "B. O(log n)",
+      "C. O(n²)",
+      "D. O(n log n)"
+    ],
+    "answer": "A",
+    "correctWord": "A. O(n)",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
     "id": "CSI_108",
     "word": "Câu 108: What is Queue used for?",
     "question": "What is Queue used for?",
@@ -128,17 +240,50 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "CSI_113",
-    "word": "Câu 113: What are the two primary techniques for storing images in co...",
-    "question": "What are the two primary techniques for storing images in computers?",
+    "id": "CSI_117",
+    "word": "Câu 117: What components make up an element in a linked list?",
+    "question": "What components make up an element in a linked list?",
     "options": [
-      "A. Raster graphics and vector graphics",
-      "B. Raster graphics and animation",
-      "C. Vector graphics and text encoding",
-      "D. Image scanning and color depth"
+      "A. Data value and the address of the next element",
+      "B. Data value and the index of the element",
+      "C. Index of the previous and next element",
+      "D. Only the data value",
+      "E. None of the others"
     ],
     "answer": "A",
-    "correctWord": "A. Raster graphics and vector graphics",
+    "correctWord": "A. Data value and the address of the next element",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_118",
+    "word": "Câu 118: What are the two parts of a node in a linked list?",
+    "question": "What are the two parts of a node in a linked list?",
+    "options": [
+      "A. Data and a pointer to the next node",
+      "B. Data and an index of the current node",
+      "C. Data and the next node’s value",
+      "D. Data and the size of the list"
+    ],
+    "answer": "A",
+    "correctWord": "A. Data and a pointer to the next node",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_120",
+    "word": "Câu 120: What command do you use to iterate through each element in t...",
+    "question": "What command do you use to iterate through each element in the array?",
+    "options": [
+      "A. for",
+      "B. if else",
+      "C. switch case",
+      "D. return"
+    ],
+    "answer": "A",
+    "correctWord": "A. for",
     "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
@@ -160,6 +305,22 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
+    "id": "CSI_137",
+    "word": "Câu 137: Which data structure uses the Last In, First Out (LIFO) prin...",
+    "question": "Which data structure uses the Last In, First Out (LIFO) principle?",
+    "options": [
+      "A. Queue",
+      "B. Stack",
+      "C. Linked List",
+      "D. Binary Tree"
+    ],
+    "answer": "B",
+    "correctWord": "B. Stack",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
     "id": "CSI_140",
     "word": "Câu 140: Which method is used to add an element to a stack?",
     "question": "Which method is used to add an element to a stack?",
@@ -176,49 +337,17 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "CSI_146",
-    "word": "Câu 146: Which software engineering principle advocates breaking down...",
-    "question": "Which software engineering principle advocates breaking down complex systems into smaller, manageable components that are easier to understand, develop, and maintain?",
+    "id": "CSI_145",
+    "word": "Câu 145: Which data structure is commonly used for First-In, First-Ou...",
+    "question": "Which data structure is commonly used for First-In, First-Out (FIFO) data processing?",
     "options": [
-      "A. Abstraction",
-      "B. Encapsulation",
-      "C. Modularity",
-      "D. Inheritance"
-    ],
-    "answer": "C",
-    "correctWord": "C. Modularity",
-    "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
-  },
-  {
-    "id": "CSI_147",
-    "word": "Câu 147: Which access method typically requires additional space for ...",
-    "question": "Which access method typically requires additional space for maintaining an index structure but provides faster access to records compared to sequential access?",
-    "options": [
-      "A. Sequential access",
-      "B. Direct access",
-      "C. Indexed sequential access",
-      "D. Hashing"
-    ],
-    "answer": "C",
-    "correctWord": "C. Indexed sequential access",
-    "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
-  },
-  {
-    "id": "CSI_160",
-    "word": "Câu 160: Which principle of OOP encourages bundling data and methods ...",
-    "question": "Which principle of OOP encourages bundling data and methods that operate on the data into a single unit, known as a class?",
-    "options": [
-      "A. Inheritance",
-      "B. Encapsulation",
-      "C. Polymorphism",
-      "D. Abstraction"
+      "A. Stack",
+      "B. Queue",
+      "C. Tree",
+      "D. Linked list"
     ],
     "answer": "B",
-    "correctWord": "B. Encapsulation",
+    "correctWord": "B. Queue",
     "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
@@ -256,6 +385,22 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
+    "id": "CSI_169",
+    "word": "Câu 169: A sorting algorithm where the list is divided into sorted an...",
+    "question": "A sorting algorithm where the list is divided into sorted and unsorted sublists, and the smallest element from the unsorted part is repeatedly swapped with the first element of the unsorted part is known as a:",
+    "options": [
+      "A. Bubble sort",
+      "B. Insertion sort",
+      "C. Selection sort",
+      "D. Binary sort"
+    ],
+    "answer": "C",
+    "correctWord": "C. Selection sort",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
     "id": "CSI_176",
     "word": "Câu 176: In the context of sequential search, what is the main criter...",
     "question": "In the context of sequential search, what is the main criterion for stopping the search?",
@@ -289,18 +434,83 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "CSI_181",
-    "word": "Câu 181: In the File Structure, Hashing works by:",
-    "question": "In the File Structure, Hashing works by:",
+    "id": "CSI_184",
+    "word": "Câu 184: In a binary search tree (BST), where is the smallest element...",
+    "question": "In a binary search tree (BST), where is the smallest element located?",
     "options": [
-      "A. Sorting files by Index",
-      "B. Compress a normal file",
-      "C. Calculating a key",
-      "D. Adding lines to the file"
+      "A. Leftmost node",
+      "B. Root",
+      "C. Rightmost node",
+      "D. Complete binary tree",
+      "E. Any leaf node"
     ],
-    "answer": "C",
-    "correctWord": "C. Calculating a key",
-    "explanation": "Đáp án: C.",
+    "answer": "A",
+    "correctWord": "A. Leftmost node",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_185",
+    "word": "Câu 185: In a singly linked list, each node has:",
+    "question": "In a singly linked list, each node has:",
+    "options": [
+      "A. Data and a link",
+      "B. Data and an index code",
+      "C. Data and a hash code",
+      "D. Data and a value"
+    ],
+    "answer": "A",
+    "correctWord": "A. Data and a link",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_193",
+    "word": "Câu 193: Which of the following pseudo-code constructs is commonly us...",
+    "question": "Which of the following pseudo-code constructs is commonly used to represent a repetitive process until a certain condition is met?",
+    "options": [
+      "A. FOR loop",
+      "B. WHILE loop",
+      "C. IF statement",
+      "D. SWITCH statement"
+    ],
+    "answer": "B",
+    "correctWord": "B. WHILE loop",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_194",
+    "word": "Câu 194: Which operation sequence on a binary tree corresponds to the...",
+    "question": "Which operation sequence on a binary tree corresponds to the postorder traversal pattern?",
+    "options": [
+      "A. Process Left subtree → Right subtree → Root",
+      "B. Process Root → Left subtree → Right subtree",
+      "C. Process Root → Right subtree → Left subtree",
+      "D. Process Right subtree → Root → Left subtree"
+    ],
+    "answer": "A",
+    "correctWord": "A. Process Left subtree → Right subtree → Root",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_195",
+    "word": "Câu 195: Which of the following traversal methods of a binary tree is...",
+    "question": "Which of the following traversal methods of a binary tree is used to get a sorted list of elements?",
+    "options": [
+      "A. Pre-order traversal",
+      "B. In-order traversal",
+      "C. Post-order traversal",
+      "D. Level-order traversal"
+    ],
+    "answer": "B",
+    "correctWord": "B. In-order traversal",
+    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
@@ -316,6 +526,22 @@
     ],
     "answer": "B",
     "correctWord": "B. Record",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_228",
+    "word": "Câu 228: What is the conceptual difference between an array and a rec...",
+    "question": "What is the conceptual difference between an array and a record?",
+    "options": [
+      "A. An array defines attributes of an element, while a record defines a collection of similar elements",
+      "B. An array defines a combination of elements, while a record defines the identifiable parts (attributes) of a single element.",
+      "C. Arrays store data on disk, while records store data in main memory",
+      "D. Records can only store numerical data, while arrays store all data types."
+    ],
+    "answer": "B",
+    "correctWord": "B. An array defines a combination of elements, while a record defines the identifiable parts (attributes) of a single element.",
     "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
@@ -337,18 +563,34 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "CSI_241",
-    "word": "Câu 241: What is the most correct statement about LAN topologies?",
-    "question": "What is the most correct statement about LAN topologies?",
+    "id": "CSI_233",
+    "word": "Câu 233: What is the core mechanism of the “bubble sort” algorithm fo...",
+    "question": "What is the core mechanism of the “bubble sort” algorithm for ordering data?",
     "options": [
-      "A. Bus topology is a sophisticated structure and robust with high traffic.",
-      "B. Ring topology is a high risk for collision between 2 nodes.",
-      "C. Star topology is a structure that has a central switch.",
-      "D. Mesh topology is the most complicated structure."
+      "A. Dividing the list into two parts and inserting elements from unsorted to sorted",
+      "B. Finding the smallest element and swapping it to the correct position",
+      "C. Repeatedly comparing adjacent elements and swapping them if they are in the wrong order.",
+      "D. Dividing the list in half and searching"
     ],
     "answer": "C",
-    "correctWord": "C. Star topology is a structure that has a central switch.",
+    "correctWord": "C. Repeatedly comparing adjacent elements and swapping them if they are in the wrong order.",
     "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_237",
+    "word": "Câu 237: What is one significant advantage of choosing a linked list ...",
+    "question": "What is one significant advantage of choosing a linked list instead of an array as a data structure, particularly in terms of memory management and the efficiency of inserting or deleting elements?",
+    "options": [
+      "A. Faster searching.",
+      "B. Easier random access to elements.",
+      "C. More efficient memory usage per node.",
+      "D. More efficient insertions and deletions."
+    ],
+    "answer": "D",
+    "correctWord": "D. More efficient insertions and deletions.",
+    "explanation": "Đáp án: D.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
@@ -369,6 +611,22 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
+    "id": "CSI_244",
+    "word": "Câu 244: What is the primary difference between sequential search and...",
+    "question": "What is the primary difference between sequential search and binary search algorithms?",
+    "options": [
+      "A. Sequential search requires the data to be sorted in ascending order, while binary search can work on unsorted data as well",
+      "B. Binary search divides the search space into halves, while sequential search checks elements one by one",
+      "C. Sequential search exhibits greater efficiency and speed compared to binary search when applied to large datasets containing a significant number of elements",
+      "D. Binary search is a versatile algorithm that can be applied to various types of data structures, such as arrays, linked lists, and trees, while sequential search is specifically designed to work only with arrays"
+    ],
+    "answer": "B",
+    "correctWord": "B. Binary search divides the search space into halves, while sequential search checks elements one by one",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
     "id": "CSI_247",
     "word": "Câu 247: What does the enqueue operation do in a queue ADT?",
     "question": "What does the enqueue operation do in a queue ADT?",
@@ -385,6 +643,39 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
+    "id": "CSI_248",
+    "word": "Câu 248: What is an algorithm?",
+    "question": "What is an algorithm?",
+    "options": [
+      "A. A set of programming commands or instructions that are executed in a specific order to perform a task",
+      "B. A step-by-step procedure to solve a problem or accomplish a task",
+      "C. A program that is loaded into the computer’s memory and is ready for execution",
+      "D. A method for compressing data to reduce its size for efficient storage or transmission"
+    ],
+    "answer": "B",
+    "correctWord": "B. A step-by-step procedure to solve a problem or accomplish a task",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_256",
+    "word": "Câu 256: What are the characteristics of a binary search tree (BST) i...",
+    "question": "What are the characteristics of a binary search tree (BST) in terms of data order?",
+    "options": [
+      "A. The data in the parent node is always larger than the data in the left child node and smaller than the data in the right child node",
+      "B. The data in the parent node is always smaller than the data in the left child node and larger than the data in the right child node",
+      "C. The data at the nodes does not have any order",
+      "D. The data in the left child node and right child node are always equal",
+      "E. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. The data in the parent node is always larger than the data in the left child node and smaller than the data in the right child node",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
     "id": "CSI_258",
     "word": "Câu 258: What characteristic makes a stack a “Last In, First Out (LIF...",
     "question": "What characteristic makes a stack a “Last In, First Out (LIFO)” data structure?",
@@ -397,6 +688,70 @@
     "answer": "C",
     "correctWord": "C. If data is inserted into a stack and then removed, the order of the data is reversed",
     "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_261",
+    "word": "Câu 261: Which of the following statements about records’ data types ...",
+    "question": "Which of the following statements about records’ data types is correct?",
+    "options": [
+      "A. Records cannot contain other records as fields.",
+      "B. Records are immutable data types.",
+      "C. Records have a fixed size that cannot be changed at runtime.",
+      "D. Records can have fields of different data types."
+    ],
+    "answer": "D",
+    "correctWord": "D. Records can have fields of different data types.",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_268",
+    "word": "Câu 268: Which of the following is an application area for graphs?",
+    "question": "Which of the following is an application area for graphs?",
+    "options": [
+      "A. Computer networks, where vertices represent nodes/hubs and edges represent routes.",
+      "B. Storing student records in a school.",
+      "C. Implementing stacks and queues.",
+      "D. Decimal to binary conversion."
+    ],
+    "answer": "A",
+    "correctWord": "A. Computer networks, where vertices represent nodes/hubs and edges represent routes.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_269",
+    "word": "Câu 269: Which of the following examples demonstrates the “repetition...",
+    "question": "Which of the following examples demonstrates the “repetition” construct in an algorithm?",
+    "options": [
+      "A. Assigning a value to a variable",
+      "B. Evaluating a condition once",
+      "C. Using a for loop to iterate over a list",
+      "D. Breaking out of a loop"
+    ],
+    "answer": "C",
+    "correctWord": "C. Using a for loop to iterate over a list",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_272",
+    "word": "Câu 272: Which of the following best describes an array?",
+    "question": "Which of the following best describes an array?",
+    "options": [
+      "A. A collection of functions",
+      "B. A data structure that stores a list of data items in contiguous memory locations",
+      "C. A sequence of characters",
+      "D. A method for sorting data"
+    ],
+    "answer": "B",
+    "correctWord": "B. A data structure that stores a list of data items in contiguous memory locations",
+    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
@@ -449,6 +804,54 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
+    "id": "CSI_290",
+    "word": "Câu 290: When is a “sequential search” typically used for a list?",
+    "question": "When is a “sequential search” typically used for a list?",
+    "options": [
+      "A. For very large, sorted lists.",
+      "B. When the list is organized hierarchically",
+      "C. Only for small lists, or lists that are not searched often, and are not ordered.",
+      "D. When the exact position of the target is known"
+    ],
+    "answer": "C",
+    "correctWord": "C. Only for small lists, or lists that are not searched often, and are not ordered.",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_297",
+    "word": "Câu 297: In which scenario is a binary search algorithm ineffective?",
+    "question": "In which scenario is a binary search algorithm ineffective?",
+    "options": [
+      "A. When the data is sorted",
+      "B. When the data is unsorted",
+      "C. When the data is in an array",
+      "D. When the data is in a linked list"
+    ],
+    "answer": "B",
+    "correctWord": "B. When the data is unsorted",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_298",
+    "word": "Câu 298: Inside the ADT (abstract data type) are two different parts ...",
+    "question": "Inside the ADT (abstract data type) are two different parts of the model:",
+    "options": [
+      "A. Hardware and software",
+      "B. Database and operations",
+      "C. Data structure and algorithms",
+      "D. Data structure and operations"
+    ],
+    "answer": "D",
+    "correctWord": "D. Data structure and operations",
+    "explanation": "Đáp án: D.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
     "id": "CSI_303",
     "word": "Câu 303: In which case would an iterative algorithm be preferred over...",
     "question": "In which case would an iterative algorithm be preferred over a recursive algorithm?",
@@ -481,18 +884,18 @@
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
   {
-    "id": "CSI_325",
-    "word": "Câu 325: Which of the following is a characteristic of sequential fil...",
-    "question": "Which of the following is a characteristic of sequential file organization?",
+    "id": "CSI_315",
+    "word": "Câu 315: Which statement best describes a binary tree according to th...",
+    "question": "Which statement best describes a binary tree according to the ADT definition?",
     "options": [
-      "A. Data is stored in random order within the file, and access to specific records is achieved using a key or index",
-      "B. Data is stored in the order in which it is entered and can only be accessed sequentially",
-      "C. Data is stored using a linked list structure, where each record contains a pointer to the location of the next record in the sequence",
-      "D. Data is organized with an index that allows for quick searching and retrieval of records based on keys or identifiers"
+      "A. Each node has at most two subtrees, called left and right.",
+      "B. Every node must have exactly two children and each must be a prime number.",
+      "C. A binary tree is only used in graphical user interfaces for drawing.",
+      "D. Every leaf connects to every other node via hidden arcs."
     ],
-    "answer": "B",
-    "correctWord": "B. Data is stored in the order in which it is entered and can only be accessed sequentially",
-    "explanation": "Đáp án: B.",
+    "answer": "A",
+    "correctWord": "A. Each node has at most two subtrees, called left and right.",
+    "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
   },
@@ -540,6 +943,54 @@
     ],
     "answer": "A",
     "correctWord": "A. It is efficient when searching small or unsorted datasets",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_335",
+    "word": "Câu 335: When inserting a new element into a sorted array, what must ...",
+    "question": "When inserting a new element into a sorted array, what must be done to maintain the sorted order?",
+    "options": [
+      "A. Shift elements after the insertion point to create space",
+      "B. Shift all elements to the left to create space at the beginning",
+      "C. Replace the last element with the new element",
+      "D. Reorganize the array into a linked list structure"
+    ],
+    "answer": "A",
+    "correctWord": "A. Shift elements after the insertion point to create space",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_345",
+    "word": "Câu 345: In a two-dimensional array stored using row-major order, how...",
+    "question": "In a two-dimensional array stored using row-major order, how are elements stored in memory?",
+    "options": [
+      "A. An entire row of an array is stored before the next row",
+      "B. An entire column of an array is stored before the next column",
+      "C. Elements are stored randomly",
+      "D. Rows and columns are stored simultaneously"
+    ],
+    "answer": "A",
+    "correctWord": "A. An entire row of an array is stored before the next row",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"
+  },
+  {
+    "id": "CSI_347",
+    "word": "Câu 347: In the field of social networking, what does a graph represe...",
+    "question": "In the field of social networking, what does a graph represent?",
+    "options": [
+      "A. Social relationships among users",
+      "B. Connections between computers",
+      "C. Sorting the list of friends on social media",
+      "D. Displaying data structures"
+    ],
+    "answer": "A",
+    "correctWord": "A. Social relationships among users",
     "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Cấu Trúc Dữ Liệu & Giải Thuật"

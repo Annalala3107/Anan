@@ -64,22 +64,6 @@
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "prf_21",
-    "word": "Câu 21: What is the output?\nint x = 0, y = 5;\nprintf(\"%d\", (x && y))...",
-    "question": "What is the output?\nint x = 0, y = 5;\nprintf(\"%d\", (x && y));",
-    "options": [
-      "A. 1",
-      "B. 5",
-      "C. -1",
-      "D. 0"
-    ],
-    "answer": "D",
-    "correctWord": "D. 0",
-    "explanation": "Đáp án: D.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
     "id": "prf_37",
     "word": "Câu 37: int *ptr = malloc( sizeof( int ) );\nTo reallocate ptr to be ...",
     "question": "int *ptr = malloc( sizeof( int ) );\nTo reallocate ptr to be an array of 5 elements, which of the following statements generates an error?",
@@ -93,54 +77,6 @@
     "answer": "C",
     "correctWord": "C. ptr += malloc( 5 * sizeof( int ) );",
     "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_42",
-    "word": "Câu 42: What is the correct way to access the 4th element in array a...",
-    "question": "What is the correct way to access the 4th element in array a?",
-    "options": [
-      "A. printf(\"a[3] = %d\\n\", a[3]);",
-      "B. printf(\"*(a + 3) = %d\\n\", *(a + 3));",
-      "C. printf(\"&a[3] = %p\\n\", (void*)&a[3]);",
-      "D. All the above"
-    ],
-    "answer": "D",
-    "correctWord": "D. All the above",
-    "explanation": "Đáp án: D.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_45",
-    "word": "Câu 45: A one dimensional array A has indices 1...100. Each element ...",
-    "question": "A one dimensional array A has indices 1...100. Each element is a string and takes up three byte. The starting address of the array A[1] is 1110 decimal. The address of A[49] is ____",
-    "options": [
-      "A. 1254",
-      "B. 1158",
-      "C. 1159",
-      "D. 1257"
-    ],
-    "answer": "A",
-    "correctWord": "A. 1254",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_46",
-    "word": "Câu 46: What happens in this do/while loop?\nint n;\ndo {\n    printf(\"...",
-    "question": "What happens in this do/while loop?\nint n;\ndo {\n    printf(\"Enter a number:\");\n    scanf(\"%d\", &n);\n} while (n < 1 || n > 5);",
-    "options": [
-      "A. Never runs",
-      "B. Runs only when n = 1",
-      "C. Infinite loop",
-      "D. Runs at least once"
-    ],
-    "answer": "D",
-    "correctWord": "D. Runs at least once",
-    "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
@@ -173,22 +109,6 @@
     "answer": "A",
     "correctWord": "A. 1",
     "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_80",
-    "word": "Câu 80: What is the result displayed on the screen of the following ...",
-    "question": "What is the result displayed on the screen of the following program?\n#include<stdio.h>\nint isTriangle(float a, float b, float c)\n{\n    if ((a>0)&&(b>0)&&(c>0)&&(a<b+c)&&(b<c+a)&&(c<a+b))\n        return 1;\n    else\n        return 0;\n}\nint main()\n{\n    float a = 1, b = 1, c = 1.25;\n    if (isTriangle(a, b, c))\n        printf(\"%2.2f, %2.2f, %2.2f: a triangle.\\n\", a, b, c);\n    else\n        printf(\"%2.2f, %2.2f, %2.2f: not a triangle.\\n\", a, b, c);\n    return 0;\n}",
-    "options": [
-      "A. a, b, c: a triangle",
-      "B. 1.00, 1.00, 1.25: a triangle",
-      "C. 1, 1, 1.25: a triangle",
-      "D. 1.00, 1.00, 1.25: not a triangle"
-    ],
-    "answer": "B",
-    "correctWord": "B. 1.00, 1.00, 1.25: a triangle",
-    "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
@@ -321,18 +241,18 @@
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "prf_104",
-    "word": "Câu 104: What will be the output of the following C code?\n#include <s...",
-    "question": "What will be the output of the following C code?\n#include <stdio.h>\nint main()\n{\n    int a, b, c;\n    a = b = c = 10;\n    c = a++ || ++b && ++c;\n    printf(\"%d %d %d\", c, a, b);\n    return 0;\n}",
+    "id": "prf_99",
+    "word": "Câu 99: What will be printed when the following code is executed?\n#i...",
+    "question": "What will be printed when the following code is executed?\n#include <stdio.h>\nint main() {\n    int a[] = {1,2,3,4,5,6};\n    int* p = a;\n    p += 3;\n    printf(\"%d, %d\", *(a+3), *(p++));\n    return 0;\n}",
     "options": [
-      "A. 1 11 10",
-      "B. 10 11 1",
-      "C. 10 11 10",
-      "D. 1 1 10"
+      "A. 4 5",
+      "B. 3 4",
+      "C. 3 3",
+      "D. 4 4"
     ],
-    "answer": "A",
-    "correctWord": "A. 1 11 10",
-    "explanation": "Đáp án: A.",
+    "answer": "D",
+    "correctWord": "D. 4 4",
+    "explanation": "Đáp án: D (D. 4 4). (Lưu ý đề gốc: printf có dấu phẩy \"%d, %d\" nên output đúng chuẩn là \"4, 4\", nhưng đáp án D bỏ dấu phẩy thành \"4 4\").",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
@@ -348,6 +268,22 @@
     ],
     "answer": "D",
     "correctWord": "D. 11,11",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_109",
+    "word": "Câu 109: What will be printed when the following code is executed?\n#i...",
+    "question": "What will be printed when the following code is executed?\n#include <stdio.h>\nint main()\n{\n    int a[]={7,4,8,5,9};\n    int* b=a;\n    b++;\n    printf(\"%d %d\", *(b++), *(a+3));\n    getchar();\n    return 0;\n}",
+    "options": [
+      "A. 8 8",
+      "B. 4 8",
+      "C. 8 5",
+      "D. 4 5"
+    ],
+    "answer": "D",
+    "correctWord": "D. 4 5",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
@@ -369,23 +305,6 @@
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "prf_113",
-    "word": "Câu 113: What is the result of the \"printf(\"%d %d\", 12&5,12|5);\" comm...",
-    "question": "What is the result of the \"printf(\"%d %d\", 12&5,12|5);\" command?",
-    "options": [
-      "A. 4 13",
-      "B. 5 12",
-      "C. 4 12",
-      "D. 5 13",
-      "E. 1 1"
-    ],
-    "answer": "A",
-    "correctWord": "A. 4 13",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
     "id": "prf_114",
     "word": "Câu 114: What will be the output of the following program?\nint main()...",
     "question": "What will be the output of the following program?\nint main()\n{\n    int i = 100;\n    int *p = &i;\n    *p +=2;\n    printf(\"%d, %d\", i, *p);\n    getchar();\n    return 0;\n}",
@@ -398,22 +317,6 @@
     "answer": "A",
     "correctWord": "A. 102, 102",
     "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_128",
-    "word": "Câu 128: What is the output of the following code?\nint a = 10, b = 20...",
-    "question": "What is the output of the following code?\nint a = 10, b = 20;\nprintf(\"%d\", (a > 5 && b < 25));",
-    "options": [
-      "A. 0",
-      "B. 1",
-      "C. 10",
-      "D. 20"
-    ],
-    "answer": "B",
-    "correctWord": "B. 1",
-    "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
@@ -446,22 +349,6 @@
     "answer": "C",
     "correctWord": "C. 6",
     "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_138",
-    "word": "Câu 138: What is the output of the following code if the user enters ...",
-    "question": "What is the output of the following code if the user enters the value \"20\"?\nint n;\nchar c;\nscanf(\"%d\", &n);\nc = getchar();\nprintf(\"%d\", c);",
-    "options": [
-      "A. 10",
-      "B. 20",
-      "C. ''",
-      "D. Undefined"
-    ],
-    "answer": "A",
-    "correctWord": "A. 10",
-    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
@@ -546,54 +433,6 @@
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "prf_352",
-    "word": "Câu 352: What does the statement rewind(fp) do?",
-    "question": "What does the statement rewind(fp) do?",
-    "options": [
-      "A. Bring the pointer fp back to the beginning of the file",
-      "B. Assign to the pointer fp the address 0x00 (NULL)",
-      "C. Bring the pointer fp to the end of the file",
-      "D. Bring the pointer fp back to the beginning of the current line"
-    ],
-    "answer": "A",
-    "correctWord": "A. Bring the pointer fp back to the beginning of the file",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_365",
-    "word": "Câu 365: Which of the following statements about the strstr() functio...",
-    "question": "Which of the following statements about the strstr() function in C is true?",
-    "options": [
-      "A. Compare two strings",
-      "B. Returns the pointer to the first occurrence of the given substring in the main string",
-      "C. Concatenate source string to the end of destination string",
-      "D. Copy source string to destination string"
-    ],
-    "answer": "B",
-    "correctWord": "B. Returns the pointer to the first occurrence of the given substring in the main string",
-    "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_380",
-    "word": "Câu 380: Choose the correct statement about the following statement:\n...",
-    "question": "Choose the correct statement about the following statement:\nscanf(\"%d, %d\", &a, &b);",
-    "options": [
-      "A. scanf will expect two integers inputted by user and write them to variables a and b.",
-      "B. scanf will expect two floating-point numbers inputted by user and write them to variables a and b.",
-      "C. scanf will expect two integers inputted by user separated by a comma, and write the first integer to variable a, the comma to variable b.",
-      "D. scanf will expect two integers inputted by user separated by a comma, and write the first integer to variable a, the second integer to variable b."
-    ],
-    "answer": "D",
-    "correctWord": "D. scanf will expect two integers inputted by user separated by a comma, and write the first integer to variable a, the second integer to variable b.",
-    "explanation": "Đáp án: D.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
     "id": "prf_393",
     "word": "Câu 393: In the C programming language, which of the following statem...",
     "question": "In the C programming language, which of the following statements about the pointer operators & and * is true?",
@@ -621,86 +460,6 @@
     ],
     "answer": "A",
     "correctWord": "A. It is a pointer to the first element of the array",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_406",
-    "word": "Câu 406: What does the line scanf(\"%d\", &n); do?",
-    "question": "What does the line scanf(\"%d\", &n); do?",
-    "options": [
-      "A. Assign value to n",
-      "B. Print n",
-      "C. Read an integer input",
-      "D. Declare n"
-    ],
-    "answer": "C",
-    "correctWord": "C. Read an integer input",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_408",
-    "word": "Câu 408: What does the '\\0' character in a string represent?",
-    "question": "What does the '\\0' character in a string represent?",
-    "options": [
-      "A. The null terminator in C strings",
-      "B. A whitespace character",
-      "C. A printable character",
-      "D. A NULL pointer value"
-    ],
-    "answer": "A",
-    "correctWord": "A. The null terminator in C strings",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_409",
-    "word": "Câu 409: What does the following statement do?\nFILE *fp = fopen(\"empl...",
-    "question": "What does the following statement do?\nFILE *fp = fopen(\"employee.dat\", \"a\");",
-    "options": [
-      "A. Create a file named employee.dat. The address of the newly created file is assigned to the file pointer fp.",
-      "B. Open a file named employee.dat to read data. If the file exists, the address of the file is assigned to the file pointer fp.",
-      "C. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp. If the file does not exist, a new file named employee.dat will be created and its address will be assigned to fp.",
-      "D. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp and all existing data will be overwritten. If the file does not exist, a new file named employee.dat will be created and its address will be assigned to fp."
-    ],
-    "answer": "C",
-    "correctWord": "C. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp. If the file does not exist, a new file named employee.dat will be created and its address will be assigned to fp.",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_417",
-    "word": "Câu 417: In the C language, which method is used when a function rece...",
-    "question": "In the C language, which method is used when a function receives a copy of the argument's value, ensuring that changes inside the function do not affect the original variable?",
-    "options": [
-      "A. Pass by value",
-      "B. Pass by reference",
-      "C. Pass by address",
-      "D. Pass by pointer"
-    ],
-    "answer": "A",
-    "correctWord": "A. Pass by value",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_418",
-    "word": "Câu 418: Using DeMorgan's Law, how would you correctly negate the con...",
-    "question": "Using DeMorgan's Law, how would you correctly negate the condition (x >= 10 && x <= 20)?",
-    "options": [
-      "A. (x < 10 || x > 20)",
-      "B. (x > 10 && x < 20)",
-      "C. (x < 10 && x > 20)",
-      "D. !(x >= 10 || x <= 20)"
-    ],
-    "answer": "A",
-    "correctWord": "A. (x < 10 || x > 20)",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"

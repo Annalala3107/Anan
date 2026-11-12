@@ -32,17 +32,65 @@
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_28",
-    "word": "Câu 28: How can you initialize a character array in C?",
-    "question": "How can you initialize a character array in C?",
+    "id": "prf_42",
+    "word": "Câu 42: What is the correct way to access the 4th element in array a...",
+    "question": "What is the correct way to access the 4th element in array a?",
     "options": [
-      "A. char arr[] = \"Hello\";",
-      "B. char arr[] = ['H', 'e', 'l', 'l', 'o','/e'];",
-      "C. Char[] arr = \"Hello\";",
-      "D. Char[] arr = {'H', 'e', 'l', 'l', 'o','/0'};"
+      "A. printf(\"a[3] = %d\\n\", a[3]);",
+      "B. printf(\"*(a + 3) = %d\\n\", *(a + 3));",
+      "C. printf(\"&a[3] = %p\\n\", (void*)&a[3]);",
+      "D. All the above"
+    ],
+    "answer": "D",
+    "correctWord": "D. All the above",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_43",
+    "word": "Câu 43: What is the output of this reverse loop?\n#define SIZE 5\nint ...",
+    "question": "What is the output of this reverse loop?\n#define SIZE 5\nint nums[SIZE] = {5, 10, 2, -45, 6};\nfor (int i = SIZE - 1; i >= 0; i--)\n    printf(\"%d \", nums[i]);",
+    "options": [
+      "A. 5 10 2 -45 6",
+      "B. 6 -45 2 10 5",
+      "C. -45 2 10 5 6",
+      "D. Error"
+    ],
+    "answer": "B",
+    "correctWord": "B. 6 -45 2 10 5",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_45",
+    "word": "Câu 45: A one dimensional array A has indices 1...100. Each element ...",
+    "question": "A one dimensional array A has indices 1...100. Each element is a string and takes up three byte. The starting address of the array A[1] is 1110 decimal. The address of A[49] is ____",
+    "options": [
+      "A. 1254",
+      "B. 1158",
+      "C. 1159",
+      "D. 1257"
     ],
     "answer": "A",
-    "correctWord": "A. char arr[] = \"Hello\";",
+    "correctWord": "A. 1254",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_53",
+    "word": "Câu 53: Given the following code snippet:\nint a[10] = {1, 2, 3};\nWha...",
+    "question": "Given the following code snippet:\nint a[10] = {1, 2, 3};\nWhat is the value of a[3]?",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 2",
+      "D. 3"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
@@ -80,18 +128,98 @@
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_74",
-    "word": "Câu 74: What is the maximum index of the last character in a charact...",
-    "question": "What is the maximum index of the last character in a character array initialized with a size is 10?",
+    "id": "prf_111",
+    "word": "Câu 111: What will this code print?\nint x[5] = {0};\nprintf(\"%d\", x[3]...",
+    "question": "What will this code print?\nint x[5] = {0};\nprintf(\"%d\", x[3]);",
     "options": [
-      "A. 9",
-      "B. 10",
-      "C. 8",
-      "D. It depends on the contents of the array"
+      "A. 0",
+      "B. Garbage value",
+      "C. 3",
+      "D. Error"
     ],
     "answer": "A",
-    "correctWord": "A. 9",
+    "correctWord": "A. 0",
     "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_120",
+    "word": "Câu 120: What is the result displayed on the screen of the following ...",
+    "question": "What is the result displayed on the screen of the following program?\n#include <stdio.h>\nint main(void)\n{\n    int a[] = {1, 2, 3, 5, 6, 7};\n    for (int i = 0; i < 6; ++i)\n        printf(\"%3d\", a[i]/2);\n    return 0;\n}",
+    "options": [
+      "A. 0 1 1 2 3 3",
+      "B. 0.5 1.0 1.5 2.5 3.0 3.5",
+      "C. 1 1 2 3 4",
+      "D. 0 1 1 2 2 3"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0 1 1 2 3 3",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_123",
+    "word": "Câu 123: What is the results will be displayed on the screen after ex...",
+    "question": "What is the results will be displayed on the screen after executing the following code:\nint a[] = {1,2,3,4};\nint i, s;\nfor (i=0; i<4; ++i)\n    s += a[i];\nprintf(\"%f\", s/4.0);",
+    "options": [
+      "A. 0.000000",
+      "B. 2.000000",
+      "C. 2.500000",
+      "D. Garbage value"
+    ],
+    "answer": "D",
+    "correctWord": "D. Garbage value",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_124",
+    "word": "Câu 124: What is the results will be displayed on the screen after ex...",
+    "question": "What is the results will be displayed on the screen after executing the following code:\nint a[] = {1, 2, 3, 4};\nint i, s = 0;\nfor (i = 0; i < 4; ++i)\n    s += a[i];\nprintf(\"%0f\", (float)(s / 4));",
+    "options": [
+      "A. 2.5",
+      "B. 2",
+      "C. 2.500000",
+      "D. 2.000000"
+    ],
+    "answer": "D",
+    "correctWord": "D. 2.000000",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_129",
+    "word": "Câu 129: What does the following program display?\n#include<stdio.h>\ni...",
+    "question": "What does the following program display?\n#include<stdio.h>\nint main()\n{\n    int x[] = {1, 2, 3, 4, 5};\n    int y = 3;\n    printf(\"%d\", x[y]);\n    return 0;\n}",
+    "options": [
+      "A. 2",
+      "B. 3",
+      "C. 4",
+      "D. An error will be raised."
+    ],
+    "answer": "C",
+    "correctWord": "C. 4",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_130",
+    "word": "Câu 130: What does the following program display?\n#include <stdio.h>\n...",
+    "question": "What does the following program display?\n#include <stdio.h>\nint main()\n{\n    int a[5] = {1, 2, 3};\n    printf(\"%d\", a[0]);\n    return 0;\n}",
+    "options": [
+      "A. 3",
+      "B. 2",
+      "C. 1",
+      "D. An error will be raised"
+    ],
+    "answer": "C",
+    "correctWord": "C. 1",
+    "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
@@ -256,38 +384,6 @@
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_374",
-    "word": "Câu 374: How are strings typically represented in C?",
-    "question": "How are strings typically represented in C?",
-    "options": [
-      "A. As an array of characters",
-      "B. As an array of strings",
-      "C. As individual characters",
-      "D. As integers referencing ASCII values"
-    ],
-    "answer": "A",
-    "correctWord": "A. As an array of characters",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_377",
-    "word": "Câu 377: How does a \"for\" loop differ from a \"while\" loop in C progra...",
-    "question": "How does a \"for\" loop differ from a \"while\" loop in C programming?",
-    "options": [
-      "A. A \"for\" loop is used for iterating over a sequence of elements, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
-      "B. A \"for\" loop is primarily used for conditional statements, while a \"while\" loop is designed for sequential processing.",
-      "C. The use of \"for\" and \"while\" loops is interchangeable; there is no substantial difference between them.",
-      "D. A \"for\" loop is exclusively used with arrays, while a \"while\" loop is used with numerical calculations.."
-    ],
-    "answer": "A",
-    "correctWord": "A. A \"for\" loop is used for iterating over a sequence of elements, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
     "id": "prf_379",
     "word": "Câu 379: Choose the correct statement related to the array.",
     "question": "Choose the correct statement related to the array.",
@@ -299,38 +395,6 @@
     ],
     "answer": "A",
     "correctWord": "A. Arrays provide constant-time access to elements.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_383",
-    "word": "Câu 383: During the compilation process, what will be done with comme...",
-    "question": "During the compilation process, what will be done with comments?",
-    "options": [
-      "A. The comment mark will be removed. The content of the comments will be compiled line by line.",
-      "B. The comment is treated as an array of characters.",
-      "C. Comments are removed in the pre-processing step.",
-      "D. Each comment is compiled as a statement that does nothing."
-    ],
-    "answer": "C",
-    "correctWord": "C. Comments are removed in the pre-processing step.",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_384",
-    "word": "Câu 384: Real-world example of a switch statement in C is:",
-    "question": "Real-world example of a switch statement in C is:",
-    "options": [
-      "A. Check the day of the week.",
-      "B. Sort an array ascending.",
-      "C. Sort an array descending.",
-      "D. Find the average value of a sequence."
-    ],
-    "answer": "A",
-    "correctWord": "A. Check the day of the week.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
@@ -368,6 +432,22 @@
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
+    "id": "prf_397",
+    "word": "Câu 397: What is an algorithm?",
+    "question": "What is an algorithm?",
+    "options": [
+      "A. A program executed using a computer",
+      "B. A procedure used for solving a problem or performing a computation.",
+      "C. A sequence of steps to solve a problem",
+      "D. A description of hidden information"
+    ],
+    "answer": "B",
+    "correctWord": "B. A procedure used for solving a problem or performing a computation.",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
     "id": "prf_403",
     "word": "Câu 403: What is the correct syntax for declaring a static array in C...",
     "question": "What is the correct syntax for declaring a static array in C?",
@@ -396,22 +476,6 @@
     "answer": "B",
     "correctWord": "B. int binarySearch(int x, int a[], int n)",
     "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_416",
-    "word": "Câu 416: Given the variable arr declared as follow\nchar arr[16];\nWhat...",
-    "question": "Given the variable arr declared as follow\nchar arr[16];\nWhat is the maximum number of characters you can store in arr to represent a null-terminated strings?",
-    "options": [
-      "A. 13",
-      "B. 14",
-      "C. 15",
-      "D. 16"
-    ],
-    "answer": "C",
-    "correctWord": "C. 15",
-    "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   }

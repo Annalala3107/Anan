@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "id": "SSA_1",
     "word": "Câu 1: Which is a characteristic of analytical thinking?",
@@ -128,22 +128,6 @@
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
-    "id": "SSA_12",
-    "word": "Câu 12: According to Long & Magerko (2020), AI literacy enables indi...",
-    "question": "According to Long & Magerko (2020), AI literacy enables individuals to:",
-    "options": [
-      "A. Fully automate decision-making",
-      "B. Critically evaluate AI technologies",
-      "C. Eliminate bias in all AI systems",
-      "D. Replace teachers with AI"
-    ],
-    "answer": "B",
-    "correctWord": "B. Critically evaluate AI technologies",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
     "id": "SSA_13",
     "word": "Câu 13: Critical thinking involves:",
     "question": "Critical thinking involves:",
@@ -176,34 +160,18 @@
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
-    "id": "SSA_18",
-    "word": "Câu 18: In the Plan-Monitor-Evaluate cycle, monitoring mainly focuse...",
-    "question": "In the Plan-Monitor-Evaluate cycle, monitoring mainly focuses on:",
+    "id": "SSA_16",
+    "word": "Câu 16: Critical thinkers should:",
+    "question": "Critical thinkers should:",
     "options": [
-      "A. Setting learning goals",
-      "B. Checking understanding during learning",
-      "C. Grading performance",
-      "D. Comparing results with peers"
+      "A. Accept everything",
+      "B. Question everything",
+      "C. Avoid research",
+      "D. Being smart in all situations"
     ],
     "answer": "B",
-    "correctWord": "B. Checking understanding during learning",
+    "correctWord": "B. Question everything",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_19",
-    "word": "Câu 19: Successful students typically view challenges as:",
-    "question": "Successful students typically view challenges as:",
-    "options": [
-      "A. Signs they chose the wrong major",
-      "B. Evidence of instructor bias",
-      "C. Opportunities for growth and adjustment",
-      "D. Reasons to withdraw from courses"
-    ],
-    "answer": "C",
-    "correctWord": "C. Opportunities for growth and adjustment",
-    "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
@@ -320,22 +288,6 @@
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
-    "id": "SSA_46",
-    "word": "Câu 46: Which situation would most clearly violate ethical guideline...",
-    "question": "Which situation would most clearly violate ethical guidelines when using AI for assessment?",
-    "options": [
-      "A. Using AI to grade multiple-choice quizzes",
-      "B. Using AI to provide grammar suggestions",
-      "C. Using AI to evaluate student work without students' consent or awareness",
-      "D. Using AI to help manage gradebooks"
-    ],
-    "answer": "C",
-    "correctWord": "C. Using AI to evaluate student work without students' consent or awareness",
-    "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
     "id": "SSA_47",
     "word": "Câu 47: Why does the author warn against confusing opinion with evid...",
     "question": "Why does the author warn against confusing opinion with evidence?",
@@ -400,6 +352,22 @@
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
+    "id": "SSA_60",
+    "word": "Câu 60: Why should we review outcomes after implementing a solution?",
+    "question": "Why should we review outcomes after implementing a solution?",
+    "options": [
+      "A. To assign blame",
+      "B. To determine whether adjustments are needed",
+      "C. To prove effort was sufficient and possible",
+      "D. To avoid repeating the process"
+    ],
+    "answer": "B",
+    "correctWord": "B. To determine whether adjustments are needed",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
     "id": "SSA_62",
     "word": "Câu 62: Why should encourage combining creative and analytical think...",
     "question": "Why should encourage combining creative and analytical thinking be encouraged?",
@@ -411,22 +379,6 @@
     ],
     "answer": "B",
     "correctWord": "B. Creativity generates ideas, while analysis refines them",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_63",
-    "word": "Câu 63: According to the American Library Association (2011), digita...",
-    "question": "According to the American Library Association (2011), digital literacy primarily refers to the ability to:",
-    "options": [
-      "A. Program artificial intelligence systems to get the most productive information system",
-      "B. Use information and communication technologies to find, evaluate, create, and communicate information",
-      "C. Detect AI-generated content",
-      "D. Replace human judgment with algorithms"
-    ],
-    "answer": "B",
-    "correctWord": "B. Use information and communication technologies to find, evaluate, create, and communicate information",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
@@ -475,22 +427,6 @@
     ],
     "answer": "B",
     "correctWord": "B. Clearly identify contributing factors and possible changes",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_70",
-    "word": "Câu 70: According to the text, a major concern for graduate students...",
-    "question": "According to the text, a major concern for graduate students regarding AI grading tools is that:",
-    "options": [
-      "A. AI grading is smarter than human grading and could overshade human's ability in grading",
-      "B. AI systems may use their work as training data, affecting future publication",
-      "C. AI cannot understand complex arguments",
-      "D. AI always produces biased feedback"
-    ],
-    "answer": "B",
-    "correctWord": "B. AI systems may use their work as training data, affecting future publication",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
@@ -576,38 +512,6 @@
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
-    "id": "SSA_79",
-    "word": "Câu 79: Digital literacy is described as important because it:",
-    "question": "Digital literacy is described as important because it:",
-    "options": [
-      "A. Is only useful for students in technology majors",
-      "B. Helps individuals critically evaluate online content",
-      "C. Removes the need for critical thinking and metacognition",
-      "D. Guarantees employment"
-    ],
-    "answer": "B",
-    "correctWord": "B. Helps individuals critically evaluate online content",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_82",
-    "word": "Câu 82: Information literacy is defined as the ability to:",
-    "question": "Information literacy is defined as the ability to:",
-    "options": [
-      "A. Memorize academic content efficiently",
-      "B. Locate, evaluate, and use information effectively",
-      "C. Rely on digital sources for research and study",
-      "D. Avoid biased information entirely and consistently"
-    ],
-    "answer": "B",
-    "correctWord": "B. Locate, evaluate, and use information effectively",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
     "id": "SSA_86",
     "word": "Câu 86: Problem-solving is best described as:",
     "question": "Problem-solving is best described as:",
@@ -628,8 +532,7 @@
     "word": "Câu 88: Problem-solving is described as:",
     "question": "Problem-solving is described as:",
     "options": [
-      "A. Finding the fastest solution available based on",
-      "A. I suggestion",
+      "A. Finding the fastest solution available based on A.I suggestion",
       "B. Applying a structured process to address challenges",
       "C. Using intuition to make decisions",
       "D. Avoiding complex situations"
@@ -737,18 +640,34 @@
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
-    "id": "SSA_113",
-    "word": "Câu 113: A student studies extensively but keeps failing quizzes. Fro...",
-    "question": "A student studies extensively but keeps failing quizzes. From a metacognitive perspective, what is the most likely issue?",
+    "id": "SSA_114",
+    "word": "Câu 114: Mark Twain compared idea generation to:",
+    "question": "Mark Twain compared idea generation to:",
     "options": [
-      "A. Lack of motivation",
-      "B. Poor time management",
-      "C. Ineffective study strategies not being evaluated",
-      "D. Insufficient intelligence"
+      "A. A journey",
+      "B. A kaleidoscope",
+      "C. A puzzle",
+      "D. A dream-making machine"
     ],
-    "answer": "C",
-    "correctWord": "C. Ineffective study strategies not being evaluated",
-    "explanation": "Đáp án: C.",
+    "answer": "B",
+    "correctWord": "B. A kaleidoscope",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "SSA_115",
+    "word": "Câu 115: Tracking ideas enhances creativity because it:",
+    "question": "Tracking ideas enhances creativity because it:",
+    "options": [
+      "A. Eliminates imagination",
+      "B. Preserves inspiration",
+      "C. Avoids reflection and conclusion",
+      "D. Reduces novelty"
+    ],
+    "answer": "B",
+    "correctWord": "B. Preserves inspiration",
+    "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
@@ -764,6 +683,22 @@
     ],
     "answer": "B",
     "correctWord": "B. Critical thinking",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "SSA_124",
+    "word": "Câu 124: Revisiting a resolved issue when conditions change is:",
+    "question": "Revisiting a resolved issue when conditions change is:",
+    "options": [
+      "A. Weakness",
+      "B. Critical awareness",
+      "C. Confusion",
+      "D. Creativity"
+    ],
+    "answer": "B",
+    "correctWord": "B. Critical awareness",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
@@ -817,33 +752,33 @@
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
-    "id": "SSA_138",
-    "word": "Câu 138: Information literacy is defined as the ability to:",
-    "question": "Information literacy is defined as the ability to:",
+    "id": "SSA_130",
+    "word": "Câu 130: Assembly lines (in mass production) reduced inefficiency by:",
+    "question": "Assembly lines (in mass production) reduced inefficiency by:",
     "options": [
-      "A. Memorize academic content efficiently",
-      "B. Locate, evaluate, and use information effectively",
-      "C. Rely on digital sources for research and study",
-      "D. Avoid biased information entirely and consistently"
+      "A. Eliminating thinking",
+      "B. Dividing labor",
+      "C. Increasing chaos",
+      "D. Slowing production"
     ],
     "answer": "B",
-    "correctWord": "B. Locate, evaluate, and use information effectively",
+    "correctWord": "B. Dividing labor",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
-    "id": "SSA_140",
-    "word": "Câu 140: Which step typically comes first in effective problem-solvin...",
-    "question": "Which step typically comes first in effective problem-solving?",
+    "id": "SSA_142",
+    "word": "Câu 142: Why is it important to define the problem accurately?",
+    "question": "Why is it important to define the problem accurately?",
     "options": [
-      "A. Choosing a solution",
-      "B. Identifying and defining the problem clearly",
-      "C. Evaluating results based on criteria",
-      "D. Implementing a strategy using the power of teamwork"
+      "A. It limits the number of possible solutions and reduces cost accordingly",
+      "B. Misidentified problems often lead to ineffective solutions",
+      "C. It saves time and energy during implementation",
+      "D. It reduces the need for evaluation"
     ],
     "answer": "B",
-    "correctWord": "B. Identifying and defining the problem clearly",
+    "correctWord": "B. Misidentified problems often lead to ineffective solutions",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
@@ -855,11 +790,27 @@
     "options": [
       "A. A solution must work perfectly the first time",
       "B. Solutions should be evaluated and adjusted if needed",
-      "C. Once a solution is chosen, it should not change because of the financial riks",
+      "C. Once a solution is chosen, it should not change because of the financial risks",
       "D. Outcomes matter more than process"
     ],
     "answer": "B",
     "correctWord": "B. Solutions should be evaluated and adjusted if needed",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
+    "id": "SSA_157",
+    "word": "Câu 157: Creativity often combines:",
+    "question": "Creativity often combines:",
+    "options": [
+      "A. Only new ideas",
+      "B. Old ideas in new ways",
+      "C. Unrelated facts and information",
+      "D. Strict repetition"
+    ],
+    "answer": "B",
+    "correctWord": "B. Old ideas in new ways",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
@@ -881,34 +832,34 @@
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
-    "id": "SSA_159",
-    "word": "Câu 159: Which condition best supports creative thinking?",
-    "question": "Which condition best supports creative thinking?",
+    "id": "SSA_160",
+    "word": "Câu 160: Creativity improves thinking skills by:",
+    "question": "Creativity improves thinking skills by:",
     "options": [
-      "A. Strict adherence to one correct answer",
-      "B. Openness to risk and experimentation",
-      "C. Avoidance of uncertainty",
-      "D. Dependence on authority"
+      "A. Limiting scope",
+      "B. Narrowing vision",
+      "C. Expanding possibilities",
+      "D. Avoiding challenge"
     ],
-    "answer": "B",
-    "correctWord": "B. Openness to risk and experimentation",
-    "explanation": "Đáp án: B.",
+    "answer": "C",
+    "correctWord": "C. Expanding possibilities",
+    "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
-    "id": "SSA_167",
-    "word": "Câu 167: According to the text, a major concern for graduate students...",
-    "question": "According to the text, a major concern for graduate students regarding AI grading tools is that:",
+    "id": "SSA_170",
+    "word": "Câu 170: When planning travel during uncertainty, you should:",
+    "question": "When planning travel during uncertainty, you should:",
     "options": [
-      "A. AI grading is smarter than human grading and could overshadow human's ability in grading",
-      "B. AI systems may use their work as training data, affecting future publication",
-      "C. AI cannot understand complex arguments",
-      "D. AI always produces biased feedback"
+      "A. Ignore risk",
+      "B. Assume success",
+      "C. Prepare backup plans",
+      "D. Avoid thinking"
     ],
-    "answer": "B",
-    "correctWord": "B. AI systems may use their work as training data, affecting future publication",
-    "explanation": "Đáp án: B.",
+    "answer": "C",
+    "correctWord": "C. Prepare backup plans",
+    "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
@@ -929,6 +880,22 @@
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
+    "id": "SSA_172",
+    "word": "Câu 172: Looking at something \"with a different lens\" means:",
+    "question": "Looking at something \"with a different lens\" means:",
+    "options": [
+      "A. Reframing perspective",
+      "B. Criticizing it",
+      "C. Ignoring details",
+      "D. Avoiding structure"
+    ],
+    "answer": "A",
+    "correctWord": "A. Reframing perspective",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Tư Duy Phản Biện & Phân Tích"
+  },
+  {
     "id": "SSA_175",
     "word": "Câu 175: Developing a board game from literature shows:",
     "question": "Developing a board game from literature shows:",
@@ -941,22 +908,6 @@
     "answer": "C",
     "correctWord": "C. Creative transformation",
     "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_177",
-    "word": "Câu 177: What risk is associated with uploading dense readings to AI ...",
-    "question": "What risk is associated with uploading dense readings to AI for summaries without reading them?",
-    "options": [
-      "A. Reduced chances to practicing English",
-      "B. Missing critical thinking required for memory formation",
-      "C. Violating institutional AI policies automatically",
-      "D. Overloading working memory and risk to pay more for AI premium versions"
-    ],
-    "answer": "B",
-    "correctWord": "B. Missing critical thinking required for memory formation",
-    "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
@@ -988,22 +939,6 @@
     ],
     "answer": "B",
     "correctWord": "B. Creative Thinking",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_190",
-    "word": "Câu 190: In the SIFT method used to evaluate the accuracy of informat...",
-    "question": "In the SIFT method used to evaluate the accuracy of information on the internet, what does the letter \"I\" stand for?",
-    "options": [
-      "A. Identify the initial author.",
-      "B. Investigate the source.",
-      "C. Imitate the main claim.",
-      "D. Inform the general public"
-    ],
-    "answer": "B",
-    "correctWord": "B. Investigate the source.",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
@@ -1041,22 +976,6 @@
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
   {
-    "id": "SSA_224",
-    "word": "Câu 224: Which of the following best describes the \"Monitoring\" phase...",
-    "question": "Which of the following best describes the \"Monitoring\" phase in the Plan-Monitor-Evaluate model of metacognition?",
-    "options": [
-      "A. You are continuously assessing what you have already learned, identifying what you do not yet know, and determining if your current study strategies are working effectively",
-      "B. You are reflecting on how well you met your overall learning objectives after completely finishing a unit of study or receiving feedback from a recent course assignment",
-      "C. You are deciding exactly what material you need to learn for an upcoming exam and selecting the specific active learning strategies you will use to master that material",
-      "D. You are reviewing your final exam answers to compare them with the instructor's suggested answers to see which key components were entirely missed during the test"
-    ],
-    "answer": "A",
-    "correctWord": "A. You are continuously assessing what you have already learned, identifying what you do not yet know, and determining if your current study strategies are working effectively",
-    "explanation": "Đáp án: A.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
     "id": "SSA_225",
     "word": "Câu 225: How does 'Critical Thinking' assist a student in identifying...",
     "question": "How does 'Critical Thinking' assist a student in identifying exam material?",
@@ -1068,22 +987,6 @@
     ],
     "answer": "B",
     "correctWord": "B. By using data (like careful class notes) and reasoning to deduce what core content the professor might include on the exam.",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_229",
-    "word": "Câu 229: How does 'Metacognition' improve problem-solving?",
-    "question": "How does 'Metacognition' improve problem-solving?",
-    "options": [
-      "A. By increasing your reading speed.",
-      "B. By practicing self-awareness, helping you recognize knowledge gaps and adjust problem-solving strategies promptly.",
-      "C. By relying strictly on emotions to make decisions.",
-      "D. By helping you rote-memorize faster."
-    ],
-    "answer": "B",
-    "correctWord": "B. By practicing self-awareness, helping you recognize knowledge gaps and adjust problem-solving strategies promptly.",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
@@ -1117,86 +1020,6 @@
     "answer": "B",
     "correctWord": "B. The student takes information apart to explore relationships, continuously asks \"why,\" and examines how various independent components interact to form a complete system",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_260",
-    "word": "Câu 260: During the \"Norming\" stage of Tuckman's Team Development mod...",
-    "question": "During the \"Norming\" stage of Tuckman's Team Development model, what characteristic behaviors and group dynamics are the team members most likely to exhibit?",
-    "options": [
-      "A. The team members begin to experience high anxiety regarding power and control, express differing opinions, challenge leadership, and potentially form exclusive cliques",
-      "B. The team members operate extremely efficiently with high motivation, share leadership roles based on individual strengths, and take tremendous pride in collective success",
-      "C. The team members establish base-level expectations, identify common similarities, develop initial trust, and depend heavily on the designated team leader for direction",
-      "D. The team members reach consensus on roles and problem-solving processes, build mutual trust, provide objective feedback, and commit strongly to shared collective goals."
-    ],
-    "answer": "D",
-    "correctWord": "D. The team members reach consensus on roles and problem-solving processes, build mutual trust, provide objective feedback, and commit strongly to shared collective goals.",
-    "explanation": "Đáp án: D.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_263",
-    "word": "Câu 263: In the context of AI-assisted educational assessments, how i...",
-    "question": "In the context of AI-assisted educational assessments, how is \"Criterion Validity\" formally defined by the scientific evaluation community?",
-    "options": [
-      "A. It assesses whether the AI tool truly measures the underlying theoretical concept or specific academic trait that it was originally intended to measure",
-      "B. It examines whether the content of the AI assessment comprehensively covers the entire mathematical or literary range of the subject being evaluated",
-      "C. It evaluates whether the overall user interface of the AI tool appears friendly and intuitively aligned with the superficial goals of the standardized test",
-      "D. It involves directly comparing the specific results generated by the AI assessment against other proven, established measures or actual real-world outcomes"
-    ],
-    "answer": "D",
-    "correctWord": "D. It involves directly comparing the specific results generated by the AI assessment against other proven, established measures or actual real-world outcomes",
-    "explanation": "Đáp án: D.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_268",
-    "word": "Câu 268: Within the Community of Inquiry (CoI) model, what is the pri...",
-    "question": "Within the Community of Inquiry (CoI) model, what is the primary function of \"Social Presence\" in an online learning environment?",
-    "options": [
-      "A. It requires the instructor to curate the course content carefully and design meaningful activities that will lead students toward professional and intellectual development",
-      "B. It demands that learners maintain a continuous process of critical thinking to construct new knowledge through direct interaction with the provided course materials",
-      "C. It creates a safe and supportive communication environment where students feel trusted enough to express their personal ideas and collaborate with their classmates",
-      "D. It involves the instructor directly answering student questions during office hours and challenging the students' assumptions to help them grow in their given field"
-    ],
-    "answer": "C",
-    "correctWord": "C. It creates a safe and supportive communication environment where students feel trusted enough to express their personal ideas and collaborate with their classmates",
-    "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_275",
-    "word": "Câu 275: In the Plan-Monitor-Evaluate model, the \"Monitoring\" stage p...",
-    "question": "In the Plan-Monitor-Evaluate model, the \"Monitoring\" stage primarily involves:",
-    "options": [
-      "A. Setting initial learning goals",
-      "B. Asking \"How am I doing at learning this?\"",
-      "C. Reflecting after receiving final grades",
-      "D. Choosing which course to enroll in"
-    ],
-    "answer": "B",
-    "correctWord": "B. Asking \"How am I doing at learning this?\"",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_276",
-    "word": "Câu 276: Which question is an example from the \"Evaluating\" stage of ...",
-    "question": "Which question is an example from the \"Evaluating\" stage of the Plan-Monitor-Evaluate model?",
-    "options": [
-      "A. What do I need to learn?",
-      "B. How am I going to learn the material?",
-      "C. Did I learn the material effectively?",
-      "D. What remains unclear right now?"
-    ],
-    "answer": "C",
-    "correctWord": "C. Did I learn the material effectively?",
-    "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"
   },
@@ -1276,54 +1099,6 @@
     ],
     "answer": "B",
     "correctWord": "B. Generating new ideas or establishing new connections",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_289",
-    "word": "Câu 289: Cognitive presence in a learning community primarily involve...",
-    "question": "Cognitive presence in a learning community primarily involves:",
-    "options": [
-      "A. Using emoticons to express emotions",
-      "B. An ongoing process of critical thinking and constructing new knowledge",
-      "C. Focusing only on individual exams",
-      "D. Avoiding discussions with peers"
-    ],
-    "answer": "B",
-    "correctWord": "B. An ongoing process of critical thinking and constructing new knowledge",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_325",
-    "word": "Câu 325: At the end of the day, what should be done with incomplete t...",
-    "question": "At the end of the day, what should be done with incomplete tasks on the to-do list?",
-    "options": [
-      "A. Ignore them permanently",
-      "B. Evaluate, reschedule to another day if necessary, or remove if no longer important",
-      "C. Blame external factors only",
-      "D. Double the workload tomorrow"
-    ],
-    "answer": "B",
-    "correctWord": "B. Evaluate, reschedule to another day if necessary, or remove if no longer important",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Tư Duy Phản Biện & Phân Tích"
-  },
-  {
-    "id": "SSA_336",
-    "word": "Câu 336: Which of the following is a key benefit of maintaining an eP...",
-    "question": "Which of the following is a key benefit of maintaining an ePortfolio?",
-    "options": [
-      "A. It replaces the need for any course assignments",
-      "B. It provides documented evidence of learning for future study programs or employment",
-      "C. It focuses only on weekly grades",
-      "D. It eliminates the need for reflection"
-    ],
-    "answer": "B",
-    "correctWord": "B. It provides documented evidence of learning for future study programs or employment",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Tư Duy Phản Biện & Phân Tích"

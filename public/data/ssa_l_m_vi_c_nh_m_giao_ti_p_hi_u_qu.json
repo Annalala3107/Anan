@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "id": "SSA_15",
     "word": "Câu 15: Cognitive presence in the Community of Inquiry refers mainly...",
@@ -96,22 +96,6 @@
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "SSA_97",
-    "word": "Câu 97: What tool helps prioritize tasks?",
-    "question": "What tool helps prioritize tasks?",
-    "options": [
-      "A. Calendar only",
-      "B. Priority list",
-      "C. Social media",
-      "D. Email inbox"
-    ],
-    "answer": "B",
-    "correctWord": "B. Priority list",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
-  },
-  {
     "id": "SSA_104",
     "word": "Câu 104: What is clarity in communication?",
     "question": "What is clarity in communication?",
@@ -124,6 +108,22 @@
     "answer": "C",
     "correctWord": "C. Easy understanding",
     "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_125",
+    "word": "Câu 125: What is active listening?",
+    "question": "What is active listening?",
+    "options": [
+      "A. Hearing only",
+      "B. Engaging fully",
+      "C. Interrupting to clarify if needed",
+      "D. Ignoring speaker"
+    ],
+    "answer": "B",
+    "correctWord": "B. Engaging fully",
+    "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
@@ -160,38 +160,6 @@
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "SSA_145",
-    "word": "Câu 145: Communication is best described as:",
-    "question": "Communication is best described as:",
-    "options": [
-      "A. A simple exchange of spoken words",
-      "B. A one-way transfer of information and signals from sender to receiver",
-      "C. A complex process influenced by context, purpose, and participants",
-      "D. A skill used primarily in professional environments"
-    ],
-    "answer": "C",
-    "correctWord": "C. A complex process influenced by context, purpose, and participants",
-    "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
-  },
-  {
-    "id": "SSA_146",
-    "word": "Câu 146: Digital literacy enhances employability mainly because it:",
-    "question": "Digital literacy enhances employability mainly because it:",
-    "options": [
-      "A. Guarantees higher salaries",
-      "B. Enables adaptation to technological change",
-      "C. Eliminates workplace stress and enhance mental health",
-      "D. Replaces teamwork skills"
-    ],
-    "answer": "B",
-    "correctWord": "B. Enables adaptation to technological change",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
-  },
-  {
     "id": "SSA_162",
     "word": "Câu 162: Which situation BEST illustrates weak social presence in an ...",
     "question": "Which situation BEST illustrates weak social presence in an online course?",
@@ -208,33 +176,17 @@
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "SSA_176",
-    "word": "Câu 176: What is the primary role of a rubric in assignments?",
-    "question": "What is the primary role of a rubric in assignments?",
+    "id": "SSA_182",
+    "word": "Câu 182: Which time management app uses boards to organize obligation...",
+    "question": "Which time management app uses boards to organize obligations and share them with collaborators?",
     "options": [
-      "A. To limit creativity",
-      "B. To replace instructor's guideline and comments",
-      "C. To explain grading criteria clearly",
-      "D. To rank students"
-    ],
-    "answer": "C",
-    "correctWord": "C. To explain grading criteria clearly",
-    "explanation": "Đáp án: C.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
-  },
-  {
-    "id": "SSA_234",
-    "word": "Câu 234: How can a student most effectively utilize a grading rubric ...",
-    "question": "How can a student most effectively utilize a grading rubric to improve their assignment before submitting the final version to their online instructor?",
-    "options": [
-      "A. The student should completely ignore the rubric until after receiving the final grade, using it only to argue for additional points if the instructor made a mistake",
-      "B. The student should put themselves in the place of the instructor and grade their own drafted assignment according to the rubric criteria to identify missing elements",
-      "C. The student should copy the exact phrasing found within the highest scoring column of the rubric and paste it directly into their assignment to guarantee top marks",
-      "D. The student should only read the rubric after finishing the entire writing process to avoid feeling overwhelmed or restricted by the instructor's specific guidelines"
+      "A. Toggl",
+      "B. Trello",
+      "C. Sticky Notes",
+      "D. Google Calendar"
     ],
     "answer": "B",
-    "correctWord": "B. The student should put themselves in the place of the instructor and grade their own drafted assignment according to the rubric criteria to identify missing elements",
+    "correctWord": "B. Trello",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
@@ -267,6 +219,54 @@
     ],
     "answer": "C",
     "correctWord": "C. You should begin and end the discussion by highlighting what is working well, focus on specific behaviors that can be changed, and avoid using absolutes like \"never.\"",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_257",
+    "word": "Câu 257: During the \"Storming\" phase of Tuckman's Team Development mo...",
+    "question": "During the \"Storming\" phase of Tuckman's Team Development model, what interpersonal and task-related behaviors are a team most likely to experience?",
+    "options": [
+      "A. The members establish base-level expectations, identify common similarities, develop initial trust, and depend heavily on the team leader for overall project direction",
+      "B. The members encounter anxiety regarding power and control, express differing opinions, challenge leadership, and potentially form small cliques or experience personal conflicts",
+      "C. The members successfully negotiate their specific roles, build strong mutual appreciation, establish open feedback channels, and commit to the shared goals of the team",
+      "D. The members operate extremely efficiently with high motivation, share leadership roles based on individual strengths, and take tremendous pride in their collective success"
+    ],
+    "answer": "B",
+    "correctWord": "B. The members encounter anxiety regarding power and control, express differing opinions, challenge leadership, and potentially form small cliques or experience personal conflicts",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_260",
+    "word": "Câu 260: During the \"Norming\" stage of Tuckman's Team Development mod...",
+    "question": "During the \"Norming\" stage of Tuckman's Team Development model, what characteristic behaviors and group dynamics are the team members most likely to exhibit?",
+    "options": [
+      "A. The team members begin to experience high anxiety regarding power and control, express differing opinions, challenge leadership, and potentially form exclusive cliques",
+      "B. The team members operate extremely efficiently with high motivation, share leadership roles based on individual strengths, and take tremendous pride in collective success",
+      "C. The team members establish base-level expectations, identify common similarities, develop initial trust, and depend heavily on the designated team leader for direction",
+      "D. The team members reach consensus on roles and problem-solving processes, build mutual trust, provide objective feedback, and commit strongly to shared collective goals."
+    ],
+    "answer": "D",
+    "correctWord": "D. The team members reach consensus on roles and problem-solving processes, build mutual trust, provide objective feedback, and commit strongly to shared collective goals.",
+    "explanation": "Đáp án: D.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_268",
+    "word": "Câu 268: Within the Community of Inquiry (CoI) model, what is the pri...",
+    "question": "Within the Community of Inquiry (CoI) model, what is the primary function of \"Social Presence\" in an online learning environment?",
+    "options": [
+      "A. It requires the instructor to curate the course content carefully and design meaningful activities that will lead students toward professional and intellectual development",
+      "B. It demands that learners maintain a continuous process of critical thinking to construct new knowledge through direct interaction with the provided course materials",
+      "C. It creates a safe and supportive communication environment where students feel trusted enough to express their personal ideas and collaborate with their classmates",
+      "D. It involves the instructor directly answering student questions during office hours and challenging the students' assumptions to help them grow in their given field"
+    ],
+    "answer": "C",
+    "correctWord": "C. It creates a safe and supportive communication environment where students feel trusted enough to express their personal ideas and collaborate with their classmates",
     "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
@@ -320,6 +320,22 @@
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
+    "id": "SSA_287",
+    "word": "Câu 287: Which action step is recommended to move from \"Norming\" to \"...",
+    "question": "Which action step is recommended to move from \"Norming\" to \"Performing\"?",
+    "options": [
+      "A. Define the team mission and goals",
+      "B. Encourage shared leadership and responsibility",
+      "C. Clarify roles during initial meetings",
+      "D. Actively reinforce positive behavior to reduce conflict"
+    ],
+    "answer": "B",
+    "correctWord": "B. Encourage shared leadership and responsibility",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
     "id": "SSA_288",
     "word": "Câu 288: In the Community of Inquiry framework, what are the two key ...",
     "question": "In the Community of Inquiry framework, what are the two key roles learners assume?",
@@ -331,6 +347,22 @@
     ],
     "answer": "B",
     "correctWord": "B. Maintaining cognitive presence and developing social presence",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_289",
+    "word": "Câu 289: Cognitive presence in a learning community primarily involve...",
+    "question": "Cognitive presence in a learning community primarily involves:",
+    "options": [
+      "A. Using emoticons to express emotions",
+      "B. An ongoing process of critical thinking and constructing new knowledge",
+      "C. Focusing only on individual exams",
+      "D. Avoiding discussions with peers"
+    ],
+    "answer": "B",
+    "correctWord": "B. An ongoing process of critical thinking and constructing new knowledge",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
@@ -368,6 +400,54 @@
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
+    "id": "SSA_292",
+    "word": "Câu 292: Positive interdependence means that team members believe:",
+    "question": "Positive interdependence means that team members believe:",
+    "options": [
+      "A. Individual success is possible without group success",
+      "B. They are linked together in a shared outcome; success is mutual",
+      "C. Only the leader is responsible for results",
+      "D. Competition among members drives performance"
+    ],
+    "answer": "B",
+    "correctWord": "B. They are linked together in a shared outcome; success is mutual",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_293",
+    "word": "Câu 293: What does \"group processing\" involve at the end of a working...",
+    "question": "What does \"group processing\" involve at the end of a working period?",
+    "options": [
+      "A. Ignoring past performance",
+      "B. Evaluating the group's functioning and identifying improvements",
+      "C. Assigning blame to individuals",
+      "D. Focusing only on final grades"
+    ],
+    "answer": "B",
+    "correctWord": "B. Evaluating the group's functioning and identifying improvements",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_294",
+    "word": "Câu 294: In the \"Performing\" stage, teams demonstrate:",
+    "question": "In the \"Performing\" stage, teams demonstrate:",
+    "options": [
+      "A. High dependency on the leader",
+      "B. A strong \"we\" orientation and superior performance",
+      "C. Frequent unresolved conflicts",
+      "D. Unclear shared goals"
+    ],
+    "answer": "B",
+    "correctWord": "B. A strong \"we\" orientation and superior performance",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
     "id": "SSA_295",
     "word": "Câu 295: When planning for successful teamwork, what should teams do ...",
     "question": "When planning for successful teamwork, what should teams do in the \"Forming\" stage regarding interpersonal tasks?",
@@ -395,6 +475,22 @@
     ],
     "answer": "B",
     "correctWord": "B. Respect, active listening, and constructive feedback",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_297",
+    "word": "Câu 297: In the framework for working together, a \"shared vision\" is ...",
+    "question": "In the framework for working together, a \"shared vision\" is described as:",
+    "options": [
+      "A. A past-oriented summary of achievements",
+      "B. A future-oriented statement of purpose aligned with members' values",
+      "C. An administrative job description",
+      "D. A list of unrelated personal goals"
+    ],
+    "answer": "B",
+    "correctWord": "B. A future-oriented statement of purpose aligned with members' values",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
@@ -464,6 +560,54 @@
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
+    "id": "SSA_328",
+    "word": "Câu 328: Online forums in courses primarily contribute to the develop...",
+    "question": "Online forums in courses primarily contribute to the development of:",
+    "options": [
+      "A. Only cognitive presence",
+      "B. Social presence and cognitive presence within the learning community",
+      "C. Teaching presence exclusively",
+      "D. Individual memorization skills"
+    ],
+    "answer": "B",
+    "correctWord": "B. Social presence and cognitive presence within the learning community",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_329",
+    "word": "Câu 329: According to the Level 3 (Most Successful) rubric criteria, ...",
+    "question": "According to the Level 3 (Most Successful) rubric criteria, a good forum post should:",
+    "options": [
+      "A. Be posted only once per course",
+      "B. Reflect thoughtful reflection on readings, engage with colleagues' postings, and contribute to class understanding",
+      "C. Focus solely on personal opinions without references",
+      "D. Contain multiple grammatical errors for authenticity"
+    ],
+    "answer": "B",
+    "correctWord": "B. Reflect thoughtful reflection on readings, engage with colleagues' postings, and contribute to class understanding",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_330",
+    "word": "Câu 330: Which tip is NOT recommended for participating effectively i...",
+    "question": "Which tip is NOT recommended for participating effectively in online forums?",
+    "options": [
+      "A. Establish a regular posting schedule",
+      "B. Use overly informal language to build rapport",
+      "C. Make explicit connections between posts and course content",
+      "D. Respond respectfully and constructively, even with alternative viewpoints"
+    ],
+    "answer": "B",
+    "correctWord": "B. Use overly informal language to build rapport",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
     "id": "SSA_331",
     "word": "Câu 331: Effective feedback when giving it must include all of the fo...",
     "question": "Effective feedback when giving it must include all of the following EXCEPT:",
@@ -512,17 +656,49 @@
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "SSA_337",
-    "word": "Câu 337: Commonly mentioned tools for creating ePortfolios in the tex...",
-    "question": "Commonly mentioned tools for creating ePortfolios in the text are:",
+    "id": "SSA_334",
+    "word": "Câu 334: Before giving feedback, it is important to:",
+    "question": "Before giving feedback, it is important to:",
     "options": [
-      "A. Microsoft Word and Excel",
-      "B. Mahara and WordPress",
-      "C. Email and forums only",
-      "D. Paper notebooks"
+      "A. Offer it without gathering facts",
+      "B. Obtain mutual agreement to engage in feedback and gather relevant facts/perspectives",
+      "C. Use absolute language like \"always\" or \"never\"",
+      "D. Compare the recipient to classmates"
     ],
     "answer": "B",
-    "correctWord": "B. Mahara and WordPress",
+    "correctWord": "B. Obtain mutual agreement to engage in feedback and gather relevant facts/perspectives",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_338",
+    "word": "Câu 338: Email is described as a primary method of communication in o...",
+    "question": "Email is described as a primary method of communication in online learning because it is:",
+    "options": [
+      "A. Always requiring instant replies",
+      "B. Familiar, convenient, easy to access, and supports active participation with instructors",
+      "C. Only used for formal complaints",
+      "D. Informal and casual in tone"
+    ],
+    "answer": "B",
+    "correctWord": "B. Familiar, convenient, easy to access, and supports active participation with instructors",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
+  },
+  {
+    "id": "SSA_339",
+    "word": "Câu 339: When writing professional emails to instructors, which pract...",
+    "question": "When writing professional emails to instructors, which practice should be avoided?",
+    "options": [
+      "A. Using a clear and informative subject line",
+      "B. Sending excessively brief messages that may seem impolite",
+      "C. Proofreading for grammar and organizing into clear paragraphs",
+      "D. Maintaining a formal and professional tone"
+    ],
+    "answer": "B",
+    "correctWord": "B. Sending excessively brief messages that may seem impolite",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
@@ -560,49 +736,17 @@
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "SSA_348",
-    "word": "Câu 348: A rubric is best defined as:",
-    "question": "A rubric is best defined as:",
+    "id": "SSA_342",
+    "word": "Câu 342: In forum participation, Level 1 (Unsuccessful) posts are cha...",
+    "question": "In forum participation, Level 1 (Unsuccessful) posts are characterized by:",
     "options": [
-      "A. A list of optional suggestions for the assignment",
-      "B. An assessment tool outlining how the work will be graded and the criteria for success",
-      "C. The final grade sheet from the instructor",
-      "D. A template for formatting the paper"
+      "A. Consistent posting and clear writing",
+      "B. Lack of understanding of readings, no engagement with classmates, irrelevance, inconsistency, and poor writing structure",
+      "C. Strong contributions to class understanding",
+      "D. Regular interaction and professional style"
     ],
     "answer": "B",
-    "correctWord": "B. An assessment tool outlining how the work will be graded and the criteria for success",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
-  },
-  {
-    "id": "SSA_350",
-    "word": "Câu 350: After completing a draft, the rubric should primarily be use...",
-    "question": "After completing a draft, the rubric should primarily be used for:",
-    "options": [
-      "A. Ignoring minor issues",
-      "B. Self-evaluation by grading the work against each criterion and revising weak areas",
-      "C. Sharing with classmates only",
-      "D. Calculating the expected grade without changes"
-    ],
-    "answer": "B",
-    "correctWord": "B. Self-evaluation by grading the work against each criterion and revising weak areas",
-    "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
-  },
-  {
-    "id": "SSA_351",
-    "word": "Câu 351: One major benefit of regularly using a rubric for self-asses...",
-    "question": "One major benefit of regularly using a rubric for self-assessment is that it helps:",
-    "options": [
-      "A. Avoid all instructor feedback",
-      "B. Develop accurate self-assessment skills and align self-evaluation closer to instructor expectations over time",
-      "C. Reduce the need to revise work",
-      "D. Focus only on final products"
-    ],
-    "answer": "B",
-    "correctWord": "B. Develop accurate self-assessment skills and align self-evaluation closer to instructor expectations over time",
+    "correctWord": "B. Lack of understanding of readings, no engagement with classmates, irrelevance, inconsistency, and poor writing structure",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
@@ -624,17 +768,17 @@
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"
   },
   {
-    "id": "SSA_360",
-    "word": "Câu 360: To use Hypothes.is for annotating online texts, what is the ...",
-    "question": "To use Hypothes.is for annotating online texts, what is the first step after installing the Chrome extension?",
+    "id": "SSA_357",
+    "word": "Câu 357: The quote \"We all need people who will give us feedback. Tha...",
+    "question": "The quote \"We all need people who will give us feedback. That's how we improve.\" (Bill Gates) is used in the text to emphasize that:",
     "options": [
-      "A. Start annotating without an account",
-      "B. Create a free account with email, username, password, and activate via email confirmation",
-      "C. Purchase a premium subscription",
-      "D. Share annotations publicly without login"
+      "A. Feedback is unnecessary in online learning",
+      "B. Feedback is an essential component of the learning process for improvement",
+      "C. Only grades matter, not comments",
+      "D. Feedback should be avoided to prevent stress"
     ],
     "answer": "B",
-    "correctWord": "B. Create a free account with email, username, password, and activate via email confirmation",
+    "correctWord": "B. Feedback is an essential component of the learning process for improvement",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "Làm Việc Nhóm & Giao Tiếp Hiệu Quả"

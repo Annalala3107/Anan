@@ -32,22 +32,6 @@
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_25",
-    "word": "Câu 25: Which function is specifically used to return the absolute v...",
-    "question": "Which function is specifically used to return the absolute value of an int data type in C?",
-    "options": [
-      "A. abs()",
-      "B. labs()",
-      "C. llabs()",
-      "D. fabs()"
-    ],
-    "answer": "A",
-    "correctWord": "A. abs()",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
     "id": "prf_30",
     "word": "Câu 30: Which of the following is the correct syntax of the do-while...",
     "question": "Which of the following is the correct syntax of the do-while statement?",
@@ -75,22 +59,6 @@
     ],
     "answer": "A",
     "correctWord": "A. (condition) ? True_Value : False_Value",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_34",
-    "word": "Câu 34: The pow() function in the math.h library is used to calculat...",
-    "question": "The pow() function in the math.h library is used to calculate the value of a number raised to a specified power. What is the return value type of the pow() function?",
-    "options": [
-      "A. double",
-      "B. int",
-      "C. long double",
-      "D. float"
-    ],
-    "answer": "A",
-    "correctWord": "A. double",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
@@ -128,22 +96,6 @@
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_43",
-    "word": "Câu 43: What is the output of this reverse loop?\n#define SIZE 5\nint ...",
-    "question": "What is the output of this reverse loop?\n#define SIZE 5\nint nums[SIZE] = {5, 10, 2, -45, 6};\nfor (int i = SIZE - 1; i >= 0; i--)\n    printf(\"%d \", nums[i]);",
-    "options": [
-      "A. 5 10 2 -45 6",
-      "B. 6 -45 2 10 5",
-      "C. -45 2 10 5 6",
-      "D. Error"
-    ],
-    "answer": "B",
-    "correctWord": "B. 6 -45 2 10 5",
-    "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
     "id": "prf_44",
     "word": "Câu 44: What is the output when the sample code below is executed?\n#...",
     "question": "What is the output when the sample code below is executed?\n#include <stdio.h>\nint main()\n{\n    int x = 7;\n    for(x > 3)\n        printf(\"Yes\");\n        x--;\n    return 0;\n}",
@@ -156,6 +108,22 @@
     "answer": "B",
     "correctWord": "B. Compile time error",
     "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_46",
+    "word": "Câu 46: What happens in this do/while loop?\nint n;\ndo {\n    printf(\"...",
+    "question": "What happens in this do/while loop?\nint n;\ndo {\n    printf(\"Enter a number:\");\n    scanf(\"%d\", &n);\n} while (n < 1 || n > 5);",
+    "options": [
+      "A. Never runs",
+      "B. Runs only when n = 1",
+      "C. Infinite loop",
+      "D. Runs at least once"
+    ],
+    "answer": "D",
+    "correctWord": "D. Runs at least once",
+    "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
@@ -343,11 +311,11 @@
       "A. 15 5",
       "B. 15 6",
       "C. 12 5",
-      "D. 12 6\nĐáp án đúng: không khớp đáp án nào (tính ra 9 7), bạn nên kiểm tra lại đề gốc"
+      "D. 12 6"
     ],
     "answer": "A",
     "correctWord": "A. 15 5",
-    "explanation": "Đáp án: A.",
+    "explanation": "Đáp án ngân hàng đề ghi tạm: A (A. 15 5). (Lưu ý đề gốc bị lỗi: chạy code C thực tế s+=m, n++ trong while(h > n++) ra kết quả \"9 7\", không khớp bất kỳ phương án A/B/C/D nào).",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
@@ -363,6 +331,22 @@
     ],
     "answer": "A",
     "correctWord": "A. 1 ; 18 ; 120",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_116",
+    "word": "Câu 116: What is the output when the sample code below is executed?\n#...",
+    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    int a=70,b=90,c=80;\n    if(a!=b){\n        a-=b; c/=10;\n    }\n    else\n        a+=c;\n    printf(\"%d;%d;%d\",a,b,c);\n    return 0;\n}",
+    "options": [
+      "A. -20;90;8",
+      "B. 70;90;80",
+      "C. 150;80;8",
+      "D. 150;90;80"
+    ],
+    "answer": "A",
+    "correctWord": "A. -20;90;8",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
@@ -400,54 +384,6 @@
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_120",
-    "word": "Câu 120: What is the result displayed on the screen of the following ...",
-    "question": "What is the result displayed on the screen of the following program?\n#include <stdio.h>\nint main(void)\n{\n    int a[] = {1, 2, 3, 5, 6, 7};\n    for (int i = 0; i < 6; ++i)\n        printf(\"%3d\", a[i]/2);\n    return 0;\n}",
-    "options": [
-      "A. 0 1 1 2 3 3",
-      "B. 0.5 1.0 1.5 2.5 3.0 3.5",
-      "C. 1 1 2 3 4",
-      "D. 0 1 1 2 2 3"
-    ],
-    "answer": "A",
-    "correctWord": "A. 0 1 1 2 3 3",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_123",
-    "word": "Câu 123: What is the results will be displayed on the screen after ex...",
-    "question": "What is the results will be displayed on the screen after executing the following code:\nint a[] = {1,2,3,4};\nint i, s;\nfor (i=0; i<4; ++i)\n    s += a[i];\nprintf(\"%f\", s/4.0);",
-    "options": [
-      "A. 0.000000",
-      "B. 2.000000",
-      "C. 2.500000",
-      "D. Garbage value"
-    ],
-    "answer": "D",
-    "correctWord": "D. Garbage value",
-    "explanation": "Đáp án: D.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_124",
-    "word": "Câu 124: What is the results will be displayed on the screen after ex...",
-    "question": "What is the results will be displayed on the screen after executing the following code:\nint a[] = {1, 2, 3, 4};\nint i, s = 0;\nfor (i = 0; i < 4; ++i)\n    s += a[i];\nprintf(\"%0f\", (float)(s / 4));",
-    "options": [
-      "A. 2.5",
-      "B. 2",
-      "C. 2.500000",
-      "D. 2.000000"
-    ],
-    "answer": "D",
-    "correctWord": "D. 2.000000",
-    "explanation": "Đáp án: D.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
     "id": "prf_126",
     "word": "Câu 126: How many times will the do-while loop execute the code if th...",
     "question": "How many times will the do-while loop execute the code if the condition is false?",
@@ -464,18 +400,18 @@
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_131",
-    "word": "Câu 131: What will be the output of the C program?\nint default = 5, a...",
-    "question": "What will be the output of the C program?\nint default = 5, a = 3;\nif(a > 2)\n    printf(\"%d\", default);",
+    "id": "prf_133",
+    "word": "Câu 133: What is the output when the sample code below is executed?\n#...",
+    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    const int a=5;\n    if(a>3)\n        a++;\n        break;\n    else\n        a--;\n    printf(\"%d\",a);\n    return 0;\n}",
     "options": [
-      "A. 2",
-      "B. 5",
-      "C. Compilation error.",
-      "D. 3"
+      "A. Compile time error",
+      "B. 6",
+      "C. 4",
+      "D. 5"
     ],
-    "answer": "C",
-    "correctWord": "C. Compilation error.",
-    "explanation": "Đáp án: C.",
+    "answer": "A",
+    "correctWord": "A. Compile time error",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
@@ -507,22 +443,6 @@
     ],
     "answer": "A",
     "correctWord": "A. 5",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_154",
-    "word": "Câu 154: Which of the following is the correct syntax for declaring a...",
-    "question": "Which of the following is the correct syntax for declaring a structure in C?",
-    "options": [
-      "A. typedef struct {\n       dataType1 field1;\n       dataType2 field2;\n   } structName;",
-      "B. struct typedef {\n       dataType1 field1;\n       dataType2 field2;\n   } structName;",
-      "C. typedef {\n       dataType1 field1;\n       dataType2 field2;\n   } struct structName;",
-      "D. structName typedef {\n       dataType1 field1;\n       dataType2 field2;\n   };"
-    ],
-    "answer": "A",
-    "correctWord": "A. typedef struct {\n       dataType1 field1;\n       dataType2 field2;\n   } structName;",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
@@ -624,22 +544,6 @@
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_350",
-    "word": "Câu 350: What does a variable represent in a program?",
-    "question": "What does a variable represent in a program?",
-    "options": [
-      "A. A constant value stored in memory",
-      "B. A reference to a memory location",
-      "C. A function used for binary conversion",
-      "D. A line number in the code"
-    ],
-    "answer": "B",
-    "correctWord": "B. A reference to a memory location",
-    "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
     "id": "prf_354",
     "word": "Câu 354: What will happen if a break statement is not used in a switc...",
     "question": "What will happen if a break statement is not used in a switch case?",
@@ -667,7 +571,7 @@
     ],
     "answer": "B",
     "correctWord": "B. Loop infinitely",
-    "explanation": "Đáp án: B.",
+    "explanation": "Đáp án: B. (Lưu ý đề gốc: câu hỏi bị gõ thiếu động từ \"update/change\" sau cụm \"does NOT\").",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
@@ -752,51 +656,50 @@
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_375",
-    "word": "Câu 375: How is 'Data' related to information?",
-    "question": "How is 'Data' related to information?",
+    "id": "prf_370",
+    "word": "Câu 370: Which of the following about the switch case statement is tr...",
+    "question": "Which of the following about the switch case statement is true?",
     "options": [
-      "A. It is a hidden aspect of information",
-      "B. It is a way to solve a problem",
-      "C. It describes values used to define information",
-      "D. It is an implementation of a program"
-    ],
-    "answer": "C",
-    "correctWord": "C. It describes values used to define information",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_376",
-    "word": "Câu 376: How does compilation differ from interpretation in the conte...",
-    "question": "How does compilation differ from interpretation in the context of C programming language?",
-    "options": [
-      "A. Compilation involves converting source code to machine code, while interpretation involves executing code line by line.",
-      "B. Compilation and interpretation are two terms that are used interchangeably.",
-      "C. Algorithm is another term for interpretation in programming languages.",
-      "D. IDE tools are responsible for both compilation and interpretation processes."
+      "A. It can only be used with integer or character type expressions.",
+      "B. It can be used with any data type.",
+      "C. It can only be used in functions.",
+      "D. It can only have one case statement inside."
     ],
     "answer": "A",
-    "correctWord": "A. Compilation involves converting source code to machine code, while interpretation involves executing code line by line.",
+    "correctWord": "A. It can only be used with integer or character type expressions.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_378",
-    "word": "Câu 378: How to declare a variable in C language?",
-    "question": "How to declare a variable in C language?",
+    "id": "prf_377",
+    "word": "Câu 377: How does a \"for\" loop differ from a \"while\" loop in C progra...",
+    "question": "How does a \"for\" loop differ from a \"while\" loop in C programming?",
     "options": [
-      "A. All variables must be declared before we use them in C program.",
-      "B. To declare a variable you specify its name and data type it can store.",
-      "C. All variable are always stored on the stack.",
-      "D. Reading a value from keyboard or other device with a OUT statement",
-      "E. The scope of a variable is the range of program statements that can't access that variable."
+      "A. A \"for\" loop is used for iterating over a sequence of elements, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
+      "B. A \"for\" loop is primarily used for conditional statements, while a \"while\" loop is designed for sequential processing.",
+      "C. The use of \"for\" and \"while\" loops is interchangeable; there is no substantial difference between them.",
+      "D. A \"for\" loop is exclusively used with arrays, while a \"while\" loop is used with numerical calculations.."
     ],
-    "answer": "A, B",
-    "correctWord": "B. To declare a variable you specify its name and data type it can store.",
-    "explanation": "Đáp án: A, B.",
+    "answer": "A",
+    "correctWord": "A. A \"for\" loop is used for iterating over a sequence of elements, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_384",
+    "word": "Câu 384: Real-world example of a switch statement in C is:",
+    "question": "Real-world example of a switch statement in C is:",
+    "options": [
+      "A. Check the day of the week.",
+      "B. Sort an array ascending.",
+      "C. Sort an array descending.",
+      "D. Find the average value of a sequence."
+    ],
+    "answer": "A",
+    "correctWord": "A. Check the day of the week.",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
@@ -833,40 +736,6 @@
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_392",
-    "word": "Câu 392: The rand() function in C is used for:",
-    "question": "The rand() function in C is used for:",
-    "options": [
-      "A. Generating random integer.",
-      "B. Generating random integer from min to max.",
-      "C. Generating random float from min to max.",
-      "D. Generating random float.",
-      "E. Generating random double.\nF. Generating random double from min to max."
-    ],
-    "answer": "A",
-    "correctWord": "A. Generating random integer.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_394",
-    "word": "Câu 394: The ^ operator in the C programming language is used to_____",
-    "question": "The ^ operator in the C programming language is used to_____",
-    "options": [
-      "A. XOR two bit sequences.",
-      "B. OR two bit sequences.",
-      "C. AND two bit sequences.",
-      "D. SHIFT UP a bit sequences.",
-      "E. NOT a bit sequences.\nF. Calculate the exponential value, for example 2^3 = 8."
-    ],
-    "answer": "A",
-    "correctWord": "A. XOR two bit sequences.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
     "id": "prf_396",
     "word": "Câu 396: What happens when you use a break statement inside a for loo...",
     "question": "What happens when you use a break statement inside a for loop?",
@@ -878,70 +747,6 @@
     ],
     "answer": "A",
     "correctWord": "A. The loop exits immediately.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_397",
-    "word": "Câu 397: What is an algorithm?",
-    "question": "What is an algorithm?",
-    "options": [
-      "A. A program executed using a computer",
-      "B. A procedure used for solving a problem or performing a computation.",
-      "C. A sequence of steps to solve a problem",
-      "D. A description of hidden information"
-    ],
-    "answer": "B",
-    "correctWord": "B. A procedure used for solving a problem or performing a computation.",
-    "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_398",
-    "word": "Câu 398: What is the primary purpose of a data type in C programming?",
-    "question": "What is the primary purpose of a data type in C programming?",
-    "options": [
-      "A. To define how values are stored and how operations are performed",
-      "B. To determine the variable name and its scope within the program",
-      "C. To specify the program's execution order and control flow",
-      "D. To control the program's memory allocation and deallocation process"
-    ],
-    "answer": "A",
-    "correctWord": "A. To define how values are stored and how operations are performed",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_399",
-    "word": "Câu 399: In the C programming language, which of the following statem...",
-    "question": "In the C programming language, which of the following statements about local variables within a function is true?",
-    "options": [
-      "A. Local variables within a function are declared and initialized each time the function is called.",
-      "B. Local variables within a function can be accessed from any other function in the program.",
-      "C. Local variables within a function retain their value between different function calls.",
-      "D. Local variables within a function can be declared outside the function and still maintain local scope."
-    ],
-    "answer": "A",
-    "correctWord": "A. Local variables within a function are declared and initialized each time the function is called.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_401",
-    "word": "Câu 401: What is the main purpose of a module in programming?",
-    "question": "What is the main purpose of a module in programming?",
-    "options": [
-      "A. To carry out a specific function and may be used alone or combined with other modules to create a program",
-      "B. To store data in a database",
-      "C. To handle user input exclusively",
-      "D. To perform arithmetic calculations only"
-    ],
-    "answer": "A",
-    "correctWord": "A. To carry out a specific function and may be used alone or combined with other modules to create a program",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
@@ -975,22 +780,6 @@
     "answer": "B",
     "correctWord": "B. switch",
     "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_414",
-    "word": "Câu 414: Which library in C is used for mathematical calculations?",
-    "question": "Which library in C is used for mathematical calculations?",
-    "options": [
-      "A. math.h",
-      "B. stdlib.h",
-      "C. time.h",
-      "D. ctype.h"
-    ],
-    "answer": "A",
-    "correctWord": "A. math.h",
-    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   }

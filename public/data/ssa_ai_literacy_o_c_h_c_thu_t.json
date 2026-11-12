@@ -1,4 +1,20 @@
-﻿[
+[
+  {
+    "id": "SSA_12",
+    "word": "Câu 12: According to Long & Magerko (2020), AI literacy enables indi...",
+    "question": "According to Long & Magerko (2020), AI literacy enables individuals to:",
+    "options": [
+      "A. Fully automate decision-making",
+      "B. Critically evaluate AI technologies",
+      "C. Eliminate bias in all AI systems",
+      "D. Replace teachers with AI"
+    ],
+    "answer": "B",
+    "correctWord": "B. Critically evaluate AI technologies",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
   {
     "id": "SSA_30",
     "word": "Câu 30: Which of the following best distinguishes digital literacy f...",
@@ -16,6 +32,118 @@
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
+    "id": "SSA_35",
+    "word": "Câu 35: Which practice best demonstrates responsible use of informat...",
+    "question": "Which practice best demonstrates responsible use of information?",
+    "options": [
+      "A. Copying text when sources are cited without any form of paraphrasing",
+      "B. Paraphrasing without attribution",
+      "C. Integrating sources while acknowledging original authors",
+      "D. Using only one strong source"
+    ],
+    "answer": "C",
+    "correctWord": "C. Integrating sources while acknowledging original authors",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_46",
+    "word": "Câu 46: Which situation would most clearly violate ethical guideline...",
+    "question": "Which situation would most clearly violate ethical guidelines when using AI for assessment?",
+    "options": [
+      "A. Using AI to grade multiple-choice quizzes",
+      "B. Using AI to provide grammar suggestions",
+      "C. Using AI to evaluate student work without students' consent or awareness",
+      "D. Using AI to help manage gradebooks"
+    ],
+    "answer": "C",
+    "correctWord": "C. Using AI to evaluate student work without students' consent or awareness",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_51",
+    "word": "Câu 51: Why is using AI for personalized feedback considered ethical...",
+    "question": "Why is using AI for personalized feedback considered ethically problematic in some cases?",
+    "options": [
+      "A. AI feedback is always inaccurate or inclined towards complementation",
+      "B. It may replace meaningful instructor-student learning relationships",
+      "C. Students prefer automated feedback",
+      "D. AI cannot process written language"
+    ],
+    "answer": "B",
+    "correctWord": "B. It may replace meaningful instructor-student learning relationships",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_58",
+    "word": "Câu 58: Why is transparency in AI systems important?",
+    "question": "Why is transparency in AI systems important?",
+    "options": [
+      "A. It increases software profits",
+      "B. It allows users to modify algorithms directly",
+      "C. It enables accountability and trust",
+      "D. It eliminates the need for regulation"
+    ],
+    "answer": "C",
+    "correctWord": "C. It enables accountability and trust",
+    "explanation": "Đáp án: C.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_59",
+    "word": "Câu 59: Why does the author argue that using AI to do the work inste...",
+    "question": "Why does the author argue that using AI to do the work instead of the student is problematic?",
+    "options": [
+      "A. It violates copyright law automatically",
+      "B. It cheats students out of the learning experience",
+      "C. It reduces the accuracy of AI systems",
+      "D. It increases institutional costs and reduces"
+    ],
+    "answer": "B",
+    "correctWord": "B. It cheats students out of the learning experience",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_65",
+    "word": "Câu 65: AI can support memory formation primarily by:",
+    "question": "AI can support memory formation primarily by:",
+    "options": [
+      "A. Replacing reading and note-taking entirely by provide main content of every document",
+      "B. Providing metaphors, emotional connections, and multisensory learning ideas",
+      "C. Automatically storing information in long-term memory",
+      "D. Eliminating the need for attention and focus"
+    ],
+    "answer": "B",
+    "correctWord": "B. Providing metaphors, emotional connections, and multisensory learning ideas",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_70",
+    "word": "Câu 70: According to the text, a major concern for graduate students...",
+    "question": "According to the text, a major concern for graduate students regarding AI grading tools is that:",
+    "options": [
+      "A. AI grading is smarter than human grading and could overshadow human's ability in grading",
+      "B. AI systems may use their work as training data, affecting future publication",
+      "C. AI cannot understand complex arguments",
+      "D. AI always produces biased feedback"
+    ],
+    "answer": "B",
+    "correctWord": "B. AI systems may use their work as training data, affecting future publication",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
     "id": "SSA_72",
     "word": "Câu 72: According to the International Society of Academic Integrity...",
     "question": "According to the International Society of Academic Integrity (2021), academic integrity is best defined as:",
@@ -27,6 +155,38 @@
     ],
     "answer": "B",
     "correctWord": "B. A promise to uphold honesty, fairness, respect, responsibility, and courage",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_81",
+    "word": "Câu 81: Guerrero-Dib, Portales, and Heredia-Escorza (2020) emphasize...",
+    "question": "Guerrero-Dib, Portales, and Heredia-Escorza (2020) emphasize that academic integrity extends beyond cheating because it:",
+    "options": [
+      "A. Focuses solely on punishment and enforcement",
+      "B. Represents a commitment to the learning process and ethical use of resources",
+      "C. Is mainly concerned with citation formatting and application of formal structure",
+      "D. Applies only to written assignments"
+    ],
+    "answer": "B",
+    "correctWord": "B. Represents a commitment to the learning process and ethical use of resources",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_85",
+    "word": "Câu 85: One ethical concern about using AI as a grading tool is that...",
+    "question": "One ethical concern about using AI as a grading tool is that it may:",
+    "options": [
+      "A. Improve consistency too much",
+      "B. Breach students' intellectual property by uploading their work to AI systems",
+      "C. Reduce grading speed",
+      "D. Require excessive faculty training"
+    ],
+    "answer": "B",
+    "correctWord": "B. Breach students' intellectual property by uploading their work to AI systems",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
@@ -64,6 +224,102 @@
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
+    "id": "SSA_107",
+    "word": "Câu 107: Which AI-supported strategy best aligns with improving memor...",
+    "question": "Which AI-supported strategy best aligns with improving memory storage?",
+    "options": [
+      "A. Asking AI to summarize a chapter and skipping the reading",
+      "B. Using AI to plan spaced practice after understanding the material",
+      "C. Letting AI answer practice questions and remember the answer list",
+      "D. Relying on AI-generated notes only"
+    ],
+    "answer": "B",
+    "correctWord": "B. Using AI to plan spaced practice after understanding the material",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_108",
+    "word": "Câu 108: Which of the following principle could best guides ethical s...",
+    "question": "Which of the following principle could best guides ethical student use of AI?",
+    "options": [
+      "A. Use AI whenever it saves time and when you are too busy",
+      "B. Use AI to support learning goals, not replace them",
+      "C. Avoid AI entirely in higher education because it causes more harm than benefit",
+      "D. Use AI only for graded tasks"
+    ],
+    "answer": "B",
+    "correctWord": "B. Use AI to support learning goals, not replace them",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_109",
+    "word": "Câu 109: Why is using AI to complete assignments unethical?",
+    "question": "Why is using AI to complete assignments unethical?",
+    "options": [
+      "A. It takes too much time",
+      "B. It replaces the intended learning process",
+      "C. It requires technical skills",
+      "D. It reduces collaboration and social learning"
+    ],
+    "answer": "B",
+    "correctWord": "B. It replaces the intended learning process",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_120",
+    "word": "Câu 120: Why are AI detection tools controversial in academic setting...",
+    "question": "Why are AI detection tools controversial in academic settings?",
+    "options": [
+      "A. They could replace teachers in learning any knowledge",
+      "B. They are difficult to install",
+      "C. They are rarely used productively",
+      "D. They may produce inaccurate results and false accusations"
+    ],
+    "answer": "D",
+    "correctWord": "D. They may produce inaccurate results and false accusations",
+    "explanation": "Đáp án: D.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_121",
+    "word": "Câu 121: Which institutional response best aligns with the ethical ap...",
+    "question": "Which institutional response best aligns with the ethical approach advocated in the text?",
+    "options": [
+      "A. Developing clear AI usage policies and promoting transparency",
+      "B. Banning all AI tools immediately because AI will destroy students' independent thinking",
+      "C. Ignoring AI-related misconduct",
+      "D. Replacing instructors with AI graders"
+    ],
+    "answer": "A",
+    "correctWord": "A. Developing clear AI usage policies and promoting transparency",
+    "explanation": "Đáp án: A.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_122",
+    "word": "Câu 122: Why are universities described as being \"in the process\" of ...",
+    "question": "Why are universities described as being \"in the process\" of developing AI policies?",
+    "options": [
+      "A. AI adoption is declining",
+      "B. AI is developing faster than ethical guidelines can be established",
+      "C. Faculty resistance has ended and AI become a popular tool accepted everywhere",
+      "D. Students no longer use AI"
+    ],
+    "answer": "B",
+    "correctWord": "B. AI is developing faster than ethical guidelines can be established",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
     "id": "SSA_137",
     "word": "Câu 137: A student copies text without citation. This is:",
     "question": "A student copies text without citation. This is:",
@@ -80,17 +336,33 @@
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
   {
-    "id": "SSA_147",
-    "word": "Câu 147: Which of the following best distinguishes digital literacy f...",
-    "question": "Which of the following best distinguishes digital literacy from AI literacy?",
+    "id": "SSA_139",
+    "word": "Câu 139: What is paraphrasing?",
+    "question": "What is paraphrasing?",
     "options": [
-      "A. Digital literacy focuses only on social media skills while AI literacy focuses on academic skills",
-      "B. AI literacy includes competencies for understanding and interacting with AI systems",
-      "C. AI literacy excludes ethical considerations",
-      "D. Digital literacy is limited to hardware usage"
+      "A. Copying text",
+      "B. Rewriting ideas",
+      "C. Quoting directly",
+      "D. Ignoring source"
     ],
     "answer": "B",
-    "correctWord": "B. AI literacy includes competencies for understanding and interacting with AI systems",
+    "correctWord": "B. Rewriting ideas",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_177",
+    "word": "Câu 177: What risk is associated with uploading dense readings to AI ...",
+    "question": "What risk is associated with uploading dense readings to AI for summaries without reading them?",
+    "options": [
+      "A. Reduced chances to practicing English",
+      "B. Missing critical thinking required for memory formation",
+      "C. Violating institutional AI policies automatically",
+      "D. Overloading working memory and risk to pay more for AI premium versions"
+    ],
+    "answer": "B",
+    "correctWord": "B. Missing critical thinking required for memory formation",
     "explanation": "Đáp án: B.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
@@ -108,6 +380,22 @@
     "answer": "B",
     "correctWord": "B. Institutions must establish clear guidelines and pedagogical practices",
     "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_198",
+    "word": "Câu 198: What is a significant technological challenge related to the...",
+    "question": "What is a significant technological challenge related to the use of AI detection tools like Turnitin in higher education environments?",
+    "options": [
+      "A. These tools have proven to be entirely flawless in distinguishing between human and machine writing, rendering traditional academic grading obsolete",
+      "B. These tools are completely incapable of scanning any student essays that have been submitted through standard, school-sponsored learning management systems",
+      "C. These tools face reliability issues as new software continually emerges to intentionally bypass detection by artificially mimicking human writing styles",
+      "D. These tools deliberately alter the original text of student submissions to artificially inflate similarity scores and arbitrarily justify academic penalties"
+    ],
+    "answer": "C",
+    "correctWord": "C. These tools face reliability issues as new software continually emerges to intentionally bypass detection by artificially mimicking human writing styles",
+    "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
@@ -140,22 +428,6 @@
     "answer": "B",
     "correctWord": "B. Students' search histories on sensitive topics (e.g., politics, mental health) could be tracked, creating a persistent fear of being criminalized or exposed",
     "explanation": "Đáp án: B.",
-    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
-    "topic": "AI Literacy & Đạo Đức Học Thuật"
-  },
-  {
-    "id": "SSA_210",
-    "word": "Câu 210: What is the risk of setting goals that are not truly your ow...",
-    "question": "What is the risk of setting goals that are not truly your own?",
-    "options": [
-      "A. You will complete them too quickly.",
-      "B. You will be accused of plagiarism.",
-      "C. You will have very little motivation to achieve them because you don't actually care.",
-      "D. Your academic advisor will not approve them."
-    ],
-    "answer": "C",
-    "correctWord": "C. You will have very little motivation to achieve them because you don't actually care.",
-    "explanation": "Đáp án: C.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },
@@ -204,6 +476,70 @@
     "answer": "B",
     "correctWord": "B. Searching for subtle inconsistencies in lighting, shadows, unnatural facial movements, mismatched lip-syncing, and irregular or absent blinking patterns",
     "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_233",
+    "word": "Câu 233: How do supporters of generative AI justify the use of copyri...",
+    "question": "How do supporters of generative AI justify the use of copyrighted works in training data under the \"fair use doctrine\"?",
+    "options": [
+      "A. They argue that AI algorithms completely destroy the original market value of the copyrighted works, forcing the creation of entirely new markets",
+      "B. They claim the use is \"non-consumptive\" because the tool learns syntax and context without reproducing the central elements of the original work",
+      "C. They state that the original creators automatically forfeit their intellectual property rights once their works are uploaded to public internet servers",
+      "D. They emphasize that the developers are utilizing the copyrighted materials exclusively for non-profit, government-sponsored educational programs"
+    ],
+    "answer": "B",
+    "correctWord": "B. They claim the use is \"non-consumptive\" because the tool learns syntax and context without reproducing the central elements of the original work",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_250",
+    "word": "Câu 250: According to the foundational definitions of AI literacy, ho...",
+    "question": "According to the foundational definitions of AI literacy, how do \"Neural Networks\" primarily function within deep learning systems?",
+    "options": [
+      "A. They explicitly program computers to perform a singular task by utilizing rigid rules and completely eliminating the need for ongoing inference.",
+      "B. They consist of interconnected nodes organized in layers that process inputs through activation functions to recognize complex patterns",
+      "C. They focus exclusively on the direct interaction between advanced computer systems and human language through semantic analysis",
+      "D. They generate novel content such as text, imagery, and audio by searching the internet for real-time data and synthesizing it instantly"
+    ],
+    "answer": "B",
+    "correctWord": "B. They consist of interconnected nodes organized in layers that process inputs through activation functions to recognize complex patterns",
+    "explanation": "Đáp án: B.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_255",
+    "word": "Câu 255: Based on the study by Liang et al. (2023), which group of st...",
+    "question": "Based on the study by Liang et al. (2023), which group of students is at the highest risk of being falsely accused by \"AI detectors\"?",
+    "options": [
+      "A. Students possessing advanced English writing skills and an exceptionally rich vocabulary",
+      "B. Minority students who lack digital literacy and have never previously utilized any AI tools",
+      "C. Students currently majoring in Computer Science, engineering, or other technology fields",
+      "D. Students who are non-native English writers demonstrating lower grammatical variability"
+    ],
+    "answer": "D",
+    "correctWord": "D. Students who are non-native English writers demonstrating lower grammatical variability",
+    "explanation": "Đáp án: D.",
+    "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
+    "topic": "AI Literacy & Đạo Đức Học Thuật"
+  },
+  {
+    "id": "SSA_263",
+    "word": "Câu 263: In the context of AI-assisted educational assessments, how i...",
+    "question": "In the context of AI-assisted educational assessments, how is \"Criterion Validity\" formally defined by the scientific evaluation community?",
+    "options": [
+      "A. It assesses whether the AI tool truly measures the underlying theoretical concept or specific academic trait that it was originally intended to measure",
+      "B. It examines whether the content of the AI assessment comprehensively covers the entire mathematical or literary range of the subject being evaluated",
+      "C. It evaluates whether the overall user interface of the AI tool appears friendly and intuitively aligned with the superficial goals of the standardized test",
+      "D. It involves directly comparing the specific results generated by the AI assessment against other proven, established measures or actual real-world outcomes"
+    ],
+    "answer": "D",
+    "correctWord": "D. It involves directly comparing the specific results generated by the AI assessment against other proven, established measures or actual real-world outcomes",
+    "explanation": "Đáp án: D.",
     "subject": "Kỹ Năng Học Đại Học & AI (SSA101)",
     "topic": "AI Literacy & Đạo Đức Học Thuật"
   },

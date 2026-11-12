@@ -14,6 +14,20 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_3",
+    "word": "Câu 3: Indirect addressing, the length of the address field is usually g...",
+    "question": "Indirect addressing, the length of the address field is usually greater than the word length, because unlimiting the address range.",
+    "options": [
+      "A. True",
+      "B. False"
+    ],
+    "answer": "B",
+    "correctWord": "B. False",
+    "explanation": "Đáp án đúng: B (B. False)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_10",
     "word": "Câu 10: Assume an instruction set that uses a fixed 16-bit instruction le...",
     "question": "Assume an instruction set that uses a fixed 16-bit instruction length. Operand specifiers are 6 bits in length. What is the maximum number of one-operand instructions that can be supported?",
@@ -42,6 +56,22 @@
     "answer": "B",
     "correctWord": "B. 3",
     "explanation": "Đáp án đúng: B (B. 3)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_38",
+    "word": "Câu 38: How many general-purpose registers are there in the Microprocesso...",
+    "question": "How many general-purpose registers are there in the Microprocessor Register Organizations of Intel 80386–Pentium 4?",
+    "options": [
+      "A. 8",
+      "B. 16",
+      "C. 4",
+      "D. 12"
+    ],
+    "answer": "A",
+    "correctWord": "A. 8",
+    "explanation": "Đáp án đúng: A (A. 8)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -128,6 +158,103 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_68",
+    "word": "Câu 68: ______: If the operation involves reference to an operand in memo...",
+    "question": "______: If the operation involves reference to an operand in memory or available via I/O, then determine the address of the operand.",
+    "options": [
+      "A. Operand fetch",
+      "B. Data operation",
+      "C. Operand store",
+      "D. Operand address calculation"
+    ],
+    "answer": "D",
+    "correctWord": "D. Operand address calculation",
+    "explanation": "Đáp án đúng: D (D. Operand address calculation)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_70",
+    "word": "Câu 70: ______: Determine the address of the next instruction to be execu...",
+    "question": "______: Determine the address of the next instruction to be executed. Usually, this involves adding a fixed number to the address of the previous instruction.",
+    "options": [
+      "A. Instruction fetch",
+      "B. Instruction operation decoding",
+      "C. Instruction address calculation",
+      "D. Operand fetch",
+      "E. Operand address calculation"
+    ],
+    "answer": "C",
+    "correctWord": "C. Instruction address calculation",
+    "explanation": "Đáp án đúng: C (C. Instruction address calculation)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_71",
+    "word": "Câu 71: ______ is (are) determined by the number of instructions that can...",
+    "question": "______ is (are) determined by the number of instructions that can be fetched and executed at the same time (the number of parallel pipelines) and by the speed and sophistication of the mechanisms that the processor uses to find independent instructions.",
+    "options": [
+      "A. Instruction-level parallelism",
+      "B. Machine parallelism",
+      "C. Both instruction-level parallelism and machine parallelism",
+      "D. None of the mentioned"
+    ],
+    "answer": "B",
+    "correctWord": "B. Machine parallelism",
+    "explanation": "Đáp án đúng: B (B. Machine parallelism)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_72",
+    "word": "Câu 72: ______: Read instruction from its memory location into the proces...",
+    "question": "______: Read instruction from its memory location into the processor.",
+    "options": [
+      "A. Instruction fetch",
+      "B. Instruction operation decoding",
+      "C. Operand address calculation",
+      "D. Data operation"
+    ],
+    "answer": "A",
+    "correctWord": "A. Instruction fetch",
+    "explanation": "Đáp án đúng: A (A. Instruction fetch)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_82",
+    "word": "Câu 82: The effective address of ______ is EA = A + (R), (R) = (R) + 1.",
+    "question": "The effective address of ______ is EA = A + (R), (R) = (R) + 1.",
+    "options": [
+      "A. relative addressing",
+      "B. autoindexing",
+      "C. postindexing",
+      "D. preindexing"
+    ],
+    "answer": "B",
+    "correctWord": "B. autoindexing",
+    "explanation": "Đáp án đúng: B (B. autoindexing)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_83",
+    "word": "Câu 83: The effective address of Register indirect addressing mode is ___...",
+    "question": "The effective address of Register indirect addressing mode is ______.",
+    "options": [
+      "A. EA = R",
+      "B. EA = (R)",
+      "C. EA = (R) + A",
+      "D. EA = (R) + (A)"
+    ],
+    "answer": "B",
+    "correctWord": "B. EA = (R)",
+    "explanation": "Đáp án đúng: B (B. EA = (R))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_84",
     "word": "Câu 84: Which of the following PDP series computers is known for its use ...",
     "question": "Which of the following PDP series computers is known for its use of 12-bit instructions and a single general-purpose register, the accumulator?",
@@ -156,6 +283,22 @@
     "answer": "A",
     "correctWord": "A. RET",
     "explanation": "Đáp án đúng: A (A. RET)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_87",
+    "word": "Câu 87: Which register is the memory address register?",
+    "question": "Which register is the memory address register?",
+    "options": [
+      "A. MAR",
+      "B. MBR",
+      "C. IR",
+      "D. PC"
+    ],
+    "answer": "A",
+    "correctWord": "A. MAR",
+    "explanation": "Đáp án đúng: A (A. MAR)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -225,6 +368,22 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_98",
+    "word": "Câu 98: Choose the appropriate words to fill in the corresponding blanks ...",
+    "question": "Choose the appropriate words to fill in the corresponding blanks in the following definitions: ______ contains a word to be stored in memory or sent to the I/O unit, or is used to receive a word from memory or from the I/O unit. ______ specifies the address in memory of the word to be written from or read into the MBR. ______ is employed to hold temporarily the right hand instruction from a word in memory.",
+    "options": [
+      "A. MBR; MAR; IBR",
+      "B. AC; MAR; IR",
+      "C. MAR; MBR; IBR",
+      "D. AC; MBR; MAR"
+    ],
+    "answer": "A",
+    "correctWord": "A. MBR; MAR; IBR",
+    "explanation": "Đáp án đúng: A (A. MBR; MAR; IBR)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_100",
     "word": "Câu 100: In MASM32, which command is incorrect?",
     "question": "In MASM32, which command is incorrect?",
@@ -237,6 +396,38 @@
     "answer": "D",
     "correctWord": "D. ADD a, b",
     "explanation": "Đáp án đúng: D (D. ADD a, b)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_107",
+    "word": "Câu 107: What is the primary purpose of index registers within the processor?",
+    "question": "What is the primary purpose of index registers within the processor?",
+    "options": [
+      "A. To manage control signals",
+      "B. To hold condition codes",
+      "C. To facilitate indexed addressing",
+      "D. To execute arithmetic operations"
+    ],
+    "answer": "C",
+    "correctWord": "C. To facilitate indexed addressing",
+    "explanation": "Đáp án đúng: C (C. To facilitate indexed addressing)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_108",
+    "word": "Câu 108: What is the primary advantage of indirect addressing mode?",
+    "question": "What is the primary advantage of indirect addressing mode?",
+    "options": [
+      "A. Faster access to operands",
+      "B. Ability to access a larger data set",
+      "C. Flexibility in data location",
+      "D. Reduced instruction size"
+    ],
+    "answer": "B",
+    "correctWord": "B. Ability to access a larger data set",
+    "explanation": "Đáp án đúng: B (B. Ability to access a larger data set)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -257,6 +448,22 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_110",
+    "word": "Câu 110: What electronic component is used to govern operations such as fe...",
+    "question": "What electronic component is used to govern operations such as fetching, decoding, and performing arithmetic operations executed by a processor?",
+    "options": [
+      "A. Using a system clock",
+      "B. Using a quartz crystal",
+      "C. Using a analog to digital converter",
+      "D. Using a counter"
+    ],
+    "answer": "A",
+    "correctWord": "A. Using a system clock",
+    "explanation": "Đáp án đúng: A (A. Using a system clock)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_111",
     "word": "Câu 111: What does CISC stand for?",
     "question": "What does CISC stand for?",
@@ -269,6 +476,22 @@
     "answer": "A",
     "correctWord": "A. Complex Instruction Set Computer",
     "explanation": "Đáp án đúng: A (A. Complex Instruction Set Computer)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_112",
+    "word": "Câu 112: What type of addressing is primarily used by almost all RISC inst...",
+    "question": "What type of addressing is primarily used by almost all RISC instructions?",
+    "options": [
+      "A. Immediate addressing",
+      "B. Register addressing",
+      "C. Indirect addressing",
+      "D. Direct addressing"
+    ],
+    "answer": "B",
+    "correctWord": "B. Register addressing",
+    "explanation": "Đáp án đúng: B (B. Register addressing)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -337,6 +560,22 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_129",
+    "word": "Câu 129: Which addressing mode allows direct specification of the memory a...",
+    "question": "Which addressing mode allows direct specification of the memory address within the instruction?",
+    "options": [
+      "A. Direct",
+      "B. Indirect",
+      "C. Register Indirect",
+      "D. Displacement"
+    ],
+    "answer": "A",
+    "correctWord": "A. Direct",
+    "explanation": "Đáp án đúng: A (A. Direct)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_130",
     "word": "Câu 130: Which architectural concept involves replicating register banks t...",
     "question": "Which architectural concept involves replicating register banks to facilitate the sharing of pipeline resources among multiple threads?",
@@ -385,18 +624,18 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
-    "id": "CEA_151",
-    "word": "Câu 151: A benchmark is run 4 times on a computer with execution times: 8s...",
-    "question": "A benchmark is run 4 times on a computer with execution times: 8s, 10s, 12s, 14s. What is the arithmetic mean?",
+    "id": "CEA_147",
+    "word": "Câu 147: Which control signal is responsible for temporarily opening the g...",
+    "question": "Which control signal is responsible for temporarily opening the gate to allow data to pass in the data path?",
     "options": [
-      "A. 11s",
-      "B. 10.5s",
-      "C. 11.5s",
-      "D. 12s"
+      "A. System bus data transfer signal.",
+      "B. Memory buffer control signal.",
+      "C. ALU activation signal.",
+      "D. Gate control signal from the control unit."
     ],
-    "answer": "A",
-    "correctWord": "A. 11s",
-    "explanation": "Đáp án đúng: A (A. 11s)",
+    "answer": "D",
+    "correctWord": "D. Gate control signal from the control unit.",
+    "explanation": "Đáp án đúng: D (D. Gate control signal from the control unit.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -417,6 +656,20 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_160",
+    "word": "Câu 160: The Program Status Word (PSW) typically contains condition codes,...",
+    "question": "The Program Status Word (PSW) typically contains condition codes, the sign of the last result, and other status information like interrupt enable/disable flags.",
+    "options": [
+      "A. True",
+      "B. False"
+    ],
+    "answer": "A",
+    "correctWord": "A. True",
+    "explanation": "Đáp án đúng: A (A. True)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_162",
     "word": "Câu 162: In MASM32, which OPCODE is used to compare two values?",
     "question": "In MASM32, which OPCODE is used to compare two values?",
@@ -429,6 +682,22 @@
     "answer": "B",
     "correctWord": "B. CMP",
     "explanation": "Đáp án đúng: B (B. CMP)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_164",
+    "word": "Câu 164: In the immediate addressing mode of a machine instruction, if thi...",
+    "question": "In the immediate addressing mode of a machine instruction, if this field is allocated a 10-bit length, what is the valid range of signed integer?",
+    "options": [
+      "A. [-512, 511]",
+      "B. [-108, 107]",
+      "C. [-32768, 32767]",
+      "D. Any integral value."
+    ],
+    "answer": "A",
+    "correctWord": "A. [-512, 511]",
+    "explanation": "Đáp án đúng: A (A. [-512, 511])",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -449,18 +718,35 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
-    "id": "CEA_174",
-    "word": "Câu 174: The ______ of two logical operands is 1 if and only if exactly on...",
-    "question": "The ______ of two logical operands is 1 if and only if exactly one of the operands has the value 1.",
+    "id": "CEA_172",
+    "word": "Câu 172: Performs the computer’s data processing functions is ______?",
+    "question": "Performs the computer’s data processing functions is ______?",
     "options": [
-      "A. NOR",
-      "B. OR",
-      "C. AND",
-      "D. XOR"
+      "A. Arithmetic and logic unit (ALU)",
+      "B. Control unit",
+      "C. CPU interconnection",
+      "D. Registers"
     ],
-    "answer": "D",
-    "correctWord": "D. XOR",
-    "explanation": "Đáp án đúng: D (D. XOR)",
+    "answer": "A",
+    "correctWord": "A. Arithmetic and logic unit (ALU)",
+    "explanation": "Đáp án đúng: A (A. Arithmetic and logic unit (ALU))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_177",
+    "word": "Câu 177: The effective address of ______ is EA = top of stack.",
+    "question": "The effective address of ______ is EA = top of stack.",
+    "options": [
+      "A. Immediate",
+      "B. Direct",
+      "C. Indirect",
+      "D. Displacement",
+      "E. Implicit"
+    ],
+    "answer": "E",
+    "correctWord": "E. Implicit",
+    "explanation": "Đáp án đúng: E (E. Implicit)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -477,6 +763,22 @@
     "answer": "A",
     "correctWord": "A. Control and Status Registers",
     "explanation": "Đáp án đúng: A (A. Control and Status Registers)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_181",
+    "word": "Câu 181: To enhance performance in a superscalar processor, which method(s...",
+    "question": "To enhance performance in a superscalar processor, which method(s) should we apply?",
+    "options": [
+      "A. Duplication of resources.",
+      "B. Out-of-order issue.",
+      "C. Renaming registers.",
+      "D. All of the mentioned."
+    ],
+    "answer": "D",
+    "correctWord": "D. All of the mentioned.",
+    "explanation": "Đáp án đúng: D (D. All of the mentioned.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -529,6 +831,22 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_197",
+    "word": "Câu 197: Which processor architecture uses a large register file and simpl...",
+    "question": "Which processor architecture uses a large register file and simple instructions?",
+    "options": [
+      "A. CISC",
+      "B. VLIW",
+      "C. Superscalar",
+      "D. RISC"
+    ],
+    "answer": "D",
+    "correctWord": "D. RISC",
+    "explanation": "Đáp án đúng: D (D. RISC)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_202",
     "word": "Câu 202: What are the most important general categories of data that machi...",
     "question": "What are the most important general categories of data that machine instructions operate on?",
@@ -541,6 +859,38 @@
     "answer": "A",
     "correctWord": "A. Addresses, numbers, characters, and logical data",
     "explanation": "Đáp án đúng: A (A. Addresses, numbers, characters, and logical data)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_213",
+    "word": "Câu 213: What is the primary purpose of the “Fetch instruction” phase in t...",
+    "question": "What is the primary purpose of the “Fetch instruction” phase in the operation of a processor?",
+    "options": [
+      "A. To read an instruction from memory",
+      "B. To interpret the instruction",
+      "C. To perform arithmetic operations on data",
+      "D. To write data to memory"
+    ],
+    "answer": "A",
+    "correctWord": "A. To read an instruction from memory",
+    "explanation": "Đáp án đúng: A (A. To read an instruction from memory)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_220",
+    "word": "Câu 220: What is the primary function of the Arithmetic and Logic Unit (AL...",
+    "question": "What is the primary function of the Arithmetic and Logic Unit (ALU) in a processor?",
+    "options": [
+      "A. Perform actual computations and data processing",
+      "B. Control the movement of data and instructions",
+      "C. Act as an interface to the system bus",
+      "D. Manage the internal processor memory"
+    ],
+    "answer": "A",
+    "correctWord": "A. Perform actual computations and data processing",
+    "explanation": "Đáp án đúng: A (A. Perform actual computations and data processing)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -642,6 +992,22 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_233",
+    "word": "Câu 233: What is Memory Address Register (MAR)?",
+    "question": "What is Memory Address Register (MAR)?",
+    "options": [
+      "A. Contains a word to be stored in memory or sent to the I/O unit, or is used to receive a word from memory or from the I/O unit.",
+      "B. Employed to hold temporarily the righthand instruction from a word in memory.",
+      "C. Contains the address in memory of the word to be written from or read into the MBR.",
+      "D. Contains the address of the next instruction pair to be fetched from memory."
+    ],
+    "answer": "C",
+    "correctWord": "C. Contains the address in memory of the word to be written from or read into the MBR.",
+    "explanation": "Đáp án đúng: C (C. Contains the address in memory of the word to be written from or read into the MBR.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_235",
     "word": "Câu 235: What is the significance of the program counter (PC) in the fetch...",
     "question": "What is the significance of the program counter (PC) in the fetch phase of the instruction cycle?",
@@ -658,12 +1024,60 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_238",
+    "word": "Câu 238: What is the role of the registers in a processor?",
+    "question": "What is the role of the registers in a processor?",
+    "options": [
+      "A. Registers in a processor provide fast, temporary storage for data and instructions, facilitating efficient access during instruction execution",
+      "B. Registers are only used to store data temporarily during the execution of a program and do not contribute to the processing of instructions",
+      "C. Registers are solely responsible for storing data from the main memory and have no involvement in holding instructions or facilitating data manipulation",
+      "D. Registers are only necessary when the CPU is idle and have no impact on the speed or efficiency of instruction execution"
+    ],
+    "answer": "A",
+    "correctWord": "A. Registers in a processor provide fast, temporary storage for data and instructions, facilitating efficient access during instruction execution",
+    "explanation": "Đáp án đúng: A (A. Registers in a processor provide fast, temporary storage for data and instructions, facilitating efficient access during instruction execution)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_239",
+    "word": "Câu 239: What is the role of the control unit in a processor?",
+    "question": "What is the role of the control unit in a processor?",
+    "options": [
+      "A. The control unit’s primary role is to perform arithmetic and logical operations within the processor, orchestrating the manipulation of data",
+      "B. The control unit only manages the flow of data between the CPU and external devices and does not play a significant role in executing instructions",
+      "C. The control unit is solely responsible for managing the flow of instructions from secondary storage to RAM and does not have a role in the internal operation of the CPU",
+      "D. The control unit in a processor directs and coordinates the execution of instructions, interpreting and managing the flow of operations within the CPU"
+    ],
+    "answer": "D",
+    "correctWord": "D. The control unit in a processor directs and coordinates the execution of instructions, interpreting and managing the flow of operations within the CPU",
+    "explanation": "Đáp án đúng: D (D. The control unit in a processor directs and coordinates the execution of instructions, interpreting and managing the flow of operations within the CPU)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_241",
+    "word": "Câu 241: What is the role of the memory address register (MAR) in a comput...",
+    "question": "What is the role of the memory address register (MAR) in a computer system?",
+    "options": [
+      "A. It holds data being transferred between memory and the processor.",
+      "B. It specifies the address in memory for the next read or write operation.",
+      "C. It performs arithmetic operations on data stored in memory.",
+      "D. It stores program instructions after they are executed."
+    ],
+    "answer": "B",
+    "correctWord": "B. It specifies the address in memory for the next read or write operation.",
+    "explanation": "Đáp án đúng: B (B. It specifies the address in memory for the next read or write operation.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_243",
     "word": "Câu 243: What is a drawback of Instruction Pipelining?",
     "question": "What is a drawback of Instruction Pipelining?",
     "options": [
       "A. It increases the instruction throughput",
-      "B. It allows more CPU throughput than a multicycle computer at a given ck rate",
+      "B. It allows more CPU throughput than a multicycle computer at a given clock rate",
       "C. It may increase latency due to the added overhead of the pipelining process itself",
       "D. It decreases the complexity of the computer system"
     ],
@@ -738,6 +1152,22 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_250",
+    "word": "Câu 250: What role does branch prediction play in superscalar processors?",
+    "question": "What role does branch prediction play in superscalar processors?",
+    "options": [
+      "A. It reduces the need for registers",
+      "B. It prevents the execution of any branches",
+      "C. It minimizes pipeline stalling by guessing the paths of branches",
+      "D. It reduces the number of functional units required"
+    ],
+    "answer": "C",
+    "correctWord": "C. It minimizes pipeline stalling by guessing the paths of branches",
+    "explanation": "Đáp án đúng: C (C. It minimizes pipeline stalling by guessing the paths of branches)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_258",
     "word": "Câu 258: Which of the following statement is correct in the context of Ins...",
     "question": "Which of the following statement is correct in the context of Instruction Pipelining?",
@@ -754,6 +1184,22 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_259",
+    "word": "Câu 259: Which of the following statement is correct about addressing modes?",
+    "question": "Which of the following statement is correct about addressing modes?",
+    "options": [
+      "A. They define how the operands of an instruction are specified, including immediate, register, direct, and indirect addressing modes",
+      "B. Addressing modes are irrelevant in computer architecture, and all instructions only operate on values stored in registers",
+      "C. Addressing modes are limited to only immediate and direct modes; register and indirect addressing modes are not used in modern computer systems",
+      "D. All instructions in computer architecture use indirect addressing modes, making it the only relevant mode for operand specification"
+    ],
+    "answer": "A",
+    "correctWord": "A. They define how the operands of an instruction are specified, including immediate, register, direct, and indirect addressing modes",
+    "explanation": "Đáp án đúng: A (A. They define how the operands of an instruction are specified, including immediate, register, direct, and indirect addressing modes)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_260",
     "word": "Câu 260: Which statement is incorrect about RISC and CISC architecture?",
     "question": "Which statement is incorrect about RISC and CISC architecture?",
@@ -766,6 +1212,22 @@
     "answer": "D",
     "correctWord": "D. CISC architecture requires more general-purpose registers than RISC architecture.",
     "explanation": "Đáp án đúng: D (D. CISC architecture requires more general-purpose registers than RISC architecture.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_263",
+    "word": "Câu 263: How do data registers and address registers differ in some comput...",
+    "question": "How do data registers and address registers differ in some computer systems?",
+    "options": [
+      "A. Address registers can be employed in calculating operand addresses, while data registers hold data.",
+      "B. Data registers are only used for stack-related operations",
+      "C. Data registers are used for indexed addressing, while address registers are used for data storage",
+      "D. Address registers are reserved for segmented addressing, while data registers are general-purpose"
+    ],
+    "answer": "A",
+    "correctWord": "A. Address registers can be employed in calculating operand addresses, while data registers hold data.",
+    "explanation": "Đáp án đúng: A (A. Address registers can be employed in calculating operand addresses, while data registers hold data.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -818,6 +1280,22 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_275",
+    "word": "Câu 275: Central processing unit (CPU) of IAS computer consists of ________.",
+    "question": "Central processing unit (CPU) of IAS computer consists of ________.",
+    "options": [
+      "A. Main memory and ALU (arithmetic and logic unit)",
+      "B. ALU (Arithmetic and Logic Unit) and CU (Control Unit)",
+      "C. CU (Control Unit) and IO Module",
+      "D. ALU (Arithmetic and Logic Unit) and IO Module"
+    ],
+    "answer": "B",
+    "correctWord": "B. ALU (Arithmetic and Logic Unit) and CU (Control Unit)",
+    "explanation": "Đáp án đúng: B (B. ALU (Arithmetic and Logic Unit) and CU (Control Unit))",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_277",
     "word": "Câu 277: During microinstruction execution, which of the following is gene...",
     "question": "During microinstruction execution, which of the following is generated by the control unit?",
@@ -846,6 +1324,22 @@
     "answer": "A",
     "correctWord": "A. The program counter is updated to equal the address specified in the operand.",
     "explanation": "Đáp án đúng: A (A. The program counter is updated to equal the address specified in the operand.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
+    "id": "CEA_279",
+    "word": "Câu 279: In the context of addressing modes with both indirect addressing ...",
+    "question": "In the context of addressing modes with both indirect addressing and indexing, what is postindexing?",
+    "options": [
+      "A. Indexing is performed after the indirection",
+      "B. Indexing is performed before the indirection",
+      "C. Both indexing and indirection are avoided",
+      "D. Indexing and indirection occur simultaneously"
+    ],
+    "answer": "A",
+    "correctWord": "A. Indexing is performed after the indirection",
+    "explanation": "Đáp án đúng: A (A. Indexing is performed after the indirection)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -914,18 +1408,18 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
-    "id": "CEA_294",
-    "word": "Câu 294: In parallel ALUs, what is the primary factor determining performa...",
-    "question": "In parallel ALUs, what is the primary factor determining performance improvement?",
+    "id": "CEA_289",
+    "word": "Câu 289: In SuperScalar computer architecture, the primary goal of utilizi...",
+    "question": "In SuperScalar computer architecture, the primary goal of utilizing multiple processors concurrently is to",
     "options": [
-      "A. The number of registers in the system.",
-      "B. The size of the instruction cache.",
-      "C. The ability to execute multiple operations simultaneously.",
-      "D. The clock speed of the processor."
+      "A. Increase processing speed by increasing CPU frequency.",
+      "B. Improve performance by executing more than one instruction per machine cycle.",
+      "C. Reduce the size of the CPU to conserve energy.",
+      "D. Enhance computational power by increasing the number of CPU cores."
     ],
-    "answer": "C",
-    "correctWord": "C. The ability to execute multiple operations simultaneously.",
-    "explanation": "Đáp án đúng: C (C. The ability to execute multiple operations simultaneously.)",
+    "answer": "B",
+    "correctWord": "B. Improve performance by executing more than one instruction per machine cycle.",
+    "explanation": "Đáp án đúng: B (B. Improve performance by executing more than one instruction per machine cycle.)",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
@@ -994,6 +1488,22 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_307",
+    "word": "Câu 307: With respect to elements of a machine instruction, including an i...",
+    "question": "With respect to elements of a machine instruction, including an instruction code and addresses, the value in a memory location will be moved to a register. Choose the correct statement",
+    "options": [
+      "A. Both memory location and register are specified in addresses.",
+      "B. Register is specified in the instruction code and memory cell is specified in the address field.",
+      "C. Memory location is specified in the instruction code and register is specified in the address field.",
+      "D. Both memory location and register are specified in the instruction code."
+    ],
+    "answer": "B",
+    "correctWord": "B. Register is specified in the instruction code and memory cell is specified in the address field.",
+    "explanation": "Đáp án đúng: B (B. Register is specified in the instruction code and memory cell is specified in the address field.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_308",
     "word": "Câu 308: Which of the following characteristics is least likely to be foun...",
     "question": "Which of the following characteristics is least likely to be found in a Reduced Instruction Set Computer (RISC) architecture?",
@@ -1010,6 +1520,22 @@
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },
   {
+    "id": "CEA_309",
+    "word": "Câu 309: Which factor is the most significant limitation when increasing i...",
+    "question": "Which factor is the most significant limitation when increasing instruction-level parallelism (ILP) in a superscalar processor?",
+    "options": [
+      "A. The number of execution units available in the processor.",
+      "B. The presence of data and control dependencies between instructions.",
+      "C. The amount of cache memory available to store frequently used instructions.",
+      "D. The ability of the compiler to optimize code for ILP."
+    ],
+    "answer": "B",
+    "correctWord": "B. The presence of data and control dependencies between instructions.",
+    "explanation": "Đáp án đúng: B (B. The presence of data and control dependencies between instructions.)",
+    "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+  },
+  {
     "id": "CEA_311",
     "word": "Câu 311: In the instruction format displayed, what is the significance of ...",
     "question": "In the instruction format displayed, what is the significance of bits 4–15?",
@@ -1021,7 +1547,7 @@
     ],
     "answer": "D",
     "correctWord": "D. They contain the address used by the instruction.",
-    "explanation": "Đáp án đúng: D (D. They contain the address used by the instruction.)",
+    "explanation": "Đáp án đúng: D (D. They contain the address used by the instruction.). (Lưu ý: Đề gốc thiếu ảnh minh họa khuôn dạng lệnh IAS/16-bit kèm theo).",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
     "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
   },

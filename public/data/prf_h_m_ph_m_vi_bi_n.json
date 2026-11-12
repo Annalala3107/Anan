@@ -16,6 +16,22 @@
     "topic": "Hàm & Phạm Vi Biến"
   },
   {
+    "id": "prf_6",
+    "word": "Câu 6: Which of the following is used for single character I/O?",
+    "question": "Which of the following is used for single character I/O?",
+    "options": [
+      "A. getchar() and putchar()",
+      "B. gets() and puts()",
+      "C. scanf() and printf()",
+      "D. fgets() and fputs()"
+    ],
+    "answer": "A",
+    "correctWord": "A. getchar() and putchar()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
     "id": "prf_7",
     "word": "Câu 7: Which follows the function used to remove the keyboard buffe...",
     "question": "Which follows the function used to remove the keyboard buffer?",
@@ -59,7 +75,7 @@
     ],
     "answer": "C",
     "correctWord": "C. int minus (int a, int b) {return (a - b);};",
-    "explanation": "Đáp án: C.",
+    "explanation": "Đáp án: C. (Lưu ý đề gốc: phương án B và D bị trùng hệt nhau \"int minus (int a, b)...\").",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Hàm & Phạm Vi Biến"
   },
@@ -80,17 +96,65 @@
     "topic": "Hàm & Phạm Vi Biến"
   },
   {
-    "id": "prf_57",
-    "word": "Câu 57: What will the following program output?\n#include <stdio.h>\ni...",
-    "question": "What will the following program output?\n#include <stdio.h>\nint main()\n{\n    int n, m;\n    m = 6;\n    n = 2 * ++m;\n    printf(\"n is %d and m is %d\\n\", n, m);\n    n = 3 - m++;\n    printf(\"and n is %d and m is %d\\n\", n, m);\n    return 0;\n}",
+    "id": "prf_24",
+    "word": "Câu 24: Which of the following code snippets calculates the square r...",
+    "question": "Which of the following code snippets calculates the square root of 9 using the correct C library?",
     "options": [
-      "A. 14 7 and -4 8",
-      "B. 6 2 and 3 5",
-      "C. Compilation Error",
-      "D. No Output"
+      "A. double result = sqrt(9);",
+      "B. int result = sqrt(9);",
+      "C. float result = sqrt(9);",
+      "D. result = power(9, 0.5);"
     ],
     "answer": "A",
-    "correctWord": "A. 14 7 and -4 8",
+    "correctWord": "A. double result = sqrt(9);",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_25",
+    "word": "Câu 25: Which function is specifically used to return the absolute v...",
+    "question": "Which function is specifically used to return the absolute value of an int data type in C?",
+    "options": [
+      "A. abs()",
+      "B. labs()",
+      "C. llabs()",
+      "D. fabs()"
+    ],
+    "answer": "A",
+    "correctWord": "A. abs()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_26",
+    "word": "Câu 26: The function which will compute the average of two real numb...",
+    "question": "The function which will compute the average of two real numbers should be prototyped as:",
+    "options": [
+      "A. int average( double, double);",
+      "B. double average( double, double);",
+      "C. char average( double, double);",
+      "D. void average( double, double);"
+    ],
+    "answer": "B",
+    "correctWord": "B. double average( double, double);",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_34",
+    "word": "Câu 34: The pow() function in the math.h library is used to calculat...",
+    "question": "The pow() function in the math.h library is used to calculate the value of a number raised to a specified power. What is the return value type of the pow() function?",
+    "options": [
+      "A. double",
+      "B. int",
+      "C. long double",
+      "D. float"
+    ],
+    "answer": "A",
+    "correctWord": "A. double",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Hàm & Phạm Vi Biến"
@@ -112,38 +176,6 @@
     "topic": "Hàm & Phạm Vi Biến"
   },
   {
-    "id": "prf_62",
-    "word": "Câu 62: What will be the output of the following code?\n#include <std...",
-    "question": "What will be the output of the following code?\n#include <stdio.h>\nint main() {\n    int a = 1, b = 1;\n    int result = ++a + ++b;\n    printf(\"%d %d %d\\n\", result, a, b);\n    return 0;\n}",
-    "options": [
-      "A. 4 2 2",
-      "B. 0 2 2",
-      "C. 1 2 2",
-      "D. 2 2 2"
-    ],
-    "answer": "A",
-    "correctWord": "A. 4 2 2",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
-  },
-  {
-    "id": "prf_63",
-    "word": "Câu 63: What will be printed after execution of the following progra...",
-    "question": "What will be printed after execution of the following program code?\n#include <stdio.h>\nint main() {\n    int a = 12, b = 5;\n    a = a ^ b;\n    b = a ^ b;\n    a = a ^ b;\n    printf(\"%d %d\", a, b);\n    return 0;\n}",
-    "options": [
-      "A. 5 12",
-      "B. 12 5",
-      "C. 9 5",
-      "D. 12 9"
-    ],
-    "answer": "A",
-    "correctWord": "A. 5 12",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
-  },
-  {
     "id": "prf_66",
     "word": "Câu 66: What is the output when the sample code below is executed?\n#...",
     "question": "What is the output when the sample code below is executed?\n#include <stdio.h>\nvoid increment(int x) {\n    x++;\n}\nint main(){\n    int x = 1005;\n    increment(x);\n    printf(\"%d\", x);\n    return 0;\n}",
@@ -155,6 +187,22 @@
     ],
     "answer": "A",
     "correctWord": "A. 1005",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_71",
+    "word": "Câu 71: What is the value of ceil(2.55) from the math.h library?",
+    "question": "What is the value of ceil(2.55) from the math.h library?",
+    "options": [
+      "A. 3",
+      "B. 2",
+      "C. 2.5",
+      "D. 2.6"
+    ],
+    "answer": "A",
+    "correctWord": "A. 3",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Hàm & Phạm Vi Biến"
@@ -176,6 +224,22 @@
     "topic": "Hàm & Phạm Vi Biến"
   },
   {
+    "id": "prf_80",
+    "word": "Câu 80: What is the result displayed on the screen of the following ...",
+    "question": "What is the result displayed on the screen of the following program?\n#include<stdio.h>\nint isTriangle(float a, float b, float c)\n{\n    if ((a>0)&&(b>0)&&(c>0)&&(a<b+c)&&(b<c+a)&&(c<a+b))\n        return 1;\n    else\n        return 0;\n}\nint main()\n{\n    float a = 1, b = 1, c = 1.25;\n    if (isTriangle(a, b, c))\n        printf(\"%2.2f, %2.2f, %2.2f: a triangle.\\n\", a, b, c);\n    else\n        printf(\"%2.2f, %2.2f, %2.2f: not a triangle.\\n\", a, b, c);\n    return 0;\n}",
+    "options": [
+      "A. a, b, c: a triangle",
+      "B. 1.00, 1.00, 1.25: a triangle",
+      "C. 1, 1, 1.25: a triangle",
+      "D. 1.00, 1.00, 1.25: not a triangle"
+    ],
+    "answer": "B",
+    "correctWord": "B. 1.00, 1.00, 1.25: a triangle",
+    "explanation": "Đáp án: B. (Lưu ý đề gốc: printf có dấu chấm cuối \"a triangle.\" nhưng phương án B viết lược bỏ dấu chấm).",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
     "id": "prf_89",
     "word": "Câu 89: What is the output of the following code snippet?\n#include <...",
     "question": "What is the output of the following code snippet?\n#include <stdio.h>\nint num(int a, int b){\n    int sum;\n    sum = a + b;\n    return sum;\n}\nint main()\n{\n    int a, b, result;\n    a = 10;\n    b= 12;\n    result = num(a, b);\n    printf(\"%d\", result);\n    return 0;\n}",
@@ -188,6 +252,22 @@
     "answer": "A",
     "correctWord": "A. 22",
     "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_101",
+    "word": "Câu 101: What will be printed when the following code is executed?\n#i...",
+    "question": "What will be printed when the following code is executed?\n#include <stdio.h>\nint a = 5, b = 6;\nvoid cal1(int a, int b){\n    a++;\n    b--;\n}\nvoid cal2(){\n    a++;\n    b--;\n}\nint main() {\n    cal1(a,b);\n    printf(\"a = %d, b = %d\\n\", a, b);\n    cal2(a,b);\n    printf(\"a = %d, b = %d\\n\", a, b);\n    cal2(a,b);\n    printf(\"a = %d, b = %d\\n\", a, b);\n    return 0;\n}",
+    "options": [
+      "A. a = 6, b = 5\n   a = 6, b = 5\n   a = 6, b = 5",
+      "B. a = 5, b = 6\n   a = 6, b = 5\n   a = 7, b = 4",
+      "C. a = 6, b = 5\n   a = 6, b = 5\n   a = 7, b = 4",
+      "D. a = 5, b = 6\n   a = 7, b = 4\n   a = 7, b = 4"
+    ],
+    "answer": "B",
+    "correctWord": "B. a = 5, b = 6\n   a = 6, b = 5\n   a = 7, b = 4",
+    "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Hàm & Phạm Vi Biến"
   },
@@ -240,38 +320,6 @@
     "topic": "Hàm & Phạm Vi Biến"
   },
   {
-    "id": "prf_106",
-    "word": "Câu 106: What does the following program display?\n#include <stdio.h>\n...",
-    "question": "What does the following program display?\n#include <stdio.h>\nint main()\n{\n    int a = 4, b = 1, c = 1;\n    a = a % 2 + b++;\n    c = a*- - b;\n    printf(\"%d %d %d\", a, b, c);\n    return 0;\n}",
-    "options": [
-      "A. 0 1 0",
-      "B. 1 2 1",
-      "C. 1 1 1",
-      "D. 1 2 3"
-    ],
-    "answer": "B",
-    "correctWord": "B. 1 2 1",
-    "explanation": "Đáp án: B. đề có lỗi: tính ra 1 2 2, không có trong đáp án, B gần nhất",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
-  },
-  {
-    "id": "prf_112",
-    "word": "Câu 112: What does the following program display?\n#include <stdio.h>\n...",
-    "question": "What does the following program display?\n#include <stdio.h>\nint main()\n{\n    int x = 1, y = 2, z = 3;\n    x = x - - -y;\n    z = z + ++y;\n    printf(\"%d %d %d\", x, y, z);\n    return 0;\n}",
-    "options": [
-      "A. -1 5 3",
-      "B. 0 2 5",
-      "C. 1 2 4",
-      "D. 1 5 3"
-    ],
-    "answer": "A",
-    "correctWord": "A. -1 5 3",
-    "explanation": "Đáp án: A. đề có lỗi: tính ra -1 3 6, chỉ A khớp giá trị x = -1",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
-  },
-  {
     "id": "prf_122",
     "word": "Câu 122: What does the following program print?\n#include <stdio.h>\ndo...",
     "question": "What does the following program print?\n#include <stdio.h>\ndouble max(double a, double b)\n{\n    return a > b ? a : b;\n}\nint main()\n{\n    double x = 2.5, y = 2, z = 3;\n    printf(\"%lf\", max(max(++x, -y), z++));\n    return 0;\n}",
@@ -304,54 +352,6 @@
     "topic": "Hàm & Phạm Vi Biến"
   },
   {
-    "id": "prf_127",
-    "word": "Câu 127: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    20 > 30? return 1 : return 2;\n}",
-    "options": [
-      "A. Compile time error",
-      "B. 1",
-      "C. 2",
-      "D. return 1:return 2"
-    ],
-    "answer": "A",
-    "correctWord": "A. Compile time error",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
-  },
-  {
-    "id": "prf_129",
-    "word": "Câu 129: What does the following program display?\n#include<stdio.h>\ni...",
-    "question": "What does the following program display?\n#include<stdio.h>\nint main()\n{\n    int x[] = {1, 2, 3, 4, 5};\n    int y = 3;\n    printf(\"%d\", x[y]);\n    return 0;\n}",
-    "options": [
-      "A. 2",
-      "B. 3",
-      "C. 4",
-      "D. An error will be raised."
-    ],
-    "answer": "C",
-    "correctWord": "C. 4",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
-  },
-  {
-    "id": "prf_130",
-    "word": "Câu 130: What does the following program display?\n#include <stdio.h>\n...",
-    "question": "What does the following program display?\n#include <stdio.h>\nint main()\n{\n    int a[5] = {1, 2, 3};\n    printf(\"%d\", a[0]);\n    return 0;\n}",
-    "options": [
-      "A. 3",
-      "B. 2",
-      "C. 1",
-      "D. An error will be raised"
-    ],
-    "answer": "C",
-    "correctWord": "C. 1",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
-  },
-  {
     "id": "prf_137",
     "word": "Câu 137: What is the output of the following code snippet?\n#include <...",
     "question": "What is the output of the following code snippet?\n#include <stdio.h>\nint change(int a)\n{\n    a = 10;\n    return a;\n}\nvoid main()\n{\n    int i = 5;\n    i = change(i);\n    printf(\"%d\", i);\n}",
@@ -368,39 +368,6 @@
     "topic": "Hàm & Phạm Vi Biến"
   },
   {
-    "id": "prf_142",
-    "word": "Câu 142: What will be printed when the following code is executed?\n#i...",
-    "question": "What will be printed when the following code is executed?\n#include <stdio.h>\nint main() {\n    int a = 7, b = 6;\n    printf(\"%d\", ++a > b ? a : b);\n    return 0;\n}",
-    "options": [
-      "A. 6",
-      "B. Results are not printed",
-      "C. 8",
-      "D. Error",
-      "E. 7"
-    ],
-    "answer": "C",
-    "correctWord": "C. 8",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
-  },
-  {
-    "id": "prf_146",
-    "word": "Câu 146: Given the following code snippet:\n#include <stdio.h>\n#define...",
-    "question": "Given the following code snippet:\n#include <stdio.h>\n#define MONTHS_IN_YEAR 12\nint main() {\n    const int WORKING_DAYS = 22;\n    printf(\"%d \", MONTHS_IN_YEAR);\n    printf(\"%d\", WORKING_DAYS);\n    return 0;\n}\nChoose the correct statement:",
-    "options": [
-      "A. The output will be: 12 22",
-      "B. No output",
-      "C. Compile error",
-      "D. Runtime error"
-    ],
-    "answer": "A",
-    "correctWord": "A. The output will be: 12 22",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Hàm & Phạm Vi Biến"
-  },
-  {
     "id": "prf_148",
     "word": "Câu 148: What does the following code print?\n#include <stdio.h>\nvoid ...",
     "question": "What does the following code print?\n#include <stdio.h>\nvoid swap(int a, int *b) {\n    int temp = a;\n    a = *b;\n    *b = temp;\n}\nint main() {\n    int x = 5;\n    int y = 10;\n    swap(x, y);\n    printf(\"x = %d, y = %d\\n\", x, y);\n    return 0;\n}",
@@ -409,7 +376,8 @@
       "B. Compiler error",
       "C. x = 5, y = 10",
       "D. x = 10, y = 5",
-      "E. x = 10, y = 10\nF. x = 5, y = 5"
+      "E. x = 10, y = 10",
+      "F. x = 5, y = 5"
     ],
     "answer": "B",
     "correctWord": "B. Compiler error",
@@ -418,18 +386,34 @@
     "topic": "Hàm & Phạm Vi Biến"
   },
   {
-    "id": "prf_168",
-    "word": "Câu 168: What will the following code output?\n#include <stdio.h>\nint ...",
-    "question": "What will the following code output?\n#include <stdio.h>\nint main() {\n    int a = 7;\n    printf(\"%d\", (a << 2) | 1);\n    return 0;\n}",
+    "id": "prf_149",
+    "word": "Câu 149: What will be the output of the following code?\nprintf(\"%c\", ...",
+    "question": "What will be the output of the following code?\nprintf(\"%c\", tolower('c'));",
     "options": [
-      "A. 28",
-      "B. 29",
-      "C. 15",
-      "D. 30"
+      "A. 'c'",
+      "B. 'C'",
+      "C. 'c' or 'C' (depending on IDE)",
+      "D. Compilation error"
     ],
-    "answer": "B",
-    "correctWord": "B. 29",
-    "explanation": "Đáp án: B.",
+    "answer": "A",
+    "correctWord": "A. 'c'",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_163",
+    "word": "Câu 163: What is the result of floor(-5.9) and floor(5.9)?",
+    "question": "What is the result of floor(-5.9) and floor(5.9)?",
+    "options": [
+      "A. -6 and 5",
+      "B. -5 and 5",
+      "C. -6 and 6",
+      "D. -5 and 6"
+    ],
+    "answer": "A",
+    "correctWord": "A. -6 and 5",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Hàm & Phạm Vi Biến"
   },
@@ -446,6 +430,120 @@
     "answer": "D",
     "correctWord": "D. There is a conversion from double to int",
     "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_367",
+    "word": "Câu 367: Which of the following accurately describes the scope of a l...",
+    "question": "Which of the following accurately describes the scope of a local variable in C?",
+    "options": [
+      "A. It is visible only within the function where it's declared.",
+      "B. It is accessible throughout the entire program.",
+      "C. It can be accessed by any function within the same source file.",
+      "D. It is available globally but with restricted modification rights."
+    ],
+    "answer": "A",
+    "correctWord": "A. It is visible only within the function where it's declared.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_392",
+    "word": "Câu 392: The rand() function in C is used for:",
+    "question": "The rand() function in C is used for:",
+    "options": [
+      "A. Generating random integer.",
+      "B. Generating random integer from min to max.",
+      "C. Generating random float from min to max.",
+      "D. Generating random float.",
+      "E. Generating random double.",
+      "F. Generating random double from min to max."
+    ],
+    "answer": "A",
+    "correctWord": "A. Generating random integer.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_399",
+    "word": "Câu 399: In the C programming language, which of the following statem...",
+    "question": "In the C programming language, which of the following statements about local variables within a function is true?",
+    "options": [
+      "A. Local variables within a function are declared and initialized each time the function is called.",
+      "B. Local variables within a function can be accessed from any other function in the program.",
+      "C. Local variables within a function retain their value between different function calls.",
+      "D. Local variables within a function can be declared outside the function and still maintain local scope."
+    ],
+    "answer": "A",
+    "correctWord": "A. Local variables within a function are declared and initialized each time the function is called.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_401",
+    "word": "Câu 401: What is the main purpose of a module in programming?",
+    "question": "What is the main purpose of a module in programming?",
+    "options": [
+      "A. To carry out a specific function and may be used alone or combined with other modules to create a program",
+      "B. To store data in a database",
+      "C. To handle user input exclusively",
+      "D. To perform arithmetic calculations only"
+    ],
+    "answer": "A",
+    "correctWord": "A. To carry out a specific function and may be used alone or combined with other modules to create a program",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_405",
+    "word": "Câu 405: What characteristic defines low \"coupling\" in module design?",
+    "question": "What characteristic defines low \"coupling\" in module design?",
+    "options": [
+      "A. A module performs its tasks independently.",
+      "B. A module shares performance with other modules.",
+      "C. A module accesses global data.",
+      "D. A module depends on many other modules."
+    ],
+    "answer": "A",
+    "correctWord": "A. A module performs its tasks independently.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_414",
+    "word": "Câu 414: Which library in C is used for mathematical calculations?",
+    "question": "Which library in C is used for mathematical calculations?",
+    "options": [
+      "A. math.h",
+      "B. stdlib.h",
+      "C. time.h",
+      "D. ctype.h"
+    ],
+    "answer": "A",
+    "correctWord": "A. math.h",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Hàm & Phạm Vi Biến"
+  },
+  {
+    "id": "prf_417",
+    "word": "Câu 417: In the C language, which method is used when a function rece...",
+    "question": "In the C language, which method is used when a function receives a copy of the argument's value, ensuring that changes inside the function do not affect the original variable?",
+    "options": [
+      "A. Pass by value",
+      "B. Pass by reference",
+      "C. Pass by address",
+      "D. Pass by pointer"
+    ],
+    "answer": "A",
+    "correctWord": "A. Pass by value",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Hàm & Phạm Vi Biến"
   }

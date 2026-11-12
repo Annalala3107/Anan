@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "id": "CSI_9",
     "word": "Câu 9: Which of the following IP addresses is a valid IPv4 address?",
@@ -33,6 +33,22 @@
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
+    "id": "CSI_11",
+    "word": "Câu 11: How many types of cyber attacks exist?",
+    "question": "How many types of cyber attacks exist?",
+    "options": [
+      "A. 2",
+      "B. 3",
+      "C. 4",
+      "D. 5"
+    ],
+    "answer": "B",
+    "correctWord": "B. 3",
+    "explanation": "Đáp án: B. 3 loại: tấn công vào confidentiality, integrity, availability",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
     "id": "CSI_15",
     "word": "Câu 15: When employing symmetric-key encryption for data communicati...",
     "question": "When employing symmetric-key encryption for data communication between 10 hosts, how many keys are necessary to guarantee the security of all transactions?",
@@ -45,6 +61,38 @@
     "answer": "A",
     "correctWord": "A. 45",
     "explanation": "Đáp án: A. 10×9/2 = 45",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
+    "id": "CSI_17",
+    "word": "Câu 17: A device is sending out data at the rate of 1000 bps. How lo...",
+    "question": "A device is sending out data at the rate of 1000 bps. How long does it take to send out 10 bits?",
+    "options": [
+      "A. 10 ms",
+      "B. 1 ms",
+      "C. 10 000 ms",
+      "D. 100 ms"
+    ],
+    "answer": "A",
+    "correctWord": "A. 10 ms",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
+    "id": "CSI_27",
+    "word": "Câu 27: In a steganographic algorithm, if each comma (,) in the encr...",
+    "question": "In a steganographic algorithm, if each comma (,) in the encrypted message equals digit 0 and each dot (.) in the message equals digit 1. What is the hidden information in following message? “I am a human, a student. I studied hard, so I got a good score.”",
+    "options": [
+      "A. 0101",
+      "B. 1010",
+      "C. 0011",
+      "D. 1100"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0101",
+    "explanation": "Đáp án: A. phẩy, chấm, phẩy, chấm = 0101",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
@@ -82,6 +130,22 @@
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
+    "id": "CSI_51",
+    "word": "Câu 51: Rewrite this IP address using binary notation: 119.10.2.8",
+    "question": "Rewrite this IP address using binary notation: 119.10.2.8",
+    "options": [
+      "A. 0111 0111 . 0000 1010 . 0000 0010 . 0000 1000",
+      "B. 0111 0110 . 0000 1010 . 0000 0010 . 0000 1000",
+      "C. 0111 0111 . 0000 1010 . 0000 0010 . 0000 0100",
+      "D. 0111 0111 . 10 . 0000 0010 . 0000 1000"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0111 0111 . 0000 1010 . 0000 0010 . 0000 1000",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
     "id": "CSI_57",
     "word": "Câu 57: Which of the following is NOT a type of transmission medium ...",
     "question": "Which of the following is NOT a type of transmission medium used at the physical layer?",
@@ -114,18 +178,18 @@
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "CSI_66",
-    "word": "Câu 66: Which of the following is NOT one of the three traditional d...",
-    "question": "Which of the following is NOT one of the three traditional database models?",
+    "id": "CSI_73",
+    "word": "Câu 73: ______ means protecting a message from being modified.",
+    "question": "______ means protecting a message from being modified.",
     "options": [
-      "A. Hierarchical",
-      "B. Networking",
-      "C. Relational",
-      "D. Object-oriented"
+      "A. confidentiality",
+      "B. integrity",
+      "C. availability",
+      "D. None of these above"
     ],
-    "answer": "D",
-    "correctWord": "D. Object-oriented",
-    "explanation": "Đáp án: D.",
+    "answer": "B",
+    "correctWord": "B. integrity",
+    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
@@ -142,6 +206,22 @@
     "answer": "B",
     "correctWord": "B. Network",
     "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
+    "id": "CSI_90",
+    "word": "Câu 90: The first duty of a transport-layer protocol is to provide p...",
+    "question": "The first duty of a transport-layer protocol is to provide process-to-process communication. To define the processes, we need identifiers, called ______",
+    "options": [
+      "A. MAC addresses",
+      "B. IP addresses",
+      "C. Process names",
+      "D. Port numbers"
+    ],
+    "answer": "D",
+    "correctWord": "D. Port numbers",
+    "explanation": "Đáp án: D.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
@@ -178,6 +258,22 @@
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
+    "id": "CSI_116",
+    "word": "Câu 116: What does a hash function primarily ensure?",
+    "question": "What does a hash function primarily ensure?",
+    "options": [
+      "A. Integrity",
+      "B. Confidentiality",
+      "C. Availability",
+      "D. Authentication"
+    ],
+    "answer": "A",
+    "correctWord": "A. Integrity",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
     "id": "CSI_121",
     "word": "Câu 121: What type of network device operates at the Data Link layer ...",
     "question": "What type of network device operates at the Data Link layer of the OSI model?",
@@ -190,22 +286,6 @@
     "answer": "B",
     "correctWord": "B. Switch",
     "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
-  },
-  {
-    "id": "CSI_126",
-    "word": "Câu 126: Which of the following database models is designed specifica...",
-    "question": "Which of the following database models is designed specifically for handling data structures and organized as an inverted tree?",
-    "options": [
-      "A. Relational database model",
-      "B. Object-oriented database model",
-      "C. Network database model",
-      "D. Hierarchical database model"
-    ],
-    "answer": "D",
-    "correctWord": "D. Hierarchical database model",
-    "explanation": "Đáp án: D.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
@@ -238,22 +318,6 @@
     "answer": "C",
     "correctWord": "C. SMTP",
     "explanation": "Đáp án: C.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
-  },
-  {
-    "id": "CSI_138",
-    "word": "Câu 138: Which database model organizes data in two-dimensional table...",
-    "question": "Which database model organizes data in two-dimensional tables?",
-    "options": [
-      "A. Relational model",
-      "B. Hierarchical model",
-      "C. Network model",
-      "D. Distributed model"
-    ],
-    "answer": "A",
-    "correctWord": "A. Relational model",
-    "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
@@ -374,13 +438,13 @@
     "word": "Câu 172: A packet’s length is 1000 bits, given the speed of Standard ...",
     "question": "A packet’s length is 1000 bits, given the speed of Standard Ethernet is 10Mbps (10^7 bits per second). Then, what is the maximum number of packets that can be transferred in 2 seconds:",
     "options": [
-      "A. 210^4 packets",
-      "B. 210^5 packets",
+      "A. 2*10^4 packets",
+      "B. 2*10^5 packets",
       "C. 10^4 packets",
       "D. 2*10^6 packets"
     ],
     "answer": "A",
-    "correctWord": "A. 210^4 packets",
+    "correctWord": "A. 2*10^4 packets",
     "explanation": "Đáp án: A. 2×10⁷ / 10³ = 2×10⁴",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
@@ -397,6 +461,38 @@
     ],
     "answer": "A",
     "correctWord": "A. Network Access Layer",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
+    "id": "CSI_186",
+    "word": "Câu 186: In the physical layer, what mediums are examples of guided m...",
+    "question": "In the physical layer, what mediums are examples of guided media?",
+    "options": [
+      "A. Radio and Microwaves",
+      "B. Infrared wave and twisted-pair cable",
+      "C. Coaxial cable and Fiber-optic cable",
+      "D. Water and air"
+    ],
+    "answer": "C",
+    "correctWord": "C. Coaxial cable and Fiber-optic cable",
+    "explanation": "Đáp án: C.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
+    "id": "CSI_188",
+    "word": "Câu 188: The network layer is responsible for?",
+    "question": "The network layer is responsible for?",
+    "options": [
+      "A. Host-to-host delivery",
+      "B. Application-to-application communication",
+      "C. Process-to-process communication",
+      "D. Physical transmission"
+    ],
+    "answer": "A",
+    "correctWord": "A. Host-to-host delivery",
     "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
@@ -466,6 +562,22 @@
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
+    "id": "CSI_212",
+    "word": "Câu 212: In the physical layer, what hardware has a mission to conver...",
+    "question": "In the physical layer, what hardware has a mission to convert signal from analog to digital signal",
+    "options": [
+      "A. Discrete Filter Transform",
+      "B. ADC",
+      "C. DAC",
+      "D. Quantization filtering circuits"
+    ],
+    "answer": "B",
+    "correctWord": "B. ADC",
+    "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
     "id": "CSI_222",
     "word": "Câu 222: What is the purpose of the TCP SYN-ACK handshake during conn...",
     "question": "What is the purpose of the TCP SYN-ACK handshake during connection establishment?",
@@ -498,17 +610,17 @@
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "CSI_233",
-    "word": "Câu 233: What is the core mechanism of the “bubble sort” algorithm fo...",
-    "question": "What is the core mechanism of the “bubble sort” algorithm for ordering data?",
+    "id": "CSI_225",
+    "word": "Câu 225: What is the correct statement about a point-to-point WAN and...",
+    "question": "What is the correct statement about a point-to-point WAN and a switched WAN?",
     "options": [
-      "A. Dividing the list into two parts and inserting elements from unsorted to sorted",
-      "B. Finding the smallest element and swapping it to the correct position",
-      "C. Repeatedly comparing adjacent elements and swapping them if they are in the wrong order.",
-      "D. Dividing the list in half and searching"
+      "A. They are identical.",
+      "B. Point-to-point WAN has more than 2 ends.",
+      "C. Switched WAN is a combination of more than 2 ends.",
+      "D. Switched WAN is used only in cable medium."
     ],
     "answer": "C",
-    "correctWord": "C. Repeatedly comparing adjacent elements and swapping them if they are in the wrong order.",
+    "correctWord": "C. Switched WAN is a combination of more than 2 ends.",
     "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
@@ -530,49 +642,17 @@
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "CSI_237",
-    "word": "Câu 237: What is one significant advantage of choosing a linked list ...",
-    "question": "What is one significant advantage of choosing a linked list instead of an array as a data structure, particularly in terms of memory management and the efficiency of inserting or deleting elements?",
+    "id": "CSI_241",
+    "word": "Câu 241: What is the most correct statement about LAN topologies?",
+    "question": "What is the most correct statement about LAN topologies?",
     "options": [
-      "A. Faster searching.",
-      "B. Easier random access to elements.",
-      "C. More efficient memory usage per node.",
-      "D. More efficient insertions and deletions."
-    ],
-    "answer": "D",
-    "correctWord": "D. More efficient insertions and deletions.",
-    "explanation": "Đáp án: D.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
-  },
-  {
-    "id": "CSI_239",
-    "word": "Câu 239: What is the primary purpose of a metadata-based file manager...",
-    "question": "What is the primary purpose of a metadata-based file manager?",
-    "options": [
-      "A. To organize files based on their content type",
-      "B. To store additional information about files, such as author, creation date, and keywords",
-      "C. To encrypt files for enhanced security",
-      "D. To compress files to save disk space"
-    ],
-    "answer": "B",
-    "correctWord": "B. To store additional information about files, such as author, creation date, and keywords",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
-  },
-  {
-    "id": "CSI_242",
-    "word": "Câu 242: What is the main benefit of using the .jpg (JPEG) format for...",
-    "question": "What is the main benefit of using the .jpg (JPEG) format for images?",
-    "options": [
-      "A. Lossless compression",
-      "B. High-quality video storage",
-      "C. Lossy compression, which reduces file size",
-      "D. Support for animation"
+      "A. Bus topology is a sophisticated structure and robust with high traffic.",
+      "B. Ring topology is a high risk for collision between 2 nodes.",
+      "C. Star topology is a structure that has a central switch.",
+      "D. Mesh topology is the most complicated structure."
     ],
     "answer": "C",
-    "correctWord": "C. Lossy compression, which reduces file size",
+    "correctWord": "C. Star topology is a structure that has a central switch.",
     "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
@@ -610,22 +690,6 @@
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "CSI_271",
-    "word": "Câu 271: Which of the following is a limitation of the network databa...",
-    "question": "Which of the following is a limitation of the network database model?",
-    "options": [
-      "A. It does not support relationships between records.",
-      "B. It has a complex structure that makes it difficult to query.",
-      "C. It does not allow more than one parent for a record.",
-      "D. It only works for relational data."
-    ],
-    "answer": "B",
-    "correctWord": "B. It has a complex structure that makes it difficult to query.",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
-  },
-  {
     "id": "CSI_273",
     "word": "Câu 273: Which type of firewall operates at the application layer of ...",
     "question": "Which type of firewall operates at the application layer of the OSI model and can inspect and filter traffic based on application-specific rules?",
@@ -658,66 +722,18 @@
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "CSI_282",
-    "word": "Câu 282: How do vector graphics differ from raster graphics?",
-    "question": "How do vector graphics differ from raster graphics?",
+    "id": "CSI_287",
+    "word": "Câu 287: When it comes to protecting information within computer syst...",
+    "question": "When it comes to protecting information within computer systems, what is the main purpose of confidentiality?",
     "options": [
-      "A. Vector graphics store images as mathematical equations, while raster graphics store images as grids of pixels.",
-      "B. Raster graphics are faster to render than vector graphics.",
-      "C. Vector graphics are limited to black and white, while raster supports color.",
-      "D. Raster graphics are more scalable than vector graphics."
+      "A. To keep data secret from unauthorized users.",
+      "B. To ensure data can be accessed by everyone for maximum transparency at all times regardless of user permission.",
+      "C. To allow users to modify data freely without any controls or logging.",
+      "D. To speed up encryption processes significantly even if it compromises data safety."
     ],
     "answer": "A",
-    "correctWord": "A. Vector graphics store images as mathematical equations, while raster graphics store images as grids of pixels.",
+    "correctWord": "A. To keep data secret from unauthorized users.",
     "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
-  },
-  {
-    "id": "CSI_283",
-    "word": "Câu 283: Why is documentation considered important in software engine...",
-    "question": "Why is documentation considered important in software engineering?",
-    "options": [
-      "A. It makes the software look more professional.",
-      "B. It helps ensure that the software can be maintained, understood, and used effectively by different stakeholders",
-      "C. It is required by law in most countries.",
-      "D. It reduces the time needed for coding."
-    ],
-    "answer": "B",
-    "correctWord": "B. It helps ensure that the software can be maintained, understood, and used effectively by different stakeholders",
-    "explanation": "Đáp án: B.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
-  },
-  {
-    "id": "CSI_285",
-    "word": "Câu 285: Why is it important to transform a relation into the first n...",
-    "question": "Why is it important to transform a relation into the first normal form (1NF) during database normalization?",
-    "options": [
-      "A. To eliminate repeating groups of data in a relation",
-      "B. To ensure that all attributes depend on a composite key",
-      "C. To reduce the need for complex SQL queries",
-      "D. To establish relationships between multiple relations"
-    ],
-    "answer": "A",
-    "correctWord": "A. To eliminate repeating groups of data in a relation",
-    "explanation": "Đáp án: A.",
-    "subject": "Kiến Trúc Máy Tính (CSI106)",
-    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
-  },
-  {
-    "id": "CSI_290",
-    "word": "Câu 290: When is a “sequential search” typically used for a list?",
-    "question": "When is a “sequential search” typically used for a list?",
-    "options": [
-      "A. For very large, sorted lists.",
-      "B. When the list is organized hierarchically",
-      "C. Only for small lists, or lists that are not searched often, and are not ordered.",
-      "D. When the exact position of the target is known"
-    ],
-    "answer": "C",
-    "correctWord": "C. Only for small lists, or lists that are not searched often, and are not ordered.",
-    "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
@@ -734,6 +750,38 @@
     "answer": "A",
     "correctWord": "A. It is slower for encrypting large messages.",
     "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
+    "id": "CSI_294",
+    "word": "Câu 294: In cryptographic systems where a single piece of confidentia...",
+    "question": "In cryptographic systems where a single piece of confidential information controls both the process of converting plain data into secured form and reversing it back, what key-related mechanism is typically employed?",
+    "options": [
+      "A. The same secret key for both operations.",
+      "B. Public and private keys exchanged via secured network to ensure trustworthiness.",
+      "C. No key at all.",
+      "D. Public and private keys."
+    ],
+    "answer": "A",
+    "correctWord": "A. The same secret key for both operations.",
+    "explanation": "Đáp án: A.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
+    "id": "CSI_299",
+    "word": "Câu 299: In message authentication, what is the purpose of a Message ...",
+    "question": "In message authentication, what is the purpose of a Message Authentication Code (MAC)?",
+    "options": [
+      "A. To encrypt the message for secure transmission",
+      "B. To verify the integrity and authenticity of the message",
+      "C. To compress the message for efficient storage",
+      "D. To generate a unique identifier for the message"
+    ],
+    "answer": "B",
+    "correctWord": "B. To verify the integrity and authenticity of the message",
+    "explanation": "Đáp án: B.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
@@ -766,6 +814,22 @@
     "answer": "B",
     "correctWord": "B. To deliver data end-to-end and provide error control",
     "explanation": "Đáp án: B.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "Mạng Máy Tính & An Toàn Thông Tin"
+  },
+  {
+    "id": "CSI_318",
+    "word": "Câu 318: What is the primary goal of a masquerading attack?",
+    "question": "What is the primary goal of a masquerading attack?",
+    "options": [
+      "A. To impersonate another entity.",
+      "B. To delay or delete messages.",
+      "C. To replay a previously sent message.",
+      "D. To deny sending or receiving a message."
+    ],
+    "answer": "A",
+    "correctWord": "A. To impersonate another entity.",
+    "explanation": "Đáp án: A.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
@@ -819,18 +883,18 @@
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   },
   {
-    "id": "CSI_347",
-    "word": "Câu 347: In the field of social networking, what does a graph represe...",
-    "question": "In the field of social networking, what does a graph represent?",
+    "id": "CSI_344",
+    "word": "Câu 344: In the context of Ethernet addressing, what is represented b...",
+    "question": "In the context of Ethernet addressing, what is represented by a MAC address?",
     "options": [
-      "A. Social relationships among users",
-      "B. Connections between computers",
-      "C. Sorting the list of friends on social media",
-      "D. Displaying data structures"
+      "A. A logical network address.",
+      "B. A temporary address assigned by a server.",
+      "C. A hardware address for the network interface.",
+      "D. An private address used for internet routing purposes."
     ],
-    "answer": "A",
-    "correctWord": "A. Social relationships among users",
-    "explanation": "Đáp án: A.",
+    "answer": "C",
+    "correctWord": "C. A hardware address for the network interface.",
+    "explanation": "Đáp án: C.",
     "subject": "Kiến Trúc Máy Tính (CSI106)",
     "topic": "Mạng Máy Tính & An Toàn Thông Tin"
   }
