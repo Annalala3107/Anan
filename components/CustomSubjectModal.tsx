@@ -21,7 +21,6 @@ import {
 } from 'lucide-react';
 import { CustomSubject } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { soundFx } from '@/lib/sound';
 
 export const SUBJECT_ICONS = [
   { name: 'Calculator', label: 'Toán / Logic', Icon: Calculator },
@@ -141,7 +140,6 @@ export default function CustomSubjectModal({
     setDescription(preset.description);
     setIconName(preset.iconName);
     setColor(preset.color);
-    soundFx.playClick();
   };
 
   const handleSave = () => {
@@ -167,7 +165,6 @@ export default function CustomSubjectModal({
           color,
         });
         if (updated) {
-          soundFx.playCorrect();
           onSubjectSaved(updated);
           onClose();
         }
@@ -179,7 +176,6 @@ export default function CustomSubjectModal({
           iconName,
           color,
         });
-        soundFx.playCorrect();
         onSubjectSaved(created);
         onClose();
       }
@@ -315,10 +311,7 @@ export default function CustomSubjectModal({
                   <button
                     key={item.name}
                     type="button"
-                    onClick={() => {
-                      setIconName(item.name);
-                      soundFx.playClick();
-                    }}
+                    onClick={() => setIconName(item.name)}
                     className={`p-2.5 rounded-2xl flex flex-col items-center justify-center gap-1.5 transition-all text-xs font-semibold ${
                       isSelected
                         ? 'bg-indigo-600 text-white ring-2 ring-indigo-400 shadow-md scale-105'
@@ -345,10 +338,7 @@ export default function CustomSubjectModal({
                   <button
                     key={g.id}
                     type="button"
-                    onClick={() => {
-                      setColor(g.id);
-                      soundFx.playClick();
-                    }}
+                    onClick={() => setColor(g.id)}
                     className={`p-2 rounded-xl flex items-center gap-2 border transition-all text-xs font-bold ${
                       isSelected
                         ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-950/40 text-slate-900 dark:text-white'

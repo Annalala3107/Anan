@@ -1,5 +1,5 @@
 import { Word, WordProgress } from './types';
-import { getQuestionKey, cleanOptionText } from './utils';
+import { getQuestionKey, cleanOptionText, shuffleArray } from './utils';
 import { StorageEngine } from './storage';
 
 export interface StandardQuestion {
@@ -21,15 +21,6 @@ export interface BuildQuestionsOptions {
   progressMap?: Record<string, WordProgress>;
   onlyUnmastered?: boolean;
   shuffleChoices?: boolean;
-}
-
-function shuffleArray<T>(arr: T[]): T[] {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
 }
 
 /**

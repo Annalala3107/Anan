@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     if (!payload) {
       return NextResponse.json(
         { error: 'Dữ liệu sao lưu không được để trống' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       );
     }
 
@@ -97,7 +97,7 @@ export async function GET(req: NextRequest) {
     if (!code) {
       return NextResponse.json(
         { error: 'Thiếu mã đồng bộ (code)' },
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       );
     }
 

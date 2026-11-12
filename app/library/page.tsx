@@ -4,20 +4,16 @@ import { useState, useEffect } from 'react';
 import { Word, WordProgress } from '@/lib/types';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
-import { SpeechService } from '@/lib/speech';
+import { isAnswerMatch } from '@/lib/utils';
 import WordModal from '@/components/WordModal';
 import {
   Search,
-  Volume2,
   BookOpen,
-  CheckCircle2,
-  HelpCircle,
-  Layers,
   ChevronRight
 } from 'lucide-react';
 
 export default function LibraryPage() {
-  const { words, loadQuizWords, selectedQuizPath, activeCustomQuiz } = useQuizStore();
+  const { words, loadQuizWords } = useQuizStore();
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<'all' | 'mastered' | 'learning' | 'new'>('all');
   const [filterTopic, setFilterTopic] = useState<string>('all');
@@ -169,14 +165,7 @@ export default function LibraryPage() {
                   {isMCQ && w.options && (
                     <div className="space-y-1 mb-3">
                       {w.options.slice(0, 6).map((opt, i) => {
-                        const optLetter = String.fromCharCode(65 + i);
-                        const validKeys = (w.answer || '')
-                          .split(/[,/;\s]+/)
-                          .map((k) => k.trim().toUpperCase())
-                          .filter(Boolean);
-                        const isCorrect =
-                          validKeys.includes(optLetter) ||
-                          (w.correctWord && opt.toLowerCase() === w.correctWord.toLowerCase());
+                        const isCorrect = isAnswerMatch(opt, w.correctWord, w.answer);
 
                         return (
                           <div

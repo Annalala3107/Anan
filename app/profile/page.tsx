@@ -2,25 +2,18 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { StorageEngine, ExamRecord } from '@/lib/storage';
-import { soundFx } from '@/lib/sound';
 import {
   Flame,
-  Award,
   Brain,
   CheckCircle2,
   Database,
-  Cloud,
-  RefreshCw,
   Trash2,
   TrendingUp,
-  Clock,
-  Sparkles,
   Download,
   Upload,
   ShieldCheck,
   AlertTriangle,
   History,
-  FileJson,
   Smartphone,
 } from 'lucide-react';
 import QrSyncModal from '@/components/QrSyncModal';
@@ -68,13 +61,11 @@ export default function ProfilePage() {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
 
-      soundFx.playCelebration();
       setBackupStatus({
         type: 'success',
         text: 'Đã xuất file sao lưu thành công! Hãy lưu file này vào nơi an toàn.',
       });
     } catch (err: any) {
-      soundFx.playWrong();
       setBackupStatus({
         type: 'error',
         text: 'Không thể xuất file sao lưu: ' + (err?.message || 'Lỗi không xác định'),
@@ -92,14 +83,12 @@ export default function ProfilePage() {
       const res = StorageEngine.importAllData(content);
 
       if (res.success) {
-        soundFx.playCorrect();
         loadData();
         setBackupStatus({
           type: 'success',
           text: res.message,
         });
       } else {
-        soundFx.playWrong();
         setBackupStatus({
           type: 'error',
           text: res.message,
@@ -112,7 +101,6 @@ export default function ProfilePage() {
     };
 
     reader.onerror = () => {
-      soundFx.playWrong();
       setBackupStatus({
         type: 'error',
         text: 'Không thể đọc file. Vui lòng thử lại với file .json hợp lệ.',
@@ -297,7 +285,7 @@ export default function ProfilePage() {
                   <div className="space-y-0.5">
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-slate-900 dark:text-slate-100">
-                        Bài thi thử trắc nghiệm
+                        {rec.quizTitle || 'Bài thi thử trắc nghiệm'}
                       </span>
                       <span className="text-slate-400 text-[11px]">
                         {new Date(rec.date).toLocaleString('vi-VN')}

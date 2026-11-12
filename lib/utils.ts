@@ -114,3 +114,21 @@ export function getQuestionKey(item: {
 
   return `item_${hashString(JSON.stringify(item))}`;
 }
+
+/**
+ * Fisher-Yates unbiased shuffle.
+ * When `forceChange` is true and the array has > 1 item, rotates by 1 if shuffle leaves order unchanged.
+ */
+export function shuffleArray<T>(arr: T[], forceChange = false): T[] {
+  if (arr.length <= 1) return [...arr];
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  if (forceChange && copy.every((val, idx) => val === arr[idx])) {
+    const first = copy.shift()!;
+    copy.push(first);
+  }
+  return copy;
+}

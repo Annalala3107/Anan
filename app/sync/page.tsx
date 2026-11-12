@@ -3,7 +3,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { StorageEngine } from '@/lib/storage';
-import { soundFx } from '@/lib/sound';
 import confetti from 'canvas-confetti';
 import Link from 'next/link';
 import {
@@ -16,7 +15,6 @@ import {
   Layers,
   Sparkles,
   Loader2,
-  RefreshCw,
 } from 'lucide-react';
 
 function SyncContent() {
@@ -130,7 +128,6 @@ function SyncContent() {
       });
 
       setSyncSuccess(true);
-      soundFx.playCelebration();
 
       // Trigger Confetti explosion
       confetti({
@@ -140,7 +137,6 @@ function SyncContent() {
       });
     } catch (err: any) {
       setErrorMsg(err?.message || 'Có lỗi xảy ra khi kết nối máy chủ.');
-      soundFx.playWrong();
     } finally {
       setLoading(false);
     }

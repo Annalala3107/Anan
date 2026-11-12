@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { Word, ExamQuestion } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { getQuestionKey, cleanOptionText, isAnswerMatch } from '@/lib/utils';
-import { soundFx } from '@/lib/sound';
 import { useQuizStore } from '@/lib/quizStore';
 import { buildStandardQuestions } from '@/lib/quizHelpers';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
@@ -148,8 +147,6 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     setIsSubmitted(false);
     setIsConfiguring(false);
     setIsExamActive(true);
-
-    soundFx.playZenChime();
   }, [
     words,
     targetCount,
@@ -186,15 +183,17 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [isSubmitted, isConfiguring]);
 
+  const executeSubmitRef = useRef<() => void>(() => {});
+
   // Countdown Timer (when timed)
   useEffect(() => {
-    if (isSubmitted || isConfiguring || timeLeft <= 0 || timeLeft === -1) return;
+    if (isSubmitted || isConfiguring || timeLeft <= 0) return;
 
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
-          executeSubmit();
+          setTimeout(() => executeSubmitRef.current(), 0);
           return 0;
         }
         return prev - 1;
@@ -202,7 +201,9 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, isSubmitted, isConfiguring]);
+    // Re-arm interval only when session transitions or timer mode resets
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSubmitted, isConfiguring, targetMinutes]);
 
   // Elapsed Timer (when untimed)
   useEffect(() => {
@@ -236,7 +237,6 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
 
       if (chosenIdx >= 0 && chosenIdx < currentQ.options.length) {
         e.preventDefault();
-        soundFx.playClick();
         setAnswers((prev) => ({ ...prev, [currentIndex]: currentQ.options[chosenIdx] }));
       } else if (key === 'F') {
         e.preventDefault();
@@ -255,7 +255,6 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   }, [currentIndex, isSubmitted, isConfiguring, questions, showSubmitConfirm]);
 
   const toggleFlag = (idx: number) => {
-    soundFx.playClick();
     setFlags((prev) => ({
       ...prev,
       [idx]: !prev[idx],
@@ -332,7 +331,6 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     setShowSubmitConfirm(false);
     setIsSubmitted(false);
     setIsConfiguring(false);
-    soundFx.playZenChime();
   };
 
   const filteredReviewQuestions = useMemo(() => {
@@ -414,16 +412,14 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     });
 
     if (percent >= 70) {
-      soundFx.playCelebration();
       confetti({
         particleCount: 150,
         spread: 80,
         origin: { y: 0.6 },
       });
-    } else {
-      soundFx.playCorrect();
     }
   };
+  executeSubmitRef.current = executeSubmit;
 
   const formatTime = (secs: number) => {
     if (secs === -1) return 'Không giới hạn';
@@ -730,10 +726,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
             return (
               <button
                 key={idx}
-                onClick={() => {
-                  soundFx.playClick();
-                  setAnswers((prev) => ({ ...prev, [currentIndex]: opt }));
-                }}
+                onClick={() => setAnswers((prev) => ({ ...prev, [currentIndex]: opt }))}
                 className={`w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-[transform,background-color,border-color,box-shadow] duration-150 flex items-center justify-between active:scale-[0.99] touch-manipulation select-none transform-gpu ${
                   isChosen
                     ? 'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-500 text-indigo-700 dark:text-indigo-300 shadow-glow font-bold animate-pop-correct'

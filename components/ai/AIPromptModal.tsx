@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { Word, CustomQuiz, CustomSubject } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { soundFx } from '@/lib/sound';
 import {
   Sparkles,
   X,
@@ -99,7 +98,6 @@ export default function AIPromptModal({
 
     setIsLoading(true);
     setError(null);
-    soundFx.playClick();
 
     try {
       const res = await fetch('/api/ai/generate-quiz', {
@@ -131,11 +129,9 @@ export default function AIPromptModal({
         topic: data.topic,
       });
 
-      soundFx.playCorrect();
       onQuizCreated(newQuiz);
       onClose();
     } catch (err: any) {
-      soundFx.playWrong();
       setError(err.message || 'Đã có lỗi xảy ra khi tạo đề bằng AI.');
     } finally {
       setIsLoading(false);
@@ -183,7 +179,6 @@ export default function AIPromptModal({
         subject,
       });
 
-      soundFx.playCorrect();
       onQuizCreated(newQuiz);
       onClose();
     } catch (e: any) {

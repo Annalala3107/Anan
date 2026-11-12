@@ -4,7 +4,6 @@ import { useState, useMemo, useEffect } from 'react';
 import { parseRawExamText } from '@/lib/textQuizParser';
 import { StorageEngine } from '@/lib/storage';
 import { useQuizStore } from '@/lib/quizStore';
-import { soundFx } from '@/lib/sound';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import { CustomQuiz, CustomSubject, Word } from '@/lib/types';
 import {
@@ -103,7 +102,6 @@ export default function QuickTextParserModal({
     setSubject('PRF192 & CSI106');
     setTopic('Ôn tập tổng hợp');
     setRawText(SAMPLE_TEXT);
-    soundFx.playClick();
   };
 
   const handleSaveAndLaunch = (mode: 'exam' | 'drill' | 'just_save') => {
@@ -121,7 +119,6 @@ export default function QuickTextParserModal({
       topic,
     });
 
-    soundFx.playCelebration();
     onQuizCreated(newQuiz);
     setActiveCustomQuiz(newQuiz);
 

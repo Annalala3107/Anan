@@ -81,33 +81,6 @@ export interface CustomSubject {
   created_at: string;
 }
 
-export type LearnRound = 'recall' | 'simple_usage' | 'contrast';
-
-export interface LearnSession {
-  mode: 'learn';
-  words: Word[];
-  currentRound: LearnRound;
-  currentWordIndex: number;
-  wordFeedback: Record<string, 'easy' | 'hard'>;
-  completedRounds: LearnRound[];
-}
-
-export interface DrillQuestion {
-  sentence: string;
-  correctWord: string;
-  options: string[];
-  explanation: string;
-  answerKey?: string;
-  questionNumber?: number | string;
-}
-
-export interface DrillSession {
-  mode: 'drill';
-  questions: DrillQuestion[];
-  currentIndex: number;
-  score: number;
-}
-
 export interface ExamQuestion {
   id: string;
   sentence: string;
@@ -119,17 +92,6 @@ export interface ExamQuestion {
   subject?: string;
 }
 
-export interface ExamSession {
-  mode: 'exam';
-  questions: ExamQuestion[];
-  currentIndex: number;
-  answers: Record<number, string>;
-  timeRemaining: number;
-  totalTime: number;
-  isComplete: boolean;
-  score: number;
-}
-
 export interface DailyStats {
   date: string; // YYYY-MM-DD
   wordsLearned: number;
@@ -137,18 +99,4 @@ export interface DailyStats {
   wordsExamined: number;
   mistakesCount: number;
   accuracy: number;
-}
-
-export interface UserStats {
-  totalWords: number;
-  masteredCount: number;
-  learningCount: number;
-  streak: number;
-  todayProgress: DailyStats;
-  mistakesCount: number;
-  recentActivity: {
-    date: string;
-    mode: SessionMode;
-    score: number;
-  }[];
 }

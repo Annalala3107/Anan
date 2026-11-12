@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Flame, Sparkles, Volume2, VolumeX, Moon, Sun, Layers, AlertTriangle, Smartphone } from 'lucide-react';
+import { Flame, Sparkles, Moon, Sun, Layers, AlertTriangle, Smartphone } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
 import { getQuizDisplayName } from '@/lib/defaultBanks';
@@ -13,8 +13,6 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const {
-    soundEnabled,
-    toggleSound,
     selectedQuizPath,
     activeCustomQuiz,
     isExamActive,
@@ -176,19 +174,6 @@ export default function Header() {
               <span className="hidden sm:inline"> ngày</span>
             </span>
           </div>
-
-          {/* Sound Toggle */}
-          <button
-            onClick={toggleSound}
-            title={soundEnabled ? 'Tắt âm thanh hiệu ứng' : 'Bật âm thanh hiệu ứng'}
-            className="p-1.5 sm:p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 touch-manipulation"
-          >
-            {soundEnabled ? (
-              <Volume2 className="w-4 h-4 text-indigo-500" />
-            ) : (
-              <VolumeX className="w-4 h-4 text-slate-400" />
-            )}
-          </button>
 
           {/* Theme Toggle */}
           <button

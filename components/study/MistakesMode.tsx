@@ -4,8 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Word } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { SpeechService } from '@/lib/speech';
-import { getQuestionKey, cleanOptionText, isAnswerMatch } from '@/lib/utils';
-import { soundFx } from '@/lib/sound';
+import { getQuestionKey, cleanOptionText, isAnswerMatch, shuffleArray } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
   Volume2,
@@ -22,20 +21,6 @@ import confetti from 'canvas-confetti';
 interface MistakesModeProps {
   words: Word[];
   onExit: () => void;
-}
-
-function shuffleArray<T>(arr: T[]): T[] {
-  if (arr.length <= 1) return [...arr];
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  if (copy.length > 1 && copy.every((val, idx) => val === arr[idx])) {
-    const first = copy.shift()!;
-    copy.push(first);
-  }
-  return copy;
 }
 
 export default function MistakesMode({ words, onExit }: MistakesModeProps) {
@@ -80,7 +65,10 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
 
     if (isMCQ && currentWord.options) {
       if (shuffleOptions) {
-        return shuffleArray(currentWord.options.map((o) => cleanOptionText(o)));
+        return shuffleArray(
+          currentWord.options.map((o) => cleanOptionText(o)),
+          true
+        );
       }
       return currentWord.options;
     }
@@ -168,22 +156,15 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
     setIsAnswered(true);
 
     const isCorrect = isOptionTarget(choice);
-    if (isCorrect) {
-      soundFx.playCorrect();
-    } else {
-      soundFx.playWrong();
-    }
     const key = getQuestionKey(currentWord);
     StorageEngine.updateWordProgress(key, isCorrect ? 5 : 2);
   };
 
   const handleNext = () => {
-    soundFx.playClick();
     if (currentIndex < mistakeWords.length - 1) {
       setCurrentIndex((i) => i + 1);
     } else {
       setIsFinished(true);
-      soundFx.playCelebration();
       confetti({
         particleCount: 100,
         spread: 60,
@@ -209,7 +190,6 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
               type="button"
               onClick={() => {
                 if (isAnswered) return;
-                soundFx.playClick();
                 setShuffleOptions((v) => !v);
               }}
               className={`px-2.5 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition-all cursor-pointer ${

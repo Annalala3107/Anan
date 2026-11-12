@@ -3,8 +3,7 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Word, WordProgress } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { isAnswerMatch, cleanOptionText } from '@/lib/utils';
-import { soundFx } from '@/lib/sound';
+import { isAnswerMatch, cleanOptionText, shuffleArray } from '@/lib/utils';
 import {
   buildStandardQuestions,
   StandardQuestion,
@@ -47,21 +46,6 @@ interface CardItem {
 
 // Active working pool size (Quizlet-style mini-round rotation)
 const ACTIVE_POOL_SIZE = 5;
-
-function shuffleOptionArray(arr: string[]): string[] {
-  if (arr.length <= 1) return [...arr];
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  // If more than 1 unique option and shuffle happened to match original order, rotate by 1
-  if (copy.length > 1 && copy.every((val, idx) => val === arr[idx])) {
-    const first = copy.shift()!;
-    copy.push(first);
-  }
-  return copy;
-}
 
 export default function LearnMode({ words, onExit }: LearnModeProps) {
   // Setup State
@@ -164,7 +148,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
       const initialCards: CardItem[] = canonicalList.map((q, idx) => {
         const cleanedOpts = q.options.map((opt) => cleanOptionText(opt));
-        const activeOpts = shuffleChoices ? shuffleOptionArray(cleanedOpts) : q.options;
+        const activeOpts = shuffleChoices ? shuffleArray(cleanedOpts, true) : q.options;
         return {
           id: `card_${idx}_${q.id}`,
           originalOptions: q.options,
@@ -199,7 +183,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       setSessionCombo(0);
       setMaxCombo(0);
       setProblemQuestions([]);
-      soundFx.playClick();
     },
     [words, effectiveTargetCount, batchMode, selectionMode, shuffleChoices]
   );
@@ -210,13 +193,12 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
   // Live toggle for option shuffling during an active session
   const handleToggleShuffleLive = useCallback(() => {
-    soundFx.playClick();
     setShuffleChoices((prev) => {
       const nextShuffle = !prev;
       setCards((prevCards) =>
         prevCards.map((c) => {
           const nextOpts = nextShuffle
-            ? shuffleOptionArray(c.originalOptions.map((o) => cleanOptionText(o)))
+            ? shuffleArray(c.originalOptions.map((o) => cleanOptionText(o)), true)
             : c.originalOptions;
           return {
             ...c,
@@ -245,7 +227,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     }
     refreshProgress();
     setIsCompleted(true);
-    soundFx.playCelebration();
     confetti({
       particleCount: 160,
       spread: 80,
@@ -314,7 +295,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                   ...c,
                   question: {
                     ...c.question,
-                    options: shuffleOptionArray(c.question.options),
+                    options: shuffleArray(c.question.options, true),
                   },
                 }
               : c
@@ -365,7 +346,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       setTotalAttempts((prev) => prev + 1);
 
       if (isCorrect) {
-        soundFx.playCorrect();
         setFeedbackState('correct');
         setCorrectAttempts((prev) => prev + 1);
         setSessionCombo((prev) => {
@@ -391,7 +371,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           advanceNextRef.current();
         }, 420);
       } else {
-        soundFx.playWrong();
         setFeedbackState('wrong');
         setSessionCombo(0);
 
@@ -426,7 +405,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       const restQueue = activeQueue.slice(1);
 
       if (quality >= 3) {
-        soundFx.playCorrect();
         setCorrectAttempts((prev) => prev + 1);
         setSessionCombo((prev) => {
           const next = prev + 1;
@@ -446,7 +424,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 attempts: c.attempts + 1,
                 question:
                   !didGraduate && shuffleChoices
-                    ? { ...c.question, options: shuffleOptionArray(c.question.options) }
+                    ? { ...c.question, options: shuffleArray(c.question.options, true) }
                     : c.question,
               }
             : c
@@ -478,7 +456,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           setActiveQueue(restQueue.length > 0 ? [...restQueue, activeId] : [activeId]);
         }
       } else {
-        soundFx.playWrong();
         setSessionCombo(0);
 
         setCards((prevCards) =>
@@ -490,7 +467,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                   mistakes: c.mistakes + 1,
                   attempts: c.attempts + 1,
                   question: shuffleChoices
-                    ? { ...c.question, options: shuffleOptionArray(c.question.options) }
+                    ? { ...c.question, options: shuffleArray(c.question.options, true) }
                     : c.question,
                 }
               : c
@@ -568,7 +545,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         if (e.code === 'Space') {
           e.preventDefault();
           setIsFlipped((f) => !f);
-          soundFx.playClick();
           return;
         }
 
@@ -1184,7 +1160,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               onClick={() => {
                 refreshProgress();
                 setIsConfiguring(true);
-                soundFx.playClick();
               }}
               className="w-full sm:w-auto py-3.5 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all shadow-glow text-sm flex items-center justify-center gap-2 cursor-pointer"
             >
@@ -1345,10 +1320,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           streakTarget={streakTarget}
           isFlipped={isFlipped}
           shuffleChoices={shuffleChoices}
-          onToggleFlip={() => {
-            setIsFlipped((f) => !f);
-            soundFx.playClick();
-          }}
+          onToggleFlip={() => setIsFlipped((f) => !f)}
           onRate={handleRateFlashcard}
         />
       ) : (

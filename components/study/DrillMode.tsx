@@ -3,8 +3,7 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { Word, WordProgress } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { getQuestionKey, cleanOptionText, isAnswerMatch } from '@/lib/utils';
-import { soundFx } from '@/lib/sound';
+import { getQuestionKey, cleanOptionText, isAnswerMatch, shuffleArray } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
   ArrowRight,
@@ -51,20 +50,6 @@ interface CheckpointPart {
   learningCount: number;
   mistakeCount: number;
   isSpecial?: 'unmastered' | 'mistakes';
-}
-
-function shuffleArray<T>(arr: T[]): T[] {
-  if (arr.length <= 1) return [...arr];
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  if (copy.length > 1 && copy.every((val, idx) => val === arr[idx])) {
-    const first = copy.shift()!;
-    copy.push(first);
-  }
-  return copy;
 }
 
 export default function DrillMode({ words, onExit }: DrillModeProps) {
@@ -235,7 +220,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       return items.map((q) => ({
         ...q,
         options: shouldShuffle
-          ? shuffleArray(q.originalOptions.map((o) => cleanOptionText(o)))
+          ? shuffleArray(q.originalOptions.map((o) => cleanOptionText(o)), true)
           : q.originalOptions,
       }));
     },
@@ -244,7 +229,6 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
 
   // Live toggle for option shuffling during active Drill session
   const handleToggleShuffleLive = useCallback(() => {
-    soundFx.playClick();
     setShuffleOptions((prev) => {
       const nextVal = !prev;
       setSessionQuestions((prevQs) =>
@@ -254,7 +238,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           return {
             ...q,
             options: nextVal
-              ? shuffleArray(q.originalOptions.map((o) => cleanOptionText(o)))
+              ? shuffleArray(q.originalOptions.map((o) => cleanOptionText(o)), true)
               : q.originalOptions,
           };
         })
@@ -280,7 +264,6 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       setTotalMistakesMade(0);
       setIsCompleted(false);
       setIsConfiguring(false);
-      soundFx.playClick();
     },
     [prepareQuestionOptions]
   );
@@ -305,7 +288,6 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
     if (isCompleted) return;
 
     if (currentIndex < sessionQuestions.length - 1) {
-      soundFx.playClick();
       setSelectedWord(null);
       setCurrentIndex((i) => i + 1);
       return;
@@ -313,7 +295,6 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
 
     // Reached the end of current pass — check if there are mistakes to retry!
     if (retryMistakesAtEnd && retryQueue.length > 0) {
-      soundFx.playClick();
       const nextRetryBatch = prepareQuestionOptions(retryQueue);
       setIsRetryPhase(true);
       setSessionQuestions(nextRetryBatch);
@@ -326,7 +307,6 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
     // Completed the entire Checkpoint!
     refreshProgress();
     setIsCompleted(true);
-    soundFx.playCelebration();
     const totalCount = activePart?.items.length || sessionQuestions.length || 1;
     StorageEngine.recordActivity('drill', Math.round((firstTryScore / totalCount) * 100));
     confetti({
@@ -359,7 +339,6 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       const isCorrect = isOptionCorrect(choice, currentQ);
 
       if (isCorrect) {
-        soundFx.playCorrect();
         if (!isRetryPhase) {
           setFirstTryScore((s) => s + 1);
         }
@@ -373,7 +352,6 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           }, 1100);
         }
       } else {
-        soundFx.playWrong();
         setStreak(0);
         setTotalMistakesMade((m) => m + 1);
         StorageEngine.recordMistakeOnly(currentQ.id);

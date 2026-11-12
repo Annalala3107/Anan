@@ -80,34 +80,4 @@ export class SRSEngine {
       lastMistakeTime,
     };
   }
-
-  /**
-   * Filter and prioritize words that are due for review or frequent mistakes
-   */
-  public static getPriorityWords(
-    progressMap: Record<string, WordProgress>,
-    limit: number = 20
-  ): string[] {
-    const now = Date.now();
-    const list = Object.values(progressMap);
-
-    // Prioritize:
-    // 1. High wrong streak
-    // 2. Overdue review (nextDue <= now)
-    // 3. Lowest strength score
-    return list
-      .sort((a, b) => {
-        const aOverdue = a.nextDue <= now ? 1 : 0;
-        const bOverdue = b.nextDue <= now ? 1 : 0;
-        if (aOverdue !== bOverdue) return bOverdue - aOverdue;
-
-        const aMistakes = a.wrongStreak || 0;
-        const bMistakes = b.wrongStreak || 0;
-        if (aMistakes !== bMistakes) return bMistakes - aMistakes;
-
-        return (a.strength || 0) - (b.strength || 0);
-      })
-      .slice(0, limit)
-      .map((p) => p.word);
-  }
 }

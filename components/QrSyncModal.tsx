@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import QRCode from 'qrcode';
 import { StorageEngine } from '@/lib/storage';
-import { soundFx } from '@/lib/sound';
 import {
   X,
   Smartphone,
@@ -12,8 +11,6 @@ import {
   Check,
   RotateCcw,
   Clock,
-  Sparkles,
-  QrCode as QrIcon,
   ShieldCheck,
   ExternalLink,
   Loader2,
@@ -151,11 +148,9 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
       setSyncUrl(`${publicOrigin}/sync?code=${code}`);
       setQrDataUrl(qrImage);
       setTimeLeft(resData.ttlSeconds || 900);
-      soundFx.playZenChime();
     } catch (err: any) {
       console.error('Failed to generate sync session:', err);
       setErrorMsg(err?.message || 'Lỗi kết nối khi chuẩn bị mã QR.');
-      soundFx.playWrong();
     } finally {
       setLoading(false);
     }
@@ -165,7 +160,6 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     if (!syncCode) return;
     navigator.clipboard.writeText(syncCode);
     setCopiedCode(true);
-    soundFx.playClick();
     setTimeout(() => setCopiedCode(false), 2000);
   };
 
@@ -173,7 +167,6 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     if (!syncUrl) return;
     navigator.clipboard.writeText(syncUrl);
     setCopiedUrl(true);
-    soundFx.playClick();
     setTimeout(() => setCopiedUrl(false), 2000);
   };
 

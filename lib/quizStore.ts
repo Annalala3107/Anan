@@ -8,8 +8,6 @@ interface QuizStoreState {
   activeCustomQuiz: CustomQuiz | null;
   words: Word[];
   isLoadingWords: boolean;
-  soundEnabled: boolean;
-  theme: 'dark' | 'light';
 
   // Active Exam Guard state
   isExamActive: boolean;
@@ -19,8 +17,6 @@ interface QuizStoreState {
   setActiveCustomQuiz: (quiz: CustomQuiz | null) => void;
   setWords: (words: Word[]) => void;
   loadQuizWords: (pathOrQuiz?: string | CustomQuiz) => Promise<Word[]>;
-  toggleSound: () => void;
-  setTheme: (theme: 'dark' | 'light') => void;
 }
 
 export const useQuizStore = create<QuizStoreState>((set, get) => ({
@@ -28,8 +24,6 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
   activeCustomQuiz: null,
   words: [],
   isLoadingWords: false,
-  soundEnabled: true,
-  theme: 'dark',
 
   isExamActive: false,
   setIsExamActive: (isExamActive: boolean) => set({ isExamActive }),
@@ -78,7 +72,4 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
       return [];
     }
   },
-
-  toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
-  setTheme: (theme) => set({ theme }),
 }));
