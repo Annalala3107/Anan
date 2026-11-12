@@ -1,0 +1,965 @@
+[
+  {
+    "id": "CSI_SU26_RE_1",
+    "word": "Câu 1: Which stage of the software development life cycle are data flow ...",
+    "question": "Which stage of the software development life cycle are data flow diagrams typically created?",
+    "options": [
+      "A. Testing",
+      "B. Design",
+      "C. Analysis",
+      "D. Implementation"
+    ],
+    "answer": "C",
+    "correctWord": "C. Analysis",
+    "explanation": "Answer: C. In the procedure-oriented software development life cycle, data flow diagrams (DFDs) are created during the Analysis phase to model how data moves through the system.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_2",
+    "word": "Câu 2: What does high cohesion within a module ensure in software design?",
+    "question": "What does high cohesion within a module ensure in software design?",
+    "options": [
+      "A. The module's components are strongly related to its purpose",
+      "B. The module depends heavily on other modules",
+      "C. The module communicates frequently with external modules",
+      "D. The module relies on shared global data"
+    ],
+    "answer": "A",
+    "correctWord": "A. The module's components are strongly related to its purpose",
+    "explanation": "Answer: A. High cohesion means the elements inside a single module are closely related and focused on accomplishing one specific task or purpose, improving maintainability and clarity.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_3",
+    "word": "Câu 3: When software is developed through gradual stages where each part...",
+    "question": "When software is developed through gradual stages where each part is built and integrated step-by-step, what is the most notable benefit this approach offers compared to building the entire system at once?",
+    "options": [
+      "A. Developers can test and add functionality in steps.",
+      "B. It requires all requirements up front before development.",
+      "C. It involves minimal testing.",
+      "D. It completes design and implementation simultaneously."
+    ],
+    "answer": "A",
+    "correctWord": "A. Developers can test and add functionality in steps.",
+    "explanation": "Answer: A. Incremental development builds and integrates the system in stages, allowing developers to test each increment and add functionality step-by-step rather than waiting until the entire system is built.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_4",
+    "word": "Câu 4: In the context of software design, what is the significance of th...",
+    "question": "In the context of software design, what is the significance of the \"Software Architecture\"?",
+    "options": [
+      "A. It focuses on coding individual functions and procedures.",
+      "B. It defines the overall structure and organization of the software system.",
+      "C. It is a tool for project management.",
+      "D. It involves testing the software against user requirements."
+    ],
+    "answer": "B",
+    "correctWord": "B. It defines the overall structure and organization of the software system.",
+    "explanation": "Answer: B. Software architecture represents the high-level structure and organization of a software system, specifying its components and how they interact.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_5",
+    "word": "Câu 5: What is the order of steps to design a database?",
+    "question": "What is the order of steps to design a database?",
+    "options": [
+      "A. Collect the information needed to be stored --> Build an entity-relation model --> Normalization",
+      "B. Collect the information needed to be stored --> Normalization --> Build an entity-relation model",
+      "C. Build an entity-relation model --> Normalization --> Collect the information needed to be stored",
+      "D. Not need be done through a step-by-step process"
+    ],
+    "answer": "A",
+    "correctWord": "A. Collect the information needed to be stored --> Build an entity-relation model --> Normalization",
+    "explanation": "Answer: A. In database design, you first gather requirements by collecting the information to be stored, next build an entity-relationship (E-R) model, and finally convert it into relations and apply normalization.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_6",
+    "word": "Câu 6: Which database model organizes data in two-dimensional tables?",
+    "question": "Which database model organizes data in two-dimensional tables?",
+    "options": [
+      "A. Relational model",
+      "B. Hierarchical model",
+      "C. Network model",
+      "D. Distributed model"
+    ],
+    "answer": "A",
+    "correctWord": "A. Relational model",
+    "explanation": "Answer: A. The relational database model represents data as a collection of two-dimensional tables (called relations) consisting of rows and columns.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_7",
+    "word": "Câu 7: Which of the following is NOT one of the three traditional data...",
+    "question": "Which of the following is NOT one of the three traditional database models?",
+    "options": [
+      "A. Hierarchical",
+      "B. Networking",
+      "C. Relational",
+      "D. Object-oriented"
+    ],
+    "answer": "D",
+    "correctWord": "D. Object-oriented",
+    "explanation": "Answer: D. The three traditional database models are hierarchical, network (networking), and relational. The object-oriented model is a newer, non-traditional database model.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_8",
+    "word": "Câu 8: Which normal form ensures that every non-prime attribute of a rel...",
+    "question": "Which normal form ensures that every non-prime attribute of a relation is fully functionally dependent on the primary key?",
+    "options": [
+      "A. First Normal Form (1NF)",
+      "B. Second Normal Form (2NF)",
+      "C. Third Normal Form (3NF)",
+      "D. Boyce-Codd Normal Form (BCNF)"
+    ],
+    "answer": "B",
+    "correctWord": "B. Second Normal Form (2NF)",
+    "explanation": "Answer: B. Second Normal Form (2NF) requires a relation to be in 1NF and ensures that every non-prime attribute is fully functionally dependent on the entire primary key (no partial dependencies).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_9",
+    "word": "Câu 9: In a relational database, which of the following is a unary opera...",
+    "question": "In a relational database, which of the following is a unary operation ?",
+    "options": [
+      "A. union",
+      "B. join",
+      "C. project",
+      "D. all of these above"
+    ],
+    "answer": "C",
+    "correctWord": "C. project",
+    "explanation": "Answer: C. Project (along with select, insert, delete, and update) is a unary operation because it operates on a single relation, whereas union and join are binary operations operating on two relations.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_10",
+    "word": "Câu 10: What are the three fundamental constructs used in structured pr...",
+    "question": "What are the three fundamental constructs used in structured programming?",
+    "options": [
+      "A. Sequence, decision, and repetition",
+      "B. Variables, loops, and conditions",
+      "C. Functions, arrays, and pointers",
+      "D. Compilation, execution, and debugging"
+    ],
+    "answer": "A",
+    "correctWord": "A. Sequence, decision, and repetition",
+    "explanation": "Answer: A. Structured programming (and structured algorithms) relies on three fundamental control constructs: sequence, decision (selection), and repetition (iteration).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_11",
+    "word": "Câu 11: What is a major disadvantage of recursive algorithms compared t...",
+    "question": "What is a major disadvantage of recursive algorithms compared to iterative algorithms?",
+    "options": [
+      "A. Recursive algorithms are harder to implement.",
+      "B. Recursive algorithms always have higher time complexity.",
+      "C. Recursive algorithms use more memory due to stack calls.",
+      "D. Recursive algorithms cannot solve sorting problems."
+    ],
+    "answer": "C",
+    "correctWord": "C. Recursive algorithms use more memory due to stack calls.",
+    "explanation": "Answer: C. Each recursive call pushes a new activation record onto the call stack, consuming additional memory and risking stack overflow compared to iterative solutions.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_12",
+    "word": "Câu 12: The primary objective of a searching algorithm is:",
+    "question": "The primary objective of a searching algorithm is:",
+    "options": [
+      "A. To call Google's API efficiently.",
+      "B. To perform calculations on a set of data.",
+      "C. To locate a specific element within a data set.",
+      "D. To create new data elements based on existing ones."
+    ],
+    "answer": "C",
+    "correctWord": "C. To locate a specific element within a data set.",
+    "explanation": "Answer: C. A searching algorithm is designed to find the position (or presence) of a target element within a collection of data.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_13",
+    "word": "Câu 13: Which of the following statements about sequential search is true?",
+    "question": "Which of the following statements about sequential search is true?",
+    "options": [
+      "A. It is efficient when searching small or unsorted datasets",
+      "B. It is the fastest search method for large datasets",
+      "C. It can only be used on sorted lists",
+      "D. It requires dividing the dataset into halves at every step"
+    ],
+    "answer": "A",
+    "correctWord": "A. It is efficient when searching small or unsorted datasets",
+    "explanation": "Answer: A. Sequential (linear) search checks elements one by one, so it does not require the list to be sorted and is practical for small or unsorted datasets.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_14",
+    "word": "Câu 14: What is the difference between a stack and a queue?",
+    "question": "What is the difference between a stack and a queue?",
+    "options": [
+      "A. A stack follows FIFO, and a queue follows LIFO",
+      "B. A stack is a hierarchical data structure, and a queue is not",
+      "C. A stack is LIFO, and a queue is FIFO",
+      "D. There is no difference between a stack and a queue"
+    ],
+    "answer": "C",
+    "correctWord": "C. A stack is LIFO, and a queue is FIFO",
+    "explanation": "Answer: C. A stack is a Last-In, First-Out (LIFO) linear structure where insertions and deletions occur at the top, whereas a queue is a First-In, First-Out (FIFO) structure where insertions occur at the rear and deletions at the front.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_15",
+    "word": "Câu 15: Which of the following is TRUE about an undirected graph?",
+    "question": "Which of the following is TRUE about an undirected graph?",
+    "options": [
+      "A. The edges have no direction",
+      "B. It has one-way connections between nodes.",
+      "C. The edges have a specific starting and ending point",
+      "D. A node only has one parent"
+    ],
+    "answer": "A",
+    "correctWord": "A. The edges have no direction",
+    "explanation": "Answer: A. In an undirected graph, edges represent symmetric (two-way) relationships between vertices and have no assigned direction.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_16",
+    "word": "Câu 16: What characteristic makes a stack a \"Last In, First Out (LIFO)\"...",
+    "question": "What characteristic makes a stack a \"Last In, First Out (LIFO)\" data structure?",
+    "options": [
+      "A. Elements are retrieved based on their priority",
+      "B. Elements can be accessed directly by their memory address",
+      "C. If data is inserted into a stack and then removed, the order of the data is reversed",
+      "D. The oldest element is always removed first."
+    ],
+    "answer": "C",
+    "correctWord": "C. If data is inserted into a stack and then removed, the order of the data is reversed",
+    "explanation": "Answer: C. Because the most recently pushed item is always popped first (LIFO), pushing a sequence of elements onto a stack and popping them all off yields the elements in reverse order.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_17",
+    "word": "Câu 17: Inside the ADT (abstract data type) are two different parts o...",
+    "question": "Inside the ADT (abstract data type) are two different parts of the model:",
+    "options": [
+      "A. Hardware and software",
+      "B. Database and operations",
+      "C. Data structure and algorithms",
+      "D. Data structure and operations"
+    ],
+    "answer": "D",
+    "correctWord": "D. Data structure and operations",
+    "explanation": "Answer: D. An Abstract Data Type (ADT) encapsulates two parts: the data structure that stores the data and the operations (functions) that manipulate that data.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_18",
+    "word": "Câu 18: When inserting a new element into a sorted array, what must b...",
+    "question": "When inserting a new element into a sorted array, what must be done to maintain the sorted order?",
+    "options": [
+      "A. Shift elements after the insertion point to create space",
+      "B. Shift all elements to the left to create space at the beginning",
+      "C. Replace the last element with the new element",
+      "D. Reorganize the array into a linked list structure"
+    ],
+    "answer": "A",
+    "correctWord": "A. Shift elements after the insertion point to create space",
+    "explanation": "Answer: A. To preserve sorted order when inserting into a contiguous array, elements from the insertion index onward must be shifted one position to the right to open up a slot.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_19",
+    "word": "Câu 19: Which of the following is an application area for graphs?",
+    "question": "Which of the following is an application area for graphs?",
+    "options": [
+      "A. Computer networks, where vertices represent nodes/hubs and edges represent routes.",
+      "B. Storing student records in a school.",
+      "C. Implementing stacks and queues.",
+      "D. Decimal to binary conversion"
+    ],
+    "answer": "A",
+    "correctWord": "A. Computer networks, where vertices represent nodes/hubs and edges represent routes.",
+    "explanation": "Answer: A. Graphs are commonly used to model computer networks, with vertices representing nodes/routers/hubs and edges representing communication links or routes.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_20",
+    "word": "Câu 20: The ______ keeps track of the instruction currently being exe...",
+    "question": "The ______ keeps track of the instruction currently being executed",
+    "options": [
+      "A. Instruction register",
+      "B. Data register",
+      "C. User register",
+      "D. Program counter"
+    ],
+    "answer": "D",
+    "correctWord": "D. Program counter",
+    "explanation": "Answer: D. In Forouzan's Foundations of Computer Science (Chapter 5), the program counter (PC) is defined as the control unit register that keeps track of the instruction currently being executed and is incremented after execution to point to the next instruction.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_21",
+    "word": "Câu 21: In two's complement representation, what is a key advantage f...",
+    "question": "In two's complement representation, what is a key advantage for arithmetic operations?",
+    "options": [
+      "A. There are two representations for zero.",
+      "B. Simplifies addition and subtraction.",
+      "C. It uses floating-point numbers.",
+      "D. It uses more bits for the sign."
+    ],
+    "answer": "B",
+    "correctWord": "B. Simplifies addition and subtraction.",
+    "explanation": "Answer: B. Two's complement has a single representation for zero and allows both addition and subtraction of signed integers to be handled uniformly using standard binary addition hardware.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_22",
+    "word": "Câu 22: What is the range of decimal numbers that can be stored in a 4-...",
+    "question": "What is the range of decimal numbers that can be stored in a 4-bit memory location using two's complement signed integer representation?",
+    "options": [
+      "A. 0 to 15",
+      "B. -7 to +7",
+      "C. -8 to +7",
+      "D. -15 to +15"
+    ],
+    "answer": "C",
+    "correctWord": "C. -8 to +7",
+    "explanation": "Answer: C. An n-bit two's complement integer can represent values from -2^(n-1) to 2^(n-1) - 1. For n = 4, the range is -2^3 to 2^3 - 1, which is -8 to +7.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_23",
+    "word": "Câu 23: What is the purpose of encoding in digital audio?",
+    "question": "What is the purpose of encoding in digital audio?",
+    "options": [
+      "A. To improve the quality of the sound",
+      "B. To convert audio into a format suitable for storage or transmission",
+      "C. To increase the speed of audio playback",
+      "D. To reduce the number of channels used in the audio"
+    ],
+    "answer": "B",
+    "correctWord": "B. To convert audio into a format suitable for storage or transmission",
+    "explanation": "Answer: B. After sampling and quantization, encoding converts the quantized audio sample values into binary bit patterns suitable for digital storage or transmission.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_24",
+    "word": "Câu 24: What is the result of 7 XOR 3 in binary?",
+    "question": "What is the result of 7 XOR 3 in binary?",
+    "options": [
+      "A. 100",
+      "B. 111",
+      "C. 011",
+      "D. 101"
+    ],
+    "answer": "A",
+    "correctWord": "A. 100",
+    "explanation": "Answer: A. In 3-bit binary, 7 is 111 and 3 is 011. Applying bitwise XOR: 111 XOR 011 = 100.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_25",
+    "word": "Câu 25: What is the result of the operation 11010011 XOR 00111101?",
+    "question": "What is the result of the operation 11010011 XOR 00111101?",
+    "options": [
+      "A. 11101110",
+      "B. 11001110",
+      "C. 11111110",
+      "D. 10110110"
+    ],
+    "answer": "A",
+    "correctWord": "A. 11101110",
+    "explanation": "Answer: A. Performing bitwise XOR on 11010011 and 00111101 yields 11101110 (since XOR outputs 1 when the two bits differ and 0 when they are the same).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_26",
+    "word": "Câu 26: If we are adding two numbers, one of which has an exponent va...",
+    "question": "If we are adding two numbers, one of which has an exponent value of 7 and the other an exponent value of 9,\nwe need to shift the decimal point of the smaller number to align the exponents _______.",
+    "options": [
+      "A. One place to the left",
+      "B. One place to the right",
+      "C. Two places to the left",
+      "D. Two places to the right"
+    ],
+    "answer": "C",
+    "correctWord": "C. Two places to the left",
+    "explanation": "Answer: C. To raise the smaller exponent from 7 to 9 (a difference of 2), the significand must be divided by 10^2, meaning its decimal point is shifted two places to the left.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_27",
+    "word": "Câu 27: Applying a monoalphabetic cipher, decrypting the ciphertext \"...",
+    "question": "Applying a monoalphabetic cipher, decrypting the ciphertext \"WTR\" with key = 19.",
+    "options": [
+      "A. EAR",
+      "B. FAN",
+      "C. DAY",
+      "D. CAR"
+    ],
+    "answer": "C",
+    "correctWord": "C. DAY",
+    "explanation": "Answer: C. Using A=0..Z=25, decryption subtracts the key 19 modulo 26: W(22)-19 = 3(D), T(19)-19 = 0(A), R(17)-19 = -2 ≡ 24(Y), giving plaintext \"DAY\".",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_28",
+    "word": "Câu 28: Which type of hacker is known for fighting back against black...",
+    "question": "Which type of hacker is known for fighting back against black hat hackers, often using aggressive methods such as disabling or destroying the attackers' systems?",
+    "options": [
+      "A. White Hat",
+      "B. Black Hat",
+      "C. Red Hat",
+      "D. Gray Hat"
+    ],
+    "answer": "C",
+    "correctWord": "C. Red Hat",
+    "explanation": "Answer: C. Red hat hackers are vigilante hackers who target black hat hackers using aggressive countermeasures to shut down or destroy their attack infrastructure.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_29",
+    "word": "Câu 29: ______ means protecting a message from being modified.",
+    "question": "______ means protecting a message from being modified.",
+    "options": [
+      "A. confidentiality",
+      "B. integrity",
+      "C. availability",
+      "D. None of these above"
+    ],
+    "answer": "B",
+    "correctWord": "B. integrity",
+    "explanation": "Answer: B. In information security (the CIA triad), integrity ensures that a message or data is protected from unauthorized modification or tampering.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_30",
+    "word": "Câu 30: Which ethical principle states that an act is ethical if it b...",
+    "question": "Which ethical principle states that an act is ethical if it brings about a good result for society?",
+    "options": [
+      "A. Moral rules.",
+      "B. Social contract.",
+      "C. Utilization",
+      "D. Intellectual property"
+    ],
+    "answer": "C",
+    "correctWord": "C. Utilization",
+    "explanation": "Answer: C. In Forouzan's chapter on social and ethical issues, utilization (utilitarianism) is the ethical principle stating that an action is ethical if it produces a good result or net benefit for society.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_31",
+    "word": "Câu 31: Among the values that guide professional conduct in the...",
+    "question": "Among the values that guide professional conduct in the field of computer science, which of the following best represents a key ethical principle?",
+    "options": [
+      "A. Honesty in reporting data and respecting user privacy.",
+      "B. Sharing all user information publicly without consent to promote transparency.",
+      "C. Ignoring software errors because fixing them costs time and money.",
+      "D. Using any means necessary to bypass security as long as it helps you learn."
+    ],
+    "answer": "A",
+    "correctWord": "A. Honesty in reporting data and respecting user privacy.",
+    "explanation": "Answer: A. Key ethical principles in computer science emphasize honesty in reporting data and respecting user privacy, whereas sharing data without consent, ignoring software errors, or bypassing security violate professional conduct.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_32",
+    "word": "Câu 32: What is the fundamental difference between machine language...",
+    "question": "What is the fundamental difference between machine language and high-level languages regarding computer understanding?",
+    "options": [
+      "A. Machine language uses symbols, while high-level languages use binary patterns",
+      "B. Machine language is directly understood by a computer, while high-level languages must be converted",
+      "C. Machine language is portable, while high-level languages are machine-dependent.",
+      "D. High-level languages are tedious to write, while machine language is easier."
+    ],
+    "answer": "B",
+    "correctWord": "B. Machine language is directly understood by a computer, while high-level languages must be converted",
+    "explanation": "Answer: B. Machine language consists of binary instructions directly understood and executed by the CPU, whereas high-level languages must be translated into machine language by a compiler or interpreter.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_33",
+    "word": "Câu 33: In which style of programming is the software viewed as...",
+    "question": "In which style of programming is the software viewed as an entity that initiates actions and controls other entities that remain inactive unless acted upon?",
+    "options": [
+      "A. Procedural paradigm",
+      "B. Object-oriented paradigm",
+      "C. Functional paradigm",
+      "D. Declarative paradigm"
+    ],
+    "answer": "A",
+    "correctWord": "A. Procedural paradigm",
+    "explanation": "Answer: A. In the procedural (imperative) paradigm, the program is an active agent that initiates actions on passive data entities that remain inactive until acted upon.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_34",
+    "word": "Câu 34: In the \"declarative paradigm,\" how are problems...",
+    "question": "In the \"declarative paradigm,\" how are problems typically solved?",
+    "options": [
+      "A. By writing a sequence of instructions to manipulate dat",
+      "B. By creating objects that encapsulate data and methods",
+      "C. By defining functions that transform data without side effects.",
+      "D. By stating facts and rules, allowing the system to use logical reasoning to answer queries"
+    ],
+    "answer": "D",
+    "correctWord": "D. By stating facts and rules, allowing the system to use logical reasoning to answer queries",
+    "explanation": "Answer: D. In the declarative paradigm (such as logic programming), problems are solved by declaring facts and rules so the system can apply logical reasoning to answer queries.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_35",
+    "word": "Câu 35: Which of the following is NOT one of the four major...",
+    "question": "Which of the following is NOT one of the four major programming paradigms?",
+    "options": [
+      "A. Procedural",
+      "B. Object-oriented",
+      "C. Functional",
+      "D. Database-driven"
+    ],
+    "answer": "D",
+    "correctWord": "D. Database-driven",
+    "explanation": "Answer: D. The four major programming paradigms described in Forouzan are procedural, object-oriented, functional, and declarative; database-driven is not one of them.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_36",
+    "word": "Câu 36: In a computer, the _______ subsystem serves as a...",
+    "question": "In a computer, the _______ subsystem serves as a manager of the other subsystems.",
+    "options": [
+      "A. ALU",
+      "B. input/output",
+      "C. memory",
+      "D. control unit"
+    ],
+    "answer": "D",
+    "correctWord": "D. control unit",
+    "explanation": "Answer: D. In the von Neumann model, the control unit serves as the manager of the other subsystems (ALU, memory, and input/output) by coordinating instruction execution.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_37",
+    "word": "Câu 37: The Arithmetic Logic Unit (ALU) in the von Neumann...",
+    "question": "The Arithmetic Logic Unit (ALU) in the von Neumann model is primarily responsible for:",
+    "options": [
+      "A. Controlling the execution of a program",
+      "B. Performing arithmetic and logic operations",
+      "C. Managing input and output operations",
+      "D. Storing data and programs"
+    ],
+    "answer": "B",
+    "correctWord": "B. Performing arithmetic and logic operations",
+    "explanation": "Answer: B. The ALU is the subsystem in the von Neumann model responsible for performing arithmetic calculations and logical operations.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_38",
+    "word": "Câu 38: Off-line operation is the operation of devices without...",
+    "question": "Off-line operation is the operation of devices without the control of",
+    "options": [
+      "A. Memory",
+      "B. CPU",
+      "C. ALU",
+      "D. Control unit",
+      "E. None of the above"
+    ],
+    "answer": "B",
+    "correctWord": "B. CPU",
+    "explanation": "Answer: B. Off-line operation refers to peripheral devices operating independently without being under the direct control of the CPU.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_39",
+    "word": "Câu 39: Which of the following is NOT a function of the CPU?",
+    "question": "Which of the following is NOT a function of the CPU?",
+    "options": [
+      "A. Display output",
+      "B. Fetch instructions",
+      "C. Decode instructions",
+      "D. Execute instructions"
+    ],
+    "answer": "A",
+    "correctWord": "A. Display output",
+    "explanation": "Answer: A. The CPU fetches, decodes, and executes instructions during the machine cycle, whereas displaying output is performed by output devices through the I/O subsystem.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_40",
+    "word": "Câu 40: What is the main function of the control unit in the CPU?",
+    "question": "What is the main function of the control unit in the CPU?",
+    "options": [
+      "A. To perform arithmetic and logic operations.",
+      "B. To store instructions.",
+      "C. To manage data flow inside the CPU.",
+      "D. To control peripheral devices."
+    ],
+    "answer": "C",
+    "correctWord": "C. To manage data flow inside the CPU.",
+    "explanation": "Answer: C. The control unit coordinates and manages the flow of data and control signals inside the CPU (while the ALU performs arithmetic/logic operations and memory stores instructions).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_41",
+    "word": "Câu 41: Which of the following statements is true in the context...",
+    "question": "Which of the following statements is true in the context of different architectures of computers?",
+    "options": [
+      "A. Programming in RISC is more difficult and time-consuming than in the other design",
+      "B. Programming in CISC is more difficult and time-consuming than in the other design",
+      "C. The strategy behind CISC architectures is to have a small set of instructions",
+      "D. Programs executed on RISC architecture tend to have more bugs because there are not enough instructions available for the programmer"
+    ],
+    "answer": "A",
+    "correctWord": "A. Programming in RISC is more difficult and time-consuming than in the other design",
+    "explanation": "Answer: A. Because RISC uses a small set of simple instructions, programmers must combine multiple instructions to perform complex tasks, making low-level programming in RISC more difficult and time-consuming than in CISC.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_42",
+    "word": "Câu 42: What is used to separate directories in an absolute...",
+    "question": "What is used to separate directories in an absolute pathname in UNIX?",
+    "options": [
+      "A. Slash (/)",
+      "B. Backslash (\\)",
+      "C. Dash (-)",
+      "D. Underscore (_)"
+    ],
+    "answer": "A",
+    "correctWord": "A. Slash (/)",
+    "explanation": "Answer: A. In UNIX-based file systems, the forward slash (/) is used to separate directory names in pathnames (e.g., /usr/local/bin).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_43",
+    "word": "Câu 43: Which of the following best describes hashed files?",
+    "question": "Which of the following best describes hashed files?",
+    "options": [
+      "A. Files that store data in a fixed order",
+      "B. Files where data is stored based on a computed hash value, which determines the location of the data",
+      "C. Files that are encrypted for security purposes",
+      "D. Files that contain only textual information"
+    ],
+    "answer": "B",
+    "correctWord": "B. Files where data is stored based on a computed hash value, which determines the location of the data",
+    "explanation": "Answer: B. Hashed files use a hash function applied to a record key to compute the storage address (location) where the record is stored and directly retrieved.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_44",
+    "word": "Câu 44: In the File Structure, Hashing works by:",
+    "question": "In the File Structure, Hashing works by:",
+    "options": [
+      "A. Sorting files by Index",
+      "B. Compress a normal file",
+      "C. Calculating a key",
+      "D. Adding lines to the file"
+    ],
+    "answer": "C",
+    "correctWord": "C. Calculating a key",
+    "explanation": "Answer: C. In file structures, hashing works by performing a calculation on a record's key (using a hash function) to map directly to the record's storage address.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_45",
+    "word": "Câu 45: In the physical layer, what hardware has a mission to...",
+    "question": "In the physical layer, what hardware has a mission to convert signal from analog to digital signal",
+    "options": [
+      "A. Discrete Filter Transform",
+      "B. ADC",
+      "C. DAC",
+      "D. Quantization filtering circuits"
+    ],
+    "answer": "B",
+    "correctWord": "B. ADC",
+    "explanation": "Answer: B. An ADC (Analog-to-Digital Converter) converts analog signals into digital signals, while a DAC performs the reverse conversion.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_46",
+    "word": "Câu 46: In the TCP/IP protocol suite, which one of the...",
+    "question": "In the TCP/IP protocol suite, which one of the following port is NOT correct?",
+    "options": [
+      "A. 65535",
+      "B. 65536",
+      "C. 404",
+      "D. 8080",
+      "E. 1023"
+    ],
+    "answer": "B",
+    "correctWord": "B. 65536",
+    "explanation": "Answer: B. TCP/IP port numbers are 16-bit unsigned integers ranging from 0 to 65535; therefore, 65536 is invalid.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_47",
+    "word": "Câu 47: In the physical layer, what mediums are examples of...",
+    "question": "In the physical layer, what mediums are examples of guided media?",
+    "options": [
+      "A. Radio and Microwaves",
+      "B. Infrared wave and twisted-pair cable",
+      "C. Coaxial cable and Fiber-optic cable",
+      "D. Water and air"
+    ],
+    "answer": "C",
+    "correctWord": "C. Coaxial cable and Fiber-optic cable",
+    "explanation": "Answer: C. Guided media use physical cables or conduits to carry signals; coaxial cable, fiber-optic cable, and twisted-pair cable are guided media, whereas radio, microwaves, and infrared are unguided media.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_48",
+    "word": "Câu 48: Which of the following is not a type of network topology?",
+    "question": "Which of the following is not a type of network topology?",
+    "options": [
+      "A. Star",
+      "B. Mesh",
+      "C. Ring",
+      "D. Switch"
+    ],
+    "answer": "D",
+    "correctWord": "D. Switch",
+    "explanation": "Answer: D. Star, mesh, and ring are types of network topologies, whereas a switch is a network connecting device.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_49",
+    "word": "Câu 49: What is the purpose of the TCP SYN-ACK handshake during...",
+    "question": "What is the purpose of the TCP SYN-ACK handshake during connection establishment?",
+    "options": [
+      "A. To acknowledge the receipt of data segments",
+      "B. To synchronize sequence numbers and establish connection parameters",
+      "C. To request retransmission of lost segments",
+      "D. To terminate the connection"
+    ],
+    "answer": "B",
+    "correctWord": "B. To synchronize sequence numbers and establish connection parameters",
+    "explanation": "Answer: B. During TCP's three-way handshake, the SYN and SYN-ACK exchange synchronizes initial sequence numbers and establishes connection parameters before data transfer begins.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_50",
+    "word": "Câu 50: Data must be transformed to electromagnetic signals to...",
+    "question": "Data must be transformed to electromagnetic signals to be transmitted. Signals can be_____",
+    "options": [
+      "A. Only analog signals",
+      "B. Only digital signals",
+      "C. Analog and digital signals",
+      "D. Any types, depends on data types."
+    ],
+    "answer": "C",
+    "correctWord": "C. Analog and digital signals",
+    "explanation": "Answer: C. For transmission at the physical layer, data can be converted into either analog or digital electromagnetic signals.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_51",
+    "word": "Câu 51: When converting a decimal fraction to octal, we...",
+    "question": "When converting a decimal fraction to octal, we repeatedly _____",
+    "options": [
+      "A. Multiply by 8",
+      "B. Divide by 8",
+      "C. Multiply by 2",
+      "D. Divide by 2"
+    ],
+    "answer": "A",
+    "correctWord": "A. Multiply by 8",
+    "explanation": "Answer: A. To convert a decimal fraction to base 8 (octal), we repeatedly multiply the fractional part by 8 and extract the integer part at each step.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_52",
+    "word": "Câu 52: Convert the binary number 1011011011 to decimal.",
+    "question": "Convert the binary number 1011011011 to decimal.",
+    "options": [
+      "A. 721",
+      "B. 731",
+      "C. 739",
+      "D. 743"
+    ],
+    "answer": "B",
+    "correctWord": "B. 731",
+    "explanation": "Answer: B. Converting 1011011011 from binary to decimal: 1×512 + 0×256 + 1×128 + 1×64 + 0×32 + 1×16 + 1×8 + 0×4 + 1×2 + 1×1 = 512 + 128 + 64 + 16 + 8 + 2 + 1 = 731.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_53",
+    "word": "Câu 53: If you want to convert a number from decimal to binary,...",
+    "question": "If you want to convert a number from decimal to binary, which operation do you use?",
+    "options": [
+      "A. Division",
+      "B. Multiplication",
+      "C. Addition",
+      "D. Subtraction"
+    ],
+    "answer": "A",
+    "correctWord": "A. Division",
+    "explanation": "Answer: A. Converting a decimal integer to binary uses repeated division by 2, collecting the remainders in reverse order.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_54",
+    "word": "Câu 54: What distinguishes positional number systems from...",
+    "question": "What distinguishes positional number systems from nonpositional systems?",
+    "options": [
+      "A. They represent values using symbols only.",
+      "B. The position of a digit determines its value.",
+      "C. They use Roman numerals.",
+      "D. They are limited to base 10."
+    ],
+    "answer": "B",
+    "correctWord": "B. The position of a digit determines its value.",
+    "explanation": "Answer: B. In a positional number system, the value contributed by each digit depends on its position (place value), whereas nonpositional systems (like Roman numerals) assign fixed values to symbols.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_55",
+    "word": "Câu 55: In a multiprogramming system, how are multiple programs...",
+    "question": "In a multiprogramming system, how are multiple programs typically managed in memory and executed?",
+    "options": [
+      "A. They are loaded into memory simultaneously and executed concurrently.",
+      "B. They are loaded one after another sequentially.",
+      "C. They run sequentially, with each program completing before the next one starts.",
+      "D. They are stored in secondary storage until needed for execution."
+    ],
+    "answer": "A",
+    "correctWord": "A. They are loaded into memory simultaneously and executed concurrently.",
+    "explanation": "Answer: A. In multiprogramming, multiple programs reside in main memory at the same time and execute concurrently by sharing CPU time.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_56",
+    "word": "Câu 56: What state does a job enter when it is loaded into memory?",
+    "question": "What state does a job enter when it is loaded into memory?",
+    "options": [
+      "A. Ready state",
+      "B. Hold state",
+      "C. Running state",
+      "D. Terminated state"
+    ],
+    "answer": "A",
+    "correctWord": "A. Ready state",
+    "explanation": "Answer: A. Once a job moves from secondary storage (Hold state) into main memory, it enters the Ready state, waiting for CPU allocation.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_57",
+    "word": "Câu 57: The scheme of allocating memory in fixed-sized blocks...",
+    "question": "The scheme of allocating memory in fixed-sized blocks is known as:",
+    "options": [
+      "A. Paging",
+      "B. Swapping",
+      "C. Segmentation",
+      "D. Fragmentation"
+    ],
+    "answer": "A",
+    "correctWord": "A. Paging",
+    "explanation": "Answer: A. Paging divides main memory into fixed-sized blocks called frames and programs into equal-sized pages for non-contiguous memory allocation.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_58",
+    "word": "Câu 58: What is the process of bootstrapping in an operating...",
+    "question": "What is the process of bootstrapping in an operating system?",
+    "options": [
+      "A. Managing memory allocation for running processes",
+      "B. Initializing the operating system into memory during startup",
+      "C. Scheduling processes for execution",
+      "D. Loading device drivers"
+    ],
+    "answer": "B",
+    "correctWord": "B. Initializing the operating system into memory during startup",
+    "explanation": "Answer: B. Bootstrapping is the startup process in which a small bootstrap loader brings the operating system from secondary storage into main memory and initializes it.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_59",
+    "word": "Câu 59: Which of the following is a common definition of an...",
+    "question": "Which of the following is a common definition of an operating system?",
+    "options": [
+      "A. An interface between hardware and users",
+      "B. A specific application program",
+      "C. A document outlining system policies",
+      "D. A type of computer hardware",
+      "E. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. An interface between hardware and users",
+    "explanation": "Answer: A. An operating system is commonly defined as an interface between the computer hardware and the user (or application programs) that manages resources and facilitates program execution.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  },
+  {
+    "id": "CSI_SU26_RE_60",
+    "word": "Câu 60: How does demand paging improve efficiency over regular...",
+    "question": "How does demand paging improve efficiency over regular paging?",
+    "options": [
+      "A. It loads only the required pages as needed",
+      "B. It requires the entire program to be in memory",
+      "C. It uses variable-sized memory sections",
+      "D. It prevents programs from being swapped"
+    ],
+    "answer": "A",
+    "correctWord": "A. It loads only the required pages as needed",
+    "explanation": "Answer: A. Demand paging loads a program's pages into main memory only when they are referenced (on demand), reducing memory usage and startup overhead compared to loading the whole program.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - RE"
+  }
+]

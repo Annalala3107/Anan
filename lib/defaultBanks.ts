@@ -191,6 +191,39 @@ export const QUESTION_BANKS: SubjectSection[] = [
         tags: ['Turing Model', 'Ethics', 'AI'],
         subject: 'CSI106',
         topic: 'Kiến Trúc Máy Tính Chung'
+      },
+      {
+        id: 'csi_su26_b5_fe',
+        name: 'Đề Thi CSI106 — SU26 - B5 - FE (60 Câu)',
+        description: 'Bộ 60 câu hỏi đề thi CSI106 - SU26 - B5 - FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/csi106_su26_b5_fe.json',
+        is_public: true,
+        wordCount: 60,
+        tags: ['SU26', 'B5 - FE', '60 Câu'],
+        subject: 'CSI106',
+        topic: 'SU26 - B5 - FE'
+      },
+      {
+        id: 'csi_su26_fe',
+        name: 'Đề Thi CSI106 — SU26 - FE (60 Câu)',
+        description: 'Bộ 60 câu hỏi đề thi CSI106 - SU26 - FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/csi106_su26_fe.json',
+        is_public: true,
+        wordCount: 60,
+        tags: ['SU26', 'FE', '60 Câu'],
+        subject: 'CSI106',
+        topic: 'SU26 - FE'
+      },
+      {
+        id: 'csi_su26_re',
+        name: 'Đề Thi CSI106 — SU26 - RE (60 Câu)',
+        description: 'Bộ 60 câu hỏi đề thi CSI106 - SU26 - RE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/csi106_su26_re.json',
+        is_public: true,
+        wordCount: 60,
+        tags: ['SU26', 'RE', '60 Câu'],
+        subject: 'CSI106',
+        topic: 'SU26 - RE'
       }
     ]
   },

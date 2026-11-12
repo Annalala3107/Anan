@@ -1,0 +1,963 @@
+[
+  {
+    "id": "CSI_SU26_FE_1",
+    "word": "Câu 1: Based on the waterfall model, if each phase (requirement analysis...",
+    "question": "Based on the waterfall model, if each phase (requirement analysis, design, implementation, testing, documentation, evaluation) takes 2 weeks, how many weeks are required to complete the entire process, assuming no overlap?",
+    "options": [
+      "A. 12",
+      "B. 14",
+      "C. 8",
+      "D. 10"
+    ],
+    "answer": "A",
+    "correctWord": "A. 12",
+    "explanation": "Answer: A. In the waterfall model, phases are executed sequentially with no overlap. There are 6 listed phases (requirement analysis, design, implementation, testing, documentation, evaluation), and at 2 weeks per phase, the total time is 6 × 2 = 12 weeks.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_2",
+    "word": "Câu 2: What is the primary deliverable of the analysis phase in the SDLC?",
+    "question": "What is the primary deliverable of the analysis phase in the SDLC?",
+    "options": [
+      "A. Source code",
+      "B. User documentation",
+      "C. Software architecture diagram",
+      "D. Requirements specification document"
+    ],
+    "answer": "D",
+    "correctWord": "D. Requirements specification document",
+    "explanation": "Answer: D. The analysis phase of the Software Development Life Cycle (SDLC) focuses on gathering and defining what the system must do, resulting in a requirements specification document.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_3",
+    "word": "Câu 3: During the design phase, what distinguishes procedure-oriented...",
+    "question": "During the design phase, what distinguishes procedure-oriented design from object-oriented design?",
+    "options": [
+      "A. Procedure-oriented design organizes the system around data, while object-oriented design organizes it around procedures.",
+      "B. Procedure-oriented design organizes the system around procedures, while object-oriented design organizes it around objects.",
+      "C. Procedure-oriented design uses classes, while object-oriented design uses functions.",
+      "D. Procedure-oriented design is used only in Agile methodologies."
+    ],
+    "answer": "B",
+    "correctWord": "B. Procedure-oriented design organizes the system around procedures, while object-oriented design organizes it around objects.",
+    "explanation": "Answer: B. Procedure-oriented design decomposes a system into procedures (functions) that operate on passive data, whereas object-oriented design organizes the system around objects that encapsulate both data and methods.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_4",
+    "word": "Câu 4: Which software engineering principle advocates breaking down...",
+    "question": "Which software engineering principle advocates breaking down complex systems into smaller, manageable components that are easier to understand, develop, and maintain?",
+    "options": [
+      "A. Abstraction",
+      "B. Encapsulation",
+      "C. Modularity",
+      "D. Inheritance"
+    ],
+    "answer": "C",
+    "correctWord": "C. Modularity",
+    "explanation": "Answer: C. Modularity is the software engineering principle of dividing a complex system into smaller, independent modules that can be understood, developed, tested, and maintained more easily.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_5",
+    "word": "Câu 5: Which of the following is NOT a component of the ACID...",
+    "question": "Which of the following is NOT a component of the ACID properties in database transactions?",
+    "options": [
+      "A. Atomicity",
+      "B. Consistency",
+      "C. Integrity",
+      "D. Durability"
+    ],
+    "answer": "C",
+    "correctWord": "C. Integrity",
+    "explanation": "Answer: C. ACID stands for Atomicity, Consistency, Isolation, and Durability. Integrity is not one of the four ACID properties.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_6",
+    "word": "Câu 6: In a relational database, what is the primary reason for using...",
+    "question": "In a relational database, what is the primary reason for using a primary key in a relation?",
+    "options": [
+      "A. To ensure each tuple can be uniquely identified",
+      "B. To allow multiple tuples to have identical values for all attributes",
+      "C. To reduce the number of attributes in a relation",
+      "D. To link the relation to the conceptual schema"
+    ],
+    "answer": "A",
+    "correctWord": "A. To ensure each tuple can be uniquely identified",
+    "explanation": "Answer: A. A primary key is an attribute (or minimal set of attributes) chosen to uniquely identify every tuple (row) in a relation.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_7",
+    "word": "Câu 7: Which language is standardized by ANSI and ISO for use on...",
+    "question": "Which language is standardized by ANSI and ISO for use on relational databases?",
+    "options": [
+      "A. SQL",
+      "B. Java",
+      "C. Python",
+      "D. C++"
+    ],
+    "answer": "A",
+    "correctWord": "A. SQL",
+    "explanation": "Answer: A. Structured Query Language (SQL) is the standard query language standardized by ANSI and ISO for managing and querying relational databases.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_8",
+    "word": "Câu 8: Which of the following is NOT a component of a database...",
+    "question": "Which of the following is NOT a component of a database management system (DBMS)?",
+    "options": [
+      "A. Hardware",
+      "B. Software",
+      "C. Network",
+      "D. Data"
+    ],
+    "answer": "C",
+    "correctWord": "C. Network",
+    "explanation": "Answer: C. According to Forouzan, a DBMS consists of five components: hardware, software, data, users, and procedures. Network is not listed as one of these five components.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_9",
+    "word": "Câu 9: The ANSI/SPARC model in Database Architecture has how many...",
+    "question": "The ANSI/SPARC model in Database Architecture has how many levels?",
+    "options": [
+      "A. 2",
+      "B. 3",
+      "C. 4",
+      "D. 5"
+    ],
+    "answer": "B",
+    "correctWord": "B. 3",
+    "explanation": "Answer: B. The ANSI/SPARC database architecture defines 3 levels: the internal level, the conceptual level, and the external level.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_10",
+    "word": "Câu 10: _______ is an ordered set of unambiguous steps that produces...",
+    "question": "_______ is an ordered set of unambiguous steps that produces a result and terminates in a finite time.",
+    "options": [
+      "A. A construct",
+      "B. A recursion",
+      "C. An iteration",
+      "D. An algorithm"
+    ],
+    "answer": "D",
+    "correctWord": "D. An algorithm",
+    "explanation": "Answer: D. By definition, an algorithm is an ordered set of unambiguous steps that produces a result and terminates in a finite amount of time.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_11",
+    "word": "Câu 11: Which tool is used to present the following algorithm?...",
+    "question": "Which tool is used to present the following algorithm?\nAlgorithm: Pass/NoPass (score)\nPurpose: Creates a pass/no pass grade given the score\nPre: Given: the score to be changed to grade\nPost: None\nReturn: The grade\n{\nif (score ≥ 70)\ngrade ← \"pass\"\nelse\ngrade ← \"nopass\"\nreturn grade\n}",
+    "options": [
+      "A. Pseudocode",
+      "B. Flowchart",
+      "C. Decision Table",
+      "D. Data Structure Diagram"
+    ],
+    "answer": "A",
+    "correctWord": "A. Pseudocode",
+    "explanation": "Answer: A. Pseudocode is an English-like, structured textual representation of an algorithm using programming-style constructs such as if/else, assignment arrows (←), and return statements.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_12",
+    "word": "Câu 12: What is the main function of the transport layer in the...",
+    "question": "What is the main function of the transport layer in the TCP/IP model?",
+    "options": [
+      "A. To encode and decode data",
+      "B. To deliver data end-to-end and provide error control",
+      "C. To assign IP addresses",
+      "D. To handle physical transmission media"
+    ],
+    "answer": "B",
+    "correctWord": "B. To deliver data end-to-end and provide error control",
+    "explanation": "Answer: B. The transport layer (e.g., TCP and UDP) is responsible for process-to-process (end-to-end) delivery of messages along with flow and error control.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_13",
+    "word": "Câu 13: Which of the following pseudo-code constructs is commonly...",
+    "question": "Which of the following pseudo-code constructs is commonly used to represent a repetitive process until a certain condition is met?",
+    "options": [
+      "A. FOR loop",
+      "B. WHILE loop",
+      "C. IF statement",
+      "D. SWITCH statement"
+    ],
+    "answer": "B",
+    "correctWord": "B. WHILE loop",
+    "explanation": "Answer: B. A WHILE loop repeats a block of statements based on a condition being satisfied/met, whereas FOR is typically counter-controlled and IF/SWITCH are selection constructs.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_14",
+    "word": "Câu 14: Which operation sequence on a binary tree corresponds to...",
+    "question": "Which operation sequence on a binary tree corresponds to the postorder traversal pattern?",
+    "options": [
+      "A. Process Left subtree → Right subtree → Root",
+      "B. Process Root → Left subtree → Right subtree",
+      "C. Process Root → Right subtree → Left subtree",
+      "D. Process Right subtree → Root → Left subtree"
+    ],
+    "answer": "A",
+    "correctWord": "A. Process Left subtree → Right subtree → Root",
+    "explanation": "Answer: A. In postorder traversal of a binary tree, the left subtree is traversed first, then the right subtree, and finally the root node is processed (LRN).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_15",
+    "word": "Câu 15: Given a binary tree has 3 levels (including the root), how...",
+    "question": "Given a binary tree has 3 levels (including the root), how many maximum nodes can it have?",
+    "options": [
+      "A. 7",
+      "B. 4",
+      "C. 8",
+      "D. 10"
+    ],
+    "answer": "A",
+    "correctWord": "A. 7",
+    "explanation": "Answer: A. A binary tree with k levels can have at most 2^k - 1 nodes. For k = 3 levels (1 node at level 1, 2 at level 2, and 4 at level 3), the maximum is 1 + 2 + 4 = 7 nodes.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_16",
+    "word": "Câu 16: Which statement best describes a binary tree according to...",
+    "question": "Which statement best describes a binary tree according to the ADT definition?",
+    "options": [
+      "A. Each node has at most two subtrees, called left and right.",
+      "B. Every node must have exactly two children and each must be a prime number.",
+      "C. A binary tree is only used in graphical user interfaces for drawing.",
+      "D. Every leaf connects to every other node via hidden arcs."
+    ],
+    "answer": "A",
+    "correctWord": "A. Each node has at most two subtrees, called left and right.",
+    "explanation": "Answer: A. In the abstract data type (ADT) definition, a binary tree is a tree in which no node can have more than two subtrees, designated as the left subtree and the right subtree.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_17",
+    "word": "Câu 17: In a linked list, the ________ is the pointer that identifies...",
+    "question": "In a linked list, the ________ is the pointer that identifies the next element",
+    "options": [
+      "A. link",
+      "B. node",
+      "C. array",
+      "D. data"
+    ],
+    "answer": "A",
+    "correctWord": "A. link",
+    "explanation": "Answer: A. Each node in a linked list consists of data and a link, where the link is the pointer that points to (identifies) the next node in the list.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_18",
+    "word": "Câu 18: Which of the following traversal methods of a binary tree...",
+    "question": "Which of the following traversal methods of a binary tree is used to get a sorted list of elements?",
+    "options": [
+      "A. Pre-order traversal",
+      "B. In-order traversal",
+      "C. Post-order traversal",
+      "D. Level-order traversal"
+    ],
+    "answer": "B",
+    "correctWord": "B. In-order traversal",
+    "explanation": "Answer: B. Performing an in-order traversal (Left → Root → Right) on a binary search tree visits the elements in ascending sorted order.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_19",
+    "word": "Câu 19: What is the maximum number of children a node in a binary...",
+    "question": "What is the maximum number of children a node in a binary tree can have?",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. Any number of children"
+    ],
+    "answer": "B",
+    "correctWord": "B. 2",
+    "explanation": "Answer: B. By definition, each node in a binary tree can have 0, 1, or at most 2 children (left child and right child).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_20",
+    "word": "Câu 20: How are integers typically stored in a computer's memory?",
+    "question": "How are integers typically stored in a computer's memory?",
+    "options": [
+      "A. As text strings: sequences of characters representing the numerical value",
+      "B. Using ASCII codes: numerical representations of characters, not the integers themselves",
+      "C. As binary patterns: sequences of 0s and 1s corresponding to the binary representation of the integer",
+      "D. As hexadecimal values: a compact representation of binary patterns using base-16 notation"
+    ],
+    "answer": "C",
+    "correctWord": "C. As binary patterns: sequences of 0s and 1s corresponding to the binary representation of the integer",
+    "explanation": "Answer: C. Computers store integers in memory as fixed-length binary bit patterns (0s and 1s) using binary representations such as unsigned or two's complement.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_21",
+    "word": "Câu 21: _______ is the mask to set the three leftmost bits of the...",
+    "question": "_______ is the mask to set the three leftmost bits of the pattern 1010 0111?",
+    "options": [
+      "A. 1110 0000",
+      "B. 0001 1111",
+      "C. 1110 0111",
+      "D. 0000 0111"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1110 0000",
+    "explanation": "Answer: A. To set specific bits to 1 using a bitwise OR operation, the mask must have 1s in the target bit positions and 0s elsewhere. Therefore, the mask to set the three leftmost bits is 1110 0000 (which yields 1110 0111 when ORed with 1010 0111).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_22",
+    "word": "Câu 22: In the _______ graphic method of representing an image in a...",
+    "question": "In the _______ graphic method of representing an image in a computer, re-scaling of the image creates a ragged or grainy image.",
+    "options": [
+      "A. bitmap",
+      "B. vector",
+      "C. quantized",
+      "D. binary"
+    ],
+    "answer": "A",
+    "correctWord": "A. bitmap",
+    "explanation": "Answer: A. In bitmap (raster) graphics, an image is stored as a grid of pixels. Enlarging or rescaling a bitmap image stretches individual pixels, creating a ragged or grainy appearance.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_23",
+    "word": "Câu 23: Calculate the bit rate for an audio storage system...",
+    "question": "Calculate the bit rate for an audio storage system utilizing a sampling rate of 192 kHz and a bit depth of 16 bits per sample.",
+    "options": [
+      "A. 3072 kbps",
+      "B. 3072 bps",
+      "C. 12 kbps",
+      "D. 12 bps"
+    ],
+    "answer": "A",
+    "correctWord": "A. 3072 kbps",
+    "explanation": "Answer: A. Bit rate = sampling rate × bit depth = 192 kHz × 16 bits/sample = 192,000 samples/s × 16 bits = 3,072,000 bps = 3072 kbps.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_24",
+    "word": "Câu 24: What do logic operations refer to in the context of...",
+    "question": "What do logic operations refer to in the context of computer data manipulation?",
+    "options": [
+      "A. Operations that change the data type of a bit pattern.",
+      "B. Operations that apply the same basic operation on individual bits of a pattern, or on two corresponding bits in two patterns.",
+      "C. Operations that physically move bit patterns between memory locations.",
+      "D. Operations that perform mathematical calculations on entire bit patterns as a whole"
+    ],
+    "answer": "B",
+    "correctWord": "B. Operations that apply the same basic operation on individual bits of a pattern, or on two corresponding bits in two patterns.",
+    "explanation": "Answer: B. Logic (bitwise) operations operate at the bit level, applying operations such as NOT, AND, OR, or XOR on individual bits of a pattern or corresponding pairs of bits in two patterns.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_25",
+    "word": "Câu 25: Which of the following is true about the shift operation?",
+    "question": "Which of the following is true about the shift operation?",
+    "options": [
+      "A. The left shift operation is used to divide an integer by two",
+      "B. The right shift operation is used to multiply an integer by two",
+      "C. The left shift operation is used to multiply an integer by two",
+      "D. None of the other options are correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. The left shift operation is used to multiply an integer by two",
+    "explanation": "Answer: C. Shifting a binary integer one bit to the left multiplies its value by 2 (provided no overflow occurs), while shifting right divides by 2.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_26",
+    "word": "Câu 26: What does \"sampling\" refer to in the context of audio...",
+    "question": "What does \"sampling\" refer to in the context of audio storage?",
+    "options": [
+      "A. Converting audio into hexadecimal format",
+      "B. Capturing discrete values of the sound wave at regular intervals",
+      "C. Compressing the audio file",
+      "D. Encoding text metadata for audio"
+    ],
+    "answer": "B",
+    "correctWord": "B. Capturing discrete values of the sound wave at regular intervals",
+    "explanation": "Answer: B. Sampling is the first step in digitizing an analog audio signal, where the amplitude of the continuous sound wave is measured at regular time intervals.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_27",
+    "word": "Câu 27: What is the primary goal of a masquerading attack?",
+    "question": "What is the primary goal of a masquerading attack?",
+    "options": [
+      "A. To impersonate another entity",
+      "B. To delay or delete messages",
+      "C. To replay a previously sent message",
+      "D. To deny sending or receiving a message"
+    ],
+    "answer": "A",
+    "correctWord": "A. To impersonate another entity",
+    "explanation": "Answer: A. Masquerading (or spoofing) is an active security attack in which one entity pretends to be (impersonates) another legitimate entity.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_28",
+    "word": "Câu 28: In a steganographic algorithm, if each comma (,) in the...",
+    "question": "In a steganographic algorithm, if each comma (,) in the encrypted message equals digit 0 and each dot (.) in the message equals digit 1. What is the hidden information in following message?\n“I am a human, a student. I studied hard, so I got a good score.”",
+    "options": [
+      "A. 0101",
+      "B. 1010",
+      "C. 0011",
+      "D. 1100"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0101",
+    "explanation": "Answer: A. Reading the punctuation marks in order from the message: ',' (after human) = 0, '.' (after student) = 1, ',' (after hard) = 0, '.' (after score) = 1. This produces the hidden binary sequence 0101.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_29",
+    "word": "Câu 29: What is a potential damage caused by hackers to a...",
+    "question": "What is a potential damage caused by hackers to a financial institution's computer system?",
+    "options": [
+      "A. Enhancing system performance",
+      "B. Fraud and manipulation of data, leading to financial loss",
+      "C. Installing new, unauthorized software.",
+      "D. Providing free services to customers"
+    ],
+    "answer": "B",
+    "correctWord": "B. Fraud and manipulation of data, leading to financial loss",
+    "explanation": "Answer: B. For a financial institution, unauthorized hacking can lead to data manipulation, fraudulent transactions, and direct financial loss.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_30",
+    "word": "Câu 30: Which statement describes red hat hackers?",
+    "question": "Which statement describes red hat hackers?",
+    "options": [
+      "A. Hackers who infiltrate computer networks with negative motives, such as monetary gain or reputation building",
+      "B. Hackers who track down black hat hackers and work to stop their activities",
+      "C. Hackers whose actions are often driven by revenge or personal agendas",
+      "D. Hackers who expose large datasets online for the public good"
+    ],
+    "answer": "B",
+    "correctWord": "B. Hackers who track down black hat hackers and work to stop their activities",
+    "explanation": "Answer: B. Red hat hackers act like vigilantes who proactively track down black hat hackers and disrupt or stop their malicious operations.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_31",
+    "word": "Câu 31: What is a green hat hacker?",
+    "question": "What is a green hat hacker?",
+    "options": [
+      "A. Green Hat is a bad guy",
+      "B. Green hat will find and destroy black hat hacker",
+      "C. Green hat is someone who just wants to learn to hack",
+      "D. Green hat will find and destroy white hat hacker",
+      "E. None of the others"
+    ],
+    "answer": "C",
+    "correctWord": "C. Green hat is someone who just wants to learn to hack",
+    "explanation": "Answer: C. A green hat hacker is a novice or amateur in hacking who is eager to learn and improve their hacking skills (whereas black hats are malicious, white hats are ethical, and red hats target black hats).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_32",
+    "word": "Câu 32: How does a compiler function in the context of high-level...",
+    "question": "How does a compiler function in the context of high-level languages?",
+    "options": [
+      "A. It directly executes the high-level code",
+      "B. It translates high-level code into machine language all at once",
+      "C. It translates and executes the code line by line",
+      "D. It optimizes the code for better performance"
+    ],
+    "answer": "B",
+    "correctWord": "B. It translates high-level code into machine language all at once",
+    "explanation": "Answer: B. A compiler translates an entire high-level source program into machine language at once before execution, unlike an interpreter which translates and executes line by line.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_33",
+    "word": "Câu 33: What is the main role of a compiler?",
+    "question": "What is the main role of a compiler?",
+    "options": [
+      "A. Translate source code into machine code",
+      "B. Optimize hardware performance",
+      "C. Translate binary code into assembly",
+      "D. Execute source code directly"
+    ],
+    "answer": "A",
+    "correctWord": "A. Translate source code into machine code",
+    "explanation": "Answer: A. The primary role of a compiler is to translate human-readable source code written in a high-level programming language into machine code.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_34",
+    "word": "Câu 34: In the procedural paradigm, how are data and program units...",
+    "question": "In the procedural paradigm, how are data and program units (functions) typically related?",
+    "options": [
+      "A. Functions and data are separate entities with no direct relationship.",
+      "B. Functions operate directly on data passed to them as parameters.",
+      "C. Functions encapsulate both data and behavior.",
+      "D. Data and functions are globally shared without restrictions."
+    ],
+    "answer": "B",
+    "correctWord": "B. Functions operate directly on data passed to them as parameters.",
+    "explanation": "Answer: B. In the procedural paradigm, data is passive and functions (procedures) are active units that operate directly on data passed to them as parameters (unlike OOP, which encapsulates data and behavior in objects).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_35",
+    "word": "Câu 35: What is a common use case for functional programming...",
+    "question": "What is a common use case for functional programming languages?",
+    "options": [
+      "A. Web development",
+      "B. Writing operating systems",
+      "C. Performing mathematical and data analysis tasks",
+      "D. Building relational databases"
+    ],
+    "answer": "C",
+    "correctWord": "C. Performing mathematical and data analysis tasks",
+    "explanation": "Answer: C. Functional programming languages model computation as mathematical function evaluation and are commonly used for mathematical, symbolic, and data analysis tasks.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_36",
+    "word": "Câu 36: In the Turing model, the output data depends on the...",
+    "question": "In the Turing model, the output data depends on the combination of two factors:",
+    "options": [
+      "A. The processor and the memory",
+      "B. The input data and the program",
+      "C. The hardware and the software",
+      "D. The control unit and the I/O"
+    ],
+    "answer": "B",
+    "correctWord": "B. The input data and the program",
+    "explanation": "Answer: B. In Forouzan's description of the Turing model, the output data depends on the combination of two factors: the input data and the program.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_37",
+    "word": "Câu 37: Which of the following BEST describes the Turing model of...",
+    "question": "Which of the following BEST describes the Turing model of a computer?",
+    "options": [
+      "A. A machine capable of performing multiple tasks simultaneously",
+      "B. A machine processing data with external programming",
+      "C. A universal computational device using a program and data",
+      "D. A machine limited to performing simple arithmetic operations"
+    ],
+    "answer": "C",
+    "correctWord": "C. A universal computational device using a program and data",
+    "explanation": "Answer: C. Alan Turing proposed that all computation could be performed by a universal computational device (Universal Turing Machine) that accepts both a program and input data.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_38",
+    "word": "Câu 38: Which of the following best describes the Turing model of...",
+    "question": "Which of the following best describes the Turing model of a computer?",
+    "options": [
+      "A. A model that includes hardware, software, and data",
+      "B. A mathematical model of computation that defines what can be computed",
+      "C. A hardware-centric architecture for data processing",
+      "D. A model emphasizing the interaction between users and computers"
+    ],
+    "answer": "B",
+    "correctWord": "B. A mathematical model of computation that defines what can be computed",
+    "explanation": "Answer: B. The Turing model is an abstract mathematical model of computation that defines computability (what can be computed algorithmically).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_39",
+    "word": "Câu 39: Which of the following best describes the 80-20 rule in...",
+    "question": "Which of the following best describes the 80-20 rule in the context of computer cache memory?",
+    "options": [
+      "A. 20% of the data is accessed 80% of the time",
+      "B. 80% of the data is accessed 20% of the time",
+      "C. 20% of the date is computed 80% of the time",
+      "D. 80% of the data is computed 20% of the time"
+    ],
+    "answer": "A",
+    "correctWord": "A. 20% of the data is accessed 80% of the time",
+    "explanation": "Answer: A. In cache memory design, the 80-20 rule (locality of reference) states that computers spend 80% of the time accessing only 20% of the data, which makes small, fast cache memory highly effective.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_40",
+    "word": "Câu 40: Which of the following is a non-volatile storage device?",
+    "question": "Which of the following is a non-volatile storage device?",
+    "options": [
+      "A. SSD",
+      "B. RAM",
+      "C. CPU Cache",
+      "D. Registers"
+    ],
+    "answer": "A",
+    "correctWord": "A. SSD",
+    "explanation": "Answer: A. An SSD (Solid State Drive) is non-volatile storage that retains data when power is turned off, whereas RAM, CPU Cache, and Registers are volatile memory.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_41",
+    "word": "Câu 41: In modern computers following the Von Neumann architecture...",
+    "question": "In modern computers following the Von Neumann architecture, where are both programs and their corresponding data stored?",
+    "options": [
+      "A. Programs and data in the same memory",
+      "B. Programs in memory, data in punch cards",
+      "C. Programs in punch cards, data in memory",
+      "D. Programs and data in separate memory units"
+    ],
+    "answer": "A",
+    "correctWord": "A. Programs and data in the same memory",
+    "explanation": "Answer: A. According to the stored-program concept of the Von Neumann architecture, both program instructions and data are stored in the same main memory.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_42",
+    "word": "Câu 42: Which of the following is a characteristic of sequential...",
+    "question": "Which of the following is a characteristic of sequential file organization?",
+    "options": [
+      "A. Data is stored in random order within the file, and access to specific records is achieved using a key or index",
+      "B. Data is stored in the order in which it is entered and can only be accessed sequentially",
+      "C. Data is stored using a linked list structure, where each record contains a pointer to the location of the next record in the sequence",
+      "D. Data is organized with an index that allows for quick searching and retrieval of records based on specific keys or identifiers"
+    ],
+    "answer": "B",
+    "correctWord": "B. Data is stored in the order in which it is entered and can only be accessed sequentially",
+    "explanation": "Answer: B. In sequential file organization, records are stored one after another in order and can only be accessed sequentially from start to finish.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_43",
+    "word": "Câu 43: Which type of file structure uses hash functions for...",
+    "question": "Which type of file structure uses hash functions for indexing?",
+    "options": [
+      "A. Sequential files",
+      "B. Indexed files",
+      "C. Hashed files",
+      "D. Binary files"
+    ],
+    "answer": "C",
+    "correctWord": "C. Hashed files",
+    "explanation": "Answer: C. Hashed files apply a mathematical hash function to a record's key to compute its storage address directly without needing a separate index table.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_44",
+    "word": "Câu 44: What is an address collision in the context of hashed...",
+    "question": "What is an address collision in the context of hashed files?",
+    "options": [
+      "A. When two different data items are assigned the same hash value, leading to the same storage location",
+      "B. When data cannot be accessed due to file corruption",
+      "C. When a file grows beyond its maximum size",
+      "D. When an index points to a non-existent location in a file"
+    ],
+    "answer": "A",
+    "correctWord": "A. When two different data items are assigned the same hash value, leading to the same storage location",
+    "explanation": "Answer: A. In hashed files, a collision occurs when a hash function maps two different keys (synonyms) to the same hash address/storage location.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_45",
+    "word": "Câu 45: In the TCP/IP model, which layer corresponds to both Data...",
+    "question": "In the TCP/IP model, which layer corresponds to both Data Link and Physical layers of the OSI model?",
+    "options": [
+      "A. Network Access Layer",
+      "B. Internet Layer",
+      "C. Transport Layer",
+      "D. Application Layer"
+    ],
+    "answer": "A",
+    "correctWord": "A. Network Access Layer",
+    "explanation": "Answer: A. In the 4-layer TCP/IP model, the Network Access Layer combines the functions of the Data Link and Physical layers of the 7-layer OSI model.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_46",
+    "word": "Câu 46: Which layer of the OSI model is responsible for data...",
+    "question": "Which layer of the OSI model is responsible for data encryption?",
+    "options": [
+      "A. Physical layer",
+      "B. Data link layer",
+      "C. Session layer",
+      "D. Presentation layer"
+    ],
+    "answer": "D",
+    "correctWord": "D. Presentation layer",
+    "explanation": "Answer: D. The Presentation layer (Layer 6) of the OSI model is responsible for data translation, compression, and encryption/decryption.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_47",
+    "word": "Câu 47: What is the most correct statement about LAN topologies?",
+    "question": "What is the most correct statement about LAN topologies?",
+    "options": [
+      "A. Bus topology is a sophisticated structure and robust with high traffic.",
+      "B. Ring topology is a high risk for collision between 2 nodes.",
+      "C. Star topology is a structure that has a central switch.",
+      "D. Mesh topology is the most complicated structure."
+    ],
+    "answer": "C",
+    "correctWord": "C. Star topology is a structure that has a central switch.",
+    "explanation": "Answer: C. In a star LAN topology, each node connects directly to a central device (a hub or switch). Bus topology is simple and degrades under high traffic, ring topology avoids collisions via token passing, and mesh is not a standard wired LAN topology (and hybrid topologies can be more complex).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_48",
+    "word": "Câu 48: In the TCP/IP protocol suite, what is the unit of data at...",
+    "question": "In the TCP/IP protocol suite, what is the unit of data at the network layer?",
+    "options": [
+      "A. Frame",
+      "B. Segment",
+      "C. Packet",
+      "D. Data"
+    ],
+    "answer": "C",
+    "correctWord": "C. Packet",
+    "explanation": "Answer: C. At the network (Internet) layer in TCP/IP, the unit of data is a packet (or datagram), whereas frames are at the data link layer and segments are at the transport layer.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_49",
+    "word": "Câu 49: A device is sending out data at the rate of 1000 bps. How...",
+    "question": "A device is sending out data at the rate of 1000 bps. How long does it take to send out 10 bits?",
+    "options": [
+      "A. 10 ms",
+      "B. 1 ms",
+      "C. 10 000 ms",
+      "D. 100 ms"
+    ],
+    "answer": "A",
+    "correctWord": "A. 10 ms",
+    "explanation": "Answer: A. Transmission time = 10 bits / 1000 bits per second = 0.01 seconds = 10 milliseconds (10 ms).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_50",
+    "word": "Câu 50: What is a key difference in security considerations...",
+    "question": "What is a key difference in security considerations between a P2P system and a system relying on dedicated servers?",
+    "options": [
+      "A. P2P systems inherently offer stronger encryption methods.",
+      "B. Dedicated servers are more susceptible to distributed denial-of-service attacks leading to infamous cybercrimes.",
+      "C. Securing communication is more complex when services are distributed.",
+      "D. User authentication is simpler to manage in P2P environments."
+    ],
+    "answer": "C",
+    "correctWord": "C. Securing communication is more complex when services are distributed.",
+    "explanation": "Answer: C. Because P2P systems decentralize services across peers without a single trusted central authority, securing communication, trust, and access control is more complex than with dedicated servers.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_51",
+    "word": "Câu 51: Which of the following represents the decimal number 26 in...",
+    "question": "Which of the following represents the decimal number 26 in hexadecimal?",
+    "options": [
+      "A. 1A",
+      "B. 2B",
+      "C. 1F",
+      "D. 2A"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1A",
+    "explanation": "Answer: A. Dividing 26 by 16 gives quotient 1 and remainder 10 (represented as A in hexadecimal), so 26 in decimal equals 1A in hexadecimal (1 × 16 + 10 = 26).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_52",
+    "word": "Câu 52: What will we repeatedly do to convert a decimal integer...",
+    "question": "What will we repeatedly do to convert a decimal integer to base b?",
+    "options": [
+      "A. divide by b",
+      "B. multiply by b",
+      "C. add to b",
+      "D. subtract from b"
+    ],
+    "answer": "A",
+    "correctWord": "A. divide by b",
+    "explanation": "Answer: A. To convert a decimal integer to any base b, we repeatedly divide the number by b and collect the remainders in reverse order.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_53",
+    "word": "Câu 53: What is the key characteristic of a \"positional number...",
+    "question": "What is the key characteristic of a \"positional number system\"?",
+    "options": [
+      "A. The value of each symbol is fixed regardless of its position",
+      "B. It uses a limited number of symbols where each symbol has a fixed value",
+      "C. The position a symbol occupies in the number determines the value it represents",
+      "D. It represents numbers using Roman numerals or similar symbols."
+    ],
+    "answer": "C",
+    "correctWord": "C. The position a symbol occupies in the number determines the value it represents",
+    "explanation": "Answer: C. In a positional number system, the value represented by a symbol depends on both the symbol itself and the position (place value, as a power of the base) it occupies in the number.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_54",
+    "word": "Câu 54: What is one primary reason for converting between number...",
+    "question": "What is one primary reason for converting between number systems in computing?",
+    "options": [
+      "A. To efficiently store and process data",
+      "B. To standardize communication protocols",
+      "C. To confuse data",
+      "D. To complicate mathematical operations"
+    ],
+    "answer": "A",
+    "correctWord": "A. To efficiently store and process data",
+    "explanation": "Answer: A. Computers operate in binary to efficiently store and process data in electronic circuits, while humans use decimal, octal, or hexadecimal representations, making conversion between number systems essential.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_55",
+    "word": "Câu 55: Which scheduling algorithm gives priority to processes...",
+    "question": "Which scheduling algorithm gives priority to processes with the shortest expected processing time?",
+    "options": [
+      "A. First-Come, First-Served (FCFS)",
+      "B. Shortest Job Next (SJN)",
+      "C. Round-Robin (RR)",
+      "D. Priority Scheduling"
+    ],
+    "answer": "B",
+    "correctWord": "B. Shortest Job Next (SJN)",
+    "explanation": "Answer: B. Shortest Job Next (SJN), also called Shortest Job First (SJF), schedules the process with the shortest expected processing/execution time next.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_56",
+    "word": "Câu 56: Which component of an operating system is responsible...",
+    "question": "Which component of an operating system is responsible for managing access to input/output devices?",
+    "options": [
+      "A. Memory manager",
+      "B. Process manager",
+      "C. Device manager",
+      "D. File manager"
+    ],
+    "answer": "C",
+    "correctWord": "C. Device manager",
+    "explanation": "Answer: C. In an operating system, the Device manager is responsible for managing access to and controlling all input/output devices.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_57",
+    "word": "Câu 57: In _____, memory is divided into equally sized sections...",
+    "question": "In _____, memory is divided into equally sized sections called frames",
+    "options": [
+      "A. Partitioning",
+      "B. Paging",
+      "C. Segmentation",
+      "D. Swapping"
+    ],
+    "answer": "B",
+    "correctWord": "B. Paging",
+    "explanation": "Answer: B. In paging memory management, physical memory is divided into fixed, equally sized blocks called frames, and programs are divided into equal-sized pages.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_58",
+    "word": "Câu 58: Which operating system is known for its strong emphasis...",
+    "question": "Which operating system is known for its strong emphasis on stability and performance in multi-user environments?",
+    "options": [
+      "A. UNIX",
+      "B. Linux",
+      "C. Windows",
+      "D. Android"
+    ],
+    "answer": "A",
+    "correctWord": "A. UNIX",
+    "explanation": "Answer: A. UNIX was specifically designed from the ground up as a multi-user, multitasking operating system known for high stability, portability, and performance in multi-user and server environments.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_59",
+    "word": "Câu 59: What is the primary purpose of an operating system?",
+    "question": "What is the primary purpose of an operating system?",
+    "options": [
+      "A. To design and develop software applications and tools for various purposes",
+      "B. To manage system hardware and software resources efficiently",
+      "C. To establish connections and facilitate communication between multiple computers in a network",
+      "D. To encrypt user data and protect it from unauthorized access and threats"
+    ],
+    "answer": "B",
+    "correctWord": "B. To manage system hardware and software resources efficiently",
+    "explanation": "Answer: B. The primary purpose of an operating system is to act as an interface between hardware and users/applications and to manage system hardware and software resources efficiently.",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  },
+  {
+    "id": "CSI_SU26_FE_60",
+    "word": "Câu 60: When a program is selected by the operating system and...",
+    "question": "When a program is selected by the operating system and moved to the hold state, what does it become?",
+    "options": [
+      "A. Job",
+      "B. Process",
+      "C. Deadlock",
+      "D. Partition"
+    ],
+    "answer": "A",
+    "correctWord": "A. Job",
+    "explanation": "Answer: A. In Forouzan's operating system process model, a program becomes a job when it is selected by the OS and placed in the hold state (it later becomes a process once loaded into memory in the ready state).",
+    "subject": "Kiến Trúc Máy Tính (CSI106)",
+    "topic": "CSI106 - SU26 - FE"
+  }
+]
