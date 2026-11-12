@@ -10,14 +10,7 @@ import {
   AlertTriangle,
   Sparkles,
   ChevronRight,
-  Flame,
   Layers,
-  BookOpen,
-  Volume2,
-  TrendingUp,
-  CheckCircle2,
-  Clock,
-  HelpCircle,
   Smartphone,
 } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
@@ -26,7 +19,6 @@ import { getQuizDisplayName } from '@/lib/defaultBanks';
 import { Word, WordProgress } from '@/lib/types';
 import WordModal from '@/components/WordModal';
 import QrSyncModal from '@/components/QrSyncModal';
-import { SpeechService } from '@/lib/speech';
 
 export default function Home() {
   const router = useRouter();
@@ -115,14 +107,14 @@ export default function Home() {
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-500 text-white">
-                V2.0 Cập Nhật Mới
+                V2.1 Cập Nhật Mới
               </span>
               <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
-                Thẻ Lật 3D SM-2 • Phản Xạ Thần Tốc (0.4s) • Mở Rộng Bộ Đề Động
+                Thẻ Lật 3D SM-2 • Phản Xạ (0.4s) • Luyện Theo Chặng Không Sót Câu
               </span>
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 max-w-2xl text-balance">
-              Ghi nhớ chủ động (Active Recall), luyện phản xạ truy xuất thần tốc (0.4s) và cá nhân hóa bộ đề ôn thi chuẩn Spaced Repetition.
+              Ghi nhớ chủ động (Active Recall), luyện phản xạ truy xuất thần tốc (0.4s) và chia chặng tuần tự (Câu 1–20, 21–40...) kèm vòng ép sửa câu sai.
             </p>
           </div>
         </div>
@@ -149,7 +141,6 @@ export default function Home() {
             Kho Đề & Môn &rarr;
           </Link>
         </div>
-
       </div>
 
       {/* 4 Intelligent Study Modes */}
@@ -191,7 +182,7 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Mode 2: Drill */}
+          {/* Mode 2: Drill (Upgraded to Checkpoint Tutor Mode) */}
           <Link
             href="/session/drill"
             className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 dark:hover:border-emerald-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
@@ -201,19 +192,19 @@ export default function Home() {
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Dumbbell className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                  Giải Thích Tức Thì
+                <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-md bg-emerald-600 text-white shadow-sm">
+                  Chia Chặng Mới ⭐
                 </span>
               </div>
               <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-1">
-                Luyện Trắc Nghiệm (Drill)
+                Luyện Theo Chặng (Checkpoint)
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-3 sm:mb-4">
-                Làm trắc nghiệm có phản hồi giải thích đúng/sai tức thì kèm phím tắt 1-4.
+                Chia đề thành các chặng cố định (Câu 1–20, 21–40...), đọc giải thích sâu và ép sửa câu sai cuối chặng.
               </p>
             </div>
             <div className="flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400 pt-2 border-t border-slate-100 dark:border-slate-800">
-              <span>Luyện tập ngay</span>
+              <span>Chọn chặng học ngay</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
