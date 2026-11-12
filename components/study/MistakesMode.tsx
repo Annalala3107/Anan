@@ -15,7 +15,7 @@ import {
   Trophy,
   AlertTriangle,
   ArrowRight,
-  HelpCircle,
+  Shuffle,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -24,12 +24,27 @@ interface MistakesModeProps {
   onExit: () => void;
 }
 
+function shuffleArray<T>(arr: T[]): T[] {
+  if (arr.length <= 1) return [...arr];
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  if (copy.length > 1 && copy.every((val, idx) => val === arr[idx])) {
+    const first = copy.shift()!;
+    copy.push(first);
+  }
+  return copy;
+}
+
 export default function MistakesMode({ words, onExit }: MistakesModeProps) {
   const [mistakeWords, setMistakeWords] = useState<Word[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnswered, setIsAnswered] = useState(false);
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [isFinished, setIsFinished] = useState(false);
+  const [shuffleOptions, setShuffleOptions] = useState(true);
 
   useEffect(() => {
     if (!words || words.length === 0) return;
@@ -64,6 +79,9 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
     if (!currentWord) return [];
 
     if (isMCQ && currentWord.options) {
+      if (shuffleOptions) {
+        return shuffleArray(currentWord.options.map((o) => cleanOptionText(o)));
+      }
       return currentWord.options;
     }
 
@@ -74,7 +92,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
       .slice(0, 3);
 
     return [currentWord.word, ...otherWords].sort(() => 0.5 - Math.random());
-  }, [currentWord, isMCQ, words]);
+  }, [currentWord, isMCQ, shuffleOptions, words]);
 
   if (!currentWord && mistakeWords.length === 0) {
     return (
@@ -135,7 +153,11 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
 
   const isOptionTarget = (opt: string) => {
     if (isMCQ) {
-      return isAnswerMatch(opt, currentWord.correctWord || currentWord.word, currentWord.answer);
+      return isAnswerMatch(
+        opt,
+        currentWord.correctWord || currentWord.word,
+        shuffleOptions ? undefined : currentWord.answer
+      );
     }
     return opt.toLowerCase() === currentWord.word.toLowerCase();
   };
@@ -173,7 +195,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
   return (
     <div className="w-full max-w-4xl mx-auto py-6 px-4 sm:px-6">
       {/* Top Bar */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
             <AlertTriangle className="w-4 h-4 text-amber-500" />
@@ -181,7 +203,26 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
           </span>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          {isMCQ && (
+            <button
+              type="button"
+              onClick={() => {
+                if (isAnswered) return;
+                soundFx.playClick();
+                setShuffleOptions((v) => !v);
+              }}
+              className={`px-2.5 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition-all cursor-pointer ${
+                shuffleOptions
+                  ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/40'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700'
+              }`}
+              title="Bật/tắt đảo vị trí các đáp án A/B/C/D chống học vẹt vị trí cũ"
+            >
+              <Shuffle className="w-3.5 h-3.5" />
+              <span>Đảo A–D: {shuffleOptions ? 'BẬT' : 'TẮT'}</span>
+            </button>
+          )}
           <span className="text-sm font-bold text-slate-700 dark:text-slate-300">
             {currentIndex + 1} / {mistakeWords.length}
           </span>
@@ -206,9 +247,16 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
       <div key={currentIndex} className="animate-question-enter transform-gpu">
         {/* Question Card */}
         <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-5 sm:mb-6">
-          <p className="text-xs font-bold text-amber-500 uppercase tracking-wider mb-2">
-            {isMCQ ? 'Câu hỏi cần khắc phục' : 'Từ vựng cần củng cố'}
-          </p>
+          <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+            <p className="text-xs font-bold text-amber-500 uppercase tracking-wider">
+              {isMCQ ? 'Câu hỏi cần khắc phục' : 'Từ vựng cần củng cố'}
+            </p>
+            {isMCQ && shuffleOptions && (
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center gap-1">
+                <Shuffle className="w-3 h-3" /> Đã đảo thứ tự A–D chống nhớ vẹt
+              </span>
+            )}
+          </div>
           <div className="flex items-start justify-between gap-4 mb-4">
             <CodeQuestionRenderer
               content={currentWord.question || currentWord.word}
@@ -227,7 +275,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
 
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
             {isMCQ
-              ? 'Hãy chọn phương án chính xác nhất:'
+              ? 'Hãy đọc kỹ nội dung và chọn phương án chính xác nhất:'
               : 'Hãy chọn định nghĩa / nghĩa tiếng Việt chính xác:'}
           </p>
         </div>

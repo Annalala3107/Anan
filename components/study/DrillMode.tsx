@@ -15,7 +15,6 @@ import {
   Trophy,
   HelpCircle,
   Layers,
-  Flame,
   AlertTriangle,
   Shuffle,
   Check,
@@ -37,6 +36,7 @@ interface PartQuestionItem {
   sentence: string;
   correctWord: string;
   options: string[];
+  originalOptions: string[];
   explanation: string;
   answerKey?: string;
 }
@@ -54,10 +54,15 @@ interface CheckpointPart {
 }
 
 function shuffleArray<T>(arr: T[]): T[] {
+  if (arr.length <= 1) return [...arr];
   const copy = [...arr];
   for (let i = copy.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  if (copy.length > 1 && copy.every((val, idx) => val === arr[idx])) {
+    const first = copy.shift()!;
+    copy.push(first);
   }
   return copy;
 }
@@ -67,7 +72,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   const [isConfiguring, setIsConfiguring] = useState(true);
   const [partSize, setPartSize] = useState<number>(20);
   const [retryMistakesAtEnd, setRetryMistakesAtEnd] = useState<boolean>(true);
-  const [shuffleOptions, setShuffleOptions] = useState<boolean>(false);
+  const [shuffleOptions, setShuffleOptions] = useState<boolean>(true);
   const [autoAdvanceCorrect, setAutoAdvanceCorrect] = useState<boolean>(false);
   const [progressMap, setProgressMap] = useState<Record<string, WordProgress>>({});
 
@@ -110,6 +115,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
             sentence: target.question,
             correctWord: target.correctWord || target.options[0],
             options: target.options,
+            originalOptions: target.options,
             explanation:
               target.explanation || `Answer: ${target.answer || target.options[0]}`,
             answerKey: target.answer,
@@ -124,12 +130,14 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           .slice(0, 3)
           .map((w) => w.word);
         const options = [target.word, ...otherWords];
+        const finalOpts = options.length >= 2 ? options : [target.word, 'Đáp án khác'];
         return {
           id: key,
           originalNumber: idx + 1,
           sentence,
           correctWord: target.word,
-          options: options.length >= 2 ? options : [target.word, 'Đáp án khác'],
+          options: finalOpts,
+          originalOptions: finalOpts,
           explanation: `${target.word}: ${target.vi || 'Đáp án chính xác'}`,
         };
       });
@@ -222,15 +230,38 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   }, [allItems, partSize, progressMap]);
 
   const prepareQuestionOptions = useCallback(
-    (items: PartQuestionItem[]): PartQuestionItem[] => {
-      if (!shuffleOptions) return items;
+    (items: PartQuestionItem[], forceShuffle?: boolean): PartQuestionItem[] => {
+      const shouldShuffle = forceShuffle !== undefined ? forceShuffle : shuffleOptions;
       return items.map((q) => ({
         ...q,
-        options: shuffleArray(q.options),
+        options: shouldShuffle
+          ? shuffleArray(q.originalOptions.map((o) => cleanOptionText(o)))
+          : q.originalOptions,
       }));
     },
     [shuffleOptions]
   );
+
+  // Live toggle for option shuffling during active Drill session
+  const handleToggleShuffleLive = useCallback(() => {
+    soundFx.playClick();
+    setShuffleOptions((prev) => {
+      const nextVal = !prev;
+      setSessionQuestions((prevQs) =>
+        prevQs.map((q, idx) => {
+          // Do not reshuffle already-answered current question if selectedWord is set, unless we clear selection
+          if (idx === currentIndex && selectedWord) return q;
+          return {
+            ...q,
+            options: nextVal
+              ? shuffleArray(q.originalOptions.map((o) => cleanOptionText(o)))
+              : q.originalOptions,
+          };
+        })
+      );
+      return nextVal;
+    });
+  }, [currentIndex, selectedWord]);
 
   const handleStartPart = useCallback(
     (part: CheckpointPart) => {
@@ -445,7 +476,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20">
-                    🎯 Chia Chặng Không Sót Câu • Giải Thích Sâu
+                    🎯 Chia Chặng Không Sót Câu • Đảo Đáp Án Chống Học Vẹt
                   </span>
                   <span className="text-xs text-slate-400 font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800">
                     {words[0]?.subject || 'Bộ đề ôn tập'} • {allItems.length} câu
@@ -664,8 +695,13 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                 }`}
               >
                 <RotateCcw className={`w-4 h-4 mt-0.5 shrink-0 ${retryMistakesAtEnd ? 'text-emerald-500' : 'text-slate-400'}`} />
-                <div>
-                  <p className="text-xs font-extrabold">Ép làm lại câu sai cuối chặng</p>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-xs font-extrabold">Ép làm lại câu sai cuối chặng</p>
+                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${retryMistakesAtEnd ? 'bg-emerald-500 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-400'}`}>
+                      {retryMistakesAtEnd ? 'BẬT' : 'TẮT'}
+                    </span>
+                  </div>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                     Sai câu nào sẽ được hỏi lại ở cuối chặng đến khi đúng 100%.
                   </p>
@@ -682,8 +718,13 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                 }`}
               >
                 <Shuffle className={`w-4 h-4 mt-0.5 shrink-0 ${shuffleOptions ? 'text-indigo-500' : 'text-slate-400'}`} />
-                <div>
-                  <p className="text-xs font-extrabold">Đảo vị trí đáp án A/B/C/D</p>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-xs font-extrabold">Đảo vị trí đáp án A/B/C/D</p>
+                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${shuffleOptions ? 'bg-indigo-500 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-400'}`}>
+                      {shuffleOptions ? 'ĐANG BẬT' : 'TẮT'}
+                    </span>
+                  </div>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                     Chống học vẹt vị trí đáp án khi ôn đi ôn lại nhiều lần.
                   </p>
@@ -700,8 +741,13 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                 }`}
               >
                 <Zap className={`w-4 h-4 mt-0.5 shrink-0 ${autoAdvanceCorrect ? 'text-amber-500' : 'text-slate-400'}`} />
-                <div>
-                  <p className="text-xs font-extrabold">Tự qua câu khi ĐÚNG (1.1s)</p>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-xs font-extrabold">Tự qua câu khi ĐÚNG (1.1s)</p>
+                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${autoAdvanceCorrect ? 'bg-amber-500 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-400'}`}>
+                      {autoAdvanceCorrect ? 'BẬT' : 'TẮT'}
+                    </span>
+                  </div>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                     Tắt để tự bấm Enter sau khi đọc kỹ giải thích chi tiết.
                   </p>
@@ -847,10 +893,25 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           )}
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 flex-wrap">
+          {/* Live Shuffle Options Toggle Pill */}
+          <button
+            type="button"
+            onClick={handleToggleShuffleLive}
+            className={`px-2.5 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition-all cursor-pointer ${
+              shuffleOptions
+                ? 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/40'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-500 border-slate-200 dark:border-slate-700'
+            }`}
+            title="Bật/tắt đảo ngẫu nhiên vị trí đáp án A/B/C/D chống học vẹt vị trí"
+          >
+            <Shuffle className="w-3.5 h-3.5" />
+            <span>Đảo A–D: {shuffleOptions ? 'BẬT' : 'TẮT'}</span>
+          </button>
+
           {retryMistakesAtEnd && retryQueue.length > 0 && (
             <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
-              Cần làm lại cuối chặng: {retryQueue.length}
+              Cần sửa cuối chặng: {retryQueue.length}
             </span>
           )}
           <span className="text-sm font-black text-slate-700 dark:text-slate-300 font-mono">
@@ -880,10 +941,15 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       <div key={`${isRetryPhase ? 'retry' : 'main'}_${currentIndex}`} className="animate-question-enter transform-gpu">
         {/* Question Card */}
         <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-5">
-          <div className="flex items-center justify-between gap-2 mb-2.5">
+          <div className="flex items-center justify-between gap-2 mb-2.5 flex-wrap">
             <div className="flex items-center gap-2 text-xs font-bold text-indigo-500 uppercase tracking-wider">
               <HelpCircle className="w-4 h-4" />
               <span>Câu #{currentQ.originalNumber} trong đề</span>
+              {shuffleOptions && (
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 flex items-center gap-1 normal-case">
+                  <Shuffle className="w-3 h-3" /> Đã đảo thứ tự A–D
+                </span>
+              )}
             </div>
             <span className="text-[11px] font-semibold text-slate-400">
               Phím tắt: [1–{currentQ.options.length}] hoặc [A–{String.fromCharCode(64 + currentQ.options.length)}]

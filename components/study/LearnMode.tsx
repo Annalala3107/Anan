@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Word, WordProgress } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { isAnswerMatch } from '@/lib/utils';
+import { isAnswerMatch, cleanOptionText } from '@/lib/utils';
 import { soundFx } from '@/lib/sound';
 import {
   buildStandardQuestions,
@@ -38,6 +38,8 @@ interface LearnModeProps {
 interface CardItem {
   id: string;
   question: StandardQuestion;
+  originalOptions: string[];
+  originalAnswerKey?: string;
   correctStreak: number; // 0 .. streakTarget -> graduates when correctStreak >= streakTarget
   mistakes: number;
   attempts: number;
@@ -45,6 +47,21 @@ interface CardItem {
 
 // Active working pool size (Quizlet-style mini-round rotation)
 const ACTIVE_POOL_SIZE = 5;
+
+function shuffleOptionArray(arr: string[]): string[] {
+  if (arr.length <= 1) return [...arr];
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  // If more than 1 unique option and shuffle happened to match original order, rotate by 1
+  if (copy.length > 1 && copy.every((val, idx) => val === arr[idx])) {
+    const first = copy.shift()!;
+    copy.push(first);
+  }
+  return copy;
+}
 
 export default function LearnMode({ words, onExit }: LearnModeProps) {
   // Setup State
@@ -54,7 +71,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const [batchMode, setBatchMode] = useState<'preset' | 'all' | 'remaining'>('preset');
   const [batchSize, setBatchSize] = useState(20);
   const [selectionMode, setSelectionMode] = useState<QuestionSelectionMode>('smart');
-  const [shuffleChoices, setShuffleChoices] = useState(false);
+  const [shuffleChoices, setShuffleChoices] = useState(true);
   const [streakTarget, setStreakTarget] = useState(2); // 1 = Speed run, 2 = Ironclad memory
   const [progressMap, setProgressMap] = useState<Record<string, WordProgress>>({});
 
@@ -94,24 +111,19 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   }, [refreshProgress]);
 
   // Compute deck-wide mastery stats
-  const { availableCount, masteredCount, unmasteredCount, mistakeCount } = useMemo(() => {
+  const { availableCount, masteredCount, unmasteredCount } = useMemo(() => {
     const total = words.length;
     let mastered = 0;
-    let mistakes = 0;
     for (const w of words) {
       const p = StorageEngine.getItemProgress(w, progressMap);
       if (p?.status === 'mastered') {
         mastered++;
-      }
-      if (p && ((p.mistakesCount || 0) > 0 || (p.wrongStreak || 0) > 0)) {
-        mistakes++;
       }
     }
     return {
       availableCount: total,
       masteredCount: mastered,
       unmasteredCount: Math.max(0, total - mastered),
-      mistakeCount: mistakes,
     };
   }, [words, progressMap]);
 
@@ -142,20 +154,32 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           ? forceOnlyUnmastered
           : batchMode === 'remaining';
 
-      const standardList = buildStandardQuestions(words, countToUse, {
+      // Build questions in canonical order first so we can preserve originalOptions for mid-session toggling
+      const canonicalList = buildStandardQuestions(words, countToUse, {
         mode: selectionMode,
         progressMap: freshMap,
         onlyUnmastered,
-        shuffleChoices,
+        shuffleChoices: false,
       });
 
-      const initialCards: CardItem[] = standardList.map((q, idx) => ({
-        id: `card_${idx}_${q.id}`,
-        question: q,
-        correctStreak: 0,
-        mistakes: 0,
-        attempts: 0,
-      }));
+      const initialCards: CardItem[] = canonicalList.map((q, idx) => {
+        const cleanedOpts = q.options.map((opt) => cleanOptionText(opt));
+        const activeOpts = shuffleChoices ? shuffleOptionArray(cleanedOpts) : q.options;
+        return {
+          id: `card_${idx}_${q.id}`,
+          originalOptions: q.options,
+          originalAnswerKey: q.answerKey,
+          question: {
+            ...q,
+            options: activeOpts,
+            correctWord: shuffleChoices ? cleanOptionText(q.correctWord) : q.correctWord,
+            answerKey: shuffleChoices ? undefined : q.answerKey,
+          },
+          correctStreak: 0,
+          mistakes: 0,
+          attempts: 0,
+        };
+      });
 
       const initialPoolCount = Math.min(ACTIVE_POOL_SIZE, initialCards.length);
       const initialActiveQueue = initialCards.slice(0, initialPoolCount).map((c) => c.id);
@@ -183,6 +207,32 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const handleStartSession = useCallback(() => {
     startSessionWithConfig();
   }, [startSessionWithConfig]);
+
+  // Live toggle for option shuffling during an active session
+  const handleToggleShuffleLive = useCallback(() => {
+    soundFx.playClick();
+    setShuffleChoices((prev) => {
+      const nextShuffle = !prev;
+      setCards((prevCards) =>
+        prevCards.map((c) => {
+          const nextOpts = nextShuffle
+            ? shuffleOptionArray(c.originalOptions.map((o) => cleanOptionText(o)))
+            : c.originalOptions;
+          return {
+            ...c,
+            question: {
+              ...c.question,
+              options: nextOpts,
+              answerKey: nextShuffle ? undefined : c.originalAnswerKey,
+            },
+          };
+        })
+      );
+      setSelectedOpt(null);
+      setFeedbackState('idle');
+      return nextShuffle;
+    });
+  }, []);
 
   const currentCardId = activeQueue[0];
   const currentItem = cards.find((c) => c.id === currentCardId);
@@ -255,7 +305,23 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       setActiveQueue(nextQueue);
       setNextReserveIndex(nextReserve);
     } else {
-      // Current card not yet graduated -> keep it rotating inside the active pool
+      // Current card not yet graduated -> re-shuffle its options if shuffleChoices is enabled so its next appearance has a fresh A-D order!
+      if (shuffleChoices) {
+        setCards((prevCards) =>
+          prevCards.map((c) =>
+            c.id === activeId
+              ? {
+                  ...c,
+                  question: {
+                    ...c.question,
+                    options: shuffleOptionArray(c.question.options),
+                  },
+                }
+              : c
+          )
+        );
+      }
+
       if (restQueue.length === 0) {
         setActiveQueue([activeId]);
       } else if (feedbackState === 'wrong') {
@@ -268,7 +334,16 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         setActiveQueue(nextQueue);
       }
     }
-  }, [activeQueue, cards, currentItem, feedbackState, finishSession, nextReserveIndex, streakTarget]);
+  }, [
+    activeQueue,
+    cards,
+    currentItem,
+    feedbackState,
+    finishSession,
+    nextReserveIndex,
+    shuffleChoices,
+    streakTarget,
+  ]);
 
   const advanceNextRef = useRef(advanceNext);
   useEffect(() => {
@@ -281,7 +356,11 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       if (feedbackState !== 'idle' || !currentItem || !currentQ) return;
 
       setSelectedOpt(optText);
-      const isCorrect = isAnswerMatch(optText, currentQ.correctWord, currentQ.answerKey);
+      const isCorrect = isAnswerMatch(
+        optText,
+        currentQ.correctWord,
+        shuffleChoices ? undefined : currentQ.answerKey
+      );
 
       setTotalAttempts((prev) => prev + 1);
 
@@ -334,7 +413,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         StorageEngine.recordMistakeOnly(currentQ.id);
       }
     },
-    [feedbackState, currentItem, currentQ, streakTarget]
+    [feedbackState, currentItem, currentQ, shuffleChoices, streakTarget]
   );
 
   // Flashcard Self-Rating (SM-2 Quality 1, 3, 5)
@@ -361,7 +440,15 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
         const updatedCards = cards.map((c) =>
           c.id === activeId
-            ? { ...c, correctStreak: newStreak, attempts: c.attempts + 1 }
+            ? {
+                ...c,
+                correctStreak: newStreak,
+                attempts: c.attempts + 1,
+                question:
+                  !didGraduate && shuffleChoices
+                    ? { ...c.question, options: shuffleOptionArray(c.question.options) }
+                    : c.question,
+              }
             : c
         );
         setCards(updatedCards);
@@ -397,7 +484,15 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         setCards((prevCards) =>
           prevCards.map((c) =>
             c.id === activeId
-              ? { ...c, correctStreak: 0, mistakes: c.mistakes + 1, attempts: c.attempts + 1 }
+              ? {
+                  ...c,
+                  correctStreak: 0,
+                  mistakes: c.mistakes + 1,
+                  attempts: c.attempts + 1,
+                  question: shuffleChoices
+                    ? { ...c.question, options: shuffleOptionArray(c.question.options) }
+                    : c.question,
+                }
               : c
           )
         );
@@ -424,7 +519,16 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       setIsFlipped(false);
       setTurnCount((t) => t + 1);
     },
-    [activeQueue, cards, currentItem, currentQ, finishSession, nextReserveIndex, streakTarget]
+    [
+      activeQueue,
+      cards,
+      currentItem,
+      currentQ,
+      finishSession,
+      nextReserveIndex,
+      shuffleChoices,
+      streakTarget,
+    ]
   );
 
   // Global Keyboard listener: Setup Enter, Flashcard Space / 1-3, Rapid Recall 1-6 / A-F
@@ -554,7 +658,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20 whitespace-nowrap">
-                    ⚡ Không Sót Câu Lẻ • Cày Hết Đề
+                    ⚡ Không Sót Câu Lẻ • Đảo Đáp Án Chống Học Vẹt
                   </span>
                   <span className="text-xs text-slate-400 font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 whitespace-nowrap">
                     {words[0]?.subject || 'Ngân hàng câu hỏi'} • {availableCount} câu
@@ -772,7 +876,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           {/* Smart Queue Order & Anti-Rote Option Shuffle */}
           <div>
             <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-              <Target className="w-4 h-4 text-emerald-500" /> 3. Chế độ bốc câu & Chống học vẹt vị trí
+              <Target className="w-4 h-4 text-emerald-500" /> 3. Chế độ bốc câu & Chống học vẹt vị trí đáp án A/B/C/D
             </label>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <button
@@ -840,7 +944,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                  Trộn ngẫu nhiên thứ tự 4 lựa chọn A/B/C/D để chống học vẹt vị trí đáp án.
+                  Trộn ngẫu nhiên thứ tự A/B/C/D ở mỗi lượt xoay tua để nhớ nội dung chứ không học vẹt vị trí.
                 </p>
               </button>
             </div>
@@ -886,7 +990,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-1">
                   {studyMethod === 'flashcard'
                     ? 'Đạt đánh giá [Đã thuộc lầu] hoặc tự tin nhớ đúng qua 2 lượt ôn ngắt quãng.'
-                    : 'Phải chọn đúng 2 lần liên tiếp mới tính là thuộc lầu lầu. Khắc phục triệt để đoán mò.'}
+                    : 'Phải chọn đúng 2 lần liên tiếp (với vị trí đáp án đảo mới) mới tính là thuộc lầu lầu.'}
                 </p>
               </button>
 
@@ -1052,7 +1156,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                       {pq.sentence}
                     </span>
                     <span className="font-bold text-emerald-600 dark:text-emerald-400 shrink-0">
-                      ✓ {pq.correctWord}
+                      ✓ {cleanOptionText(pq.correctWord)}
                     </span>
                   </div>
                 ))}
@@ -1147,7 +1251,22 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+          {/* Live Anti-Rote Option Shuffle Toggle Pill */}
+          <button
+            type="button"
+            onClick={handleToggleShuffleLive}
+            className={`px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 border transition-all cursor-pointer ${
+              shuffleChoices
+                ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/40 shadow-sm'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700'
+            }`}
+            title="Bật/tắt đảo ngẫu nhiên vị trí các đáp án A/B/C/D chống học vẹt vị trí"
+          >
+            <Shuffle className="w-3.5 h-3.5" />
+            <span>Đảo A–D: {shuffleChoices ? 'BẬT' : 'TẮT'}</span>
+          </button>
+
           {sessionCombo > 0 && (
             <div
               className="px-2.5 py-1 rounded-full text-xs font-black flex items-center gap-1 bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 animate-fade-in"
@@ -1185,7 +1304,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             <span>
               {currentItem.correctStreak >= streakTarget
                 ? 'Đã thuộc!'
-                : `Độ thuộc câu này: ${currentItem.correctStreak}/${streakTarget}`}
+                : `Độ thuộc: ${currentItem.correctStreak}/${streakTarget}`}
             </span>
           </div>
 
@@ -1225,6 +1344,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           streak={currentItem.correctStreak}
           streakTarget={streakTarget}
           isFlipped={isFlipped}
+          shuffleChoices={shuffleChoices}
           onToggleFlip={() => {
             setIsFlipped((f) => !f);
             soundFx.playClick();
@@ -1244,8 +1364,8 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           }`}
         >
           {/* Topic & Original Question Number Tag */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               {currentQ.originalNumber && (
                 <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                   Câu #{currentQ.originalNumber}
@@ -1254,6 +1374,11 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60">
                 {currentQ.topic || currentQ.subject || 'Câu hỏi'}
               </span>
+              {shuffleChoices && (
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center gap-1">
+                  <Shuffle className="w-3 h-3" /> Đã trộn vị trí A–D
+                </span>
+              )}
             </div>
 
             {currentItem.mistakes > 0 && (
@@ -1276,7 +1401,13 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             {currentQ.options &&
               currentQ.options.map((opt, idx) => {
                 const isSelected = selectedOpt === opt;
-                const isTrueAnswer = isAnswerMatch(opt, currentQ.correctWord, currentQ.answerKey);
+                const isTrueAnswer = isAnswerMatch(
+                  opt,
+                  currentQ.correctWord,
+                  shuffleChoices ? undefined : currentQ.answerKey
+                );
+                const letter = String.fromCharCode(65 + idx);
+                const displayOpt = cleanOptionText(opt);
 
                 let optionStyle =
                   'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 hover:border-indigo-500 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/30';
@@ -1314,12 +1445,18 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                           : 'bg-black/5 dark:bg-white/10 text-slate-600 dark:text-slate-300'
                       }`}
                     >
-                      {idx + 1}
+                      {letter}
                     </span>
 
                     <span className="flex-1 font-medium leading-relaxed">
-                      {opt}
+                      {displayOpt}
                     </span>
+
+                    {feedbackState === 'idle' && (
+                      <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 hidden sm:inline shrink-0 mt-1">
+                        [{idx + 1}]
+                      </span>
+                    )}
 
                     {feedbackState === 'correct' && isSelected && (
                       <Check className="w-5 h-5 text-white shrink-0 mt-0.5" />
@@ -1343,7 +1480,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                 <span>
-                  Nhìn kỹ đáp án màu <strong className="text-emerald-400 font-bold">Xanh Lá</strong> ở trên! Câu này sẽ xuất hiện lại trong nhóm xoay tua sau <strong>3 câu nữa</strong>.
+                  Nhìn kỹ nội dung đáp án màu <strong className="text-emerald-400 font-bold">Xanh Lá</strong> ở trên! Câu này sẽ xuất hiện lại sau <strong>3 câu nữa</strong> {shuffleChoices ? '(với vị trí A–D đảo mới)' : ''}.
                 </span>
               </div>
 

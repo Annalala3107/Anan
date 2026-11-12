@@ -13,22 +13,13 @@ import ExamResultView from './exam/ExamResultView';
 import {
   Clock,
   CheckCircle2,
-  XCircle,
-  AlertCircle,
   ArrowLeft,
   ArrowRight,
-  Trophy,
-  RotateCcw,
   HelpCircle,
   Flag,
   AlertTriangle,
-  Play,
-  Settings2,
   Layers,
-  BookOpen,
-  Check,
-  Zap,
-  BarChart3,
+  Shuffle,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -44,6 +35,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   const [isConfiguring, setIsConfiguring] = useState(true);
   const [targetCount, setTargetCount] = useState(25);
   const [targetMinutes, setTargetMinutes] = useState(10); // -1 = untimed
+  const [shuffleChoices, setShuffleChoices] = useState(true);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
 
   // Taking Exam State
@@ -78,7 +70,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     if (availableTopics.length > 0 && selectedTopics.length === 0) {
       setSelectedTopics(availableTopics.map((t) => t.name));
     }
-  }, [availableTopics]);
+  }, [availableTopics, selectedTopics.length]);
 
   // Compute number of questions matching selected topics
   const filteredAvailableCount = useMemo(() => {
@@ -134,7 +126,10 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     }
 
     const count = Math.min(eligibleWords.length, targetCount);
-    const list = buildStandardQuestions(eligibleWords, count);
+    const list = buildStandardQuestions(eligibleWords, count, {
+      mode: 'random',
+      shuffleChoices,
+    });
     setQuestions(list);
 
     // Setup timer
@@ -155,7 +150,15 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     setIsExamActive(true);
 
     soundFx.playZenChime();
-  }, [words, targetCount, targetMinutes, selectedTopics, availableTopics.length, setIsExamActive]);
+  }, [
+    words,
+    targetCount,
+    targetMinutes,
+    shuffleChoices,
+    selectedTopics,
+    availableTopics.length,
+    setIsExamActive,
+  ]);
 
   // Hotkey Enter on Configuration Screen
   useEffect(() => {
@@ -313,7 +316,10 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       (w) => (w.topic || 'Chuyên đề chung').trim() === topicName
     );
     const count = Math.min(eligibleWords.length, 25);
-    const list = buildStandardQuestions(eligibleWords, count);
+    const list = buildStandardQuestions(eligibleWords, count, {
+      mode: 'random',
+      shuffleChoices,
+    });
     setQuestions(list);
     setTimeLeft(targetMinutes === -1 ? -1 : targetMinutes * 60);
     setElapsedSeconds(0);
@@ -445,6 +451,8 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
         setTargetCount={setTargetCount}
         targetMinutes={targetMinutes}
         setTargetMinutes={setTargetMinutes}
+        shuffleChoices={shuffleChoices}
+        setShuffleChoices={setShuffleChoices}
         availableTopics={availableTopics}
         selectedTopics={selectedTopics}
         toggleAllTopics={toggleAllTopics}
@@ -680,6 +688,11 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
               {currentQ.topic && (
                 <span className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200/50 dark:border-indigo-800/50">
                   {currentQ.topic}
+                </span>
+              )}
+              {shuffleChoices && (
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center gap-1 normal-case">
+                  <Shuffle className="w-3 h-3" /> Đã đảo thứ tự A–D
                 </span>
               )}
               {Boolean(flags[currentIndex]) && (

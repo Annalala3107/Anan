@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Word } from '@/lib/types';
-import { Settings2, Layers, Clock, BookOpen, Check, Play } from 'lucide-react';
+import { Settings2, Layers, Clock, BookOpen, Check, Play, Shuffle } from 'lucide-react';
 
 interface ExamConfigViewProps {
   words: Word[];
@@ -11,6 +11,8 @@ interface ExamConfigViewProps {
   setTargetCount: (n: number) => void;
   targetMinutes: number;
   setTargetMinutes: (n: number) => void;
+  shuffleChoices: boolean;
+  setShuffleChoices: React.Dispatch<React.SetStateAction<boolean>>;
   availableTopics: { name: string; count: number }[];
   selectedTopics: string[];
   toggleAllTopics: () => void;
@@ -27,6 +29,8 @@ export default function ExamConfigView({
   setTargetCount,
   targetMinutes,
   setTargetMinutes,
+  shuffleChoices,
+  setShuffleChoices,
   availableTopics,
   selectedTopics,
   toggleAllTopics,
@@ -46,7 +50,7 @@ export default function ExamConfigView({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-bold uppercase tracking-wider text-rose-500 bg-rose-500/10 px-2 py-0.5 rounded-md">
-                Chế độ Thi Thử
+                Chế độ Thi Thử • Chống Học Vẹt
               </span>
               <span className="text-xs text-slate-400 font-medium">
                 {words[0]?.subject || 'Ngân hàng đề thi'}
@@ -155,6 +159,42 @@ export default function ExamConfigView({
           </div>
         </div>
 
+        {/* Section 2.5: Anti-Rote Option Shuffle Toggle */}
+        <div>
+          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+            <Shuffle className="w-3.5 h-3.5 text-amber-500" /> Chế độ trộn đáp án phòng thi (Chống học vẹt A/B/C/D)
+          </label>
+          <button
+            type="button"
+            onClick={() => setShuffleChoices((v) => !v)}
+            className={`w-full p-4 rounded-2xl border-2 text-left transition-all flex items-center justify-between gap-4 cursor-pointer ${
+              shuffleChoices
+                ? 'bg-amber-500/10 border-amber-500/60 text-slate-900 dark:text-white shadow-sm'
+                : 'bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800 text-slate-500'
+            }`}
+          >
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="font-black text-xs sm:text-sm flex items-center gap-1.5">
+                  🔀 Đảo ngẫu nhiên vị trí các phương án A / B / C / D
+                </span>
+                <span
+                  className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                    shuffleChoices
+                      ? 'bg-amber-500 text-white'
+                      : 'bg-slate-200 dark:bg-slate-800 text-slate-400'
+                  }`}
+                >
+                  {shuffleChoices ? 'ĐANG BẬT (Khuyên dùng)' : 'TẮT (Giữ nguyên vị trí gốc)'}
+                </span>
+              </div>
+              <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                Giống phần mềm thi thật EOS/FE tại trường: cả thứ tự câu hỏi lẫn thứ tự 4 đáp án A–D đều được đảo mới ở mỗi lần thi.
+              </p>
+            </div>
+          </button>
+        </div>
+
         {/* Section 3: Topic Scope Filter */}
         {availableTopics.length > 0 && (
           <div>
@@ -248,8 +288,9 @@ export default function ExamConfigView({
             className="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rose-600 to-indigo-600 hover:from-rose-700 hover:to-indigo-700 text-white font-black flex items-center justify-center gap-2 shadow-glow text-sm transition-all disabled:opacity-50 active:scale-95 touch-manipulation select-none"
           >
             <Play className="w-4 h-4 fill-current" />
-            <span className="sm:hidden">BẮT ĐẦU LÀM BÀI THI</span>
-            <span className="hidden sm:inline">BẮT ĐẦU LÀM BÀI [Enter]</span>
+            <span>
+              BẮT ĐẦU THI ({Math.min(targetCount, filteredAvailableCount)} CÂU) [Enter]
+            </span>
           </button>
         </div>
       </div>
