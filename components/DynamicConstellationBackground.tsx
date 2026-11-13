@@ -28,12 +28,10 @@ const TWO_PI = Math.PI * 2;
 interface ConstellationStar {
   offsetX: number;
   offsetY: number;
-  orbitRadius: number;
-  orbitSpeed: number;
-  orbitPhase: number;
   x: number;
   y: number;
   radius: number;
+  renderRadius: number;
   colorIdx: 0 | 1 | 2 | 3;
 }
 
@@ -138,15 +136,14 @@ function generateConstellations(
       const colorIdx =
         Math.random() < 0.78 ? clusterColorIdx : (randomInt(0, 3) as 0 | 1 | 2 | 3);
 
+      const radius = s === 0 ? randomBetween(2.0, 2.6) : randomBetween(1.4, 2.2);
       stars.push({
         offsetX,
         offsetY,
-        orbitRadius: randomBetween(2.5, 6),
-        orbitSpeed: randomBetween(0.0005, 0.0012),
-        orbitPhase: randomBetween(0, TWO_PI),
         x: cx + offsetX,
         y: cy + offsetY,
-        radius: s === 0 ? randomBetween(2.0, 2.6) : randomBetween(1.4, 2.2),
+        radius,
+        renderRadius: radius,
         colorIdx,
       });
     }
@@ -302,13 +299,44 @@ export default function DynamicConstellationBackground({
     let microStars = generateMicroStars(width, height, microStarCount, density);
     const shootingStars: ShootingStar[] = [];
 
-    // Pre-allocated color buckets (reused every frame to avoid GC pressure)
-    const starBuckets: Array<Array<{ x: number; y: number; r: number }>> = [
+    // Pre-grouped color buckets built ONCE on scene init (Zero-GC during animation loop)
+    const clusterStarsByColor: [
+      ConstellationStar[],
+      ConstellationStar[],
+      ConstellationStar[],
+      ConstellationStar[],
+    ] = [[], [], [], []];
+    const microStarsByColor: [MicroStar[], MicroStar[], MicroStar[], MicroStar[]] = [
       [],
       [],
       [],
       [],
     ];
+
+    const rebuildColorBuckets = () => {
+      clusterStarsByColor[0].length = 0;
+      clusterStarsByColor[1].length = 0;
+      clusterStarsByColor[2].length = 0;
+      clusterStarsByColor[3].length = 0;
+      for (let c = 0; c < clusters.length; c++) {
+        const stars = clusters[c].stars;
+        for (let s = 0; s < stars.length; s++) {
+          const st = stars[s];
+          clusterStarsByColor[st.colorIdx].push(st);
+        }
+      }
+
+      microStarsByColor[0].length = 0;
+      microStarsByColor[1].length = 0;
+      microStarsByColor[2].length = 0;
+      microStarsByColor[3].length = 0;
+      for (let i = 0; i < microStars.length; i++) {
+        const m = microStars[i];
+        microStarsByColor[m.colorIdx].push(m);
+      }
+    };
+
+    rebuildColorBuckets();
 
     const syncHudCounts = () => {
       let totalStars = microStars.length;
@@ -325,13 +353,16 @@ export default function DynamicConstellationBackground({
       if (collapsedFpsRef.current) collapsedFpsRef.current.textContent = fpsText;
     };
 
+    const MAGNET_RADIUS = 135;
+    const MAGNET_RADIUS_SQ = MAGNET_RADIUS * MAGNET_RADIUS;
+    const MOUSE_IDLE_MS = 1200;
+
     const pointer = {
-      targetX: -1000,
-      targetY: -1000,
-      smoothX: width / 2,
-      smoothY: height / 2,
+      x: -1000,
+      y: -1000,
       active: false,
-      strength: 0,
+      lastMoveTime: 0,
+      mouseFade: 0,
     };
 
     let shootingTimerId: ReturnType<typeof setTimeout> | null = null;
@@ -344,6 +375,7 @@ export default function DynamicConstellationBackground({
     regenerateRef.current = () => {
       clusters = generateConstellations(width, height, clusterCount);
       microStars = generateMicroStars(width, height, microStarCount, density);
+      rebuildColorBuckets();
       syncHudCounts();
     };
 
@@ -373,6 +405,7 @@ export default function DynamicConstellationBackground({
       if (reseed) {
         clusters = generateConstellations(width, height, clusterCount);
         microStars = generateMicroStars(width, height, microStarCount, density);
+        rebuildColorBuckets();
       }
       syncHudCounts();
     };
@@ -382,25 +415,18 @@ export default function DynamicConstellationBackground({
     const drawFrame = (timeMs: number) => {
       ctx.clearRect(0, 0, width, height);
 
-      if (pointer.active && interactive) {
-        pointer.smoothX += (pointer.targetX - pointer.smoothX) * 0.18;
-        pointer.smoothY += (pointer.targetY - pointer.smoothY) * 0.18;
-        pointer.strength += (1 - pointer.strength) * 0.14;
+      const isPointerActive =
+        interactive && pointer.active && timeMs - pointer.lastMoveTime < MOUSE_IDLE_MS;
+
+      if (isPointerActive) {
+        pointer.mouseFade = Math.min(1, pointer.mouseFade + 0.16);
       } else {
-        pointer.strength += (0 - pointer.strength) * 0.08;
+        pointer.mouseFade = Math.max(0, pointer.mouseFade - 0.06);
       }
 
-      const pointerOn = interactive && pointer.strength > 0.02;
-      const magnetRadius = 180;
-      const magnetRadiusSq = magnetRadius * magnetRadius;
+      const pointerOn = interactive && pointer.mouseFade > 0.01;
 
-      // Clear reusable buckets without reallocating outer arrays
-      starBuckets[0].length = 0;
-      starBuckets[1].length = 0;
-      starBuckets[2].length = 0;
-      starBuckets[3].length = 0;
-
-      // 1. Update micro-stars and push into color buckets
+      // 1. Update micro-stars in-place (zero allocations)
       for (let i = 0; i < microStars.length; i++) {
         const m = microStars[i];
         m.x += m.vx;
@@ -409,17 +435,20 @@ export default function DynamicConstellationBackground({
         else if (m.x > width + 10) m.x = -10;
         if (m.y < -10) m.y = height + 10;
         else if (m.y > height + 10) m.y = -10;
-
-        starBuckets[m.colorIdx].push({ x: m.x, y: m.y, r: m.radius });
       }
 
-      // 2. Update constellations, detect cursor proximity, and push stars into buckets
-      let nearestStarX = 0;
-      let nearestStarY = 0;
-      let nearestStarDistSq = Infinity;
+      // 2. Update constellations with linear drift & find Top-3 nearest stars via dSq culling
+      let top1Star: ConstellationStar | null = null;
+      let top1DistSq = MAGNET_RADIUS_SQ;
+      let top2Star: ConstellationStar | null = null;
+      let top2DistSq = MAGNET_RADIUS_SQ;
+      let top3Star: ConstellationStar | null = null;
+      let top3DistSq = MAGNET_RADIUS_SQ;
 
       const padX = Math.min(110, width * 0.15);
       const padY = Math.min(110, height * 0.15);
+      const px = pointer.x;
+      const py = pointer.y;
 
       for (let c = 0; c < clusters.length; c++) {
         const cluster = clusters[c];
@@ -442,46 +471,46 @@ export default function DynamicConstellationBackground({
         }
 
         let clusterNear = false;
+        const stars = cluster.stars;
 
-        for (let s = 0; s < cluster.stars.length; s++) {
-          const star = cluster.stars[s];
-          const orbitX = Math.cos(timeMs * star.orbitSpeed + star.orbitPhase) * star.orbitRadius;
-          const orbitY =
-            Math.sin(timeMs * star.orbitSpeed * 0.9 + star.orbitPhase) * star.orbitRadius;
-
-          let wx = cluster.cx + star.offsetX + orbitX;
-          let wy = cluster.cy + star.offsetY + orbitY;
-
-          if (pointerOn) {
-            const dx = wx - pointer.smoothX;
-            const dy = wy - pointer.smoothY;
-            const dSq = dx * dx + dy * dy;
-
-            if (dSq < magnetRadiusSq) {
-              clusterNear = true;
-              if (dSq > 1) {
-                const dist = Math.sqrt(dSq);
-                const falloff = 1 - dist / magnetRadius;
-                const push = falloff * falloff * 13 * pointer.strength;
-                wx += (dx / dist) * push;
-                wy += (dy / dist) * push;
-              }
-            }
-
-            if (dSq < nearestStarDistSq) {
-              nearestStarDistSq = dSq;
-              nearestStarX = wx;
-              nearestStarY = wy;
-            }
-          }
-
+        for (let s = 0; s < stars.length; s++) {
+          const star = stars[s];
+          const wx = cluster.cx + star.offsetX;
+          const wy = cluster.cy + star.offsetY;
           star.x = wx;
           star.y = wy;
-          starBuckets[star.colorIdx].push({
-            x: wx,
-            y: wy,
-            r: clusterNear ? star.radius * 1.25 : star.radius,
-          });
+
+          if (pointerOn) {
+            const dx = wx - px;
+            const dy = wy - py;
+            const dSq = dx * dx + dy * dy;
+
+            if (dSq < MAGNET_RADIUS_SQ) {
+              clusterNear = true;
+              star.renderRadius = star.radius * 1.28;
+
+              if (dSq < top1DistSq) {
+                top3DistSq = top2DistSq;
+                top3Star = top2Star;
+                top2DistSq = top1DistSq;
+                top2Star = top1Star;
+                top1DistSq = dSq;
+                top1Star = star;
+              } else if (dSq < top2DistSq) {
+                top3DistSq = top2DistSq;
+                top3Star = top2Star;
+                top2DistSq = dSq;
+                top2Star = star;
+              } else if (dSq < top3DistSq) {
+                top3DistSq = dSq;
+                top3Star = star;
+              }
+            } else {
+              star.renderRadius = star.radius;
+            }
+          } else {
+            star.renderRadius = star.radius;
+          }
         }
 
         cluster.energized = clusterNear;
@@ -505,77 +534,74 @@ export default function DynamicConstellationBackground({
       ctx.lineWidth = 0.95;
       ctx.stroke();
 
-      // BATCH 2: Draw energized constellation edges + cursor synapse beams in ONE stroke() call
-      if (pointerOn) {
-        let hasActiveGlow = false;
+      // BATCH 2: Top-3 nearest star cursor beams (delicate distance-faded lines, no spiderweb or arc ring)
+      if (pointerOn && top1Star !== null) {
+        ctx.strokeStyle = '#22d3ee';
+        ctx.lineWidth = 1.15;
+
+        const d1 = Math.sqrt(top1DistSq);
+        ctx.globalAlpha = (1 - d1 / MAGNET_RADIUS) * 0.78 * pointer.mouseFade;
         ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(top1Star.x, top1Star.y);
+        ctx.stroke();
 
-        for (let c = 0; c < clusters.length; c++) {
-          const cluster = clusters[c];
-          if (!cluster.energized) continue;
-          hasActiveGlow = true;
-
-          const stars = cluster.stars;
-          const edges = cluster.edges;
-          for (let e = 0; e < edges.length; e++) {
-            const a = stars[edges[e][0]];
-            const b = stars[edges[e][1]];
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-          }
-
-          for (let s = 0; s < stars.length; s++) {
-            const star = stars[s];
-            const dx = pointer.smoothX - star.x;
-            const dy = pointer.smoothY - star.y;
-            if (dx * dx + dy * dy < magnetRadiusSq) {
-              ctx.moveTo(pointer.smoothX, pointer.smoothY);
-              ctx.lineTo(star.x, star.y);
-            }
-          }
+        if (top2Star !== null) {
+          const d2 = Math.sqrt(top2DistSq);
+          ctx.globalAlpha = (1 - d2 / MAGNET_RADIUS) * 0.62 * pointer.mouseFade;
+          ctx.beginPath();
+          ctx.moveTo(px, py);
+          ctx.lineTo(top2Star.x, top2Star.y);
+          ctx.stroke();
         }
 
-        // Also highlight nearest star lock-on beam & ring if within extended range
-        if (nearestStarDistSq < magnetRadiusSq * 1.4) {
-          hasActiveGlow = true;
-          ctx.moveTo(pointer.smoothX, pointer.smoothY);
-          ctx.lineTo(nearestStarX, nearestStarY);
-          ctx.moveTo(nearestStarX + 7, nearestStarY);
-          ctx.arc(nearestStarX, nearestStarY, 7, 0, TWO_PI);
-        }
-
-        if (hasActiveGlow) {
-          ctx.strokeStyle = `rgba(34, 211, 238, ${(0.78 * pointer.strength).toFixed(2)})`;
-          ctx.lineWidth = 1.45;
+        if (top3Star !== null) {
+          const d3 = Math.sqrt(top3DistSq);
+          ctx.globalAlpha = (1 - d3 / MAGNET_RADIUS) * 0.48 * pointer.mouseFade;
+          ctx.beginPath();
+          ctx.moveTo(px, py);
+          ctx.lineTo(top3Star.x, top3Star.y);
           ctx.stroke();
         }
       }
 
-      // BATCH 3: Draw all stars & halos grouped by 4 colors (8 fill() calls total)
+      // BATCH 3: Draw all stars & halos from pre-grouped color buckets (Zero-GC)
       for (let colorIdx = 0; colorIdx < 4; colorIdx++) {
-        const list = starBuckets[colorIdx];
-        if (list.length === 0) continue;
+        const cList = clusterStarsByColor[colorIdx];
+        const mList = microStarsByColor[colorIdx];
+        if (cList.length === 0 && mList.length === 0) continue;
 
         ctx.fillStyle = STAR_COLORS[colorIdx];
 
         // Outer soft halos
         ctx.globalAlpha = 0.28;
         ctx.beginPath();
-        for (let i = 0; i < list.length; i++) {
-          const st = list[i];
-          const haloR = st.r * 2.5;
+        for (let i = 0; i < cList.length; i++) {
+          const st = cList[i];
+          const haloR = st.renderRadius * 2.5;
           ctx.moveTo(st.x + haloR, st.y);
           ctx.arc(st.x, st.y, haloR, 0, TWO_PI);
+        }
+        for (let i = 0; i < mList.length; i++) {
+          const m = mList[i];
+          const haloR = m.radius * 2.5;
+          ctx.moveTo(m.x + haloR, m.y);
+          ctx.arc(m.x, m.y, haloR, 0, TWO_PI);
         }
         ctx.fill();
 
         // Crisp bright star cores
         ctx.globalAlpha = 0.96;
         ctx.beginPath();
-        for (let i = 0; i < list.length; i++) {
-          const st = list[i];
-          ctx.moveTo(st.x + st.r, st.y);
-          ctx.arc(st.x, st.y, st.r, 0, TWO_PI);
+        for (let i = 0; i < cList.length; i++) {
+          const st = cList[i];
+          ctx.moveTo(st.x + st.renderRadius, st.y);
+          ctx.arc(st.x, st.y, st.renderRadius, 0, TWO_PI);
+        }
+        for (let i = 0; i < mList.length; i++) {
+          const m = mList[i];
+          ctx.moveTo(m.x + m.radius, m.y);
+          ctx.arc(m.x, m.y, m.radius, 0, TWO_PI);
         }
         ctx.fill();
       }
@@ -688,21 +714,15 @@ export default function DynamicConstellationBackground({
         : null;
     resizeObserver?.observe(container);
 
-    const handlePointerMove = (e: PointerEvent) => {
-      if (!interactive) return;
-      pointer.targetX = e.clientX;
-      pointer.targetY = e.clientY;
-      pointer.active = true;
-    };
-
     const handleMouseMove = (e: MouseEvent) => {
       if (!interactive) return;
-      pointer.targetX = e.clientX;
-      pointer.targetY = e.clientY;
+      pointer.x = e.clientX;
+      pointer.y = e.clientY;
       pointer.active = true;
+      pointer.lastMoveTime = performance.now();
     };
 
-    const handlePointerLeave = () => {
+    const handleMouseLeave = () => {
       pointer.active = false;
     };
 
@@ -710,10 +730,8 @@ export default function DynamicConstellationBackground({
     scheduleNextShootingStar(1200);
 
     window.addEventListener('resize', handleResize);
-    window.addEventListener('pointermove', handlePointerMove, { passive: true });
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('pointerleave', handlePointerLeave);
-    document.addEventListener('mouseleave', handlePointerLeave);
+    document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
@@ -722,10 +740,8 @@ export default function DynamicConstellationBackground({
       if (resizeDebounce) clearTimeout(resizeDebounce);
       resizeObserver?.disconnect();
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('pointermove', handlePointerMove);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('pointerleave', handlePointerLeave);
-      document.removeEventListener('mouseleave', handlePointerLeave);
+      document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       spawnShootingStarRef.current = null;
       regenerateRef.current = null;
