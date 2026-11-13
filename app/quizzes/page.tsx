@@ -233,7 +233,7 @@ export default function QuizzesPage() {
         className={`p-5 rounded-3xl border cursor-pointer transition-all duration-200 relative overflow-hidden flex flex-col justify-between group ${
           isSelected
             ? 'bg-indigo-50/70 dark:bg-indigo-950/40 border-indigo-500 shadow-glow'
-            : 'bg-white dark:bg-[#0F172A] border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600'
+            : 'story-glass hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.18)]'
         }`}
       >
         <div>
@@ -608,7 +608,7 @@ export default function QuizzesPage() {
                       className={`p-5 rounded-3xl border cursor-pointer transition-all duration-200 relative overflow-hidden flex flex-col justify-between group ${
                         isSelected
                           ? 'bg-indigo-50/70 dark:bg-indigo-950/40 border-indigo-500 shadow-glow'
-                          : 'bg-white dark:bg-[#0F172A] border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-600'
+                          : 'story-glass hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.18)]'
                       }`}
                     >
                       <div>

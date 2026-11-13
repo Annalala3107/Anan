@@ -41,7 +41,7 @@ export default function ExamConfigView({
 }: ExamConfigViewProps) {
   return (
     <div className="w-full max-w-4xl mx-auto py-4 sm:py-6 px-3.5 sm:px-6 animate-fade-in">
-      <div className="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl space-y-5 sm:space-y-6">
+      <div className="p-4 sm:p-8 rounded-2xl sm:rounded-3xl story-glass-strong shadow-2xl space-y-5 sm:space-y-6">
         {/* Header */}
         <div className="flex items-center gap-3.5 border-b border-slate-100 dark:border-slate-800 pb-5">
           <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center font-bold shadow-sm">

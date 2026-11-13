@@ -149,7 +149,7 @@ function SyncContent() {
 
   return (
     <div className="min-h-[85vh] flex items-center justify-center px-4 py-8 animate-fade-in">
-      <div className="w-full max-w-lg p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-2xl relative overflow-hidden">
+      <div className="w-full max-w-lg p-6 sm:p-8 rounded-3xl story-glass-strong shadow-2xl relative overflow-hidden">
         {/* Glow backdrop */}
         <div className="absolute top-0 right-0 -mt-8 -mr-8 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 

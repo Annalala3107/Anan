@@ -70,7 +70,7 @@ export default function ExamResultView({
   return (
     <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-8 px-4 sm:px-6 animate-fade-in">
       {/* Score Card */}
-      <div className="text-center p-8 rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-2xl mb-8">
+      <div className="text-center p-8 rounded-3xl story-glass-strong shadow-2xl mb-8">
         <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 text-indigo-500 mx-auto flex items-center justify-center mb-4">
           <Trophy className="w-8 h-8" />
         </div>
@@ -132,7 +132,7 @@ export default function ExamResultView({
 
       {/* TOPIC WEAKNESS BREAKDOWN */}
       {topicStats.length > 0 && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-8 space-y-6">
+        <div className="p-6 sm:p-8 rounded-3xl story-glass shadow-xl mb-8 space-y-6">
           <div className="flex items-center justify-between flex-wrap gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center font-bold">

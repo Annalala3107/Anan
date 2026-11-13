@@ -226,7 +226,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
       {/* Question & Choices Animated Container */}
       <div key={currentIndex} className="animate-question-enter transform-gpu">
         {/* Question Card */}
-        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#131D31] border border-slate-200 dark:border-slate-800 shadow-xl mb-5 sm:mb-6">
+        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl story-glass shadow-xl mb-5 sm:mb-6">
           <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
             <p className="text-xs font-bold text-amber-500 uppercase tracking-wider">
               {isMCQ ? 'Câu hỏi cần khắc phục' : 'Từ vựng cần củng cố'}

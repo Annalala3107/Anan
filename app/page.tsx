@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <div className="w-full px-3.5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-5 md:py-10 pb-28 md:pb-12 space-y-6 sm:space-y-8 animate-fade-in">
       {/* Hero Active Quiz & Progress Card */}
-      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-gradient-to-br from-indigo-900/90 via-purple-900/80 to-slate-900 border border-indigo-500/30 text-white shadow-2xl transform-gpu">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-8 story-glass-strong bg-gradient-to-br from-indigo-950/45 via-purple-950/35 to-slate-950/40 border border-indigo-400/30 text-white shadow-2xl transform-gpu">
         <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none transform-gpu" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
@@ -91,7 +91,7 @@ export default function Home() {
       </div>
 
       {/* Update Highlights Banner */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-indigo-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="p-4 sm:p-5 rounded-2xl story-glass bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-cyan-500/10 border border-indigo-400/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md">
             <Sparkles className="w-5 h-5" />
@@ -150,7 +150,7 @@ export default function Home() {
           {/* Mode 1: Learn */}
           <Link
             href="/session/learn"
-            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border-2 border-indigo-500/40 dark:border-indigo-500/40 hover:border-indigo-500 shadow-xl hover:shadow-glow gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
+            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl story-glass border-2 border-indigo-500/35 dark:border-cyan-400/30 hover:border-cyan-400/60 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
           >
             <div>
               <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -168,7 +168,7 @@ export default function Home() {
                 Lật thẻ 3D tự đánh giá [1-3] chuẩn Spaced Repetition hoặc cày phản xạ cao tốc (0.4s) trước kỳ thi.
               </p>
             </div>
-            <div className="flex items-center justify-between text-xs font-bold text-indigo-600 dark:text-indigo-400 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between text-xs font-bold text-indigo-600 dark:text-indigo-400 pt-2 border-t border-slate-200/60 dark:border-white/10">
               <span>Bắt đầu học ngay</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -177,7 +177,7 @@ export default function Home() {
           {/* Mode 2: Drill (Upgraded to Checkpoint Tutor Mode) */}
           <Link
             href="/session/drill"
-            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/60 dark:hover:border-emerald-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
+            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl story-glass hover:border-emerald-400/60 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
           >
             <div>
               <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -195,7 +195,7 @@ export default function Home() {
                 Chia đề thành các chặng cố định (Câu 1–20, 21–40...), đọc giải thích sâu và ép sửa câu sai cuối chặng.
               </p>
             </div>
-            <div className="flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400 pt-2 border-t border-slate-200/60 dark:border-white/10">
               <span>Chọn chặng học ngay</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -204,7 +204,7 @@ export default function Home() {
           {/* Mode 3: Exam */}
           <Link
             href="/session/exam"
-            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-rose-500/60 dark:hover:border-rose-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(244,63,94,0.15)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
+            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl story-glass hover:border-rose-400/60 hover:shadow-[0_0_30px_rgba(244,63,94,0.2)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
           >
             <div>
               <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -222,7 +222,7 @@ export default function Home() {
                 Tự chọn chuyên đề, căn thời gian, chống thoát nhầm và xem phân tích lỗ hổng kiến thức.
               </p>
             </div>
-            <div className="flex items-center justify-between text-xs font-bold text-rose-600 dark:text-rose-400 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between text-xs font-bold text-rose-600 dark:text-rose-400 pt-2 border-t border-slate-200/60 dark:border-white/10">
               <span>Vào phòng thi mới</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -231,7 +231,7 @@ export default function Home() {
           {/* Mode 4: Mistakes */}
           <Link
             href="/session/mistakes"
-            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-amber-500/60 dark:hover:border-amber-500/60 shadow-lg hover:shadow-[0_0_25px_rgba(245,158,11,0.15)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
+            className="group relative p-4 sm:p-6 rounded-2xl sm:rounded-3xl story-glass hover:border-amber-400/60 hover:shadow-[0_0_30px_rgba(245,158,11,0.2)] gpu-card flex flex-col justify-between touch-manipulation select-none active:scale-[0.98]"
           >
             <div>
               <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -249,7 +249,7 @@ export default function Home() {
                 Thuật toán SRS tự động gom các câu bạn từng làm sai để luyện lại.
               </p>
             </div>
-            <div className="flex items-center justify-between text-xs font-bold text-amber-600 dark:text-amber-400 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between text-xs font-bold text-amber-600 dark:text-amber-400 pt-2 border-t border-slate-200/60 dark:border-white/10">
               <span>Củng cố điểm yếu</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -259,36 +259,36 @@ export default function Home() {
 
       {/* SRS Memory Distribution Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800">
+        <div className="p-5 rounded-2xl story-glass transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.18)]">
           <p className="text-xs font-bold text-emerald-500 uppercase">Đã Thành Thạo</p>
           <p className="text-3xl font-black text-slate-900 dark:text-white mt-1">
             {masteredCount}
           </p>
-          <p className="text-[11px] text-slate-400 mt-1">Độ nhớ dài hạn (≥80%)</p>
+          <p className="text-[11px] text-slate-400 mt-1 pt-2 border-t border-slate-200/60 dark:border-white/10">Độ nhớ dài hạn (≥80%)</p>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800">
+        <div className="p-5 rounded-2xl story-glass transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.18)]">
           <p className="text-xs font-bold text-indigo-500 uppercase">Đang Học / Ôn Luyện</p>
           <p className="text-3xl font-black text-slate-900 dark:text-white mt-1">
             {learningCount}
           </p>
-          <p className="text-[11px] text-slate-400 mt-1">Đang trong chu kỳ lặp lại</p>
+          <p className="text-[11px] text-slate-400 mt-1 pt-2 border-t border-slate-200/60 dark:border-white/10">Đang trong chu kỳ lặp lại</p>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800">
+        <div className="p-5 rounded-2xl story-glass transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.18)]">
           <p className="text-xs font-bold text-amber-500 uppercase">Cần Ôn Hôm Nay</p>
           <p className="text-3xl font-black text-slate-900 dark:text-white mt-1">
             {needReviewCount}
           </p>
-          <p className="text-[11px] text-slate-400 mt-1">Đến hạn ngắt quãng SRS</p>
+          <p className="text-[11px] text-slate-400 mt-1 pt-2 border-t border-slate-200/60 dark:border-white/10">Đến hạn ngắt quãng SRS</p>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800">
+        <div className="p-5 rounded-2xl story-glass transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.18)]">
           <p className="text-xs font-bold text-purple-500 uppercase">Tổng Số Câu</p>
           <p className="text-3xl font-black text-slate-900 dark:text-white mt-1">
             {totalWords}
           </p>
-          <p className="text-[11px] text-slate-400 mt-1">Trong bộ đề hiện tại</p>
+          <p className="text-[11px] text-slate-400 mt-1 pt-2 border-t border-slate-200/60 dark:border-white/10">Trong bộ đề hiện tại</p>
         </div>
       </div>
 

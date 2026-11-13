@@ -72,14 +72,14 @@ export default function LibraryPage() {
             placeholder="Tìm theo nội dung câu hỏi, từ khoá, đáp án, code C hoặc giải thích..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm"
+            className="w-full pl-11 pr-4 py-3 rounded-2xl story-glass text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm"
           />
         </div>
 
         {/* Filter Badges: Status & Topics */}
         <div className="flex flex-wrap items-center gap-2">
           {/* Status filters */}
-          <div className="flex items-center gap-1 p-1 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-sm overflow-x-auto">
+          <div className="flex items-center gap-1 p-1 rounded-2xl story-glass shadow-sm overflow-x-auto">
             {[
               { id: 'all', label: 'Tất cả' },
               { id: 'mastered', label: 'Đã thuộc' },
@@ -105,7 +105,7 @@ export default function LibraryPage() {
             <select
               value={filterTopic}
               onChange={(e) => setFilterTopic(e.target.value)}
-              className="px-3.5 py-2 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="px-3.5 py-2 rounded-2xl story-glass text-xs font-bold text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 [&>option]:bg-white dark:[&>option]:bg-slate-900"
             >
               <option value="all">Tất cả chủ đề ({topics.length})</option>
               {topics.map((t, i) => (
@@ -135,7 +135,7 @@ export default function LibraryPage() {
               <div
                 key={idx}
                 onClick={() => setSelectedWord(w)}
-                className="group p-5 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 hover:border-indigo-500/80 cursor-pointer content-auto-card gpu-card hover:shadow-lg flex flex-col justify-between touch-manipulation active:scale-[0.99]"
+                className="group p-5 rounded-3xl story-glass hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.18)] cursor-pointer content-auto-card gpu-card flex flex-col justify-between touch-manipulation active:scale-[0.99]"
               >
                 <div>
                   {/* Top tags */}

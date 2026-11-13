@@ -501,8 +501,8 @@ export default function DynamicConstellationBackground({
           ctx.lineTo(b.x, b.y);
         }
       }
-      ctx.strokeStyle = 'rgba(129, 140, 248, 0.24)';
-      ctx.lineWidth = 0.85;
+      ctx.strokeStyle = 'rgba(129, 140, 248, 0.36)';
+      ctx.lineWidth = 0.95;
       ctx.stroke();
 
       // BATCH 2: Draw energized constellation edges + cursor synapse beams in ONE stroke() call
@@ -545,8 +545,8 @@ export default function DynamicConstellationBackground({
         }
 
         if (hasActiveGlow) {
-          ctx.strokeStyle = `rgba(34, 211, 238, ${(0.62 * pointer.strength).toFixed(2)})`;
-          ctx.lineWidth = 1.35;
+          ctx.strokeStyle = `rgba(34, 211, 238, ${(0.78 * pointer.strength).toFixed(2)})`;
+          ctx.lineWidth = 1.45;
           ctx.stroke();
         }
       }
@@ -559,7 +559,7 @@ export default function DynamicConstellationBackground({
         ctx.fillStyle = STAR_COLORS[colorIdx];
 
         // Outer soft halos
-        ctx.globalAlpha = 0.22;
+        ctx.globalAlpha = 0.28;
         ctx.beginPath();
         for (let i = 0; i < list.length; i++) {
           const st = list[i];
@@ -570,7 +570,7 @@ export default function DynamicConstellationBackground({
         ctx.fill();
 
         // Crisp bright star cores
-        ctx.globalAlpha = 0.88;
+        ctx.globalAlpha = 0.96;
         ctx.beginPath();
         for (let i = 0; i < list.length; i++) {
           const st = list[i];
@@ -763,7 +763,7 @@ export default function DynamicConstellationBackground({
         {showStars && (
           <canvas
             ref={canvasRef}
-            className="absolute inset-0 block w-full h-full opacity-85 dark:opacity-100"
+            className="absolute inset-0 block w-full h-full opacity-90 dark:opacity-100"
           />
         )}
       </div>

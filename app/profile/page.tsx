@@ -127,7 +127,7 @@ export default function ProfilePage() {
   return (
     <div className="w-full px-3.5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-5 md:py-10 pb-28 md:pb-12 space-y-6 sm:space-y-8 animate-fade-in">
       {/* Profile Header */}
-      <div className="flex items-center gap-4 p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-xl">
+      <div className="flex items-center gap-4 p-6 rounded-3xl story-glass shadow-xl">
         <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white text-2xl font-black shadow-glow">
           A
         </div>
@@ -148,7 +148,7 @@ export default function ProfilePage() {
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="p-5 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800">
+          <div className="p-5 rounded-2xl story-glass hover:border-cyan-400/40 transition-colors">
             <p className="text-xs font-bold text-slate-400 uppercase">Chuỗi ngày (Streak)</p>
             <p className="text-3xl font-black text-amber-500 mt-1 flex items-center gap-1.5">
               <Flame className="w-6 h-6 fill-amber-500" /> {streak}
@@ -156,7 +156,7 @@ export default function ProfilePage() {
             <p className="text-[11px] text-slate-500 mt-0.5">Ngày học liên tiếp</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800">
+          <div className="p-5 rounded-2xl story-glass hover:border-cyan-400/40 transition-colors">
             <p className="text-xs font-bold text-slate-400 uppercase">Từ đã học hôm nay</p>
             <p className="text-3xl font-black text-indigo-500 mt-1">
               {dailyStats?.wordsLearned || 0}
@@ -164,7 +164,7 @@ export default function ProfilePage() {
             <p className="text-[11px] text-slate-500 mt-0.5">Qua chế độ Learn</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800">
+          <div className="p-5 rounded-2xl story-glass hover:border-cyan-400/40 transition-colors">
             <p className="text-xs font-bold text-slate-400 uppercase">Luyện Drill & Thi</p>
             <p className="text-3xl font-black text-emerald-500 mt-1">
               {(dailyStats?.wordsDrilled || 0) + (dailyStats?.wordsExamined || 0)}
@@ -172,7 +172,7 @@ export default function ProfilePage() {
             <p className="text-[11px] text-slate-500 mt-0.5">Câu hỏi đã vượt qua</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800">
+          <div className="p-5 rounded-2xl story-glass hover:border-cyan-400/40 transition-colors">
             <p className="text-xs font-bold text-slate-400 uppercase">Độ chính xác TB</p>
             <p className="text-3xl font-black text-purple-500 mt-1">
               {dailyStats?.accuracy || 100}%
@@ -185,7 +185,7 @@ export default function ProfilePage() {
       {/* 2-column Layout on Desktop for Backup and History */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* DISASTER RECOVERY & BACKUP CENTER */}
-        <div className="p-6 md:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-xl space-y-5 flex flex-col justify-between">
+        <div className="p-6 md:p-8 rounded-3xl story-glass shadow-xl space-y-5 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
               <div className="flex items-center gap-3">
@@ -263,7 +263,7 @@ export default function ProfilePage() {
         </div>
 
         {/* RECENT EXAM HISTORY */}
-        <div className="p-6 md:p-8 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 shadow-xl space-y-4">
+        <div className="p-6 md:p-8 rounded-3xl story-glass shadow-xl space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <History className="w-5 h-5 text-indigo-500" /> Lịch Sử Thi Thử Gần Đây ({examHistory.length})
@@ -356,7 +356,7 @@ export default function ProfilePage() {
       </div>
 
       {/* Cloud & Storage Status */}
-      <div className="p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 space-y-4">
+      <div className="p-6 rounded-3xl story-glass space-y-4">
         <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
           <Database className="w-5 h-5 text-indigo-500" /> Trạng Thái Cơ Sở Dữ Liệu & Đồng Bộ
         </h3>

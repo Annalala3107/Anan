@@ -46,8 +46,8 @@ export default function FlashcardView({
         }}
         className={`relative w-full min-h-[360px] sm:min-h-[420px] rounded-3xl transition-all duration-300 cursor-pointer select-none ${
           isFlipped
-            ? 'bg-gradient-to-br from-slate-900 via-[#0F172A] to-indigo-950/90 border-2 border-indigo-500/60 shadow-[0_0_35px_rgba(99,102,241,0.2)]'
-            : 'bg-white dark:bg-[#0F172A] border-2 border-slate-200 dark:border-slate-800 hover:border-indigo-500/60 shadow-2xl'
+            ? 'story-glass-strong bg-gradient-to-br from-slate-900/60 via-[#0F172A]/50 to-indigo-950/60 border-2 border-indigo-500/60 shadow-[0_0_35px_rgba(99,102,241,0.2)]'
+            : 'story-glass border-2 hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.18)] shadow-2xl'
         } p-6 sm:p-10 flex flex-col justify-between`}
       >
         {/* Top Card Header */}
