@@ -412,16 +412,16 @@ export default function DynamicConstellationBackground({
 
     syncCanvasSize(false);
 
-    const drawFrame = (timeMs: number) => {
+    const drawFrame = (timeMs: number, dtScale: number) => {
       ctx.clearRect(0, 0, width, height);
 
       const isPointerActive =
         interactive && pointer.active && timeMs - pointer.lastMoveTime < MOUSE_IDLE_MS;
 
       if (isPointerActive) {
-        pointer.mouseFade = Math.min(1, pointer.mouseFade + 0.16);
+        pointer.mouseFade = Math.min(1, pointer.mouseFade + 0.16 * dtScale);
       } else {
-        pointer.mouseFade = Math.max(0, pointer.mouseFade - 0.06);
+        pointer.mouseFade = Math.max(0, pointer.mouseFade - 0.06 * dtScale);
       }
 
       const pointerOn = interactive && pointer.mouseFade > 0.01;
@@ -429,8 +429,8 @@ export default function DynamicConstellationBackground({
       // 1. Update micro-stars in-place (zero allocations)
       for (let i = 0; i < microStars.length; i++) {
         const m = microStars[i];
-        m.x += m.vx;
-        m.y += m.vy;
+        m.x += m.vx * dtScale;
+        m.y += m.vy * dtScale;
         if (m.x < -10) m.x = width + 10;
         else if (m.x > width + 10) m.x = -10;
         if (m.y < -10) m.y = height + 10;
@@ -453,8 +453,8 @@ export default function DynamicConstellationBackground({
       for (let c = 0; c < clusters.length; c++) {
         const cluster = clusters[c];
 
-        cluster.cx += cluster.vx;
-        cluster.cy += cluster.vy;
+        cluster.cx += cluster.vx * dtScale;
+        cluster.cy += cluster.vy * dtScale;
         if (cluster.cx < padX) {
           cluster.cx = padX;
           cluster.vx = Math.abs(cluster.vx);
@@ -611,9 +611,9 @@ export default function DynamicConstellationBackground({
         ctx.lineCap = 'round';
         for (let i = shootingStars.length - 1; i >= 0; i--) {
           const s = shootingStars[i];
-          s.x += s.vx;
-          s.y += s.vy;
-          s.life += 1;
+          s.x += s.vx * dtScale;
+          s.y += s.vy * dtScale;
+          s.life += dtScale;
 
           const progress = s.life / s.maxLife;
           if (progress >= 1) {
@@ -663,10 +663,27 @@ export default function DynamicConstellationBackground({
     let isVisible = !document.hidden;
     let frameCount = 0;
     let lastFpsCheck = performance.now();
+    let lastFrameTime = 0;
 
     const loop = (now: number) => {
       if (!isVisible) return;
-      drawFrame(now);
+
+      const isInteractiveActive =
+        (interactive && pointer.active && now - pointer.lastMoveTime < MOUSE_IDLE_MS) ||
+        pointer.mouseFade > 0.02 ||
+        shootingStars.length > 0;
+      const targetFrameMs = isInteractiveActive ? 16.0 : 32.5;
+
+      if (lastFrameTime > 0 && now - lastFrameTime < targetFrameMs) {
+        rafId = requestAnimationFrame(loop);
+        return;
+      }
+
+      const elapsed = lastFrameTime > 0 ? now - lastFrameTime : 16.67;
+      const dtScale = Math.min(2.4, Math.max(0.5, elapsed / 16.67));
+      lastFrameTime = now;
+
+      drawFrame(now, dtScale);
 
       frameCount += 1;
       if (now - lastFpsCheck >= 1000) {
@@ -683,6 +700,7 @@ export default function DynamicConstellationBackground({
       cancelAnimationFrame(rafId);
       if (isVisible) {
         lastFpsCheck = performance.now();
+        lastFrameTime = 0;
         frameCount = 0;
         rafId = requestAnimationFrame(loop);
       }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useDeferredValue } from 'react';
 import { Word, WordProgress } from '@/lib/types';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
@@ -19,35 +19,54 @@ export default function LibraryPage() {
   const [filterTopic, setFilterTopic] = useState<string>('all');
   const [progressMap, setProgressMap] = useState<Record<string, WordProgress>>({});
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
+  const [visibleCount, setVisibleCount] = useState(36);
+  const deferredSearchTerm = useDeferredValue(searchTerm);
 
   useEffect(() => {
     loadQuizWords();
     setProgressMap(StorageEngine.getWordProgress());
   }, []);
 
+  useEffect(() => {
+    setVisibleCount(36);
+  }, [deferredSearchTerm, filterStatus, filterTopic]);
+
   // Collect unique topics in current quiz
-  const topics = Array.from(new Set(words.map((w) => w.topic).filter(Boolean)));
+  const topics = useMemo(
+    () => Array.from(new Set(words.map((w) => w.topic).filter(Boolean))),
+    [words]
+  );
 
-  const filteredWords = words.filter((w) => {
-    const term = searchTerm.toLowerCase();
-    const matchSearch =
-      (w.question && w.question.toLowerCase().includes(term)) ||
-      w.word.toLowerCase().includes(term) ||
-      (w.vi && w.vi.toLowerCase().includes(term)) ||
-      (w.explanation && w.explanation.toLowerCase().includes(term)) ||
-      (w.options && w.options.some((opt) => opt.toLowerCase().includes(term)));
+  const filteredWords = useMemo(() => {
+    const term = deferredSearchTerm.trim().toLowerCase();
+    return words.filter((w) => {
+      if (term) {
+        const matchSearch =
+          (w.question && w.question.toLowerCase().includes(term)) ||
+          w.word.toLowerCase().includes(term) ||
+          (w.vi && w.vi.toLowerCase().includes(term)) ||
+          (w.explanation && w.explanation.toLowerCase().includes(term)) ||
+          (w.options && w.options.some((opt) => opt.toLowerCase().includes(term)));
+        if (!matchSearch) return false;
+      }
 
-    if (!matchSearch) return false;
+      if (filterTopic !== 'all' && w.topic !== filterTopic) return false;
 
-    if (filterTopic !== 'all' && w.topic !== filterTopic) return false;
+      if (filterStatus !== 'all') {
+        const prog = StorageEngine.getItemProgress(w, progressMap);
+        if (filterStatus === 'mastered') return prog?.status === 'mastered';
+        if (filterStatus === 'learning') return prog?.status === 'learning';
+        if (filterStatus === 'new') return !prog || prog.status === 'new';
+      }
 
-    const prog = StorageEngine.getItemProgress(w, progressMap);
-    if (filterStatus === 'mastered') return prog?.status === 'mastered';
-    if (filterStatus === 'learning') return prog?.status === 'learning';
-    if (filterStatus === 'new') return !prog || prog.status === 'new';
+      return true;
+    });
+  }, [words, deferredSearchTerm, filterTopic, filterStatus, progressMap]);
 
-    return true;
-  });
+  const visibleWords = useMemo(
+    () => filteredWords.slice(0, visibleCount),
+    [filteredWords, visibleCount]
+  );
 
   return (
     <div className="w-full px-3.5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-5 md:py-10 pb-28 md:pb-12 space-y-5 sm:space-y-6 animate-fade-in">
@@ -124,19 +143,20 @@ export default function LibraryPage() {
           Không tìm thấy câu hỏi nào khớp với từ khoá hoặc bộ lọc của bạn.
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-          {filteredWords.map((w, idx) => {
-            const prog = StorageEngine.getItemProgress(w, progressMap);
-            const strengthPercent = prog?.strength ? Math.round(prog.strength * 100) : 0;
-            const isMastered = prog?.status === 'mastered';
-            const isMCQ = Boolean(w.question && w.options);
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+            {visibleWords.map((w, idx) => {
+              const prog = StorageEngine.getItemProgress(w, progressMap);
+              const strengthPercent = prog?.strength ? Math.round(prog.strength * 100) : 0;
+              const isMastered = prog?.status === 'mastered';
+              const isMCQ = Boolean(w.question && w.options);
 
-            return (
-              <div
-                key={idx}
-                onClick={() => setSelectedWord(w)}
-                className="group p-5 rounded-3xl story-glass hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.18)] cursor-pointer content-auto-card gpu-card flex flex-col justify-between touch-manipulation active:scale-[0.99]"
-              >
+              return (
+                <div
+                  key={w.word || idx}
+                  onClick={() => setSelectedWord(w)}
+                  className="group p-5 rounded-3xl story-glass hover:border-cyan-400/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.18)] cursor-pointer content-auto-card gpu-card flex flex-col justify-between touch-manipulation active:scale-[0.99]"
+                >
                 <div>
                   {/* Top tags */}
                   <div className="flex items-start justify-between gap-2 mb-2">
@@ -198,10 +218,23 @@ export default function LibraryPage() {
                     Xem giải thích <ChevronRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {visibleCount < filteredWords.length && (
+            <div className="flex justify-center pt-4">
+              <button
+                type="button"
+                onClick={() => setVisibleCount((prev) => prev + 36)}
+                className="px-6 py-3 rounded-2xl story-glass hover:border-cyan-400/50 text-xs sm:text-sm font-bold text-indigo-600 dark:text-cyan-300 transition-colors cursor-pointer"
+              >
+                Xem thêm câu hỏi ({filteredWords.length - visibleCount} câu còn lại)
+              </button>
+            </div>
+          )}
+        </>
       )}
 
       {/* Word / Question Detail Modal */}

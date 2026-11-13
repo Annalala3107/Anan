@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import {
   Brain,
@@ -28,30 +28,47 @@ export default function Home() {
     setProgressMap(StorageEngine.getWordProgress());
   }, []);
 
-  const totalWords = words.length || 1;
-  const masteredCount = words.filter(
-    (w) => StorageEngine.getItemProgress(w, progressMap)?.status === 'mastered'
-  ).length;
-  const learningCount = words.filter(
-    (w) => StorageEngine.getItemProgress(w, progressMap)?.status === 'learning'
-  ).length;
-  const needReviewCount = words.filter((w) => {
-    const p = StorageEngine.getItemProgress(w, progressMap);
-    return p && p.nextDue <= Date.now() && p.seenCount > 0;
-  }).length;
+  const { totalWords, masteredCount, learningCount, needReviewCount, masteredPercent } =
+    useMemo(() => {
+      const total = words.length || 1;
+      const now = Date.now();
+      let mastered = 0;
+      let learning = 0;
+      let needReview = 0;
 
-  const masteredPercent = Math.round((masteredCount / totalWords) * 100);
+      for (let i = 0; i < words.length; i++) {
+        const p = StorageEngine.getItemProgress(words[i], progressMap);
+        if (!p) continue;
+        if (p.status === 'mastered') mastered += 1;
+        else if (p.status === 'learning') learning += 1;
+        if (p.nextDue <= now && p.seenCount > 0) needReview += 1;
+      }
+
+      return {
+        totalWords: total,
+        masteredCount: mastered,
+        learningCount: learning,
+        needReviewCount: needReview,
+        masteredPercent: Math.round((mastered / total) * 100),
+      };
+    }, [words, progressMap]);
+
   const quizInfo = getQuizDisplayName(selectedQuizPath, activeCustomQuiz, words);
 
   return (
     <div className="w-full px-3.5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-5 md:py-10 pb-28 md:pb-12 space-y-6 sm:space-y-8 animate-fade-in">
       {/* Hero Active Quiz & Progress Card */}
       <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-8 story-glass-strong bg-gradient-to-br from-indigo-950/45 via-purple-950/35 to-slate-950/40 border border-indigo-400/30 text-white shadow-2xl transform-gpu">
-        <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none transform-gpu" />
+        <div
+          className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 rounded-full pointer-events-none"
+          style={{
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.24) 0%, transparent 70%)',
+          }}
+        />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
           <div className="space-y-2 max-w-3xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-indigo-200 backdrop-blur-md border border-white/10">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-indigo-200 border border-white/10">
               <Layers className="w-3.5 h-3.5" />
               <span>Đang kích hoạt</span>
             </div>
@@ -64,7 +81,7 @@ export default function Home() {
           </div>
 
           {/* Quick Progress Badge */}
-          <div className="flex items-center justify-between sm:justify-start gap-4 bg-white/10 backdrop-blur-md border border-white/10 p-4 sm:p-5 rounded-2xl shrink-0">
+          <div className="flex items-center justify-between sm:justify-start gap-4 bg-white/10 border border-white/10 p-4 sm:p-5 rounded-2xl shrink-0">
             <div>
               <p className="text-[11px] sm:text-xs uppercase font-bold text-indigo-200">Đã thành thạo</p>
               <p className="text-xl sm:text-3xl font-black">{masteredCount} / {totalWords} câu</p>

@@ -20,7 +20,7 @@ export default function BottomNav() {
   ];
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 backdrop-blur-md bg-white/88 dark:bg-[#080C14]/92 border-t border-slate-200 dark:border-slate-800/80 px-2 pt-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-glass select-none transform-gpu">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/94 dark:bg-[#080C14]/94 border-t border-slate-200 dark:border-slate-800/80 px-2 pt-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-glass select-none transform-gpu">
       <div className="flex items-center justify-around">
         {navItems.map((item) => {
           const Icon = item.icon;
