@@ -85,6 +85,9 @@ export interface ExamQuestion {
   id: string;
   sentence: string;
   correctWord: string;
+  correctOptions?: string[];
+  isMultiSelect?: boolean;
+  requiredCount?: number;
   options: string[];
   explanation?: string;
   answerKey?: string;

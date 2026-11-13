@@ -1,7 +1,7 @@
 'use client';
 
 import { StandardQuestion } from '@/lib/quizHelpers';
-import { isAnswerMatch, cleanOptionText } from '@/lib/utils';
+import { isAnswerMatch, cleanOptionText, getQuestionAnswerMeta } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
   RotateCcw,
@@ -37,6 +37,14 @@ export default function FlashcardView({
   onToggleFlip,
   onRate,
 }: FlashcardViewProps) {
+  const answerMeta = getQuestionAnswerMeta(
+    currentQ.correctWord,
+    shuffleChoices ? undefined : currentQ.answerKey,
+    currentQ.options,
+    currentQ.correctOptions
+  );
+  const cleanedCorrectList = answerMeta.correctChoices.map((c) => cleanOptionText(c) || c);
+
   return (
     <div className="w-full max-w-4xl mx-auto space-y-5">
       {/* 3D Flip Container */}
@@ -107,15 +115,22 @@ export default function FlashcardView({
             {/* Preview Options on Front so user can mentally solve MCQ before flipping */}
             {currentQ.options && currentQ.options.length > 0 && (
               <div className="space-y-2 pt-3 border-t border-slate-100 dark:border-slate-800/80">
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                     Các phương án lựa chọn (Hãy nhẩm chọn trước khi lật thẻ):
                   </span>
-                  {shuffleChoices && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center gap-1">
-                      <Shuffle className="w-3 h-3" /> Đã đảo thứ tự A–D
-                    </span>
-                  )}
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    {answerMeta.isMultiSelect && (
+                      <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30">
+                        Chọn {answerMeta.requiredCount} đáp án
+                      </span>
+                    )}
+                    {shuffleChoices && (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center gap-1">
+                        <Shuffle className="w-3 h-3" /> Đã đảo thứ tự A–D
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {currentQ.options.map((opt, i) => {
@@ -148,13 +163,33 @@ export default function FlashcardView({
 
             {/* Highlighted Correct Answer Box */}
             <div className="p-5 rounded-2xl bg-emerald-500/15 border-2 border-emerald-500/50 shadow-glow-success">
-              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-400 mb-1.5">
-                <Sparkles className="w-4 h-4" />
-                <span>Đáp án chính xác</span>
+              <div className="flex items-center justify-between gap-2 text-xs font-black uppercase tracking-wider text-emerald-400 mb-1.5">
+                <span className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4" />
+                  <span>
+                    {answerMeta.isMultiSelect
+                      ? `Các đáp án chính xác (${answerMeta.requiredCount} đáp án)`
+                      : 'Đáp án chính xác'}
+                  </span>
+                </span>
               </div>
-              <p className="text-lg sm:text-2xl font-black text-white leading-snug">
-                {cleanOptionText(currentQ.correctWord)}
-              </p>
+              {cleanedCorrectList.length > 1 ? (
+                <ul className="space-y-1.5 mt-1">
+                  {cleanedCorrectList.map((ans, idx) => (
+                    <li
+                      key={idx}
+                      className="text-base sm:text-xl font-black text-white leading-snug flex items-start gap-2"
+                    >
+                      <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                      <span>{ans}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-lg sm:text-2xl font-black text-white leading-snug">
+                  {cleanedCorrectList[0] || cleanOptionText(currentQ.correctWord)}
+                </p>
+              )}
             </div>
 
             {/* Full Options Breakdown with Correct Checkmark */}
@@ -170,7 +205,8 @@ export default function FlashcardView({
                     const isTrue = isAnswerMatch(
                       opt,
                       currentQ.correctWord,
-                      shuffleChoices ? undefined : currentQ.answerKey
+                      shuffleChoices ? undefined : currentQ.answerKey,
+                      currentQ.correctOptions
                     );
                     return (
                       <div

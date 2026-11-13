@@ -3,7 +3,13 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { Word, WordProgress } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { isAnswerMatch, cleanOptionText, shuffleArray } from '@/lib/utils';
+import {
+  isAnswerMatch,
+  isQuestionAnsweredCorrectly,
+  splitCorrectChoices,
+  cleanOptionText,
+  shuffleArray,
+} from '@/lib/utils';
 import {
   buildStandardQuestions,
   StandardQuestion,
@@ -39,6 +45,8 @@ interface CardItem {
   question: StandardQuestion;
   originalOptions: string[];
   originalAnswerKey?: string;
+  originalCorrectWord: string;
+  originalCorrectOptions: string[];
   correctStreak: number; // 0 .. streakTarget -> graduates when correctStreak >= streakTarget
   mistakes: number;
   attempts: number;
@@ -66,7 +74,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const [turnCount, setTurnCount] = useState<number>(0);
 
   // Interaction State
-  const [selectedOpt, setSelectedOpt] = useState<string | null>(null);
+  const [selectedOpts, setSelectedOpts] = useState<string[]>([]);
   const [feedbackState, setFeedbackState] = useState<'idle' | 'correct' | 'wrong'>('idle');
   const [isCompleted, setIsCompleted] = useState(false);
 
@@ -149,14 +157,24 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       const initialCards: CardItem[] = canonicalList.map((q, idx) => {
         const cleanedOpts = q.options.map((opt) => cleanOptionText(opt));
         const activeOpts = shuffleChoices ? shuffleArray(cleanedOpts, true) : q.options;
+        const rawCorrectOpts =
+          q.correctOptions && q.correctOptions.length > 0
+            ? q.correctOptions
+            : splitCorrectChoices(q.correctWord, q.answerKey, q.options);
+        const activeCorrectOpts = shuffleChoices
+          ? rawCorrectOpts.map((c) => cleanOptionText(c))
+          : rawCorrectOpts;
         return {
           id: `card_${idx}_${q.id}`,
           originalOptions: q.options,
           originalAnswerKey: q.answerKey,
+          originalCorrectWord: q.correctWord,
+          originalCorrectOptions: rawCorrectOpts,
           question: {
             ...q,
             options: activeOpts,
-            correctWord: shuffleChoices ? cleanOptionText(q.correctWord) : q.correctWord,
+            correctOptions: activeCorrectOpts,
+            correctWord: shuffleChoices ? activeCorrectOpts.join(' | ') : q.correctWord,
             answerKey: shuffleChoices ? undefined : q.answerKey,
           },
           correctStreak: 0,
@@ -172,7 +190,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       setActiveQueue(initialActiveQueue);
       setNextReserveIndex(initialPoolCount);
       setTurnCount(0);
-      setSelectedOpt(null);
+      setSelectedOpts([]);
       setFeedbackState('idle');
       setIsFlipped(false);
       setIsConfiguring(false);
@@ -200,17 +218,22 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           const nextOpts = nextShuffle
             ? shuffleArray(c.originalOptions.map((o) => cleanOptionText(o)), true)
             : c.originalOptions;
+          const nextCorrectOpts = nextShuffle
+            ? c.originalCorrectOptions.map((o) => cleanOptionText(o))
+            : c.originalCorrectOptions;
           return {
             ...c,
             question: {
               ...c.question,
               options: nextOpts,
+              correctOptions: nextCorrectOpts,
+              correctWord: nextShuffle ? nextCorrectOpts.join(' | ') : c.originalCorrectWord,
               answerKey: nextShuffle ? undefined : c.originalAnswerKey,
             },
           };
         })
       );
-      setSelectedOpt(null);
+      setSelectedOpts([]);
       setFeedbackState('idle');
       return nextShuffle;
     });
@@ -242,7 +265,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       advanceTimerRef.current = null;
     }
 
-    setSelectedOpt(null);
+    setSelectedOpts([]);
     setFeedbackState('idle');
     setIsFlipped(false);
     setTurnCount((t) => t + 1);
@@ -331,16 +354,16 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     advanceNextRef.current = advanceNext;
   }, [advanceNext]);
 
-  // Handle Option Selection in Rapid MCQ mode
-  const handleSelectOption = useCallback(
-    (optText: string) => {
-      if (feedbackState !== 'idle' || !currentItem || !currentQ) return;
+  // Grade Rapid MCQ selection (supports both single-choice and multi-select)
+  const submitRapidSelection = useCallback(
+    (chosenList: string[]) => {
+      if (feedbackState !== 'idle' || !currentItem || !currentQ || chosenList.length === 0) return;
 
-      setSelectedOpt(optText);
-      const isCorrect = isAnswerMatch(
-        optText,
+      const isCorrect = isQuestionAnsweredCorrectly(
+        chosenList,
         currentQ.correctWord,
-        shuffleChoices ? undefined : currentQ.answerKey
+        shuffleChoices ? undefined : currentQ.answerKey,
+        currentQ.correctOptions
       );
 
       setTotalAttempts((prev) => prev + 1);
@@ -394,6 +417,29 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     },
     [feedbackState, currentItem, currentQ, shuffleChoices, streakTarget]
   );
+
+  // Handle Option Selection in Rapid MCQ mode
+  const handleSelectOption = useCallback(
+    (optText: string) => {
+      if (feedbackState !== 'idle' || !currentItem || !currentQ) return;
+
+      if (!currentQ.isMultiSelect) {
+        setSelectedOpts([optText]);
+        submitRapidSelection([optText]);
+        return;
+      }
+
+      setSelectedOpts((prev) =>
+        prev.includes(optText) ? prev.filter((item) => item !== optText) : [...prev, optText]
+      );
+    },
+    [feedbackState, currentItem, currentQ, submitRapidSelection]
+  );
+
+  const handleConfirmMulti = useCallback(() => {
+    if (feedbackState !== 'idle' || !currentQ || selectedOpts.length === 0) return;
+    submitRapidSelection(selectedOpts);
+  }, [feedbackState, currentQ, selectedOpts, submitRapidSelection]);
 
   // Flashcard Self-Rating (SM-2 Quality 1, 3, 5)
   const handleRateFlashcard = useCallback(
@@ -580,6 +626,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         if (currentQ.options && currentQ.options[idx]) {
           handleSelectOption(currentQ.options[idx]);
         }
+        return;
       }
 
       const keyUpper = e.key.toUpperCase();
@@ -589,6 +636,12 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         if (currentQ.options && currentQ.options[optLetterIdx]) {
           handleSelectOption(currentQ.options[optLetterIdx]);
         }
+        return;
+      }
+
+      if (e.key === 'Enter' && currentQ.isMultiSelect && selectedOpts.length > 0) {
+        e.preventDefault();
+        handleConfirmMulti();
       }
     };
 
@@ -601,6 +654,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     isFlipped,
     feedbackState,
     currentQ,
+    selectedOpts,
     unmasteredCount,
     batchMode,
     batchSize,
@@ -609,6 +663,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     refreshProgress,
     handleRateFlashcard,
     handleSelectOption,
+    handleConfirmMulti,
     advanceNext,
   ]);
 
@@ -1132,7 +1187,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                       {pq.sentence}
                     </span>
                     <span className="font-bold text-emerald-600 dark:text-emerald-400 shrink-0">
-                      ✓ {cleanOptionText(pq.correctWord)}
+                      ✓{' '}
+                      {splitCorrectChoices(pq.correctWord, pq.answerKey, pq.options)
+                        .map((c) => cleanOptionText(c) || c)
+                        .join(' | ')}
                     </span>
                   </div>
                 ))}
@@ -1346,6 +1404,11 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60">
                 {currentQ.topic || currentQ.subject || 'Câu hỏi'}
               </span>
+              {currentQ.isMultiSelect && (
+                <span className="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-300 border border-amber-500/30">
+                  Chọn {currentQ.requiredCount} đáp án ({selectedOpts.length}/{currentQ.requiredCount})
+                </span>
+              )}
               {shuffleChoices && (
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center gap-1">
                   <Shuffle className="w-3 h-3" /> Đã trộn vị trí A–D
@@ -1372,11 +1435,12 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
             {currentQ.options &&
               currentQ.options.map((opt, idx) => {
-                const isSelected = selectedOpt === opt;
+                const isSelected = selectedOpts.includes(opt);
                 const isTrueAnswer = isAnswerMatch(
                   opt,
                   currentQ.correctWord,
-                  shuffleChoices ? undefined : currentQ.answerKey
+                  shuffleChoices ? undefined : currentQ.answerKey,
+                  currentQ.correctOptions
                 );
                 const letter = String.fromCharCode(65 + idx);
                 const displayOpt = cleanOptionText(opt);
@@ -1384,11 +1448,14 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 let optionStyle =
                   'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 hover:border-indigo-500 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/30';
 
-                if (feedbackState === 'correct' && isSelected) {
+                if (feedbackState === 'idle' && isSelected) {
+                  optionStyle =
+                    'bg-indigo-50 dark:bg-indigo-950/60 border-indigo-500 text-indigo-700 dark:text-indigo-200 font-bold shadow-sm';
+                } else if (feedbackState === 'correct' && (isSelected || isTrueAnswer)) {
                   optionStyle =
                     'bg-emerald-500 text-white border-emerald-500 shadow-glow font-bold scale-[1.01]';
                 } else if (feedbackState === 'wrong') {
-                  if (isSelected) {
+                  if (isSelected && !isTrueAnswer) {
                     optionStyle =
                       'bg-rose-500 text-white border-rose-500 shadow-glow line-through opacity-90';
                   } else if (isTrueAnswer) {
@@ -1409,8 +1476,12 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                     className={`p-3 sm:p-5 rounded-xl sm:rounded-2xl border text-left text-sm sm:text-base transition-[transform,background-color,border-color,opacity] duration-150 flex items-start gap-3 sm:gap-3.5 group relative active:scale-[0.98] touch-manipulation select-none transform-gpu ${optionStyle}`}
                   >
                     <span
-                      className={`w-7 h-7 rounded-xl flex items-center justify-center font-mono font-bold text-xs shrink-0 transition-colors ${
-                        feedbackState === 'correct' && isSelected
+                      className={`w-7 h-7 ${
+                        currentQ.isMultiSelect ? 'rounded-lg' : 'rounded-xl'
+                      } flex items-center justify-center font-mono font-bold text-xs shrink-0 transition-colors ${
+                        feedbackState === 'idle' && isSelected
+                          ? 'bg-indigo-600 text-white'
+                          : feedbackState === 'correct' && (isSelected || isTrueAnswer)
                           ? 'bg-white/20 text-white'
                           : feedbackState === 'wrong' && isTrueAnswer
                           ? 'bg-emerald-500 text-white'
@@ -1424,27 +1495,58 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                       {displayOpt}
                     </span>
 
-                    {feedbackState === 'idle' && (
+                    {feedbackState === 'idle' && currentQ.isMultiSelect && (
+                      <span
+                        className={`w-5 h-5 rounded-md border flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
+                          isSelected
+                            ? 'bg-indigo-600 border-indigo-600 text-white'
+                            : 'border-slate-300 dark:border-slate-600'
+                        }`}
+                      >
+                        {isSelected && <Check className="w-3.5 h-3.5" />}
+                      </span>
+                    )}
+
+                    {feedbackState === 'idle' && !currentQ.isMultiSelect && (
                       <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 hidden sm:inline shrink-0 mt-1">
                         [{idx + 1}]
                       </span>
                     )}
 
-                    {feedbackState === 'correct' && isSelected && (
+                    {feedbackState === 'correct' && (isSelected || isTrueAnswer) && (
                       <Check className="w-5 h-5 text-white shrink-0 mt-0.5" />
                     )}
-                    {feedbackState === 'wrong' && isSelected && (
+                    {feedbackState === 'wrong' && isSelected && !isTrueAnswer && (
                       <X className="w-5 h-5 text-white shrink-0 mt-0.5" />
                     )}
                     {feedbackState === 'wrong' && isTrueAnswer && (
                       <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-emerald-500 text-white shrink-0 shadow-sm whitespace-nowrap mt-0.5">
-                        Đáp án đúng ⭐
+                        {isSelected ? 'Đúng ✓' : 'Đáp án đúng ⭐'}
                       </span>
                     )}
                   </button>
                 );
               })}
           </div>
+
+          {/* Multi-Select Confirm Button */}
+          {feedbackState === 'idle' && currentQ.isMultiSelect && (
+            <button
+              type="button"
+              disabled={selectedOpts.length === 0}
+              onClick={handleConfirmMulti}
+              className={`mt-5 w-full py-3.5 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed ${
+                selectedOpts.length === currentQ.requiredCount
+                  ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-glow'
+                  : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700'
+              }`}
+            >
+              <Check className="w-4 h-4" />
+              <span>
+                Xác nhận đáp án ({selectedOpts.length}/{currentQ.requiredCount}) [Enter]
+              </span>
+            </button>
+          )}
 
           {/* Wrong Feedback Anchor Action Bar */}
           {feedbackState === 'wrong' && (

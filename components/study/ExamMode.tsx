@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { Word, ExamQuestion } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { getQuestionKey, cleanOptionText, isAnswerMatch } from '@/lib/utils';
+import { getQuestionKey, cleanOptionText, isQuestionAnsweredCorrectly } from '@/lib/utils';
 import { useQuizStore } from '@/lib/quizStore';
 import { buildStandardQuestions } from '@/lib/quizHelpers';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
@@ -19,6 +19,7 @@ import {
   AlertTriangle,
   Layers,
   Shuffle,
+  Check,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -40,7 +41,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   // Taking Exam State
   const [questions, setQuestions] = useState<ExamQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [answers, setAnswers] = useState<Record<number, string[]>>({});
   const [flags, setFlags] = useState<Record<number, boolean>>({});
   const [filterView, setFilterView] = useState<'all' | 'unanswered' | 'flagged'>('all');
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
@@ -216,7 +217,31 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     return () => clearInterval(timer);
   }, [isSubmitted, isConfiguring, timeLeft]);
 
-  // Keyboard navigation & Shortcuts (A-D, 1-4, Left/Right, F for flag)
+  const handleSelectExamOption = useCallback(
+    (qIndex: number, opt: string) => {
+      const targetQ = questions[qIndex];
+      if (!targetQ) return;
+
+      setAnswers((prev) => {
+        if (!targetQ.isMultiSelect) {
+          return { ...prev, [qIndex]: [opt] };
+        }
+        const existing = prev[qIndex] || [];
+        const updated = existing.includes(opt)
+          ? existing.filter((item) => item !== opt)
+          : [...existing, opt];
+        if (updated.length === 0) {
+          const copy = { ...prev };
+          delete copy[qIndex];
+          return copy;
+        }
+        return { ...prev, [qIndex]: updated };
+      });
+    },
+    [questions]
+  );
+
+  // Keyboard navigation & Shortcuts (A-F, 1-6, Left/Right, F for flag)
   useEffect(() => {
     if (isSubmitted || isConfiguring || !questions.length || showSubmitConfirm) return;
 
@@ -233,11 +258,12 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       else if (key === 'C' || key === '3') chosenIdx = 2;
       else if (key === 'D' || key === '4') chosenIdx = 3;
       else if (key === 'E' || key === '5') chosenIdx = 4;
+      else if (key === 'F' && currentQ.options.length > 5 && !e.shiftKey) chosenIdx = 5;
       else if (key === '6') chosenIdx = 5;
 
       if (chosenIdx >= 0 && chosenIdx < currentQ.options.length) {
         e.preventDefault();
-        setAnswers((prev) => ({ ...prev, [currentIndex]: currentQ.options[chosenIdx] }));
+        handleSelectExamOption(currentIndex, currentQ.options[chosenIdx]);
       } else if (key === 'F') {
         e.preventDefault();
         toggleFlag(currentIndex);
@@ -252,7 +278,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, isSubmitted, isConfiguring, questions, showSubmitConfirm]);
+  }, [currentIndex, isSubmitted, isConfiguring, questions, showSubmitConfirm, handleSelectExamOption]);
 
   const toggleFlag = (idx: number) => {
     setFlags((prev) => ({
@@ -261,8 +287,8 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     }));
   };
 
-  const isAnswerCorrect = (userAns: string | undefined, q: ExamQuestion) => {
-    return isAnswerMatch(userAns, q.correctWord, q.answerKey);
+  const isAnswerCorrect = (userAns: string[] | undefined, q: ExamQuestion) => {
+    return isQuestionAnsweredCorrectly(userAns, q.correctWord, q.answerKey, q.correctOptions);
   };
 
   // Compute Topic Performance Breakdown (Tính năng 2: Thống kê Lỗ hổng theo Chuyên đề)
@@ -278,7 +304,12 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       }
       const item = map.get(topicName)!;
       item.total += 1;
-      const isCorrect = isAnswerMatch(answers[idx], q.correctWord, q.answerKey);
+      const isCorrect = isQuestionAnsweredCorrectly(
+        answers[idx],
+        q.correctWord,
+        q.answerKey,
+        q.correctOptions
+      );
       if (isCorrect) {
         item.correct += 1;
       } else {
@@ -337,7 +368,12 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     return questions
       .map((q, idx) => ({ q, idx }))
       .filter(({ q, idx }) => {
-        const isCorrect = isAnswerMatch(answers[idx], q.correctWord, q.answerKey);
+        const isCorrect = isQuestionAnsweredCorrectly(
+          answers[idx],
+          q.correctWord,
+          q.answerKey,
+          q.correctOptions
+        );
         const wasFlagged = Boolean(flags[idx]);
 
         if (resultFilterMode === 'wrong' && isCorrect) return false;
@@ -350,7 +386,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   }, [questions, answers, flags, resultFilterMode, resultFilterTopic]);
 
   const answeredCount = useMemo(() => {
-    return Object.keys(answers).length;
+    return Object.values(answers).filter((a) => Array.isArray(a) && a.length > 0).length;
   }, [answers]);
 
   const unansweredCount = useMemo(() => {
@@ -595,7 +631,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       {/* Question Navigator Grid (Collapsible on mobile) */}
       <div className={`${isNavOpen ? 'flex' : 'hidden sm:flex'} flex-wrap gap-1.5 mb-5 p-3 rounded-2xl story-glass max-h-36 overflow-y-auto animate-fade-in`}>
         {questions.map((_, idx) => {
-          const isAnswered = Boolean(answers[idx]);
+          const isAnswered = Boolean(answers[idx]?.length);
           const isFlagged = Boolean(flags[idx]);
           const isCurrent = idx === currentIndex;
 
@@ -646,7 +682,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       {!isNavOpen && (
         <div className="flex sm:hidden items-center gap-1.5 overflow-x-auto pb-2.5 mb-3 px-1">
           {questions.map((_, idx) => {
-            const isAnswered = Boolean(answers[idx]);
+            const isAnswered = Boolean(answers[idx]?.length);
             const isFlagged = Boolean(flags[idx]);
             const isCurrent = idx === currentIndex;
             return (
@@ -686,6 +722,11 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
                   {currentQ.topic}
                 </span>
               )}
+              {currentQ.isMultiSelect && (
+                <span className="text-[11px] font-black px-2.5 py-0.5 rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-300 border border-amber-500/30 normal-case">
+                  Chọn {currentQ.requiredCount} đáp án ({(answers[currentIndex] || []).length}/{currentQ.requiredCount})
+                </span>
+              )}
               {shuffleChoices && (
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center gap-1 normal-case">
                   <Shuffle className="w-3 h-3" /> Đã đảo thứ tự A–D
@@ -722,11 +763,11 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
         {/* Choices */}
         <div className="space-y-2.5 sm:space-y-3 mb-6">
           {currentQ.options.map((opt, idx) => {
-            const isChosen = answers[currentIndex] === opt;
+            const isChosen = (answers[currentIndex] || []).includes(opt);
             return (
               <button
                 key={idx}
-                onClick={() => setAnswers((prev) => ({ ...prev, [currentIndex]: opt }))}
+                onClick={() => handleSelectExamOption(currentIndex, opt)}
                 className={`w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-[transform,background-color,border-color,box-shadow] duration-150 flex items-center justify-between active:scale-[0.99] touch-manipulation select-none transform-gpu ${
                   isChosen
                     ? 'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-500 text-indigo-700 dark:text-indigo-300 shadow-glow font-bold animate-pop-correct'
@@ -735,7 +776,9 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
               >
                 <div className="flex items-center gap-2.5 sm:gap-3">
                   <span
-                    className={`w-7 h-7 rounded-xl text-xs flex items-center justify-center font-mono font-bold shrink-0 ${
+                    className={`w-7 h-7 ${
+                      currentQ.isMultiSelect ? 'rounded-lg' : 'rounded-xl'
+                    } text-xs flex items-center justify-center font-mono font-bold shrink-0 ${
                       isChosen
                         ? 'bg-indigo-600 text-white'
                         : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
@@ -745,9 +788,22 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
                   </span>
                   <span className="text-sm sm:text-base leading-relaxed">{cleanOptionText(opt)}</span>
                 </div>
-                <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500 hidden sm:inline-block">
-                  [{String.fromCharCode(65 + idx)}]
-                </span>
+                <div className="flex items-center gap-2 shrink-0 ml-2">
+                  {currentQ.isMultiSelect && (
+                    <span
+                      className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${
+                        isChosen
+                          ? 'bg-indigo-600 border-indigo-600 text-white'
+                          : 'border-slate-300 dark:border-slate-600'
+                      }`}
+                    >
+                      {isChosen && <Check className="w-3.5 h-3.5" />}
+                    </span>
+                  )}
+                  <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500 hidden sm:inline-block">
+                    [{String.fromCharCode(65 + idx)}]
+                  </span>
+                </div>
               </button>
             );
           })}

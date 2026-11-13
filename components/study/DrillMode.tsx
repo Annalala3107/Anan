@@ -3,7 +3,14 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { Word, WordProgress } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { getQuestionKey, cleanOptionText, isAnswerMatch, shuffleArray } from '@/lib/utils';
+import {
+  getQuestionKey,
+  cleanOptionText,
+  isAnswerMatch,
+  isQuestionAnsweredCorrectly,
+  getQuestionAnswerMeta,
+  shuffleArray,
+} from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
   ArrowRight,
@@ -34,6 +41,9 @@ interface PartQuestionItem {
   originalNumber: number; // 1-based index in the full deck
   sentence: string;
   correctWord: string;
+  correctOptions: string[];
+  isMultiSelect: boolean;
+  requiredCount: number;
   options: string[];
   originalOptions: string[];
   explanation: string;
@@ -65,7 +75,8 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   const [activePart, setActivePart] = useState<CheckpointPart | null>(null);
   const [sessionQuestions, setSessionQuestions] = useState<PartQuestionItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedWord, setSelectedWord] = useState<string | null>(null);
+  const [selectedWords, setSelectedWords] = useState<string[]>([]);
+  const [isSubmittedAnswer, setIsSubmittedAnswer] = useState(false);
   const [firstTryScore, setFirstTryScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [isRetryPhase, setIsRetryPhase] = useState(false);
@@ -94,11 +105,16 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       .map((target, idx) => {
         const key = String(target.id || getQuestionKey(target));
         if (target.question && target.options && target.options.length > 0) {
+          const rawCorrect = target.correctWord || target.options[0];
+          const meta = getQuestionAnswerMeta(rawCorrect, target.answer, target.options);
           return {
             id: key,
             originalNumber: idx + 1,
             sentence: target.question,
-            correctWord: target.correctWord || target.options[0],
+            correctWord: rawCorrect,
+            correctOptions: meta.correctChoices,
+            isMultiSelect: meta.isMultiSelect,
+            requiredCount: meta.requiredCount,
             options: target.options,
             originalOptions: target.options,
             explanation:
@@ -121,6 +137,9 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           originalNumber: idx + 1,
           sentence,
           correctWord: target.word,
+          correctOptions: [target.word],
+          isMultiSelect: false,
+          requiredCount: 1,
           options: finalOpts,
           originalOptions: finalOpts,
           explanation: `${target.word}: ${target.vi || 'Đáp án chính xác'}`,
@@ -233,8 +252,8 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       const nextVal = !prev;
       setSessionQuestions((prevQs) =>
         prevQs.map((q, idx) => {
-          // Do not reshuffle already-answered current question if selectedWord is set, unless we clear selection
-          if (idx === currentIndex && selectedWord) return q;
+          // Do not reshuffle already-answered current question if submitted
+          if (idx === currentIndex && isSubmittedAnswer) return q;
           return {
             ...q,
             options: nextVal
@@ -243,9 +262,12 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           };
         })
       );
+      if (!isSubmittedAnswer) {
+        setSelectedWords([]);
+      }
       return nextVal;
     });
-  }, [currentIndex, selectedWord]);
+  }, [currentIndex, isSubmittedAnswer]);
 
   const handleStartPart = useCallback(
     (part: CheckpointPart) => {
@@ -256,7 +278,8 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       setActivePart(part);
       setSessionQuestions(prepared);
       setCurrentIndex(0);
-      setSelectedWord(null);
+      setSelectedWords([]);
+      setIsSubmittedAnswer(false);
       setFirstTryScore(0);
       setStreak(0);
       setIsRetryPhase(false);
@@ -272,10 +295,12 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
 
   const isOptionCorrect = useCallback(
     (opt: string, q: PartQuestionItem) => {
-      if (shuffleOptions) {
-        return isAnswerMatch(opt, q.correctWord);
-      }
-      return isAnswerMatch(opt, q.correctWord, q.answerKey);
+      return isAnswerMatch(
+        opt,
+        q.correctWord,
+        shuffleOptions ? undefined : q.answerKey,
+        q.correctOptions
+      );
     },
     [shuffleOptions]
   );
@@ -288,7 +313,8 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
     if (isCompleted) return;
 
     if (currentIndex < sessionQuestions.length - 1) {
-      setSelectedWord(null);
+      setSelectedWords([]);
+      setIsSubmittedAnswer(false);
       setCurrentIndex((i) => i + 1);
       return;
     }
@@ -300,7 +326,8 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       setSessionQuestions(nextRetryBatch);
       setRetryQueue([]);
       setCurrentIndex(0);
-      setSelectedWord(null);
+      setSelectedWords([]);
+      setIsSubmittedAnswer(false);
       return;
     }
 
@@ -331,12 +358,17 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
     handleNextRef.current = handleNext;
   }, [handleNext]);
 
-  const handleSelect = useCallback(
-    (choice: string) => {
-      if (selectedWord || !currentQ) return;
-      setSelectedWord(choice);
+  const submitAnswer = useCallback(
+    (choices: string[]) => {
+      if (isSubmittedAnswer || !currentQ || choices.length === 0) return;
+      setIsSubmittedAnswer(true);
 
-      const isCorrect = isOptionCorrect(choice, currentQ);
+      const isCorrect = isQuestionAnsweredCorrectly(
+        choices,
+        currentQ.correctWord,
+        shuffleOptions ? undefined : currentQ.answerKey,
+        currentQ.correctOptions
+      );
 
       if (isCorrect) {
         if (!isRetryPhase) {
@@ -364,8 +396,38 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
         }
       }
     },
-    [selectedWord, currentQ, isOptionCorrect, isRetryPhase, autoAdvanceCorrect, retryMistakesAtEnd]
+    [
+      isSubmittedAnswer,
+      currentQ,
+      shuffleOptions,
+      isRetryPhase,
+      autoAdvanceCorrect,
+      retryMistakesAtEnd,
+    ]
   );
+
+  const handleSelect = useCallback(
+    (choice: string) => {
+      if (isSubmittedAnswer || !currentQ) return;
+
+      if (!currentQ.isMultiSelect) {
+        setSelectedWords([choice]);
+        submitAnswer([choice]);
+        return;
+      }
+
+      // Multi-select: toggle choice in selectedWords
+      setSelectedWords((prev) =>
+        prev.includes(choice) ? prev.filter((item) => item !== choice) : [...prev, choice]
+      );
+    },
+    [isSubmittedAnswer, currentQ, submitAnswer]
+  );
+
+  const handleConfirmMulti = useCallback(() => {
+    if (!currentQ || isSubmittedAnswer || selectedWords.length === 0) return;
+    submitAnswer(selectedWords);
+  }, [currentQ, isSubmittedAnswer, selectedWords, submitAnswer]);
 
   // Find next sequential part if available
   const nextSequentialPart = useMemo(() => {
@@ -373,7 +435,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
     return sequentialParts.find((p) => p.index === activePart.index + 1) || null;
   }, [activePart, sequentialParts]);
 
-  // Global keyboard shortcuts: 1-6 / A-F to answer, Enter / Space to advance
+  // Global keyboard shortcuts: 1-6 / A-F to answer, Enter to confirm multi-select, Enter / Space to advance
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isConfiguring) return;
@@ -389,7 +451,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
 
       if (!currentQ) return;
 
-      if (!selectedWord) {
+      if (!isSubmittedAnswer) {
         if (['1', '2', '3', '4', '5', '6'].includes(e.key)) {
           e.preventDefault();
           const idx = parseInt(e.key, 10) - 1;
@@ -406,6 +468,12 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           if (currentQ.options[idx]) {
             handleSelect(currentQ.options[idx]);
           }
+          return;
+        }
+
+        if (e.key === 'Enter' && currentQ.isMultiSelect && selectedWords.length > 0) {
+          e.preventDefault();
+          handleConfirmMulti();
         }
       } else {
         if (e.key === 'Enter' || e.code === 'Space') {
@@ -421,9 +489,11 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
     isConfiguring,
     isCompleted,
     currentQ,
-    selectedWord,
+    isSubmittedAnswer,
+    selectedWords,
     nextSequentialPart,
     handleSelect,
+    handleConfirmMulti,
     handleNext,
     handleStartPart,
   ]);
@@ -833,8 +903,15 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   // =========================================================================
   // VIEW 3: ACTIVE TUTOR QUESTION & INSTANT EXPLANATION VIEW
   // =========================================================================
-  const isAnswered = Boolean(selectedWord);
-  const wasAnsweredCorrect = selectedWord ? isOptionCorrect(selectedWord, currentQ) : false;
+  const isAnswered = isSubmittedAnswer;
+  const wasAnsweredCorrect = isAnswered
+    ? isQuestionAnsweredCorrectly(
+        selectedWords,
+        currentQ.correctWord,
+        shuffleOptions ? undefined : currentQ.answerKey,
+        currentQ.correctOptions
+      )
+    : false;
 
   return (
     <div className="w-full max-w-4xl mx-auto py-5 px-4 sm:px-6">
@@ -920,9 +997,14 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
         {/* Question Card */}
         <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl story-glass shadow-xl mb-5">
           <div className="flex items-center justify-between gap-2 mb-2.5 flex-wrap">
-            <div className="flex items-center gap-2 text-xs font-bold text-indigo-500 uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-xs font-bold text-indigo-500 uppercase tracking-wider flex-wrap">
               <HelpCircle className="w-4 h-4" />
               <span>Câu #{currentQ.originalNumber} trong đề</span>
+              {currentQ.isMultiSelect && (
+                <span className="text-[11px] font-black px-2.5 py-0.5 rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-300 border border-amber-500/30 normal-case">
+                  Chọn {currentQ.requiredCount} đáp án ({selectedWords.length}/{currentQ.requiredCount})
+                </span>
+              )}
               {shuffleOptions && (
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 flex items-center gap-1 normal-case">
                   <Shuffle className="w-3 h-3" /> Đã đảo thứ tự A–D
@@ -942,14 +1024,19 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
         {/* Choices */}
         <div className="space-y-2.5 sm:space-y-3 mb-5">
           {currentQ.options.map((opt, idx) => {
-            const isSelected = selectedWord === opt;
+            const isSelected = selectedWords.includes(opt);
             const isTarget = isOptionCorrect(opt, currentQ);
             let style =
               'w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-[transform,background-color,border-color,opacity] duration-150 flex items-center justify-between active:scale-[0.99] touch-manipulation select-none transform-gpu ';
 
-            if (!selectedWord) {
-              style +=
-                'bg-white dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-slate-900 dark:text-white cursor-pointer';
+            if (!isAnswered) {
+              if (isSelected) {
+                style +=
+                  'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-500 text-indigo-700 dark:text-indigo-200 shadow-sm font-bold';
+              } else {
+                style +=
+                  'bg-white dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-slate-900 dark:text-white cursor-pointer';
+              }
             } else if (isTarget) {
               style +=
                 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-700 dark:text-emerald-300 shadow-glow-success font-bold animate-pop-correct';
@@ -970,13 +1057,39 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                 className={style}
               >
                 <div className="flex items-center gap-3">
-                  <span className="w-7 h-7 rounded-xl bg-slate-100 dark:bg-slate-700/80 text-xs flex items-center justify-center font-mono font-bold text-slate-600 dark:text-slate-300 shrink-0">
+                  <span
+                    className={`w-7 h-7 ${
+                      currentQ.isMultiSelect ? 'rounded-lg' : 'rounded-xl'
+                    } text-xs flex items-center justify-center font-mono font-bold shrink-0 ${
+                      !isAnswered && isSelected
+                        ? 'bg-indigo-600 text-white'
+                        : 'bg-slate-100 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300'
+                    }`}
+                  >
                     {String.fromCharCode(65 + idx)}
                   </span>
                   <span className="text-sm sm:text-base">{cleanOptionText(opt)}</span>
                 </div>
+                {!isAnswered && currentQ.isMultiSelect && (
+                  <span
+                    className={`w-5 h-5 rounded-md border flex items-center justify-center shrink-0 ml-2 transition-colors ${
+                      isSelected
+                        ? 'bg-indigo-600 border-indigo-600 text-white'
+                        : 'border-slate-300 dark:border-slate-600'
+                    }`}
+                  >
+                    {isSelected && <Check className="w-3.5 h-3.5" />}
+                  </span>
+                )}
                 {isAnswered && isTarget && (
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 ml-2" />
+                  <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                    {!isSelected && currentQ.isMultiSelect && (
+                      <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-600 dark:text-emerald-300">
+                        Chọn thiếu
+                      </span>
+                    )}
+                    <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                  </div>
                 )}
                 {isAnswered && isSelected && !isTarget && (
                   <XCircle className="w-5 h-5 text-rose-500 shrink-0 ml-2" />
@@ -985,6 +1098,25 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
             );
           })}
         </div>
+
+        {/* Multi-Select Confirm Button */}
+        {!isAnswered && currentQ.isMultiSelect && (
+          <button
+            type="button"
+            disabled={selectedWords.length === 0}
+            onClick={handleConfirmMulti}
+            className={`w-full py-3.5 mb-5 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed ${
+              selectedWords.length === currentQ.requiredCount
+                ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-glow'
+                : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700'
+            }`}
+          >
+            <Check className="w-4 h-4" />
+            <span>
+              Xác nhận đáp án ({selectedWords.length}/{currentQ.requiredCount}) [Enter]
+            </span>
+          </button>
+        )}
       </div>
 
       {/* Explanation Banner */}

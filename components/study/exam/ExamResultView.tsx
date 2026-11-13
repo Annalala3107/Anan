@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ExamQuestion } from '@/lib/types';
+import { splitCorrectChoices } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
   Trophy,
@@ -26,7 +27,7 @@ export interface TopicStatItem {
 
 interface ExamResultViewProps {
   questions: ExamQuestion[];
-  answers: Record<number, string>;
+  answers: Record<number, string[]>;
   flags: Record<number, boolean>;
   topicStats: TopicStatItem[];
   weakestTopic: TopicStatItem | null;
@@ -39,7 +40,7 @@ interface ExamResultViewProps {
   onReconfigure: () => void;
   onExit: () => void;
   onDrillWeakTopic: (topic: string) => void;
-  isAnswerCorrect: (ans: string | undefined, q: ExamQuestion) => boolean;
+  isAnswerCorrect: (ans: string[] | undefined, q: ExamQuestion) => boolean;
   flaggedCount: number;
 }
 
@@ -330,6 +331,12 @@ export default function ExamResultView({
             const userAns = answers[idx];
             const isCorrect = isAnswerCorrect(userAns, q);
             const wasFlagged = Boolean(flags[idx]);
+            const userAnsText =
+              userAns && userAns.length > 0 ? userAns.join(' | ') : '(Bỏ trống)';
+            const correctAnsList =
+              q.correctOptions && q.correctOptions.length > 0
+                ? q.correctOptions
+                : splitCorrectChoices(q.correctWord, q.answerKey, q.options);
 
             return (
               <div
@@ -382,13 +389,13 @@ export default function ExamResultView({
                           : 'text-rose-600 dark:text-rose-400'
                       }`}
                     >
-                      {userAns || '(Bỏ trống)'}
+                      {userAnsText}
                     </span>
                   </div>
                   <div>
                     <span className="text-slate-400">Đáp án đúng: </span>
                     <span className="font-bold text-emerald-600 dark:text-emerald-400">
-                      {q.correctWord}
+                      {correctAnsList.join(' | ')}
                     </span>
                   </div>
                   {q.explanation && (

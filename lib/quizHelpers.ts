@@ -1,5 +1,10 @@
 import { Word, WordProgress } from './types';
-import { getQuestionKey, cleanOptionText, shuffleArray } from './utils';
+import {
+  getQuestionKey,
+  cleanOptionText,
+  shuffleArray,
+  getQuestionAnswerMeta,
+} from './utils';
 import { StorageEngine } from './storage';
 
 export interface StandardQuestion {
@@ -7,6 +12,9 @@ export interface StandardQuestion {
   originalNumber?: number;
   sentence: string;
   correctWord: string;
+  correctOptions?: string[];
+  isMultiSelect?: boolean;
+  requiredCount?: number;
   options: string[];
   explanation: string;
   answerKey?: string;
@@ -105,17 +113,26 @@ export function buildStandardQuestions(
     if (target.question && target.options && target.options.length > 0) {
       const rawOptions = target.options;
       const rawCorrect = target.correctWord || rawOptions[0];
+      const meta = getQuestionAnswerMeta(rawCorrect, target.answer, rawOptions);
 
       const finalOptions = shuffleChoices
         ? shuffleArray(rawOptions).map((opt) => cleanOptionText(opt))
         : rawOptions;
-      const finalCorrect = shuffleChoices ? cleanOptionText(rawCorrect) : rawCorrect;
+      const finalCorrectOptions = shuffleChoices
+        ? meta.correctChoices.map((c) => cleanOptionText(c))
+        : meta.correctChoices;
+      const finalCorrect = shuffleChoices
+        ? finalCorrectOptions.join(' | ')
+        : rawCorrect;
 
       list.push({
         id: String(target.id || getQuestionKey(target)),
         originalNumber,
         sentence: target.question,
         correctWord: finalCorrect,
+        correctOptions: finalCorrectOptions,
+        isMultiSelect: meta.isMultiSelect,
+        requiredCount: meta.requiredCount,
         options: finalOptions,
         explanation: target.explanation || `Đáp án đúng: ${target.answer || rawOptions[0]}`,
         answerKey: shuffleChoices ? undefined : target.answer,

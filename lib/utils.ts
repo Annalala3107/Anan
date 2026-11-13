@@ -21,42 +21,240 @@ export function extractOptionKey(text?: string): string | null {
   return match ? match[0].toUpperCase() : null;
 }
 
+export interface ParsedAnswerKeys {
+  keys: string[];
+  isOrMode: boolean;
+}
+
+export interface QuestionAnswerMeta {
+  isMultiSelect: boolean;
+  requiredCount: number;
+  correctChoices: string[];
+  answerKeys: string[];
+  isOrMode: boolean;
+}
+
 /**
- * Accurately compares user's choice with the question's correct answer,
- * handling letter keys ('A', 'B', or 'B, C'), full options ('A. Option 1'), and clean text ('Option 1').
+ * Parses an answer key string (e.g. "B", "A, B, C", "B hoặc C") into normalized uppercase keys
+ * and detects whether the keys represent an OR choice ("hoặc" / "or") vs a multi-select AND choice.
+ */
+export function parseAnswerKeys(answerKey?: string): ParsedAnswerKeys {
+  if (!answerKey || !answerKey.trim()) {
+    return { keys: [], isOrMode: false };
+  }
+
+  const raw = answerKey.trim();
+  const isOrMode = /(?:^|[\s,/;|])(?:hoặc|or)(?=[\s,/;|]|$)/i.test(raw);
+
+  const tokens = raw
+    .split(/[,/;\s]+/)
+    .map((t) => t.trim().toUpperCase())
+    .filter((t) => /^[A-F]$/.test(t));
+
+  const keys = Array.from(new Set(tokens));
+  return { keys, isOrMode };
+}
+
+/**
+ * Splits a single or pipe-delimited multi-answer correctWord string into individual choices,
+ * without breaking logical OR operators ("||") inside programming questions.
+ */
+export function splitCorrectChoices(
+  correctWord?: string,
+  answerKey?: string,
+  options?: string[]
+): string[] {
+  const raw = (correctWord || '').trim();
+  let parts: string[] = [];
+
+  if (raw) {
+    // Prefer splitting before an explicit option prefix (" | B. ..."), otherwise split on single spaced pipe (" | ") not adjacent to another "|"
+    if (/\s+\|\s+(?=[A-Fa-f][.)\s:])/.test(raw)) {
+      parts = raw
+        .split(/\s+\|\s+(?=[A-Fa-f][.)\s:])/)
+        .map((p) => p.trim())
+        .filter(Boolean);
+    } else if (/(?<!\|)\s+\|\s+(?!\|)/.test(raw)) {
+      parts = raw
+        .split(/(?<!\|)\s+\|\s+(?!\|)/)
+        .map((p) => p.trim())
+        .filter(Boolean);
+    } else {
+      parts = [raw];
+    }
+  }
+
+  // Fallback: if answerKey lists multiple keys (e.g. "A, B") and options are available,
+  // resolve any missing choices from options directly.
+  if (options && options.length > 0 && answerKey) {
+    const { keys, isOrMode } = parseAnswerKeys(answerKey);
+    if (!isOrMode && keys.length > parts.length) {
+      const resolved = options.filter((opt) => {
+        const k = extractOptionKey(opt);
+        return k ? keys.includes(k) : false;
+      });
+      if (resolved.length > parts.length) {
+        parts = resolved;
+      }
+    }
+  }
+
+  return parts;
+}
+
+/**
+ * Computes multi-select metadata and normalized target list for a question.
+ */
+export function getQuestionAnswerMeta(
+  correctWord?: string,
+  answerKey?: string,
+  options?: string[],
+  explicitCorrectOptions?: string[]
+): QuestionAnswerMeta {
+  const { keys: answerKeys, isOrMode } = parseAnswerKeys(answerKey);
+  const rawChoices =
+    explicitCorrectOptions && explicitCorrectOptions.length > 0
+      ? explicitCorrectOptions.filter(Boolean)
+      : splitCorrectChoices(correctWord, answerKey, options);
+
+  // Deduplicate choices by normalized cleaned text (or raw lowercase if clean is empty)
+  const seen = new Set<string>();
+  const correctChoices: string[] = [];
+  for (const choice of rawChoices) {
+    const norm = (cleanOptionText(choice) || choice).trim().toLowerCase();
+    if (!seen.has(norm)) {
+      seen.add(norm);
+      correctChoices.push(choice);
+    }
+  }
+
+  const isMultiSelect = !isOrMode && (correctChoices.length > 1 || answerKeys.length > 1);
+  const requiredCount = isMultiSelect
+    ? Math.max(correctChoices.length, answerKeys.length)
+    : 1;
+
+  return {
+    isMultiSelect,
+    requiredCount,
+    correctChoices,
+    answerKeys,
+    isOrMode,
+  };
+}
+
+/**
+ * Checks whether a single choice matches a single target option string.
+ */
+function isSingleOptionMatch(userChoice: string, targetChoice: string): boolean {
+  const userRaw = userChoice.trim().toLowerCase();
+  const targetRaw = targetChoice.trim().toLowerCase();
+  if (!userRaw || !targetRaw) return false;
+  if (userRaw === targetRaw) return true;
+
+  const userKey = extractOptionKey(userChoice)?.toLowerCase();
+  const targetKey = extractOptionKey(targetChoice)?.toLowerCase();
+  if (userKey && targetKey && userKey === targetKey) return true;
+
+  const userClean = cleanOptionText(userChoice).toLowerCase();
+  const targetClean = cleanOptionText(targetChoice).toLowerCase();
+  if (userClean && targetClean && userClean === targetClean) return true;
+
+  return false;
+}
+
+/**
+ * Accurately compares a single user choice against the question's correct answer(s),
+ * supporting single answers ("B"), OR answers ("B hoặc C"), and multi-answers ("A. X | B. Y").
  */
 export function isAnswerMatch(
   userChoice?: string,
   correctWord?: string,
-  answerKey?: string
+  answerKey?: string,
+  explicitCorrectOptions?: string[]
 ): boolean {
   if (!userChoice) return false;
 
-  const userRaw = userChoice.trim().toLowerCase();
-  const correctRaw = (correctWord || '').trim().toLowerCase();
-  const keyRaw = (answerKey || '').trim().toLowerCase();
-
-  // 1. Exact raw match
-  if (userRaw === correctRaw) return true;
-
-  // 2. Answer key letter match (supports single key "B" or multiple keys "B, C" / "B hoặc C")
-  const userKey = extractOptionKey(userChoice)?.toLowerCase();
-  if (keyRaw && userKey) {
-    const validKeys = keyRaw
-      .split(/[,/;\s]+|hoặc|or|and/)
-      .map((k) => k.trim())
-      .filter((k) => /^[a-f]$/.test(k));
-    if (validKeys.includes(userKey)) return true;
+  const { keys: validKeys } = parseAnswerKeys(answerKey);
+  const userKey = extractOptionKey(userChoice);
+  if (validKeys.length > 0 && userKey && validKeys.includes(userKey)) {
+    return true;
   }
 
-  // 3. Extracted key matches correctWord key(s)
-  const correctOptionKey = extractOptionKey(correctWord)?.toLowerCase();
-  if (userKey && correctOptionKey && userKey === correctOptionKey) return true;
+  const targetChoices =
+    explicitCorrectOptions && explicitCorrectOptions.length > 0
+      ? explicitCorrectOptions
+      : splitCorrectChoices(correctWord, answerKey);
 
-  // 4. Cleaned text match (without A., B., C., D., E., F.)
-  const userClean = cleanOptionText(userChoice).toLowerCase();
-  const correctClean = cleanOptionText(correctWord).toLowerCase();
-  if (userClean && correctClean && userClean === correctClean) return true;
+  for (const target of targetChoices) {
+    if (isSingleOptionMatch(userChoice, target)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Evaluates a user's full selection for both single-choice and multi-select questions.
+ * - Single-choice: passes when the chosen option matches any valid answer (supports "B hoặc C").
+ * - Multi-select: passes only when the user selects all required correct answers with no extras or misses.
+ */
+export function isQuestionAnsweredCorrectly(
+  userSelection: string | string[] | undefined,
+  correctWord?: string,
+  answerKey?: string,
+  explicitCorrectOptions?: string[]
+): boolean {
+  const selected = Array.isArray(userSelection)
+    ? userSelection.filter(Boolean)
+    : userSelection
+    ? [userSelection]
+    : [];
+
+  if (selected.length === 0) return false;
+
+  const meta = getQuestionAnswerMeta(correctWord, answerKey, undefined, explicitCorrectOptions);
+
+  if (!meta.isMultiSelect) {
+    return (
+      selected.length === 1 &&
+      isAnswerMatch(selected[0], correctWord, answerKey, meta.correctChoices)
+    );
+  }
+
+  if (selected.length !== meta.requiredCount) {
+    return false;
+  }
+
+  // Match against explicit/parsed target choices when we have all of them
+  if (meta.correctChoices.length >= meta.requiredCount) {
+    const matchedTargetIndices = new Set<number>();
+    for (const choice of selected) {
+      let matchedAny = false;
+      for (let i = 0; i < meta.correctChoices.length; i++) {
+        if (!matchedTargetIndices.has(i) && isSingleOptionMatch(choice, meta.correctChoices[i])) {
+          matchedTargetIndices.add(i);
+          matchedAny = true;
+          break;
+        }
+      }
+      if (!matchedAny) return false;
+    }
+    return matchedTargetIndices.size === meta.requiredCount;
+  }
+
+  // Fallback when only answerKeys are available (unshuffled)
+  if (meta.answerKeys.length >= meta.requiredCount) {
+    const matchedKeys = new Set<string>();
+    for (const choice of selected) {
+      const k = extractOptionKey(choice);
+      if (!k || !meta.answerKeys.includes(k) || matchedKeys.has(k)) {
+        return false;
+      }
+      matchedKeys.add(k);
+    }
+    return matchedKeys.size === meta.requiredCount;
+  }
 
   return false;
 }
