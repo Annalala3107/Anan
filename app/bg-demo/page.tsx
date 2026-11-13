@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import MidnightStarfield from '@/components/MidnightStarfield';
+import DynamicConstellationBackground from '@/components/DynamicConstellationBackground';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
   Sparkles,
@@ -40,12 +40,13 @@ export default function BackgroundSystemDemoPage() {
 
   return (
     <>
-      <MidnightStarfield
+      <DynamicConstellationBackground
         showAmbientGlows={showAmbientGlows}
         showStars={showStars}
-        pointerReact={pointerReact}
-        forceReducedMotion={forceReducedMotion}
+        interactive={pointerReact && !forceReducedMotion}
         density={density}
+        showHud={false}
+        className="z-[1]"
       />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 pb-28 md:pb-16 space-y-8 text-slate-100">
