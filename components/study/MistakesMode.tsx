@@ -10,6 +10,7 @@ import {
   isAnswerMatch,
   isQuestionAnsweredCorrectly,
   getQuestionAnswerMeta,
+  formatExplanationForCurrentOptions,
   shuffleArray,
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
@@ -430,7 +431,16 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
           {currentWord.explanation && (
             <div className="p-4 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-900/60 text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
               <span className="font-bold text-amber-600 dark:text-amber-400">Giải thích: </span>
-              {currentWord.explanation}
+              {isMCQ
+                ? formatExplanationForCurrentOptions(
+                    currentWord.explanation,
+                    options,
+                    currentWord.correctWord || currentWord.word,
+                    currentWord.answer,
+                    shuffleOptions,
+                    answerMeta.correctChoices
+                  )
+                : currentWord.explanation}
             </div>
           )}
           <button

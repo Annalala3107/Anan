@@ -9,6 +9,7 @@ import {
   isAnswerMatch,
   isQuestionAnsweredCorrectly,
   getQuestionAnswerMeta,
+  formatExplanationForCurrentOptions,
   shuffleArray,
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
@@ -1150,7 +1151,14 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
             )}
           </div>
           <p className="text-sm sm:text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
-            {currentQ.explanation}
+            {formatExplanationForCurrentOptions(
+              currentQ.explanation,
+              currentQ.options,
+              currentQ.correctWord,
+              currentQ.answerKey,
+              shuffleOptions,
+              currentQ.correctOptions
+            )}
           </p>
         </div>
       )}

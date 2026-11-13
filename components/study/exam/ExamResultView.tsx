@@ -2,7 +2,11 @@
 
 import React from 'react';
 import { ExamQuestion } from '@/lib/types';
-import { splitCorrectChoices } from '@/lib/utils';
+import {
+  splitCorrectChoices,
+  formatExplanationForCurrentOptions,
+  formatChoicesWithDisplayLetters,
+} from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
   Trophy,
@@ -42,6 +46,7 @@ interface ExamResultViewProps {
   onDrillWeakTopic: (topic: string) => void;
   isAnswerCorrect: (ans: string[] | undefined, q: ExamQuestion) => boolean;
   flaggedCount: number;
+  shuffleChoices?: boolean;
 }
 
 export default function ExamResultView({
@@ -61,6 +66,7 @@ export default function ExamResultView({
   onDrillWeakTopic,
   isAnswerCorrect,
   flaggedCount,
+  shuffleChoices = false,
 }: ExamResultViewProps) {
   let correctCount = 0;
   questions.forEach((q, idx) => {
@@ -331,12 +337,31 @@ export default function ExamResultView({
             const userAns = answers[idx];
             const isCorrect = isAnswerCorrect(userAns, q);
             const wasFlagged = Boolean(flags[idx]);
+            const isShuffled = shuffleChoices || !q.answerKey;
+            const userAnsList = formatChoicesWithDisplayLetters(
+              userAns || [],
+              q.options,
+              isShuffled
+            );
             const userAnsText =
-              userAns && userAns.length > 0 ? userAns.join(' | ') : '(Bỏ trống)';
-            const correctAnsList =
+              userAnsList.length > 0 ? userAnsList.join(' | ') : '(Bỏ trống)';
+            const rawCorrectList =
               q.correctOptions && q.correctOptions.length > 0
                 ? q.correctOptions
                 : splitCorrectChoices(q.correctWord, q.answerKey, q.options);
+            const correctAnsList = formatChoicesWithDisplayLetters(
+              rawCorrectList,
+              q.options,
+              isShuffled
+            );
+            const displayedExplanation = formatExplanationForCurrentOptions(
+              q.explanation,
+              q.options,
+              q.correctWord,
+              q.answerKey,
+              isShuffled,
+              q.correctOptions
+            );
 
             return (
               <div
@@ -398,9 +423,9 @@ export default function ExamResultView({
                       {correctAnsList.join(' | ')}
                     </span>
                   </div>
-                  {q.explanation && (
+                  {displayedExplanation && (
                     <p className="text-slate-500 dark:text-slate-400 italic mt-1">
-                      💡 Giải thích: {q.explanation}
+                      💡 Giải thích: {displayedExplanation}
                     </p>
                   )}
                 </div>

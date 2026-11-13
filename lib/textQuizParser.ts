@@ -1,5 +1,5 @@
 import { Word } from './types';
-import { cleanOptionText } from './utils';
+import { parseAnswerKeys } from './utils';
 
 export interface ParsedQuestionResult {
   question: string;
@@ -51,18 +51,21 @@ export function parseRawExamText(
   blocks.forEach((block, index) => {
     const qNum = index + 1;
     try {
-      // 1. Detect Answer line (e.g. "Đáp án: A", "Answer: B, C", "Key: C", "Đ/A: D")
+      // 1. Detect Answer line (e.g. "Đáp án: A", "Đáp án đúng: A, B", "Answer: B, C", "Key: C", "Đ/A: D")
       let detectedAnswerLetter: string | null = null;
       let explanation = '';
 
       const answerMatch = block.match(
-        /(?:^|\n|\s)\s*(?:Đáp\s*án|Answer|Key|Đ\/A|ĐA|Correct)\s*[\:\=]?\s*([A-Fa-f](?:\s*,\s*[A-Fa-f])*)\b/i
+        /(?:^|\n)[ \t]*(?:Đáp\s*án(?:\s*đúng)?|Answer|Key|Đ\/A|ĐA|Correct)[ \t]*[\:\=]?[ \t]*([A-Fa-f](?:[ \t]*(?:,|;|\/|\bhoặc\b|\bor\b|\band\b|\bvà\b)[ \t]*[A-Fa-f])*)\b/i
       );
       if (answerMatch) {
-        detectedAnswerLetter = answerMatch[1]
-          .split(',')
-          .map((s) => s.trim().toUpperCase())
-          .join(', ');
+        const rawAns = answerMatch[1].trim();
+        const parsedAns = parseAnswerKeys(rawAns);
+        if (parsedAns.keys.length > 0) {
+          detectedAnswerLetter = parsedAns.isOrMode
+            ? parsedAns.keys.join(' hoặc ')
+            : parsedAns.keys.join(', ');
+        }
       }
 
       // Detect Explanation line
@@ -86,7 +89,7 @@ export function parseRawExamText(
       const lines = cleanBlock.split('\n');
       const questionLines: string[] = [];
       const options: string[] = [];
-      let asteriskAnswerLetter: string | null = null;
+      const asteriskAnswerLetters: string[] = [];
       let currentOption: { letter: string; text: string } | null = null;
 
       const optionPrefixRegex = /^\s*(\*)?\s*([A-Fa-f])[\.\:\)](.*)$/;
@@ -99,8 +102,8 @@ export function parseRawExamText(
           }
           const hasAsterisk = Boolean(optMatch[1]);
           const letter = optMatch[2].toUpperCase();
-          if (hasAsterisk) {
-            asteriskAnswerLetter = letter;
+          if (hasAsterisk && !asteriskAnswerLetters.includes(letter)) {
+            asteriskAnswerLetters.push(letter);
           }
           currentOption = { letter, text: optMatch[3] ? optMatch[3].trim() : '' };
         } else if (currentOption) {
@@ -120,7 +123,7 @@ export function parseRawExamText(
 
       // If options couldn't be extracted line-by-line, try horizontal single-line options: A. ... B. ...
       if (options.length < 2) {
-        const inlineRegex = /(?:^|\s+)(\*)?\s*([A-Fa-f])[\.\:\)]\s*([\s\S]*?)(?=(?:\s+[A-Fa-f][\.\:\)]\s+|$))/g;
+        const inlineRegex = /(?:^|\s+)(\*)?\s*([A-Fa-f])[\.\:\)]\s*([\s\S]*?)(?=(?:\s+(?:\*\s*)?[A-Fa-f][\.\:\)]\s+|$))/g;
         const inlineOptions: { letter: string; text: string; hasAsterisk: boolean }[] = [];
         let inlineMatch;
         while ((inlineMatch = inlineRegex.exec(cleanBlock)) !== null) {
@@ -132,8 +135,11 @@ export function parseRawExamText(
         }
         if (inlineOptions.length >= 2) {
           options.length = 0;
+          asteriskAnswerLetters.length = 0;
           for (const opt of inlineOptions) {
-            if (opt.hasAsterisk) asteriskAnswerLetter = opt.letter;
+            if (opt.hasAsterisk && !asteriskAnswerLetters.includes(opt.letter)) {
+              asteriskAnswerLetters.push(opt.letter);
+            }
             options.push(`${opt.letter}. ${opt.text}`);
           }
           const firstOptLetter = inlineOptions[0].letter;
@@ -150,8 +156,11 @@ export function parseRawExamText(
         .trim();
 
       // Finalize answer letter(s)
-      const finalAnswerLetter = asteriskAnswerLetter || detectedAnswerLetter || 'A';
-      const answerLetters = finalAnswerLetter.split(',').map((s) => s.trim());
+      const finalAnswerLetter =
+        asteriskAnswerLetters.length > 0
+          ? asteriskAnswerLetters.join(', ')
+          : detectedAnswerLetter || 'A';
+      const { keys: answerLetters } = parseAnswerKeys(finalAnswerLetter);
 
       // Find full text of the correct option(s)
       const matchedOpts = options.filter((opt) =>

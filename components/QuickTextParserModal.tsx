@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { parseRawExamText } from '@/lib/textQuizParser';
+import { isAnswerMatch } from '@/lib/utils';
 import { StorageEngine } from '@/lib/storage';
 import { useQuizStore } from '@/lib/quizStore';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
@@ -296,7 +297,7 @@ export default function QuickTextParserModal({
             />
 
             <div className="text-[11px] text-slate-400 flex items-center justify-between">
-              <span>Hỗ trợ cả đáp án có dấu sao `*A.` hoặc dòng `Đáp án: A`</span>
+              <span>Hỗ trợ dấu sao `*A.` (`*A., *B.` nếu nhiều đáp án) hoặc `Đáp án: A, B`</span>
               <span>{rawText.length} ký tự</span>
             </div>
           </div>
@@ -369,7 +370,7 @@ export default function QuickTextParserModal({
                     {/* Options list */}
                     <div className="space-y-1.5 pt-1">
                       {q.options?.map((opt, optIdx) => {
-                        const isCorrect = opt.startsWith(`${q.answer}.`);
+                        const isCorrect = isAnswerMatch(opt, q.correctWord, q.answer);
                         return (
                           <div
                             key={optIdx}

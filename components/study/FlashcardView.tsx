@@ -1,7 +1,13 @@
 'use client';
 
 import { StandardQuestion } from '@/lib/quizHelpers';
-import { isAnswerMatch, cleanOptionText, getQuestionAnswerMeta } from '@/lib/utils';
+import {
+  isAnswerMatch,
+  cleanOptionText,
+  getQuestionAnswerMeta,
+  formatExplanationForCurrentOptions,
+  formatChoicesWithDisplayLetters,
+} from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
   RotateCcw,
@@ -43,7 +49,19 @@ export default function FlashcardView({
     currentQ.options,
     currentQ.correctOptions
   );
-  const cleanedCorrectList = answerMeta.correctChoices.map((c) => cleanOptionText(c) || c);
+  const displayedCorrectList = formatChoicesWithDisplayLetters(
+    answerMeta.correctChoices,
+    currentQ.options,
+    shuffleChoices
+  );
+  const displayedExplanation = formatExplanationForCurrentOptions(
+    currentQ.explanation,
+    currentQ.options,
+    currentQ.correctWord,
+    currentQ.answerKey,
+    shuffleChoices,
+    currentQ.correctOptions
+  );
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-5">
@@ -173,9 +191,9 @@ export default function FlashcardView({
                   </span>
                 </span>
               </div>
-              {cleanedCorrectList.length > 1 ? (
+              {displayedCorrectList.length > 1 ? (
                 <ul className="space-y-1.5 mt-1">
-                  {cleanedCorrectList.map((ans, idx) => (
+                  {displayedCorrectList.map((ans, idx) => (
                     <li
                       key={idx}
                       className="text-base sm:text-xl font-black text-white leading-snug flex items-start gap-2"
@@ -187,7 +205,7 @@ export default function FlashcardView({
                 </ul>
               ) : (
                 <p className="text-lg sm:text-2xl font-black text-white leading-snug">
-                  {cleanedCorrectList[0] || cleanOptionText(currentQ.correctWord)}
+                  {displayedCorrectList[0] || cleanOptionText(currentQ.correctWord)}
                 </p>
               )}
             </div>
@@ -238,12 +256,12 @@ export default function FlashcardView({
             )}
 
             {/* Explanation Box */}
-            {currentQ.explanation && (
+            {displayedExplanation && (
               <div className="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 text-xs sm:text-sm text-indigo-100 leading-relaxed flex items-start gap-3">
                 <BookOpen className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold text-indigo-300">Giải thích bản chất: </span>
-                  {currentQ.explanation}
+                  {displayedExplanation}
                 </div>
               </div>
             )}

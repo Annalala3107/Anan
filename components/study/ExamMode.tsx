@@ -522,6 +522,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
         onDrillWeakTopic={handleDrillWeakTopic}
         isAnswerCorrect={isAnswerCorrect}
         flaggedCount={flaggedCount}
+        shuffleChoices={shuffleChoices}
       />
     );
   }

@@ -162,6 +162,97 @@ function isSingleOptionMatch(userChoice: string, targetChoice: string): boolean 
   return false;
 }
 
+function consumeBalancedParentheses(str: string): string {
+  if (!str.startsWith('(')) return str;
+  let depth = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '(') depth++;
+    else if (str[i] === ')') {
+      depth--;
+      if (depth === 0) {
+        return str.slice(i + 1);
+      }
+    }
+  }
+  return str;
+}
+
+/**
+ * Rewrites stale leading answer letters (e.g. "Đáp án đúng: A, B, C (A. FIFO | ...)")
+ * to match the currently displayed option order when shuffleChoices is enabled,
+ * while preserving any trailing explanatory notes.
+ */
+export function formatExplanationForCurrentOptions(
+  explanation: string | undefined,
+  currentOptions: string[] | undefined,
+  correctWord: string | undefined,
+  answerKey: string | undefined,
+  isShuffled: boolean,
+  explicitCorrectOptions?: string[]
+): string {
+  const raw = (explanation || '').trim();
+  if (!raw || !isShuffled || !currentOptions || currentOptions.length === 0) {
+    return raw;
+  }
+
+  const matched: { letter: string; text: string }[] = [];
+  currentOptions.forEach((opt, idx) => {
+    if (isAnswerMatch(opt, correctWord, undefined, explicitCorrectOptions)) {
+      matched.push({
+        letter: String.fromCharCode(65 + idx),
+        text: cleanOptionText(opt) || opt,
+      });
+    }
+  });
+
+  if (matched.length === 0) {
+    return raw;
+  }
+
+  const lettersSummary = matched.map((m) => m.letter).join(', ');
+  const detailsSummary = matched.map((m) => `${m.letter}. ${m.text}`).join(' | ');
+  const currentHeader = `Đáp án đúng (vị trí hiện tại): ${lettersSummary} (${detailsSummary})`;
+
+  const headerRegex =
+    /^(?:Đáp\s*án(?:\s*đúng)?|Answer)\s*[:=]?\s*[A-Fa-f](?:\s*(?:,|hoặc|or|and|và|\/)\s*[A-Fa-f])*(?:\s*[.)]|\b)\s*/i;
+  const headerMatch = raw.match(headerRegex);
+  if (!headerMatch) {
+    return raw;
+  }
+
+  let remainder = raw.slice(headerMatch[0].length).trim();
+
+  if (/^\(\s*[A-Fa-f][.)\s:]/.test(remainder)) {
+    remainder = consumeBalancedParentheses(remainder).trim();
+  }
+
+  remainder = remainder.replace(/^[.\-–—:;]+\s*/, '').trim();
+  return remainder ? `${currentHeader} — ${remainder}` : currentHeader;
+}
+
+/**
+ * Formats a list of choices with their displayed A-F letter positions in `currentOptions`.
+ */
+export function formatChoicesWithDisplayLetters(
+  choices: string[],
+  currentOptions?: string[],
+  isShuffled?: boolean
+): string[] {
+  if (!choices || choices.length === 0) return [];
+  if (!isShuffled || !currentOptions || currentOptions.length === 0) {
+    return choices;
+  }
+
+  return choices.map((choice) => {
+    let idx = currentOptions.indexOf(choice);
+    if (idx === -1) {
+      idx = currentOptions.findIndex((opt) => isSingleOptionMatch(choice, opt));
+    }
+    const clean = cleanOptionText(choice) || choice;
+    return idx >= 0 ? `${String.fromCharCode(65 + idx)}. ${clean}` : clean;
+  });
+}
+
 /**
  * Accurately compares a single user choice against the question's correct answer(s),
  * supporting single answers ("B"), OR answers ("B hoặc C"), and multi-answers ("A. X | B. Y").
