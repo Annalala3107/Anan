@@ -8,16 +8,18 @@
  */
 export function cleanOptionText(text?: string): string {
   if (!text) return '';
-  return text.replace(/^[A-Fa-f][.)\s:]+\s*/, '').trim();
+  return text.trim().replace(/^[A-Fa-f][.):]+(?:\s+|$)/, '').trim();
 }
 
 /**
  * Extracts the single-letter choice key from an option string if present.
+ * Requires explicit label punctuation (".", ")", ":") followed by whitespace or end-of-string
+ * so regular words like "A type of memory", "F = ...", or "A.(B + C)" are not misread as labels.
  * e.g. "B. 4" -> "B", "C) Stack" -> "C"
  */
 export function extractOptionKey(text?: string): string | null {
   if (!text) return null;
-  const match = text.trim().match(/^[A-Fa-f](?=[.)\s:])/);
+  const match = text.trim().match(/^[A-Fa-f](?=[.):]+(?:\s+|$))/);
   return match ? match[0].toUpperCase() : null;
 }
 
@@ -69,9 +71,9 @@ export function splitCorrectChoices(
 
   if (raw) {
     // Prefer splitting before an explicit option prefix (" | B. ..."), otherwise split on single spaced pipe (" | ") not adjacent to another "|"
-    if (/\s+\|\s+(?=[A-Fa-f][.)\s:])/.test(raw)) {
+    if (/\s+\|\s+(?=[A-Fa-f][.):]+(?:\s+|$))/.test(raw)) {
       parts = raw
-        .split(/\s+\|\s+(?=[A-Fa-f][.)\s:])/)
+        .split(/\s+\|\s+(?=[A-Fa-f][.):]+(?:\s+|$))/)
         .map((p) => p.trim())
         .filter(Boolean);
     } else if (/(?<!\|)\s+\|\s+(?!\|)/.test(raw)) {
@@ -146,17 +148,17 @@ export function getQuestionAnswerMeta(
  * Checks whether a single choice matches a single target option string.
  */
 function isSingleOptionMatch(userChoice: string, targetChoice: string): boolean {
-  const userRaw = userChoice.trim().toLowerCase();
-  const targetRaw = targetChoice.trim().toLowerCase();
+  const userRaw = userChoice.trim();
+  const targetRaw = targetChoice.trim();
   if (!userRaw || !targetRaw) return false;
   if (userRaw === targetRaw) return true;
 
-  const userKey = extractOptionKey(userChoice)?.toLowerCase();
-  const targetKey = extractOptionKey(targetChoice)?.toLowerCase();
+  const userKey = extractOptionKey(userChoice)?.toUpperCase();
+  const targetKey = extractOptionKey(targetChoice)?.toUpperCase();
   if (userKey && targetKey && userKey === targetKey) return true;
 
-  const userClean = cleanOptionText(userChoice).toLowerCase();
-  const targetClean = cleanOptionText(targetChoice).toLowerCase();
+  const userClean = cleanOptionText(userChoice);
+  const targetClean = cleanOptionText(targetChoice);
   if (userClean && targetClean && userClean === targetClean) return true;
 
   return false;
@@ -222,7 +224,7 @@ export function formatExplanationForCurrentOptions(
 
   let remainder = raw.slice(headerMatch[0].length).trim();
 
-  if (/^\(\s*[A-Fa-f][.)\s:]/.test(remainder)) {
+  if (/^\(\s*[A-Fa-f][.):]+\s/.test(remainder)) {
     remainder = consumeBalancedParentheses(remainder).trim();
   }
 
