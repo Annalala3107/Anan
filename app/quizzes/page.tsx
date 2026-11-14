@@ -215,6 +215,7 @@ export default function QuizzesPage() {
     'CSI106',
     'SSA101',
     'PRF192',
+    'PFP191',
     ...customSubjects.map((s) => s.subjectCode),
   ]);
   const unassignedCustomQuizzes = customQuizzes.filter(

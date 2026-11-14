@@ -1,0 +1,804 @@
+[
+  {
+    "id": "PFP191_SP26_FE_1",
+    "word": "Câu 1: What keyword is used to indicate the start of a method...",
+    "question": "What keyword is used to indicate the start of a method in a Python class?",
+    "options": [
+      "A. def",
+      "B. break",
+      "C. function",
+      "D. continue"
+    ],
+    "answer": "A",
+    "correctWord": "A. def",
+    "explanation": "Answer: A. In Python, both standalone functions and methods inside a class are defined using the 'def' keyword.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_2",
+    "word": "Câu 2: What is the syntax to look up the fullname attribute...",
+    "question": "What is the syntax to look up the fullname attribute in an object stored in the variable colleen?",
+    "options": [
+      "A. colleen->fullname",
+      "B. colleen::fullname",
+      "C. colleen.fullname",
+      "D. colleen['fullname']"
+    ],
+    "answer": "C",
+    "correctWord": "C. colleen.fullname",
+    "explanation": "Answer: C. Python uses dot notation (object.attribute) to access attributes of an object, so 'colleen.fullname' accesses the 'fullname' attribute.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_3",
+    "word": "Câu 3: Object and class attributes are accessed using ____...",
+    "question": "Object and class attributes are accessed using ____ notation in Python.",
+    "options": [
+      "A. Dot notation",
+      "B. Arrrow notation",
+      "C. Plus notation",
+      "D. And notation"
+    ],
+    "answer": "A",
+    "correctWord": "A. Dot notation",
+    "explanation": "Answer: A. In Python, attributes and methods of objects and classes are accessed using dot notation (e.g., obj.attr or ClassName.attr).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_4",
+    "word": "Câu 4: What does the super() function do in Python?",
+    "question": "What does the super() function do in Python?",
+    "options": [
+      "A. Calls a method from the parent class",
+      "B. Prevents method overriding",
+      "C. Converts private variables to public",
+      "D. Creates a new class"
+    ],
+    "answer": "A",
+    "correctWord": "A. Calls a method from the parent class",
+    "explanation": "Answer: A. The super() function returns a proxy object that delegates method calls to a parent (superclass) or sibling class, commonly used to call a parent class method such as __init__().",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_5",
+    "word": "Câu 5: What will be the output of the following code? (Animal/Dog)",
+    "question": "What will be the output of the following code?\nclass Animal:\n    def sound(self):\n        return \"Some sound\"\n\nclass Dog(Animal):\n    def sound(self):\n        return \"Bark\"\n\na = Animal()\nd = Dog()\nprint(a.sound(), d.sound())",
+    "options": [
+      "A. \"Some sound Some sound\"",
+      "B. \"Some sound Bark\"",
+      "C. \"Bark Some sound\"",
+      "D. \"Bark Bark\""
+    ],
+    "answer": "B",
+    "correctWord": "B. \"Some sound Bark\"",
+    "explanation": "Answer: B. 'a' is an instance of Animal, so a.sound() returns \"Some sound\". 'd' is an instance of Dog, which overrides sound() to return \"Bark\". print() outputs both values separated by a space: Some sound Bark.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_6",
+    "word": "Câu 6: What is the output of the following code? (class Foo)",
+    "question": "What is the output of the following code?\nclass Foo:\n    def printLine(self, line='Python'):\n        print(line)\n\no1 = Foo()\no1.printLine('Java')",
+    "options": [
+      "A. Python",
+      "B. Line",
+      "C. Java",
+      "D. Java\nPython"
+    ],
+    "answer": "C",
+    "correctWord": "C. Java",
+    "explanation": "Answer: C. Calling o1.printLine('Java') passes 'Java' as the argument for 'line', overriding the default parameter value 'Python', so only 'Java' is printed.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_7",
+    "word": "Câu 7: What does the following program print out? (class UFO)",
+    "question": "What does the following program print out?\nclass UFO:\n    def __init__(self, name=\"SP24\"):\n        self.name = name\n        print(self.name, \"was just born.\")\n\n    def say_hi(self):\n        print(\"Hello world! I am\", self.name)\n\n    def __del__(self):\n        print(\"My mission is completed.\")\n\nufo = UFO(\"SP25\")\nufo.say_hi()",
+    "options": [
+      "A. SP24 was just born.\nHello world! I am SP24\nMy mission is completed.",
+      "B. SP25 was just born.\nHello world! I am SP25\nMy mission is completed.",
+      "C. SP24 was just born.\nHello world! I am SP25\nMy mission is completed.",
+      "D. SP25 was just born.\nHello world! I am SP25"
+    ],
+    "answer": "B",
+    "correctWord": "B. SP25 was just born.\nHello world! I am SP25\nMy mission is completed.",
+    "explanation": "Answer: B. Passing \"SP25\" to UFO(\"SP25\") sets self.name to \"SP25\" in __init__ and prints \"SP25 was just born.\". Then ufo.say_hi() prints \"Hello world! I am SP25\". Finally, when the object is destroyed at program termination, __del__ runs and prints \"My mission is completed.\".",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_8",
+    "word": "Câu 8: What will be the output of the following code? (MyClass)",
+    "question": "What will be the output of the following code?\nclass MyClass:\n    def __init__(self, value):\n        self.value = value\n\n    def __eq__(self, other):\n        return self.value != other.value\n\nobj1 = MyClass(10)\nobj2 = MyClass(10)\nprint(obj1 == obj2)",
+    "options": [
+      "A. False",
+      "B. True",
+      "C. None",
+      "D. Error"
+    ],
+    "answer": "A",
+    "correctWord": "A. False",
+    "explanation": "Answer: A. The == operator invokes __eq__. Although both objects have value 10, __eq__ is defined to return self.value != other.value (10 != 10), which evaluates to False.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_9",
+    "word": "Câu 9: If a class is derived from two different classes, it's...",
+    "question": "If a class is derived from two different classes, it's called ______",
+    "options": [
+      "A. Multilevel Inheritance",
+      "B. Multiple Inheritance",
+      "C. Hierarchical Inheritance",
+      "D. Python Inheritance"
+    ],
+    "answer": "B",
+    "correctWord": "B. Multiple Inheritance",
+    "explanation": "Answer: B. When a child class inherits from more than one parent class (e.g., class C(A, B):), it is called multiple inheritance.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_10",
+    "word": "Câu 10: What will be the output of the following Python code? (split)",
+    "question": "What will be the output of the following Python code?\nprint('abcdefcdghcd'.split('cd', 2))",
+    "options": [
+      "A. ['ab', 'ef', 'ghcd']",
+      "B. ['ab', 'efcdghcd']",
+      "C. ['abcdef', 'ghcd']",
+      "D. Error"
+    ],
+    "answer": "A",
+    "correctWord": "A. ['ab', 'ef', 'ghcd']",
+    "explanation": "Answer: A. str.split('cd', 2) splits the string at most 2 times on 'cd' from left to right. The first two occurrences of 'cd' produce 'ab' and 'ef', leaving 'ghcd' intact as the third element: ['ab', 'ef', 'ghcd'].",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_11",
+    "word": "Câu 11: In Python, which command retrieves the character at...",
+    "question": "In Python, which command retrieves the character at index 3 from the string mystr = \"codescracker\"?",
+    "options": [
+      "A. mystr[3]",
+      "B. mystr.getItem(3)",
+      "C. Both the above",
+      "D. None of the above"
+    ],
+    "answer": "A",
+    "correctWord": "A. mystr[3]",
+    "explanation": "Answer: A. In Python, characters in a string are accessed by zero-based indexing using square brackets, such as mystr[3]. Strings do not have a getItem() method.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_12",
+    "word": "Câu 12: What will the below script print out? (s1[0] = 'R')",
+    "question": "What will the below script print out?\ns1 = \"retake\"\ns2 = \"the exam\"\ns1[0] = 'R'\nprint(s1 + s2)",
+    "options": [
+      "A. Retake the exam",
+      "B. Retakethe exam",
+      "C. retakethe exam",
+      "D. The TypeError will be raised."
+    ],
+    "answer": "D",
+    "correctWord": "D. The TypeError will be raised.",
+    "explanation": "Answer: D. Python strings are immutable, so attempting to modify a character in place with s1[0] = 'R' raises a TypeError.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_13",
+    "word": "Câu 13: What is the output of the following program? (m_word_count)",
+    "question": "(Choose 1 answer)\n\nWhat is the output of the following program?\n\nmy_sentence = \"My gosh, what a beautiful Monday morning this is.\"\n\ndef m_word_count(string):\n    count = 0\n    for word in string:\n        if word[0] == \"M\":\n            count += 1\n    return count\n\nprint(m_word_count(my_sentence))",
+    "options": [
+      "A. 0",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "answer": "B",
+    "correctWord": "B. 2",
+    "explanation": "Answer: B. Because string is not split into words, 'for word in string:' iterates character by character, where word[0] is each character itself. The uppercase letter \"M\" appears twice in my_sentence (in \"My\" and \"Monday\"), so count reaches 2 (\"morning\" starts with lowercase \"m\").",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_14",
+    "word": "Câu 14: What is the difference between the \"+\" and \"*\"...",
+    "question": "What is the difference between the \"+\" and \"*\" character in regular expressions?",
+    "options": [
+      "A. The \"+\" matches upper case characters and the \"*\" matches lowercase characters",
+      "B. The \"+\" matches the beginning of a line and the \"*\" matches the end of a line",
+      "C. The \"+\" matches the actual plus character and the \"*\" matches any character",
+      "D. The \"+\" matches at least one character and the \"*\" matches zero or more characters"
+    ],
+    "answer": "D",
+    "correctWord": "D. The \"+\" matches at least one character and the \"*\" matches zero or more characters",
+    "explanation": "Answer: D. In regular expressions, the '+' quantifier matches one or more (at least one) occurrences of the preceding pattern, whereas '*' matches zero or more occurrences.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_15",
+    "word": "Câu 15: Why can the ‘in’ operator be used directly within an ‘if’...",
+    "question": "Why can the ‘in’ operator be used directly within an ‘if’ statement in Python?",
+    "options": [
+      "A. Because ‘in’ is a special Python keyword that is exempt from normal rules.",
+      "B. Because it is designed specifically to work only with strings and lists.",
+      "C. Because all comparison operators can be used in an ‘if’ statement.",
+      "D. Because the ‘in’ expression evaluates to a Boolean value of either ‘True’ or ‘False’."
+    ],
+    "answer": "D",
+    "correctWord": "D. Because the ‘in’ expression evaluates to a Boolean value of either ‘True’ or ‘False’.",
+    "explanation": "Answer: D. An 'if' statement requires a condition that evaluates to a truth value. The 'in' membership operator evaluates to a Boolean value (True or False), so it can be used directly as the condition in an 'if' statement.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_16",
+    "word": "Câu 16: What is output for: b = [11,13,15,17,19,21] print(b[::2])",
+    "question": "What is output for:\nb = [11,13,15,17,19,21]\nprint(b[::2])",
+    "options": [
+      "A. [19,21]",
+      "B. [11,15]",
+      "C. [11,15,19]",
+      "D. [13,17,21]"
+    ],
+    "answer": "C",
+    "correctWord": "C. [11,15,19]",
+    "explanation": "Answer: C. The slice b[::2] starts at index 0 and takes every 2nd element (indices 0, 2, and 4), resulting in [11, 15, 19].",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_17",
+    "word": "Câu 17: What is the best way to iterate over the keys and values...",
+    "question": "What is the best way to iterate over the keys and values in a dictionary?",
+    "options": [
+      "A. for k in d:",
+      "B. for k, v in d.items():",
+      "C. for k in d.values():",
+      "D. for k in d.keys():"
+    ],
+    "answer": "B",
+    "correctWord": "B. for k, v in d.items():",
+    "explanation": "Answer: B. Calling d.items() yields (key, value) pairs, allowing tuple unpacking with 'for k, v in d.items():' to iterate over both keys and values directly.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_18",
+    "word": "Câu 18: Select the all correct way to remove the key marks...",
+    "question": "Select the all correct way to remove the key marks from a dictionary\nstudent = {\n  \"name\": \"Emma\",\n  \"class\": 9,\n  \"marks\": 75\n}\n(Choose 2 correct answers)",
+    "options": [
+      "A. student.pop(\"marks\")",
+      "B. del student[\"marks\"]",
+      "C. student.remove(\"marks\")",
+      "D. student.popitem(\"marks\")"
+    ],
+    "answer": "A, B",
+    "correctWord": "A. student.pop(\"marks\") | B. del student[\"marks\"]",
+    "explanation": "Answer: A, B. Both student.pop(\"marks\") and del student[\"marks\"] remove the \"marks\" key from the dictionary. Dictionaries do not have a remove() method, and popitem() takes no arguments.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_19",
+    "word": "Câu 19: Which of the following command is used to open a file...",
+    "question": "Which of the following command is used to open a file “c:\\temp.txt” in write-mode only?",
+    "options": [
+      "A. outfile = open(“c:\\temp.txt”, “w”)",
+      "B. outfile = open(“c:\\\\temp.txt”, “w”)",
+      "C. outfile = open(file = “c:\\temp.txt”, “w+”)",
+      "D. outfile = open(file = “c:\\\\temp.txt”, “w+”)"
+    ],
+    "answer": "B",
+    "correctWord": "B. outfile = open(“c:\\\\temp.txt”, “w”)",
+    "explanation": "Answer: B. In Python string literals, a backslash must be escaped as '\\\\' so that '\\t' is not treated as a tab character. Mode \"w\" opens the file for write-only access (whereas \"w+\" opens for both reading and writing, and C/D also place a positional argument after a keyword argument).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_20",
+    "word": "Câu 20: Which of the following keywords is used to open a text...",
+    "question": "Which of the following keywords is used to open a text file?",
+    "options": [
+      "A. open",
+      "B. open_file",
+      "C. file_open",
+      "D. FILE"
+    ],
+    "answer": "A",
+    "correctWord": "A. open",
+    "explanation": "Answer: A. Python uses the built-in open() function to open a file and return a file object.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_21",
+    "word": "Câu 21: What will be the output of the following code? (file.write)",
+    "question": "What will be the output of the following code?\nwith open('test.txt', 'w') as file:\n    file.write('Hello')\n    file.write('World')",
+    "options": [
+      "A. HelloWorld",
+      "B. World",
+      "C. Hello",
+      "D. Hello\nWorld"
+    ],
+    "answer": "A",
+    "correctWord": "A. HelloWorld",
+    "explanation": "Answer: A. Unlike print(), file.write() does not append a newline automatically. Writing 'Hello' followed by 'World' writes them consecutively as HelloWorld.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_22",
+    "word": "Câu 22: What will be the output of the following code?: stuff = 'X\\nY'",
+    "question": "What will be the output of the following code?:\n\nstuff = 'X\\nY'\nprint(stuff)\nprint(len(stuff))",
+    "options": [
+      "A. X\nY\n3",
+      "B. XY\n2",
+      "C. X\nY\n2",
+      "D. XY\n3"
+    ],
+    "answer": "A",
+    "correctWord": "A. X\nY\n3",
+    "explanation": "Answer: A. The escape sequence '\\n' represents a single newline character. Thus print(stuff) outputs X and Y on separate lines, and len(stuff) returns 3 (for 'X', '\\n', and 'Y').",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_23",
+    "word": "Câu 23: What will be the output of the following code if the...",
+    "question": "What will be the output of the following code if the file test.txt does not exist?\ntry:\n    with open('test.txt', 'r') as file:\n        content = file.read()\nexcept FileNotFoundError:\n    content = 'File not found'\nprint(content)",
+    "options": [
+      "A. File not found",
+      "B. An error message",
+      "C. An empty string",
+      "D. None"
+    ],
+    "answer": "A",
+    "correctWord": "A. File not found",
+    "explanation": "Answer: A. When 'test.txt' does not exist, open('test.txt', 'r') raises FileNotFoundError. The except block catches it, assigns 'File not found' to content, and print(content) outputs File not found.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_24",
+    "word": "Câu 24: Which function can be used to prompt the user to enter...",
+    "question": "Which function can be used to prompt the user to enter a file name?",
+    "options": [
+      "A. input()",
+      "B. getFilename()",
+      "C. fileDialog()",
+      "D. chooseFile()"
+    ],
+    "answer": "A",
+    "correctWord": "A. input()",
+    "explanation": "Answer: A. Python's built-in input() function displays an optional prompt and reads a string (such as a file name) entered by the user.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_25",
+    "word": "Câu 25: What will be the output of the following code? (a.append)",
+    "question": "What will be the output of the following code?\na = [1, 2, 3]\na.append([4, 5])\nprint(a)",
+    "options": [
+      "A. [1, 2, 3, 4, 5]",
+      "B. [1, 2, 3, [4, 5]]",
+      "C. [1, 2, 3, (4, 5)]",
+      "D. t[1:3]"
+    ],
+    "answer": "B",
+    "correctWord": "B. [1, 2, 3, [4, 5]]",
+    "explanation": "Answer: B. The append() method adds its argument as a single element at the end of the list rather than unpacking its elements, producing the nested list [1, 2, 3, [4, 5]].",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_26",
+    "word": "Câu 26: Is the Python programming language case sensitive...",
+    "question": "Is the Python programming language case sensitive when dealing with identifiers?",
+    "options": [
+      "A. Identifiers are case sensitive",
+      "B. Identifiers are not case sensitive",
+      "C. Behavior depends on the operating system",
+      "D. Only keywords are treated case sensitively"
+    ],
+    "answer": "A",
+    "correctWord": "A. Identifiers are case sensitive",
+    "explanation": "Answer: A. In Python, all identifiers (variable names, function names, class names, etc.) are case sensitive, so myVar and myvar refer to different objects.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_27",
+    "word": "Câu 27: Python scripts (files) have names that end with:...",
+    "question": "Python scripts (files) have names that end with:",
+    "options": [
+      "A. .png",
+      "B. .py",
+      "C. .doc",
+      "D. .exe"
+    ],
+    "answer": "B",
+    "correctWord": "B. .py",
+    "explanation": "Answer: B. Standard Python script and module source files use the .py file extension.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_28",
+    "word": "Câu 28: Which of the following string methods removes...",
+    "question": "Which of the following string methods removes whitespace from both the beginning and end of a string?",
+    "options": [
+      "A. strip()",
+      "B. wrenm()",
+      "C. rlstrim()",
+      "D. strunc()"
+    ],
+    "answer": "A",
+    "correctWord": "A. strip()",
+    "explanation": "Answer: A. The str.strip() method returns a copy of the string with leading and trailing whitespace removed.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_29",
+    "word": "Câu 29: The correct file extension for Python source code...",
+    "question": "The correct file extension for Python source code files is ______",
+    "options": [
+      "A. .pt",
+      "B. .py",
+      "C. .pth",
+      "D. .ipynb"
+    ],
+    "answer": "B",
+    "correctWord": "B. .py",
+    "explanation": "Answer: B. Python source code files use the .py extension (whereas .ipynb is for Jupyter notebooks, .pth is for path configuration or PyTorch files, and .pt is for PyTorch models).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_30",
+    "word": "Câu 30: Which of the following best describes the...",
+    "question": "Which of the following best describes the fundamental difference between how a user and a programmer interact with a computer?",
+    "options": [
+      "A. A user and a programmer both see the computer as a set of tools, but programmers are more skilled.",
+      "B. A user works with physical hardware, while a programmer works with abstract software.",
+      "C. A user is a consumer of existing tools, while a programmer can both consume and create new tools.",
+      "D. A user only uses word processors, while a programmer uses spreadsheets."
+    ],
+    "answer": "C",
+    "correctWord": "C. A user is a consumer of existing tools, while a programmer can both consume and create new tools.",
+    "explanation": "Answer: C. Users interact with existing software applications as consumers, whereas programmers can both use existing tools and write code to create new software tools.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_31",
+    "word": "Câu 31: Which of these is a correct use of tuple assignment?...",
+    "question": "Which of these is a correct use of tuple assignment?",
+    "options": [
+      "A. x, y = (1, 2)",
+      "B. x + y = tuple",
+      "C. a = (b, c)",
+      "D. tuple = [x, y]"
+    ],
+    "answer": "A",
+    "correctWord": "A. x, y = (1, 2)",
+    "explanation": "Answer: A. Tuple assignment allows placing a tuple of variables on the left side of an assignment statement so values from the right-side tuple (1, 2) are unpacked into x and y simultaneously.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_32",
+    "word": "Câu 32: Which operation is invalid for a tuple?...",
+    "question": "Which operation is invalid for a tuple?",
+    "options": [
+      "A. t = (1, 2) + (3, 4)",
+      "B. t = tuple([1, 2, 3])",
+      "C. t[1] = 10",
+      "D. t = (1, 2) * 2"
+    ],
+    "answer": "C",
+    "correctWord": "C. t[1] = 10",
+    "explanation": "Answer: C. Tuples are immutable in Python, so attempting item assignment like t[1] = 10 raises a TypeError. Concatenation (+), repetition (*), and conversion via tuple() are all valid.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_33",
+    "word": "Câu 33: Which term best describes this operation: x, y = y, x?...",
+    "question": "Which term best describes this operation: x, y = y, x?",
+    "options": [
+      "A. Tuple unpacking",
+      "B. Tuple slicing",
+      "C. Dictionary merging",
+      "D. Value hashing"
+    ],
+    "answer": "A",
+    "correctWord": "A. Tuple unpacking",
+    "explanation": "Answer: A. In x, y = y, x, the right-hand side evaluates as a tuple (y, x) and is unpacked into x and y on the left-hand side, swapping their values.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_34",
+    "word": "Câu 34: What will be the output of the following code?...",
+    "question": "What will be the output of the following code?\ndef fun():\n    pass\nprint(fun())",
+    "options": [
+      "A. Error",
+      "B. None",
+      "C. Pass",
+      "D. Function name"
+    ],
+    "answer": "B",
+    "correctWord": "B. None",
+    "explanation": "Answer: B. A Python function without a return statement (such as one containing only pass) implicitly returns None, so print(fun()) outputs None.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_35",
+    "word": "Câu 35: Which of the following functions can return a list...",
+    "question": "Which of the following functions can return a list of integers from 0 to n-1?(Choose 2 correct answers)",
+    "options": [
+      "A. list(range(n))",
+      "B. range(n)",
+      "C. range(n, 0)",
+      "D. repeat(n)",
+      "E. generate(n)"
+    ],
+    "answer": "A, B",
+    "correctWord": "A. list(range(n)), B. range(n)",
+    "explanation": "Answer: A, B. list(range(n)) explicitly constructs a list of integers from 0 to n-1, and range(n) generates the sequence of integers from 0 to n-1 (returning a list directly in Python 2 or a range object in Python 3). range(n, 0) is empty for positive n, and repeat/generate are not built-in Python functions.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_36",
+    "word": "Câu 36: What will the following program print out?...",
+    "question": "What will the following program print out?\ndef fun(a, b):\n    if a > b:\n        return a - b\n    return b - a\n\nprint(fun(fun(3, 2), fun(2, 3)))",
+    "options": [
+      "A. 0",
+      "B. 2",
+      "C. 1 1 0",
+      "D. 1 -1 2"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Answer: A. fun(a, b) computes the absolute difference |a - b|. fun(3, 2) returns 1 and fun(2, 3) returns 1, so the outer call fun(1, 1) returns 1 - 1 = 0.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_37",
+    "word": "Câu 37: What will the following program print out?...",
+    "question": "What will the following program print out?\ns = 0\nfor i in [1, 2, 3]:\n    s += i\n    print(s)",
+    "options": [
+      "A. 1\n3\n6",
+      "B. 1 3 6",
+      "C. 6",
+      "D. An error will be raised."
+    ],
+    "answer": "A",
+    "correctWord": "A. 1\n3\n6",
+    "explanation": "Answer: A. Because print(s) is indented inside the for loop, it executes on each iteration as s accumulates: 0 + 1 = 1, 1 + 2 = 3, and 3 + 3 = 6, printing each value on a new line.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_38",
+    "word": "Câu 38: Which of the following statements is not true...",
+    "question": "Which of the following statements is not true about object-oriented programming?",
+    "options": [
+      "A. One of the benefits of object-oriented programming is that it can hide complexity.",
+      "B. Constructor methods are required to initialize an object and destructor methods are required to destroy the object when no longer required.",
+      "C. A powerful feature of object-oriented programming is the ability to create a new class by extending an existing class.",
+      "D. A class contains functions as well as the data that is used by those functions."
+    ],
+    "answer": "B",
+    "correctWord": "B. Constructor methods are required to initialize an object and destructor methods are required to destroy the object when no longer required.",
+    "explanation": "Answer: B. Constructor and destructor methods are optional in Python and OOP. Objects can be instantiated without defining a custom __init__ method, and Python automatically reclaims unused objects via garbage collection without requiring a destructor.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_39",
+    "word": "Câu 39: What are list methods?...",
+    "question": "What are list methods?",
+    "options": [
+      "A. Built in functions that operate on list objects",
+      "B. Symbols that represent simple computations",
+      "C. Something that can be assigned to a variable",
+      "D. A section of code that represents a command or action"
+    ],
+    "answer": "A",
+    "correctWord": "A. Built in functions that operate on list objects",
+    "explanation": "Answer: A. List methods (such as append(), pop(), and sort()) are built-in functions associated with list objects that operate on those lists.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_40",
+    "word": "Câu 40: Which of these collections defines a LIST?...",
+    "question": "Which of these collections defines a LIST?",
+    "options": [
+      "A. {\"name\": \"apple\", \"color\": \"green\"}",
+      "B. [\"apple\", \"banana\", \"cherry\"]",
+      "C. {\"apple\", \"banana\", \"cherry\"}",
+      "D. (\"apple\", \"banana\", \"cherry\")"
+    ],
+    "answer": "B",
+    "correctWord": "B. [\"apple\", \"banana\", \"cherry\"]",
+    "explanation": "Answer: B. Lists in Python are defined using square brackets []. Curly braces with key-value pairs define a dict (A), curly braces without colons define a set (C), and parentheses define a tuple (D).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_41",
+    "word": "Câu 41: Which of the following is NOT a Python keyword?...",
+    "question": "Which of the following is NOT a Python keyword?",
+    "options": [
+      "A. loop",
+      "B. for",
+      "C. while",
+      "D. if"
+    ],
+    "answer": "A",
+    "correctWord": "A. loop",
+    "explanation": "Answer: A. for, while, and if are reserved keywords in Python, whereas loop is not a Python keyword.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_42",
+    "word": "Câu 42: Which of the following is the correct way to declare a...",
+    "question": "Which of the following is the correct way to declare a variable in Python?",
+    "options": [
+      "A. variableName = 10",
+      "B. 10 = variableName",
+      "C. variableName := 10",
+      "D. variableName == 10"
+    ],
+    "answer": "A",
+    "correctWord": "A. variableName = 10",
+    "explanation": "Answer: A. In Python, a variable is assigned a value using the '=' operator with the variable name on the left and the value on the right (variableName = 10). '10 = variableName' is invalid syntax, ':=' is the walrus assignment-expression operator, and '==' checks equality.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_43",
+    "word": "Câu 43: What will be the output of the following Python...",
+    "question": "What will be the output of the following Python code?\nprint(\"Hello {0} and {0}\".format('foo', 'bin'))",
+    "options": [
+      "A. Hello foo and foo",
+      "B. Hello 'foo' and foo",
+      "C. Hello foo and 'bin'",
+      "D. Error"
+    ],
+    "answer": "A",
+    "correctWord": "A. Hello foo and foo",
+    "explanation": "Answer: A. Both placeholders specify index {0}, which refers to the first argument ('foo') passed to .format(). The second argument ('bin') is ignored, producing \"Hello foo and foo\".",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_44",
+    "word": "Câu 44: Which of the following is the correct way to...",
+    "question": "Which of the following is the correct way to declare a variable in Python?",
+    "options": [
+      "A. variableName = 10",
+      "B. 10 = variableName",
+      "C. variableName := 10",
+      "D. variableName == 10"
+    ],
+    "answer": "A",
+    "correctWord": "A. variableName = 10",
+    "explanation": "Answer: A. In Python, variables are assigned using the single equals operator (=) with the variable name on the left and the value on the right (variableName = 10).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_45",
+    "word": "Câu 45: Which operator is used for exponentiation in...",
+    "question": "Which operator is used for exponentiation in Python?",
+    "options": [
+      "A. **",
+      "B. +",
+      "C. /",
+      "D. *"
+    ],
+    "answer": "A",
+    "correctWord": "A. **",
+    "explanation": "Answer: A. The ** operator performs exponentiation in Python (e.g., 2 ** 3 evaluates to 8).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_46",
+    "word": "Câu 46: Given the expression x = 3 + 4 * 5 / 2, what is...",
+    "question": "Given the expression x = 3 + 4 * 5 / 2, what is the value of x?",
+    "options": [
+      "A. 13.0",
+      "B. 20.0",
+      "C. 23.0",
+      "D. 15.0"
+    ],
+    "answer": "A",
+    "correctWord": "A. 13.0",
+    "explanation": "Answer: A. Multiplication and division have higher precedence than addition and evaluate left to right: 4 * 5 is 20, 20 / 2 is 10.0 (float division), and 3 + 10.0 equals 13.0.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_47",
+    "word": "Câu 47: Which of these operators is not a comparison /...",
+    "question": "Which of these operators is not a comparison / logical operator?",
+    "options": [
+      "A. =",
+      "B. ==",
+      "C. >=",
+      "D. <=",
+      "E. !="
+    ],
+    "answer": "A",
+    "correctWord": "A. =",
+    "explanation": "Answer: A. = is the assignment operator, whereas ==, >=, <=, and != are comparison operators.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_48",
+    "word": "Câu 48: What is the correct way to test if a string s...",
+    "question": "What is the correct way to test if a string s contains the substring \"abc\"?",
+    "options": [
+      "A. \"abc\" in s",
+      "B. \"abc\" == s",
+      "C. \"abc\" contains s",
+      "D. s contains \"abc\""
+    ],
+    "answer": "A",
+    "correctWord": "A. \"abc\" in s",
+    "explanation": "Answer: A. Python uses the membership operator in to check whether a substring exists inside another string (\"abc\" in s returns True or False).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_49",
+    "word": "Câu 49: What will be shown in file \"sample.txt\" after...",
+    "question": "What will be shown in file \"sample.txt\" after running this script?\nsample = \"Python is a high-level, general-purpose programming language.\"\nsample1 = \" Process finished with exit code 0.\"\nwith open(\"sample.txt\", \"a\") as txt_file:\n    txt_file.write(sample)\nwith open(\"sample.txt\", \"w\") as txt_file:\n    txt_file.write(sample1)",
+    "options": [
+      "A. Error.",
+      "B. Python is a high-level, general-purpose programming language.",
+      "C. Process finished with exit code 0.",
+      "D. Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation."
+    ],
+    "answer": "C",
+    "correctWord": "C. Process finished with exit code 0.",
+    "explanation": "Answer: C. Although the first with-block appends sample, the second with-block opens \"sample.txt\" in write mode (\"w\"), which truncates and overwrites the file with sample1 (\" Process finished with exit code 0.\").",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  },
+  {
+    "id": "PFP191_SP26_FE_50",
+    "word": "Câu 50: What will be the output of the following Python...",
+    "question": "What will be the output of the following Python code?\ni = 1\nwhile True:\n    if i % 3 == 0:\n        break\n    print(i)\n    i += 1",
+    "options": [
+      "A. The code raises an exception",
+      "B. Prints 1 2 3 then stops",
+      "C. Prints 1 2 then stops",
+      "D. Loops without termination"
+    ],
+    "answer": "C",
+    "correctWord": "C. Prints 1 2 then stops",
+    "explanation": "Answer: C. Starting at i = 1, the loop prints 1 (i becomes 2) and 2 (i becomes 3). When i = 3, i % 3 == 0 is True, so break exits the loop before print(i) runs.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SP26 - FE"
+  }
+]

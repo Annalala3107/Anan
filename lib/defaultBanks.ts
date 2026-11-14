@@ -420,6 +420,48 @@ export const QUESTION_BANKS: SubjectSection[] = [
         topic: 'Tệp Tin'
       }
     ]
+  },
+  {
+    id: 'pfp191',
+    title: 'PFP191',
+    subjectCode: 'PFP191',
+    icon: Code2,
+    color: 'from-sky-600 to-indigo-600',
+    quizzes: [
+      {
+        id: 'pfp191_sp26_fe',
+        name: 'PFP191 - SP26 - FE',
+        description: 'Trọn bộ 50 câu hỏi đề thi PFP191 - SP26 - FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/pfp191_sp26_fe.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SP26', 'FE', '50 Câu'],
+        subject: 'PFP191',
+        topic: 'SP26 - FE'
+      },
+      {
+        id: 'pfp191_su26_fe',
+        name: 'PFP191 - SU26 - FE',
+        description: 'Trọn bộ 50 câu hỏi đề thi PFP191 - SU26 - FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/pfp191_su26_fe.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SU26', 'FE', '50 Câu'],
+        subject: 'PFP191',
+        topic: 'SU26 - FE'
+      },
+      {
+        id: 'pfp191_su26_re',
+        name: 'PFP191 - SU26 - RE',
+        description: 'Trọn bộ 50 câu hỏi đề thi PFP191 - SU26 - RE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/pfp191_su26_re.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SU26', 'RE', '50 Câu'],
+        subject: 'PFP191',
+        topic: 'SU26 - RE'
+      }
+    ]
   }
 ];
 

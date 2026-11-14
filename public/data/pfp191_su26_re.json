@@ -1,0 +1,804 @@
+[
+  {
+    "id": "PFP191_SU26_RE_1",
+    "word": "Câu 1: What's the output of the following code snippet?...",
+    "question": "What's the output of the following code snippet?\n\n>>> class Dog:\n...     def walk(self):\n...         return \"*walking*\"\n...\n...     def speak(self):\n...         return \"Woof!\"\n...\n>>> class JackRussellTerrier(Dog):\n...     def talk(self):\n...         return super().speak()\n...\n>>> bobo = JackRussellTerrier()\n>>> bobo.talk()",
+    "options": [
+      "A. Woof!",
+      "B. *walking*",
+      "C. CanineError: Tail curvature exceeded"
+    ],
+    "answer": "A",
+    "correctWord": "A. Woof!",
+    "explanation": "Answer: A. JackRussellTerrier inherits from Dog. Calling bobo.talk() invokes super().speak(), which calls Dog.speak() and returns \"Woof!\".",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_2",
+    "word": "Câu 2: What will be the output of the following code?...",
+    "question": "What will be the output of the following code?\nclass Student:\n    def __init__(self, name, age):\n        self.name = name\n        self.__age = age  # Private attribute\n\ns = Student(\"Alice\", 20)\nprint(s.__age)",
+    "options": [
+      "A. 20",
+      "B. None",
+      "C. Error: AttributeError",
+      "D. \"Alice\""
+    ],
+    "answer": "C",
+    "correctWord": "C. Error: AttributeError",
+    "explanation": "Answer: C. Attributes starting with double underscores (__age) undergo name mangling in Python (stored as _Student__age), so accessing s.__age directly outside the class raises an AttributeError.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_3",
+    "word": "Câu 3: What is the purpose of the __init__ method in Python...",
+    "question": "What is the purpose of the __init__ method in Python classes?",
+    "options": [
+      "A. To define a function inside a class",
+      "B. To initialize an object when it is created",
+      "C. To delete an object",
+      "D. To define a private variable"
+    ],
+    "answer": "B",
+    "correctWord": "B. To initialize an object when it is created",
+    "explanation": "Answer: B. In Python, __init__ is the initializer method automatically called when a new instance of a class is created to set up its initial attributes.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_4",
+    "word": "Câu 4: What is inheritance in object-oriented programming,...",
+    "question": "What is inheritance in object-oriented programming, and how does it work in Python?",
+    "options": [
+      "A. Inheritance allows us to create new classes (child classes) based on existing classes (parent classes), inheriting their properties and behaviours while adding new features or modifying existing ones.",
+      "B. Inheritance is a way to create copies of existing objects.",
+      "C. Inheritance is a method for organising code into separate modules.",
+      "D. Inheritance is a technique for securing data within a program."
+    ],
+    "answer": "A",
+    "correctWord": "A. Inheritance allows us to create new classes (child classes) based on existing classes (parent classes), inheriting their properties and behaviours while adding new features or modifying existing ones.",
+    "explanation": "Answer: A. Inheritance enables a child class to reuse attributes and methods from a parent class while extending or overriding them.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_5",
+    "word": "Câu 5: What is polymorphism?...",
+    "question": "What is polymorphism?",
+    "options": [
+      "A. Ability of different objects to respond to the same method call differently",
+      "B. Hiding implementation details",
+      "C. Creating objects from a class",
+      "D. Restricting access to attributes"
+    ],
+    "answer": "A",
+    "correctWord": "A. Ability of different objects to respond to the same method call differently",
+    "explanation": "Answer: A. Polymorphism allows objects of different classes to implement the same method name with different behaviors.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_6",
+    "word": "Câu 6: In which of the following does the CricketFan class...",
+    "question": "In which of the following does the CricketFan class correctly inherit from the PartyAnimal class?",
+    "options": [
+      "A. from party import PartyAnimal",
+      "B. class CricketFan(PartyAnimal)",
+      "C. an = PartyAnimal()",
+      "D. CricketFan = PartyAnimal()"
+    ],
+    "answer": "B",
+    "correctWord": "B. class CricketFan(PartyAnimal)",
+    "explanation": "Answer: B. In Python, a class inherits from a parent class by placing the parent class name inside parentheses after the child class name: class CricketFan(PartyAnimal):.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_7",
+    "word": "Câu 7: Which of the following statements is true?...",
+    "question": "Which of the following statements is true?",
+    "options": [
+      "A. A class is blueprint for the object.",
+      "B. You can only make a single object from the given class.",
+      "C. Both statements are true.",
+      "D. Neither statement is true."
+    ],
+    "answer": "A",
+    "correctWord": "A. A class is blueprint for the object.",
+    "explanation": "Answer: A. A class acts as a blueprint/template from which multiple objects (instances) can be created, so B is false and A is true.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_8",
+    "word": "Câu 8: Which keyword is used to create a child class?...",
+    "question": "Which keyword is used to create a child class?",
+    "options": [
+      "A. extends",
+      "B. inherits",
+      "C. superclass",
+      "D. class ChildClass(ParentClass)"
+    ],
+    "answer": "D",
+    "correctWord": "D. class ChildClass(ParentClass)",
+    "explanation": "Answer: D. Python does not use keywords like extends or inherits; a child class is defined with the class keyword and the parent class in parentheses: class ChildClass(ParentClass):.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_9",
+    "word": "Câu 9: Which method is used to set up initial values for...",
+    "question": "Which method is used to set up initial values for the object?",
+    "options": [
+      "A. __init__",
+      "B. __new__",
+      "C. __create__",
+      "D. __start__"
+    ],
+    "answer": "A",
+    "correctWord": "A. __init__",
+    "explanation": "Answer: A. The __init__ method initializes an object's attributes right after the instance is created (__new__ allocates the instance, while __init__ sets initial values).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_10",
+    "word": "Câu 10: What is the output of the following code snippet?...",
+    "question": "What is the output of the following code snippet?\ntext = \"abrdabrab\"\npattern = \"ab\"\ncount = 0\nfor i in range(len(text) - len(pattern) + 1):\n    if text[i:i + len(pattern)] == pattern:\n        count += 1\nprint(count)",
+    "options": [
+      "A. 3",
+      "B. 2",
+      "C. 0",
+      "D. 1"
+    ],
+    "answer": "A",
+    "correctWord": "A. 3",
+    "explanation": "Answer: A. The loop checks every 2-character substring of \"abrdabrab\" and finds \"ab\" at indices 0, 4, and 7, so count becomes 3.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_11",
+    "word": "Câu 11: What will be the output of the following code?...",
+    "question": "What will be the output of the following code?\ns = \"ababadcdcdcdtyty\"\nprint(s[::-2])",
+    "options": [
+      "A. yyddddbb",
+      "B. ytytdcdcdcdababa",
+      "C. aaacccctt",
+      "D. ytdcda"
+    ],
+    "answer": "A",
+    "correctWord": "A. yyddddbb",
+    "explanation": "Answer: A. Slicing with [::-2] steps backward by 2 from the end of the 16-character string (indices 15, 13, 11, 9, 7, 5, 3, 1), producing \"yyddddbb\".",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_12",
+    "word": "Câu 12: What will be the output of the following code?...",
+    "question": "What will be the output of the following code?\ns = \"abcdefg\"\nprint(s[1::2])",
+    "options": [
+      "A. bdf",
+      "B. aceg",
+      "C. bcefg",
+      "D. bcdfg"
+    ],
+    "answer": "A",
+    "correctWord": "A. bdf",
+    "explanation": "Answer: A. The slice s[1::2] starts at index 1 ('b') and takes every second character (indices 1, 3, 5), giving \"bdf\".",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_13",
+    "word": "Câu 13: Why is the statement greeting[0] = 'J' invalid if...",
+    "question": "Why is the statement greeting[0] = 'J' invalid if greeting = \"Hello\"?",
+    "options": [
+      "A. Because strings are immutable in Python.",
+      "B. Because Python doesn't allow reassignment.",
+      "C. Because index 0 is reserved.",
+      "D. Because greeting must be a list."
+    ],
+    "answer": "A",
+    "correctWord": "A. Because strings are immutable in Python.",
+    "explanation": "Answer: A. Python strings are immutable sequences, so individual characters cannot be modified in place via item assignment.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_14",
+    "word": "Câu 14: What will the below script print out?...",
+    "question": "What will the below script print out?\ns1 = \"retake\"\ns2 = \"the exam\"\ns1[0] = 'R'\nprint(s1 + s2)",
+    "options": [
+      "A. Retake the exam",
+      "B. Retakethe exam",
+      "C. retakethe exam",
+      "D. The TypeError will be raised."
+    ],
+    "answer": "D",
+    "correctWord": "D. The TypeError will be raised.",
+    "explanation": "Answer: D. Strings are immutable in Python, so executing s1[0] = 'R' raises a TypeError ('str' object does not support item assignment).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_15",
+    "word": "Câu 15: What is the output of the following snippet code?...",
+    "question": "What is the output of the following snippet code?\nstring = \"OpenAI is awesome\"\nparts = string.split(\"is\")\nresult = len(parts)\nprint(result)",
+    "options": [
+      "A. 2",
+      "B. 1",
+      "C. 3",
+      "D. 4"
+    ],
+    "answer": "A",
+    "correctWord": "A. 2",
+    "explanation": "Answer: A. Splitting \"OpenAI is awesome\" on the delimiter \"is\" yields [\"OpenAI \", \" awesome\"], which has length 2.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_16",
+    "word": "Câu 16: What is the result of the following Python code?...",
+    "question": "What is the result of the following Python code?\n\nword = 'brontosaurus'\nd = dict()\nfor c in word:\n    d[c] = d.get(c, 0) + 1\nprint(d)",
+    "options": [
+      "A. {'b': 1, 'r': 2, 'o': 2, 'n': 1, 't': 1, 's': 2, 'a': 1, 'u': 2}",
+      "B. {'b': 1, 'r': 2, 'o': 1, 'n': 1, 't': 1, 's': 1, 'a': 1, 'u': 1}",
+      "C. {'b': 1, 'r': 2, 'o': 2, 'n': 1, 't': 1, 's': 1, 'a': 1, 'u': 1}",
+      "D. {'b': 1, 'r': 1, 'o': 1, 'n': 1, 't': 1, 's': 1, 'a': 1, 'u': 1}"
+    ],
+    "answer": "A",
+    "correctWord": "A. {'b': 1, 'r': 2, 'o': 2, 'n': 1, 't': 1, 's': 2, 'a': 1, 'u': 2}",
+    "explanation": "Answer: A. The loop counts the frequency of each character in 'brontosaurus', where r, o, s, and u each appear twice and b, n, t, and a each appear once.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_17",
+    "word": "Câu 17: What is a dictionary in Python?...",
+    "question": "What is a dictionary in Python?",
+    "options": [
+      "A. A mutable data structure that stores key-value pairs, where each key maps to a value",
+      "B. An immutable data structure that stores key-value pairs, where each key maps to a value",
+      "C. A sequence of values",
+      "D. A sequence of characters stored in permanent storage like a hard drive"
+    ],
+    "answer": "A",
+    "correctWord": "A. A mutable data structure that stores key-value pairs, where each key maps to a value",
+    "explanation": "Answer: A. A Python dictionary (dict) is a mutable mapping that stores key-value pairs.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_18",
+    "word": "Câu 18: Which method returns a list of tuples, where each...",
+    "question": "Which method returns a list of tuples, where each tuple is a key-value pair from the dictionary?",
+    "options": [
+      "A. items()",
+      "B. keys()",
+      "C. values()",
+      "D. pairs()"
+    ],
+    "answer": "A",
+    "correctWord": "A. items()",
+    "explanation": "Answer: A. The dict.items() method returns a view object containing (key, value) tuples for each entry in the dictionary.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_19",
+    "word": "Câu 19: What will be the output of the following code if the...",
+    "question": "What will be the output of the following code if the file test.txt contains multiple lines of text?\nwith open('test.txt', 'r') as file:\n    for line in file:\n        print(line.strip())",
+    "options": [
+      "A. All lines of the file without leading/trailing whitespace",
+      "B. All lines of the file with leading/trailing whitespace",
+      "C. The first line of the file without leading/trailing whitespace",
+      "D. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. All lines of the file without leading/trailing whitespace",
+    "explanation": "Answer: A. Iterating over the file object reads every line in test.txt, and line.strip() removes leading and trailing whitespace (including the trailing newline) before printing.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_20",
+    "word": "Câu 20: Which function is used to read the entire contents...",
+    "question": "Which function is used to read the entire contents of a file?",
+    "options": [
+      "A. open()",
+      "B. read()",
+      "C. close()",
+      "D. B and C are both correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. read()",
+    "explanation": "Answer: B. Calling file.read() with no arguments reads and returns the entire contents of the opened file as a single string (or bytes in binary mode).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_21",
+    "word": "Câu 21: What will be the output of the following code if the...",
+    "question": "What will be the output of the following code if the file test.txt does not exist?\ntry:\n    with open('test.txt', 'r') as file:\n        content = file.read()\nexcept FileNotFoundError:\n    content = 'File not found'\nprint(content)",
+    "options": [
+      "A. File not found",
+      "B. An error message",
+      "C. An empty string",
+      "D. None"
+    ],
+    "answer": "A",
+    "correctWord": "A. File not found",
+    "explanation": "Answer: A. Opening a missing file in 'r' mode raises FileNotFoundError, which is caught by the except block so content is assigned 'File not found' and printed.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_22",
+    "word": "Câu 22: Which of the following is not a method of opening...",
+    "question": "Which of the following is not a method of opening files?",
+    "options": [
+      "A. Replace",
+      "B. Append",
+      "C. Read",
+      "D. Write"
+    ],
+    "answer": "A",
+    "correctWord": "A. Replace",
+    "explanation": "Answer: A. Standard Python file modes include Read ('r'), Write ('w'), and Append ('a'); there is no Replace mode.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_23",
+    "word": "Câu 23: What does the following Python code do?...",
+    "question": "What does the following Python code do?\nfhand = open('mbox-short.txt')\ninp = fhand.read()",
+    "options": [
+      "A. Checks to see if the file exists and can be written",
+      "B. Turns the text in the file into a graphic image like a PNG or JPG",
+      "C. Reads the entire file into the variable inp as a string",
+      "D. Prompts the user for a file name"
+    ],
+    "answer": "C",
+    "correctWord": "C. Reads the entire file into the variable inp as a string",
+    "explanation": "Answer: C. open('mbox-short.txt') opens the file in read mode by default, and fhand.read() reads its entire contents into inp as a single string.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_24",
+    "word": "Câu 24: Which of the following is a correct way to open a...",
+    "question": "Which of the following is a correct way to open a file and ensure it is closed properly?",
+    "options": [
+      "A. with open(\"file.txt\", \"r\") as file:",
+      "B. open(\"file.txt\", \"r\").close()",
+      "C. file = open(\"file.txt\", \"r\")",
+      "D. open(\"file.txt\", \"r\", autoclose=True)"
+    ],
+    "answer": "A",
+    "correctWord": "A. with open(\"file.txt\", \"r\") as file:",
+    "explanation": "Answer: A. Using a with statement (context manager) automatically closes the file when the block exits, even if an exception occurs.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_25",
+    "word": "Câu 25: After the line x = 123 executes in Python, the...",
+    "question": "After the line x = 123 executes in Python, the variable x with the value 123 will be stored in ________________",
+    "options": [
+      "A. Central processing unit",
+      "B. Main Memory",
+      "C. Secondary Memory",
+      "D. Input Devices",
+      "E. Output Devices"
+    ],
+    "answer": "B",
+    "correctWord": "B. Main Memory",
+    "explanation": "Answer: B. During program execution in Python, variables and their values reside in Main Memory (RAM).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_26",
+    "word": "Câu 26: In Object Oriented Programming, what is another name for ...",
+    "question": "In Object Oriented Programming, what is another name for the attributes of an object?",
+    "options": [
+      "A. Portions",
+      "B. Messages",
+      "C. Forms",
+      "D. Fields"
+    ],
+    "answer": "D",
+    "correctWord": "D. Fields",
+    "explanation": "Answer: D. In Object-Oriented Programming (OOP), the attributes (data properties) of an object or class are commonly referred to as fields (or instance variables).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_27",
+    "word": "Câu 27: What will be the output of the following code? a = [1,...",
+    "question": "What will be the output of the following code?\na = [1, 2, 3]\na.append([4, 5])\nprint(a)",
+    "options": [
+      "A. [1, 2, 3, 4, 5]",
+      "B. [1, 2, 3, [4, 5]]",
+      "C. [1, 2, 3, (4, 5)]",
+      "D. t[1:3]"
+    ],
+    "answer": "B",
+    "correctWord": "B. [1, 2, 3, [4, 5]]",
+    "explanation": "Answer: B. The list append() method adds its argument as a single element at the end of the list, so [4, 5] is appended as a nested list, producing [1, 2, 3, [4, 5]].",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_28",
+    "word": "Câu 28: What Python function would you use if you wanted to pr...",
+    "question": "What Python function would you use if you wanted to prompt the user for a file name to open?",
+    "options": [
+      "A. input()",
+      "B. file_input()",
+      "C. gets()",
+      "D. do()"
+    ],
+    "answer": "A",
+    "correctWord": "A. input()",
+    "explanation": "Answer: A. Python's built-in input() function displays a prompt string and reads a line of text entered by the user (such as a file name). file_input(), gets(), and do() are not Python built-in functions.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_29",
+    "word": "Câu 29: In Python, the byte code generated by the compiler is...",
+    "question": "In Python, the byte code generated by the compiler is executed by which component?",
+    "options": [
+      "A. Interpreter",
+      "B. Compiler",
+      "C. CPU",
+      "D. GPU"
+    ],
+    "answer": "A",
+    "correctWord": "A. Interpreter",
+    "explanation": "Answer: A. Python compiles source code into bytecode, which is then executed by the Python Virtual Machine (PVM) inside the Python interpreter.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_30",
+    "word": "Câu 30: Which of the following is a reserved word in Python?",
+    "question": "Which of the following is a reserved word in Python?",
+    "options": [
+      "A. break",
+      "B. val",
+      "C. exception",
+      "D. assign"
+    ],
+    "answer": "A",
+    "correctWord": "A. break",
+    "explanation": "Answer: A. 'break' is a reserved keyword in Python used to terminate a loop early. 'val', 'exception', and 'assign' are not Python keywords.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_31",
+    "word": "Câu 31: What happens if you try to assign a value to an eleme...",
+    "question": "What happens if you try to assign a value to an element in a tuple?",
+    "options": [
+      "A. The tuple is automatically converted to a list",
+      "B. The element value is updated",
+      "C. A TypeError is thrown",
+      "D. A ValueError is thrown"
+    ],
+    "answer": "C",
+    "correctWord": "C. A TypeError is thrown",
+    "explanation": "Answer: C. Tuples are immutable in Python, so attempting to reassign an element raises a TypeError ('tuple' object does not support item assignment).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_32",
+    "word": "Câu 32: Consider this assignment statement: a, b, c = (1, 2, ...",
+    "question": "Consider this assignment statement:\na, b, c = (1, 2, 3, 4, 5, 6, 7, 8, 9)[1::3]\nFollowing execution of this statement, what is the value of b:",
+    "options": [
+      "A. 2",
+      "B. 4",
+      "C. 5",
+      "D. 6"
+    ],
+    "answer": "C",
+    "correctWord": "C. 5",
+    "explanation": "Answer: C. Slicing (1, 2, 3, 4, 5, 6, 7, 8, 9)[1::3] starts at index 1 (value 2) and steps by 3, yielding (2, 5, 8). Unpacking assigns a = 2, b = 5, c = 8.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_33",
+    "word": "Câu 33: What is the key difference between a tuple and a list...",
+    "question": "What is the key difference between a tuple and a list in Python?",
+    "options": [
+      "A. Tuples are immutable, meaning their elements cannot be modified after creation. Lists are mutable.",
+      "B. Tuples are ordered and lists are unordered.",
+      "C. Tuples can contain different data types and lists can only contain the same data type.",
+      "D. Tuples are used for storing single values and lists are used for storing multiple values."
+    ],
+    "answer": "A",
+    "correctWord": "A. Tuples are immutable, meaning their elements cannot be modified after creation. Lists are mutable.",
+    "explanation": "Answer: A. Both tuples and lists are ordered collections that can hold mixed data types; the key difference is that tuples are immutable while lists are mutable.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_34",
+    "word": "Câu 34: What is a good description of the following bit of Py...",
+    "question": "What is a good description of the following bit of Python code?\nzork = 0\nfor thing in [9, 41, 12, 3, 74, 15] :\n    zork = zork + thing\nprint('After', zork)",
+    "options": [
+      "A. Sum all the elements of a list",
+      "B. Find the smallest item in a list",
+      "C. Compute the average of the elements in a list",
+      "D. Count all of the elements in a list"
+    ],
+    "answer": "A",
+    "correctWord": "A. Sum all the elements of a list",
+    "explanation": "Answer: A. The variable zork is initialized to 0 and accumulates each element's value (zork + thing) across the loop, computing the sum of all elements in the list.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_35",
+    "word": "Câu 35: What is the purpose of the 'continue' statement in a ...",
+    "question": "What is the purpose of the 'continue' statement in a Python loop?",
+    "options": [
+      "A. It immediately exits the current function.",
+      "B. It stops the loop and moves to the first statement after the loop.",
+      "C. It raises an error to signal an unexpected condition.",
+      "D. It immediately jumps to the top of the loop and starts the next iteration."
+    ],
+    "answer": "D",
+    "correctWord": "D. It immediately jumps to the top of the loop and starts the next iteration.",
+    "explanation": "Answer: D. In Python, 'continue' skips the remaining statements in the current loop iteration and jumps back to the top of the loop for the next iteration.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_36",
+    "word": "Câu 36: Consider the following Python commands: int('32') in...",
+    "question": "Consider the following Python commands:\nint('32')\nint('Hello')\nChoose the correct statement about the results of these commands:",
+    "options": [
+      "A. The first command returns 32, and the second command raises a 'ValueError'",
+      "B. Both commands successfully return an integer",
+      "C. The first command returns 32, and the second command returns 0",
+      "D. The first command raises an error, and the second command returns 32"
+    ],
+    "answer": "A",
+    "correctWord": "A. The first command returns 32, and the second command raises a 'ValueError'",
+    "explanation": "Answer: A. int('32') parses the numeric string and returns integer 32, whereas int('Hello') cannot parse non-numeric text as a base-10 integer and raises a ValueError.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_37",
+    "word": "Câu 37: What happens if the condition in a while loop is...",
+    "question": "What happens if the condition in a while loop is always True?",
+    "options": [
+      "A. The loop never terminates",
+      "B. The loop skips the condition",
+      "C. The loop executes for a fixed number of iterations",
+      "D. The loop executes once"
+    ],
+    "answer": "A",
+    "correctWord": "A. The loop never terminates",
+    "explanation": "Answer: A. A while loop repeats its body as long as the condition evaluates to True. When the condition stays True without a break/return statement, it forms an infinite loop that never terminates.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_38",
+    "word": "Câu 38: What will the following Python program print out? de...",
+    "question": "What will the following Python program print out?\ndef greet(lang):\n    if lang == 'es':\n        return 'Hola'\n    elif lang == 'fr':\n        return 'Bonjour'\n    else:\n        return 'Hello'\n\nprint(greet('fr'),'Michael')",
+    "options": [
+      "A. Bonjour Michael",
+      "B. def Michael",
+      "C. Hello Michael",
+      "D. Hola\nBonjour\nHello"
+    ],
+    "answer": "A",
+    "correctWord": "A. Bonjour Michael",
+    "explanation": "Answer: A. Calling greet('fr') hits the elif lang == 'fr' branch and returns 'Bonjour'. Passing that and 'Michael' to print() outputs 'Bonjour Michael'.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_39",
+    "word": "Câu 39: How can you use the del statement to remove all eleme...",
+    "question": "How can you use the del statement to remove all elements from the list after the first one?",
+    "options": [
+      "A. del lst[1:]",
+      "B. del lst[:-1]",
+      "C. del lst[:1]",
+      "D. del lst[-1]"
+    ],
+    "answer": "A",
+    "correctWord": "A. del lst[1:]",
+    "explanation": "Answer: A. The slice lst[1:] selects every element from index 1 (the second element) to the end of the list, so del lst[1:] deletes all elements after the first one.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_40",
+    "word": "Câu 40: How do you add an element to the end of a list in Pyt...",
+    "question": "How do you add an element to the end of a list in Python?",
+    "options": [
+      "A. lst.add(element)",
+      "B. lst.append(element)",
+      "C. lst.insert(-1, element)",
+      "D. lst.extend(element)"
+    ],
+    "answer": "B",
+    "correctWord": "B. lst.append(element)",
+    "explanation": "Answer: B. lst.append(element) appends a single element to the end of a list. insert(-1, element) inserts before the last item, extend() expects an iterable, and add() is a set method.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_41",
+    "word": "Câu 41: Which of the following statements removes items 2 to ...",
+    "question": "Which of the following statements removes items 2 to 4 from a list?",
+    "options": [
+      "A. del list[2:5]",
+      "B. del list[2:4]",
+      "C. list.remove(2, 4)",
+      "D. list.delete(2, 4)"
+    ],
+    "answer": "A",
+    "correctWord": "A. del list[2:5]",
+    "explanation": "Answer: A. Python slice end indices are exclusive, so list[2:5] covers indices 2, 3, and 4 (items 2 to 4). del list[2:4] would only remove indices 2 and 3.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_42",
+    "word": "Câu 42: Which of the following is the correct way to declare ...",
+    "question": "Which of the following is the correct way to declare a variable in Python?",
+    "options": [
+      "A. variableName = 10",
+      "B. 10 = variableName",
+      "C. variableName := 10",
+      "D. variableName == 10"
+    ],
+    "answer": "A",
+    "correctWord": "A. variableName = 10",
+    "explanation": "Answer: A. In Python, a variable is declared/assigned using the '=' operator with the variable name on the left and the value on the right: variableName = 10.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_43",
+    "word": "Câu 43: What is the output of the following snippet code? num...",
+    "question": "What is the output of the following snippet code?\nnum1 = 4\nnum2 = 2\nnum3 = 3\nresult = num1 + num2 * num3 / (num2 - num1) ** 2\nprint(result)",
+    "options": [
+      "A. 5.5",
+      "B. 5.0",
+      "C. 5.1",
+      "D. 5.2"
+    ],
+    "answer": "A",
+    "correctWord": "A. 5.5",
+    "explanation": "Answer: A. Following Python operator precedence: (2 - 4) ** 2 = (-2) ** 2 = 4; then 2 * 3 / 4 = 6 / 4 = 1.5; finally 4 + 1.5 = 5.5.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_44",
+    "word": "Câu 44: Which of the following variable names are invalid?",
+    "question": "Which of the following variable names are invalid?",
+    "options": [
+      "A. _",
+      "B. _0",
+      "C. 0_",
+      "D. _0_",
+      "E. for_",
+      "F. for"
+    ],
+    "answer": "C, F",
+    "correctWord": "C. 0_ | F. for",
+    "explanation": "Answer: C, F. '0_' is invalid because Python identifiers cannot start with a digit, and 'for' is invalid because it is a reserved keyword. '_', '_0', '_0_', and 'for_' are all valid variable names.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_45",
+    "word": "Câu 45: How can you handle errors in user input in Python?",
+    "question": "How can you handle errors in user input in Python?",
+    "options": [
+      "A. Using the try-except statement",
+      "B. Using the if-else statement",
+      "C. Using the for loop",
+      "D. Using the while loop"
+    ],
+    "answer": "A",
+    "correctWord": "A. Using the try-except statement",
+    "explanation": "Answer: A. Python handles runtime exceptions (such as invalid input conversions raising ValueError) using the try-except statement.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_46",
+    "word": "Câu 46: What will be the value of x after the following state...",
+    "question": "What will be the value of x after the following statement executes:\nx = 1 + 2 * 3 - 8 / 4",
+    "options": [
+      "A. 3.0",
+      "B. 15",
+      "C. 4",
+      "D. 5.0"
+    ],
+    "answer": "D",
+    "correctWord": "D. 5.0",
+    "explanation": "Answer: D. Multiplication and division execute first: 2 * 3 = 6 and 8 / 4 = 2.0 (true division always yields a float). Then 1 + 6 - 2.0 = 5.0.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_47",
+    "word": "Câu 47: Assume the variable x has been initialized to an inte...",
+    "question": "Assume the variable x has been initialized to an integer value (e.g., x = 3). What does the following statement do?\nx = x + 2",
+    "options": [
+      "A. This would fail as it is a syntax error",
+      "B. Produce the value \"false\" because \"x\" can never equal \"x+2\"",
+      "C. Create a function called \"x\" and put the value 2 in the function",
+      "D. Retrieve the current value for x, add two to it and put the sum back into x"
+    ],
+    "answer": "D",
+    "correctWord": "D. Retrieve the current value for x, add two to it and put the sum back into x",
+    "explanation": "Answer: D. In Python, '=' is the assignment operator (not algebraic equality): it evaluates the right-hand side (current value of x + 2) and assigns the result back to x.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_48",
+    "word": "Câu 48: What is the Python reserved word that we use in two-w...",
+    "question": "What is the Python reserved word that we use in two-way if tests to indicate the block of code that is to be executed if the logical test is false?",
+    "options": [
+      "A. otherwise",
+      "B. iterate",
+      "C. else",
+      "D. toggle"
+    ],
+    "answer": "C",
+    "correctWord": "C. else",
+    "explanation": "Answer: C. In a two-way if statement (if ... else ...), the 'else' keyword introduces the block of code executed when the if condition evaluates to False.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_49",
+    "word": "Câu 49: Which of the following statements is NOT true about t...",
+    "question": "Which of the following statements is NOT true about the \"or\" operator in Python?",
+    "options": [
+      "A. The \"or\" operator always evaluates all of its operands, regardless of their values",
+      "B. The \"or\" operator returns True if at least one of the operands is True",
+      "C. The \"or\" operator evaluates the operands from left to right",
+      "D. The \"or\" operator can be used to combine multiple conditions in a conditional statement"
+    ],
+    "answer": "A",
+    "correctWord": "A. The \"or\" operator always evaluates all of its operands, regardless of their values",
+    "explanation": "Answer: A. Python's 'or' operator uses short-circuit evaluation: it evaluates operands from left to right and stops immediately once a truthy operand is found, so it does not always evaluate all operands.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  },
+  {
+    "id": "PFP191_SU26_RE_50",
+    "word": "Câu 50: What is the output of the following Python code: a = ...",
+    "question": "What is the output of the following Python code:\na = [1, 2, 3]\nif len(a) != 3 and a[3] == 3:\n    print(a[3])\nelse:\n    print(a[0])",
+    "options": [
+      "A. 1",
+      "B. IndexError: list index out of range",
+      "C. 2",
+      "D. 3"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1",
+    "explanation": "Answer: A. Since len(a) is 3, len(a) != 3 is False. Due to short-circuit evaluation with 'and', Python skips evaluating a[3] == 3 (avoiding an IndexError) and executes the else block, printing a[0] which is 1.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "PFP191 - SU26 - RE"
+  }
+]
