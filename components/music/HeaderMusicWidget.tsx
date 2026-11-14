@@ -35,6 +35,31 @@ import {
 } from '@/lib/musicStore';
 import { AmbientPreset } from '@/lib/ambientAudio';
 
+function HeaderSeekBar() {
+  const currentTime = useMusicStore((s) => s.currentTime);
+  const duration = useMusicStore((s) => s.duration);
+  const requestSeek = useMusicStore((s) => s.requestSeek);
+  const maxDuration = duration > 0 ? duration : Math.max(currentTime, 1);
+
+  return (
+    <div className="space-y-1">
+      <input
+        type="range"
+        min={0}
+        max={maxDuration}
+        value={Math.min(currentTime, maxDuration)}
+        onChange={(e) => requestSeek(Number(e.target.value))}
+        aria-label="Thanh tua tiến độ bài hát"
+        className="w-full h-1.5 accent-indigo-600 dark:accent-indigo-500 cursor-pointer"
+      />
+      <div className="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+        <span>{formatSecondsMmSs(currentTime)}</span>
+        <span>{duration > 0 ? formatSecondsMmSs(duration) : '--:--'}</span>
+      </div>
+    </div>
+  );
+}
+
 export default function HeaderMusicWidget() {
   const tracks = useMusicStore((s) => s.tracks);
   const currentTrackId = useMusicStore((s) => s.currentTrackId);
@@ -46,8 +71,6 @@ export default function HeaderMusicWidget() {
   const loopMode = useMusicStore((s) => s.loopMode);
   const isShuffle = useMusicStore((s) => s.isShuffle);
   const trackErrors = useMusicStore((s) => s.trackErrors);
-  const currentTime = useMusicStore((s) => s.currentTime);
-  const duration = useMusicStore((s) => s.duration);
   const ambientPreset = useMusicStore((s) => s.ambientPreset);
   const ambientVolume = useMusicStore((s) => s.ambientVolume);
   const pomodoroMode = useMusicStore((s) => s.pomodoroMode);
@@ -66,7 +89,6 @@ export default function HeaderMusicWidget() {
   const prevTrack = useMusicStore((s) => s.prevTrack);
   const addCustomTrackAsync = useMusicStore((s) => s.addCustomTrackAsync);
   const removeCustomTrack = useMusicStore((s) => s.removeCustomTrack);
-  const requestSeek = useMusicStore((s) => s.requestSeek);
   const setAmbientPreset = useMusicStore((s) => s.setAmbientPreset);
   const setAmbientVolume = useMusicStore((s) => s.setAmbientVolume);
   const togglePomodoro = useMusicStore((s) => s.togglePomodoro);
@@ -105,17 +127,31 @@ export default function HeaderMusicWidget() {
     const rawRight = Math.round(window.innerWidth - rect.right);
     const right = Math.max(8, Math.min(rawRight, maxRight));
     const top = Math.max(8, Math.round(rect.bottom + 8));
-    setPopoverPos({ top, right });
+    setPopoverPos((prev) => {
+      if (prev.top === top && prev.right === right) return prev;
+      return { top, right };
+    });
   }, []);
 
   useEffect(() => {
     if (!isOpen) return;
     updatePopoverPos();
-    window.addEventListener('resize', updatePopoverPos);
-    window.addEventListener('scroll', updatePopoverPos, true);
+
+    let rafId: number | null = null;
+    const handleThrottledPos = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        updatePopoverPos();
+        rafId = null;
+      });
+    };
+
+    window.addEventListener('resize', handleThrottledPos, { passive: true });
+    window.addEventListener('scroll', handleThrottledPos, { passive: true });
     return () => {
-      window.removeEventListener('resize', updatePopoverPos);
-      window.removeEventListener('scroll', updatePopoverPos, true);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', handleThrottledPos);
+      window.removeEventListener('scroll', handleThrottledPos);
     };
   }, [isOpen, updatePopoverPos]);
 
@@ -162,7 +198,6 @@ export default function HeaderMusicWidget() {
 
   const activeError = currentTrack ? trackErrors[currentTrack.videoId] : undefined;
   const isActuallyPlaying = playerState === 'playing' && isPlaying;
-  const maxDuration = duration > 0 ? duration : Math.max(currentTime, 1);
 
   const pomodoroTotal =
     pomodoroMode === 'focus' ? POMODORO_FOCUS_SECONDS : POMODORO_BREAK_SECONDS;
@@ -268,7 +303,7 @@ export default function HeaderMusicWidget() {
             role="dialog"
             aria-label="Focus Studio · Nhạc nền & Pomodoro"
             style={{ top: popoverPos.top, right: popoverPos.right }}
-            className="fixed w-[calc(100vw-1rem)] max-w-[380px] sm:w-[390px] sm:max-w-[calc(100vw-1rem)] max-h-[calc(100vh-5rem)] overflow-y-auto z-[100] rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white/95 dark:bg-[#0d1424]/95 backdrop-blur-xl shadow-2xl p-4 text-slate-900 dark:text-slate-100 space-y-3.5"
+            className="fixed w-[calc(100vw-1rem)] max-w-[380px] sm:w-[390px] sm:max-w-[calc(100vw-1rem)] max-h-[calc(100vh-5rem)] overflow-y-auto z-[100] rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white/98 dark:bg-[#0d1424]/98 backdrop-blur-md shadow-2xl p-4 text-slate-900 dark:text-slate-100 space-y-3.5"
           >
           {/* Now Playing Hero Card + Seek Bar */}
           {currentTrack && (
@@ -323,22 +358,8 @@ export default function HeaderMusicWidget() {
                 </button>
               </div>
 
-              {/* Interactive Timeline Seek Bar */}
-              <div className="space-y-1">
-                <input
-                  type="range"
-                  min={0}
-                  max={maxDuration}
-                  value={Math.min(currentTime, maxDuration)}
-                  onChange={(e) => requestSeek(Number(e.target.value))}
-                  aria-label="Thanh tua tiến độ bài hát"
-                  className="w-full h-1.5 accent-indigo-600 dark:accent-indigo-500 cursor-pointer"
-                />
-                <div className="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
-                  <span>{formatSecondsMmSs(currentTime)}</span>
-                  <span>{duration > 0 ? formatSecondsMmSs(duration) : '--:--'}</span>
-                </div>
-              </div>
+              {/* Interactive Timeline Seek Bar (Isolated sub-component so Header does not re-render each second) */}
+              <HeaderSeekBar />
             </div>
           )}
 

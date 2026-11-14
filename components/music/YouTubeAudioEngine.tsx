@@ -134,6 +134,11 @@ export default function YouTubeAudioEngine() {
         syncedIntentRef.current = { videoId, isPlaying: autoPlay };
         try {
           syncPlayerAudio(player, latest.isMuted, latest.volume, latest.isDucked);
+          try {
+            player.setPlaybackQuality?.('small');
+          } catch {
+            // Ignore
+          }
           if (autoPlay && typeof player.loadVideoById === 'function') {
             player.loadVideoById(videoId);
           } else if (typeof player.cueVideoById === 'function') {
@@ -151,6 +156,11 @@ export default function YouTubeAudioEngine() {
           latest.tracks.find((t) => t.id === latest.currentTrackId) || latest.tracks[0];
         try {
           syncPlayerAudio(player, latest.isMuted, latest.volume, latest.isDucked);
+          try {
+            player.setPlaybackQuality?.('small');
+          } catch {
+            // Ignore
+          }
           if (targetTrack && activeVideoIdRef.current !== targetTrack.videoId) {
             activeVideoIdRef.current = targetTrack.videoId;
             syncedIntentRef.current = { videoId: targetTrack.videoId, isPlaying: true };
@@ -253,6 +263,11 @@ export default function YouTubeAudioEngine() {
                 latest.tracks.find((t) => t.id === latest.currentTrackId) || latest.tracks[0];
 
               syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
+              try {
+                event.target?.setPlaybackQuality?.('small');
+              } catch {
+                // Ignore
+              }
               latest.setReady(true);
 
               if (latestTrack && latestTrack.videoId !== activeVideoIdRef.current) {
@@ -300,6 +315,11 @@ export default function YouTubeAudioEngine() {
                 }
 
                 syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
+                try {
+                  event.target?.setPlaybackQuality?.('small');
+                } catch {
+                  // Ignore
+                }
                 if (activeVideoIdRef.current) {
                   latest.clearTrackError(activeVideoIdRef.current);
                 }
@@ -400,6 +420,11 @@ export default function YouTubeAudioEngine() {
       if (activeVideoIdRef.current !== currentTrack.videoId) {
         activeVideoIdRef.current = currentTrack.videoId;
         syncPlayerAudio(playerRef.current, latest.isMuted, latest.volume, latest.isDucked);
+        try {
+          playerRef.current?.setPlaybackQuality?.('small');
+        } catch {
+          // Ignore
+        }
         if (isPlaying && typeof playerRef.current.loadVideoById === 'function') {
           playerRef.current.loadVideoById(currentTrack.videoId);
         } else if (typeof playerRef.current.cueVideoById === 'function') {
@@ -410,6 +435,11 @@ export default function YouTubeAudioEngine() {
 
       if (isPlaying) {
         syncPlayerAudio(playerRef.current, latest.isMuted, latest.volume, latest.isDucked);
+        try {
+          playerRef.current?.setPlaybackQuality?.('small');
+        } catch {
+          // Ignore
+        }
         playerRef.current.playVideo?.();
       } else {
         playerRef.current.pauseVideo?.();
@@ -437,16 +467,19 @@ export default function YouTubeAudioEngine() {
     }
   }, [seekRequest, isReady]);
 
-  // Poll current playback timeline once per second while playing
+  // Poll current playback timeline once per second while playing (whole second deduplication)
   useEffect(() => {
     if (!isReady || !isPlaying) return;
+    let lastSec = -1;
     const updateNow = () => {
       const p = playerRef.current;
       if (!p) return;
       try {
         const cur = Number(p.getCurrentTime?.() ?? 0);
         const dur = Number(p.getDuration?.() ?? 0);
-        if (dur > 0 || cur > 0) {
+        const sec = Math.floor(cur);
+        if (sec !== lastSec && (dur > 0 || cur > 0)) {
+          lastSec = sec;
           useMusicStore.getState().setProgress(cur, dur);
         }
       } catch {
@@ -546,10 +579,10 @@ export default function YouTubeAudioEngine() {
 
   return (
     <div
-      className="fixed bottom-1 right-1 w-[200px] h-[112px] opacity-[0.002] pointer-events-none -z-10 overflow-hidden"
+      className="fixed bottom-0 right-0 w-16 h-10 opacity-[0.01] pointer-events-none z-[1] overflow-hidden"
       aria-hidden={true}
     >
-      <div ref={hostRef} className="w-full h-full" />
+      <div ref={hostRef} className="w-[256px] h-[144px]" />
     </div>
   );
 }

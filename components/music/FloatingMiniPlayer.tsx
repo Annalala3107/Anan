@@ -18,6 +18,31 @@ import {
 } from 'lucide-react';
 import { useMusicStore, formatSecondsMmSs } from '@/lib/musicStore';
 
+function MiniPlayerSeekBar() {
+  const currentTime = useMusicStore((s) => s.currentTime);
+  const duration = useMusicStore((s) => s.duration);
+  const requestSeek = useMusicStore((s) => s.requestSeek);
+  const maxDuration = duration > 0 ? duration : Math.max(currentTime, 1);
+
+  return (
+    <div className="space-y-1">
+      <input
+        type="range"
+        min={0}
+        max={maxDuration}
+        value={Math.min(currentTime, maxDuration)}
+        onChange={(e) => requestSeek(Number(e.target.value))}
+        aria-label="Tua thời gian bài hát"
+        className="w-full h-1.5 accent-indigo-600 dark:accent-indigo-500 cursor-pointer"
+      />
+      <div className="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+        <span>{formatSecondsMmSs(currentTime)}</span>
+        <span>{duration > 0 ? formatSecondsMmSs(duration) : '--:--'}</span>
+      </div>
+    </div>
+  );
+}
+
 export default function FloatingMiniPlayer() {
   const tracks = useMusicStore((s) => s.tracks);
   const currentTrackId = useMusicStore((s) => s.currentTrackId);
@@ -25,8 +50,6 @@ export default function FloatingMiniPlayer() {
   const playerState = useMusicStore((s) => s.playerState);
   const isMuted = useMusicStore((s) => s.isMuted);
   const volume = useMusicStore((s) => s.volume);
-  const currentTime = useMusicStore((s) => s.currentTime);
-  const duration = useMusicStore((s) => s.duration);
   const ambientPreset = useMusicStore((s) => s.ambientPreset);
   const pomodoroRunning = useMusicStore((s) => s.pomodoroRunning);
   const pomodoroSecondsLeft = useMusicStore((s) => s.pomodoroSecondsLeft);
@@ -38,7 +61,6 @@ export default function FloatingMiniPlayer() {
   const toggleMute = useMusicStore((s) => s.toggleMute);
   const nextTrack = useMusicStore((s) => s.nextTrack);
   const prevTrack = useMusicStore((s) => s.prevTrack);
-  const requestSeek = useMusicStore((s) => s.requestSeek);
   const setAmbientPreset = useMusicStore((s) => s.setAmbientPreset);
   const togglePomodoro = useMusicStore((s) => s.togglePomodoro);
   const setShowMiniPlayer = useMusicStore((s) => s.setShowMiniPlayer);
@@ -55,7 +77,6 @@ export default function FloatingMiniPlayer() {
   }
 
   const isActuallyPlaying = playerState === 'playing' && isPlaying;
-  const maxDuration = duration > 0 ? duration : Math.max(currentTime, 1);
 
   const cycleAmbient = () => {
     if (ambientPreset === 'off') setAmbientPreset('rain');
@@ -66,7 +87,7 @@ export default function FloatingMiniPlayer() {
   if (miniPlayerCollapsed) {
     return (
       <div className="fixed bottom-20 md:bottom-5 right-4 z-40">
-        <div className="h-11 px-2.5 rounded-full bg-white/95 dark:bg-[#0d1424]/95 border border-slate-200 dark:border-slate-700/80 shadow-xl backdrop-blur-xl flex items-center gap-2 text-slate-900 dark:text-slate-100">
+        <div className="h-11 px-2.5 rounded-full bg-white/98 dark:bg-[#0d1424]/98 border border-slate-200 dark:border-slate-700/80 shadow-xl backdrop-blur-md flex items-center gap-2 text-slate-900 dark:text-slate-100">
           <button
             type="button"
             onClick={togglePlay}
@@ -125,7 +146,7 @@ export default function FloatingMiniPlayer() {
 
   return (
     <div className="fixed bottom-20 md:bottom-5 right-4 z-40 w-[300px] sm:w-[320px]">
-      <div className="rounded-2xl bg-white/95 dark:bg-[#0d1424]/95 border border-slate-200 dark:border-slate-700/80 shadow-2xl backdrop-blur-xl p-3.5 space-y-3 text-slate-900 dark:text-slate-100">
+      <div className="rounded-2xl bg-white/98 dark:bg-[#0d1424]/98 border border-slate-200 dark:border-slate-700/80 shadow-2xl backdrop-blur-md p-3.5 space-y-3 text-slate-900 dark:text-slate-100">
         {/* Header Row: Thumbnail + Metadata + Collapse/Close */}
         <div className="flex items-center gap-2.5">
           <div className="relative w-12 h-9 rounded-lg overflow-hidden shrink-0 border border-slate-200 dark:border-slate-700/70 bg-slate-900">
@@ -170,22 +191,8 @@ export default function FloatingMiniPlayer() {
           </div>
         </div>
 
-        {/* Mini Seek Bar */}
-        <div className="space-y-1">
-          <input
-            type="range"
-            min={0}
-            max={maxDuration}
-            value={Math.min(currentTime, maxDuration)}
-            onChange={(e) => requestSeek(Number(e.target.value))}
-            aria-label="Tua thời gian bài hát"
-            className="w-full h-1.5 accent-indigo-600 dark:accent-indigo-500 cursor-pointer"
-          />
-          <div className="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
-            <span>{formatSecondsMmSs(currentTime)}</span>
-            <span>{duration > 0 ? formatSecondsMmSs(duration) : '--:--'}</span>
-          </div>
-        </div>
+        {/* Mini Seek Bar (Isolated sub-component so MiniPlayer does not re-render each second) */}
+        <MiniPlayerSeekBar />
 
         {/* Transport + Pomodoro + Ambient Row */}
         <div className="flex items-center justify-between gap-2 pt-0.5">

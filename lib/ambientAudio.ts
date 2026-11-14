@@ -7,6 +7,7 @@ class AmbientAudioSynthesizer {
   private gainNode: GainNode | null = null;
   private currentPreset: AmbientPreset = 'off';
   private volume = 35;
+  private bufferCache: Partial<Record<'rain' | 'brown', AudioBuffer>> = {};
 
   private ensureContext(): AudioContext | null {
     if (typeof window === 'undefined') return null;
@@ -104,7 +105,10 @@ class AmbientAudioSynthesizer {
 
     try {
       const source = ctx.createBufferSource();
-      source.buffer = this.createNoiseBuffer(ctx, preset);
+      if (!this.bufferCache[preset]) {
+        this.bufferCache[preset] = this.createNoiseBuffer(ctx, preset);
+      }
+      source.buffer = this.bufferCache[preset]!;
       source.loop = true;
 
       const filter = ctx.createBiquadFilter();

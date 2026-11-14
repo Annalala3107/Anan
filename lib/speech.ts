@@ -4,6 +4,26 @@ import { useMusicStore } from './musicStore';
  * Web Speech API text-to-speech utility for word and example sentence pronunciation
  */
 
+let unduckTimer: ReturnType<typeof setTimeout> | null = null;
+
+function requestDucking(ducked: boolean) {
+  if (ducked) {
+    if (unduckTimer) {
+      clearTimeout(unduckTimer);
+      unduckTimer = null;
+    }
+    useMusicStore.getState().setDucked(true);
+  } else {
+    if (unduckTimer) {
+      clearTimeout(unduckTimer);
+    }
+    unduckTimer = setTimeout(() => {
+      useMusicStore.getState().setDucked(false);
+      unduckTimer = null;
+    }, 280);
+  }
+}
+
 export class SpeechService {
   private static synth: SpeechSynthesis | null = null;
   private static voices: SpeechSynthesisVoice[] = [];
@@ -67,21 +87,20 @@ export class SpeechService {
           utterance.rate = rate;
           utterance.pitch = 1.0;
 
-          const musicStore = useMusicStore.getState();
-          musicStore.setDucked(true);
+          requestDucking(true);
 
           utterance.onend = () => {
-            useMusicStore.getState().setDucked(false);
+            requestDucking(false);
             resolve();
           };
           utterance.onerror = () => {
-            useMusicStore.getState().setDucked(false);
+            requestDucking(false);
             resolve();
           };
 
           this.synth.speak(utterance);
         } catch {
-          useMusicStore.getState().setDucked(false);
+          requestDucking(false);
           resolve();
         }
       } else {
