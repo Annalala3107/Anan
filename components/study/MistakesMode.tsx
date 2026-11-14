@@ -91,7 +91,24 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
     return [currentWord.word, ...otherWords].sort(() => 0.5 - Math.random());
   }, [currentWord, isMCQ, shuffleOptions, words]);
 
-  if (!currentWord && mistakeWords.length === 0) {
+  const answerMeta = useMemo(() => {
+    if (!currentWord || !isMCQ) {
+      return {
+        isMultiSelect: false,
+        requiredCount: 1,
+        correctChoices: currentWord ? [currentWord.word] : [],
+        answerKeys: [],
+        isOrMode: false,
+      };
+    }
+    return getQuestionAnswerMeta(
+      currentWord.correctWord || currentWord.word,
+      currentWord.answer,
+      currentWord.options
+    );
+  }, [currentWord, isMCQ]);
+
+  if (mistakeWords.length === 0) {
     return (
       <div className="max-w-md mx-auto text-center py-20 px-4 animate-fade-in">
         <div className="w-20 h-20 rounded-3xl bg-emerald-500/10 text-emerald-500 mx-auto flex items-center justify-center mb-6 shadow-glow-success">
@@ -148,22 +165,9 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
     );
   }
 
-  const answerMeta = useMemo(() => {
-    if (!currentWord || !isMCQ) {
-      return {
-        isMultiSelect: false,
-        requiredCount: 1,
-        correctChoices: currentWord ? [currentWord.word] : [],
-        answerKeys: [],
-        isOrMode: false,
-      };
-    }
-    return getQuestionAnswerMeta(
-      currentWord.correctWord || currentWord.word,
-      currentWord.answer,
-      currentWord.options
-    );
-  }, [currentWord, isMCQ]);
+  if (!currentWord) {
+    return null;
+  }
 
   const isOptionTarget = (opt: string) => {
     if (isMCQ) {
