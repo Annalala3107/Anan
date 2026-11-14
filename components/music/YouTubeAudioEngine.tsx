@@ -95,14 +95,7 @@ function syncPlayerAudio(player: any, isMuted: boolean, volume: number, isDucked
   }
 }
 
-export interface YouTubeAudioEngineProps {
-  /** Whether to show a visible 256x144 monitor box (false renders offscreen at real dimensions, never display:none) */
-  showVideoPreview?: boolean;
-}
-
-export default function YouTubeAudioEngine({
-  showVideoPreview = true,
-}: YouTubeAudioEngineProps) {
+export default function YouTubeAudioEngine() {
   const tracks = useMusicStore((s) => s.tracks);
   const currentTrackId = useMusicStore((s) => s.currentTrackId);
   const isPlaying = useMusicStore((s) => s.isPlaying);
@@ -178,7 +171,6 @@ export default function YouTubeAudioEngine({
 
               syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
               latest.setReady(true);
-              latest.pushLog('success', 'YouTube IFrame API đã sẵn sàng (onReady)');
 
               if (latestTrack && latestTrack.videoId !== activeVideoIdRef.current) {
                 activeVideoIdRef.current = latestTrack.videoId;
@@ -209,10 +201,6 @@ export default function YouTubeAudioEngine({
                   }
                   syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
                   latest.setPlayerState('paused');
-                  latest.pushLog(
-                    'warn',
-                    'Chốt chặn: Đã ép dừng luồng phát trễ sau khi người dùng bấm Pause'
-                  );
                   return;
                 }
 
@@ -233,9 +221,7 @@ export default function YouTubeAudioEngine({
                   if (latest.loopMode === 'one' || latest.tracks.length <= 1) {
                     event.target?.seekTo?.(0);
                     event.target?.playVideo?.();
-                    latest.pushLog('info', 'Lặp lại bài hiện tại');
                   } else {
-                    latest.pushLog('info', 'Hết bài → tự động chuyển sang bài kế tiếp');
                     latest.nextTrack();
                   }
                 }
@@ -255,24 +241,15 @@ export default function YouTubeAudioEngine({
                 latest.recordTrackError(videoId, code, msg);
               }
               latest.setPlayerState('error');
-              latest.pushLog('error', `[${videoId || 'YouTube'}] ${msg}`);
-
-              if (latest.autoSkipOnError && latest.tracks.length > 1) {
-                latest.pushLog('warn', 'Tự động bỏ qua bài lỗi → chuyển bài tiếp theo');
-                latest.nextTrack();
-              } else {
-                latest.setPlaying(false);
-              }
+              latest.setPlaying(false);
             },
           },
         });
 
         playerRef.current = player;
-      } catch (err: any) {
+      } catch {
         if (!cancelled) {
-          const store = useMusicStore.getState();
-          store.setPlayerState('error');
-          store.pushLog('error', err?.message || 'Lỗi khởi tạo trình phát YouTube');
+          useMusicStore.getState().setPlayerState('error');
         }
       }
     };
@@ -307,10 +284,8 @@ export default function YouTubeAudioEngine({
       syncPlayerAudio(playerRef.current, isMuted, volume, isDucked);
       if (isPlaying && typeof playerRef.current.loadVideoById === 'function') {
         playerRef.current.loadVideoById(currentTrack.videoId);
-        useMusicStore.getState().pushLog('info', `API loadVideoById("${currentTrack.videoId}")`);
       } else if (typeof playerRef.current.cueVideoById === 'function') {
         playerRef.current.cueVideoById(currentTrack.videoId);
-        useMusicStore.getState().pushLog('info', `API cueVideoById("${currentTrack.videoId}")`);
       }
     } catch {
       // Ignore if player is mid-transition
@@ -344,9 +319,6 @@ export default function YouTubeAudioEngine({
     if (seekRequest === null || !isReady || !playerRef.current) return;
     try {
       playerRef.current.seekTo?.(seekRequest, true);
-      useMusicStore
-        .getState()
-        .pushLog('info', `Tua đến ${Math.floor(seekRequest)}s (seekTo)`);
     } catch {
       // Ignore seek errors
     } finally {
@@ -463,12 +435,8 @@ export default function YouTubeAudioEngine({
 
   return (
     <div
-      className={
-        showVideoPreview
-          ? 'w-[256px] h-[144px] rounded-xl overflow-hidden border border-slate-700/70 bg-black/70 shadow-lg shrink-0'
-          : 'w-[200px] h-[112px] fixed -bottom-[9999px] -left-[9999px] opacity-0 pointer-events-none'
-      }
-      aria-hidden={!showVideoPreview}
+      className="w-[200px] h-[112px] fixed -bottom-[9999px] -left-[9999px] opacity-0 pointer-events-none"
+      aria-hidden={true}
     >
       <div ref={hostRef} className="w-full h-full" />
     </div>

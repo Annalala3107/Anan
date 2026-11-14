@@ -53,7 +53,7 @@ export default function RootLayout({
         <BottomNav />
 
         {/* Persistent Global YouTube Music Engine & Floating Mini-Player */}
-        <YouTubeAudioEngine showVideoPreview={false} />
+        <YouTubeAudioEngine />
         <FloatingMiniPlayer />
       </body>
     </html>

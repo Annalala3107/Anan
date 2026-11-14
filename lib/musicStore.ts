@@ -19,13 +19,6 @@ export type MusicPlayerState =
   | 'cued'
   | 'error';
 
-export interface MusicEventLog {
-  id: string;
-  time: string;
-  type: 'info' | 'success' | 'warn' | 'error';
-  text: string;
-}
-
 export interface TrackErrorInfo {
   code: number;
   message: string;
@@ -129,14 +122,6 @@ interface MusicPrefs {
   miniPlayerCollapsed?: boolean;
 }
 
-function formatNowTime(): string {
-  const now = new Date();
-  const hh = String(now.getHours()).padStart(2, '0');
-  const mm = String(now.getMinutes()).padStart(2, '0');
-  const ss = String(now.getSeconds()).padStart(2, '0');
-  return `${hh}:${mm}:${ss}`;
-}
-
 function savePrefs(partial: MusicPrefs) {
   if (typeof window === 'undefined') return;
   try {
@@ -187,9 +172,7 @@ export interface MusicStoreState {
   isDucked: boolean;
   loopMode: 'all' | 'one';
   isShuffle: boolean;
-  autoSkipOnError: boolean;
   trackErrors: Record<string, TrackErrorInfo>;
-  eventLogs: MusicEventLog[];
 
   // Timeline & Seek Bar
   currentTime: number;
@@ -219,10 +202,8 @@ export interface MusicStoreState {
   setDucked: (ducked: boolean) => void;
   setLoopMode: (mode: 'all' | 'one') => void;
   toggleShuffle: () => void;
-  setAutoSkipOnError: (enabled: boolean) => void;
   nextTrack: () => void;
   prevTrack: () => void;
-  addCustomTrack: (urlOrId: string, customTitle?: string) => { ok: boolean; error?: string };
   addCustomTrackAsync: (
     urlOrId: string,
     customTitle?: string
@@ -243,8 +224,6 @@ export interface MusicStoreState {
   setMiniPlayerCollapsed: (collapsed: boolean) => void;
   recordTrackError: (videoId: string, code: number, message: string) => void;
   clearTrackError: (videoId: string) => void;
-  pushLog: (type: MusicEventLog['type'], text: string) => void;
-  clearLogs: () => void;
   hydratePrefs: () => void;
 }
 
@@ -259,9 +238,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   isDucked: false,
   loopMode: 'all',
   isShuffle: false,
-  autoSkipOnError: false,
   trackErrors: {},
-  eventLogs: [],
 
   currentTime: 0,
   duration: 0,
@@ -277,19 +254,6 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
 
   showMiniPlayer: true,
   miniPlayerCollapsed: true,
-
-  pushLog: (type, text) =>
-    set((state) => {
-      const entry: MusicEventLog = {
-        id: `${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
-        time: formatNowTime(),
-        type,
-        text,
-      };
-      return { eventLogs: [entry, ...state.eventLogs].slice(0, 40) };
-    }),
-
-  clearLogs: () => set({ eventLogs: [] }),
 
   hydratePrefs: () => {
     if (typeof window === 'undefined') return;
@@ -365,16 +329,10 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       currentTime: 0,
       duration: 0,
     });
-    get().pushLog(
-      'info',
-      `Chọn bài "${track.title}" (${track.videoId})${autoPlay ? ' → phát ngay' : ''}`
-    );
   },
 
   togglePlay: () => {
-    const next = !get().isPlaying;
-    set({ isPlaying: next });
-    get().pushLog('info', next ? 'Người dùng bấm Phát nhạc' : 'Người dùng bấm Tạm dừng');
+    set({ isPlaying: !get().isPlaying });
   },
 
   setPlaying: (playing) => {
@@ -385,7 +343,6 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     const next = !get().isMuted;
     savePrefs({ isMuted: next });
     set({ isMuted: next });
-    get().pushLog('info', next ? 'Đã tắt âm (Mute)' : 'Đã bật lại âm thanh (Unmute)');
   },
 
   setMuted: (muted) => {
@@ -405,17 +362,13 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   setLoopMode: (mode) => {
     savePrefs({ loopMode: mode });
     set({ loopMode: mode });
-    get().pushLog('info', mode === 'one' ? 'Chế độ lặp: Lặp 1 bài' : 'Chế độ lặp: Toàn danh sách');
   },
 
   toggleShuffle: () => {
     const next = !get().isShuffle;
     savePrefs({ isShuffle: next });
     set({ isShuffle: next });
-    get().pushLog('info', next ? 'Bật phát ngẫu nhiên (Shuffle)' : 'Tắt phát ngẫu nhiên');
   },
-
-  setAutoSkipOnError: (enabled) => set({ autoSkipOnError: enabled }),
 
   nextTrack: () => {
     const { tracks, currentTrackId, isPlaying, isShuffle } = get();
@@ -440,40 +393,6 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     const prevIdx = (idx - 1 + tracks.length) % tracks.length;
     const prev = tracks[prevIdx];
     get().selectTrack(prev.id, isPlaying);
-  },
-
-  addCustomTrack: (urlOrId, customTitle) => {
-    const videoId = extractYouTubeVideoId(urlOrId);
-    if (!videoId) {
-      return {
-        ok: false,
-        error:
-          'Link hoặc Video ID YouTube không hợp lệ (cần đúng ID 11 ký tự hoặc link youtu.be / youtube.com).',
-      };
-    }
-
-    const existing = get().tracks.find((t) => t.videoId === videoId);
-    if (existing) {
-      get().selectTrack(existing.id, true);
-      return { ok: true };
-    }
-
-    const cleanTitle = (customTitle || '').trim() || `YouTube Custom (${videoId})`;
-    const newTrack: MusicTrack = {
-      id: `custom-${videoId}`,
-      videoId,
-      title: cleanTitle,
-      artist: `Custom YouTube · ${videoId}`,
-      url: `https://www.youtube.com/watch?v=${videoId}`,
-      isCustom: true,
-    };
-
-    const nextTracks = [...get().tracks, newTrack];
-    savePrefs({ customTracks: nextTracks.filter((t) => t.isCustom) });
-    set({ tracks: nextTracks });
-    get().selectTrack(newTrack.id, true);
-    get().pushLog('success', `Đã thêm & chọn bài mới: "${cleanTitle}" (${videoId})`);
-    return { ok: true };
   },
 
   addCustomTrackAsync: async (urlOrId, customTitle) => {
@@ -519,7 +438,6 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     savePrefs({ customTracks: nextTracks.filter((t) => t.isCustom) });
     set({ tracks: nextTracks });
     get().selectTrack(newTrack.id, true);
-    get().pushLog('success', `Đã tự nhận diện & lưu bài: "${cleanTitle}" (${videoId})`);
     return { ok: true };
   },
 
@@ -543,7 +461,6 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       currentTrackId: fallbackId,
       ...(isRemovingCurrent ? { currentTime: 0, duration: 0 } : {}),
     });
-    get().pushLog('info', `Đã xóa bài tùy chỉnh "${target.title}"`);
   },
 
   setReady: (ready) => set({ isReady: ready }),
@@ -568,14 +485,6 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     const vol = get().ambientVolume;
     AmbientAudioEngine.setPreset(preset, vol);
     set({ ambientPreset: preset });
-    get().pushLog(
-      'info',
-      preset === 'off'
-        ? 'Đã tắt âm thanh không gian (Ambient)'
-        : preset === 'rain'
-        ? 'Bật tiếng mưa nhẹ nền (Web Audio)'
-        : 'Bật tiếng sóng trầm tập trung (Brown Noise)'
-    );
   },
 
   setAmbientVolume: (volume) => {
@@ -586,12 +495,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   },
 
   togglePomodoro: () => {
-    const next = !get().pomodoroRunning;
-    set({ pomodoroRunning: next });
-    get().pushLog(
-      'info',
-      next ? 'Bắt đầu đồng hồ tập trung Pomodoro' : 'Tạm dừng đồng hồ Pomodoro'
-    );
+    set({ pomodoroRunning: !get().pomodoroRunning });
   },
 
   resetPomodoro: (mode) => {
@@ -603,12 +507,6 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       pomodoroSecondsLeft: nextSeconds,
       pomodoroRunning: false,
     });
-    get().pushLog(
-      'info',
-      targetMode === 'focus'
-        ? 'Đặt lại Pomodoro: Phiên tập trung 25:00'
-        : 'Chuyển Pomodoro: Giờ giải lao 05:00'
-    );
   },
 
   tickPomodoro: () => {
@@ -627,19 +525,12 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
         pomodoroRunning: false,
         ...(pomodoroAutoPauseMusic ? { isPlaying: false } : {}),
       });
-      get().pushLog(
-        'success',
-        pomodoroAutoPauseMusic
-          ? 'Hoàn thành phiên học 25p → chuyển nghỉ 05:00 & tự tạm dừng nhạc'
-          : 'Hoàn thành phiên học 25p → sẵn sàng nghỉ ngơi 05:00'
-      );
     } else {
       set({
         pomodoroMode: 'focus',
         pomodoroSecondsLeft: POMODORO_FOCUS_SECONDS,
         pomodoroRunning: false,
       });
-      get().pushLog('success', 'Hết giờ nghỉ 5p → sẵn sàng cho phiên tập trung 25:00 mới');
     }
   },
 
