@@ -460,6 +460,17 @@ export const QUESTION_BANKS: SubjectSection[] = [
         tags: ['SU26', 'RE', '50 Câu'],
         subject: 'PFP191',
         topic: 'SU26 - RE'
+      },
+      {
+        id: 'pfp191_de3',
+        name: 'PFP191 - Đề 3',
+        description: 'Trọn bộ 50 câu hỏi đề thi PFP191 - Đề 3 kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/pfp191_de3.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['Đề 3', '50 Câu'],
+        subject: 'PFP191',
+        topic: 'Đề 3'
       }
     ]
   }

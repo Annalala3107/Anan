@@ -1,0 +1,805 @@
+[
+  {
+    "id": "PFP191_DE3_1",
+    "word": "Câu 1: class Dog: def __init__(self, name, age):...",
+    "question": "class Dog:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\nThe correct way to instantiate the above Dog class is:",
+    "options": [
+      "A. Dog()",
+      "B. Dog(\"Rufus\", 3)",
+      "C. Dog.create(\"Rufus\", 3)",
+      "D. Dog.__init__(\"Rufus\", 3)"
+    ],
+    "answer": "B",
+    "correctWord": "B. Dog(\"Rufus\", 3)",
+    "explanation": "Answer: B. In Python, a class is instantiated by calling the class name like a function with arguments matching __init__ (excluding self, which Python passes automatically). Dog(\"Rufus\", 3) passes \"Rufus\" to name and 3 to age.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_2",
+    "word": "Câu 2: Which of the following is rarely used in Object...",
+    "question": "Which of the following is rarely used in Object Oriented Programming?",
+    "options": [
+      "A. Method",
+      "B. Constructor",
+      "C. Attribute",
+      "D. Destructor"
+    ],
+    "answer": "D",
+    "correctWord": "D. Destructor",
+    "explanation": "Answer: D. Methods, constructors, and attributes are core building blocks of OOP classes, whereas destructors (such as __del__ in Python) are rarely used because memory management is handled automatically by garbage collection.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_3",
+    "word": "Câu 3: Which of the following statements is true about...",
+    "question": "Which of the following statements is true about classes?",
+    "options": [
+      "A. Classes cannot inherit from other classes.",
+      "B. Classes can contain both attributes and methods",
+      "C. Every class must have at least one attribute",
+      "D. Classes cannot create instances."
+    ],
+    "answer": "B",
+    "correctWord": "B. Classes can contain both attributes and methods",
+    "explanation": "Answer: B. Classes encapsulate data (attributes) and behavior (methods). They can inherit from other classes, can be empty (no required attributes), and are designed to create instances.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_4",
+    "word": "Câu 4: What is the result of this code? class A: def...",
+    "question": "What is the result of this code?\nclass A:\n    def show(self):\n        print(\"A\")\nclass B(A):\n    pass\nclass C(B):\n    pass\nobj = C()\nobj.show()",
+    "options": [
+      "A. \"A\"",
+      "B. \"B\"",
+      "C. \"C\"",
+      "D. Error"
+    ],
+    "answer": "A",
+    "correctWord": "A. \"A\"",
+    "explanation": "Answer: A. Through multilevel inheritance, C inherits from B and B inherits from A. Calling obj.show() looks up show in C, then B, then finds and executes A.show(), printing \"A\".",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_5",
+    "word": "Câu 5: In Python, a function within a class definition...",
+    "question": "In Python, a function within a class definition is called a:",
+    "options": [
+      "A. a method",
+      "B. a class function",
+      "C. an operation",
+      "D. a factory"
+    ],
+    "answer": "A",
+    "correctWord": "A. a method",
+    "explanation": "Answer: A. A function defined inside a class body is called a method.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_6",
+    "word": "Câu 6: What does the @property decorator do in Python?",
+    "question": "What does the @property decorator do in Python?",
+    "options": [
+      "A. Converts a function into a read-only attribute",
+      "B. Hides a method from the user",
+      "C. Makes a function private",
+      "D. Creates a new class"
+    ],
+    "answer": "A",
+    "correctWord": "A. Converts a function into a read-only attribute",
+    "explanation": "Answer: A. The @property decorator turns a method into a managed attribute getter, allowing it to be accessed without parentheses as a read-only attribute (unless a corresponding setter is defined).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_7",
+    "word": "Câu 7: What will be the output of this code? class A:...",
+    "question": "What will be the output of this code?\nclass A:\n    def __init__(self):\n        print(\"A constructor\")\nclass B(A):\n    def __init__(self):\n        print(\"B constructor\")\nobj = B()",
+    "options": [
+      "A. A constructor",
+      "B. B constructor",
+      "C. A constructor B constructor",
+      "D. Error"
+    ],
+    "answer": "B",
+    "correctWord": "B. B constructor",
+    "explanation": "Answer: B. Class B overrides A.__init__ without calling super().__init__(), so instantiating B() only executes B.__init__ and prints \"B constructor\".",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_8",
+    "word": "Câu 8: What will be the output of this code? class...",
+    "question": "What will be the output of this code?\nclass Student:\n    def __init__(self, name):\n        self.__name = name\ns = Student(\"Alice\")\nprint(s.__name)",
+    "options": [
+      "A. Alice",
+      "B. Error",
+      "C. None",
+      "D. s.__name"
+    ],
+    "answer": "B",
+    "correctWord": "B. Error",
+    "explanation": "Answer: B. Attributes prefixed with two leading underscores (__name) undergo name mangling to _Student__name, so accessing s.__name directly outside the class raises an AttributeError.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_9",
+    "word": "Câu 9: In Object Oriented Programming, what is another...",
+    "question": "In Object Oriented Programming, what is another name for the \"attributes\" of an object?",
+    "options": [
+      "A. forms",
+      "B. methods",
+      "C. portions",
+      "D. messages",
+      "E. fields"
+    ],
+    "answer": "E",
+    "correctWord": "E. fields",
+    "explanation": "Answer: E. In Object-Oriented Programming, an object's attributes (the data variables belonging to the object) are also commonly referred to as fields.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_10",
+    "word": "Câu 10: What is the output of the following snippet...",
+    "question": "What is the output of the following snippet code?\nsentence = \"This-is;a-test\"\nwords = sentence.split('-;')\nprint(words)",
+    "options": [
+      "A. ['This-is;a-test']",
+      "B. ['This' 'is' 'a' 'test']",
+      "C. This, is, a, test",
+      "D. This is a test"
+    ],
+    "answer": "A",
+    "correctWord": "A. ['This-is;a-test']",
+    "explanation": "Answer: A. str.split('-;') searches for the exact two-character delimiter \"-;\". Since \"-;\" does not appear anywhere in \"This-is;a-test\", split returns a single-element list containing the original string.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_11",
+    "word": "Câu 11: What will be the output of the following code?...",
+    "question": "What will be the output of the following code?\ns = \"abracadabra\"\nprint(s.rindex(\"a\"))",
+    "options": [
+      "A. 10",
+      "B. 3",
+      "C. 5",
+      "D. 0"
+    ],
+    "answer": "A",
+    "correctWord": "A. 10",
+    "explanation": "Answer: A. rindex(\"a\") returns the highest (rightmost) index of \"a\" in the string. \"abracadabra\" has 11 characters (indices 0 to 10), and the last \"a\" is at index 10.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_12",
+    "word": "Câu 12: What is the result of 'abcde'.find('c')?",
+    "question": "What is the result of 'abcde'.find('c')?",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. -1"
+    ],
+    "answer": "B",
+    "correctWord": "B. 2",
+    "explanation": "Answer: B. String indices start at 0: 'a' is at 0, 'b' is at 1, and 'c' is at index 2, so 'abcde'.find('c') returns 2.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_13",
+    "word": "Câu 13: Python strings have a property called...",
+    "question": "Python strings have a property called \"immutability.\" What does this mean?",
+    "options": [
+      "A. Strings can't be divided by numbers",
+      "B. Strings in Python can't be changed",
+      "C. Strings in Python can be represented as arrays of chars",
+      "D. You can update a string in Python with concatenation"
+    ],
+    "answer": "B",
+    "correctWord": "B. Strings in Python can't be changed",
+    "explanation": "Answer: B. Immutability means that once a string object is created in Python, its contents cannot be modified in place; operations like concatenation create a new string instead.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_14",
+    "word": "Câu 14: Which method removes all whitespace from the...",
+    "question": "Which method removes all whitespace from the beginning and end of a string?",
+    "options": [
+      "A. strip()",
+      "B. trim()",
+      "C. clean()",
+      "D. remove()"
+    ],
+    "answer": "A",
+    "correctWord": "A. strip()",
+    "explanation": "Answer: A. In Python, str.strip() returns a copy of the string with all leading and trailing whitespace removed.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_15",
+    "word": "Câu 15: ow can you efficiently check and count each...",
+    "question": "ow can you efficiently check and count each word from a file without causing a KeyError if the word is not already in the dictionary?",
+    "options": [
+      "A. Use if-else to check presence of word",
+      "B. Use dict[word] += 1 without checking",
+      "C. Use dict.get(word, 0) + 1",
+      "D. Use dict.setdefault(word, 0) + 1"
+    ],
+    "answer": "C",
+    "correctWord": "C. Use dict.get(word, 0) + 1",
+    "explanation": "Answer: C. Using counts[word] = counts.get(word, 0) + 1 safely returns 0 when the key is missing (avoiding KeyError) and increments the count concisely without needing a separate if-else branch.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_16",
+    "word": "Câu 16: What happens if you access a non-existing key...",
+    "question": "What happens if you access a non-existing key in a dictionary using square brackets (dict[key])?",
+    "options": [
+      "A. Returns None",
+      "B. Raises a KeyError",
+      "C. Adds the key with None as its value",
+      "D. Returns 0"
+    ],
+    "answer": "B",
+    "correctWord": "B. Raises a KeyError",
+    "explanation": "Answer: B. Indexing a dictionary with dict[key] when key does not exist raises a KeyError (unlike dict.get(key), which returns None).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_17",
+    "word": "Câu 17: What does the following Python code print out?...",
+    "question": "What does the following Python code print out?\na = [1, 2, 3, 8]\nb = [4, 5, 6]\nc = a + b\nprint (c)",
+    "options": [
+      "A. 28",
+      "B. [1, 2, 3, 8, 4, 5, 6]",
+      "C. It raises an exception",
+      "D. 7"
+    ],
+    "answer": "B",
+    "correctWord": "B. [1, 2, 3, 8, 4, 5, 6]",
+    "explanation": "Answer: B. Using the + operator on two Python lists concatenates them in order, producing [1, 2, 3, 8, 4, 5, 6].",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_18",
+    "word": "Câu 18: What does file.write(\"text\") return?",
+    "question": "What does file.write(\"text\") return?",
+    "options": [
+      "A. None",
+      "B. The number of characters written",
+      "C. The written string",
+      "D. Raises an error"
+    ],
+    "answer": "B",
+    "correctWord": "B. The number of characters written",
+    "explanation": "Answer: B. In Python 3, file.write(s) writes the string to the file and returns the number of characters written (4 for \"text\").",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_19",
+    "word": "Câu 19: Which method in Python is used to read a...",
+    "question": "Which method in Python is used to read a single line from a text file?",
+    "options": [
+      "A. readline()",
+      "B. read()",
+      "C. readlines()",
+      "D. getline()"
+    ],
+    "answer": "A",
+    "correctWord": "A. readline()",
+    "explanation": "Answer: A. The readline() method reads and returns one line at a time from a file, whereas read() reads the whole file (or n chars) and readlines() returns a list of all lines.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_20",
+    "word": "Câu 20: What is stored in a \"file handle\" that is...",
+    "question": "What is stored in a \"file handle\" that is returned from a successful open() call?",
+    "options": [
+      "A. The handle is a connection to the file's data",
+      "B. The handle contains the first 10 lines of a file",
+      "C. All the data from the file is read into memory and stored in the handle",
+      "D. The handle has a list of all of the files in a particular folder on the hard drive"
+    ],
+    "answer": "A",
+    "correctWord": "A. The handle is a connection to the file's data",
+    "explanation": "Answer: A. open() does not load the entire file into memory; instead, it returns a file object (handle) that acts as a stream/connection to read from or write to the file.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_21",
+    "word": "Câu 21: The readlines() method returns ...",
+    "question": "The readlines() method returns ...",
+    "options": [
+      "A. str",
+      "B. a list of lines",
+      "C. a list of single characters",
+      "D. a list of integers"
+    ],
+    "answer": "B",
+    "correctWord": "B. a list of lines",
+    "explanation": "Answer: B. file.readlines() reads all remaining lines from the file and returns them as a Python list of strings, one string per line.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_22",
+    "word": "Câu 22: What is the last action that must be...",
+    "question": "What is the last action that must be performed on a file?",
+    "options": [
+      "A. Close",
+      "B. Save",
+      "C. End",
+      "D. Write"
+    ],
+    "answer": "A",
+    "correctWord": "A. Close",
+    "explanation": "Answer: A. After finishing operations on a file, it must be closed (e.g., via file.close() or a with block) to flush buffered data and release OS resources.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_23",
+    "word": "Câu 23: How does the 'open' function work in Python?",
+    "question": "How does the 'open' function work in Python?",
+    "options": [
+      "A. It basically takes the name of a file as an argument and returns a file handle which can be used to perform operations on the file.",
+      "B. It examines a program and analyses the syntactic structure.",
+      "C. It iterates through the items in a sequence, performing a similar operation on each.",
+      "D. It takes a format string and a tuple and generates a string that includes the elements of the tuple formatted as specified by the format string."
+    ],
+    "answer": "A",
+    "correctWord": "A. It basically takes the name of a file as an argument and returns a file handle which can be used to perform operations on the file.",
+    "explanation": "Answer: A. Python's built-in open(filename, mode) opens the specified file and returns a file handle/object used for reading, writing, or appending.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_24",
+    "word": "Câu 24: What does the code below mean? f = open(\"test.txt\")",
+    "question": "What does the code below mean?\nf = open(\"test.txt\")",
+    "options": [
+      "A. Open the file test.txt with read and write permissions.",
+      "B. Open the file test.txt with read-only permission.",
+      "C. Open the file test.txt and allow overwriting the file.",
+      "D. Open the file test.txt and allow appending to the file."
+    ],
+    "answer": "B",
+    "correctWord": "B. Open the file test.txt with read-only permission.",
+    "explanation": "Answer: B. When the mode parameter is omitted in open(\"test.txt\"), Python defaults to mode 'r', which opens the file for reading only.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_25",
+    "word": "Câu 25: Which of the following CANNOT be variable names...",
+    "question": "Which of the following CANNOT be variable names or identifiers in Python programming?",
+    "options": [
+      "A. while",
+      "B. if",
+      "C. and",
+      "D. All of the above"
+    ],
+    "answer": "D",
+    "correctWord": "D. All of the above",
+    "explanation": "Answer: D. while, if, and and are all reserved keywords in Python, so none of them can be used as variable names or identifiers.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_26",
+    "word": "Câu 26: What is a reserved word in Python?",
+    "question": "What is a reserved word in Python?",
+    "options": [
+      "A. A word created by the programmer and assigned to a variable.",
+      "B. A word that has one specific meaning to Python and cannot be used as a variable name.",
+      "C. The name of a function available in Python.",
+      "D. A slang term for especially well-written code."
+    ],
+    "answer": "B",
+    "correctWord": "B. A word that has one specific meaning to Python and cannot be used as a variable name.",
+    "explanation": "Answer: B. Reserved words (keywords) in Python have special, predefined meanings to the interpreter (such as if, for, def, and while) and therefore cannot be used as variable or identifier names.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_27",
+    "word": "Câu 27: Which of the following slicing operations will produce...",
+    "question": "Which of the following slicing operations will produce the list [12, 3]?\nt = [9, 41, 12, 3, 74, 15]",
+    "options": [
+      "A. t[12:3]",
+      "B. t[2:4]",
+      "C. t[2:2]",
+      "D. t[1:3]"
+    ],
+    "answer": "B",
+    "correctWord": "B. t[2:4]",
+    "explanation": "Answer: B. List slicing t[start:stop] includes elements from index start up to (but not including) index stop. In t = [9, 41, 12, 3, 74, 15], index 2 is 12 and index 3 is 3, so t[2:4] produces [12, 3].",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_28",
+    "word": "Câu 28: Which of the parts of a computer actually executes...",
+    "question": "Which of the parts of a computer actually executes the program instructions?",
+    "options": [
+      "A. RAM",
+      "B. CPU",
+      "C. Input/Output Devices",
+      "D. Secondary Memory"
+    ],
+    "answer": "B",
+    "correctWord": "B. CPU",
+    "explanation": "Answer: B. The CPU (Central Processing Unit) is the hardware component responsible for fetching, decoding, and executing program instructions.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_29",
+    "word": "Câu 29: What will happen if a string contains non-numeric...",
+    "question": "What will happen if a string contains non-numeric characters and is converted using int()?",
+    "options": [
+      "A. It will return 0",
+      "B. It will be converted to a float",
+      "C. It will raise a ValueError",
+      "D. It will be converted to a boolean"
+    ],
+    "answer": "C",
+    "correctWord": "C. It will raise a ValueError",
+    "explanation": "Answer: C. Calling int() on a string that does not represent a valid integer literal (e.g., containing letters or non-numeric characters) raises a ValueError in Python.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_30",
+    "word": "Câu 30: How can you use list comprehension to create a list...",
+    "question": "How can you use list comprehension to create a list of even numbers from 1 to 10?",
+    "options": [
+      "A. [x for x in range(1, 11) if x % 2 == 0]",
+      "B. [2*x for x in range(1, 6)]",
+      "C. [x*2 for x in range(10)]",
+      "D. [x for x in range(1, 11) when x % 2 == 0]"
+    ],
+    "answer": "A",
+    "correctWord": "A. [x for x in range(1, 11) if x % 2 == 0]",
+    "explanation": "Answer: A. range(1, 11) generates numbers from 1 to 10, and the condition if x % 2 == 0 filters only the even numbers [2, 4, 6, 8, 10]. (Note: option B also evaluates to [2, 4, 6, 8, 10], while C starts at 0 and D uses invalid 'when' syntax; A is the standard filtering comprehension over 1 to 10.)",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_31",
+    "word": "Câu 31: What does the following Python code print out? a = [1, 2, 3]...",
+    "question": "What does the following Python code print out?\na = [1, 2, 3]\nb = [4, 5, 6]\nc = a + b\nprint(len(c))",
+    "options": [
+      "A. 21",
+      "B. [4, 5, 6]",
+      "C. 15",
+      "D. 6"
+    ],
+    "answer": "D",
+    "correctWord": "D. 6",
+    "explanation": "Answer: D. The + operator concatenates the two lists into c = [1, 2, 3, 4, 5, 6], which has 6 elements, so len(c) prints 6.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_32",
+    "word": "Câu 32: Which of the following methods does not exist for tuples?",
+    "question": "Which of the following methods does not exist for tuples?",
+    "options": [
+      "A. count()",
+      "B. index()",
+      "C. sort()",
+      "D. len()"
+    ],
+    "answer": "C",
+    "correctWord": "C. sort()",
+    "explanation": "Answer: C. Tuples are immutable in Python, so they do not have an in-place sort() method (only count() and index() exist as tuple methods; len() is a built-in function that works on tuples as len(t)).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_33",
+    "word": "Câu 33: What is a function argument?",
+    "question": "What is a function argument?",
+    "options": [
+      "A. A value provided to a function when the function is called. This value is assigned to the corresponding parameter in the function.",
+      "B. A way of calculating the result",
+      "C. The result of a function",
+      "D. A section of code that represents a command or action"
+    ],
+    "answer": "A",
+    "correctWord": "A. A value provided to a function when the function is called. This value is assigned to the corresponding parameter in the function.",
+    "explanation": "Answer: A. An argument is the actual value passed into a function during a function call, which gets assigned to the corresponding parameter variable defined in the function header.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_34",
+    "word": "Câu 34: Consider the following function in Python def func(n):...",
+    "question": "Consider the following function in Python\ndef func(n):\n    while n != 0:\n        print(n, end = \" \")\n        n = n - 2\n\nWhat happens when the parameter n passed to the function is initially a positive odd number?",
+    "options": [
+      "A. The function will enter an infinite loop.",
+      "B. The function will print numbers in reverse order until a negative number is reached.",
+      "C. The function will print numbers in reverse order until 1 is reached.",
+      "D. The function will not execute and return immediately."
+    ],
+    "answer": "A",
+    "correctWord": "A. The function will enter an infinite loop.",
+    "explanation": "Answer: A. Starting from a positive odd number and subtracting 2 each iteration keeps n odd forever (e.g., 5, 3, 1, -1, -3, ...), so n != 0 is always True and the while loop runs infinitely.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_35",
+    "word": "Câu 35: What is the flow of execution in a program?",
+    "question": "What is the flow of execution in a program?",
+    "options": [
+      "A. The order in which statements are executed",
+      "B. The sequence in which functions are defined",
+      "C. The process of converting data types",
+      "D. The way parameters are passed to functions"
+    ],
+    "answer": "A",
+    "correctWord": "A. The order in which statements are executed",
+    "explanation": "Answer: A. Flow of execution refers to the order in which statements are executed when a program runs.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_36",
+    "word": "Câu 36: Which of the following reserved keyword is used to end...",
+    "question": "Which of the following reserved keyword is used to end a function, return generator?",
+    "options": [
+      "A. break",
+      "B. switch",
+      "C. Return",
+      "D. yield"
+    ],
+    "answer": "D",
+    "correctWord": "D. yield",
+    "explanation": "Answer: D. In Python, the yield keyword suspends a function's execution and returns a generator object. (Note that 'Return' with a capital R is not a valid Python keyword because Python keywords are case-sensitive: 'return' is lowercase.)",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_37",
+    "word": "Câu 37: What is the output of the following code snippet? num = 4...",
+    "question": "What is the output of the following code snippet?\nnum = 4\nresult = 1\nwhile num > 1:\n    result *= num\n    num -= 1\nprint(result)",
+    "options": [
+      "A. 24",
+      "B. 12",
+      "C. 10",
+      "D. 26"
+    ],
+    "answer": "A",
+    "correctWord": "A. 24",
+    "explanation": "Answer: A. The loop computes 4! by multiplying result by 4, 3, and 2 (1 * 4 * 3 * 2 = 24), then stops when num becomes 1 and prints 24.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_38",
+    "word": "Câu 38: What is the extend() method used for ?",
+    "question": "What is the extend() method used for ?",
+    "options": [
+      "A. Adds an element to the end of a list.",
+      "B. Concatenates two lists, adding all the elements of the given list to the current list.",
+      "C. Replaces an element at a given position in the list.",
+      "D. Returns a copy of the current list."
+    ],
+    "answer": "B",
+    "correctWord": "B. Concatenates two lists, adding all the elements of the given list to the current list.",
+    "explanation": "Answer: B. The list.extend(iterable) method appends all elements from the given iterable (such as another list) to the end of the current list in place.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_39",
+    "word": "Câu 39: Which collection is ordered, changeable, and allows...",
+    "question": "Which collection is ordered, changeable, and allows duplicate members?",
+    "options": [
+      "A. SET",
+      "B. DICTIONARY",
+      "C. TUPLE",
+      "D. LIST"
+    ],
+    "answer": "D",
+    "correctWord": "D. LIST",
+    "explanation": "Answer: D. A Python list is ordered, mutable (changeable), and allows duplicate elements. (Tuples are unchangeable, sets are unordered and disallow duplicates, and dictionaries disallow duplicate keys.)",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_40",
+    "word": "Câu 40: What is the result of: a = [1, 2, 3] a[0:2] = [5]...",
+    "question": "What is the result of:\na = [1, 2, 3]\na[0:2] = [5]\nprint(a)",
+    "options": [
+      "A. [5, 3]",
+      "B. [1, 2, 5]",
+      "C. [5, 2, 3]",
+      "D. [1, 5, 3]"
+    ],
+    "answer": "A",
+    "correctWord": "A. [5, 3]",
+    "explanation": "Answer: A. Slice assignment a[0:2] = [5] replaces the two elements at indices 0 and 1 ([1, 2]) with the single element 5, resulting in [5, 3].",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_41",
+    "word": "Câu 41: Which of the following elements of a mathematical...",
+    "question": "Which of the following elements of a mathematical expression in Python is evaluated last?",
+    "options": [
+      "A. Addition",
+      "B. Multiplication",
+      "C. Parentheses",
+      "D. Division"
+    ],
+    "answer": "A",
+    "correctWord": "A. Addition",
+    "explanation": "Answer: A. By Python's operator precedence (PEMDAS), parentheses are evaluated first, followed by multiplication and division, while addition is evaluated last among the listed options.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_42",
+    "word": "Câu 42: In the following code, print(98.6). What is \"98.6\"?",
+    "question": "In the following code, print(98.6). What is \"98.6\"?",
+    "options": [
+      "A. A conditional statement",
+      "B. A constant",
+      "C. An iteration / loop statement",
+      "D. A variable"
+    ],
+    "answer": "B",
+    "correctWord": "B. A constant",
+    "explanation": "Answer: B. Fixed values such as numbers, letters, and strings (like 98.6) are called constants (or literals) because their value does not change during program execution.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_43",
+    "word": "Câu 43: What is the primary function of the 'input' function...",
+    "question": "What is the primary function of the 'input' function in Python programs?",
+    "options": [
+      "A. To output data to the console",
+      "B. To take user input as a string",
+      "C. To display user inputs",
+      "D. To define variables"
+    ],
+    "answer": "B",
+    "correctWord": "B. To take user input as a string",
+    "explanation": "Answer: B. The built-in input() function pauses program execution, reads a line of text entered by the user from standard input, and returns it as a string (str).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_44",
+    "word": "Câu 44: What will be the output of the following code snippet?...",
+    "question": "What will be the output of the following code snippet?\nprint(2**3 + (5 + 6)**(1 + 1))",
+    "options": [
+      "A. 129",
+      "B. 8",
+      "C. 121",
+      "D. None of the above"
+    ],
+    "answer": "A",
+    "correctWord": "A. 129",
+    "explanation": "Answer: A. Evaluating parentheses first gives (5 + 6) = 11 and (1 + 1) = 2. Then exponentiation gives 2**3 = 8 and 11**2 = 121. Finally, 8 + 121 = 129.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_45",
+    "word": "Câu 45: What will be the output of the following code? x = 5...",
+    "question": "What will be the output of the following code?\nx = 5\ny = 10\nprint(x * y + x / y)",
+    "options": [
+      "A. 50.5",
+      "B. 55.5",
+      "C. 50.1",
+      "D. 51.0"
+    ],
+    "answer": "A",
+    "correctWord": "A. 50.5",
+    "explanation": "Answer: A. Multiplication and division have higher precedence than addition: x * y = 5 * 10 = 50, and x / y = 5 / 10 = 0.5 (true division returns a float). Adding them yields 50.5.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_46",
+    "word": "Câu 46: What does the term \"algorithm\" mean in the context...",
+    "question": "What does the term \"algorithm\" mean in the context of programming?",
+    "options": [
+      "A. A high-level programming language",
+      "B. A step-by-step procedure or formula for solving a problem",
+      "C. A reserved keyword in Python",
+      "D. The output of a program"
+    ],
+    "answer": "B",
+    "correctWord": "B. A step-by-step procedure or formula for solving a problem",
+    "explanation": "Answer: B. An algorithm is a well-defined, step-by-step procedure or set of instructions designed to solve a specific problem or perform a computation.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_47",
+    "word": "Câu 47: Which of the following variable names are invalid?",
+    "question": "Which of the following variable names are invalid?",
+    "options": [
+      "A. _",
+      "B. _0",
+      "C. 0_",
+      "D. _0_",
+      "E. for_",
+      "F. for"
+    ],
+    "answer": "C, F",
+    "correctWord": "C. 0_ | F. for",
+    "explanation": "Answer: C, F. In Python, variable names must start with a letter or underscore (so 0_ is invalid because it starts with a digit) and cannot be a reserved keyword (so for is invalid). _, _0, _0_, and for_ are all valid identifiers.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_48",
+    "word": "Câu 48: Which of the following options correctly represents...",
+    "question": "Which of the following options correctly represents the precedence of the logical operators and, or, and NOT in Python, from highest to lowest?",
+    "options": [
+      "A. not, and, or",
+      "B. or, and, not",
+      "C. and, or, not",
+      "D. not, or, and"
+    ],
+    "answer": "A",
+    "correctWord": "A. not, and, or",
+    "explanation": "Answer: A. In Python, logical operator precedence from highest to lowest is: not (highest), followed by and, and then or (lowest).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_49",
+    "word": "Câu 49: Which logical operator is used to combine multiple...",
+    "question": "Which logical operator is used to combine multiple conditions and returns True if all conditions are True?",
+    "options": [
+      "A. and",
+      "B. or",
+      "C. xor",
+      "D. not"
+    ],
+    "answer": "A",
+    "correctWord": "A. and",
+    "explanation": "Answer: A. The logical 'and' operator returns True only when all combined conditions evaluate to True (and False if any condition is False).",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  },
+  {
+    "id": "PFP191_DE3_50",
+    "word": "Câu 50: Assume we have the file.txt contains: \"for line in hand:...",
+    "question": "Assume we have the file.txt contains:\n\"for line in hand:\n    count = count + 1\nprint('Line Count:', count)\"\n\nWhat happens with the following code?\nf= open(\"file.txt\")\nprint(len(f.readlines()))",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 3",
+      "D. Error"
+    ],
+    "answer": "C",
+    "correctWord": "C. 3",
+    "explanation": "Answer: C. f.readlines() reads all lines of file.txt into a list of strings, one element per line. Since the file contains 3 lines, len(f.readlines()) returns and prints 3.",
+    "subject": "Lập Trình Python Cơ Bản (PFP191)",
+    "topic": "Đề 3"
+  }
+]
