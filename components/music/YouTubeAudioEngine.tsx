@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef } from 'react';
-import { useMusicStore } from '@/lib/musicStore';
+import { useMusicStore, registerMusicPlayerController } from '@/lib/musicStore';
 
 declare global {
   interface Window {
@@ -113,7 +113,9 @@ export default function YouTubeAudioEngine() {
 
   const hostRef = useRef<HTMLDivElement | null>(null);
   const playerRef = useRef<any>(null);
+  const isPlayerReadyRef = useRef(false);
   const activeVideoIdRef = useRef<string>('');
+  const syncedIntentRef = useRef<{ videoId: string; isPlaying: boolean } | null>(null);
 
   // Initialize singleton YT.Player once per mount with React.StrictMode cleanup protection
   useEffect(() => {
@@ -122,6 +124,77 @@ export default function YouTubeAudioEngine() {
     if (!hostEl) return;
 
     useMusicStore.getState().hydratePrefs();
+
+    registerMusicPlayerController({
+      loadTrack: (videoId: string, autoPlay: boolean) => {
+        const player = playerRef.current;
+        if (!isPlayerReadyRef.current || !player) return;
+        const latest = useMusicStore.getState();
+        activeVideoIdRef.current = videoId;
+        syncedIntentRef.current = { videoId, isPlaying: autoPlay };
+        try {
+          syncPlayerAudio(player, latest.isMuted, latest.volume, latest.isDucked);
+          if (autoPlay && typeof player.loadVideoById === 'function') {
+            player.loadVideoById(videoId);
+          } else if (typeof player.cueVideoById === 'function') {
+            player.cueVideoById(videoId);
+          }
+        } catch {
+          // Ignore if player is mid-transition
+        }
+      },
+      play: () => {
+        const player = playerRef.current;
+        if (!isPlayerReadyRef.current || !player) return;
+        const latest = useMusicStore.getState();
+        const targetTrack =
+          latest.tracks.find((t) => t.id === latest.currentTrackId) || latest.tracks[0];
+        try {
+          syncPlayerAudio(player, latest.isMuted, latest.volume, latest.isDucked);
+          if (targetTrack && activeVideoIdRef.current !== targetTrack.videoId) {
+            activeVideoIdRef.current = targetTrack.videoId;
+            syncedIntentRef.current = { videoId: targetTrack.videoId, isPlaying: true };
+            player.loadVideoById?.(targetTrack.videoId);
+          } else {
+            syncedIntentRef.current = {
+              videoId: activeVideoIdRef.current,
+              isPlaying: true,
+            };
+            player.playVideo?.();
+          }
+        } catch {
+          // Ignore
+        }
+      },
+      pause: () => {
+        const player = playerRef.current;
+        if (!isPlayerReadyRef.current || !player) return;
+        syncedIntentRef.current = {
+          videoId: activeVideoIdRef.current,
+          isPlaying: false,
+        };
+        try {
+          player.pauseVideo?.();
+        } catch {
+          // Ignore
+        }
+      },
+      seekTo: (seconds: number) => {
+        const player = playerRef.current;
+        if (!isPlayerReadyRef.current || !player) return;
+        try {
+          player.seekTo?.(seconds, true);
+          useMusicStore.getState().clearSeekRequest();
+        } catch {
+          // Ignore seek errors
+        }
+      },
+      syncAudio: (muted: boolean, vol: number, ducked: boolean) => {
+        const player = playerRef.current;
+        if (!isPlayerReadyRef.current || !player) return;
+        syncPlayerAudio(player, muted, vol, ducked);
+      },
+    });
 
     const init = async () => {
       try {
@@ -164,7 +237,17 @@ export default function YouTubeAudioEngine() {
                 return;
               }
 
+              isPlayerReadyRef.current = true;
               playerRef.current = event.target;
+              try {
+                const iframe = event.target?.getIframe?.();
+                if (iframe) {
+                  iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+                }
+              } catch {
+                // Ignore attribute errors
+              }
+
               const latest = useMusicStore.getState();
               const latestTrack =
                 latest.tracks.find((t) => t.id === latest.currentTrackId) || latest.tracks[0];
@@ -174,14 +257,26 @@ export default function YouTubeAudioEngine() {
 
               if (latestTrack && latestTrack.videoId !== activeVideoIdRef.current) {
                 activeVideoIdRef.current = latestTrack.videoId;
+                syncedIntentRef.current = {
+                  videoId: latestTrack.videoId,
+                  isPlaying: latest.isPlaying,
+                };
                 if (latest.isPlaying) {
                   event.target.loadVideoById?.(latestTrack.videoId);
                 } else {
                   event.target.cueVideoById?.(latestTrack.videoId);
                 }
               } else if (latest.isPlaying) {
+                syncedIntentRef.current = {
+                  videoId: activeVideoIdRef.current,
+                  isPlaying: true,
+                };
                 event.target.playVideo?.();
               } else {
+                syncedIntentRef.current = {
+                  videoId: activeVideoIdRef.current,
+                  isPlaying: false,
+                };
                 latest.setPlayerState('cued');
               }
             },
@@ -191,8 +286,8 @@ export default function YouTubeAudioEngine() {
               const stateCode: number = event.data;
 
               // YT.PlayerState: -1 UNSTARTED, 0 ENDED, 1 PLAYING, 2 PAUSED, 3 BUFFERING, 5 CUED
-              if (stateCode === 1 || stateCode === 3) {
-                // Race-condition safeguard: kill delayed playback if user already paused
+              if (stateCode === 1) {
+                // Race-condition safeguard: kill delayed playback only once PLAYING actually starts if paused
                 if (!latest.isPlaying) {
                   try {
                     event.target?.pauseVideo?.();
@@ -205,14 +300,26 @@ export default function YouTubeAudioEngine() {
                 }
 
                 syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
-                if (stateCode === 1 && activeVideoIdRef.current) {
+                if (activeVideoIdRef.current) {
                   latest.clearTrackError(activeVideoIdRef.current);
                 }
-                latest.setPlayerState(stateCode === 1 ? 'playing' : 'buffering');
+                latest.setPlayerState('playing');
+              } else if (stateCode === 3) {
+                syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
+                latest.setPlayerState('buffering');
               } else if (stateCode === 2) {
                 latest.setPlayerState('paused');
               } else if (stateCode === 5) {
-                latest.setPlayerState('cued');
+                if (latest.isPlaying) {
+                  try {
+                    event.target?.playVideo?.();
+                  } catch {
+                    // Ignore
+                  }
+                  latest.setPlayerState('buffering');
+                } else {
+                  latest.setPlayerState('cued');
+                }
               } else if (stateCode === -1) {
                 latest.setPlayerState('unstarted');
               } else if (stateCode === 0) {
@@ -258,6 +365,9 @@ export default function YouTubeAudioEngine() {
 
     return () => {
       cancelled = true;
+      isPlayerReadyRef.current = false;
+      syncedIntentRef.current = null;
+      registerMusicPlayerController(null);
       useMusicStore.getState().setReady(false);
       if (playerRef.current) {
         try {
@@ -274,39 +384,40 @@ export default function YouTubeAudioEngine() {
     };
   }, []);
 
-  // Track selection / switching effect (uses API loadVideoById / cueVideoById, never recreates iframe)
+  // Unified reactive fallback effect for track changes & play/pause (e.g. Pomodoro or state changes before onReady)
   useEffect(() => {
-    if (!currentTrack || !isReady || !playerRef.current) return;
-    if (activeVideoIdRef.current === currentTrack.videoId) return;
+    if (!currentTrack || !isReady || !isPlayerReadyRef.current || !playerRef.current) return;
 
-    activeVideoIdRef.current = currentTrack.videoId;
+    const intent = syncedIntentRef.current;
+    if (intent && intent.videoId === currentTrack.videoId && intent.isPlaying === isPlaying) {
+      return;
+    }
+
+    const latest = useMusicStore.getState();
+    syncedIntentRef.current = { videoId: currentTrack.videoId, isPlaying };
+
     try {
-      syncPlayerAudio(playerRef.current, isMuted, volume, isDucked);
-      if (isPlaying && typeof playerRef.current.loadVideoById === 'function') {
-        playerRef.current.loadVideoById(currentTrack.videoId);
-      } else if (typeof playerRef.current.cueVideoById === 'function') {
-        playerRef.current.cueVideoById(currentTrack.videoId);
+      if (activeVideoIdRef.current !== currentTrack.videoId) {
+        activeVideoIdRef.current = currentTrack.videoId;
+        syncPlayerAudio(playerRef.current, latest.isMuted, latest.volume, latest.isDucked);
+        if (isPlaying && typeof playerRef.current.loadVideoById === 'function') {
+          playerRef.current.loadVideoById(currentTrack.videoId);
+        } else if (typeof playerRef.current.cueVideoById === 'function') {
+          playerRef.current.cueVideoById(currentTrack.videoId);
+        }
+        return;
+      }
+
+      if (isPlaying) {
+        syncPlayerAudio(playerRef.current, latest.isMuted, latest.volume, latest.isDucked);
+        playerRef.current.playVideo?.();
+      } else {
+        playerRef.current.pauseVideo?.();
       }
     } catch {
       // Ignore if player is mid-transition
     }
-  }, [currentTrack, isReady, isPlaying, isMuted, volume, isDucked]);
-
-  // Play / Pause synchronization effect
-  useEffect(() => {
-    if (!isReady || !playerRef.current) return;
-    try {
-      if (isPlaying) {
-        syncPlayerAudio(playerRef.current, isMuted, volume, isDucked);
-        playerRef.current.playVideo?.();
-      } else {
-        playerRef.current.pauseVideo?.();
-        syncPlayerAudio(playerRef.current, isMuted, volume, isDucked);
-      }
-    } catch {
-      // Ignore
-    }
-  }, [isPlaying, isReady, isMuted, volume, isDucked]);
+  }, [currentTrack?.videoId, isPlaying, isReady]);
 
   // Mute / Volume / Ducking synchronization effect
   useEffect(() => {
@@ -435,7 +546,7 @@ export default function YouTubeAudioEngine() {
 
   return (
     <div
-      className="w-[200px] h-[112px] fixed -bottom-[9999px] -left-[9999px] opacity-0 pointer-events-none"
+      className="fixed bottom-1 right-1 w-[200px] h-[112px] opacity-[0.002] pointer-events-none -z-10 overflow-hidden"
       aria-hidden={true}
     >
       <div ref={hostRef} className="w-full h-full" />

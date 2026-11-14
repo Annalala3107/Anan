@@ -10,6 +10,19 @@ export interface MusicTrack {
   isCustom?: boolean;
 }
 
+export interface MusicPlayerController {
+  loadTrack: (videoId: string, autoPlay: boolean) => void;
+  play: () => void;
+  pause: () => void;
+  seekTo: (seconds: number) => void;
+  syncAudio: (isMuted: boolean, volume: number, isDucked: boolean) => void;
+}
+
+let playerController: MusicPlayerController | null = null;
+export function registerMusicPlayerController(ctrl: MusicPlayerController | null) {
+  playerController = ctrl;
+}
+
 export type MusicPlayerState =
   | 'unstarted'
   | 'buffering'
@@ -329,35 +342,65 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       currentTime: 0,
       duration: 0,
     });
+    playerController?.loadTrack(track.videoId, autoPlay);
   },
 
   togglePlay: () => {
-    set({ isPlaying: !get().isPlaying });
+    const { isPlaying, playerState } = get();
+    const next = !isPlaying;
+    set({
+      isPlaying: next,
+      ...(next && playerState === 'error' ? { playerState: 'buffering' } : {}),
+    });
+    if (next) {
+      playerController?.play();
+    } else {
+      playerController?.pause();
+    }
   },
 
   setPlaying: (playing) => {
-    set({ isPlaying: playing });
+    const { playerState } = get();
+    set({
+      isPlaying: playing,
+      ...(playing && playerState === 'error' ? { playerState: 'buffering' } : {}),
+    });
+    if (playing) {
+      playerController?.play();
+    } else {
+      playerController?.pause();
+    }
   },
 
   toggleMute: () => {
     const next = !get().isMuted;
+    const { volume, isDucked } = get();
     savePrefs({ isMuted: next });
     set({ isMuted: next });
+    playerController?.syncAudio(next, volume, isDucked);
   },
 
   setMuted: (muted) => {
+    const { volume, isDucked } = get();
     savePrefs({ isMuted: muted });
     set({ isMuted: muted });
+    playerController?.syncAudio(muted, volume, isDucked);
   },
 
   setVolume: (volume) => {
     const clamped = Math.max(0, Math.min(100, Math.round(volume)));
-    const nextMuted = clamped === 0 ? true : get().isMuted && clamped > 0 ? false : get().isMuted;
+    const { isMuted, isDucked } = get();
+    const nextMuted = clamped === 0 ? true : isMuted && clamped > 0 ? false : isMuted;
     savePrefs({ volume: clamped, isMuted: nextMuted });
     set({ volume: clamped, isMuted: nextMuted });
+    playerController?.syncAudio(nextMuted, clamped, isDucked);
   },
 
-  setDucked: (ducked) => set({ isDucked: ducked }),
+  setDucked: (ducked) => {
+    const { isMuted, volume } = get();
+    set({ isDucked: ducked });
+    playerController?.syncAudio(isMuted, volume, ducked);
+  },
 
   setLoopMode: (mode) => {
     savePrefs({ loopMode: mode });
@@ -371,28 +414,28 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   },
 
   nextTrack: () => {
-    const { tracks, currentTrackId, isPlaying, isShuffle } = get();
+    const { tracks, currentTrackId, isShuffle } = get();
     if (tracks.length === 0) return;
 
     if (isShuffle && tracks.length > 1) {
       const candidates = tracks.filter((t) => t.id !== currentTrackId);
       const picked = candidates[Math.floor(Math.random() * candidates.length)];
-      get().selectTrack(picked.id, isPlaying);
+      get().selectTrack(picked.id, true);
       return;
     }
 
     const idx = tracks.findIndex((t) => t.id === currentTrackId);
     const next = tracks[(idx + 1) % tracks.length];
-    get().selectTrack(next.id, isPlaying);
+    get().selectTrack(next.id, true);
   },
 
   prevTrack: () => {
-    const { tracks, currentTrackId, isPlaying } = get();
+    const { tracks, currentTrackId } = get();
     if (tracks.length === 0) return;
     const idx = tracks.findIndex((t) => t.id === currentTrackId);
     const prevIdx = (idx - 1 + tracks.length) % tracks.length;
     const prev = tracks[prevIdx];
-    get().selectTrack(prev.id, isPlaying);
+    get().selectTrack(prev.id, true);
   },
 
   addCustomTrackAsync: async (urlOrId, customTitle) => {
@@ -473,11 +516,14 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       duration: Number.isFinite(duration) && duration >= 0 ? duration : 0,
     }),
 
-  requestSeek: (seconds) =>
+  requestSeek: (seconds) => {
+    const clamped = Math.max(0, seconds);
     set({
-      seekRequest: Math.max(0, seconds),
-      currentTime: Math.max(0, seconds),
-    }),
+      seekRequest: clamped,
+      currentTime: clamped,
+    });
+    playerController?.seekTo(clamped);
+  },
 
   clearSeekRequest: () => set({ seekRequest: null }),
 

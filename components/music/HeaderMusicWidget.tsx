@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Music,
   Play,
@@ -74,24 +75,62 @@ export default function HeaderMusicWidget() {
   const setShowMiniPlayer = useMusicStore((s) => s.setShowMiniPlayer);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [popoverPos, setPopoverPos] = useState<{ top: number; right: number }>({
+    top: 64,
+    right: 8,
+  });
   const [activeTab, setActiveTab] = useState<'playlist' | 'focus'>('playlist');
   const [customUrl, setCustomUrl] = useState('');
   const [customError, setCustomError] = useState<string | null>(null);
   const [isAddingCustom, setIsAddingCustom] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const popoverRef = useRef<HTMLDivElement | null>(null);
 
   const currentTrack = useMemo(
     () => tracks.find((t) => t.id === currentTrackId) || tracks[0],
     [tracks, currentTrackId]
   );
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const updatePopoverPos = useCallback(() => {
+    if (!containerRef.current || typeof window === 'undefined') return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const preferredWidth = window.innerWidth >= 640 ? 390 : 380;
+    const popoverWidth = Math.min(preferredWidth, window.innerWidth - 16);
+    const maxRight = Math.max(8, window.innerWidth - 8 - popoverWidth);
+    const rawRight = Math.round(window.innerWidth - rect.right);
+    const right = Math.max(8, Math.min(rawRight, maxRight));
+    const top = Math.max(8, Math.round(rect.bottom + 8));
+    setPopoverPos({ top, right });
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    updatePopoverPos();
+    window.addEventListener('resize', updatePopoverPos);
+    window.addEventListener('scroll', updatePopoverPos, true);
+    return () => {
+      window.removeEventListener('resize', updatePopoverPos);
+      window.removeEventListener('scroll', updatePopoverPos, true);
+    };
+  }, [isOpen, updatePopoverPos]);
+
   // Close popover cleanly on outside click or Escape key
   useEffect(() => {
     if (!isOpen) return;
     const handleOutside = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setIsOpen(false);
+      const target = e.target as Node;
+      if (
+        containerRef.current?.contains(target) ||
+        popoverRef.current?.contains(target)
+      ) {
+        return;
       }
+      setIsOpen(false);
     };
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsOpen(false);
@@ -183,7 +222,10 @@ export default function HeaderMusicWidget() {
         {/* Track Title, Optional Pomodoro Pill & Popover Toggle */}
         <button
           type="button"
-          onClick={() => setIsOpen((v) => !v)}
+          onClick={() => {
+            if (!isOpen) updatePopoverPos();
+            setIsOpen((v) => !v);
+          }}
           aria-expanded={isOpen}
           className="px-2.5 py-1.5 border-l border-indigo-500/20 flex items-center gap-2 text-xs font-semibold text-slate-800 dark:text-slate-100 hover:bg-indigo-500/10 transition-colors cursor-pointer"
         >
@@ -217,13 +259,17 @@ export default function HeaderMusicWidget() {
         </button>
       </div>
 
-      {/* Upgraded 2-Tab Focus Studio Popover (Light & Dark Theme Parity) */}
-      {isOpen && (
-        <div
-          role="dialog"
-          aria-label="Focus Studio · Nhạc nền & Pomodoro"
-          className="fixed sm:absolute right-2 sm:right-0 top-[60px] sm:top-full sm:mt-2 w-[calc(100vw-1rem)] max-w-[380px] sm:w-[390px] max-h-[calc(100vh-5rem)] overflow-y-auto z-[80] rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white/95 dark:bg-[#0d1424]/95 backdrop-blur-xl shadow-2xl p-4 text-slate-900 dark:text-slate-100 space-y-3.5"
-        >
+      {/* Upgraded 2-Tab Focus Studio Popover (Portaled outside transformed Header stacking/clipping context) */}
+      {mounted &&
+        isOpen &&
+        createPortal(
+          <div
+            ref={popoverRef}
+            role="dialog"
+            aria-label="Focus Studio · Nhạc nền & Pomodoro"
+            style={{ top: popoverPos.top, right: popoverPos.right }}
+            className="fixed w-[calc(100vw-1rem)] max-w-[380px] sm:w-[390px] sm:max-w-[calc(100vw-1rem)] max-h-[calc(100vh-5rem)] overflow-y-auto z-[100] rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white/95 dark:bg-[#0d1424]/95 backdrop-blur-xl shadow-2xl p-4 text-slate-900 dark:text-slate-100 space-y-3.5"
+          >
           {/* Now Playing Hero Card + Seek Bar */}
           {currentTrack && (
             <div className="rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/80 p-3 space-y-2.5">
@@ -699,8 +745,9 @@ export default function HeaderMusicWidget() {
               </div>
             </div>
           )}
-        </div>
-      )}
+        </div>,
+          document.body
+        )}
     </div>
   );
 }

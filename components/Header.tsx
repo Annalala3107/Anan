@@ -76,7 +76,7 @@ export default function Header() {
 
   return (
     <>
-    <header className="sticky top-0 z-40 w-full max-w-full overflow-x-clip bg-white/95 dark:bg-[#090E17]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors transform-gpu">
+    <header className="sticky top-0 z-40 w-full max-w-full bg-white/95 dark:bg-[#090E17]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors transform-gpu">
       <div className="w-full px-3 sm:px-4 md:px-5 lg:px-8 xl:px-10 h-14 sm:h-16 flex items-center justify-between gap-2">
         {/* Logo & Brand */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0 shrink-0">
