@@ -262,33 +262,37 @@
 @layer components {
   .story-glass {
     contain: layout style;
-    background-color: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(203, 213, 225, 0.65);
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(203, 213, 225, 0.72);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     box-shadow:
       0 20px 50px -15px rgba(15, 23, 42, 0.08),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.85);
   }
 
   .story-glass-strong {
     contain: layout style;
-    background-color: rgba(255, 255, 255, 0.82);
-    border: 1px solid rgba(203, 213, 225, 0.75);
+    background-color: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     box-shadow:
       0 25px 55px -15px rgba(15, 23, 42, 0.12),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
   }
 
   :where(.dark) .story-glass {
-    background-color: rgba(11, 18, 34, 0.38);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(11, 18, 34, 0.64);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow:
       0 20px 50px -15px rgba(0, 0, 0, 0.6),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
   }
 
   :where(.dark) .story-glass-strong {
-    background-color: rgba(11, 18, 34, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.13);
+    background-color: rgba(11, 18, 34, 0.74);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     box-shadow:
       0 30px 60px -15px rgba(0, 0, 0, 0.75),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.18);

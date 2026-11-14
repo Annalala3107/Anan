@@ -76,19 +76,19 @@ export default function Header() {
 
   return (
     <>
-    <header className="sticky top-0 z-40 w-full bg-white/92 dark:bg-[#090E17]/92 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors transform-gpu">
-      <div className="w-full px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12 h-14 sm:h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full max-w-full overflow-x-clip bg-white/95 dark:bg-[#090E17]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors transform-gpu">
+      <div className="w-full px-3 sm:px-4 md:px-5 lg:px-8 xl:px-10 h-14 sm:h-16 flex items-center justify-between gap-2">
         {/* Logo & Brand */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0 shrink-0">
           <Link
             href="/"
             onClick={(e) => handleNavClick(e, '/')}
-            className="flex items-center gap-2 font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white group"
+            className="flex items-center gap-2 font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white group shrink-0"
           >
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
               <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:rotate-12 transition-transform duration-200" />
             </div>
-            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-black">
+            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-black whitespace-nowrap">
               AnanQuiz
             </span>
           </Link>
@@ -97,19 +97,19 @@ export default function Header() {
           <Link
             href="/quizzes"
             onClick={(e) => handleNavClick(e, '/quizzes')}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60 hover:bg-indigo-100 transition-colors"
+            className="hidden 2xl:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60 hover:bg-indigo-100 transition-colors shrink-0"
           >
-            <Layers className="w-3.5 h-3.5" />
-            <span className="max-w-[240px] truncate">{quizInfo.shortName}</span>
+            <Layers className="w-3.5 h-3.5 shrink-0" />
+            <span className="max-w-[180px] truncate">{quizInfo.shortName}</span>
           </Link>
         </div>
 
         {/* Navigation Links for Desktop */}
-        <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-0.5 lg:gap-1.5 text-xs lg:text-sm font-medium whitespace-nowrap min-w-0">
           <Link
             href="/"
             onClick={(e) => handleNavClick(e, '/')}
-            className={`px-3.5 py-1.5 rounded-lg transition-colors ${
+            className={`px-2 lg:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
               pathname === '/'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -120,40 +120,43 @@ export default function Header() {
           <Link
             href="/quizzes"
             onClick={(e) => handleNavClick(e, '/quizzes')}
-            className={`px-3.5 py-1.5 rounded-lg transition-colors ${
+            className={`px-2 lg:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
               pathname === '/quizzes'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Kho Đề Thi & Chuyên Đề
+            <span className="lg:hidden">Kho Đề</span>
+            <span className="hidden lg:inline">Kho Đề Thi &amp; Chuyên Đề</span>
           </Link>
           <Link
             href="/library"
             onClick={(e) => handleNavClick(e, '/library')}
-            className={`px-3.5 py-1.5 rounded-lg transition-colors ${
+            className={`px-2 lg:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
               pathname === '/library'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Ngân hàng câu hỏi
+            <span className="lg:hidden">Ngân hàng</span>
+            <span className="hidden lg:inline">Ngân hàng câu hỏi</span>
           </Link>
           <Link
             href="/profile"
             onClick={(e) => handleNavClick(e, '/profile')}
-            className={`px-3.5 py-1.5 rounded-lg transition-colors ${
+            className={`px-2 lg:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
               pathname === '/profile'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Thống kê SRS
+            <span className="lg:hidden">SRS</span>
+            <span className="hidden lg:inline">Thống kê SRS</span>
           </Link>
         </nav>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           {/* Global Study Music Widget */}
           <HeaderMusicWidget />
 
@@ -161,21 +164,21 @@ export default function Header() {
           <button
             onClick={() => setShowQrSync(true)}
             title="Đồng bộ 1-chạm sang điện thoại (Mã QR)"
-            className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl transition-[transform,background-color,border-color] duration-150 flex items-center gap-1.5 text-xs font-bold border bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 shadow-sm active:scale-95 touch-manipulation"
+            className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl transition-[transform,background-color,border-color] duration-150 flex items-center gap-1.5 text-xs font-bold border bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 shadow-sm active:scale-95 touch-manipulation whitespace-nowrap shrink-0"
           >
-            <Smartphone className="w-3.5 h-3.5 text-indigo-500" />
-            <span className="hidden sm:inline">Đồng bộ ĐT</span>
+            <Smartphone className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+            <span className="hidden xl:inline">Đồng bộ ĐT</span>
           </button>
 
           {/* Streak Counter */}
           <div
             title="Chuỗi ngày học liên tục"
-            className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-bold shadow-sm select-none group"
+            className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-bold shadow-sm select-none group whitespace-nowrap shrink-0"
           >
-            <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-500 text-amber-500 group-hover:scale-110 transition-transform duration-200" />
+            <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-500 text-amber-500 group-hover:scale-110 transition-transform duration-200 shrink-0" />
             <span>
               <strong className="font-mono">{streak}</strong>
-              <span className="hidden sm:inline"> ngày</span>
+              <span className="hidden lg:inline"> ngày</span>
             </span>
           </div>
 

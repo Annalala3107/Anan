@@ -167,7 +167,7 @@ export default function HeaderMusicWidget() {
           onClick={toggleMute}
           title={isMuted || volume === 0 ? 'Bật lại âm thanh (Alt+M)' : 'Tắt âm ngay (Alt+M)'}
           aria-label={isMuted || volume === 0 ? 'Bật lại âm thanh' : 'Tắt âm ngay'}
-          className={`px-2 py-1.5 border-l border-indigo-500/20 flex items-center justify-center transition-colors cursor-pointer ${
+          className={`hidden sm:flex px-2 py-1.5 border-l border-indigo-500/20 items-center justify-center transition-colors cursor-pointer ${
             isMuted || volume === 0
               ? 'text-rose-500 bg-rose-500/10 hover:bg-rose-500/20'
               : 'text-slate-600 dark:text-slate-300 hover:bg-indigo-500/10'
@@ -204,7 +204,7 @@ export default function HeaderMusicWidget() {
           </span>
 
           {pomodoroRunning && (
-            <span className="px-1.5 py-0.5 rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-300 border border-amber-500/30 font-mono text-xs font-bold">
+            <span className="hidden sm:inline-block whitespace-nowrap px-1.5 py-0.5 rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-300 border border-amber-500/30 font-mono text-xs font-bold">
               {formatSecondsMmSs(pomodoroSecondsLeft, true)}
             </span>
           )}
@@ -222,7 +222,7 @@ export default function HeaderMusicWidget() {
         <div
           role="dialog"
           aria-label="Focus Studio · Nhạc nền & Pomodoro"
-          className="fixed sm:absolute right-2 sm:right-0 top-[60px] sm:top-full sm:mt-2 w-[calc(100vw-1rem)] max-w-[380px] sm:w-[390px] z-[80] rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white/95 dark:bg-[#0d1424]/95 backdrop-blur-xl shadow-2xl p-4 text-slate-900 dark:text-slate-100 space-y-3.5"
+          className="fixed sm:absolute right-2 sm:right-0 top-[60px] sm:top-full sm:mt-2 w-[calc(100vw-1rem)] max-w-[380px] sm:w-[390px] max-h-[calc(100vh-5rem)] overflow-y-auto z-[80] rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white/95 dark:bg-[#0d1424]/95 backdrop-blur-xl shadow-2xl p-4 text-slate-900 dark:text-slate-100 space-y-3.5"
         >
           {/* Now Playing Hero Card + Seek Bar */}
           {currentTrack && (
@@ -301,26 +301,26 @@ export default function HeaderMusicWidget() {
             <button
               type="button"
               onClick={() => setActiveTab('playlist')}
-              className={`py-1.5 px-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+              className={`py-1.5 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'playlist'
                   ? 'bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-sm'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
               }`}
             >
-              <Music className="w-3.5 h-3.5" />
+              <Music className="w-3.5 h-3.5 shrink-0" />
               <span>Danh sách nhạc</span>
             </button>
 
             <button
               type="button"
               onClick={() => setActiveTab('focus')}
-              className={`py-1.5 px-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+              className={`py-1.5 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === 'focus'
                   ? 'bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-sm'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
               }`}
             >
-              <Timer className="w-3.5 h-3.5" />
+              <Timer className="w-3.5 h-3.5 shrink-0" />
               <span>Tập trung & Không gian</span>
             </button>
           </div>
@@ -640,13 +640,13 @@ export default function HeaderMusicWidget() {
                         key={opt.key}
                         type="button"
                         onClick={() => setAmbientPreset(opt.key)}
-                        className={`py-2 px-2 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-colors ${
+                        className={`py-2 px-1.5 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1 whitespace-nowrap cursor-pointer transition-colors ${
                           active
                             ? 'bg-sky-600 border-sky-500 text-white shadow-sm'
                             : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-sky-400'
                         }`}
                       >
-                        <Icon className="w-3.5 h-3.5" />
+                        <Icon className="w-3.5 h-3.5 shrink-0" />
                         <span>{opt.label}</span>
                       </button>
                     );
