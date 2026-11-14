@@ -8,6 +8,7 @@ import { StorageEngine } from '@/lib/storage';
 import { getQuizDisplayName } from '@/lib/defaultBanks';
 import { useEffect, useState } from 'react';
 import QrSyncModal from './QrSyncModal';
+import HeaderMusicWidget from './music/HeaderMusicWidget';
 
 export default function Header() {
   const pathname = usePathname();
@@ -153,6 +154,9 @@ export default function Header() {
 
         {/* Action Controls */}
         <div className="flex items-center gap-1 sm:gap-2">
+          {/* Global Study Music Widget */}
+          <HeaderMusicWidget />
+
           {/* QR Device Sync */}
           <button
             onClick={() => setShowQrSync(true)}

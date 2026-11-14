@@ -1,3 +1,5 @@
+import { useMusicStore } from './musicStore';
+
 /**
  * Web Speech API text-to-speech utility for word and example sentence pronunciation
  */
@@ -65,11 +67,21 @@ export class SpeechService {
           utterance.rate = rate;
           utterance.pitch = 1.0;
 
-          utterance.onend = () => resolve();
-          utterance.onerror = () => resolve();
+          const musicStore = useMusicStore.getState();
+          musicStore.setDucked(true);
+
+          utterance.onend = () => {
+            useMusicStore.getState().setDucked(false);
+            resolve();
+          };
+          utterance.onerror = () => {
+            useMusicStore.getState().setDucked(false);
+            resolve();
+          };
 
           this.synth.speak(utterance);
         } catch {
+          useMusicStore.getState().setDucked(false);
           resolve();
         }
       } else {

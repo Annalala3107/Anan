@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import DynamicConstellationBackground from '@/components/DynamicConstellationBackground';
+import YouTubeAudioEngine from '@/components/music/YouTubeAudioEngine';
 
 const beVietnamPro = Be_Vietnam_Pro({
   subsets: ['vietnamese', 'latin'],
@@ -49,6 +50,9 @@ export default function RootLayout({
 
         {/* Mobile Navigation Bar */}
         <BottomNav />
+
+        {/* Persistent Global YouTube Music Engine */}
+        <YouTubeAudioEngine showVideoPreview={false} />
       </body>
     </html>
   );
