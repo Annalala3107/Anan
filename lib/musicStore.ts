@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { AmbientAudioEngine, AmbientPreset } from './ambientAudio';
 
 export interface MusicTrack {
   id: string;
@@ -6,6 +7,7 @@ export interface MusicTrack {
   title: string;
   artist: string;
   url: string;
+  isCustom?: boolean;
 }
 
 export type MusicPlayerState =
@@ -30,6 +32,19 @@ export interface TrackErrorInfo {
 }
 
 const PREFS_STORAGE_KEY = 'anan_music_prefs_v1';
+export const POMODORO_FOCUS_SECONDS = 25 * 60;
+export const POMODORO_BREAK_SECONDS = 5 * 60;
+
+/**
+ * Formats seconds cleanly as m:ss or mm:ss for seek bars and Pomodoro counters.
+ */
+export function formatSecondsMmSs(seconds: number, padMinutes = false): string {
+  const safe = Number.isFinite(seconds) && seconds > 0 ? Math.floor(seconds) : 0;
+  const mins = Math.floor(safe / 60);
+  const secs = safe % 60;
+  const minStr = padMinutes ? String(mins).padStart(2, '0') : String(mins);
+  return `${minStr}:${String(secs).padStart(2, '0')}`;
+}
 
 /**
  * Extracts a YouTube 11-character video ID from common YouTube URL formats or a bare ID.
@@ -106,6 +121,12 @@ interface MusicPrefs {
   isMuted?: boolean;
   currentTrackId?: string;
   loopMode?: 'all' | 'one';
+  isShuffle?: boolean;
+  customTracks?: MusicTrack[];
+  ambientVolume?: number;
+  pomodoroAutoPauseMusic?: boolean;
+  showMiniPlayer?: boolean;
+  miniPlayerCollapsed?: boolean;
 }
 
 function formatNowTime(): string {
@@ -127,6 +148,34 @@ function savePrefs(partial: MusicPrefs) {
   }
 }
 
+async function fetchYouTubeMetaViaNoembed(
+  videoId: string
+): Promise<{ title?: string; artist?: string }> {
+  try {
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 3500);
+    const endpoint = `https://noembed.com/embed?url=${encodeURIComponent(
+      `https://www.youtube.com/watch?v=${videoId}`
+    )}`;
+    const res = await fetch(endpoint, { signal: controller.signal });
+    window.clearTimeout(timer);
+    if (!res.ok) return {};
+    const data = await res.json();
+    if (data && typeof data.title === 'string' && data.title.trim()) {
+      return {
+        title: data.title.trim(),
+        artist:
+          typeof data.author_name === 'string' && data.author_name.trim()
+            ? data.author_name.trim()
+            : undefined,
+      };
+    }
+  } catch {
+    // Fallback gracefully if network or CORS prevents oEmbed lookup
+  }
+  return {};
+}
+
 export interface MusicStoreState {
   tracks: MusicTrack[];
   currentTrackId: string;
@@ -137,9 +186,29 @@ export interface MusicStoreState {
   volume: number;
   isDucked: boolean;
   loopMode: 'all' | 'one';
+  isShuffle: boolean;
   autoSkipOnError: boolean;
   trackErrors: Record<string, TrackErrorInfo>;
   eventLogs: MusicEventLog[];
+
+  // Timeline & Seek Bar
+  currentTime: number;
+  duration: number;
+  seekRequest: number | null;
+
+  // Ambient Sound Mixer
+  ambientPreset: AmbientPreset;
+  ambientVolume: number;
+
+  // Pomodoro Study Timer
+  pomodoroMode: 'focus' | 'break';
+  pomodoroSecondsLeft: number;
+  pomodoroRunning: boolean;
+  pomodoroAutoPauseMusic: boolean;
+
+  // Floating Mini-Player UI
+  showMiniPlayer: boolean;
+  miniPlayerCollapsed: boolean;
 
   selectTrack: (trackId: string, autoPlay?: boolean) => void;
   togglePlay: () => void;
@@ -149,12 +218,29 @@ export interface MusicStoreState {
   setVolume: (volume: number) => void;
   setDucked: (ducked: boolean) => void;
   setLoopMode: (mode: 'all' | 'one') => void;
+  toggleShuffle: () => void;
   setAutoSkipOnError: (enabled: boolean) => void;
   nextTrack: () => void;
   prevTrack: () => void;
   addCustomTrack: (urlOrId: string, customTitle?: string) => { ok: boolean; error?: string };
+  addCustomTrackAsync: (
+    urlOrId: string,
+    customTitle?: string
+  ) => Promise<{ ok: boolean; error?: string }>;
+  removeCustomTrack: (trackId: string) => void;
   setReady: (ready: boolean) => void;
   setPlayerState: (state: MusicPlayerState) => void;
+  setProgress: (currentTime: number, duration: number) => void;
+  requestSeek: (seconds: number) => void;
+  clearSeekRequest: () => void;
+  setAmbientPreset: (preset: AmbientPreset) => void;
+  setAmbientVolume: (volume: number) => void;
+  togglePomodoro: () => void;
+  resetPomodoro: (mode?: 'focus' | 'break') => void;
+  tickPomodoro: () => void;
+  setPomodoroAutoPause: (enabled: boolean) => void;
+  setShowMiniPlayer: (show: boolean) => void;
+  setMiniPlayerCollapsed: (collapsed: boolean) => void;
   recordTrackError: (videoId: string, code: number, message: string) => void;
   clearTrackError: (videoId: string) => void;
   pushLog: (type: MusicEventLog['type'], text: string) => void;
@@ -172,9 +258,25 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   volume: 65,
   isDucked: false,
   loopMode: 'all',
+  isShuffle: false,
   autoSkipOnError: false,
   trackErrors: {},
   eventLogs: [],
+
+  currentTime: 0,
+  duration: 0,
+  seekRequest: null,
+
+  ambientPreset: 'off',
+  ambientVolume: 35,
+
+  pomodoroMode: 'focus',
+  pomodoroSecondsLeft: POMODORO_FOCUS_SECONDS,
+  pomodoroRunning: false,
+  pomodoroAutoPauseMusic: true,
+
+  showMiniPlayer: true,
+  miniPlayerCollapsed: true,
 
   pushLog: (type, text) =>
     set((state) => {
@@ -195,9 +297,19 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       const raw = window.localStorage.getItem(PREFS_STORAGE_KEY);
       if (!raw) return;
       const prefs = JSON.parse(raw) as MusicPrefs;
-      const tracks = get().tracks;
+
+      const customList: MusicTrack[] = Array.isArray(prefs.customTracks)
+        ? prefs.customTracks
+            .filter((t) => t && typeof t.videoId === 'string' && /^[A-Za-z0-9_-]{11}$/.test(t.videoId))
+            .map((t) => ({ ...t, isCustom: true }))
+        : [];
+      const mergedTracks = [
+        ...DEFAULT_MUSIC_TRACKS,
+        ...customList.filter((ct) => !DEFAULT_MUSIC_TRACKS.some((dt) => dt.videoId === ct.videoId)),
+      ];
+
       const validTrack =
-        prefs.currentTrackId && tracks.some((t) => t.id === prefs.currentTrackId)
+        prefs.currentTrackId && mergedTracks.some((t) => t.id === prefs.currentTrackId)
           ? prefs.currentTrackId
           : get().currentTrackId;
       const validVolume =
@@ -207,12 +319,35 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       const validMuted = typeof prefs.isMuted === 'boolean' ? prefs.isMuted : get().isMuted;
       const validLoop =
         prefs.loopMode === 'one' || prefs.loopMode === 'all' ? prefs.loopMode : get().loopMode;
+      const validShuffle = typeof prefs.isShuffle === 'boolean' ? prefs.isShuffle : get().isShuffle;
+      const validAmbientVol =
+        typeof prefs.ambientVolume === 'number' && !Number.isNaN(prefs.ambientVolume)
+          ? Math.max(0, Math.min(100, Math.round(prefs.ambientVolume)))
+          : get().ambientVolume;
+      const validAutoPause =
+        typeof prefs.pomodoroAutoPauseMusic === 'boolean'
+          ? prefs.pomodoroAutoPauseMusic
+          : get().pomodoroAutoPauseMusic;
+      const validShowMini =
+        typeof prefs.showMiniPlayer === 'boolean' ? prefs.showMiniPlayer : get().showMiniPlayer;
+      const validMiniCollapsed =
+        typeof prefs.miniPlayerCollapsed === 'boolean'
+          ? prefs.miniPlayerCollapsed
+          : get().miniPlayerCollapsed;
+
+      AmbientAudioEngine.setVolume(validAmbientVol);
 
       set({
+        tracks: mergedTracks,
         currentTrackId: validTrack,
         volume: validVolume,
         isMuted: validMuted,
         loopMode: validLoop,
+        isShuffle: validShuffle,
+        ambientVolume: validAmbientVol,
+        pomodoroAutoPauseMusic: validAutoPause,
+        showMiniPlayer: validShowMini,
+        miniPlayerCollapsed: validMiniCollapsed,
       });
     } catch {
       // Ignore malformed stored JSON
@@ -227,6 +362,8 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       currentTrackId: trackId,
       isPlaying: autoPlay,
       playerState: autoPlay ? 'buffering' : 'cued',
+      currentTime: 0,
+      duration: 0,
     });
     get().pushLog(
       'info',
@@ -271,11 +408,26 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     get().pushLog('info', mode === 'one' ? 'Chế độ lặp: Lặp 1 bài' : 'Chế độ lặp: Toàn danh sách');
   },
 
+  toggleShuffle: () => {
+    const next = !get().isShuffle;
+    savePrefs({ isShuffle: next });
+    set({ isShuffle: next });
+    get().pushLog('info', next ? 'Bật phát ngẫu nhiên (Shuffle)' : 'Tắt phát ngẫu nhiên');
+  },
+
   setAutoSkipOnError: (enabled) => set({ autoSkipOnError: enabled }),
 
   nextTrack: () => {
-    const { tracks, currentTrackId, isPlaying } = get();
+    const { tracks, currentTrackId, isPlaying, isShuffle } = get();
     if (tracks.length === 0) return;
+
+    if (isShuffle && tracks.length > 1) {
+      const candidates = tracks.filter((t) => t.id !== currentTrackId);
+      const picked = candidates[Math.floor(Math.random() * candidates.length)];
+      get().selectTrack(picked.id, isPlaying);
+      return;
+    }
+
     const idx = tracks.findIndex((t) => t.id === currentTrackId);
     const next = tracks[(idx + 1) % tracks.length];
     get().selectTrack(next.id, isPlaying);
@@ -295,7 +447,8 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     if (!videoId) {
       return {
         ok: false,
-        error: 'Link hoặc Video ID YouTube không hợp lệ (cần đúng ID 11 ký tự hoặc link youtu.be / youtube.com).',
+        error:
+          'Link hoặc Video ID YouTube không hợp lệ (cần đúng ID 11 ký tự hoặc link youtu.be / youtube.com).',
       };
     }
 
@@ -312,19 +465,198 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       title: cleanTitle,
       artist: `Custom YouTube · ${videoId}`,
       url: `https://www.youtube.com/watch?v=${videoId}`,
+      isCustom: true,
     };
 
-    set((state) => ({
-      tracks: [...state.tracks, newTrack],
-    }));
+    const nextTracks = [...get().tracks, newTrack];
+    savePrefs({ customTracks: nextTracks.filter((t) => t.isCustom) });
+    set({ tracks: nextTracks });
     get().selectTrack(newTrack.id, true);
     get().pushLog('success', `Đã thêm & chọn bài mới: "${cleanTitle}" (${videoId})`);
     return { ok: true };
   },
 
+  addCustomTrackAsync: async (urlOrId, customTitle) => {
+    const videoId = extractYouTubeVideoId(urlOrId);
+    if (!videoId) {
+      return {
+        ok: false,
+        error:
+          'Link hoặc Video ID YouTube không hợp lệ (cần đúng ID 11 ký tự hoặc link youtu.be / youtube.com).',
+      };
+    }
+
+    const existing = get().tracks.find((t) => t.videoId === videoId);
+    if (existing) {
+      get().selectTrack(existing.id, true);
+      return { ok: true };
+    }
+
+    const meta = customTitle?.trim() ? {} : await fetchYouTubeMetaViaNoembed(videoId);
+    const cleanTitle =
+      (customTitle || '').trim() || meta.title || `YouTube Custom (${videoId})`;
+    const cleanArtist = meta.artist
+      ? `${meta.artist} · YouTube`
+      : `Custom YouTube · ${videoId}`;
+
+    // Re-check deduplication after async fetch
+    const duplicateAfterFetch = get().tracks.find((t) => t.videoId === videoId);
+    if (duplicateAfterFetch) {
+      get().selectTrack(duplicateAfterFetch.id, true);
+      return { ok: true };
+    }
+
+    const newTrack: MusicTrack = {
+      id: `custom-${videoId}`,
+      videoId,
+      title: cleanTitle,
+      artist: cleanArtist,
+      url: `https://www.youtube.com/watch?v=${videoId}`,
+      isCustom: true,
+    };
+
+    const nextTracks = [...get().tracks, newTrack];
+    savePrefs({ customTracks: nextTracks.filter((t) => t.isCustom) });
+    set({ tracks: nextTracks });
+    get().selectTrack(newTrack.id, true);
+    get().pushLog('success', `Đã tự nhận diện & lưu bài: "${cleanTitle}" (${videoId})`);
+    return { ok: true };
+  },
+
+  removeCustomTrack: (trackId) => {
+    const target = get().tracks.find((t) => t.id === trackId);
+    if (!target || !target.isCustom) return;
+
+    const nextTracks = get().tracks.filter((t) => t.id !== trackId);
+    const isRemovingCurrent = get().currentTrackId === trackId;
+    const fallbackId = isRemovingCurrent
+      ? nextTracks[0]?.id || DEFAULT_MUSIC_TRACKS[0].id
+      : get().currentTrackId;
+
+    savePrefs({
+      customTracks: nextTracks.filter((t) => t.isCustom),
+      currentTrackId: fallbackId,
+    });
+
+    set({
+      tracks: nextTracks,
+      currentTrackId: fallbackId,
+      ...(isRemovingCurrent ? { currentTime: 0, duration: 0 } : {}),
+    });
+    get().pushLog('info', `Đã xóa bài tùy chỉnh "${target.title}"`);
+  },
+
   setReady: (ready) => set({ isReady: ready }),
 
   setPlayerState: (playerState) => set({ playerState }),
+
+  setProgress: (currentTime, duration) =>
+    set({
+      currentTime: Number.isFinite(currentTime) && currentTime >= 0 ? currentTime : 0,
+      duration: Number.isFinite(duration) && duration >= 0 ? duration : 0,
+    }),
+
+  requestSeek: (seconds) =>
+    set({
+      seekRequest: Math.max(0, seconds),
+      currentTime: Math.max(0, seconds),
+    }),
+
+  clearSeekRequest: () => set({ seekRequest: null }),
+
+  setAmbientPreset: (preset) => {
+    const vol = get().ambientVolume;
+    AmbientAudioEngine.setPreset(preset, vol);
+    set({ ambientPreset: preset });
+    get().pushLog(
+      'info',
+      preset === 'off'
+        ? 'Đã tắt âm thanh không gian (Ambient)'
+        : preset === 'rain'
+        ? 'Bật tiếng mưa nhẹ nền (Web Audio)'
+        : 'Bật tiếng sóng trầm tập trung (Brown Noise)'
+    );
+  },
+
+  setAmbientVolume: (volume) => {
+    const clamped = Math.max(0, Math.min(100, Math.round(volume)));
+    AmbientAudioEngine.setVolume(clamped);
+    savePrefs({ ambientVolume: clamped });
+    set({ ambientVolume: clamped });
+  },
+
+  togglePomodoro: () => {
+    const next = !get().pomodoroRunning;
+    set({ pomodoroRunning: next });
+    get().pushLog(
+      'info',
+      next ? 'Bắt đầu đồng hồ tập trung Pomodoro' : 'Tạm dừng đồng hồ Pomodoro'
+    );
+  },
+
+  resetPomodoro: (mode) => {
+    const targetMode = mode || get().pomodoroMode;
+    const nextSeconds =
+      targetMode === 'focus' ? POMODORO_FOCUS_SECONDS : POMODORO_BREAK_SECONDS;
+    set({
+      pomodoroMode: targetMode,
+      pomodoroSecondsLeft: nextSeconds,
+      pomodoroRunning: false,
+    });
+    get().pushLog(
+      'info',
+      targetMode === 'focus'
+        ? 'Đặt lại Pomodoro: Phiên tập trung 25:00'
+        : 'Chuyển Pomodoro: Giờ giải lao 05:00'
+    );
+  },
+
+  tickPomodoro: () => {
+    const { pomodoroRunning, pomodoroSecondsLeft, pomodoroMode, pomodoroAutoPauseMusic } = get();
+    if (!pomodoroRunning) return;
+
+    if (pomodoroSecondsLeft > 1) {
+      set({ pomodoroSecondsLeft: pomodoroSecondsLeft - 1 });
+      return;
+    }
+
+    if (pomodoroMode === 'focus') {
+      set({
+        pomodoroMode: 'break',
+        pomodoroSecondsLeft: POMODORO_BREAK_SECONDS,
+        pomodoroRunning: false,
+        ...(pomodoroAutoPauseMusic ? { isPlaying: false } : {}),
+      });
+      get().pushLog(
+        'success',
+        pomodoroAutoPauseMusic
+          ? 'Hoàn thành phiên học 25p → chuyển nghỉ 05:00 & tự tạm dừng nhạc'
+          : 'Hoàn thành phiên học 25p → sẵn sàng nghỉ ngơi 05:00'
+      );
+    } else {
+      set({
+        pomodoroMode: 'focus',
+        pomodoroSecondsLeft: POMODORO_FOCUS_SECONDS,
+        pomodoroRunning: false,
+      });
+      get().pushLog('success', 'Hết giờ nghỉ 5p → sẵn sàng cho phiên tập trung 25:00 mới');
+    }
+  },
+
+  setPomodoroAutoPause: (enabled) => {
+    savePrefs({ pomodoroAutoPauseMusic: enabled });
+    set({ pomodoroAutoPauseMusic: enabled });
+  },
+
+  setShowMiniPlayer: (show) => {
+    savePrefs({ showMiniPlayer: show });
+    set({ showMiniPlayer: show });
+  },
+
+  setMiniPlayerCollapsed: (collapsed) => {
+    savePrefs({ miniPlayerCollapsed: collapsed });
+    set({ miniPlayerCollapsed: collapsed });
+  },
 
   recordTrackError: (videoId, code, message) =>
     set((state) => ({

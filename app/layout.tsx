@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import DynamicConstellationBackground from '@/components/DynamicConstellationBackground';
 import YouTubeAudioEngine from '@/components/music/YouTubeAudioEngine';
+import FloatingMiniPlayer from '@/components/music/FloatingMiniPlayer';
 
 const beVietnamPro = Be_Vietnam_Pro({
   subsets: ['vietnamese', 'latin'],
@@ -51,8 +52,9 @@ export default function RootLayout({
         {/* Mobile Navigation Bar */}
         <BottomNav />
 
-        {/* Persistent Global YouTube Music Engine */}
+        {/* Persistent Global YouTube Music Engine & Floating Mini-Player */}
         <YouTubeAudioEngine showVideoPreview={false} />
+        <FloatingMiniPlayer />
       </body>
     </html>
   );

@@ -110,6 +110,8 @@ export default function YouTubeAudioEngine({
   const isMuted = useMusicStore((s) => s.isMuted);
   const volume = useMusicStore((s) => s.volume);
   const isDucked = useMusicStore((s) => s.isDucked);
+  const seekRequest = useMusicStore((s) => s.seekRequest);
+  const pomodoroRunning = useMusicStore((s) => s.pomodoroRunning);
 
   const currentTrack = useMemo(
     () => tracks.find((t) => t.id === currentTrackId) || tracks[0],
@@ -336,6 +338,128 @@ export default function YouTubeAudioEngine({
     if (!isReady || !playerRef.current) return;
     syncPlayerAudio(playerRef.current, isMuted, volume, isDucked);
   }, [isMuted, volume, isDucked, isReady]);
+
+  // Handle user seek bar drags via player.seekTo()
+  useEffect(() => {
+    if (seekRequest === null || !isReady || !playerRef.current) return;
+    try {
+      playerRef.current.seekTo?.(seekRequest, true);
+      useMusicStore
+        .getState()
+        .pushLog('info', `Tua đến ${Math.floor(seekRequest)}s (seekTo)`);
+    } catch {
+      // Ignore seek errors
+    } finally {
+      useMusicStore.getState().clearSeekRequest();
+    }
+  }, [seekRequest, isReady]);
+
+  // Poll current playback timeline once per second while playing
+  useEffect(() => {
+    if (!isReady || !isPlaying) return;
+    const updateNow = () => {
+      const p = playerRef.current;
+      if (!p) return;
+      try {
+        const cur = Number(p.getCurrentTime?.() ?? 0);
+        const dur = Number(p.getDuration?.() ?? 0);
+        if (dur > 0 || cur > 0) {
+          useMusicStore.getState().setProgress(cur, dur);
+        }
+      } catch {
+        // Ignore if tearing down
+      }
+    };
+    updateNow();
+    const timer = window.setInterval(updateNow, 1000);
+    return () => window.clearInterval(timer);
+  }, [isReady, isPlaying, currentTrackId]);
+
+  // Global Pomodoro Focus Timer ticker (survives route changes)
+  useEffect(() => {
+    if (!pomodoroRunning) return;
+    const timer = window.setInterval(() => {
+      useMusicStore.getState().tickPomodoro();
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [pomodoroRunning]);
+
+  // Media Session API integration (hardware keyboard / Bluetooth headset / lock screen)
+  useEffect(() => {
+    if (typeof navigator === 'undefined' || !('mediaSession' in navigator) || !currentTrack) {
+      return;
+    }
+
+    try {
+      if (typeof MediaMetadata !== 'undefined') {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: currentTrack.title,
+          artist: currentTrack.artist,
+          album: 'AnanQuiz Focus Studio',
+          artwork: [
+            {
+              src: `https://i.ytimg.com/vi/${currentTrack.videoId}/mqdefault.jpg`,
+              sizes: '320x180',
+              type: 'image/jpeg',
+            },
+            {
+              src: `https://i.ytimg.com/vi/${currentTrack.videoId}/hqdefault.jpg`,
+              sizes: '480x360',
+              type: 'image/jpeg',
+            },
+          ],
+        });
+      }
+      navigator.mediaSession.playbackState = isPlaying ? 'playing' : 'paused';
+      navigator.mediaSession.setActionHandler('play', () =>
+        useMusicStore.getState().setPlaying(true)
+      );
+      navigator.mediaSession.setActionHandler('pause', () =>
+        useMusicStore.getState().setPlaying(false)
+      );
+      navigator.mediaSession.setActionHandler('previoustrack', () =>
+        useMusicStore.getState().prevTrack()
+      );
+      navigator.mediaSession.setActionHandler('nexttrack', () =>
+        useMusicStore.getState().nextTrack()
+      );
+    } catch {
+      // Ignore Media Session errors on unsupported browsers
+    }
+  }, [currentTrack, isPlaying]);
+
+  // Global keyboard shortcuts (Alt+P play/pause, Alt+M mute, Alt+N next track)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!e.altKey || e.ctrlKey || e.metaKey) return;
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.tagName === 'SELECT' ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+
+      const store = useMusicStore.getState();
+      if (e.code === 'KeyP') {
+        e.preventDefault();
+        store.togglePlay();
+      } else if (e.code === 'KeyM') {
+        e.preventDefault();
+        store.toggleMute();
+      } else if (e.code === 'KeyN') {
+        e.preventDefault();
+        store.nextTrack();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <div

@@ -22,9 +22,13 @@ import {
   Mic,
   CheckCircle2,
   RefreshCw,
+  Timer,
+  CloudRain,
+  PanelBottomOpen,
+  RotateCcw,
 } from 'lucide-react';
 import HeaderMusicWidget from '@/components/music/HeaderMusicWidget';
-import { useMusicStore } from '@/lib/musicStore';
+import { useMusicStore, formatSecondsMmSs } from '@/lib/musicStore';
 import { SpeechService } from '@/lib/speech';
 
 export default function MusicDemoPage() {
@@ -55,6 +59,20 @@ export default function MusicDemoPage() {
   const addCustomTrack = useMusicStore((s) => s.addCustomTrack);
   const pushLog = useMusicStore((s) => s.pushLog);
   const clearLogs = useMusicStore((s) => s.clearLogs);
+
+  const ambientPreset = useMusicStore((s) => s.ambientPreset);
+  const ambientVolume = useMusicStore((s) => s.ambientVolume);
+  const setAmbientPreset = useMusicStore((s) => s.setAmbientPreset);
+  const setAmbientVolume = useMusicStore((s) => s.setAmbientVolume);
+  const pomodoroMode = useMusicStore((s) => s.pomodoroMode);
+  const pomodoroSecondsLeft = useMusicStore((s) => s.pomodoroSecondsLeft);
+  const pomodoroRunning = useMusicStore((s) => s.pomodoroRunning);
+  const togglePomodoro = useMusicStore((s) => s.togglePomodoro);
+  const resetPomodoro = useMusicStore((s) => s.resetPomodoro);
+  const showMiniPlayer = useMusicStore((s) => s.showMiniPlayer);
+  const miniPlayerCollapsed = useMusicStore((s) => s.miniPlayerCollapsed);
+  const setShowMiniPlayer = useMusicStore((s) => s.setShowMiniPlayer);
+  const setMiniPlayerCollapsed = useMusicStore((s) => s.setMiniPlayerCollapsed);
 
   const [customUrl, setCustomUrl] = useState('');
   const [customTitle, setCustomTitle] = useState('');
@@ -204,22 +222,22 @@ export default function MusicDemoPage() {
               </Link>
               <span className="glass-pill inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-emerald-300 border-emerald-500/30">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                Đã tích hợp vào bản chính · Chẩn đoán trực tiếp
+                Live Upgrade Demo · Focus Studio 2 Tab & Floating Mini-Player
               </span>
             </div>
 
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-full">
               <ShieldCheck className="w-3.5 h-3.5" />
-              Phương án A: Singleton YouTube IFrame API + Zustand
+              Singleton YT.Player + Web Audio Ambient (0 KB) + Media Session
             </span>
           </div>
 
           <div className="space-y-2">
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-              Demo Trình Phát Nhạc Học Tập (Cách ly an toàn)
+              Live Demo Nâng Cấp: Focus Studio & Floating Mini-Player
             </h1>
             <p className="text-sm text-slate-300 max-w-3xl leading-relaxed">
-              Thử nghiệm phát, chuyển bài, tắt âm tức thì và kiểm tra quyền nhúng trực tiếp với 3 link YouTube bạn đã gửi trước khi gắn vào Header toàn trang.
+              Trải nghiệm trực tiếp cả 2 đề xuất: Popover Header 2 Tab (Now-Playing + Seek bar, Light/Dark, oEmbed, Shuffle) kết hợp Đồng hồ Pomodoro 25/5, Ambient Mixer 0 KB (Mưa/Brown Noise), Floating Dock thu gọn góc dưới phải và phím tắt Alt+P / Alt+M / Alt+N.
             </p>
           </div>
 
@@ -537,6 +555,146 @@ export default function MusicDemoPage() {
                 <p className="text-xs text-slate-400">
                   Chạy ẩn 200×112 offscreen xuyên suốt mọi trang (không ngắt nhạc khi chuyển tab học/thi).
                 </p>
+              </div>
+            </section>
+
+            {/* Focus Studio & Floating Mini-Player Live Controls */}
+            <section className="glass-surface-elevated rounded-2xl p-5 space-y-4 border border-indigo-500/25">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-sky-400" />
+                  <h2 className="text-base font-bold text-white">Focus Studio & Mini-Player Dock</h2>
+                </div>
+                <span className="text-xs font-mono text-indigo-300 bg-indigo-500/15 border border-indigo-500/30 px-2 py-0.5 rounded-md">
+                  2 Đề xuất
+                </span>
+              </div>
+
+              {/* Mini-Player Visibility & Collapse Toggle */}
+              <div className="rounded-xl bg-slate-900/75 border border-slate-800 p-3 space-y-2.5">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-200">
+                    <PanelBottomOpen className="w-4 h-4 text-indigo-400" />
+                    Floating Mini-Player (góc dưới phải)
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowMiniPlayer(!showMiniPlayer)}
+                    className={`px-2.5 py-1 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
+                      showMiniPlayer
+                        ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300'
+                        : 'bg-slate-800 border-slate-700 text-slate-400'
+                    }`}
+                  >
+                    {showMiniPlayer ? 'Đang bật' : 'Đang ẩn'}
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    disabled={!showMiniPlayer}
+                    onClick={() => setMiniPlayerCollapsed(false)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer disabled:opacity-40 ${
+                      !miniPlayerCollapsed
+                        ? 'bg-indigo-600/30 border-indigo-500/50 text-white'
+                        : 'bg-slate-800/80 border-slate-700 text-slate-300'
+                    }`}
+                  >
+                    Dạng Thẻ (Expanded)
+                  </button>
+                  <button
+                    type="button"
+                    disabled={!showMiniPlayer}
+                    onClick={() => setMiniPlayerCollapsed(true)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer disabled:opacity-40 ${
+                      miniPlayerCollapsed
+                        ? 'bg-indigo-600/30 border-indigo-500/50 text-white'
+                        : 'bg-slate-800/80 border-slate-700 text-slate-300'
+                    }`}
+                  >
+                    Thu gọn (Pill Orb)
+                  </button>
+                </div>
+              </div>
+
+              {/* Quick Ambient Mixer */}
+              <div className="rounded-xl bg-slate-900/75 border border-slate-800 p-3 space-y-2.5">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-200">
+                    <CloudRain className="w-4 h-4 text-sky-400" />
+                    Ambient Mixer (Web Audio · 0 KB)
+                  </div>
+                  <span className="text-xs font-mono text-sky-300">{ambientVolume}%</span>
+                </div>
+
+                <div className="grid grid-cols-3 gap-1.5">
+                  {(
+                    [
+                      { id: 'off', label: 'Tắt' },
+                      { id: 'rain', label: 'Mưa rơi' },
+                      { id: 'brown', label: 'Brown Noise' },
+                    ] as const
+                  ).map((preset) => (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      onClick={() => setAmbientPreset(preset.id)}
+                      className={`px-2 py-1.5 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
+                        ambientPreset === preset.id
+                          ? 'bg-sky-500/25 border-sky-400/50 text-sky-200'
+                          : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-800'
+                      }`}
+                    >
+                      {preset.label}
+                    </button>
+                  ))}
+                </div>
+
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  value={ambientVolume}
+                  onChange={(e) => setAmbientVolume(Number(e.target.value))}
+                  aria-label="Âm lượng Ambient Mixer"
+                  className="w-full accent-sky-400 cursor-pointer"
+                />
+              </div>
+
+              {/* Quick Pomodoro 25/5 */}
+              <div className="rounded-xl bg-slate-900/75 border border-slate-800 p-3 flex items-center justify-between gap-3">
+                <div className="space-y-0.5">
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-200">
+                    <Timer className="w-4 h-4 text-amber-400" />
+                    Pomodoro ({pomodoroMode === 'focus' ? 'Học 25p' : 'Nghỉ 5p'})
+                  </div>
+                  <div className="text-lg font-mono font-bold text-white tabular-nums">
+                    {formatSecondsMmSs(pomodoroSecondsLeft, true)}
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={togglePomodoro}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 cursor-pointer ${
+                      pomodoroRunning
+                        ? 'bg-amber-500/25 border border-amber-500/40 text-amber-200'
+                        : 'bg-indigo-600 hover:bg-indigo-500 text-white'
+                    }`}
+                  >
+                    {pomodoroRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                    {pomodoroRunning ? 'Tạm dừng' : 'Bắt đầu'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => resetPomodoro(pomodoroMode)}
+                    title="Đặt lại đồng hồ"
+                    className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 cursor-pointer"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
             </section>
 
