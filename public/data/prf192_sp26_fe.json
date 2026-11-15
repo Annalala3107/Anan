@@ -1,0 +1,803 @@
+[
+  {
+    "id": "prf192_sp26_fe_q1",
+    "word": "PRF192 SP26 FE Q1: Which is not a type of bus in a computer?",
+    "question": "Which is not a type of bus in a computer?",
+    "options": [
+      "A. Address bus",
+      "B. Signal bus",
+      "C. Control bus",
+      "D. Data bus"
+    ],
+    "answer": "B",
+    "correctWord": "B. Signal bus",
+    "explanation": "Answer: B. A computer's system bus consists of three main types: the Address bus (carries memory addresses), the Data bus (transfers data), and the Control bus (carries control signals). 'Signal bus' is not one of the standard computer bus types.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q2",
+    "word": "PRF192 SP26 FE Q2: During the compilation process, what will be done with comments?",
+    "question": "During the compilation process, what will be done with comments?",
+    "options": [
+      "A. The comment mark will be removed. The content of the comments will be compiled line by line.",
+      "B. The comment is treated as an array of characters.",
+      "C. Comments are removed in the pre-processing step.",
+      "D. Each comment is compiled as a statement that does nothing."
+    ],
+    "answer": "C",
+    "correctWord": "C. Comments are removed in the pre-processing step.",
+    "explanation": "Answer: C. In C, comments are stripped out (replaced with whitespace) during the preprocessing stage before the actual compiler parses and translates the source code into machine instructions. They are never compiled into executable statements or character arrays.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q3",
+    "word": "PRF192 SP26 FE Q3: Errors that occur due to syntax errors belong to which of the...",
+    "question": "Errors that occur due to syntax errors belong to which of the following?",
+    "options": [
+      "A. Compile time error",
+      "B. Run time error",
+      "C. Input error",
+      "D. Linking error"
+    ],
+    "answer": "A",
+    "correctWord": "A. Compile time error",
+    "explanation": "Answer: A. Syntax errors violate the grammar rules of the C language (such as missing semicolons or mismatched braces) and are caught by the compiler during compilation, making them compile-time errors. Run-time, input, and linking errors happen after successful compilation.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q4",
+    "word": "PRF192 SP26 FE Q4: Which of the following statements is incorrect?",
+    "question": "Which of the following statements is incorrect?",
+    "options": [
+      "A. To make our programs longer, we use higher-level languages.",
+      "B. Program code in a high level language can not run, it must be translated to binary code (machine code) before running.",
+      "C. C is based on a view of structured programming.",
+      "D. Programs that perform relatively simple tasks and are written in assembly language typically require more lines of code than those written in higher-level languages"
+    ],
+    "answer": "A",
+    "correctWord": "A. To make our programs longer, we use higher-level languages.",
+    "explanation": "Answer: A. Higher-level languages are used to make programs shorter, easier to read, write, and maintain—not longer. Statements B, C, and D accurately describe high-level languages, C's structured paradigm, and assembly verbosity.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q5",
+    "word": "PRF192 SP26 FE Q5: Which keyword is used to define a named constant in C?(Choose 2...",
+    "question": "Which keyword is used to define a named constant in C?(Choose 2 correct answers)",
+    "options": [
+      "A. const",
+      "B. define",
+      "C. constant",
+      "D. named"
+    ],
+    "answer": "A, B",
+    "correctWord": "A. const; B. define",
+    "explanation": "Answer: A, B. In C, named constants can be defined using the 'const' keyword (e.g., const int MAX = 10;) or the '#define' preprocessor directive (e.g., #define MAX 10). 'constant' and 'named' are not valid C keywords or directives.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q6",
+    "word": "PRF192 SP26 FE Q6: What is the binary representation of 0xA2?",
+    "question": "What is the binary representation of 0xA2?",
+    "options": [
+      "A. 0b01100010",
+      "B. 0b10100010",
+      "C. 0b10010010",
+      "D. 0b10110010"
+    ],
+    "answer": "B",
+    "correctWord": "B. 0b10100010",
+    "explanation": "Answer: B. Each hexadecimal digit maps to 4 binary bits: A (10) = 1010 and 2 = 0010. Combining them gives 0b10100010.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q7",
+    "word": "PRF192 SP26 FE Q7: What does the following program display? int a[5] = {1, 2, 3};",
+    "question": "What does the following program display?\n#include <stdio.h>\nint main() {\n    int a[5] = {1, 2, 3};\n    printf(\"%d %d %d %d %d\", a[0], a[1], a[2], a[3], a[4]);\n    return 0;\n}",
+    "options": [
+      "A. 1 2 3 0 0",
+      "B. 1 2 3 4 5",
+      "C. 1 2 3 a[3] a[4]",
+      "D. An error will be raised."
+    ],
+    "answer": "A",
+    "correctWord": "A. 1 2 3 0 0",
+    "explanation": "Answer: A. When an array is partially initialized in C (`int a[5] = {1, 2, 3};`), the remaining unspecified elements (`a[3]` and `a[4]`) are automatically initialized to 0. Compiling and running with GCC outputs `1 2 3 0 0`.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q8",
+    "word": "PRF192 SP26 FE Q8: Which statements are correct when copying string s1 into s2...",
+    "question": "Which statements are correct when copying string s1 into s2 manually?(Choose 2 correct answers)",
+    "options": [
+      "A. Uses array indexing",
+      "B. Uses pointer arithmetic",
+      "C. Requires memory allocation",
+      "D. Works without checking for buffer overflow"
+    ],
+    "answer": "A, B",
+    "correctWord": "A. Uses array indexing; B. Uses pointer arithmetic",
+    "explanation": "Answer: A, B. Manually copying a string in C is standardly implemented either using array indexing (e.g., `s2[i] = s1[i]`) or using pointer arithmetic (e.g., `*p2++ = *p1++`). It does not require dynamic memory allocation if `s2` is already a declared char array, and omitting buffer-size checks risks buffer overflow rather than safely working.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q9",
+    "word": "PRF192 SP26 FE Q9: Which condition increases the word count in a sentence?",
+    "question": "Which condition increases the word count in a sentence?\n#include <stdio.h>\n#include <string.h>\nint main() {\n    char s[1000];\n    int i, count = 0;\n    printf(\"Enter a sentence: \");\n    fgets(s, sizeof(s), stdin);\n    for (i = 0; s[i] != '\\0'; i++) {\n        if (condition???) {\n            count++;\n        }\n    }\n    printf(\"Total words: %d\\n\", count);\n    return 0;\n}",
+    "options": [
+      "A. s[i] != ' '",
+      "B. s[i] != '\\n'",
+      "C. s[i] != ' ' && (i == 0 || s[i-1] == ' ')",
+      "D. s[i] == ' ' && s[i-1] == ' '"
+    ],
+    "answer": "C",
+    "correctWord": "C. s[i] != ' ' && (i == 0 || s[i-1] == ' ')",
+    "explanation": "Answer: C. A new word starts whenever the current character is not a space (`s[i] != ' '`) and it is either the first character (`i == 0`) or immediately follows a space (`s[i-1] == ' '`). Verified with GCC: input \"Hello world C\" outputs `Total words: 3`. Options A and B count non-space/non-newline characters instead of words, while D counts consecutive spaces.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q10",
+    "word": "PRF192 SP26 FE Q10: Which of the following conditions will evaluate to true if y < z...",
+    "question": "Which of the following conditions will evaluate to true if y < z is true?",
+    "options": [
+      "A. x < z && y < z",
+      "B. x < z || y < z",
+      "C. y > x || y > z",
+      "D. y < z && z < x"
+    ],
+    "answer": "B",
+    "correctWord": "B. x < z || y < z",
+    "explanation": "Answer: B. With the logical OR (`||`) operator, the entire expression evaluates to true if at least one operand is true. Since `y < z` is given as true, `x < z || y < z` is always true regardless of `x`. Options A and D require additional conditions on `x` with `&&`, and C cannot be guaranteed true because `y > z` is false and `x` is unknown.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q11",
+    "word": "PRF192 SP26 FE Q11: What will be the output of the following C code? void main()...",
+    "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main()\n{\n    int x = 0;\n    if (x == 0)\n        printf(\"Hi\");\n    else\n        printf(\"How are you\");\n        printf(\"Hello\");\n}",
+    "options": [
+      "A. Hi",
+      "B. How are you",
+      "C. Hello",
+      "D. HiHello"
+    ],
+    "answer": "D",
+    "correctWord": "D. HiHello",
+    "explanation": "Answer: D. Since `x == 0` is true, `printf(\"Hi\");` executes and the `else` branch is skipped. Because the `else` clause has no curly braces `{ }`, only the first statement (`printf(\"How are you\");`) belongs to `else`; `printf(\"Hello\");` runs unconditionally afterward regardless of indentation. Verified with GCC, which outputs `HiHello` (with a `-Wmisleading-indentation` warning).",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q12",
+    "word": "PRF192 SP26 FE Q12: What does a variable store in memory?",
+    "question": "What does a variable store in memory?",
+    "options": [
+      "A. Compiler instructions",
+      "B. Debug information",
+      "C. Binary data",
+      "D. Memory addresses of other programs"
+    ],
+    "answer": "C",
+    "correctWord": "C. Binary data",
+    "explanation": "Answer: C. All values held in variables—whether integers, floating-point numbers, or characters—are represented and stored in computer memory as binary data (sequences of 0s and 1s).",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q13",
+    "word": "PRF192 SP26 FE Q13: How does a \"for\" loop differ from a \"while\" loop in C...",
+    "question": "How does a \"for\" loop differ from a \"while\" loop in C programming?",
+    "options": [
+      "A. A \"for\" loop is used for iterating over a sequence of elements, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
+      "B. A \"for\" loop is primarily used for conditional statements, while a \"while\" loop is designed for sequential processing.",
+      "C. The use of \"for\" and \"while\" loops is interchangeable; there is no substantial difference between them.",
+      "D. A \"for\" loop is exclusively used with arrays, while a \"while\" loop is used with numerical calculations."
+    ],
+    "answer": "A",
+    "correctWord": "A. A \"for\" loop is used for iterating over a sequence of elements, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
+    "explanation": "Answer: A. A `for` loop combines initialization, condition checking, and increment/update in its header, making it ideal for iterating over a known range or sequence of elements, whereas a `while` loop focuses on repeating a block as long as a condition remains true. Options B and D misrepresent loop purposes, and C overlooks the structural difference in how loop control and `continue` behave.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q14",
+    "word": "PRF192 SP26 FE Q14: What term is commonly used to specify both the type and name...",
+    "question": "What term is commonly used to specify both the type and name of a variable or constant in a C programming language?",
+    "options": [
+      "A. Identification",
+      "B. Name",
+      "C. Declaration",
+      "D. Definition"
+    ],
+    "answer": "C",
+    "correctWord": "C. Declaration",
+    "explanation": "Answer: C. In C, a declaration specifies the data type and identifier (name) of a variable or constant (for example, `int count;` or `extern int count;`), informing the compiler of its name and type.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q15",
+    "word": "PRF192 SP26 FE Q15: What benefit does #define offer when dealing with magic values...",
+    "question": "What benefit does #define offer when dealing with magic values in code?",
+    "options": [
+      "A. It improves code portability",
+      "B. It makes the code shorter",
+      "C. It prevents the use of symbolic names",
+      "D. It increases code complexity"
+    ],
+    "answer": "A",
+    "correctWord": "A. It improves code portability",
+    "explanation": "Answer: A. Replacing magic values with `#define` symbolic constants centralizes configuration and platform-dependent values in one place, making code easier to adapt across environments and improving portability. It does not prevent symbolic names (it creates them), increase complexity, or necessarily make source code shorter.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q16",
+    "word": "PRF192 SP26 FE Q16: What will be the result of the following expression? int a = 8...",
+    "question": "What will be the result of the following expression?\n\"int a = 8, b = 6, c = 4, b++ * ++c + --a;\"",
+    "options": [
+      "A. 16",
+      "B. 28",
+      "C. 37",
+      "D. 32",
+      "E. -28"
+    ],
+    "answer": "C",
+    "correctWord": "C. 37",
+    "explanation": "Answer: C. In `b++ * ++c + --a`, `b++` uses the current value `6` (then increments `b` to 7), `++c` increments `c` to `5` and evaluates to `5`, and `--a` decrements `a` to `7` and evaluates to `7`. Multiplication precedes addition: `6 * 5 + 7 = 30 + 7 = 37`. Verified by compiling and running with GCC.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q17",
+    "word": "PRF192 SP26 FE Q17: What is the output? int a = 8; int b = 3; int result = a % b...",
+    "question": "What is the output?\nint a = 8;\nint b = 3;\nint result = a % b * 2;\nprintf(\"%d\", result);",
+    "options": [
+      "A. 2",
+      "B. 4",
+      "C. 1",
+      "D. 5"
+    ],
+    "answer": "B",
+    "correctWord": "B. 4",
+    "explanation": "Answer: B. The modulus (`%`) and multiplication (`*`) operators share the same precedence and associate left-to-right. Thus `a % b * 2` is evaluated as `(8 % 3) * 2 = 2 * 2 = 4`. Verified by compiling and running with GCC.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q18",
+    "word": "PRF192 SP26 FE Q18: In a C program, what happens if none of the conditions in an...",
+    "question": "In a C program, what happens if none of the conditions in an if-else statement are true?",
+    "options": [
+      "A. The program will skip the if-else block and continue with the next statement.",
+      "B. The program will raise an error.",
+      "C. The else if block will be executed.",
+      "D. The program will terminate abruptly."
+    ],
+    "answer": "A",
+    "correctWord": "A. The program will skip the if-else block and continue with the next statement.",
+    "explanation": "Answer: A. When none of the tested conditions in an `if` / `else if` chain are true (and no fallback `else` applies), none of the conditional blocks run; execution simply skips the structure and proceeds to the next statement. An `else if` block only runs if its own condition is true, and no error or abrupt termination occurs.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q19",
+    "word": "PRF192 SP26 FE Q19: What will the following program output? switch ((a > 0) -...",
+    "question": "What will the following program output?\n#include <stdio.h>\n\nint main()\n{\n    int a = -5;\n\n    switch ((a > 0) - (a < 0)) {\n        case 1:\n            printf(\"a is an positive number.\");\n            break;\n        case -1:\n            printf(\"a is an negative number.\");\n            break;\n        default:\n            printf(\"a is zero.\");\n    }\n\n    return 0;\n}",
+    "options": [
+      "A. a is an positive number.",
+      "B. a is an negative number.",
+      "C. a is zero.",
+      "D. An error will be raised."
+    ],
+    "answer": "B",
+    "correctWord": "B. a is an negative number.",
+    "explanation": "Answer: B. With `a = -5`, `(a > 0)` evaluates to `0` and `(a < 0)` evaluates to `1`, so `(a > 0) - (a < 0)` equals `0 - 1 = -1`. Execution jumps to `case -1:` and prints `a is an negative number.`. Verified with GCC.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q20",
+    "word": "PRF192 SP26 FE Q20: Real-world example of a switch statement in C is:",
+    "question": "Real-world example of a switch statement in C is:",
+    "options": [
+      "A. Check the day of the week.",
+      "B. Sort an array ascending.",
+      "C. Sort an array descending.",
+      "D. Find the average value of a sequence."
+    ],
+    "answer": "A",
+    "correctWord": "A. Check the day of the week.",
+    "explanation": "Answer: A. A `switch` statement branches on discrete integral values (such as numbers 1–7 representing days of the week). Sorting arrays and calculating averages require iterative loops rather than a `switch` statement.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q21",
+    "word": "PRF192 SP26 FE Q21: What is the output when the sample code below is executed?",
+    "question": "What is the output when the sample code below is executed?\n#include <stdio.h>\nint main()\n{\n    int i,j,result=0;\n    for(i=3;i<=5;i++){\n        for(j=5;j>i;j--)\n        result+=j;\n    }\n    printf(\"%d\",result);\n    return 0;\n}",
+    "options": [
+      "A. 14",
+      "B. 15",
+      "C. 16",
+      "D. 20"
+    ],
+    "answer": "A",
+    "correctWord": "A. 14",
+    "explanation": "Answer: A. Tracing the nested loops: when `i = 3`, `j` takes `5` and `4` (`result = 5 + 4 = 9`); when `i = 4`, `j` takes `5` (`result = 9 + 5 = 14`); when `i = 5`, `j > i` (`5 > 5`) is false so the inner loop does not run. Printing `result` outputs `14`. Verified with GCC.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q22",
+    "word": "PRF192 SP26 FE Q22: What happens when you use a break statement inside a for loop?",
+    "question": "What happens when you use a break statement inside a for loop?",
+    "options": [
+      "A. The loop exits immediately.",
+      "B. The loop continues with the next iteration and skips the remaining statements.",
+      "C. The program terminates completely, and all variables are destroyed.",
+      "D. Nothing happens; the break statement is completely ignored in for loops"
+    ],
+    "answer": "A",
+    "correctWord": "A. The loop exits immediately.",
+    "explanation": "Answer: A. The `break` statement immediately terminates the innermost enclosing `for` loop and resumes execution at the first statement after the loop. Option B describes `continue`, not `break`, and C wrongly claims the entire program exits.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q23",
+    "word": "PRF192 SP26 FE Q23: Consider the following program. What will be printed to the...",
+    "question": "Consider the following program. What will be printed to the screen?\n#include<stdio.h>\n\nint main()\n{\n    char i, j;\n    for (i = 'A'; i <= 'E'; i++)\n    {\n        for (j = 'A'; j <= i; j++)\n        {\n            printf(\"%c\", i);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+    "options": [
+      "A. A\nBB\nCCC\nDDDD\nEEEEE",
+      "B. AAAAA\nBBBB\nCCC\nDD\nE",
+      "C. A\nAB\nABC\nABCD\nABCDE",
+      "D. A\nAA\nAAA\nAAAA\nAAAAA"
+    ],
+    "answer": "A",
+    "correctWord": "A. A\nBB\nCCC\nDDDD\nEEEEE",
+    "explanation": "Answer: A. The outer loop iterates `i` from `'A'` to `'E'`, and on each row the inner loop runs `j` from `'A'` to `i`, printing the outer loop variable `i` (not `j` or `'A'`). Thus row 1 prints `A`, row 2 prints `BB`, up to `EEEEE`. Verified with GCC.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q24",
+    "word": "PRF192 SP26 FE Q24: What will the code bellow print when executed? ceil / floor",
+    "question": "(Choose 1 answer)\nWhat will the code bellow print when executed?\ndouble a = -7.5, b = 7.5;\nprintf( \"%.0f : %.0f\\n\", ceil( a ), ceil( b ) );\nprintf( \"%.0f : %.0f\\n\", floor( a ), floor( b ) );",
+    "options": [
+      "A. -7 : 8\n-8 : 7",
+      "B. -7 : 7\n-8 : 8",
+      "C. -8 : 7\n-8 : 7",
+      "D. -8 : 7\n-7 : 8"
+    ],
+    "answer": "A",
+    "correctWord": "A. -7 : 8\n-8 : 7",
+    "explanation": "Answer: A. `ceil(x)` rounds upward toward positive infinity (`ceil(-7.5) = -7`, `ceil(7.5) = 8`), while `floor(x)` rounds downward toward negative infinity (`floor(-7.5) = -8`, `floor(7.5) = 7`). Verified by compiling with GCC (`-lm`), outputting `-7 : 8` on line 1 and `-8 : 7` on line 2.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q25",
+    "word": "PRF192 SP26 FE Q25: The function which will return the average of two real...",
+    "question": "The function which will return the average of two real numbers should be prototyped as:",
+    "options": [
+      "A. int average( double, double);",
+      "B. double average( double, double);",
+      "C. char average( double, double);",
+      "D. void average( double, double);"
+    ],
+    "answer": "B",
+    "correctWord": "B. double average( double, double);",
+    "explanation": "Answer: B. Because the function computes and returns the average of two real (`double`) numbers—which can have fractional parts—its return type must be `double` and its two parameters `double`. `int` or `char` would truncate/overflow the fractional result, and `void` returns nothing.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q26",
+    "word": "PRF192 SP26 FE Q26: What will be the output of the following C code?",
+    "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main()\n{\n    int *ptr, a = 10;\n    ptr = &a;\n    *ptr += 1;\n    printf(\"%d,%d\\n\", *ptr, a);\n}",
+    "options": [
+      "A. 10,10",
+      "B. 10,11",
+      "C. 11,10",
+      "D. 11,11"
+    ],
+    "answer": "D",
+    "correctWord": "D. 11,11",
+    "explanation": "Answer: D. Pointer ptr stores the address of a (initially 10). Executing *ptr += 1 increments the value stored at that address, changing a to 11. Both *ptr and a therefore evaluate to 11, so printf prints 11,11 (verified by compiling and running with GCC).",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q27",
+    "word": "PRF192 SP26 FE Q27: In module design, what does high \"cohesion\" mean?",
+    "question": "In module design, what does high \"cohesion\" mean?",
+    "options": [
+      "A. A module performs a single, specific task.",
+      "B. A module performs multiple unrelated tasks.",
+      "C. A module shares data with many other modules",
+      "D. A module can be used in multiple programs."
+    ],
+    "answer": "A",
+    "correctWord": "A. A module performs a single, specific task.",
+    "explanation": "Answer: A. High cohesion means that all elements inside a module are closely related and focused on performing one single, well-defined task. Performing unrelated tasks (B) describes low cohesion, sharing data across many modules (C) relates to tight coupling, and reusability (D) is a separate quality.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q28",
+    "word": "PRF192 SP26 FE Q28: What is the output of the following code snippet?",
+    "question": "What is the output of the following code snippet?\n#include <stdio.h>\nint num(int a, int b){\n    int sum;\n    sum = a + b;\n    return sum;\n}\n\nint main()\n{\n    int a, b, result;\n    a = 10;\n    b= 12;\n    result = num(a, b);\n    printf(\"%d\", result);\n    return 0;\n}",
+    "options": [
+      "A. 22",
+      "B. 10",
+      "C. 12",
+      "D. 21"
+    ],
+    "answer": "A",
+    "correctWord": "A. 22",
+    "explanation": "Answer: A. In main(), a = 10 and b = 12 are passed to num(a, b), which computes sum = 10 + 12 = 22 and returns it to result. printf(\"%d\", result) prints 22 (verified by compiling and running with GCC).",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q29",
+    "word": "PRF192 SP26 FE Q29: What is the returned type of the sqrt() function from...",
+    "question": "What is the returned type of the sqrt() function from the math.h library in C?",
+    "options": [
+      "A. double",
+      "B. float",
+      "C. int",
+      "D. long"
+    ],
+    "answer": "A",
+    "correctWord": "A. double",
+    "explanation": "Answer: A. In standard C (<math.h>), the prototype is double sqrt(double x); it takes a double argument and returns a double. (The float and long double variants are named sqrtf and sqrtl.)",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q30",
+    "word": "PRF192 SP26 FE Q30: The function islower() returns a non-zero value if...",
+    "question": "The function islower() returns a non-zero value if a character is:",
+    "options": [
+      "A. A lowercase letter",
+      "B. An uppercase letter",
+      "C. A digit",
+      "D. A punctuation character"
+    ],
+    "answer": "A",
+    "correctWord": "A. A lowercase letter",
+    "explanation": "Answer: A. Declared in <ctype.h>, islower(int c) checks whether c is a lowercase alphabetic character ('a'-'z' in the standard C locale) and returns a non-zero (true) value if so, or 0 otherwise.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q31",
+    "word": "PRF192 SP26 FE Q31: Which library function returns a pseudo-random number...",
+    "question": "Which library function returns a pseudo-random number in the range 0 to RAND_MAX?",
+    "options": [
+      "A. random()",
+      "B. rand()",
+      "C. generate_random()",
+      "D. getrand()"
+    ],
+    "answer": "B",
+    "correctWord": "B. rand()",
+    "explanation": "Answer: B. In standard C (<stdlib.h>), rand() returns a pseudo-random integer in the range 0 to RAND_MAX inclusive. random() is a POSIX/BSD function rather than ISO C, and generate_random() and getrand() are not standard C functions.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q32",
+    "word": "PRF192 SP26 FE Q32: Which of the following is true about the isdigit()...",
+    "question": "Which of the following is true about the isdigit() function in ctype.h?",
+    "options": [
+      "A. It checks if a character is an alphabet.",
+      "B. It returns to a non-zero value if the character is a digit (0-9).",
+      "C. It only works with float inputs.",
+      "D. It converts a digit to integer."
+    ],
+    "answer": "B",
+    "correctWord": "B. It returns to a non-zero value if the character is a digit (0-9).",
+    "explanation": "Answer: B. In <ctype.h>, isdigit() tests whether its character argument is a decimal digit ('0' through '9') and returns a non-zero value when true (0 when false). It does not check alphabetic characters (isalpha), take floats, or convert characters to integers.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q33",
+    "word": "PRF192 SP26 FE Q33: (Choose 1 answer) What is the output of this C code?",
+    "question": "(Choose 1 answer)\nWhat is the output of this C code?\n#include <stdio.h>\n#include <conio.h>\nint main() {\n    int n = 267, *pn = &n;\n    char* pc = pn;\n    *pc = 0;\n    printf(\"n = %d\", n);\n    return 0;\n}",
+    "options": [
+      "A. n = 0",
+      "B. n = 267",
+      "C. n = 256",
+      "D. error"
+    ],
+    "answer": "C",
+    "correctWord": "C. n = 256",
+    "explanation": "Answer: C. In binary/hex, 267 = 256 + 11 = 0x0000010B. On little-endian x86 Windows systems (such as Dev-C++), the lowest-addressed byte stores 0x0B. Assigning char* pc = pn and setting *pc = 0 clears that lowest byte to 0x00, leaving 0x00000100 = 256, so it prints n = 256. (Note: older C compilers like Dev-C++/TDM-GCC issue only a warning for char* pc = pn; modern GCC 14+/16 rejects incompatible pointer initialization by default unless compiled with -Wno-incompatible-pointer-types, which yields n = 256.)",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q34",
+    "word": "PRF192 SP26 FE Q34: Consider the following code: int func(int* a, int n)...",
+    "question": "Consider the following code:\nint func(int* a, int n){\n    int S = 0;\n    for(int i = 0; i < n; i++) {\n        S = S + (a[i] % 2)*a[i];\n    }\n    return S;\n}\nWhat does the above code snippet do?",
+    "options": [
+      "A. Calculates the sum of the absolute value of all odd elements in the array a of size n.",
+      "B. Calculates the sum of all odd elements in the array a of size n.",
+      "C. Calculates the sum of all even elements in the array a of size n.",
+      "D. Calculates the sum of squares of all elements in the array a of size n."
+    ],
+    "answer": "A",
+    "correctWord": "A. Calculates the sum of the absolute value of all odd elements in the array a of size n.",
+    "explanation": "Answer: A. For even elements, a[i] % 2 is 0 so the term adds 0. For positive odd elements, a[i] % 2 is 1 so it adds 1 * a[i] = |a[i]|. For negative odd elements in C99+, a[i] % 2 is -1, so (-1) * a[i] = -a[i] = |a[i]|. Verified with GCC on {-5, -4, -3, 0, 2, 3, 5}, which returns 16 (5 + 3 + 3 + 5).",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q35",
+    "word": "PRF192 SP26 FE Q35: What does the expression sizeof(arr) / sizeof(arr[0])...",
+    "question": "What does the expression sizeof(arr) / sizeof(arr[0])  evaluate to, where arr is an array?",
+    "options": [
+      "A. The number of elements in arr",
+      "B. The size of arr in bytes",
+      "C. The number of bytes occupied by each element in arr",
+      "D. The total size of arr in bytes"
+    ],
+    "answer": "A",
+    "correctWord": "A. The number of elements in arr",
+    "explanation": "Answer: A. sizeof(arr) gives the total byte size of the array, and sizeof(arr[0]) gives the byte size of one element. Dividing the total size by the size of a single element yields the number of elements in arr (verified with GCC on a 5-element int array, producing 5).",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q36",
+    "word": "PRF192 SP26 FE Q36: What will be the output of the following C code?",
+    "question": "What will be the output of the following C code?\n#include <stdio.h>\nint main()\n{\n    int a,b,c;\n    a = b = c = 10;\n    c = a++ || ++b && ++c;\n    printf(\"%d %d %d\",c, a, b);\n    return 0;\n}",
+    "options": [
+      "A. 1 11 10",
+      "B. 10 11 1",
+      "C. 10 11 10",
+      "D. 1 1 10"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1 11 10",
+    "explanation": "Answer: A. Because && has higher precedence than ||, the expression is grouped as c = (a++) || ((++b) && (++c)). First, a++ evaluates to 10 (non-zero, truthy) and post-increments a to 11. Due to short-circuit evaluation of ||, the right side (++b && ++c) is not evaluated, so b remains 10 and c is assigned the boolean result 1. Verified with GCC, which prints 1 11 10.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q37",
+    "word": "PRF192 SP26 FE Q37: What will be the output of the C program?",
+    "question": "What will be the output of the C program?\nint arr[5] = { 2, 3, 5, 4, 7 };\nint *ptr = (&arr + 1);\nprintf(\"%d %d\\n\", *(arr + 1), *(ptr - 1));",
+    "options": [
+      "A. 2 3",
+      "B. 3 2",
+      "C. 3 7",
+      "D. 2 6356728"
+    ],
+    "answer": "C",
+    "correctWord": "C. 3 7",
+    "explanation": "Answer: C. *(arr + 1) accesses arr[1], which is 3. Because &arr has type int (*)[5], &arr + 1 points just past the end of the 5-element array (right after arr[4]). Converting it to int *ptr means ptr - 1 points to arr[4], so *(ptr - 1) evaluates to 7. (Verified with GCC using -Wno-incompatible-pointer-types, outputting 3 7; note that modern GCC 14+/16 requires an explicit (int *) cast on (&arr + 1).)",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q38",
+    "word": "PRF192 SP26 FE Q38: Why is an array considered an efficient data structure...",
+    "question": "Why is an array considered an efficient data structure for index-based element access?",
+    "options": [
+      "A. Because arrays allow fast insertion/deletion of elements",
+      "B. Because elements in an array are allocated in scattered memory locations",
+      "C. Because elements can be accessed directly by unique index",
+      "D. Because arrays automatically expand in size when new elements are added"
+    ],
+    "answer": "C",
+    "correctWord": "C. Because elements can be accessed directly by unique index",
+    "explanation": "Answer: C. Array elements are stored in contiguous memory locations of uniform element size, so the address of arr[i] can be computed directly in O(1) time as base_address + i * sizeof(element). Arrays do not have fast middle insertion/deletion (A), are not scattered (B), and have fixed size in C (D).",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q39",
+    "word": "PRF192 SP26 FE Q39: What will be the output of the following program?",
+    "question": "What will be the output of the following program?\nint main()\n{\n    int i = 101;\n    int *p = &i;\n    printf(\"%d\\n\", *p++);\n    return 0;\n}",
+    "options": [
+      "A. 101",
+      "B. 102",
+      "C. 0",
+      "D. Address of i"
+    ],
+    "answer": "A",
+    "correctWord": "A. 101",
+    "explanation": "Answer: A. Postfix ++ has higher precedence than the dereference operator *, so *p++ is parsed as *(p++). It yields the current pointer value (&i), dereferences it to obtain 101, and then increments p (leaving i unchanged). Verified with GCC, which outputs 101.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q40",
+    "word": "PRF192 SP26 FE Q40: Which sorting algorithm repeatedly steps through the list...",
+    "question": "Which sorting algorithm repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order?",
+    "options": [
+      "A. Bubble sort",
+      "B. Selection sort",
+      "C. Binary sort",
+      "D. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. Bubble sort",
+    "explanation": "Answer: A. Bubble sort repeatedly passes through the array, comparing each pair of adjacent elements and swapping them if they are out of order until the array is sorted. Selection sort finds the minimum/maximum element per pass rather than swapping adjacent pairs.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q41",
+    "word": "PRF192 SP26 FE Q41: Which function in C is used to deallocate dynamically...",
+    "question": "Which function in C is used to deallocate dynamically allocated memory?",
+    "options": [
+      "A. free()",
+      "B. malloc()",
+      "C. calloc()",
+      "D. realloc()"
+    ],
+    "answer": "A",
+    "correctWord": "A. free()",
+    "explanation": "Answer: A. In <stdlib.h>, free(ptr) releases memory previously allocated by malloc(), calloc(), or realloc(). malloc() and calloc() allocate memory, and realloc() resizes an existing allocation.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q42",
+    "word": "PRF192 SP26 FE Q42: What is the purpose of \"rb\" in fopen() function used...",
+    "question": "What is the purpose of \"rb\" in fopen() function used below in the code?\nFILE *fp;\nfp = fopen(\"demo.txt\", \"rb\");",
+    "options": [
+      "A. Open \"demo.txt\" in binary mode for reading",
+      "B. Create a new file \"demo.txt\" for reading and writing",
+      "C. Open \"demo.txt\" in binary mode for reading and writing",
+      "D. None of these"
+    ],
+    "answer": "A",
+    "correctWord": "A. Open \"demo.txt\" in binary mode for reading",
+    "explanation": "Answer: A. In fopen(), 'r' opens an existing file for reading only, and 'b' specifies binary mode (no text newline translation). Binary reading and writing would use \"rb+\" or \"r+b\", while creating a new file for reading/writing uses \"w+\" or \"wb+\".",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q43",
+    "word": "PRF192 SP26 FE Q43: What is the main difference between opening a file with...",
+    "question": "What is the main difference between opening a file with mode \"a+\" and mode \"w+\" in C?",
+    "options": [
+      "A. \"w+\" truncates existing files, \"a+\" preserves them.",
+      "B. \"a+\" can only append data, while \"w+\" can only write from the beginning.",
+      "C. \"a+\" opens binary files, while \"w+\" opens text files.",
+      "D. \"a+\" allows reading only, while \"w+\" allows both reading and writing."
+    ],
+    "answer": "A",
+    "correctWord": "A. \"w+\" truncates existing files, \"a+\" preserves them.",
+    "explanation": "Answer: A. Both \"w+\" and \"a+\" open a text file for reading and writing (creating it if it does not exist). However, \"w+\" truncates an existing file to zero length, whereas \"a+\" preserves existing content and appends all writes to the end of the file.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q44",
+    "word": "PRF192 SP26 FE Q44: How can you initialize a character array in C?",
+    "question": "How can you initialize a character array in C?",
+    "options": [
+      "A. char arr[] = \"Hello\";",
+      "B. char arr[] = ['H', 'e', 'l', 'l', 'o','/e'];",
+      "C. Char[] arr = \"Hello\";",
+      "D. Char[] arr = {'H', 'e', 'l', 'l', 'o','/0'};"
+    ],
+    "answer": "A",
+    "correctWord": "A. char arr[] = \"Hello\";",
+    "explanation": "Answer: A. char arr[] = \"Hello\"; is valid C syntax (verified with GCC) and creates a 6-byte array containing 'H','e','l','l','o','\\0'. B uses invalid square brackets [...] and '/e' instead of '\\0'; C and D use the nonexistent capitalized type Char[] (Java-style brackets before identifier), and D also writes '/0' instead of '\\0'.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q45",
+    "word": "PRF192 SP26 FE Q45: Consider the following code snippet that writes text to...",
+    "question": "Consider the following code snippet that writes text to a file named \"output.txt\":\n#include <stdio.h>\nint main() {\n    FILE *file_ptr;\n    file_ptr = fopen(\"output.txt\", \"w\");\n    if (file_ptr == NULL) {\n        printf(\"Unable to open the file.\\n\");\n        return 1;\n    }\n    fprintf(file_ptr, \"Hello, World!\\nThis is a test.\");\n    fclose(file_ptr);\n    return 0;\n}\nAssuming the code is executed successfully, what will be the content of the \"output.txt\" file?",
+    "options": [
+      "A. Hello, World!\nThis is a test.",
+      "B. Hello, World! This is a test.",
+      "C. Hello, World!",
+      "D. This is a test."
+    ],
+    "answer": "A",
+    "correctWord": "A. Hello, World!\nThis is a test.",
+    "explanation": "Answer: A. fprintf writes the formatted string to output.txt, and the \\n escape sequence inserts a newline between \"Hello, World!\" and \"This is a test.\", producing two separate lines in the file (verified by compiling and running with GCC).",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q46",
+    "word": "PRF192 SP26 FE Q46: What function is used to send formatted output to a file?",
+    "question": "What function is used to send formatted output to a file?",
+    "options": [
+      "A. fprintf",
+      "B. fwritef",
+      "C. fsendf",
+      "D. fputs"
+    ],
+    "answer": "A",
+    "correctWord": "A. fprintf",
+    "explanation": "Answer: A. fprintf() writes formatted output (using conversion specifiers such as %d, %s, %f) to a specified FILE* stream. fputs() writes an unformatted string, while fwritef and fsendf do not exist in standard C.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q47",
+    "word": "PRF192 SP26 FE Q47: What function is used to write data in binary format to...",
+    "question": "What function is used to write data in binary format to a file?",
+    "options": [
+      "A. fprintf()",
+      "B. fwrite()",
+      "C. fputc()",
+      "D. fprintb()"
+    ],
+    "answer": "B",
+    "correctWord": "B. fwrite()",
+    "explanation": "Answer: B. fwrite() writes raw blocks of bytes directly from memory to a file stream, making it the standard function for binary file output. fprintf() and fputc() perform formatted/character text output, and fprintb() is not a standard C function.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q48",
+    "word": "PRF192 SP26 FE Q48: What is the rewind () function used for?",
+    "question": "What is the rewind () function used for?",
+    "options": [
+      "A. To reset the file pointer to the beginning of the file.",
+      "B. To read the entire file into memory.",
+      "C. To close the file.",
+      "D. To move the file pointer to the end of the file."
+    ],
+    "answer": "A",
+    "correctWord": "A. To reset the file pointer to the beginning of the file.",
+    "explanation": "Answer: A. In <stdio.h>, rewind(FILE *stream) sets the file position indicator back to the beginning of the file and clears the error and end-of-file indicators for that stream.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q49",
+    "word": "PRF192 SP26 FE Q49: What is the purpose of this function?",
+    "question": "What is the purpose of this function?\nvoid get_a_line(char line[], int max) {\n    int n = 0;\n    char c;\n    while ('\\n' != (c = getchar()))\n        if (n < max)\n            line[n++] = c;\n    line[n] = '\\0';\n}",
+    "options": [
+      "A. Reads a line of input safely",
+      "B. Writes a string to file",
+      "C. Compares strings",
+      "D. Reverses string"
+    ],
+    "answer": "A",
+    "correctWord": "A. Reads a line of input safely",
+    "explanation": "Answer: A. The function reads characters from stdin with getchar() until a newline '\\n' is encountered, copies at most max characters into line[] (checking if (n < max) to prevent buffer overflow when line has space for max + 1 bytes), and appends the null terminator '\\0' (verified with GCC).",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  },
+  {
+    "id": "prf192_sp26_fe_q50",
+    "word": "PRF192 SP26 FE Q50: What is the incorrect definition?",
+    "question": "What is the incorrect definition?",
+    "options": [
+      "A. Algorithm: a way to find out a solution",
+      "B. Data: Values are used to describe information. So, information can be called as the mean of data",
+      "C. Solution: A situation in which something is hidden",
+      "D. Information: Knowledge about something"
+    ],
+    "answer": "C",
+    "correctWord": "C. Solution: A situation in which something is hidden",
+    "explanation": "Answer: C. \"A situation in which something is hidden\" is the definition of a Problem, not a Solution. The other three definitions (Algorithm, Data/Information relationship, and Information) match the standard PRF192 introductory definitions.",
+    "subject": "PRF192",
+    "topic": "PRF192_SP26_FE"
+  }
+]

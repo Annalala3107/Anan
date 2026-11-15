@@ -418,6 +418,61 @@ export const QUESTION_BANKS: SubjectSection[] = [
         tags: ['File I/O', 'fopen', 'rewind'],
         subject: 'PRF192',
         topic: 'Tệp Tin'
+      },
+      {
+        id: 'prf192_su26_b5_fe',
+        name: 'PRF192 - SU26 - B5 - FE',
+        description: 'Trọn bộ 50 câu hỏi đề thi PRF192 - SU26 - B5 - FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/prf192_su26_b5_fe.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SU26', 'B5', 'FE', '50 Câu'],
+        subject: 'PRF192',
+        topic: 'SU26 - B5 - FE'
+      },
+      {
+        id: 'prf192_su26_fe',
+        name: 'PRF192 - SU26 - FE',
+        description: 'Trọn bộ 50 câu hỏi đề thi PRF192 - SU26 - FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/prf192_su26_fe.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SU26', 'FE', '50 Câu'],
+        subject: 'PRF192',
+        topic: 'SU26 - FE'
+      },
+      {
+        id: 'prf192_su26_re',
+        name: 'PRF192 - SU26 - RE',
+        description: 'Trọn bộ 50 câu hỏi đề thi PRF192 - SU26 - RE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/prf192_su26_re.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SU26', 'RE', '50 Câu'],
+        subject: 'PRF192',
+        topic: 'SU26 - RE'
+      },
+      {
+        id: 'prf192_sp26_fe',
+        name: 'PRF192_SP26_FE',
+        description: 'Trọn bộ 50 câu hỏi đề thi PRF192_SP26_FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/prf192_sp26_fe.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SP26', 'FE', '50 Câu'],
+        subject: 'PRF192',
+        topic: 'SP26 - FE'
+      },
+      {
+        id: 'prf192_sp26_re',
+        name: 'PRF192 - SP26 - RE',
+        description: 'Trọn bộ 50 câu hỏi đề thi PRF192 - SP26 - RE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/prf192_sp26_re.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SP26', 'RE', '50 Câu'],
+        subject: 'PRF192',
+        topic: 'SP26 - RE'
       }
     ]
   },

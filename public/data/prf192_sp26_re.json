@@ -1,0 +1,803 @@
+[
+  {
+    "id": "prf192_sp26_re_q1",
+    "word": "PRF192 SP26 RE Q1: Which of the following is NOT mentioned as a reason why C...",
+    "question": "Which of the following is NOT mentioned as a reason why C is selected as the first programming language?",
+    "options": [
+      "A. C has object-oriented features.",
+      "B. C is English-like",
+      "C. C is faster and more powerful than other high-level languages.",
+      "D. C supports basic ways to understand the memory of a program"
+    ],
+    "answer": "A",
+    "correctWord": "A. C has object-oriented features.",
+    "explanation": "Answer: A. C is a procedural (structured) programming language and does not have built-in object-oriented features (unlike C++ or Java). Being English-like, fast/powerful, and providing low-level memory understanding (pointers, addresses) are standard reasons why C is taught as a first programming language.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q2",
+    "word": "PRF192 SP26 RE Q2: When a C program compiles without any errors or warnings, ...",
+    "question": "When a C program compiles without any errors or warnings, it means that the syntax of the program is correct, and the compiler successfully translates the code into machine-readable instructions. However, a program can still produce incorrect results if there are _______________ in the code.",
+    "options": [
+      "A. compilation errors",
+      "B. runtime errors",
+      "C. logic or semantic errors",
+      "D. interpreter errors"
+    ],
+    "answer": "C",
+    "correctWord": "C. logic or semantic errors",
+    "explanation": "Answer: C. A clean compilation only guarantees syntactically valid code. Logic or semantic errors (flaws in the algorithm or unintended meaning of expressions) still compile cleanly and cause the program to produce wrong outputs.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q3",
+    "word": "PRF192 SP26 RE Q3: How does compilation differ from interpretation in the cont...",
+    "question": "How does compilation differ from interpretation in the context of C programming language?",
+    "options": [
+      "A. Compilation involves converting source code to machine code, while interpretation involves executing code line by line.",
+      "B. Compilation and interpretation are two terms that are used interchangeably.",
+      "C. Algorithm is another term for interpretation in programming languages.",
+      "D. IDE tools are responsible for both compilation and interpretation processes."
+    ],
+    "answer": "A",
+    "correctWord": "A. Compilation involves converting source code to machine code, while interpretation involves executing code line by line.",
+    "explanation": "Answer: A. A compiler translates the entire source program into machine code prior to execution, whereas an interpreter translates and executes source code line by line (statement by statement) at runtime.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q4",
+    "word": "PRF192 SP26 RE Q4: What translates a C source file into machine language so th...",
+    "question": "What translates a C source file into machine language so that the computer can execute it?",
+    "options": [
+      "A. A compiler",
+      "B. A text editor",
+      "C. A file",
+      "D. A program"
+    ],
+    "answer": "A",
+    "correctWord": "A. A compiler",
+    "explanation": "Answer: A. A compiler translates C source code into machine-language instructions (object/executable code) that the computer can execute directly. A text editor is only used to write/edit the source file.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q5",
+    "word": "PRF192 SP26 RE Q5: What will the following code output? #include <stdio.h> ...",
+    "question": "What will the following code output?\n#include <stdio.h>\nint main() {\n    int a = 7;\n    printf(\"%d\", (a << 2) | 1);\n    return 0;\n}",
+    "options": [
+      "A. 28",
+      "B. 29",
+      "C. 15",
+      "D. 30"
+    ],
+    "answer": "B",
+    "correctWord": "B. 29",
+    "explanation": "Answer: B. a = 7 (binary 00000111). Left-shifting by 2 bits (a << 2) gives 28 (binary 00011100). Applying bitwise OR with 1 (00000001) sets the lowest bit, giving 29 (binary 00011101). Verified with GCC: prints 29.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q6",
+    "word": "PRF192 SP26 RE Q6: What is the purpose of the sizeof operator in C?",
+    "question": "What is the purpose of the sizeof operator in C?",
+    "options": [
+      "A. To determine the value of a variable.",
+      "B. To determine the type of a variable.",
+      "C. To determine the size (in bytes) occupied by a variable or type.",
+      "D. To determine the address of a variable."
+    ],
+    "answer": "C",
+    "correctWord": "C. To determine the size (in bytes) occupied by a variable or type.",
+    "explanation": "Answer: C. The sizeof operator computes the amount of storage in bytes occupied by a data type or variable. Option D describes the address-of operator (&).",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q7",
+    "word": "PRF192 SP26 RE Q7: Which of the following is the correct syntax for declaring ...",
+    "question": "Which of the following is the correct syntax for declaring a structure in C?",
+    "options": [
+      "A. typedef struct {\ndataType1 field1;\ndataType2 field2;\n} structName;",
+      "B. struct typedef {\n  dataType1 field1;\n  dataType2 field2;\n} structName;",
+      "C. typedef {\ndataType1 field1;\ndataType2 field2;\n} struct structName;",
+      "D. structName typedef {\n  dataType1 field1;\n  dataType2 field2;\n};"
+    ],
+    "answer": "A",
+    "correctWord": "A. typedef struct {\ndataType1 field1;\ndataType2 field2;\n} structName;",
+    "explanation": "Answer: A. In C, typedef must precede struct, followed by the member declarations in braces and the type alias name before the semicolon: typedef struct { ... } structName;. Options B, C, and D place typedef or struct in invalid positions and cause syntax errors.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q8",
+    "word": "PRF192 SP26 RE Q8: Which of the following is not a valid variable name decl...",
+    "question": "Which of the following is not a valid variable name declaration?",
+    "options": [
+      "A. int _a3;",
+      "B. int a_3;",
+      "C. int 3_a;",
+      "D. int _3a"
+    ],
+    "answer": "C",
+    "correctWord": "C. int 3_a;",
+    "explanation": "Answer: C. In C, variable names (identifiers) must start with a letter or underscore (_), never a digit. 3_a starts with the digit 3 and is therefore an invalid identifier name. (_a3, a_3, and _3a are valid variable names; note that option D omits its trailing semicolon as a typo in the exam prompt.)",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q9",
+    "word": "PRF192 SP26 RE Q9: What will this code print? int x[5] = {0}; printf(\"%d\", x...",
+    "question": "What will this code print?\nint x[5] = {0};\nprintf(\"%d\", x[3]);",
+    "options": [
+      "A. 0",
+      "B. Garbage value",
+      "C. 3",
+      "D. Error"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Answer: A. When an array is partially initialized in C (int x[5] = {0};), all remaining unspecified elements are automatically initialized to 0. Therefore x[3] is 0. Verified with GCC: prints 0.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q10",
+    "word": "PRF192 SP26 RE Q10: What does the following program display? #include <stdio...",
+    "question": "What does the following program display?\n#include <stdio.h>\n\nint main()\n{\n    int a[5] = {1, 2, 3};\n    printf(\"%d\", a[0]);\n    return 0;\n}",
+    "options": [
+      "A. 3",
+      "B. 2",
+      "C. 1",
+      "D. An error will be raised."
+    ],
+    "answer": "C",
+    "correctWord": "C. 1",
+    "explanation": "Answer: C. Array indices in C start at 0, so a[0] refers to the first element of array a, which is initialized to 1 (while a[3] and a[4] are automatically 0). Verified with GCC: prints 1.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q11",
+    "word": "PRF192 SP26 RE Q11: What is the output of the following code snippet? #inclu...",
+    "question": "What is the output of the following code snippet?\n#include <stdio.h>\nint x = 9;\nvoid someFunction() {\n    int x = 8;\n    printf(\"%d \", x);\n}\nint main() {\n    someFunction();\n    printf(\"%d\", x);\n    return 0;\n}",
+    "options": [
+      "A. 8 9",
+      "B. 9 8",
+      "C. 8 8",
+      "D. 9 9"
+    ],
+    "answer": "A",
+    "correctWord": "A. 8 9",
+    "explanation": "Answer: A. Inside someFunction(), the local variable x = 8 shadows the global variable x = 9, so someFunction() prints 8 . Back in main(), the global x is still 9, so printf(\"%d\", x) prints 9. Verified with GCC: prints 8 9.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q12",
+    "word": "PRF192 SP26 RE Q12: If the two strings have the same value, then strcmp() fu...",
+    "question": "If the two strings have the same value, then strcmp() function returns ______",
+    "options": [
+      "A. True",
+      "B. 1",
+      "C. 0",
+      "D. -1"
+    ],
+    "answer": "C",
+    "correctWord": "C. 0",
+    "explanation": "Answer: C. The standard C library function strcmp(s1, s2) returns 0 when s1 and s2 have identical contents, a negative value if s1 < s2 lexicographically, and a positive value if s1 > s2.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q13",
+    "word": "PRF192 SP26 RE Q13: What does the following program display? #include <stdio...",
+    "question": "What does the following program display?\n#include <stdio.h>\n\nint main()\n{\n    int x = 1, y = 2, z = 3;\n\n    x = x - --y;\n    z = z + ++y;\n\n    printf(\"%d %d %d\", x, y, z);\n\n    return 0;\n}",
+    "options": [
+      "A. -1 5 3",
+      "B. 0 2 5",
+      "C. 1 2 4",
+      "D. 1 5 3"
+    ],
+    "answer": "B",
+    "correctWord": "B. 0 2 5",
+    "explanation": "Answer: B. Initially x = 1, y = 2, z = 3. In x = x - --y;, prefix --y decrements y to 1 before subtraction, so x = 1 - 1 = 0. In z = z + ++y;, prefix ++y increments y to 2 before addition, so z = 3 + 2 = 5. Printing x, y, z outputs 0 2 5. Verified with GCC.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q14",
+    "word": "PRF192 SP26 RE Q14: Which header file can be used to define math function pr...",
+    "question": "Which header file can be used to define math function prototypes and macros?",
+    "options": [
+      "A. math.h",
+      "B. stdio.h",
+      "C. conio.h",
+      "D. memory.h"
+    ],
+    "answer": "A",
+    "correctWord": "A. math.h",
+    "explanation": "Answer: A. <math.h> defines standard C mathematical function prototypes and macros such as sqrt(), pow(), sin(), cos(), and fabs(). <stdio.h> handles standard I/O, while <conio.h> is a non-standard console I/O header.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q15",
+    "word": "PRF192 SP26 RE Q15: What does a variable represent in a program?",
+    "question": "What does a variable represent in a program?",
+    "options": [
+      "A. A constant value stored in memory",
+      "B. A reference to a memory location",
+      "C. A function used for binary conversion",
+      "D. A line number in the code"
+    ],
+    "answer": "B",
+    "correctWord": "B. A reference to a memory location",
+    "explanation": "Answer: B. A variable is a symbolic name (reference) bound to a memory location where a value can be stored and changed during program execution (not a constant value).",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q16",
+    "word": "PRF192 SP26 RE Q16: In C, what is the purpose of | operator?",
+    "question": "In C, what is the purpose of | operator?",
+    "options": [
+      "A. It is a bitwise operator OR",
+      "B. It is a logical operator AND",
+      "C. It is a bitwise operator AND",
+      "D. It is a logical operator OR"
+    ],
+    "answer": "A",
+    "correctWord": "A. It is a bitwise operator OR",
+    "explanation": "Answer: A. A single vertical bar | is the bitwise OR operator in C, which performs an OR operation on each pair of corresponding bits. Logical OR is ||, bitwise AND is &, and logical AND is &&.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q17",
+    "word": "PRF192 SP26 RE Q17: Which of these is NOT a relational or logical operator?",
+    "question": "Which of these is NOT a relational or logical operator?",
+    "options": [
+      "A. =",
+      "B. ||",
+      "C. ==",
+      "D. !="
+    ],
+    "answer": "A",
+    "correctWord": "A. =",
+    "explanation": "Answer: A. = is the assignment operator, not a relational or logical operator. || is a logical OR operator, while == and != are relational (equality) operators.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q18",
+    "word": "PRF192 SP26 RE Q18: What is the output? int x = 0, y = 5; printf(\"%d\", (x &&...",
+    "question": "What is the output?\nint x = 0, y = 5;\nprintf(\"%d\", (x && y));",
+    "options": [
+      "A. 1",
+      "B. 5",
+      "C. -1",
+      "D. 0"
+    ],
+    "answer": "D",
+    "correctWord": "D. 0",
+    "explanation": "Answer: D. In C, 0 represents false and any non-zero value represents true. Since x is 0, the logical AND (x && y) short-circuits and evaluates to 0. Verified with GCC: prints 0.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q19",
+    "word": "PRF192 SP26 RE Q19: What will this code output? int a = 5, b = 10; printf(...",
+    "question": "What will this code output?\nint a = 5, b = 10;\nprintf(\"%d\", !(a > b || b == 10));",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 5",
+      "D. -1"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Answer: A. a > b (5 > 10) is 0 (false) and b == 10 (10 == 10) is 1 (true). Thus (a > b || b == 10) evaluates to 1, and logical NOT (!) turns 1 into 0. Verified with GCC: prints 0.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q20",
+    "word": "PRF192 SP26 RE Q20: What will be the output of the following code? int i = ...",
+    "question": "What will be the output of the following code?\nint i = 10;\nwhile (i > 0) {\n    printf(\"%d \", i);\n    i -= 3;\n}",
+    "options": [
+      "A. 10 7 4 1",
+      "B. 10 9 8 7 6 5 4 3 2 1",
+      "C. 10 7 4 1 -2",
+      "D. 10 7 4 1 -2 -5"
+    ],
+    "answer": "A",
+    "correctWord": "A. 10 7 4 1",
+    "explanation": "Answer: A. Starting at i = 10, each iteration prints i and subtracts 3 while i > 0: 10 -> 7 -> 4 -> 1 -> -2, at which point -2 > 0 is false and the loop terminates. Verified with GCC: prints 10 7 4 1 .",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q21",
+    "word": "PRF192 SP26 RE Q21: What is the syntax of the conditional operator in C?",
+    "question": "What is the syntax of the conditional operator in C?",
+    "options": [
+      "A. condition ? expression1 : expression2",
+      "B. condition ? expression1, expression2",
+      "C. condition : expression1 ? expression2",
+      "D. expression1 : condition ? expression2"
+    ],
+    "answer": "A",
+    "correctWord": "A. condition ? expression1 : expression2",
+    "explanation": "Answer: A. The ternary conditional operator in C uses ? after the condition and : between the true and false expressions: condition ? expression1 : expression2.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q22",
+    "word": "PRF192 SP26 RE Q22: What is the output when the sample code below is execute...",
+    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    int a=10,b=20,c=30;\n    while(a>1)\n    {\n        if(b%2!=0)\n            a/=10;\n        b--;\n        c*=2;\n    }\n    printf(\"%d ; %d ; %d\",a,b,c);\n    return 0;\n}",
+    "options": [
+      "A. 1 ; 18 ; 120",
+      "B. 10 ; 19 ; 60",
+      "C. 1 ; 20 ; 60",
+      "D. 10 ; 19 ; 120"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1 ; 18 ; 120",
+    "explanation": "Answer: A. Initially a=10, b=20, c=30. Iteration 1: b%2!=0 (20%2!=0) is false so a remains 10, b becomes 19, c becomes 60. Iteration 2: b%2!=0 (19%2!=0) is true so a/=10 gives a=1, b becomes 18, c becomes 120. Since a>1 is now false, the loop exits and prints 1 ; 18 ; 120. Verified with GCC.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q23",
+    "word": "PRF192 SP26 RE Q23: What is the result displayed on the screen of the follo...",
+    "question": "What is the result displayed on the screen of the following program?\n#include<stdio.h>\n\nint isTriangle(float a, float b, float c)\n{\n    if ((a>0)&&(b>0)&&(c>0)&&(a<b+c)&&(b<c+a)&&(c<a+b))\n        return 1;\n    else\n        return 0;\n}\n\nint main()\n{\n    float a = 1, b = 1, c = 1.25;\n    if (isTriangle(a, b, c))\n        printf(\"%.2f, %.2f, %.2f: a triangle.\\n\", a, b, c);\n    else\n        printf(\"%.2f, %.2f, %.2f: not a triangle.\\n\", a, b, c);\n    return 0;\n}",
+    "options": [
+      "A. a, b, c: a triangle",
+      "B. 1.00, 1.00, 1.25: a triangle",
+      "C. 1, 1, 1.25: a triangle",
+      "D. 1.00, 1.00, 1.25: not a triangle"
+    ],
+    "answer": "B",
+    "correctWord": "B. 1.00, 1.00, 1.25: a triangle",
+    "explanation": "Answer: B. The sides 1, 1, and 1.25 are all positive and satisfy the triangle inequality (1 < 2.25, 1 < 2.25, 1.25 < 2), so isTriangle returns 1. Each %.2f specifier formats the float with two decimal places, outputting 1.00, 1.00, 1.25: a triangle. (matching option B). Verified with GCC.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q24",
+    "word": "PRF192 SP26 RE Q24: What will happen if the loop's condition is always true?",
+    "question": "What will happen if the loop's condition is always true?",
+    "options": [
+      "A. Loop infinitely",
+      "B. No Output will be printed",
+      "C. Compile time error",
+      "D. The loop will not work"
+    ],
+    "answer": "A",
+    "correctWord": "A. Loop infinitely",
+    "explanation": "Answer: A. If a loop's condition always evaluates to true (non-zero) and nothing inside the loop breaks out of it, the loop repeats endlessly (an infinite loop).",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q25",
+    "word": "PRF192 SP26 RE Q25: What is the output of this reverse loop? #define SIZE 5...",
+    "question": "What is the output of this reverse loop?\n#define SIZE 5\nint nums[SIZE] = {5, 10, 2, -45, 6};\nfor (int i = SIZE - 1; i >= 0; i--)\n    printf(\"%d \", nums[i]);",
+    "options": [
+      "A. 5 10 2 -45 6",
+      "B. 6 -45 2 10 5",
+      "C. -45 2 10 5 6",
+      "D. Error"
+    ],
+    "answer": "B",
+    "correctWord": "B. 6 -45 2 10 5",
+    "explanation": "Answer: B. SIZE is 5, so i starts at SIZE - 1 = 4 and counts down to 0, printing nums[4] through nums[0] in reverse order: 6 -45 2 10 5. Verified with GCC.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q26",
+    "word": "PRF192 SP26 RE Q26: What is the correct order of the main components in the functio...",
+    "question": "What is the correct order of the main components in the function?",
+    "options": [
+      "A. Return type, function name, parameters, and function body.",
+      "B. Return type, function name, return value, and function body",
+      "C. Return type, function name, parameters, and return value",
+      "D. Return value, function name, parameters, and function body"
+    ],
+    "answer": "A",
+    "correctWord": "A. Return type, function name, parameters, and function body.",
+    "explanation": "Answer: A. In C, a function definition follows the syntax: return_type function_name(parameters) { function_body }. Thus the order of components is return type, function name, parameters, and function body. Options B, C, and D place 'return value' in the header/signature or omit parameters or body.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q27",
+    "word": "PRF192 SP26 RE Q27: What will be the output of the following C code? #include <stdio...",
+    "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main()\n{\n    int k = 5;\n    int *p = &k;\n    int **m = &p;\n    **m = 6;\n    printf(\"%d\\n\", k);\n}",
+    "options": [
+      "A. 5",
+      "B. Run time error",
+      "C. 6",
+      "D. Junk"
+    ],
+    "answer": "C",
+    "correctWord": "C. 6",
+    "explanation": "Answer: C. p holds the address of k (&k), and m is a pointer-to-pointer holding the address of p (&p). Dereferencing m twice (**m) accesses k itself, so **m = 6 updates k from 5 to 6. Verified with GCC: the program prints 6.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q28",
+    "word": "PRF192 SP26 RE Q28: Assume we have a function such as: void swap(int a, int b)...",
+    "question": "Assume we have a function such as:\nvoid swap(int a, int b){\n    int t = a;\n    a=b;\n    b=t;\n}\nWhat is the problem with a and b after executing the swap (a, b) function?",
+    "options": [
+      "A. a and b do not change values.",
+      "B. cannot execute the swap(a,b) function.",
+      "C. a has the old value of b, and b has the new value of t.",
+      "D. a and b change values for each other;"
+    ],
+    "answer": "A",
+    "correctWord": "A. a and b do not change values.",
+    "explanation": "Answer: A. C uses pass-by-value for function parameters, so swap(int a, int b) only receives copies of the caller's arguments. Swapping the local copies inside swap() has no effect on the original variables in the caller. To modify the caller's variables, pointers (int *a, int *b) must be passed.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q29",
+    "word": "PRF192 SP26 RE Q29: What is the value of ceil(2.55) from the math.h library?",
+    "question": "What is the value of ceil(2.55) from the math.h library?",
+    "options": [
+      "A. 3",
+      "B. 2",
+      "C. 2.5",
+      "D. 2.6"
+    ],
+    "answer": "A",
+    "correctWord": "A. 3",
+    "explanation": "Answer: A. In <math.h>, ceil(x) returns the smallest integral value (as a double) that is not less than x (rounding up). For 2.55, the ceiling is 3.0 (3). Verified with GCC: ceil(2.55) evaluates to 3. Option B (2) is floor(2.55).",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q30",
+    "word": "PRF192 SP26 RE Q30: What is the main() function in C?",
+    "question": "What is the main() function in C?",
+    "options": [
+      "A. It is the function where the program's execution starts.",
+      "B. Every program has exactly one main function.",
+      "C. The main function always returns an integer value or void.",
+      "D. All answers are correct."
+    ],
+    "answer": "D",
+    "correctWord": "D. All answers are correct.",
+    "explanation": "Answer: D. In C, execution begins at main(), every standalone C program must define exactly one main() function, and in standard/traditional C practice main() is declared with return type int (or void in some non-standard compilers/exams). Therefore all listed statements are considered correct.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q31",
+    "word": "PRF192 SP26 RE Q31: Which of the following code snippets calculates the square root...",
+    "question": "Which of the following code snippets calculates the square root of 9 using the correct C library?",
+    "options": [
+      "A. double result = sqrt(9);",
+      "B. int result = sqrt(9);",
+      "C. float result = sqrt(9);",
+      "D. result = power(9, 0.5);"
+    ],
+    "answer": "A",
+    "correctWord": "A. double result = sqrt(9);",
+    "explanation": "Answer: A. In <math.h>, sqrt() takes a double argument and returns a double result, so double result = sqrt(9); matches the function's return type (evaluating to 3.0, verified with GCC). Options B and C convert/narrow the double return value to int or float, and D uses a nonexistent function power() without a type declaration.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q32",
+    "word": "PRF192 SP26 RE Q32: Which function is specifically used to return the absolute value...",
+    "question": "Which function is specifically used to return the absolute value of an int data type in C?",
+    "options": [
+      "A. abs()",
+      "B. labs()",
+      "C. llabs()",
+      "D. fabs()"
+    ],
+    "answer": "A",
+    "correctWord": "A. abs()",
+    "explanation": "Answer: A. In C (<stdlib.h>), abs(int n) computes the absolute value of an int. labs() is for long int, llabs() is for long long int, and fabs() (in <math.h>) is for double.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q33",
+    "word": "PRF192 SP26 RE Q33: (Choose 1 answer) What will be printed when the following code i...",
+    "question": "(Choose 1 answer)\nWhat will be printed when the following code is executed?\n#include <stdio.h>\nint main() {\n    int a[] = {1,2,3,4,5,6};\n    int* p = a;\n    p += 3;\n    printf(\"%d, %d\",*(a+3), *(p++));\n    return 0;\n}",
+    "options": [
+      "A. 3 3",
+      "B. 3 4",
+      "C. 4 4",
+      "D. 4 5"
+    ],
+    "answer": "C",
+    "correctWord": "C. 4 4",
+    "explanation": "Answer: C. Array indexing starts at 0, so a[3] is 4 and *(a+3) evaluates to 4. Initially p points to a[0], and p += 3 moves it to a[3]. In *(p++), the post-increment operator yields the current address (&a[3]) before incrementing p, so *(p++) also evaluates to 4. Verified with GCC: the program prints '4, 4' (matching option C).",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q34",
+    "word": "PRF192 SP26 RE Q34: Choose the correct statement related to the array.",
+    "question": "Choose the correct statement related to the array.",
+    "options": [
+      "A. Arrays provide constant-time access to elements.",
+      "B. Arrays allow for dynamic resizing during runtime.",
+      "C. Arrays can store elements of different data types.",
+      "D. Arrays automatically adjust their size based on the number of elements."
+    ],
+    "answer": "A",
+    "correctWord": "A. Arrays provide constant-time access to elements.",
+    "explanation": "Answer: A. Elements in a C array are stored in contiguous memory locations of uniform size, allowing direct O(1) constant-time access via index offset arithmetic. C arrays have a fixed size once allocated (so B and D are false) and can only hold elements of the same data type (so C is false).",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q35",
+    "word": "PRF192 SP26 RE Q35: What is a pointer in C programming?",
+    "question": "What is a pointer in C programming?",
+    "options": [
+      "A. A variable stores anything",
+      "B. A variable stores address of another variable or a variable stores address of the dynamically allocated memory",
+      "C. An address in the memory",
+      "D. A variable stores any number"
+    ],
+    "answer": "B",
+    "correctWord": "B. A variable stores address of another variable or a variable stores address of the dynamically allocated memory",
+    "explanation": "Answer: B. A pointer is a typed variable designed to store a memory address—either the address of another variable (via &) or the address of dynamically allocated memory (e.g., returned by malloc/calloc). It is a variable holding an address, not merely an address itself (C) or an arbitrary value/number (A, D).",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q36",
+    "word": "PRF192 SP26 RE Q36: What does the following program print? #include <stdio.h> int mai...",
+    "question": "What does the following program print?\n#include <stdio.h>\n\nint main() {\n    int a = 4, *b = &a;\n    a--;\n    *b=*b-1;\n    printf(\"%d %d\", a, *b);\n    return 0;\n}",
+    "options": [
+      "A. 2 2",
+      "B. 2 1",
+      "C. 3 1",
+      "D. 3 3"
+    ],
+    "answer": "A",
+    "correctWord": "A. 2 2",
+    "explanation": "Answer: A. Initially a = 4 and b points to a (&a), so *b refers to a. After a--, a becomes 3. Then *b = *b - 1 subtracts 1 from a, making a = 2. Printing a and *b outputs 2 2. Verified with GCC: output is '2 2'.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q37",
+    "word": "PRF192 SP26 RE Q37: What will be printed by the code below? #include <stdio.h> #inclu...",
+    "question": "What will be printed by the code below?\n#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int *p = (int*) malloc(sizeof(int));\n    *p = 50;\n    printf(\"%d\", *p);\n    free(p);\n    return 0;\n}",
+    "options": [
+      "A. Address of p",
+      "B. Garbage value",
+      "C. 50",
+      "D. Compilation error"
+    ],
+    "answer": "C",
+    "correctWord": "C. 50",
+    "explanation": "Answer: C. malloc(sizeof(int)) allocates space for one int on the heap, *p = 50 stores 50 in that allocated integer, and printf(\"%d\", *p) prints 50 before free(p) releases the memory. Verified with GCC: compiles cleanly and prints 50.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q38",
+    "word": "PRF192 SP26 RE Q38: int *ptr = malloc( sizeof( int ) ); To reallocate ptr to be an a...",
+    "question": "int *ptr = malloc( sizeof( int ) );\nTo reallocate ptr to be an array of 5 elements, which of the following statements generates an error?",
+    "options": [
+      "A. ptr = realloc( ptr, 5 * sizeof(int) );",
+      "B. realloc( ptr, 5 * sizeof(int) );",
+      "C. ptr += malloc( 5 * sizeof( int ) );",
+      "D. realloc( ptr, 20);",
+      "E. ptr = realloc( ptr, 20);"
+    ],
+    "answer": "C",
+    "correctWord": "C. ptr += malloc( 5 * sizeof( int ) );",
+    "explanation": "Answer: C. Adding two pointers (int * += void *) is invalid in C. Verified with GCC: 'ptr += malloc( 5 * sizeof( int ) );' fails to compile with 'error: invalid operands to binary + (have 'int *' and 'void *')'. Options A, B, D, and E all compile without error (though B and D discard the returned pointer, risking a leak/stale pointer, and D/E assume 4-byte int).",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q39",
+    "word": "PRF192 SP26 RE Q39: What will be the output of the following program? int main() { i...",
+    "question": "What will be the output of the following program?\nint main()\n{\n    int i = 1;\n    int *p = &i;\n    int **k = &p;\n    i+=2;\n    printf(\"%d%d%d\", *p, **k, *(*k));\n    getchar();\n    return 0;\n}",
+    "options": [
+      "A. 333",
+      "B. 111",
+      "C. 222",
+      "D. Compile error"
+    ],
+    "answer": "A",
+    "correctWord": "A. 333",
+    "explanation": "Answer: A. p points to i (&i) and k points to p (&p). After i += 2, i equals 3. Therefore *p, **k, and *(*k) all dereference to i (value 3), so printf(\"%d%d%d\", *p, **k, *(*k)) outputs 333 (verified with GCC once <stdio.h> is included; note that strict C99/C11 compilers such as GCC 14 reject implicit declarations of printf and getchar if #include <stdio.h> is omitted, whereas older C89 compilers like Dev-C++ used in PRF192 compile it and output 333).",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q40",
+    "word": "PRF192 SP26 RE Q40: What is the output of the following code snippet? void main(){ in...",
+    "question": "What is the output of the following code snippet?\nvoid main(){\n    int x = 4;\n    int *p = &x;\n    int *k = p++;\n    int r = p - k;\n    printf(\"%d\", r);\n}",
+    "options": [
+      "A. 1",
+      "B. 4",
+      "C. 5",
+      "D. 0"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1",
+    "explanation": "Answer: A. Initially p points to &x. In int *k = p++, post-increment assigns the original value of p (&x) to k and then increments p by 1 int element (to &x + 1). Subtracting two pointers of the same type (p - k) gives the distance in number of elements, which is 1. Verified with GCC: prints 1.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q41",
+    "word": "PRF192 SP26 RE Q41: Assume we have the following codes: double d=9; double *p = &d;...",
+    "question": "Assume we have the following codes:\ndouble d=9;\ndouble *p = &d;\nSuppose that a double occupies the memory block of 8 bytes, and the address of d is 1200. What is the result of the following expression: p + 8?",
+    "options": [
+      "A. 1264",
+      "B. 1200",
+      "C. 1208",
+      "D. 1209"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1264",
+    "explanation": "Answer: A. Pointer arithmetic scales the offset by the size of the pointed-to type. Because p has type double * and sizeof(double) is 8 bytes, p + 8 adds 8 * 8 = 64 bytes to the base address 1200, resulting in 1200 + 64 = 1264.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q42",
+    "word": "PRF192 SP26 RE Q42: Which of the following is used for single character I/O?",
+    "question": "Which of the following is used for single character I/O?",
+    "options": [
+      "A. getchar() and putchar()",
+      "B. gets() and puts()",
+      "C. scanf() and printf()",
+      "D. fgets() and fputs()"
+    ],
+    "answer": "A",
+    "correctWord": "A. getchar() and putchar()",
+    "explanation": "Answer: A. getchar() reads a single character from standard input (stdin) and putchar() writes a single character to standard output (stdout). gets()/puts() and fgets()/fputs() are for strings/lines, and scanf()/printf() are formatted general-purpose I/O functions.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q43",
+    "word": "PRF192 SP26 RE Q43: Which character is commonly used to mark the end of a string in C?",
+    "question": "Which character is commonly used to mark the end of a string in C?",
+    "options": [
+      "A. '\\0'",
+      "B. '\\n'",
+      "C. '\\t'",
+      "D. '\\'"
+    ],
+    "answer": "A",
+    "correctWord": "A. '\\0'",
+    "explanation": "Answer: A. Strings in C are null-terminated character arrays, meaning they end with the null character '\\0' (ASCII value 0). '\\n' is newline, '\\t' is horizontal tab, and '\\' is an incomplete escape sequence.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q44",
+    "word": "PRF192 SP26 RE Q44: Which function is used to concatenate two strings in C?",
+    "question": "Which function is used to concatenate two strings in C?",
+    "options": [
+      "A. strcat()",
+      "B. strcomb()",
+      "C. strmerge()",
+      "D. strconnect()"
+    ],
+    "answer": "A",
+    "correctWord": "A. strcat()",
+    "explanation": "Answer: A. In <string.h>, strcat(dest, src) appends a copy of the null-terminated string src to the end of dest. strcomb(), strmerge(), and strconnect() are not standard C library functions.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q45",
+    "word": "PRF192 SP26 RE Q45: How can you check if a file was successfully opened for writing i...",
+    "question": "How can you check if a file was successfully opened for writing in C?",
+    "options": [
+      "A. Checking the return value of fopen()",
+      "B. Using ferror()",
+      "C. Using feof()",
+      "D. Using fprintf()"
+    ],
+    "answer": "A",
+    "correctWord": "A. Checking the return value of fopen()",
+    "explanation": "Answer: A. fopen() returns a valid FILE * pointer on success or NULL if opening the file fails, so checking whether the return value of fopen() is NULL verifies if the file opened. ferror() and feof() check stream flags after an I/O operation, and fprintf() writes formatted output.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q46",
+    "word": "PRF192 SP26 RE Q46: Which function is used to read a string from a file in C?",
+    "question": "Which function is used to read a string from a file in C?",
+    "options": [
+      "A. fgets()",
+      "B. fputs()",
+      "C. ftell()",
+      "D. fopen()"
+    ],
+    "answer": "A",
+    "correctWord": "A. fgets()",
+    "explanation": "Answer: A. fgets() reads up to n - 1 characters (or until a newline or EOF) from a FILE * stream into a string buffer. fputs() writes a string to a file, ftell() returns the current file position, and fopen() opens a file.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q47",
+    "word": "PRF192 SP26 RE Q47: What is the output of the following code snippet? char words[4][1...",
+    "question": "What is the output of the following code snippet?\nchar words[4][11];\nstrcpy(words[0], \"apple\");\nstrcat(words[0], \"juice\");\nprintf(\"%s\\n\", words[0]);",
+    "options": [
+      "A. applejuice",
+      "B. apple",
+      "C. juice",
+      "D. juiceapple"
+    ],
+    "answer": "A",
+    "correctWord": "A. applejuice",
+    "explanation": "Answer: A. words[0] has capacity 11 bytes (enough for 10 characters plus '\\0'). strcpy copies \"apple\" into words[0], and strcat appends \"juice\" after it, forming \"applejuice\" (10 chars + '\\0'). Verified with GCC: prints applejuice.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q48",
+    "word": "PRF192 SP26 RE Q48: What will be the output of the following code? printf(\"%c\", tolo...",
+    "question": "What will be the output of the following code?\nprintf(\"%c\", tolower('c'));",
+    "options": [
+      "A. 'c'",
+      "B. 'C'",
+      "C. 'c' or 'C' (depending on IDE)",
+      "D. Compilation error"
+    ],
+    "answer": "A",
+    "correctWord": "A. 'c'",
+    "explanation": "Answer: A. In <ctype.h>, tolower(ch) converts an uppercase letter ('A'-'Z') to its lowercase equivalent and returns any other character unchanged. Because 'c' is already lowercase, tolower('c') returns 'c', and printf(\"%c\", ...) prints c (matching option A). Verified with GCC.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q49",
+    "word": "PRF192 SP26 RE Q49: Which library contains the abs() function?",
+    "question": "Which library contains the abs() function?",
+    "options": [
+      "A. time.h",
+      "B. conio.h",
+      "C. math.h",
+      "D. stdlib.h"
+    ],
+    "answer": "D",
+    "correctWord": "D. stdlib.h",
+    "explanation": "Answer: D. The integer absolute value function abs(int) is declared in <stdlib.h>. <math.h> declares floating-point absolute value functions such as fabs(), <time.h> handles date/time functions, and <conio.h> is a non-standard console I/O header.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  },
+  {
+    "id": "prf192_sp26_re_q50",
+    "word": "PRF192 SP26 RE Q50: Which of these is NOT a relational or logical operator?",
+    "question": "Which of these is NOT a relational or logical operator?",
+    "options": [
+      "A. =",
+      "B. ||",
+      "C. ==",
+      "D. !="
+    ],
+    "answer": "A",
+    "correctWord": "A. =",
+    "explanation": "Answer: A. In C, = is the assignment operator, not a relational or logical operator. == (equal to) and != (not equal to) are relational/equality operators, and || (logical OR) is a logical operator.",
+    "subject": "PRF192",
+    "topic": "PRF192 - SP26 - RE"
+  }
+]
