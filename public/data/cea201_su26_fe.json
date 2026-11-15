@@ -1,0 +1,804 @@
+[
+  {
+    "id": "cea201_su26_fe_q1",
+    "word": "CEA201 SU26 FE Q1: What is the distinction between Computer Architecture and Computer ...",
+    "question": "What is the distinction between Computer Architecture and Computer Organization?",
+    "options": [
+      "A. Computer Architecture is the way the system is structured, while Computer Organization is those attributes of a system that are visible to the user",
+      "B. Computer Architecture is those attributes of a system that are visible to the user, while Computer Organization is the way the system is structured",
+      "C. Computer Architecture and Computer Organization are the same",
+      "D. Computer Architecture is slower than Computer Organization"
+    ],
+    "answer": "B",
+    "correctWord": "B. Computer Architecture is those attributes of a system that are visible to the user, while Computer Organization is the way the system is structured",
+    "explanation": "Answer: B. Computer Architecture refers to the attributes of a system visible to the programmer/user (such as the instruction set, number of bits used for data types, I/O mechanisms, and memory addressing techniques). Computer Organization refers to the operational units and their interconnections (how the hardware system is structured to realize the architectural specification). Option A reverses these definitions.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q2",
+    "word": "CEA201 SU26 FE Q2: Which of the following statements is part of the Von Neumann princ...",
+    "question": "Which of the following statements is part of the Von Neumann principle?",
+    "options": [
+      "A. The computer uses a program counter to indicate the location of the next statement",
+      "B. Computer can control all operations with a single program",
+      "C. Computer memory is not addressable",
+      "D. Each instruction must have a memory area containing the address of the next instruction"
+    ],
+    "answer": "A",
+    "correctWord": "A. The computer uses a program counter to indicate the location of the next statement",
+    "explanation": "Answer: A. Under the Von Neumann (stored-program) architecture, instructions and data reside in a single addressable read-write memory, and execution proceeds sequentially unless modified by a branch; a Program Counter (PC) tracks the address of the next instruction to execute. B is false because a computer runs many programs (not a single program for all operations), C is false because Von Neumann memory is addressable by location, and D is false because sequential execution via the PC avoids storing a next-instruction address inside every instruction.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q3",
+    "word": "CEA201 SU26 FE Q3: __________ provide temporary storage within the CPU for data and ...",
+    "question": "__________ provide temporary storage within the CPU for data and instructions during processing.",
+    "options": [
+      "A. Control Unit",
+      "B. Arithmetic and Logic Unit (ALU)",
+      "C. Registers",
+      "D. CPU Interconnection"
+    ],
+    "answer": "C",
+    "correctWord": "C. Registers",
+    "explanation": "Answer: C. Registers are high-speed storage elements internal to the CPU that temporarily hold data, addresses, and instructions during processing. The Control Unit directs CPU operations, the ALU performs arithmetic and logic operations, and CPU Interconnection provides internal communication paths among the CU, ALU, and registers.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q4",
+    "word": "CEA201 SU26 FE Q4: The first generation of computers used __________ for digital logic...",
+    "question": "The first generation of computers used __________ for digital logic elements and memory?",
+    "options": [
+      "A. Transistor",
+      "B. Integrated Circuits",
+      "C. Large-scale integration",
+      "D. Vacuum Tubes"
+    ],
+    "answer": "D",
+    "correctWord": "D. Vacuum Tubes",
+    "explanation": "Answer: D. First-generation computers (e.g., ENIAC, IAS, UNIVAC I) used vacuum tubes for digital logic elements and memory. Transistors defined the second generation, integrated circuits (SSI/MSI) defined the third generation, and large-scale integration (LSI/VLSI) came in the fourth generation and beyond.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q5",
+    "word": "CEA201 SU26 FE Q5: A benchmark is run 4 times on a computer with execution times: 8s, ...",
+    "question": "A benchmark is run 4 times on a computer with execution times: 8s, 10s, 12s, 14s. What is the arithmetic mean?",
+    "options": [
+      "A. 11s",
+      "B. 10.5s",
+      "C. 11.5s",
+      "D. 12s"
+    ],
+    "answer": "A",
+    "correctWord": "A. 11s",
+    "explanation": "Answer: A. The arithmetic mean is the sum of all execution times divided by the number of runs: (8 + 10 + 12 + 14) / 4 = 44 / 4 = 11s.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q6",
+    "word": "CEA201 SU26 FE Q6: What does the term MIPS rate represent in the context of processor...",
+    "question": "What does the term MIPS rate represent in the context of processor performance?",
+    "options": [
+      "A. The total number of instructions executed by the processor.",
+      "B. The millions of instructions executed per second.",
+      "C. The clock cycle time required for one instruction.",
+      "D. The ratio of memory cycle time to processor cycle time."
+    ],
+    "answer": "B",
+    "correctWord": "B. The millions of instructions executed per second.",
+    "explanation": "Answer: B. MIPS stands for Millions of Instructions Per Second, calculated as Ic / (T × 10^6) or f / (CPI × 10^6), representing the rate at which a processor executes instructions in millions per second.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q7",
+    "word": "CEA201 SU26 FE Q7: What are basic registers that help CPU establish a connection with...",
+    "question": "What are basic registers that help CPU establish a connection with an I/O device?",
+    "options": [
+      "A. I/OAR, I/OBR",
+      "B. I/OAR, MAR",
+      "C. I/OBR, MBR",
+      "D. MAR, MBR"
+    ],
+    "answer": "A",
+    "correctWord": "A. I/OAR, I/OBR",
+    "explanation": "Answer: A. To communicate with an I/O device, the CPU uses the I/O Address Register (I/OAR) to specify the particular I/O device and the I/O Buffer Register (I/OBR) to exchange data between the I/O module and the CPU. By contrast, MAR and MBR are used for interfacing with main memory.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q8",
+    "word": "CEA201 SU26 FE Q8: During instruction execution, which of the following steps is most ...",
+    "question": "During instruction execution, which of the following steps is most critical in determining whether a conditional branch will be taken or not?",
+    "options": [
+      "A. The instruction fetch phase, where the opcode is decoded",
+      "B. The instruction decode phase, where operand types are determined",
+      "C. The execution phase, where the condition flags are evaluated",
+      "D. The write-back phase, where results are stored"
+    ],
+    "answer": "C",
+    "correctWord": "C. The execution phase, where the condition flags are evaluated",
+    "explanation": "Answer: C. Whether a conditional branch is taken depends on testing condition flags (such as Zero, Negative/Sign, Carry, or Overflow) or comparing operands, which occurs during the execution phase. Fetch retrieves the instruction, decode identifies the opcode and operands, and write-back stores computed results.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q9",
+    "word": "CEA201 SU26 FE Q9: __________ interprets the instructions in memory and causes them to...",
+    "question": "__________ interprets the instructions in memory and causes them to be executed.",
+    "options": [
+      "A. Registers",
+      "B. CPU interconnection",
+      "C. Arithmetic and Logic Unit (ALU)",
+      "D. I/O Modules",
+      "E. Control Unit (CU)"
+    ],
+    "answer": "E",
+    "correctWord": "E. Control Unit (CU)",
+    "explanation": "Answer: E. The Control Unit (CU) fetches and interprets instructions from memory and generates the control signals that direct the ALU, registers, and buses to execute them.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q10",
+    "word": "CEA201 SU26 FE Q10: What is the function of the bus system in the computer?",
+    "question": "What is the function of the bus system in the computer?",
+    "options": [
+      "A. Extend the communication function of the computer",
+      "B. Connect components in the computer",
+      "C. Control peripherals",
+      "D. Transform signals in the computer",
+      "E. All of the mentioned"
+    ],
+    "answer": "B",
+    "correctWord": "B. Connect components in the computer",
+    "explanation": "Answer: B. A system bus is a shared communication pathway that connects the major components of a computer (CPU, main memory, and I/O modules) to transfer data, addresses, and control signals. Controlling peripherals and interfacing externally are roles of I/O modules, and buses transmit rather than transform signals.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q11",
+    "word": "CEA201 SU26 FE Q11: Consider an expression: NOT (1111 1010) What is the result of this...",
+    "question": "Consider an expression: NOT (1111 1010)\nWhat is the result of this expression?",
+    "options": [
+      "A. 0000 1010",
+      "B. 0000 0101",
+      "C. 1111 0101",
+      "D. 1111 1010"
+    ],
+    "answer": "B",
+    "correctWord": "B. 0000 0101",
+    "explanation": "Answer: B. The bitwise NOT operation inverts every bit (1 becomes 0, and 0 becomes 1). Inverting 1111 1010 bit by bit yields 0000 0101.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q12",
+    "word": "CEA201 SU26 FE Q12: Which memory type is most suitable for cache implementation?",
+    "question": "Which memory type is most suitable for cache implementation?",
+    "options": [
+      "A. DRAM",
+      "B. Flash",
+      "C. SRAM",
+      "D. ROM"
+    ],
+    "answer": "C",
+    "correctWord": "C. SRAM",
+    "explanation": "Answer: C. Static RAM (SRAM) uses flip-flop logic circuits that retain data without needing periodic refresh cycles and provide very low access latency, making SRAM ideal for CPU cache memory. DRAM is slower and used for main memory, while Flash and ROM are non-volatile.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q13",
+    "word": "CEA201 SU26 FE Q13: What is the key difference between a physical cache and a logical ...",
+    "question": "What is the key difference between a physical cache and a logical (virtual) cache?",
+    "options": [
+      "A. A physical cache is faster than a logical cache.",
+      "B. A physical cache uses virtual addresses, while a logical cache uses physical addresses.",
+      "C. A physical cache stores data using main memory physical addresses, while a logical cache stores data using virtual addresses.",
+      "D. A physical cache operates independently of the MMU, while a logical cache requires MMU translation."
+    ],
+    "answer": "C",
+    "correctWord": "C. A physical cache stores data using main memory physical addresses, while a logical cache stores data using virtual addresses.",
+    "explanation": "Answer: C. A physical cache sits between the MMU and main memory and is indexed/tagged using physical addresses (requiring MMU translation before lookup). A logical (virtual) cache sits between the CPU and the MMU and stores data using virtual addresses, allowing faster cache hits without waiting for MMU translation.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q14",
+    "word": "CEA201 SU26 FE Q14: Which memory can't be erased?",
+    "question": "Which memory can't be erased?",
+    "options": [
+      "A. ROM and PROM",
+      "B. PROM and EPROM",
+      "C. EPROM and EEPROM",
+      "D. ROM and EPROM"
+    ],
+    "answer": "A",
+    "correctWord": "A. ROM and PROM",
+    "explanation": "Answer: A. Masked ROM is permanently programmed during fabrication, and PROM (Programmable ROM) is one-time programmable (typically by blowing fuses), so neither can be erased. By contrast, EPROM can be erased with ultraviolet light and EEPROM can be erased electrically.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q15",
+    "word": "CEA201 SU26 FE Q15: Which of the following best describes the role of error-correcting...",
+    "question": "Which of the following best describes the role of error-correcting codes in memory systems?",
+    "options": [
+      "A. They prevent all types of errors from occurring in memory cells.",
+      "B. They increase the storage capacity of memory by adding extra data bits.",
+      "C. They are used only for detecting errors but not correcting them.",
+      "D. They detect and correct errors by comparing stored and generated code bits."
+    ],
+    "answer": "D",
+    "correctWord": "D. They detect and correct errors by comparing stored and generated code bits.",
+    "explanation": "Answer: D. Error-correcting codes (ECC, such as Hamming SEC-DED) store check bits alongside data bits when writing to memory. Upon reading, check bits are recomputed from the read data and compared (XORed) with the stored check bits to form a syndrome that detects and locates/corrects bit errors. ECC does not physically prevent bit flips or increase usable capacity.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q16",
+    "word": "CEA201 SU26 FE Q16: A DDR memory transfers 64 bits per clock cycle at 200 MHz. What is...",
+    "question": "A DDR memory transfers 64 bits per clock cycle at 200 MHz. What is the peak bandwidth?",
+    "options": [
+      "A. 3.2 GB/s",
+      "B. 1.6 GB/s",
+      "C. 2.4 GB/s",
+      "D. 6.4 GB/s"
+    ],
+    "answer": "A",
+    "correctWord": "A. 3.2 GB/s",
+    "explanation": "Answer: A. DDR (Double Data Rate) memory transfers data on both the rising and falling edges of the clock (2 transfers per clock cycle). With a 64-bit (8-byte) bus at 200 MHz (400 MT/s effective), peak bandwidth = 200 × 10^6 Hz × 2 × (64 / 8) bytes = 3.2 × 10^9 B/s = 3.2 GB/s (corresponding to DDR-400 / PC-3200). Option B (1.6 GB/s) omits the DDR factor of 2.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q17",
+    "word": "CEA201 SU26 FE Q17: With the hard disk data layout, the set of all the tracks in the ...",
+    "question": "With the hard disk data layout, the set of all the tracks in the same relative position on the platter, is called __________.",
+    "options": [
+      "A. Cylinder",
+      "B. Tracks",
+      "C. Inter-track gap",
+      "D. Sector"
+    ],
+    "answer": "A",
+    "correctWord": "A. Cylinder",
+    "explanation": "Answer: A. In a multi-platter hard disk drive, the set of all tracks located at the same radial position across all platter surfaces forms a cylinder, which can be accessed simultaneously by the aligned read/write heads without seeking.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q18",
+    "word": "CEA201 SU26 FE Q18: __________ is a set of physical disk drives viewed by the operating...",
+    "question": "__________ is a set of physical disk drives viewed by the operating system as a single logical drive.",
+    "options": [
+      "A. CLV",
+      "B. SSD",
+      "C. RAID",
+      "D. CAV"
+    ],
+    "answer": "C",
+    "correctWord": "C. RAID",
+    "explanation": "Answer: C. RAID (Redundant Array of Independent Disks) combines multiple physical disk drives into a single logical drive presented to the operating system, providing improved performance via striping and/or fault tolerance via mirroring or parity. CLV and CAV are disk rotational recording schemes, and SSD is a solid-state drive.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q19",
+    "word": "CEA201 SU26 FE Q19: What is the primary mechanism through which data is read from opt...",
+    "question": "What is the primary mechanism through which data is read from optical memory devices?",
+    "options": [
+      "A. Magnetic field detection.",
+      "B. Electrical charge variation.",
+      "C. Capacitive sensing.",
+      "D. Laser beam reflection and detection."
+    ],
+    "answer": "D",
+    "correctWord": "D. Laser beam reflection and detection.",
+    "explanation": "Answer: D. Optical storage media (such as CD, DVD, and Blu-ray) store data as microscopic pits and lands (or phase-change marks) on a reflective surface, and a focused laser beam with a photodetector reads the variations in reflected light intensity.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q20",
+    "word": "CEA201 SU26 FE Q20: Which type of I/O technique involves the CPU continuously polling ...",
+    "question": "Which type of I/O technique involves the CPU continuously polling the status of an I/O device?",
+    "options": [
+      "A. Interrupt-driven I/O",
+      "B. Programmed I/O",
+      "C. Direct Memory Access (DMA)",
+      "D. Channel I/O"
+    ],
+    "answer": "B",
+    "correctWord": "B. Programmed I/O",
+    "explanation": "Answer: B. In Programmed I/O, the CPU issues an I/O command and then repeatedly checks (polls / busy-waits on) the status register of the I/O module until the device is ready, wasting CPU cycles. Interrupt-driven I/O notifies the CPU via an interrupt, and DMA transfers blocks directly between I/O and memory.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q21",
+    "word": "CEA201 SU26 FE Q21: __________: Read instruction from its memory location into the pr...",
+    "question": "__________: Read instruction from its memory location into the processor.",
+    "options": [
+      "A. Instruction fetch",
+      "B. Instruction operation decoding",
+      "C. Operand address calculation",
+      "D. Data operation"
+    ],
+    "answer": "A",
+    "correctWord": "A. Instruction fetch",
+    "explanation": "Answer: A. In the instruction cycle state diagram, Instruction fetch is the step that reads the instruction from its memory location (pointed to by the Program Counter) into the processor (Instruction Register). Decoding then determines the operation, operand address calculation computes effective addresses, and data operation executes the instruction.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q22",
+    "word": "CEA201 SU26 FE Q22: What is the biggest advantage of interrupt-driven I/O over progra...",
+    "question": "What is the biggest advantage of interrupt-driven I/O over programmed I/O?",
+    "options": [
+      "A. It allows the CPU to execute other tasks while waiting for an I/O event",
+      "B. It eliminates the need for an I/O module to interact with peripherals",
+      "C. It ensures that I/O operations are completed in a fixed time interval",
+      "D. It provides a higher data transfer rate than direct memory access (DMA)"
+    ],
+    "answer": "A",
+    "correctWord": "A. It allows the CPU to execute other tasks while waiting for an I/O event",
+    "explanation": "Answer: A. Interrupt-driven I/O eliminates busy-waiting (polling) by letting the CPU issue an I/O command and then switch to other useful work until the I/O module sends an interrupt signal indicating readiness. An I/O module is still required, completion time is not fixed, and DMA is faster for bulk transfers.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q23",
+    "word": "CEA201 SU26 FE Q23: Which of the following is a DISADVANTAGE of using programmed I/O?",
+    "question": "Which of the following is a DISADVANTAGE of using programmed I/O?",
+    "options": [
+      "A. Increases system efficiency",
+      "B. Reduces CPU involvement in I/O operations",
+      "C. Requires the CPU to be constantly busy with I/O tasks",
+      "D. Increases system complexity"
+    ],
+    "answer": "C",
+    "correctWord": "C. Requires the CPU to be constantly busy with I/O tasks",
+    "explanation": "Answer: C. Programmed I/O keeps the CPU tied up polling the I/O status register and transferring every word itself, significantly reducing overall CPU utilization and system efficiency (though its hardware is simple).",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q24",
+    "word": "CEA201 SU26 FE Q24: Choose an operation in which no operating system's utility is cal...",
+    "question": "Choose an operation in which no operating system's utility is called.",
+    "options": [
+      "A. Y=10+7;",
+      "B. Read an integer from the keyboard.",
+      "C. Print data to monitor.",
+      "D. Read data from a file.",
+      "E. None of the others"
+    ],
+    "answer": "A",
+    "correctWord": "A. Y=10+7;",
+    "explanation": "Answer: A. Computing Y=10+7; is an internal CPU/ALU arithmetic and assignment operation executed directly in user mode without requiring any OS system call or I/O utility. Reading from the keyboard, printing to the monitor, and reading from a file all involve I/O devices/files managed by the OS kernel.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q25",
+    "word": "CEA201 SU26 FE Q25: Which scheduling algorithm would be least effective in a system t...",
+    "question": "Which scheduling algorithm would be least effective in a system that requires real-time task execution with strict deadlines?",
+    "options": [
+      "A. First-Come, First-Served (FCFS)",
+      "B. Earliest Deadline First (EDF)",
+      "C. Rate Monotonic Scheduling (RMS)",
+      "D. Round-Robin (RR)"
+    ],
+    "answer": "A",
+    "correctWord": "A. First-Come, First-Served (FCFS)",
+    "explanation": "Answer: A. First-Come, First-Served (FCFS) is non-preemptive and ignores task priorities and deadlines; a single long-running task arriving earlier will block urgent real-time tasks (the convoy effect), causing missed strict deadlines. EDF and RMS are dedicated real-time scheduling algorithms, and Round-Robin at least provides preemptive time-slicing.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q26",
+    "word": "CEA201 SU26 FE Q26: Which method allows the programmer to view memory as consisting...",
+    "question": "Which method allows the programmer to view memory as consisting of multiple address spaces and is used to map logical addresses of variable length onto physical memory?",
+    "options": [
+      "A. Paging",
+      "B. Overlays",
+      "C. Segmentation",
+      "D. Paging with segmentation"
+    ],
+    "answer": "C",
+    "correctWord": "C. Segmentation",
+    "explanation": "Answer: C. Segmentation allows a programmer to view memory as consisting of multiple independent address spaces (segments) of variable, dynamic length and maps variable-length logical addresses onto physical memory. Paging divides memory into fixed-size pages/frames rather than variable-length logical spaces, overlays are a manual swapping technique for fitting large programs into limited memory, and paging with segmentation combines both rather than solely describing variable-length logical segments.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q27",
+    "word": "CEA201 SU26 FE Q27: The Boolean expression A + 1 = 1 is a correct identity.",
+    "question": "The Boolean expression A + 1 = 1 is a correct identity.",
+    "options": [
+      "A. True",
+      "B. False"
+    ],
+    "answer": "A",
+    "correctWord": "A. True",
+    "explanation": "Answer: A. By the Dominance (Annulment) Law of Boolean algebra for the OR (+) operation, any Boolean variable ORed with 1 always evaluates to 1 (0 + 1 = 1 and 1 + 1 = 1), so A + 1 = 1 is a valid identity.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q28",
+    "word": "CEA201 SU26 FE Q28: When both inputs are 0, what is the result of a NOR gate?",
+    "question": "When both inputs are 0, what is the result of a NOR gate?",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 2",
+      "D. Undefined",
+      "E. #NA"
+    ],
+    "answer": "B",
+    "correctWord": "B. 1",
+    "explanation": "Answer: B. A NOR gate outputs the logical negation of the OR operation: NOT(A OR B). When both inputs A = 0 and B = 0, A OR B = 0, so NOT(0) = 1.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q29",
+    "word": "CEA201 SU26 FE Q29: Suppose that digital gates have two inputs and one output...",
+    "question": "Suppose that digital gates have two inputs and one output, except that the NOT gate needs one input. In the Boolean expression below, B' means NOT B and C' means NOT C. What gates are required to implement the expression ABC+AB'C' after simplification?",
+    "options": [
+      "A. 3 AND gates, 1 OR gate, 2 NOT gates.",
+      "B. 3 OR gates, 1 AND gate, 2 NOT gates.",
+      "C. 2 AND gates, 2 OR gates, 2 NOT gates.",
+      "D. 3 AND gates, 2 OR gates, 1 NOT gate."
+    ],
+    "answer": "A",
+    "correctWord": "A. 3 AND gates, 1 OR gate, 2 NOT gates.",
+    "explanation": "Answer: A. Factoring A out of ABC + AB'C' simplifies the expression to A(BC + B'C'). Using 2-input AND/OR gates and 1-input NOT gates: B' and C' require 2 NOT gates; BC requires 1 AND gate; B'C' requires 1 AND gate; (BC + B'C') requires 1 OR gate; and A·(BC + B'C') requires 1 AND gate. Total: 3 AND gates, 1 OR gate, and 2 NOT gates (compared to 4 AND gates without factoring).",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q30",
+    "word": "CEA201 SU26 FE Q30: Given the following Karnaugh map, what is the optimal...",
+    "question": "(Choose 1 answer)\nGiven the following Karnaugh map, what is the optimal expression in the sum of product format (X’ means Not X)?\n\nKarnaugh map (rows A = 0, 1; columns BC = 00, 01, 11, 10):\nRow A = 0: BC=00 -> 1, BC=01 -> blank (0), BC=11 -> 1, BC=10 -> 1\nRow A = 1: BC=00 -> 1, BC=01 -> 1, BC=11 -> blank (0), BC=10 -> 1",
+    "options": [
+      "A. C’ + AB’ + A’B",
+      "B. C’ + AC + A’B",
+      "C. C’ + AB’ + BC",
+      "D. AC’ + B’C"
+    ],
+    "answer": "A",
+    "correctWord": "A. C’ + AB’ + A’B",
+    "explanation": "Answer: A. From the Karnaugh map, the 1s form three prime implicants: (1) columns BC = 00 and BC = 10 across both rows A = 0 and A = 1 give a group of 4 covering C’ (where C = 0); (2) row A = 1, columns BC = 00 and BC = 01 give a group of 2 covering AB’; and (3) row A = 0, columns BC = 11 and BC = 10 give a group of 2 covering A’B. Combining them yields C’ + AB’ + A’B. Options B, C, and D fail on minterms such as ABC = 101 (should be 1) or 111 (should be 0).",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q31",
+    "word": "CEA201 SU26 FE Q31: During the fetch instruction phase, what is the primary...",
+    "question": "During the fetch instruction phase, what is the primary task of the processor?",
+    "options": [
+      "A. Decode the instruction to determine the required action.",
+      "B. Perform arithmetic or logical operations on the data.",
+      "C. Write the results of the execution to memory or an I/O module.",
+      "D. Retrieve the instruction from memory, such as cache or main memory."
+    ],
+    "answer": "D",
+    "correctWord": "D. Retrieve the instruction from memory, such as cache or main memory.",
+    "explanation": "Answer: D. In the instruction cycle, the fetch instruction phase reads (retrieves) the next instruction from memory (cache or main memory) using the address in the Program Counter (PC). Option A describes the decode phase, B describes the data processing/execute phase, and C describes the write-back/store phase.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q32",
+    "word": "CEA201 SU26 FE Q32: Which of the following is not an operand type?",
+    "question": "Which of the following is not an operand type?",
+    "options": [
+      "A. Addresses",
+      "B. Logical data",
+      "C. Value",
+      "D. Characters"
+    ],
+    "answer": "C",
+    "correctWord": "C. Value",
+    "explanation": "Answer: C. According to William Stallings's Computer Organization and Architecture, the four general categories of operand types are Addresses, Numbers, Characters, and Logical data. 'Value' is not one of these operand types.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q33",
+    "word": "CEA201 SU26 FE Q33: What is a branch instruction?",
+    "question": "What is a branch instruction?",
+    "options": [
+      "A. The instructions that are used to divide a program into multiple subprograms",
+      "B. The instructions that have as one of its operands the address of the next instruction to be executed",
+      "C. The instructions that are used to pause the program",
+      "D. The instructions that are used to return to the beginning of the program"
+    ],
+    "answer": "B",
+    "correctWord": "B. The instructions that have as one of its operands the address of the next instruction to be executed",
+    "explanation": "Answer: B. A branch (or jump) instruction is a transfer-of-control instruction that specifies as one of its operands the address of the next instruction to be executed, altering the normal sequential flow of the Program Counter when taken.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q34",
+    "word": "CEA201 SU26 FE Q34: Which of the following statement is correct about addressing...",
+    "question": "Which of the following statement is correct about addressing modes?",
+    "options": [
+      "A. They define how the operands of an instruction are specified, including immediate, register, direct, and indirect addressing modes",
+      "B. Addressing modes are irrelevant in computer architecture, and all instructions only operate on values stored in registers",
+      "C. Addressing modes are limited to only immediate and direct modes; register and indirect addressing modes are not used in modern computer systems",
+      "D. All instructions in computer architecture use indirect addressing modes, making it the only relevant mode for operand specification"
+    ],
+    "answer": "A",
+    "correctWord": "A. They define how the operands of an instruction are specified, including immediate, register, direct, and indirect addressing modes",
+    "explanation": "Answer: A. Addressing modes specify the rules for interpreting or modifying the address field of an instruction to locate its operands, encompassing immediate, direct, indirect, register, register indirect, displacement, and stack modes. Options B, C, and D make false restrictive claims.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q35",
+    "word": "CEA201 SU26 FE Q35: Which of the following PDP series computers is known for its...",
+    "question": "Which of the following PDP series computers is known for its use of 12-bit instructions and a single general-purpose register, the accumulator?",
+    "options": [
+      "A. PDP-8",
+      "B. PDP-10",
+      "C. PDP-11",
+      "D. PDP-6"
+    ],
+    "answer": "A",
+    "correctWord": "A. PDP-8",
+    "explanation": "Answer: A. The DEC PDP-8 uses 12-bit words and 12-bit instructions with a single general-purpose register, the accumulator (AC). By contrast, PDP-6 and PDP-10 are 36-bit architectures, and PDP-11 is a 16-bit architecture with eight general-purpose registers.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q36",
+    "word": "CEA201 SU26 FE Q36: Which instruction is used by MASM32 to return from a procedure?",
+    "question": "Which instruction is used by MASM32 to return from a procedure?",
+    "options": [
+      "A. RET",
+      "B. EXIT",
+      "C. END",
+      "D. RES"
+    ],
+    "answer": "A",
+    "correctWord": "A. RET",
+    "explanation": "Answer: A. In x86 / MASM32 assembly language, the RET instruction returns control from a procedure by popping the return address off the stack into EIP. END is a directive marking the end of the source file, EXIT is not the standard x86 procedure-return instruction (exit/ExitProcess terminates a program), and RES is not a return instruction.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q37",
+    "word": "CEA201 SU26 FE Q37: Steps for executing a machine instruction are concerned...",
+    "question": "Steps for executing a machine instruction are concerned, choose the most suitable statement for the role of the process data step.",
+    "options": [
+      "A. The execution of an instruction may require performing some arithmetic or logical operation on data.",
+      "B. The processor reads an instruction from memory (cache, main memory).",
+      "C. The instruction is decoded to determine what action is required.",
+      "D. The results of an execution may require writing data to memory or an I/O module."
+    ],
+    "answer": "A",
+    "correctWord": "A. The execution of an instruction may require performing some arithmetic or logical operation on data.",
+    "explanation": "Answer: A. In Stallings's five instruction-execution steps, 'Process data' means executing the instruction by performing an arithmetic or logical operation on data. Option B describes 'Fetch instruction', C describes 'Interpret instruction', and D describes 'Write data'.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q38",
+    "word": "CEA201 SU26 FE Q38: How many general-purpose registers are there in the...",
+    "question": "How many general-purpose registers are there in the Microprocessor Register Organizations of Intel 80386—Pentium 4 ?",
+    "options": [
+      "A. 8",
+      "B. 16",
+      "C. 4",
+      "D. 12"
+    ],
+    "answer": "A",
+    "correctWord": "A. 8",
+    "explanation": "Answer: A. In the 32-bit IA-32 (Intel 80386 through Pentium 4) register organization, there are 8 general-purpose registers: EAX, EBX, ECX, EDX, ESI, EDI, EBP, and ESP.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q39",
+    "word": "CEA201 SU26 FE Q39: What is the significance of the program counter (PC) in the...",
+    "question": "What is the significance of the program counter (PC) in the fetch phase of the instruction cycle?",
+    "options": [
+      "A. The program counter (PC) is not used in the fetch phase, and its role is limited to tracking the number of instructions executed by the CPU",
+      "B. The program counter (PC) in the fetch phase holds the memory address of the next instruction to be fetched and executed",
+      "C. The program counter (PC) is responsible for executing instructions and has no specific role during the fetch phase",
+      "D. The program counter (PC) is only relevant in multi-core processors and does not contribute to the fetch phase of the instruction cycle in single-core systems"
+    ],
+    "answer": "B",
+    "correctWord": "B. The program counter (PC) in the fetch phase holds the memory address of the next instruction to be fetched and executed",
+    "explanation": "Answer: B. During the fetch phase, the Program Counter (PC) supplies the memory address of the next instruction to be fetched into the Instruction Register (IR), and is then incremented (unless altered by a branch) to point to the following instruction.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q40",
+    "word": "CEA201 SU26 FE Q40: When considering the number of pipeline stages, what...",
+    "question": "When considering the number of pipeline stages, what trade-offs must be made in computer architecture?",
+    "options": [
+      "A. Trade-offs between potential speedup and increased cost and delays",
+      "B. Trade-offs between software and hardware",
+      "C. Trade-offs between speed and efficiency",
+      "D. Trade-offs between branching and executing instructions with conditions"
+    ],
+    "answer": "A",
+    "correctWord": "A. Trade-offs between potential speedup and increased cost and delays",
+    "explanation": "Answer: A. Increasing the number of pipeline stages raises potential instruction throughput/speedup, but introduces additional hardware cost (more inter-stage latches and control logic) as well as latch propagation delays and larger branch-flush penalties. Designers must balance potential speedup against these increased costs and delays.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q41",
+    "word": "CEA201 SU26 FE Q41: In the following issues related to CPU organization, which...",
+    "question": "In the following issues related to CPU organization, which of them determines the addressing modes of the instruction set?",
+    "options": [
+      "A. Operands used.",
+      "B. Execution sequencing.",
+      "C. Operations performed.",
+      "D. Statement types in a high-level programming language."
+    ],
+    "answer": "A",
+    "correctWord": "A. Operands used.",
+    "explanation": "Answer: A. In RISC/CPU instruction execution studies (Stallings), the types of operands used and their frequency determine memory organization for storing them and the addressing modes for accessing them. Operations performed determines opcodes/ALU functions, and execution sequencing determines control and pipeline organization.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q42",
+    "word": "CEA201 SU26 FE Q42: With respect to reduced instruction set CPU organization...",
+    "question": "With respect to reduced instruction set CPU organization, what is register window?",
+    "options": [
+      "A. A list of registers which are shared between the calling procedure.",
+      "B. A list of all registers in the CPU that are shared by every execution.",
+      "C. A list of registers used in the current program.",
+      "D. A list of registers that can be accessed by a procedure."
+    ],
+    "answer": "D",
+    "correctWord": "D. A list of registers that can be accessed by a procedure.",
+    "explanation": "Answer: D. In a RISC CPU with a large physical register file, a register window is the fixed-size subset (list) of registers visible to and accessible by the currently executing procedure (comprising global, parameter/in, local, and temporary/out registers). Option A describes only the overlapping parameter subset rather than the full window.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q43",
+    "word": "CEA201 SU26 FE Q43: How does pipelining in a RISC architecture handle branch...",
+    "question": "How does pipelining in a RISC architecture handle branch instruction?",
+    "options": [
+      "A. By using NOOP instructions inserted by the compiler or assembler",
+      "B. By eliminating branch instructions from the instruction stream",
+      "C. By executing branch instructions in a separate pipeline",
+      "D. By delaying all instructions until branch instructions are executed"
+    ],
+    "answer": "A",
+    "correctWord": "A. By using NOOP instructions inserted by the compiler or assembler",
+    "explanation": "Answer: A. Classic RISC pipelines use delayed branching to handle branch instructions: the instruction slot immediately following the branch (the delay slot) always executes. When the compiler or assembler cannot schedule a useful independent instruction into that delay slot, it inserts a NOOP instruction.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q44",
+    "word": "CEA201 SU26 FE Q44: What is a scalar instruction?",
+    "question": "What is a scalar instruction?",
+    "options": [
+      "A. An instruction in which all operands must be single values.",
+      "B. An instruction in which all operands must be groups such as arrays.",
+      "C. An instruction in which all operands can be single values or groups.",
+      "D. An instruction in which has no operand."
+    ],
+    "answer": "A",
+    "correctWord": "A. An instruction in which all operands must be single values.",
+    "explanation": "Answer: A. A scalar instruction operates on scalar operands—single individual data values (such as one integer or floating-point number per operand)—in contrast to vector or SIMD instructions that operate on arrays or vectors of values.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q45",
+    "word": "CEA201 SU26 FE Q45: __________ is (are) determined by the number of instructions...",
+    "question": "__________ is (are) determined by the number of instructions that can be fetched and executed at the same time (the number of parallel pipelines) and by the speed and sophistication of the mechanisms that the processor uses to find independent instructions.",
+    "options": [
+      "A. Instruction-level parallelism",
+      "B. Machine parallelism",
+      "C. Both instruction-level parallelism and machine parallelism",
+      "D. None of the mentioned"
+    ],
+    "answer": "B",
+    "correctWord": "B. Machine parallelism",
+    "explanation": "Answer: B. In superscalar processor terminology (Stallings), machine parallelism is a measure of the processor's ability to take advantage of instruction-level parallelism and is determined by the number of parallel pipelines (instructions fetched/executed concurrently) and the speed/sophistication of hardware mechanisms for finding independent instructions. Instruction-level parallelism refers to the degree to which a program's instructions can be executed in parallel.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q46",
+    "word": "CEA201 SU26 FE Q46: Multiple processors share a single memory or pool of memory...",
+    "question": "“Multiple processors share a single memory or pool of memory by means of a shared bus or other interconnection mechanism; a distinguishing feature is that the memory access time to any region of memory is approximately the same for each processor”. Which concept does the statement belong to?",
+    "options": [
+      "A. Symmetric multiprocessor (SMP)",
+      "B. Nonuniform memory access (NUMA)",
+      "C. Cluster",
+      "D. Single instruction, multiple data (SIMD)"
+    ],
+    "answer": "A",
+    "correctWord": "A. Symmetric multiprocessor (SMP)",
+    "explanation": "Answer: A. A symmetric multiprocessor (SMP) shares a single main memory pool among multiple processors over a shared bus or interconnection network such that memory access time to any region is uniform (approximately the same) for every processor. NUMA has nonuniform access times depending on memory locality, clusters use private memory per node, and SIMD is a data-parallel execution model.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q47",
+    "word": "CEA201 SU26 FE Q47: Which write technique in which all write operations are made...",
+    "question": "Which write technique in which all write operations are made to main memory as well as to the cache, ensuring that main memory is always valid.",
+    "options": [
+      "A. Write through",
+      "B. Write back",
+      "C. Write around",
+      "D. No write allocate"
+    ],
+    "answer": "A",
+    "correctWord": "A. Write through",
+    "explanation": "Answer: A. Under the write-through cache write policy, every write operation updates both the cache line and main memory simultaneously, guaranteeing that main memory is always up to date (valid). Write-back updates only the cache initially and defers writing to main memory until line replacement.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q48",
+    "word": "CEA201 SU26 FE Q48: In a chip multiprocessor (CMP) with simultaneous multithreading...",
+    "question": "In a chip multiprocessor (CMP) with simultaneous multithreading (SMT), what is the main benefit of executing multiple threads in a single core?",
+    "options": [
+      "A. It eliminates data hazards by ensuring each thread has a dedicated execution pipeline.",
+      "B. It increases overall core utilization by filling idle execution units with instructions from multiple threads.",
+      "C. It reduces the power consumption of the processor by lowering the operating frequency of each thread.",
+      "D. It guarantees deterministic execution times for each thread, improving real-time performance."
+    ],
+    "answer": "B",
+    "correctWord": "B. It increases overall core utilization by filling idle execution units with instructions from multiple threads.",
+    "explanation": "Answer: B. Simultaneous multithreading (SMT) lets a single superscalar core issue instructions from multiple hardware threads in the same clock cycle, utilizing idle execution units/issue slots left unused by any single thread (due to stalls or dependencies) and thus raising overall core utilization.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q49",
+    "word": "CEA201 SU26 FE Q49: Follow the Amdahl's law for multiprocessors, if only 10%...",
+    "question": "Follow the Amdahl's law for multiprocessors, if only 10% of the code is inherently serial (f = 0.9), running the program on a multicore system with 4 processors, a performance gain (speedup factor) would be _______.",
+    "options": [
+      "A. 307%",
+      "B. 297%",
+      "C. 317%",
+      "D. 327%"
+    ],
+    "answer": "A",
+    "correctWord": "A. 307%",
+    "explanation": "Answer: A. By Amdahl's Law, Speedup = 1 / ((1 - f) + f / N), where f = 0.9 is the parallelizable fraction (10% serial, so 1 - f = 0.1) and N = 4 processors. Speedup = 1 / (0.1 + 0.9 / 4) = 1 / (0.1 + 0.225) = 1 / 0.325 ≈ 3.0769, which corresponds to 307% (truncated from 307.69%).",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  },
+  {
+    "id": "cea201_su26_fe_q50",
+    "word": "CEA201 SU26 FE Q50: What is the main benefit of simultaneous multithreading...",
+    "question": "What is the main benefit of simultaneous multithreading (SMT) in multicore architectures?",
+    "options": [
+      "A. It reduces the physical size of the processor",
+      "B. It increases the number of threads that can be executed in parallel",
+      "C. It simplifies the processor architecture",
+      "D. It decreases overall power consumption by limiting thread-level activity"
+    ],
+    "answer": "B",
+    "correctWord": "B. It increases the number of threads that can be executed in parallel",
+    "explanation": "Answer: B. Simultaneous multithreading (SMT) allows each physical core to maintain separate architectural contexts for multiple threads and issue instructions from them concurrently, increasing the total number of threads that can be executed in parallel across the multicore processor.",
+    "subject": "CEA201",
+    "topic": "SU26 - FE"
+  }
+]

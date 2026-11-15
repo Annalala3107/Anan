@@ -1,0 +1,803 @@
+[
+  {
+    "id": "cea201_su26_re_q1",
+    "word": "CEA201 SU26 RE Q1: What is the primary role of the IO module? (choose two...",
+    "question": "What is the primary role of the IO module? (choose two correct answers)",
+    "options": [
+      "A. Its role is data transfer, it will transfer data to and from peripheral devices.",
+      "B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals",
+      "C. Its role is data formatting and converting analog signals into digital audio data for CPU",
+      "D. Its role is protecting data from user, ensuring that sensitive information is not lost or intercepted."
+    ],
+    "answer": "A, B",
+    "correctWord": "A. Its role is data transfer, it will transfer data to and from peripheral devices.; B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals",
+    "explanation": "Answer: A, B. An I/O module serves as the interface between the system bus (CPU/memory) and peripheral devices. Its primary roles are transferring data to and from external devices (A) and managing device communication, control, timing, and data buffering between the CPU and peripherals (B). Option C describes specialized audio ADC hardware rather than a general I/O module, and option D describes OS/security functions.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q2",
+    "word": "CEA201 SU26 RE Q2: Which of the following attributes do not belong to compute...",
+    "question": "Which of the following attributes do not belong to computer architecture?",
+    "options": [
+      "A. Number of bits used to represent data types",
+      "B. The instruction set",
+      "C. Interface between the computer and peripherals",
+      "D. Techniques for addressing memory",
+      "E. The memory technology used",
+      "F. I/O mechanisms"
+    ],
+    "answer": "C, E",
+    "correctWord": "C. Interface between the computer and peripherals; E. The memory technology used",
+    "explanation": "Answer: C, E. In computer architecture vs. computer organization (Stallings, Chapter 1), architectural attributes are those visible to the programmer: the instruction set (B), number of bits used to represent various data types (A), I/O mechanisms (F), and techniques for addressing memory (D). Organizational attributes are hardware implementation details transparent to the programmer, which include control signals, interfaces between the computer and peripherals (C), and the memory technology used (E).",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q3",
+    "word": "CEA201 SU26 RE Q3: What is the fundamental characteristic of a hierarchical...",
+    "question": "What is the fundamental characteristic of a hierarchical system?",
+    "options": [
+      "A. It operates independently without subsystems.",
+      "B. It uses random connections between components.",
+      "C. It is designed to function without any abstraction.",
+      "D. It consists of interrelated subsystems arranged in layers."
+    ],
+    "answer": "D",
+    "correctWord": "D. It consists of interrelated subsystems arranged in layers.",
+    "explanation": "Answer: D. A hierarchical system is defined as a set of interrelated subsystems, each organized hierarchically in layers until reaching an elementary subsystem at the lowest level. At each level, the designer only needs to consider structure and function through abstraction, so A, B, and C contradict the definition.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q4",
+    "word": "CEA201 SU26 RE Q4: A program is run on a 40 MHz processor. The executed prog...",
+    "question": "(Choose 1 answer)\nA program is run on a 40 MHz processor. The executed program consists of 18 millions instruction executions, with the following instruction mix and ck cycle count. Determine the execution time for this program.\n\nInstruction Type | Instruction Count (millions) | Cycles per Instruction\nMachine A:\nArithmetic and logic | 8 | 1\nLoad and store | 4 | 3\nBranch | 2 | 4\nOthers | 4 | 3",
+    "options": [
+      "A. T = ~ 0.1 second",
+      "B. T = ~ 0.2 second",
+      "C. T = ~ 0.3 second",
+      "D. T = ~ 0.4 second"
+    ],
+    "answer": "B",
+    "correctWord": "B. T = ~ 0.2 second",
+    "explanation": "Answer: B. First compute total clock cycles from the table: (8 × 1 + 4 × 3 + 2 × 4 + 4 × 3) million = (8 + 12 + 8 + 12) million = 40 million cycles (effective CPI = 40 / 18 ≈ 2.22). Note: this question combines a 40 MHz stem typo with the Machine A textbook problem (Stallings Chapter 2), where the processor clock rate is 200 MHz, giving T = 40 × 10^6 / (200 × 10^6) = 0.2 second (option B). (Using 40 MHz literally would give 40M / 40M = 1.0 s, which is not among the choices.)",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q5",
+    "word": "CEA201 SU26 RE Q5: During the early evolution of computers, which key archit...",
+    "question": "During the early evolution of computers, which key architectural advancement had the most profound impact on transitioning from first-generation vacuum tube computers to second-generation transistor-based computers?",
+    "options": [
+      "A. The introduction of punched cards for programming",
+      "B. The development of magnetic core memory",
+      "C. The shift from sequential execution to pipelining",
+      "D. The invention of integrated circuits"
+    ],
+    "answer": "B",
+    "correctWord": "B. The development of magnetic core memory",
+    "explanation": "Answer: B. Second-generation computers replaced vacuum tubes with transistors and adopted magnetic core memory as fast, reliable primary memory (alongside index registers, floating-point hardware, and I/O channels). Punched cards predate electronic computers (A), pipelining became mainstream later (C), and integrated circuits define the third generation (D).",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q6",
+    "word": "CEA201 SU26 RE Q6: Three computers complete the same task at rates of 4, 5,...",
+    "question": "Three computers complete the same task at rates of 4, 5, and 10 tasks per second. What is the harmonic mean rate?",
+    "options": [
+      "A. 5.45",
+      "B. 5.00",
+      "C. 6.00",
+      "D. 6.67"
+    ],
+    "answer": "A",
+    "correctWord": "A. 5.45",
+    "explanation": "Answer: A. For rates r1 = 4, r2 = 5, and r3 = 10, the harmonic mean is H = n / (1/r1 + 1/r2 + 1/r3) = 3 / (1/4 + 1/5 + 1/10) = 3 / (0.25 + 0.20 + 0.10) = 3 / 0.55 = 60 / 11 ≈ 5.45 tasks per second.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q7",
+    "word": "CEA201 SU26 RE Q7: What do MIPS stand for when measuring processor performa...",
+    "question": "What do MIPS stand for when measuring processor performance?",
+    "options": [
+      "A. Memory Index Process System",
+      "B. Million Instructions Per Second",
+      "C. Machine Integrated Processing Speed",
+      "D. Mega Input Pipeline Speed"
+    ],
+    "answer": "B",
+    "correctWord": "B. Million Instructions Per Second",
+    "explanation": "Answer: B. MIPS stands for Million Instructions Per Second, calculated as Instruction Count / (Execution Time × 10^6), or Clock Rate / (CPI × 10^6).",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q8",
+    "word": "CEA201 SU26 RE Q8: Which type of interrupt is exemplified by \"division by ...",
+    "question": "Which type of interrupt is exemplified by \"division by zero, attempt to execute an illegal machine instruction\"?",
+    "options": [
+      "A. Program",
+      "B. Timer",
+      "C. I/O",
+      "D. Hardware failure"
+    ],
+    "answer": "A",
+    "correctWord": "A. Program",
+    "explanation": "Answer: A. Program interrupts are generated by conditions arising directly from instruction execution, such as arithmetic overflow, division by zero, attempting to execute an illegal machine instruction, or referencing outside a user's allowed memory space. Timer (B), I/O (C), and Hardware failure (D) originate from timers, I/O controllers, and hardware faults such as power failure or parity errors, respectively.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q9",
+    "word": "CEA201 SU26 RE Q9: In the context of the basic instruction cycle, when the...",
+    "question": "In the context of the basic instruction cycle, when the fifth instruction is executing, which of the following is the correct statement?",
+    "options": [
+      "A. The sixth instruction is fetched.",
+      "B. The fifth instruction is fetched.",
+      "C. The fourth instruction is fetched.",
+      "D. All program's instructions are fetched."
+    ],
+    "answer": "B",
+    "correctWord": "B. The fifth instruction is fetched.",
+    "explanation": "Answer: B. In the basic (non-pipelined) instruction cycle, each instruction goes sequentially through a fetch step followed by an execute step before the next instruction is fetched. When the fifth instruction is executing, it is the fifth instruction that was fetched for the current cycle; the sixth instruction is not fetched until the fifth completes execution (unlike pipelined execution).",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q10",
+    "word": "CEA201 SU26 RE Q10: In a system with an 8-bit address bus, how many unique...",
+    "question": "In a system with an 8-bit address bus, how many unique memory locations can be addressed?",
+    "options": [
+      "A. 64",
+      "B. 128",
+      "C. 256",
+      "D. 512"
+    ],
+    "answer": "C",
+    "correctWord": "C. 256",
+    "explanation": "Answer: C. An n-bit address bus can specify 2^n unique addresses. With n = 8 bits, the number of addressable memory locations is 2^8 = 256 (addresses 0 through 255).",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q11",
+    "word": "CEA201 SU26 RE Q11: Which type of memory cannot be altered except by destr...",
+    "question": "Which type of memory cannot be altered except by destroying the storage unit?",
+    "options": [
+      "A. Read-only memory",
+      "B. Nonvolatile memory",
+      "C. Erasable memory",
+      "D. Volatile memory"
+    ],
+    "answer": "A",
+    "correctWord": "A. Read-only memory",
+    "explanation": "Answer: A. Nonerasable memory cannot be altered except by destroying the storage unit; semiconductor memory of this type is known as read-only memory (ROM). Nonvolatile memory (B) simply retains data without power (such as Flash or EEPROM, which can be altered), while erasable (C) and volatile (D) memories can be rewritten.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q12",
+    "word": "CEA201 SU26 RE Q12: Which method of accessing units of data is used to co...",
+    "question": "Which method of accessing units of data is used to copy a block in main memory into cache memory?",
+    "options": [
+      "A. Direct access",
+      "B. Random access",
+      "C. Sequential access",
+      "D. Associative"
+    ],
+    "answer": "D",
+    "correctWord": "D. Associative",
+    "explanation": "Answer: D. In Stallings' classification of memory access methods, cache memories employ associative access (comparing tag bits across locations simultaneously to locate/map blocks from main memory), whereas sequential access applies to magnetic tape (C), direct access applies to magnetic disks (A), and random access applies to standard main memory (B).",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q13",
+    "word": "CEA201 SU26 RE Q13: A two-way set-associative cache has lines of 16 bytes...",
+    "question": "A two-way set-associative cache has lines of 16 bytes and a total size of 8 Kbytes. The 64-Mbyte main memory is byte addressable. How many bits are there in the set field of the cache?",
+    "options": [
+      "A. 5",
+      "B. 6",
+      "C. 7",
+      "D. 8",
+      "E. 9"
+    ],
+    "answer": "D",
+    "correctWord": "D. 8",
+    "explanation": "Answer: D. Total cache size = 8 Kbytes = 8192 bytes. With 16-byte lines, the total number of cache lines is 8192 / 16 = 512 lines. Because the cache is 2-way set-associative (2 lines per set), there are 512 / 2 = 256 sets = 2^8 sets. Therefore, the set field requires log2(256) = 8 bits. (For reference, 64 MB = 2^26 bytes gives 26 address bits: 4-bit word offset, 8-bit set field, and 14-bit tag.)",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q14",
+    "word": "CEA201 SU26 RE Q14: Which replacement algorithms are common in cache mana...",
+    "question": "Which replacement algorithms are common in cache management? (Choose three correct answers).",
+    "options": [
+      "A. FIFO",
+      "B. Random",
+      "C. LRU",
+      "D. DFS"
+    ],
+    "answer": "A, B, C",
+    "correctWord": "A. FIFO; B. Random; C. LRU",
+    "explanation": "Answer: A, B, C. The most common cache replacement algorithms are LRU (Least Recently Used), FIFO (First-In, First-Out), LFU (Least Frequently Used), and Random. DFS (Depth-First Search) is a graph traversal algorithm, not a cache replacement policy.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q15",
+    "word": "CEA201 SU26 RE Q15: The basic element of a semiconductor memory is ______...",
+    "question": "The basic element of a semiconductor memory is ____________?",
+    "options": [
+      "A. the memory cell",
+      "B. the memory patten",
+      "C. the memory word",
+      "D. the memory block"
+    ],
+    "answer": "A",
+    "correctWord": "A. the memory cell",
+    "explanation": "Answer: A. The basic element of a semiconductor memory is the memory cell, which exhibits two stable (or semistable) states representing binary 1 and 0, and can be written to and read from to sense its state.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q16",
+    "word": "CEA201 SU26 RE Q16: The primary purpose of Hamming code is to:",
+    "question": "The primary purpose of Hamming code is to:",
+    "options": [
+      "A. Detect single-bit errors only.",
+      "B. Correct single-bit errors and detect double-bit errors.",
+      "C. Detect burst errors.",
+      "D. Increase memory capacity."
+    ],
+    "answer": "B",
+    "correctWord": "B. Correct single-bit errors and detect double-bit errors.",
+    "explanation": "Answer: B. Hamming error-correcting code (specifically SEC-DED, Single-Error Correcting, Double-Error Detecting, as used in semiconductor memory) adds check/parity bits at power-of-two positions (plus an overall parity bit) to locate and correct any single-bit error and detect double-bit errors.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q17",
+    "word": "CEA201 SU26 RE Q17: What is the type of RAM that synchronizes its operati...",
+    "question": "What is the type of RAM that synchronizes its operations with the system ck and can transfer data twice per clock cycle?",
+    "options": [
+      "A. SRAM",
+      "B. SDRAM",
+      "C. DDR",
+      "D. None of the mentioned"
+    ],
+    "answer": "C",
+    "correctWord": "C. DDR",
+    "explanation": "Answer: C. DDR (Double Data Rate SDRAM) synchronizes its operations with the system clock (\"ck\") and transfers data twice per clock cycle—once on the rising edge and once on the falling edge. Standard SDRAM (B) is synchronous but transfers once per clock cycle, while SRAM (A) is static RAM.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q18",
+    "word": "CEA201 SU26 RE Q18: Which magnetic disk data organization method allows...",
+    "question": "Which magnetic disk data organization method allows for greater overall storage capacity by dividing the surface into concentric zones, with each zone having a constant number of bits per track, and zones farther from the center containing more bits?",
+    "options": [
+      "A. Multiple Zone Recording (MZR)",
+      "B. Constant Linear Velocity (CLV)",
+      "C. Constant Angular Velocity (CAV)",
+      "D. Serpentine recording"
+    ],
+    "answer": "A",
+    "correctWord": "A. Multiple Zone Recording (MZR)",
+    "explanation": "Answer: A. Multiple Zone Recording (MZR) divides a magnetic disk surface into concentric zones where tracks within a zone share a constant number of bits (sectors) per track, while outer zones store more bits per track than inner zones to achieve higher storage capacity. CAV (C) uses a constant number of bits per track across the entire disk, CLV (B) is used in optical discs (like CDs) by varying rotational speed, and serpentine recording (D) is used for magnetic tapes.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q19",
+    "word": "CEA201 SU26 RE Q19: In modern computers, which devices among the memory...",
+    "question": "In modern computers, which devices among the memory types usually have the smallest capacity?",
+    "options": [
+      "A. RAM",
+      "B. Magnetic Tape",
+      "C. Hard Disk Drive",
+      "D. Cache Memory"
+    ],
+    "answer": "D",
+    "correctWord": "D. Cache Memory",
+    "explanation": "Answer: D. In the computer memory hierarchy, moving up toward the CPU gives faster access time, higher cost per bit, and smaller capacity. Therefore, Cache Memory (typically KB to tens of MB) has a much smaller capacity than RAM (GB), Hard Disk Drives (GB–TB), or Magnetic Tape (TB+).",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q20",
+    "word": "CEA201 SU26 RE Q20: In terms of data storage, what is the main distinct...",
+    "question": "In terms of data storage, what is the main distinction between a solid state drive and a magnetic disk?",
+    "options": [
+      "A. A magnetic disk uses a spinning platter and a read/write head, while a solid state drive uses flash memory chips",
+      "B. A magnetic disk uses flash memory chips, while a solid state drive uses a spinning platter and a read/write head",
+      "C. A magnetic disk and a solid state drive both use flash memory chips, but with different interfaces",
+      "D. A magnetic disk and a solid state drive both use a spinning platter and a read/write head, but with different speeds"
+    ],
+    "answer": "A",
+    "correctWord": "A. A magnetic disk uses a spinning platter and a read/write head, while a solid state drive uses flash memory chips",
+    "explanation": "Answer: A. Magnetic hard disk drives (HDDs) store data magnetically on spinning platters accessed by movable read/write heads, whereas solid state drives (SSDs) have no moving parts and store data electronically in nonvolatile flash memory chips.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q21",
+    "word": "CEA201 SU26 RE Q21: In interrupt-driven I/O, what happens when an I/O ...",
+    "question": "In interrupt-driven I/O, what happens when an I/O device needs attention from the CPU?",
+    "options": [
+      "A. The device waits for the CPU to poll its status",
+      "B. The device sends an interrupt signal to the CPU",
+      "C. The device initiates a DMA transfer",
+      "D. The CPU immediately starts data transfer without checking the status"
+    ],
+    "answer": "B",
+    "correctWord": "B. The device sends an interrupt signal to the CPU",
+    "explanation": "Answer: B. In interrupt-driven I/O, the CPU issues an I/O command and continues executing other instructions; when the I/O module/device is ready or needs service, it sends an interrupt signal to the CPU. Polling (A) describes programmed I/O, and DMA transfer (C) is a separate I/O technique.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q22",
+    "word": "CEA201 SU26 RE Q22: In which I/O technique does an I/O channel or proce...",
+    "question": "In which I/O technique does an I/O channel or processor manage transfer of data, thus freeing the CPU?",
+    "options": [
+      "A. Programmed I/O",
+      "B. Interrupt-driven I/O",
+      "C. Channel I/O",
+      "D. Memory-mapped I/O"
+    ],
+    "answer": "C",
+    "correctWord": "C. Channel I/O",
+    "explanation": "Answer: C. In Channel I/O, a dedicated I/O channel (or I/O processor) has its own instruction capability to execute I/O programs and control entire sequences of data transfers independently, freeing the CPU from managing I/O operations directly.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q23",
+    "word": "CEA201 SU26 RE Q23: How does interrupt-driven I/O improve system perfor...",
+    "question": "How does interrupt-driven I/O improve system performance compared to programmed I/O?",
+    "options": [
+      "A. It eliminates the need for a data bus.",
+      "B. It requires fewer control lines for communication.",
+      "C. It does not involve saving the context of the program being executed.",
+      "D. It allows the processor to execute other tasks while waiting for I/O readiness."
+    ],
+    "answer": "D",
+    "correctWord": "D. It allows the processor to execute other tasks while waiting for I/O readiness.",
+    "explanation": "Answer: D. Unlike programmed I/O, where the CPU wastes cycles repeatedly polling the I/O status register (busy waiting), interrupt-driven I/O lets the CPU execute other useful tasks until the I/O module sends an interrupt signaling readiness.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q24",
+    "word": "CEA201 SU26 RE Q24: What is the main advantage of using DMA over Progra...",
+    "question": "What is the main advantage of using DMA over Programmed I/O or Interrupt-Driven I/O?",
+    "options": [
+      "A. DMA reduces the CPU involvement and overhead in data transfer",
+      "B. DMA increases the data transfer rate and efficiency",
+      "C. DMA allows concurrent execution of CPU and I/O operations",
+      "D. All of the mentioned"
+    ],
+    "answer": "D",
+    "correctWord": "D. All of the mentioned",
+    "explanation": "Answer: D. Direct Memory Access (DMA) delegates block transfers between I/O modules and main memory to a DMA controller. This removes per-word CPU intervention and interrupt overhead (A), enables faster, more efficient block transfer rates (B), and lets the CPU perform other work concurrently (C).",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q25",
+    "word": "CEA201 SU26 RE Q25: What does the program setup process typically involve?",
+    "question": "What does the program setup process typically involve?",
+    "options": [
+      "A. Automatically loading and linking the compiled program without user input.",
+      "B. Mounting/dismounting tapes and setting up card decks for each step.",
+      "C. Delegating the setup process entirely to the processor.",
+      "D. Running the program directly without compilation or linking."
+    ],
+    "answer": "B",
+    "correctWord": "B. Mounting/dismounting tapes and setting up card decks for each step.",
+    "explanation": "Answer: B. In early serial-processing computer systems (Stallings, Chapter 8, Operating System Support), program setup time was significant because each step of compiling, saving, loading, and linking a job manually required mounting/dismounting magnetic tapes and setting up punched card decks.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q26",
+    "word": "CEA201 SU26 RE Q26: In a workload with frequent reuse of a small working set, whi...",
+    "question": "In a workload with frequent reuse of a small working set, which replacement policy gives the best performance?",
+    "options": [
+      "A. LRU",
+      "B. FIFO",
+      "C. LFU",
+      "D. Random"
+    ],
+    "answer": "A",
+    "correctWord": "A. LRU",
+    "explanation": "Answer: A. Least Recently Used (LRU) directly exploits temporal locality by keeping recently accessed blocks in the cache. In a workload that repeatedly reuses a small working set, those blocks remain near the most-recently-used end and stay resident, yielding the highest hit rate. FIFO can evict heavily reused older blocks regardless of recent access, LFU reacts slowly when the working set shifts, and Random can evict active blocks unpredictably.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q27",
+    "word": "CEA201 SU26 RE Q27: Which of the following is a key characteristic of Reduced Inst...",
+    "question": "Which of the following is a key characteristic of Reduced Instruction Set Computer (RISC) architectures?",
+    "options": [
+      "A. Emphasis on optimizing the instruction pipeline",
+      "B. Complex and large instruction sets",
+      "C. Many different addressing modes",
+      "D. Extensive use of microprogramming for instruction implementation"
+    ],
+    "answer": "A",
+    "correctWord": "A. Emphasis on optimizing the instruction pipeline",
+    "explanation": "Answer: A. RISC architectures use simple, uniform, fixed-length instructions and hardwired control specifically to enable efficient, deep instruction pipelining. Complex and large instruction sets, many addressing modes, and extensive microprogramming are defining traits of CISC architectures rather than RISC.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q28",
+    "word": "CEA201 SU26 RE Q28: Boolean algebra involves treating x and y as numeric variables...",
+    "question": "Boolean algebra involves treating x and y as numeric variables. Choose the option that contains two equivalent expressions.",
+    "options": [
+      "A. NOT ( x > 10 AND y > 15 ), x <= 10 OR y <= 15",
+      "B. NOT ( x > 10 AND y > 15 ), x <= 10 AND y <= 15",
+      "C. NOT ( x > 10 AND y > 15 ), x < 10 OR y < 15",
+      "D. NOT ( x > 10 AND y > 15 ), x < 10 AND y < 15"
+    ],
+    "answer": "A",
+    "correctWord": "A. NOT ( x > 10 AND y > 15 ), x <= 10 OR y <= 15",
+    "explanation": "Answer: A. By De Morgan's Law, NOT (P AND Q) is equivalent to (NOT P) OR (NOT Q). Negating x > 10 gives x <= 10 and negating y > 15 gives y <= 15, while AND becomes OR. Therefore, NOT ( x > 10 AND y > 15 ) is equivalent to x <= 10 OR y <= 15. Options B and D fail to flip AND to OR, and C/D drop the equality boundary (<=).",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q29",
+    "word": "CEA201 SU26 RE Q29: Which memory management technique provides the best trade-off b...",
+    "question": "Which memory management technique provides the best trade-off between efficient memory utilization and performance in a system with high process variability?",
+    "options": [
+      "A. Contiguous memory allocation",
+      "B. Paging",
+      "C. Fixed-size partitioning",
+      "D. Single-user system allocation"
+    ],
+    "answer": "B",
+    "correctWord": "B. Paging",
+    "explanation": "Answer: B. Paging divides physical memory into fixed-size frames and logical memory into equal-size pages, allowing a process's pages to be placed in non-contiguous frames. This eliminates external fragmentation and handles processes of highly varying sizes with minimal internal fragmentation (only in the last page) and fast hardware address translation via a page table and TLB. Contiguous allocation suffers from external fragmentation, fixed-size partitioning wastes space via internal fragmentation, and single-user allocation does not support multitasking.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q30",
+    "word": "CEA201 SU26 RE Q30: What is result logical right shift of 10110000 by 2 bit?",
+    "question": "What is result logical right shift of 10110000 by 2 bit?",
+    "options": [
+      "A. 00101100",
+      "B. 01011000",
+      "C. 01001100",
+      "D. 00110000"
+    ],
+    "answer": "A",
+    "correctWord": "A. 00101100",
+    "explanation": "Answer: A. A logical right shift by 2 bits moves every bit two positions to the right, discards the two rightmost bits (00), and fills the two leftmost positions with zeros (00). Shifting 10110000 right by 2 bits yields 00101100.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q31",
+    "word": "CEA201 SU26 RE Q31: Given the following Karnaugh map, what is the optimal express...",
+    "question": "Given the following Karnaugh map, what is the optimal expression in the sum of product format (X' means Not X)?\n\nKarnaugh map (rows = A, columns = BC):\nA/BC | 00 | 01 | 11 | 10\n  0  |    |    |  1 |  1\n  1  |  1 |    |  1 |  1\n(Blank cells represent 0.)",
+    "options": [
+      "A. B + AC'",
+      "B. B + AB'C'",
+      "C. B + AC",
+      "D. AB + B'C"
+    ],
+    "answer": "A",
+    "correctWord": "A. B + AC'",
+    "explanation": "Answer: A. The 1s in the K-map are at (A=0, BC=11), (A=0, BC=10), (A=1, BC=00), (A=1, BC=11), and (A=1, BC=10). The four 1s in columns BC=11 and BC=10 form a 4-cell group where B=1, simplifying to B. The remaining 1 at (A=1, BC=00) wraps around horizontally to combine with (A=1, BC=10), forming a 2-cell group where A=1 and C=0, simplifying to AC'. Thus the optimal sum-of-products expression is B + AC'. Option B (B + AB'C') is functionally equivalent but not optimal because AB'C' uses three literals instead of two; C and D do not match the K-map.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q32",
+    "word": "CEA201 SU26 RE Q32: With respect to elements of a machine instruction, including a...",
+    "question": "With respect to elements of a machine instruction, including an instruction code and addresses, the value in a memory location will be moved to a register. Choose the correct statement",
+    "options": [
+      "A. Both memory location and register are specified in addresses.",
+      "B. Register is specified in the instruction code and memory cell is specified in the address field.",
+      "C. Memory location is specified in the instruction code and register is specified in the address field.",
+      "D. Both memory location and register are specified in the instruction code."
+    ],
+    "answer": "B",
+    "correctWord": "B. Register is specified in the instruction code and memory cell is specified in the address field.",
+    "explanation": "Answer: B. In a basic machine instruction format (such as single-address/accumulator instructions like LOAD M(X) or opcode-encoded register loads), the target CPU register is specified by the instruction code (opcode), while the source memory cell is specified in the instruction's address field. Putting a full memory location inside the opcode field (C, D) is impractical because memory address spaces are far larger than opcode fields.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q33",
+    "word": "CEA201 SU26 RE Q33: Which addressing mode uses the address of the operand directly ...",
+    "question": "Which addressing mode uses the address of the operand directly in the instruction?",
+    "options": [
+      "A. Indirect addressing",
+      "B. Register addressing",
+      "C. Direct addressing",
+      "D. Indexed addressing"
+    ],
+    "answer": "C",
+    "correctWord": "C. Direct addressing",
+    "explanation": "Answer: C. In direct addressing, the address field of the instruction directly contains the effective address (EA = A) of the operand in memory. Indirect addressing stores a pointer to the effective address, register addressing specifies a CPU register rather than a memory address, and indexed addressing adds an index register to a base address.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q34",
+    "word": "CEA201 SU26 RE Q34: Which of the following cannot be classified as a fundamental ma...",
+    "question": "Which of the following cannot be classified as a fundamental machine-level operation in a typical instruction set architecture (ISA)?",
+    "options": [
+      "A. Data movement",
+      "B. Control flow alteration",
+      "C. Logarithm",
+      "D. Logical operation"
+    ],
+    "answer": "C",
+    "correctWord": "C. Logarithm",
+    "explanation": "Answer: C. Fundamental machine-level ISA operation categories include data movement (transfer), arithmetic, logical operations, conversion, I/O, system control, and transfer of control (control flow alteration). Logarithm is a higher-level transcendental mathematical function typically implemented in software libraries or specialized FPU routines rather than as a fundamental ISA category.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q35",
+    "word": "CEA201 SU26 RE Q35: The effective address of Register indirect addressing mode is ...",
+    "question": "The effective address of Register indirect addressing mode is _________.",
+    "options": [
+      "A. EA = R",
+      "B. EA = (R)",
+      "C. EA = (R)+A",
+      "D. EA = (R)+(A)"
+    ],
+    "answer": "B",
+    "correctWord": "B. EA = (R)",
+    "explanation": "Answer: B. In register indirect addressing, the instruction specifies a register R whose contents (denoted (R)) serve as the memory address of the operand, so EA = (R). EA = R corresponds to direct register addressing, while EA = (R) + A is displacement/indexed addressing.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q36",
+    "word": "CEA201 SU26 RE Q36: Assume an instruction set that uses a fixed 16-bit instruction...",
+    "question": "Assume an instruction set that uses a fixed 16-bit instruction length. Operand specifiers are 6 bits in length.\nWhat is the maximum number of one-operand instructions that can be supported?",
+    "options": [
+      "A. 256",
+      "B. 512",
+      "C. 1024",
+      "D. 2048"
+    ],
+    "answer": "C",
+    "correctWord": "C. 1024",
+    "explanation": "Answer: C. A 16-bit instruction containing one 6-bit operand specifier leaves 16 - 6 = 10 bits for the opcode field. With 10 opcode bits, up to 2^10 = 1024 distinct one-operand instructions can be encoded.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q37",
+    "word": "CEA201 SU26 RE Q37: In MASM32, which OPCODE is used to compare two values?",
+    "question": "In MASM32, which OPCODE is used to compare two values?",
+    "options": [
+      "A. COM",
+      "B. CMP",
+      "C. IF ... ELSE",
+      "D. TEST"
+    ],
+    "answer": "B",
+    "correctWord": "B. CMP",
+    "explanation": "Answer: B. In x86 / MASM32 assembly, CMP compares two operands by subtracting the source from the destination without storing the result and updating the status flags (ZF, CF, SF, OF). TEST performs a bitwise AND to set flags, IF ... ELSE is a high-level directive/construct rather than a machine opcode, and COM is not an x86 comparison instruction.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q38",
+    "word": "CEA201 SU26 RE Q38: Steps for executing a machine instruction are concerned, given...",
+    "question": "Steps for executing a machine instruction are concerned, given an assembly code: ADD EAX, V. What step will access the variable V?",
+    "options": [
+      "A. The fetch data step.",
+      "B. The fetch instruction step.",
+      "C. The process data step.",
+      "D. The interpret instruction step."
+    ],
+    "answer": "A",
+    "correctWord": "A. The fetch data step.",
+    "explanation": "Answer: A. In the five-step instruction execution sequence (fetch instruction, interpret instruction, fetch data, process data, write data), reading the memory operand V before performing the addition occurs during the fetch data step. Fetch instruction reads the instruction itself, interpret instruction decodes the opcode and operands, and process data performs the arithmetic addition in the ALU.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q39",
+    "word": "CEA201 SU26 RE Q39: The Program Status Word (PSW) typically contains condition code...",
+    "question": "The Program Status Word (PSW) typically contains condition codes, the sign of the last result, and other status information like interrupt enable/disable flags.",
+    "options": [
+      "A. True",
+      "B. False"
+    ],
+    "answer": "A",
+    "correctWord": "A. True",
+    "explanation": "Answer: A. True. The Program Status Word (PSW) is a processor register (or set of flags) that stores condition codes (such as Sign, Zero, Carry, and Overflow flags) along with control and status bits including interrupt enable/disable and execution mode flags.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q40",
+    "word": "CEA201 SU26 RE Q40: In the instruction cycle, what of the following describes the i...",
+    "question": "In the instruction cycle, what of the following describes the indirect cycle?",
+    "options": [
+      "A. In this cycle, the instruction points to a memory address that holds the actual address of the operand.",
+      "B. In this cycle, the address of the specific instruction is determined, and then the instruction is loaded into the IR register to be decoded by the Control Unit.",
+      "C. In this cycle, a executing hardware module in Control Unit is determined for executing.",
+      "D. In this cycle, operands are stored in the stack pointer register, and then they is loaded into ALU for executing."
+    ],
+    "answer": "A",
+    "correctWord": "A. In this cycle, the instruction points to a memory address that holds the actual address of the operand.",
+    "explanation": "Answer: A. When indirect addressing is used, the indirect cycle follows instruction fetch/decode: the address field in the instruction points to a memory location containing the effective (actual) address of the operand, which must be fetched from memory before execution. Option B describes the instruction fetch cycle, while C and D do not describe the indirect cycle.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q41",
+    "word": "CEA201 SU26 RE Q41: Which of the following is a drawback of instruction pipelining?",
+    "question": "Which of the following is a drawback of instruction pipelining?",
+    "options": [
+      "A. Decreases memory access speed",
+      "B. Slows down execution",
+      "C. Removes control signals",
+      "D. Introduces pipeline hazards"
+    ],
+    "answer": "D",
+    "correctWord": "D. Introduces pipeline hazards",
+    "explanation": "Answer: D. Instruction pipelining overlaps multiple instructions in flight, which introduces structural, data, and control (branch) hazards that can stall the pipeline or require complex forwarding and branch-prediction hardware. Pipelining increases instruction throughput rather than slowing down execution, and it does not reduce memory access speed or remove control signals.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q42",
+    "word": "CEA201 SU26 RE Q42: What does CISC stand for?",
+    "question": "What does CISC stand for?",
+    "options": [
+      "A. Complex Instruction Set Computer",
+      "B. Computer Instruction Set Complex",
+      "C. Complex Instruction Summarize Computer",
+      "D. Computer Instruction Summarize Complex"
+    ],
+    "answer": "A",
+    "correctWord": "A. Complex Instruction Set Computer",
+    "explanation": "Answer: A. CISC stands for Complex Instruction Set Computer, an architecture style characterized by rich, variable-length instructions that can perform multi-step operations and memory accesses within a single instruction.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q43",
+    "word": "CEA201 SU26 RE Q43: In the concept of Register Windows, how many register groups a...",
+    "question": "In the concept of Register Windows, how many register groups are there?",
+    "options": [
+      "A. 4",
+      "B. 3",
+      "C. 2",
+      "D. No distinction"
+    ],
+    "answer": "B",
+    "correctWord": "B. 3",
+    "explanation": "Answer: B. In RISC register windows (as presented in Stallings' Computer Organization and Architecture), each register window is divided into 3 fixed-size register groups: Parameter registers (to receive parameters from the caller), Local registers (for the current procedure's local variables), and Temporary registers (to pass parameters to a called procedure, overlapping with the callee's parameter registers).",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q44",
+    "word": "CEA201 SU26 RE Q44: Which of the following characteristics is least likely to be fo...",
+    "question": "Which of the following characteristics is least likely to be found in a Reduced Instruction Set Computer (RISC) architecture?",
+    "options": [
+      "A. A small, fixed number of instruction formats.",
+      "B. The extensive use of microcode for complex instruction execution.",
+      "C. A high reliance on compiler optimizations for instruction scheduling.",
+      "D. A load/store architecture that separates memory access from computation."
+    ],
+    "answer": "B",
+    "correctWord": "B. The extensive use of microcode for complex instruction execution.",
+    "explanation": "Answer: B. RISC designs avoid microcode in favor of simple, hardwired control units that execute instructions rapidly in a single cycle. Fixed instruction formats (A), strong reliance on compiler optimization (C), and a load/store memory model (D) are all hallmark characteristics of RISC architectures.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q45",
+    "word": "CEA201 SU26 RE Q45: Which factor is the most significant limitation when increasing ...",
+    "question": "Which factor is the most significant limitation when increasing instruction-level parallelism (ILP) in a superscalar processor?",
+    "options": [
+      "A. The number of execution units available in the processor.",
+      "B. The presence of data and control dependencies between instructions.",
+      "C. The amount of cache memory available to store frequently used instructions.",
+      "D. The ability of the compiler to optimize code for ILP."
+    ],
+    "answer": "B",
+    "correctWord": "B. The presence of data and control dependencies between instructions.",
+    "explanation": "Answer: B. True data dependencies (RAW) and control/procedural dependencies (branches) impose fundamental limits on how many instructions can be issued and executed simultaneously in a superscalar processor, regardless of how many hardware execution units are provided.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q46",
+    "word": "CEA201 SU26 RE Q46: What does the term \"instruction-level parallelism\" refer to in...",
+    "question": "What does the term \"instruction-level parallelism\" refer to in computer architecture?",
+    "options": [
+      "A. The degree to which instructions in a program can be executed in parallel",
+      "B. The number of processor cores in a multi-core CPU with multiple resources",
+      "C. The complexity of the instruction set architecture",
+      "D. The length of an instruction cycle with high level programing language"
+    ],
+    "answer": "A",
+    "correctWord": "A. The degree to which instructions in a program can be executed in parallel",
+    "explanation": "Answer: A. Instruction-level parallelism (ILP) refers to the degree to which the instructions of a program can be overlapped or executed simultaneously (via pipelining, superscalar execution, or VLIW). Multi-core parallelism (B) is thread/processor-level parallelism, while C and D are unrelated.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q47",
+    "word": "CEA201 SU26 RE Q47: In the MESI protocols which are used in multiprocessor system...",
+    "question": "In the MESI protocols which are used in multiprocessor systems, which state of the following specifies that the line in the cache is the same as that in the main memory and in another cache?",
+    "options": [
+      "A. Exclusive",
+      "B. Shared",
+      "C. Invalid",
+      "D. Modified"
+    ],
+    "answer": "B",
+    "correctWord": "B. Shared",
+    "explanation": "Answer: B. In the MESI cache coherence protocol, the Shared (S) state indicates that the cache line is clean (matches main memory) and may also be present in one or more other processors' caches. Exclusive (E) means clean and present in only this cache, Modified (M) means dirty and only in this cache, and Invalid (I) means the line does not hold valid data.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q48",
+    "word": "CEA201 SU26 RE Q48: Which situation would most likely trigger a transition to the ...",
+    "question": "Which situation would most likely trigger a transition to the Invalid (I) state in the MESI (Modified, Exclusive, Shared, Invalid) cache coherence protocol?",
+    "options": [
+      "A. Another processor writes to a cache line that was previously in the Shared (S) state in multiple caches.",
+      "B. The processor reads a memory location that is already in the Modified (M) state in another cache.",
+      "C. The cache controller detects a bus read request from another processor while the line is in the Exclusive (E) state.",
+      "D. A cache line remains unused for an extended period and is evicted due to a capacity replacement policy."
+    ],
+    "answer": "A",
+    "correctWord": "A. Another processor writes to a cache line that was previously in the Shared (S) state in multiple caches.",
+    "explanation": "Answer: A. When another processor writes to a line held in the Shared (S) state, it broadcasts a write/invalidate signal on the bus so that all other caches holding that line transition their copy from Shared (S) to Invalid (I), preventing stale reads. Reading a line in M state (B) or snooping a bus read in E state (C) transitions lines to Shared (S), not Invalid.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q49",
+    "word": "CEA201 SU26 RE Q49: What is one advantage of Nonuniform Memory Access (NUMA) over ...",
+    "question": "What is one advantage of Nonuniform Memory Access (NUMA) over Uniform Memory Access (UMA)?",
+    "options": [
+      "A. NUMA provides each processor with its own local memory, reducing memory access times",
+      "B. NUMA allows all processors to access the same memory location simultaneously",
+      "C. NUMA is easier to implement than UMA",
+      "D. NUMA provides limited memory capacity"
+    ],
+    "answer": "A",
+    "correctWord": "A. NUMA provides each processor with its own local memory, reducing memory access times",
+    "explanation": "Answer: A. In NUMA architectures, each processor (or node) has fast direct access to its own local memory while still sharing a single address space across nodes. Accessing local memory is much faster than traversing a shared interconnect to remote memory, reducing average memory access latency and interconnect contention compared to UMA.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  },
+  {
+    "id": "cea201_su26_re_q50",
+    "word": "CEA201 SU26 RE Q50: In modern processors, why is cache memory typically organized ...",
+    "question": "In modern processors, why is cache memory typically organized into multiple levels, such as L1, L2, and L3 caches?",
+    "options": [
+      "A. To balance the trade-off between speed and size by having different cache levels",
+      "B. To conserve chip area by reducing the cache size and increasing the memory size",
+      "C. To provide redundancy in case of cache failures",
+      "D. To improve cache coherence in multi-processor systems"
+    ],
+    "answer": "A",
+    "correctWord": "A. To balance the trade-off between speed and size by having different cache levels",
+    "explanation": "Answer: A. Multi-level cache hierarchies (L1, L2, L3) balance the fundamental trade-off between access latency and capacity: L1 is small and ultra-fast close to the core, while L2 and L3 are progressively larger and slightly slower, catching misses before they incur the much higher latency of main memory.",
+    "subject": "CEA201",
+    "topic": "SU26 - RE"
+  }
+]

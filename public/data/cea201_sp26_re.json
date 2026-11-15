@@ -1,0 +1,806 @@
+[
+  {
+    "id": "cea201_sp26_re_q1",
+    "word": "CEA201 SP26 RE Q1: What is the primary role of the IO module? (choose two correct...",
+    "question": "What is the primary role of the IO module? (choose two correct answers)",
+    "options": [
+      "A. Its role is data transfer, it will transfer data to and from peripheral devices.",
+      "B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals",
+      "C. Its role is data formatting and converting analog signals into digital audio data for CPU",
+      "D. Its role is protecting data from user, ensuring that sensitive information is not lost or intercepted."
+    ],
+    "answer": "A, B",
+    "correctWord": "A. Its role is data transfer, it will transfer data to and from peripheral devices.; B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals",
+    "explanation": "Answer: A, B. An I/O module serves as the interface between the CPU/system bus and external peripheral devices. Its primary roles include transferring data to and from peripherals (with data buffering) and managing/controlling communication and data flow between the CPU and peripherals (control and timing, processor communication, and device communication). Converting analog audio signals (C) is specific to specialized ADC/audio hardware, and protecting sensitive data from users (D) is an OS/security function rather than a primary I/O module role.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q2",
+    "word": "CEA201 SP26 RE Q2: Which of the following statements is part of the Von Neumann...",
+    "question": "Which of the following statements is part of the Von Neumann principle?",
+    "options": [
+      "A. The computer uses a program counter to indicate the location of the next statement",
+      "B. Computer can control all operations with a single program",
+      "C. Computer memory is not addressable",
+      "D. Each instruction must have a memory area containing the address of the next instruction"
+    ],
+    "answer": "A",
+    "correctWord": "A. The computer uses a program counter to indicate the location of the next statement",
+    "explanation": "Answer: A. Under the Von Neumann architecture, execution occurs sequentially from one instruction to the next unless explicitly altered, and the CPU uses a Program Counter (PC) to hold the address of the next instruction to fetch. Option B is incorrect because stored-program computers can load and run any program in memory rather than being limited to one program; Option C is false because Von Neumann memory is addressable by location; Option D is false because instructions do not embed the address of the next instruction (the PC tracks it).",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q3",
+    "word": "CEA201 SP26 RE Q3: Which component ensures the transfer of data between the...",
+    "question": "Which component ensures the transfer of data between the operating environment and the control mechanism?",
+    "options": [
+      "A. Data processing facility",
+      "B. Control mechanism",
+      "C. Data movement apparatus",
+      "D. Data storage facility"
+    ],
+    "answer": "C",
+    "correctWord": "C. Data movement apparatus",
+    "explanation": "Answer: C. In William Stallings' functional view of a computer, the four basic components are the data processing facility, data storage facility, data movement apparatus, and control mechanism. The data movement apparatus transfers data between the external operating environment (source and destination of data) and the internal control mechanism and other facilities.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q4",
+    "word": "CEA201 SP26 RE Q4: Which one of four basic functions of computer describes the...",
+    "question": "Which one of four basic functions of computer describes the following statement?\n\"The paths among components are used to move data from memory to memory and from memory through gates to memory\".",
+    "options": [
+      "A. Data storage",
+      "B. Data processing",
+      "C. Data movement",
+      "D. Control"
+    ],
+    "answer": "C",
+    "correctWord": "C. Data movement",
+    "explanation": "Answer: C. In Stallings' Computer Organization and Architecture (Chapter 1), the four basic computer functions are mapped to physical structures as follows: data storage (provided by memory cells), data processing (provided by logic gates), data movement (the paths among components used to move data from memory to memory and from memory through gates to memory), and control (paths carrying control signals).",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q5",
+    "word": "CEA201 SP26 RE Q5: A benchmark is run 4 times on a computer with execution times:...",
+    "question": "A benchmark is run 4 times on a computer with execution times: 8s, 10s, 12s, 14s. What is the arithmetic mean?",
+    "options": [
+      "A. 11s",
+      "B. 10.5s",
+      "C. 11.5s",
+      "D. 12s"
+    ],
+    "answer": "A",
+    "correctWord": "A. 11s",
+    "explanation": "Answer: A. The arithmetic mean is the sum of the execution times divided by the number of runs: (8 + 10 + 12 + 14) / 4 = 44 / 4 = 11s.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q6",
+    "word": "CEA201 SP26 RE Q6: Consider an expression: 1000 0000 AND 1111 1010 What is the...",
+    "question": "Consider an expression: 1000 0000 AND 1111 1010\nWhat is the result of this expression?",
+    "options": [
+      "A. 1000 0000",
+      "B. 1111 0000",
+      "C. 1001 1010",
+      "D. 1001 0101"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1000 0000",
+    "explanation": "Answer: A. Performing a bitwise AND between 1000 0000 and 1111 1010 yields 1 only where both corresponding bits are 1. Only the most significant bit (bit 7) is 1 in both operands, so the result is 1000 0000.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q7",
+    "word": "CEA201 SP26 RE Q7: Which of the following determines the Bus Width?",
+    "question": "Which of the following determines the Bus Width?",
+    "options": [
+      "A. The clock speed of the CPU",
+      "B. The number of cores in the processor",
+      "C. The size of the motherboard",
+      "D. The number of parallel lines in the data bus",
+      "E. Number of components connected to Bus"
+    ],
+    "answer": "D",
+    "correctWord": "D. The number of parallel lines in the data bus",
+    "explanation": "Answer: D. Bus width refers to the number of parallel signal lines (wires/traces) in a bus—most commonly the data bus—which determines how many bits can be transmitted simultaneously in one bus transfer (e.g., 32 lines = 32-bit bus width, 64 lines = 64-bit bus width). Clock speed (A) determines frequency, not width.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q8",
+    "word": "CEA201 SP26 RE Q8: When an interrupt is about to execute next, where is the...",
+    "question": "When an interrupt is about to execute next, where is the Program Counter (PC) positioned?",
+    "options": [
+      "A. Add 1 to PC",
+      "B. At the address of the last executed instruction",
+      "C. Jump to random unknown position",
+      "D. At the started address of an interrupt handler routine",
+      "E. At the beginning of the memory address space"
+    ],
+    "answer": "D",
+    "correctWord": "D. At the started address of an interrupt handler routine",
+    "explanation": "Answer: D. When the processor services an interrupt, it saves the current Program Counter (pointing to the next instruction of the interrupted program) and other status context onto the stack, then loads the PC with the starting address of the corresponding interrupt handler routine (ISR) so the handler executes next.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q9",
+    "word": "CEA201 SP26 RE Q9: _____________ interprets the instructions in memory and causes...",
+    "question": "_____________ interprets the instructions in memory and causes them to be executed.",
+    "options": [
+      "A. Registers",
+      "B. CPU interconnection",
+      "C. Arithmetic and Logic Unit (ALU)",
+      "D. I/O Modules",
+      "E. Control Unit (CU)"
+    ],
+    "answer": "E",
+    "correctWord": "E. Control Unit (CU)",
+    "explanation": "Answer: E. The Control Unit (CU) fetches instructions from memory, decodes/interprets them, and generates the control signals needed to orchestrate the ALU, registers, and buses to execute them. The ALU performs arithmetic/logic operations, and registers provide internal CPU storage.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q10",
+    "word": "CEA201 SP26 RE Q10: In a computer system bus, the control lines are responsible for:",
+    "question": "In a computer system bus, the control lines are responsible for:",
+    "options": [
+      "A. Transferring actual binary data between components.",
+      "B. Specifying the location in memory to read/write.",
+      "C. Coordinating and managing the use of the data and address lines.",
+      "D. Storing frequently accessed instructions."
+    ],
+    "answer": "C",
+    "correctWord": "C. Coordinating and managing the use of the data and address lines.",
+    "explanation": "Answer: C. Control lines on a system bus carry command and timing signals (such as Memory Read/Write, I/O Read/Write, Bus Request/Grant, Interrupt, and Clock) to control and coordinate access to the shared data and address lines. Option A describes data lines, Option B describes address lines, and Option D describes cache memory.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q11",
+    "word": "CEA201 SP26 RE Q11: What is the correct order of memory access speed from fastest...",
+    "question": "What is the correct order of memory access speed from fastest to slowest?",
+    "options": [
+      "A. Registers > Cache > RAM > SSD",
+      "B. Cache > Registers > RAM > SSD",
+      "C. Registers > Cache > SSD > RAM",
+      "D. Cache > Registers > SSD > RAM",
+      "E. All of the mentioned are wrong"
+    ],
+    "answer": "A",
+    "correctWord": "A. Registers > Cache > RAM > SSD",
+    "explanation": "Answer: A. Moving down the memory hierarchy from CPU core to secondary storage, access speed decreases: CPU Registers (fastest) > Cache memory (SRAM) > Main memory (RAM/DRAM) > Secondary storage (SSD).",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q12",
+    "word": "CEA201 SP26 RE Q12: Which mapping technique allows a main memory block to be placed...",
+    "question": "Which mapping technique allows a main memory block to be placed in only one possible cache line?",
+    "options": [
+      "A. Direct mapping",
+      "B. Fully associative mapping",
+      "C. Set-associative mapping",
+      "D. Random mapping"
+    ],
+    "answer": "A",
+    "correctWord": "A. Direct mapping",
+    "explanation": "Answer: A. In direct mapping, each main memory block maps to exactly one fixed cache line given by (block number) mod (number of cache lines). Fully associative mapping allows placement in any cache line, and set-associative mapping allows placement in any line within a designated set.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q13",
+    "word": "CEA201 SP26 RE Q13: Which cache mapping technique divides the cache into a number...",
+    "question": "Which cache mapping technique divides the cache into a number of sets, and each main memory block can map into any line within a specific set?",
+    "options": [
+      "A. Set-associative mapping",
+      "B. Direct mapping",
+      "C. Associative mapping",
+      "D. Fully-associative mapping"
+    ],
+    "answer": "A",
+    "correctWord": "A. Set-associative mapping",
+    "explanation": "Answer: A. Set-associative mapping partitions the cache into v sets of k lines each (k-way set-associative). Each main memory block maps to one specific set via (block number) mod v, and may be placed in any of the k lines belonging to that set.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q14",
+    "word": "CEA201 SP26 RE Q14: The basic element of a semiconductor memory is ___________?",
+    "question": "The basic element of a semiconductor memory is ___________?",
+    "options": [
+      "A. the memory cell",
+      "B. the memory patten",
+      "C. the memory word",
+      "D. the memory block"
+    ],
+    "answer": "A",
+    "correctWord": "A. the memory cell",
+    "explanation": "Answer: A. In semiconductor memory, the fundamental building block is the memory cell, which stores 1 bit using two stable states and supports read and write operations.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q15",
+    "word": "CEA201 SP26 RE Q15: The primary purpose of Hamming code is to:",
+    "question": "The primary purpose of Hamming code is to:",
+    "options": [
+      "A. Detect single-bit errors only.",
+      "B. Correct single-bit errors and detect double-bit errors.",
+      "C. Detect burst errors.",
+      "D. Increase memory capacity."
+    ],
+    "answer": "B",
+    "correctWord": "B. Correct single-bit errors and detect double-bit errors.",
+    "explanation": "Answer: B. Hamming error-correcting code (specifically SEC-DED Hamming code used in ECC memory) adds parity check bits so the system can locate and correct any single-bit error and detect double-bit errors.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q16",
+    "word": "CEA201 SP26 RE Q16: A DDR memory transfers 64 bits per clock cycle at 200 MHz. What...",
+    "question": "A DDR memory transfers 64 bits per clock cycle at 200 MHz. What is the peak bandwidth?",
+    "options": [
+      "A. 3.2 GB/s",
+      "B. 1.6 GB/s",
+      "C. 2.4 GB/s",
+      "D. 6.4 GB/s"
+    ],
+    "answer": "A",
+    "correctWord": "A. 3.2 GB/s",
+    "explanation": "Answer: A. DDR (Double Data Rate) memory transfers data on both the rising and falling edges of the clock (2 transfers per clock cycle). At a 200 MHz clock, the effective transfer rate is 2 × 200 MHz = 400 million transfers/s (DDR-400). With a 64-bit (8-byte) bus width, peak bandwidth = 400 × 10^6 × 8 bytes/s = 3.2 × 10^9 bytes/s = 3.2 GB/s (PC-3200). Option B (1.6 GB/s) ignores the DDR 2× multiplier.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q17",
+    "word": "CEA201 SP26 RE Q17: Which factor has the most significant impact on the average...",
+    "question": "Which factor has the most significant impact on the average access time of a magnetic disk drive?",
+    "options": [
+      "A. The rotational speed of the disk",
+      "B. The size of the disk platter",
+      "C. The type of file system used",
+      "D. The material composition of the disk surface"
+    ],
+    "answer": "A",
+    "correctWord": "A. The rotational speed of the disk",
+    "explanation": "Answer: A. Average disk access time equals seek time + average rotational delay + transfer time. Higher rotational speed (RPM) directly decreases the rotational delay (1 / (2 × RPM/60)) and increases the data transfer rate, giving it the most direct physical impact on average access time among the given options.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q18",
+    "word": "CEA201 SP26 RE Q18: Which of the following is NOT a typical requirement of an I/O...",
+    "question": "Which of the following is NOT a typical requirement of an I/O module?",
+    "options": [
+      "A. Device communication.",
+      "B. Error detection.",
+      "C. Processor communication.",
+      "D. Memory management."
+    ],
+    "answer": "D",
+    "correctWord": "D. Memory management.",
+    "explanation": "Answer: D. In Stallings' I/O module specification, the five major functional requirements are control and timing, processor communication, device communication, data buffering, and error detection. Memory management (paging, segmentation, virtual-to-physical translation) is handled by the CPU's Memory Management Unit (MMU) and the operating system, not the I/O module.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q19",
+    "word": "CEA201 SP26 RE Q19: Which is the correct choice for sorting in increasing speed...",
+    "question": "Which is the correct choice for sorting in increasing speed average of memory?",
+    "options": [
+      "A. SSD < Main Memory < Cache Memory < Magnetic Tape",
+      "B. Magnetic Tape < SSD < Cache Memory < Main Memory",
+      "C. Magnetic Disk < SSD < Main Memory < Cache Memory",
+      "D. Magnetic Disk < Magnetic Tape < Main Memory < Cache Memory"
+    ],
+    "answer": "C",
+    "correctWord": "C. Magnetic Disk < SSD < Main Memory < Cache Memory",
+    "explanation": "Answer: C. Sorting from slowest to fastest (increasing average access speed): Magnetic Disk (mechanical seek/rotation, ms) < SSD (flash, µs) < Main Memory (DRAM, tens of ns) < Cache Memory (SRAM, a few ns). Option A puts Magnetic Tape as fastest, Option B puts Main Memory faster than Cache, and Option D puts sequential Magnetic Tape faster than Magnetic Disk.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q20",
+    "word": "CEA201 SP26 RE Q20: Consider an expression: A + (B.C) What expression is equal to...",
+    "question": "Consider an expression: A + (B.C)\nWhat expression is equal to the given expression?",
+    "options": [
+      "A. (A + B).(A + C)",
+      "B. (A+B).C",
+      "C. A.(B+C)",
+      "D. NOT (A.(B+C))"
+    ],
+    "answer": "A",
+    "correctWord": "A. (A + B).(A + C)",
+    "explanation": "Answer: A. By the Boolean distributive law of OR (+) over AND (.), A + (B.C) = (A + B).(A + C). Checking all 8 truth-table rows confirms both expressions evaluate to 1 whenever A = 1 or (B = 1 and C = 1), whereas Options B, C, and D produce different truth tables.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q21",
+    "word": "CEA201 SP26 RE Q21: In which I/O technique does an I/O channel or processor manage...",
+    "question": "In which I/O technique does an I/O channel or processor manage transfer of data, thus freeing the CPU?",
+    "options": [
+      "A. Programmed I/O",
+      "B. Interrupt-driven I/O",
+      "C. Channel I/O",
+      "D. Memory-mapped I/O"
+    ],
+    "answer": "C",
+    "correctWord": "C. Channel I/O",
+    "explanation": "Answer: C. In Channel I/O, a dedicated I/O channel (or I/O processor) executes its own channel program to handle data transfers between I/O devices and main memory independently, freeing the CPU from managing individual transfers. Programmed I/O and interrupt-driven I/O still use the CPU to transfer data words, and memory-mapped I/O is an addressing scheme rather than an independent transfer controller.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q22",
+    "word": "CEA201 SP26 RE Q22: What is an interrupt vector?",
+    "question": "What is an interrupt vector?",
+    "options": [
+      "A. Part of memory which contains the addresses of interrupt handlers",
+      "B. A signal an I/O device sends to CPU",
+      "C. A signal an I/O software sends to CPU",
+      "D. None of the mentioned"
+    ],
+    "answer": "A",
+    "correctWord": "A. Part of memory which contains the addresses of interrupt handlers",
+    "explanation": "Answer: A. An interrupt vector (stored in an interrupt vector table in memory) contains the starting addresses (pointers) of the interrupt service routines (interrupt handlers) for each interrupt source/number. A hardware signal sent by a device to the CPU is an interrupt request (IRQ), not the interrupt vector.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q23",
+    "word": "CEA201 SP26 RE Q23: _________________: If the operation involves reference to an...",
+    "question": "_________________: If the operation involves reference to an operand in memory or available via I/O, then determine the address of the operand.",
+    "options": [
+      "A. Operand fetch",
+      "B. Data operation",
+      "C. Operand store",
+      "D. Operand address calculation"
+    ],
+    "answer": "D",
+    "correctWord": "D. Operand address calculation",
+    "explanation": "Answer: D. In Stallings' instruction cycle state diagram, the \"Operand address calculation\" state determines the effective address of an operand whenever the instruction references an operand in memory or I/O. \"Operand fetch\" then reads the operand from that address, \"Data operation\" performs the computation, and \"Operand store\" writes the result back.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q24",
+    "word": "CEA201 SP26 RE Q24: When a program is executed, what is the first step which is...",
+    "question": "When a program is executed, what is the first step which is carried out by an operating system?",
+    "options": [
+      "A. Program's instructions and data must be loaded to the computer's main memory.",
+      "B. Program's instructions and data must be loaded to the Operator System's monitor memory.",
+      "C. Program's instructions and data must be splitted into frames and loaded into level 1 cache memory.",
+      "D. Program's instructions and data must be loaded to long-term queue."
+    ],
+    "answer": "A",
+    "correctWord": "A. Program's instructions and data must be loaded to the computer's main memory.",
+    "explanation": "Answer: A. According to the stored-program principle and OS execution flow, before a program can execute on the CPU, the operating system must first load the program's instructions and data from secondary storage into main memory (RAM). L1 cache is hardware-managed and populated dynamically from main memory during execution, not pre-loaded directly by the OS.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q25",
+    "word": "CEA201 SP26 RE Q25: Which scheduling algorithm would be least effective in a system...",
+    "question": "Which scheduling algorithm would be least effective in a system that requires real-time task execution with strict deadlines?",
+    "options": [
+      "A. First-Come, First-Served (FCFS)",
+      "B. Earliest Deadline First (EDF)",
+      "C. Rate Monotonic Scheduling (RMS)",
+      "D. Round-Robin (RR)"
+    ],
+    "answer": "A",
+    "correctWord": "A. First-Come, First-Served (FCFS)",
+    "explanation": "Answer: A. First-Come, First-Served (FCFS) is non-preemptive and completely unaware of task priorities or deadlines; a long non-critical task arriving first blocks urgent real-time tasks (the convoy effect), causing missed strict deadlines. EDF and RMS are standard real-time scheduling algorithms designed for deadline guarantees, while Round-Robin is at least preemptive and prevents indefinite blocking by a single long job.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q26",
+    "word": "CEA201 SP26 RE Q26: Which technique involves dividing physical memory into fixed-si...",
+    "question": "Which technique involves dividing physical memory into fixed-size or variable-size blocks to allocate memory to processes?",
+    "options": [
+      "A. Partitioning",
+      "B. Swapping",
+      "C. Paging",
+      "D. Translation Lookaside Buffer"
+    ],
+    "answer": "A",
+    "correctWord": "A. Partitioning",
+    "explanation": "Answer: A. Memory partitioning divides physical main memory into either fixed-size (static) or variable-size (dynamic) contiguous blocks called partitions to allocate memory to processes. Swapping moves entire processes between main memory and secondary storage; paging uses strictly fixed-size pages and page frames; and a Translation Lookaside Buffer (TLB) is a fast cache for page table entries.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q27",
+    "word": "CEA201 SP26 RE Q27: Boolean algebra involves treating x and y as numeric variables....",
+    "question": "Boolean algebra involves treating x and y as numeric variables. Choose the option that contains two equivalent expressions.",
+    "options": [
+      "A. NOT ( x > 10 AND y > 15 ), x <= 10 OR y <= 15",
+      "B. NOT ( x > 10 AND y > 15 ), x <= 10 AND y <= 15",
+      "C. NOT ( x > 10 AND y > 15 ), x < 10 OR y < 15",
+      "D. NOT ( x > 10 AND y > 15 ), x < 10 AND y < 15"
+    ],
+    "answer": "A",
+    "correctWord": "A. NOT ( x > 10 AND y > 15 ), x <= 10 OR y <= 15",
+    "explanation": "Answer: A. By De Morgan's law, NOT (A AND B) is logically equivalent to (NOT A) OR (NOT B). Negating (x > 10) yields (x <= 10) and negating (y > 15) yields (y <= 15), so NOT (x > 10 AND y > 15) equals x <= 10 OR y <= 15. Options B and D fail to change AND to OR, and C and D omit equality on the boundary values.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q28",
+    "word": "CEA201 SP26 RE Q28: Which logic gate produces a high output (1) only when all of its...",
+    "question": "Which logic gate produces a high output (1) only when all of its inputs are high?",
+    "options": [
+      "A. XOR",
+      "B. AND",
+      "C. OR",
+      "D. NOT"
+    ],
+    "answer": "B",
+    "correctWord": "B. AND",
+    "explanation": "Answer: B. An AND gate outputs 1 (high) if and only if all of its inputs are 1; if any input is 0, the output is 0. By contrast, OR outputs 1 when at least one input is 1, XOR outputs 1 when an odd number of inputs are 1 (for two inputs, when they differ), and NOT inverts a single input.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q29",
+    "word": "CEA201 SP26 RE Q29: If you have an integer number +18 in sign magnitude representat...",
+    "question": "If you have an integer number +18 in sign magnitude representation, which is 00010010, what is the correct option for -18?",
+    "options": [
+      "A. 00010010",
+      "B. 10010010",
+      "C. 11110010",
+      "D. 01110010"
+    ],
+    "answer": "B",
+    "correctWord": "B. 10010010",
+    "explanation": "Answer: B. In 8-bit sign-magnitude representation, the leftmost bit (MSB) is the sign bit (0 for positive, 1 for negative) and the remaining 7 bits store the unsigned magnitude. Since +18 is 00010010 (magnitude 0010010 = 16 + 2 = 18), changing only the sign bit to 1 gives 10010010 for -18. (11110010 is -114 in sign-magnitude, or -14 in two's complement.)",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q30",
+    "word": "CEA201 SP26 RE Q30: The ________ of two logical operands is 1 if and only if exactly...",
+    "question": "The ________ of two logical operands is 1 if and only if exactly one of the operands has the value 1",
+    "options": [
+      "A. NOR",
+      "B. OR",
+      "C. AND",
+      "D. XOR"
+    ],
+    "answer": "D",
+    "correctWord": "D. XOR",
+    "explanation": "Answer: D. The Exclusive-OR (XOR) of two binary operands equals 1 if and only if the operands differ (one is 1 and the other is 0). OR outputs 1 when one or both operands are 1, AND outputs 1 only when both are 1, and NOR outputs 1 only when both are 0.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q31",
+    "word": "CEA201 SP26 RE Q31: A combinational circuit receives two 4-bit binary numbers as inp...",
+    "question": "A combinational circuit receives two 4-bit binary numbers as inputs and produces a single-bit output. Which of the following circuit types must be used if the output represents whether the first number is greater than the second?",
+    "options": [
+      "A. Full Adder",
+      "B. Multiplexer",
+      "C. Comparator",
+      "D. Decoder"
+    ],
+    "answer": "C",
+    "correctWord": "C. Comparator",
+    "explanation": "Answer: C. A magnitude comparator compares two binary numbers (such as two 4-bit values A and B) and asserts outputs indicating whether A > B, A = B, or A < B. A full adder performs binary addition, a multiplexer selects one of several data inputs, and a decoder activates one output line corresponding to an n-bit input code.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q32",
+    "word": "CEA201 SP26 RE Q32: Which of the following is not an operand type?",
+    "question": "Which of the following is not an operand type?",
+    "options": [
+      "A. Addresses",
+      "B. Logical data",
+      "C. Value",
+      "D. Characters"
+    ],
+    "answer": "C",
+    "correctWord": "C. Value",
+    "explanation": "Answer: C. In standard computer architecture (Stallings), machine instruction operands fall into four main categories: Addresses, Numbers, Characters, and Logical data. 'Value' is not one of the recognized operand types.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q33",
+    "word": "CEA201 SP26 RE Q33: What is a branch instruction?",
+    "question": "What is a branch instruction?",
+    "options": [
+      "A. The instructions that are used to divide a program into multiple subprograms",
+      "B. The instructions that have as one of its operands the address of the next instruction to be executed",
+      "C. The instructions that are used to pause the program",
+      "D. The instructions that are used to return to the beginning of the program"
+    ],
+    "answer": "B",
+    "correctWord": "B. The instructions that have as one of its operands the address of the next instruction to be executed",
+    "explanation": "Answer: B. A branch (or jump) instruction alters the sequential flow of control by specifying, as an operand, the target address of the next instruction to be executed (either unconditionally or when a specified condition holds).",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q34",
+    "word": "CEA201 SP26 RE Q34: In the context of addressing modes with both indirect addressin...",
+    "question": "In the context of addressing modes with both indirect addressing and indexing, what is postindexing?",
+    "options": [
+      "A. Indexing is performed after the indirection",
+      "B. Indexing is performed before the indirection",
+      "C. Both indexing and indirection are avoided",
+      "D. Indexing and indirection occur simultaneously"
+    ],
+    "answer": "A",
+    "correctWord": "A. Indexing is performed after the indirection",
+    "explanation": "Answer: A. In postindexing, indirection is resolved first using the address field A to fetch a pointer from memory, and then the index register R is added to produce the effective address: EA = (A) + (R). By contrast, preindexing performs indexing before indirection: EA = (A + (R)).",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q35",
+    "word": "CEA201 SP26 RE Q35: Which of the following PDP series computers is known for its use...",
+    "question": "Which of the following PDP series computers is known for its use of 12-bit instructions and a single general-purpose register, the accumulator?",
+    "options": [
+      "A. PDP-8",
+      "B. PDP-10",
+      "C. PDP-11",
+      "D. PDP-6"
+    ],
+    "answer": "A",
+    "correctWord": "A. PDP-8",
+    "explanation": "Answer: A. DEC's PDP-8 was a 12-bit minicomputer that used 12-bit instructions and had a single general-purpose register, the Accumulator (AC). By contrast, the PDP-11 was a 16-bit architecture with eight general-purpose registers, and the PDP-6/PDP-10 were 36-bit architectures.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q36",
+    "word": "CEA201 SP26 RE Q36: In MASM32, which command is incorrect?",
+    "question": "In MASM32, which command is incorrect?",
+    "options": [
+      "A. ADD EAX, a",
+      "B. ADD EAX, EBX",
+      "C. ADD a, EAX",
+      "D. ADD a, b"
+    ],
+    "answer": "D",
+    "correctWord": "D. ADD a, b",
+    "explanation": "Answer: D. In x86/MASM32 assembly, a single two-operand instruction cannot have both source and destination as memory variables. Register-memory (ADD EAX, a), register-register (ADD EAX, EBX), and memory-register (ADD a, EAX) forms are valid, whereas memory-to-memory ADD a, b is illegal.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q37",
+    "word": "CEA201 SP26 RE Q37: Steps for executing a machine instruction are concerned, given a...",
+    "question": "Steps for executing a machine instruction are concerned, given an assembly code: ADD EAX, V. What step will access the variable V?",
+    "options": [
+      "A. The fetch data step.",
+      "B. The fetch instruction step.",
+      "C. The process data step.",
+      "D. The interpret instruction step."
+    ],
+    "answer": "A",
+    "correctWord": "A. The fetch data step.",
+    "explanation": "Answer: A. In the five-step instruction execution model (fetch instruction, interpret instruction, fetch data, process data, write data), reading the memory operand V needed by ADD EAX, V takes place during the fetch data step.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q38",
+    "word": "CEA201 SP26 RE Q38: The PC, IR, MAR, MBR registers belong to which of the following...",
+    "question": "The PC, IR, MAR, MBR registers belong to which of the following groups?",
+    "options": [
+      "A. Control and Status Registers",
+      "B. User-Visible Registers",
+      "C. General Registers",
+      "D. Handle Registers"
+    ],
+    "answer": "A",
+    "correctWord": "A. Control and Status Registers",
+    "explanation": "Answer: A. Program Counter (PC), Instruction Register (IR), Memory Address Register (MAR), and Memory Buffer Register (MBR) are internal registers used by the control unit to control CPU execution and memory transfers, placing them in the Control and Status Registers category rather than User-Visible or General Registers.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q39",
+    "word": "CEA201 SP26 RE Q39: What is the significance of the program counter (PC) in the fet...",
+    "question": "What is the significance of the program counter (PC) in the fetch phase of the instruction cycle?",
+    "options": [
+      "A. The program counter (PC) is not used in the fetch phase, and its role is limited to tracking the number of instructions executed by the CPU",
+      "B. The program counter (PC) in the fetch phase holds the memory address of the next instruction to be fetched and executed",
+      "C. The program counter (PC) is responsible for executing instructions and has no specific role during the fetch phase",
+      "D. The program counter (PC) is only relevant in multi-core processors and does not contribute to the fetch phase of the instruction cycle in single-core systems"
+    ],
+    "answer": "B",
+    "correctWord": "B. The program counter (PC) in the fetch phase holds the memory address of the next instruction to be fetched and executed",
+    "explanation": "Answer: B. At the start of each fetch phase, the Program Counter (PC) provides the memory address of the next instruction to be fetched into the CPU (via MAR/MBR to IR), after which the PC is incremented to point to the subsequent instruction.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q40",
+    "word": "CEA201 SP26 RE Q40: When considering the number of pipeline stages, what trade-offs ...",
+    "question": "When considering the number of pipeline stages, what trade-offs must be made in computer architecture?",
+    "options": [
+      "A. Trade-offs between potential speedup and increased cost and delays",
+      "B. Trade-offs between software and hardware",
+      "C. Trade-offs between speed and efficiency",
+      "D. Trade-offs between branching and executing instructions with conditions"
+    ],
+    "answer": "A",
+    "correctWord": "A. Trade-offs between potential speedup and increased cost and delays",
+    "explanation": "Answer: A. Adding more pipeline stages increases theoretical throughput/speedup, but each additional stage introduces inter-stage latch delays, greater control-logic complexity (especially for hazards and branches), and higher hardware cost.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q41",
+    "word": "CEA201 SP26 RE Q41: Which statement is incorrect about RISC and CISC architecture?",
+    "question": "Which statement is incorrect about RISC and CISC architecture?",
+    "options": [
+      "A. CISC architecture is more convenient for programmers than RISC architecture.",
+      "B. CISC architecture has more operands in a instruction compared to RISC architecture.",
+      "C. CISC architecture has a more flexible instruction set than RISC architecture.",
+      "D. CISC architecture requires more general-purpose registers than RISC architecture."
+    ],
+    "answer": "D",
+    "correctWord": "D. CISC architecture requires more general-purpose registers than RISC architecture.",
+    "explanation": "Answer: D. RISC architectures actually use more general-purpose registers (often via large register files or register windows) so operands stay in fast registers under a load/store model, whereas CISC architectures traditionally have fewer general-purpose registers and rely more heavily on memory addressing modes.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q42",
+    "word": "CEA201 SP26 RE Q42: What is one of the advantages of using a register file in compu...",
+    "question": "What is one of the advantages of using a register file in computer architecture?",
+    "options": [
+      "A. Reduction in memory accesses, saving time",
+      "B. More efficient use of space due to dynamic adaptation",
+      "C. Efficient handling of both local and global variables",
+      "D. Easier management of cache residency"
+    ],
+    "answer": "A",
+    "correctWord": "A. Reduction in memory accesses, saving time",
+    "explanation": "Answer: A. A large register file allows frequently accessed scalar variables, intermediate results, and procedure parameters to remain inside fast CPU registers instead of main memory, reducing memory accesses and saving execution time.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q43",
+    "word": "CEA201 SP26 RE Q43: Which RISC feature simplifies instruction decoding?",
+    "question": "Which RISC feature simplifies instruction decoding?",
+    "options": [
+      "A. Variable instruction format",
+      "B. Large instruction set",
+      "C. Fixed-length instructions",
+      "D. Multiple addressing modes"
+    ],
+    "answer": "C",
+    "correctWord": "C. Fixed-length instructions",
+    "explanation": "Answer: C. Fixed-length instructions with uniform opcode and register field positions allow the control unit to decode instructions quickly in hardware, whereas variable-length formats, large instruction sets, and complex addressing modes are CISC traits that complicate decoding.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q44",
+    "word": "CEA201 SP26 RE Q44: What is a scalar instruction?",
+    "question": "What is a scalar instruction?",
+    "options": [
+      "A. An instruction in which all operands must be single values.",
+      "B. An instruction in which all operands must be groups such as arrays.",
+      "C. An instruction in which all operands can be single values or groups.",
+      "D. An instruction in which has no operand."
+    ],
+    "answer": "A",
+    "correctWord": "A. An instruction in which all operands must be single values.",
+    "explanation": "Answer: A. A scalar instruction operates strictly on single scalar values (individual data elements), as opposed to vector or SIMD instructions that operate on arrays or groups of values simultaneously.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q45",
+    "word": "CEA201 SP26 RE Q45: __________ is (are) determined by the number of instructions t...",
+    "question": "__________ is (are) determined by the number of instructions that can be fetched and executed at the same time (the number of parallel pipelines) and by the speed and sophistication of the mechanisms that the processor uses to find independent instructions.",
+    "options": [
+      "A. Instruction-level parallelism",
+      "B. Machine parallelism",
+      "C. Both instruction-level parallelism and machine parallelism",
+      "D. None of the mentioned"
+    ],
+    "answer": "B",
+    "correctWord": "B. Machine parallelism",
+    "explanation": "Answer: B. Machine parallelism refers to the hardware capability of a superscalar processor to take advantage of instruction-level parallelism (ILP); it is determined by the number of parallel pipelines (how many instructions can be fetched and executed simultaneously) and the sophistication of hardware mechanisms used to detect independent instructions.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q46",
+    "word": "CEA201 SP26 RE Q46: Which of the following types of processors typically offer bette...",
+    "question": "Which of the following types of processors typically offer better performance for parallel processing?",
+    "options": [
+      "A. Single-core processors",
+      "B. Multi-core processors",
+      "C. Microelectronics",
+      "D. Digital signal processors (DSPs)"
+    ],
+    "answer": "B",
+    "correctWord": "B. Multi-core processors",
+    "explanation": "Answer: B. Multi-core processors integrate multiple independent processing cores on a single die, enabling true concurrent execution of multiple threads or processes for superior parallel processing performance compared to single-core CPUs.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q47",
+    "word": "CEA201 SP26 RE Q47: Which write technique in which all write operations are made to...",
+    "question": "Which write technique in which all write operations are made to main memory as well as to the cache, ensuring that main memory is always valid.",
+    "options": [
+      "A. Write through",
+      "B. Write back",
+      "C. Write around",
+      "D. No write allocate"
+    ],
+    "answer": "A",
+    "correctWord": "A. Write through",
+    "explanation": "Answer: A. In the write-through cache policy, every write operation updates both the cache line and main memory immediately, keeping main memory always valid and coherent. By contrast, write-back updates only the cache initially and defers writing to main memory until the modified line is evicted.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q48",
+    "word": "CEA201 SP26 RE Q48: In parallel ALUs, what is the primary factor determining perform...",
+    "question": "In parallel ALUs, what is the primary factor determining performance improvement?",
+    "options": [
+      "A. The number of registers in the system.",
+      "B. The size of the instruction cache.",
+      "C. The ability to execute multiple operations simultaneously.",
+      "D. The clock speed of the processor."
+    ],
+    "answer": "C",
+    "correctWord": "C. The ability to execute multiple operations simultaneously.",
+    "explanation": "Answer: C. Having multiple parallel Arithmetic Logic Units (ALUs) improves performance primarily by allowing the processor to execute multiple arithmetic or logical operations concurrently within the same clock cycle.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q49",
+    "word": "CEA201 SP26 RE Q49: Follow the Amdahl's law for multiprocessors, if only 10% of the...",
+    "question": "Follow the Amdahl's law for multiprocessors, if only 10% of the code is inherently serial (f = 0.9), running the program on a multicore system with 4 processors, a performance gain (speedup factor) would be ________.",
+    "options": [
+      "A. 307%",
+      "B. 297%",
+      "C. 317%",
+      "D. 327%"
+    ],
+    "answer": "A",
+    "correctWord": "A. 307%",
+    "explanation": "Answer: A. By Amdahl's Law, Speedup = 1 / ((1 - f) + f / N), where f = 0.9 is the parallelizable fraction (1 - f = 0.1 is the 10% serial portion) and N = 4 processors. Computing: Speedup = 1 / (0.1 + 0.9 / 4) = 1 / (0.1 + 0.225) = 1 / 0.325 ≈ 3.0769, which corresponds to 307% in the given options.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  },
+  {
+    "id": "cea201_sp26_re_q50",
+    "word": "CEA201 SP26 RE Q50: What is the main performance benefit of multicore processors?",
+    "question": "What is the main performance benefit of multicore processors?",
+    "options": [
+      "A. Reduced power consumption",
+      "B. Higher LOck speed",
+      "C. Improved serial performance",
+      "D. Parallel task execution"
+    ],
+    "answer": "D",
+    "correctWord": "D. Parallel task execution",
+    "explanation": "Answer: D. Multicore processors improve overall system throughput primarily by executing multiple tasks or threads in parallel across separate cores, rather than raising single-thread clock speed or accelerating purely serial code.",
+    "subject": "CEA201",
+    "topic": "SP26 - RE"
+  }
+]
