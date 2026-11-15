@@ -15,6 +15,7 @@ import {
   ExternalLink,
   Loader2,
   AlertTriangle,
+  Download,
 } from 'lucide-react';
 
 interface QrSyncModalProps {
@@ -35,19 +36,15 @@ function getConfiguredAppOrigin(): string | null {
 async function compressToUrlSafeBase64(text: string): Promise<string | null> {
   try {
     if (typeof CompressionStream === 'undefined') return null;
-    const bytes = new TextEncoder().encode(text);
-    const cs = new CompressionStream('gzip');
-    const writer = cs.writable.getWriter();
-    writer.write(bytes);
-    writer.close();
-    const compressedBuf = await new Response(cs.readable).arrayBuffer();
+    const stream = new Blob([text]).stream().pipeThrough(new CompressionStream('gzip'));
+    const compressedBuf = await new Response(stream).arrayBuffer();
     const uint8 = new Uint8Array(compressedBuf);
     let binary = '';
     for (let i = 0; i < uint8.length; i++) {
       binary += String.fromCharCode(uint8[i]);
     }
     const b64 = btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-    return b64.length <= 1800 ? b64 : null;
+    return b64.length <= 2400 ? b64 : null;
   } catch {
     return null;
   }
@@ -62,6 +59,8 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
   const [copiedCode, setCopiedCode] = useState(false);
   const [copiedUrl, setCopiedUrl] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [needsRedisForLargePayload, setNeedsRedisForLargePayload] = useState(false);
+  const [backupSizeKb, setBackupSizeKb] = useState<string>('0');
   const [warningMsg, setWarningMsg] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const titleId = useId();
@@ -85,6 +84,7 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
   const generateTransferSession = useCallback(async () => {
     setLoading(true);
     setErrorMsg(null);
+    setNeedsRedisForLargePayload(false);
     setWarningMsg(null);
     setSyncCode(null);
     setSyncUrl(null);
@@ -93,7 +93,18 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     setCopiedUrl(false);
 
     try {
-      const backupJson = StorageEngine.exportAllData();
+      const rawBackupJson = StorageEngine.exportAllData();
+      const backupJson = (() => {
+        try {
+          return JSON.stringify(JSON.parse(rawBackupJson));
+        } catch {
+          return rawBackupJson;
+        }
+      })();
+      setBackupSizeKb(
+        (new Blob([backupJson]).size / 1024).toFixed(1)
+      );
+
       const browserOrigin = typeof window !== 'undefined' ? window.location.origin : '';
       const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
       const isLocalhost =
@@ -131,11 +142,11 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
       }
 
       if (!res.ok || !resData.success || !resData.code) {
-        // If server Redis is unconfigured (503) but backup fits directly inside gzip QR hash, fall back safely
+        // If server Redis is unconfigured (503) but backup fits inside gzip QR hash, fall back cleanly
         if (res.status === 503 && compressedPayload && targetOrigin) {
           const offlineTargetUrl = `${targetOrigin}/sync#d=${compressedPayload}`;
           const qrImage = await QRCode.toDataURL(offlineTargetUrl, {
-            width: 300,
+            width: 320,
             margin: 2,
             color: { dark: '#0F172A', light: '#FFFFFF' },
             errorCorrectionLevel: 'L',
@@ -144,9 +155,13 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
           setQrDataUrl(qrImage);
           setSyncUrl(offlineTargetUrl);
           setWarningMsg(
-            resData.error ||
-              'Máy chủ chưa bật Upstash Redis nên tạm thời tắt Mã PIN 6 số. Bạn vẫn có thể quét trực tiếp mã QR nén ở trên để chuyển dữ liệu!'
+            'Máy chủ chưa bật Upstash Redis nên tạm thời tắt Mã PIN 6 số. Bạn vẫn có thể quét trực tiếp mã QR nén ở trên để chuyển toàn bộ dữ liệu!'
           );
+          return;
+        }
+
+        if (res.status === 503) {
+          setNeedsRedisForLargePayload(true);
           return;
         }
 
@@ -216,6 +231,23 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     navigator.clipboard.writeText(syncUrl);
     setCopiedUrl(true);
     setTimeout(() => setCopiedUrl(false), 2000);
+  };
+
+  const handleDownloadBackup = () => {
+    try {
+      const jsonStr = StorageEngine.exportAllData();
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `ananquiz-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Failed to download backup JSON:', err);
+    }
   };
 
   const formatTimer = (seconds: number) => {
@@ -290,16 +322,80 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
               Đang đóng gói dữ liệu và tạo mã QR / Mã PIN 15 phút...
             </p>
           </div>
+        ) : needsRedisForLargePayload ? (
+          <div className="py-4 space-y-4">
+            <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-300/70 dark:border-amber-700/50 space-y-2">
+              <div className="flex items-start gap-2.5">
+                <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                <div className="space-y-1 text-xs leading-relaxed">
+                  <p className="font-bold text-slate-900 dark:text-white text-sm">
+                    Chưa bật Upstash Redis cho Mã PIN 15 phút
+                  </p>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    Gói dữ liệu của bạn ({backupSizeKb} KB) vượt ngưỡng chứa trực tiếp trong 1 mã QR offline, nên máy chủ cần Upstash Redis để cấp mã PIN 6 số.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
+              <p className="font-bold text-slate-900 dark:text-white">
+                Cách 1 — Chuyển ngay bây giờ (100% đầy đủ):
+              </p>
+              <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+                Tải file sao lưu <code>.json</code> về máy, gửi sang thiết bị mới rồi mở{' '}
+                <strong>Hồ sơ &rarr; Khôi Phục File</strong>.
+              </p>
+              <button
+                type="button"
+                onClick={handleDownloadBackup}
+                className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold inline-flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
+              >
+                <Download className="w-4 h-4" />
+                <span>Tải File Sao Lưu (.json)</span>
+              </button>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-slate-50/70 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 space-y-1.5 leading-relaxed">
+              <p className="font-bold text-slate-700 dark:text-slate-200">
+                Cách 2 — Bật Mã PIN 6 số cho chủ dự án (Vercel):
+              </p>
+              <p>
+                Vào Vercel Dashboard &rarr; <strong>Storage / Marketplace</strong> &rarr; gắn{' '}
+                <strong>Upstash Redis (Free)</strong> (hoặc thêm <code>UPSTASH_REDIS_REST_URL</code> &amp;{' '}
+                <code>UPSTASH_REDIS_REST_TOKEN</code>) rồi <strong>Redeploy</strong>.
+              </p>
+            </div>
+
+            <div className="flex justify-end pt-1">
+              <button
+                type="button"
+                onClick={generateTransferSession}
+                className="py-2 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer"
+              >
+                <RotateCcw className="w-3.5 h-3.5" /> Thử kết nối lại
+              </button>
+            </div>
+          </div>
         ) : errorMsg ? (
-          <div className="py-8 text-center space-y-4">
+          <div className="py-6 text-center space-y-4">
             <p className="text-sm font-bold text-rose-500">{errorMsg}</p>
-            <button
-              type="button"
-              onClick={generateTransferSession}
-              className="py-2.5 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold inline-flex items-center gap-2 cursor-pointer"
-            >
-              <RotateCcw className="w-4 h-4" /> Thử lại
-            </button>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <button
+                type="button"
+                onClick={generateTransferSession}
+                className="py-2.5 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold inline-flex items-center gap-2 cursor-pointer"
+              >
+                <RotateCcw className="w-4 h-4" /> Thử lại
+              </button>
+              <button
+                type="button"
+                onClick={handleDownloadBackup}
+                className="py-2.5 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold inline-flex items-center gap-2 cursor-pointer"
+              >
+                <Download className="w-4 h-4" /> Tải File (.json)
+              </button>
+            </div>
           </div>
         ) : (
           <div className="space-y-5">

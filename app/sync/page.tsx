@@ -317,7 +317,7 @@ function SyncContent() {
                 Làm thế nào để lấy mã trên thiết bị nguồn?
               </p>
               <p>
-                1. Mở AnanQuiz trên máy tính &rarr; Bấm nút <strong>&quot;Chuyển ĐT&quot; / &quot;Đồng bộ ĐT&quot;</strong> ở thanh trên cùng.
+                1. Mở AnanQuiz trên máy tính &rarr; Bấm nút <strong>&quot;Chuyển QR / PIN&quot;</strong> ở thanh trên cùng.
               </p>
               <p>
                 2. Dùng camera quét mã QR hoặc nhập dãy 6 chữ số vào ô bên trên.
