@@ -3,7 +3,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Word } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
-import { SpeechService } from '@/lib/speech';
 import {
   getQuestionKey,
   cleanOptionText,
@@ -15,7 +14,6 @@ import {
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import {
-  Volume2,
   CheckCircle2,
   XCircle,
   RotateCcw,
@@ -106,6 +104,110 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
     );
   }, [currentWord, isMCQ]);
 
+  const submitMistakeSelection = useCallback(
+    (choices: string[]) => {
+      if (!currentWord || isAnswered || choices.length === 0) return;
+      setIsAnswered(true);
+
+      const isCorrect = isMCQ
+        ? isQuestionAnsweredCorrectly(
+            choices,
+            currentWord.correctWord || currentWord.word,
+            shuffleOptions ? undefined : currentWord.answer,
+            answerMeta.correctChoices
+          )
+        : choices.length === 1 && choices[0].toLowerCase() === currentWord.word.toLowerCase();
+
+      const key = getQuestionKey(currentWord);
+      StorageEngine.updateWordProgress(key, isCorrect ? 5 : 2);
+    },
+    [answerMeta.correctChoices, currentWord, isAnswered, isMCQ, shuffleOptions]
+  );
+
+  const handleSelect = useCallback(
+    (choice: string) => {
+      if (isAnswered) return;
+      if (!answerMeta.isMultiSelect) {
+        setSelectedWords([choice]);
+        submitMistakeSelection([choice]);
+        return;
+      }
+
+      setSelectedWords((prev) =>
+        prev.includes(choice) ? prev.filter((item) => item !== choice) : [...prev, choice]
+      );
+    },
+    [answerMeta.isMultiSelect, isAnswered, submitMistakeSelection]
+  );
+
+  const handleConfirmMulti = () => {
+    if (isAnswered || selectedWords.length === 0) return;
+    submitMistakeSelection(selectedWords);
+  };
+
+  const handleNext = useCallback(() => {
+    if (currentIndex < mistakeWords.length - 1) {
+      setCurrentIndex((i) => i + 1);
+    } else {
+      setIsFinished(true);
+      confetti({
+        particleCount: 100,
+        spread: 60,
+        origin: { y: 0.6 },
+      });
+    }
+  }, [currentIndex, mistakeWords.length]);
+
+  // Keyboard shortcuts: 1-9 (select option), Enter (confirm multi-select or advance)
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (isFinished || !currentWord) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.tagName === 'SELECT' ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+
+      if (e.key === 'Enter') {
+        if (isAnswered) {
+          e.preventDefault();
+          handleNext();
+        } else if (answerMeta.isMultiSelect && selectedWords.length > 0) {
+          e.preventDefault();
+          submitMistakeSelection(selectedWords);
+        }
+        return;
+      }
+
+      if (!isAnswered && /^[1-9]$/.test(e.key)) {
+        const idx = parseInt(e.key, 10) - 1;
+        if (idx >= 0 && idx < options.length) {
+          e.preventDefault();
+          handleSelect(options[idx]);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [
+    answerMeta.isMultiSelect,
+    currentWord,
+    handleNext,
+    handleSelect,
+    isAnswered,
+    isFinished,
+    options,
+    selectedWords,
+    submitMistakeSelection,
+  ]);
+
   if (mistakeWords.length === 0) {
     return (
       <div className="max-w-md mx-auto text-center py-20 px-4 animate-fade-in">
@@ -116,7 +218,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
           Tuyệt Vời! Không Có Câu Lỗi
         </h3>
         <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
-          Bạn chưa có câu hỏi hoặc từ vựng nào bị ghi nhận sai liên tục trong bộ đề này. Hãy thử chế độ Học hoặc Thi Thử để thử thách bản thân!
+          Bạn chưa có câu hỏi nào bị ghi nhận sai liên tục trong bộ đề này. Hãy thử chế độ Học hoặc Thi Thử để thử thách bản thân!
         </p>
         <button
           onClick={onExit}
@@ -181,94 +283,6 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
     return opt.toLowerCase() === currentWord.word.toLowerCase();
   };
 
-  const submitMistakeSelection = (choices: string[]) => {
-    if (isAnswered || choices.length === 0) return;
-    setIsAnswered(true);
-
-    const isCorrect = isMCQ
-      ? isQuestionAnsweredCorrectly(
-          choices,
-          currentWord.correctWord || currentWord.word,
-          shuffleOptions ? undefined : currentWord.answer,
-          answerMeta.correctChoices
-        )
-      : choices.length === 1 && choices[0].toLowerCase() === currentWord.word.toLowerCase();
-
-    const key = getQuestionKey(currentWord);
-    StorageEngine.updateWordProgress(key, isCorrect ? 5 : 2);
-  };
-
-  const handleSelect = (choice: string) => {
-    if (isAnswered) return;
-    if (!answerMeta.isMultiSelect) {
-      setSelectedWords([choice]);
-      submitMistakeSelection([choice]);
-      return;
-    }
-
-    setSelectedWords((prev) =>
-      prev.includes(choice) ? prev.filter((item) => item !== choice) : [...prev, choice]
-    );
-  };
-
-  const handleConfirmMulti = () => {
-    if (isAnswered || selectedWords.length === 0) return;
-    submitMistakeSelection(selectedWords);
-  };
-
-  const handleNext = useCallback(() => {
-    if (currentIndex < mistakeWords.length - 1) {
-      setCurrentIndex((i) => i + 1);
-    } else {
-      setIsFinished(true);
-      confetti({
-        particleCount: 100,
-        spread: 60,
-        origin: { y: 0.6 },
-      });
-    }
-  }, [currentIndex, mistakeWords.length]);
-
-  // Keyboard shortcuts: 1-4 (select option), Enter (confirm multi-select or advance)
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (isFinished || !currentWord) return;
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-      const target = e.target as HTMLElement | null;
-      if (
-        target &&
-        (target.tagName === 'INPUT' ||
-          target.tagName === 'TEXTAREA' ||
-          target.tagName === 'SELECT' ||
-          target.isContentEditable)
-      ) {
-        return;
-      }
-
-      if (e.key === 'Enter') {
-        if (isAnswered) {
-          e.preventDefault();
-          handleNext();
-        } else if (answerMeta.isMultiSelect && selectedWords.length > 0) {
-          e.preventDefault();
-          submitMistakeSelection(selectedWords);
-        }
-        return;
-      }
-
-      if (!isAnswered && /^[1-9]$/.test(e.key)) {
-        const idx = parseInt(e.key, 10) - 1;
-        if (idx >= 0 && idx < options.length) {
-          e.preventDefault();
-          handleSelect(options[idx]);
-        }
-      }
-    };
-
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  });
-
   return (
     <div className="w-full max-w-4xl mx-auto py-6 px-4 sm:px-6">
       {/* Top Bar */}
@@ -326,7 +340,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
           <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
             <div className="flex items-center gap-2 flex-wrap">
               <p className="text-xs font-bold text-amber-500 uppercase tracking-wider">
-                {isMCQ ? 'Câu hỏi cần khắc phục' : 'Từ vựng cần củng cố'}
+                Câu hỏi cần khắc phục
               </p>
               {isMCQ && answerMeta.isMultiSelect && (
                 <span className="text-[11px] font-black px-2.5 py-0.5 rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-300 border border-amber-500/30">
@@ -345,21 +359,10 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
               content={currentWord.question || currentWord.word}
               className="text-base sm:text-xl font-black text-slate-900 dark:text-white leading-relaxed flex-1"
             />
-            {!isMCQ && (
-              <button
-                onClick={() => SpeechService.speak(currentWord.word)}
-                className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-indigo-500 transition-colors shrink-0"
-                aria-label="Phát âm"
-              >
-                <Volume2 className="w-5 h-5" />
-              </button>
-            )}
           </div>
 
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-            {isMCQ
-              ? 'Hãy đọc kỹ nội dung và chọn phương án chính xác nhất:'
-              : 'Hãy chọn định nghĩa / nghĩa tiếng Việt chính xác:'}
+            Hãy đọc kỹ nội dung và chọn phương án chính xác nhất:
           </p>
         </div>
 
@@ -369,7 +372,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
             let displayLabel = opt;
             if (!isMCQ) {
               const optWordObj = words.find((w) => w.word.toLowerCase() === opt.toLowerCase());
-              displayLabel = optWordObj?.vi || optWordObj?.ru || optWordObj?.definition || opt;
+              displayLabel = optWordObj?.vi || optWordObj?.definition || opt;
             } else {
               displayLabel = cleanOptionText(opt);
             }

@@ -404,21 +404,23 @@ export default function YouTubeAudioEngine() {
     };
   }, []);
 
+  const currentVideoId = currentTrack?.videoId;
+
   // Unified reactive fallback effect for track changes & play/pause (e.g. Pomodoro or state changes before onReady)
   useEffect(() => {
-    if (!currentTrack || !isReady || !isPlayerReadyRef.current || !playerRef.current) return;
+    if (!currentVideoId || !isReady || !isPlayerReadyRef.current || !playerRef.current) return;
 
     const intent = syncedIntentRef.current;
-    if (intent && intent.videoId === currentTrack.videoId && intent.isPlaying === isPlaying) {
+    if (intent && intent.videoId === currentVideoId && intent.isPlaying === isPlaying) {
       return;
     }
 
     const latest = useMusicStore.getState();
-    syncedIntentRef.current = { videoId: currentTrack.videoId, isPlaying };
+    syncedIntentRef.current = { videoId: currentVideoId, isPlaying };
 
     try {
-      if (activeVideoIdRef.current !== currentTrack.videoId) {
-        activeVideoIdRef.current = currentTrack.videoId;
+      if (activeVideoIdRef.current !== currentVideoId) {
+        activeVideoIdRef.current = currentVideoId;
         syncPlayerAudio(playerRef.current, latest.isMuted, latest.volume, latest.isDucked);
         try {
           playerRef.current?.setPlaybackQuality?.('small');
@@ -426,9 +428,9 @@ export default function YouTubeAudioEngine() {
           // Ignore
         }
         if (isPlaying && typeof playerRef.current.loadVideoById === 'function') {
-          playerRef.current.loadVideoById(currentTrack.videoId);
+          playerRef.current.loadVideoById(currentVideoId);
         } else if (typeof playerRef.current.cueVideoById === 'function') {
-          playerRef.current.cueVideoById(currentTrack.videoId);
+          playerRef.current.cueVideoById(currentVideoId);
         }
         return;
       }
@@ -447,7 +449,7 @@ export default function YouTubeAudioEngine() {
     } catch {
       // Ignore if player is mid-transition
     }
-  }, [currentTrack?.videoId, isPlaying, isReady]);
+  }, [currentVideoId, isPlaying, isReady]);
 
   // Mute / Volume / Ducking synchronization effect
   useEffect(() => {

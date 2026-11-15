@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import Image from 'next/image';
 import {
   Play,
   Pause,
@@ -150,9 +151,11 @@ export default function FloatingMiniPlayer() {
         {/* Header Row: Thumbnail + Metadata + Collapse/Close */}
         <div className="flex items-center gap-2.5">
           <div className="relative w-12 h-9 rounded-lg overflow-hidden shrink-0 border border-slate-200 dark:border-slate-700/70 bg-slate-900">
-            <img
+            <Image
               src={`https://i.ytimg.com/vi/${currentTrack.videoId}/mqdefault.jpg`}
               alt={currentTrack.title}
+              width={48}
+              height={36}
               className="w-full h-full object-cover"
             />
             {isActuallyPlaying && (

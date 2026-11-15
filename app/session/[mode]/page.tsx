@@ -7,7 +7,7 @@ import LearnMode from '@/components/study/LearnMode';
 import DrillMode from '@/components/study/DrillMode';
 import ExamMode from '@/components/study/ExamMode';
 import MistakesMode from '@/components/study/MistakesMode';
-import { AlertTriangle } from 'lucide-react';
+import ConfirmModal, { EXAM_EXIT_CONFIRM_COPY } from '@/components/ConfirmModal';
 
 export default function SessionPage() {
   const params = useParams();
@@ -19,7 +19,7 @@ export default function SessionPage() {
 
   useEffect(() => {
     loadQuizWords();
-  }, []);
+  }, [loadQuizWords]);
 
   const handleExit = () => {
     if (isExamActive && mode === 'exam') {
@@ -48,7 +48,6 @@ export default function SessionPage() {
 
   return (
     <div className="min-h-screen w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4">
-      {/* Main Study Session View */}
       <div className="w-full">
         {mode === 'learn' && <LearnMode words={words} onExit={handleExit} />}
         {mode === 'drill' && <DrillMode words={words} onExit={handleExit} />}
@@ -56,40 +55,12 @@ export default function SessionPage() {
         {mode === 'mistakes' && <MistakesMode words={words} onExit={handleExit} />}
       </div>
 
-      {/* Exam Exit Confirmation Modal */}
-      {showExitConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-rose-500/30 rounded-3xl p-6 shadow-2xl text-center space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-rose-500/10 text-rose-500 mx-auto flex items-center justify-center">
-              <AlertTriangle className="w-7 h-7" />
-            </div>
-            <div>
-              <h3 className="text-xl font-black text-slate-900 dark:text-white">
-                Bạn đang trong phòng thi!
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
-                Rời khỏi trang lúc này sẽ hủy bỏ toàn bộ kết quả bài thi hiện tại và không được lưu. Bạn có chắc chắn muốn thoát không?
-              </p>
-            </div>
-            <div className="flex items-center gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => setShowExitConfirm(false)}
-                className="flex-1 py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm"
-              >
-                Tiếp tục làm bài
-              </button>
-              <button
-                type="button"
-                onClick={confirmExit}
-                className="flex-1 py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold transition-colors text-sm shadow-sm"
-              >
-                Hủy bài & Thoát
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ConfirmModal
+        isOpen={showExitConfirm}
+        {...EXAM_EXIT_CONFIRM_COPY}
+        onCancel={() => setShowExitConfirm(false)}
+        onConfirm={confirmExit}
+      />
     </div>
   );
 }

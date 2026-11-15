@@ -1,121 +1,321 @@
+import { randomInt } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
+import { Redis } from '@upstash/redis';
+import { BackupDataSchema } from '@/lib/schema';
 
 interface SyncRecord {
-  data: any;
+  data: unknown;
   createdAt: number;
   expiresAt: number;
 }
 
-// In-memory global store for ephemeral sync transfer (15-minute TTL)
-// Declarations outside request handler persist across warm serverless requests
-const syncStore = new Map<string, SyncRecord>();
+const SYNC_TTL_SECONDS = 15 * 60; // 15 minutes
+const MAX_PAYLOAD_BYTES = 512 * 1024; // 512 KB cap to protect Serverless & Redis limits
+const REDIS_KEY_PREFIX = 'ananquiz:sync:';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
+function getRedisClient(): Redis | null {
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL?.trim() || process.env.KV_REST_API_URL?.trim();
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN?.trim() || process.env.KV_REST_API_TOKEN?.trim();
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: corsHeaders });
+  if (!url || !token) {
+    return null;
+  }
+
+  return new Redis({ url, token });
 }
 
-// Helper to cleanup expired tokens periodically
-function cleanExpiredRecords() {
-  const now = Date.now();
-  syncStore.forEach((record, code) => {
-    if (record.expiresAt < now) {
-      syncStore.delete(code);
+function getAllowedOrigins(req: NextRequest): Set<string> {
+  const allowed = new Set<string>();
+
+  if (req.nextUrl?.origin) {
+    allowed.add(req.nextUrl.origin);
+  }
+
+  const configuredUrl = process.env.NEXT_PUBLIC_APP_URL?.trim();
+  if (configuredUrl) {
+    try {
+      allowed.add(new URL(configuredUrl).origin);
+    } catch {
+      // Ignore malformed env URL
     }
-  });
+  }
+
+  const vercelHosts = [
+    process.env.VERCEL_URL,
+    process.env.VERCEL_BRANCH_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+  ];
+
+  for (const host of vercelHosts) {
+    const clean = host?.trim();
+    if (clean) {
+      allowed.add(clean.startsWith('http') ? new URL(clean).origin : `https://${clean}`);
+    }
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    allowed.add('http://localhost:3000');
+    allowed.add('http://127.0.0.1:3000');
+  }
+
+  return allowed;
 }
 
-// Generate a memorable 6-character transfer code (digits only for fast phone entry)
-function generateSyncCode(): string {
-  cleanExpiredRecords();
-  let code = '';
-  do {
-    // Generate 6-digit code (e.g., 482915)
-    code = Math.floor(100000 + Math.random() * 900000).toString();
-  } while (syncStore.has(code));
-  return code;
+function resolveCors(req: NextRequest): {
+  allowed: boolean;
+  headers: Record<string, string>;
+} {
+  const origin = req.headers.get('origin');
+  const baseHeaders: Record<string, string> = {
+    Vary: 'Origin',
+    'Cache-Control': 'no-store',
+  };
+
+  if (!origin) {
+    return { allowed: true, headers: baseHeaders };
+  }
+
+  const allowedOrigins = getAllowedOrigins(req);
+  if (!allowedOrigins.has(origin)) {
+    return { allowed: false, headers: baseHeaders };
+  }
+
+  return {
+    allowed: true,
+    headers: {
+      ...baseHeaders,
+      'Access-Control-Allow-Origin': origin,
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  };
+}
+
+export async function OPTIONS(req: NextRequest) {
+  const cors = resolveCors(req);
+  if (!cors.allowed) {
+    return NextResponse.json(
+      { error: 'Origin không được phép truy cập.' },
+      { status: 403, headers: cors.headers }
+    );
+  }
+  return new NextResponse(null, { status: 204, headers: cors.headers });
 }
 
 /**
  * POST /api/sync/session
- * Saves a backup payload from PC and returns a 6-digit code for phone pickup
+ * Validates and stores a short-lived backup payload in Upstash Redis (15-minute TTL)
+ * and returns a one-time 6-digit transfer PIN.
  */
 export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
-    const { payload } = body;
+  const cors = resolveCors(req);
+  if (!cors.allowed) {
+    return NextResponse.json(
+      { error: 'Origin không được phép tạo phiên chuyển dữ liệu.' },
+      { status: 403, headers: cors.headers }
+    );
+  }
 
-    if (!payload) {
+  const redis = getRedisClient();
+  if (!redis) {
+    return NextResponse.json(
+      {
+        error:
+          'Máy chủ chưa cấu hình Upstash Redis (UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN) để cấp mã PIN 15 phút.',
+        code: 'REDIS_NOT_CONFIGURED',
+      },
+      { status: 503, headers: cors.headers }
+    );
+  }
+
+  try {
+    const contentLengthHeader = req.headers.get('content-length');
+    if (contentLengthHeader) {
+      const contentLength = Number(contentLengthHeader);
+      if (Number.isFinite(contentLength) && contentLength > MAX_PAYLOAD_BYTES) {
+        return NextResponse.json(
+          { error: 'Dữ liệu sao lưu vượt quá giới hạn tối đa 512 KB.' },
+          { status: 413, headers: cors.headers }
+        );
+      }
+    }
+
+    const rawBody = await req.text();
+    if (Buffer.byteLength(rawBody, 'utf8') > MAX_PAYLOAD_BYTES) {
       return NextResponse.json(
-        { error: 'Dữ liệu sao lưu không được để trống' },
-        { status: 400, headers: corsHeaders }
+        { error: 'Dữ liệu sao lưu vượt quá giới hạn tối đa 512 KB.' },
+        { status: 413, headers: cors.headers }
       );
     }
 
-    const code = generateSyncCode();
-    const now = Date.now();
-    const ttlMs = 15 * 60 * 1000; // 15 minutes
+    let body: { payload?: unknown };
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      return NextResponse.json(
+        { error: 'Nội dung gửi lên không đúng định dạng JSON hợp lệ.' },
+        { status: 400, headers: cors.headers }
+      );
+    }
 
-    syncStore.set(code, {
-      data: payload,
+    const rawPayload = body?.payload;
+    if (!rawPayload) {
+      return NextResponse.json(
+        { error: 'Dữ liệu sao lưu không được để trống.' },
+        { status: 400, headers: cors.headers }
+      );
+    }
+
+    const payloadJsonStr =
+      typeof rawPayload === 'string' ? rawPayload : JSON.stringify(rawPayload);
+
+    if (Buffer.byteLength(payloadJsonStr, 'utf8') > MAX_PAYLOAD_BYTES) {
+      return NextResponse.json(
+        { error: 'Gói sao lưu vượt quá giới hạn 512 KB để chuyển qua PIN.' },
+        { status: 413, headers: cors.headers }
+      );
+    }
+
+    let parsedPayload: unknown;
+    try {
+      parsedPayload =
+        typeof rawPayload === 'string' ? JSON.parse(rawPayload) : rawPayload;
+    } catch {
+      return NextResponse.json(
+        { error: 'Dữ liệu sao lưu bên trong payload không hợp lệ.' },
+        { status: 400, headers: cors.headers }
+      );
+    }
+
+    const schemaCheck = BackupDataSchema.safeParse(parsedPayload);
+    if (!schemaCheck.success) {
+      return NextResponse.json(
+        { error: 'Cấu trúc dữ liệu sao lưu AnanQuiz không hợp lệ.' },
+        { status: 422, headers: cors.headers }
+      );
+    }
+
+    const now = Date.now();
+    const record: SyncRecord = {
+      data: schemaCheck.data,
       createdAt: now,
-      expiresAt: now + ttlMs,
-    });
+      expiresAt: now + SYNC_TTL_SECONDS * 1000,
+    };
+
+    let code = '';
+    let reserved = false;
+
+    for (let attempt = 0; attempt < 6; attempt++) {
+      const candidate = randomInt(100000, 1000000).toString();
+      const setResult = await redis.set(
+        `${REDIS_KEY_PREFIX}${candidate}`,
+        JSON.stringify(record),
+        { ex: SYNC_TTL_SECONDS, nx: true }
+      );
+      if (setResult === 'OK') {
+        code = candidate;
+        reserved = true;
+        break;
+      }
+    }
+
+    if (!reserved || !code) {
+      return NextResponse.json(
+        { error: 'Hệ thống đang bận tạo mã PIN, vui lòng thử lại.' },
+        { status: 503, headers: cors.headers }
+      );
+    }
 
     return NextResponse.json(
       {
         success: true,
         code,
-        expiresAt: now + ttlMs,
-        ttlSeconds: 900,
+        expiresAt: record.expiresAt,
+        ttlSeconds: SYNC_TTL_SECONDS,
       },
-      { headers: corsHeaders }
+      { headers: cors.headers }
     );
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('Error in POST /api/sync/session:', err);
     return NextResponse.json(
-      { error: 'Không thể khởi tạo phiên đồng bộ: ' + (err?.message || 'Lỗi hệ thống') },
-      { status: 500, headers: corsHeaders }
+      { error: 'Không thể khởi tạo phiên chuyển dữ liệu qua QR / PIN.' },
+      { status: 500, headers: cors.headers }
     );
   }
 }
 
 /**
  * GET /api/sync/session?code=123456
- * Retrieves the stored payload on phone and claims it
+ * Atomically retrieves and deletes the 6-digit transfer code (one-time claim).
  */
 export async function GET(req: NextRequest) {
+  const cors = resolveCors(req);
+  if (!cors.allowed) {
+    return NextResponse.json(
+      { error: 'Origin không được phép nhận dữ liệu chuyển.' },
+      { status: 403, headers: cors.headers }
+    );
+  }
+
+  const redis = getRedisClient();
+  if (!redis) {
+    return NextResponse.json(
+      {
+        error:
+          'Máy chủ chưa cấu hình Upstash Redis (UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN).',
+        code: 'REDIS_NOT_CONFIGURED',
+      },
+      { status: 503, headers: cors.headers }
+    );
+  }
+
   try {
     const { searchParams } = new URL(req.url);
-    const code = searchParams.get('code')?.trim();
+    const code = searchParams.get('code')?.trim() || '';
 
-    if (!code) {
+    if (!/^\d{6}$/.test(code)) {
       return NextResponse.json(
-        { error: 'Thiếu mã đồng bộ (code)' },
-        { status: 400, headers: corsHeaders }
+        { error: 'Mã PIN chuyển dữ liệu phải gồm đúng 6 chữ số.' },
+        { status: 400, headers: cors.headers }
       );
     }
 
-    cleanExpiredRecords();
-    const record = syncStore.get(code);
+    // Atomic single-use claim: reads and immediately removes the key from Redis
+    const rawRecord = await redis.getdel<SyncRecord | string>(`${REDIS_KEY_PREFIX}${code}`);
 
-    if (!record) {
+    if (!rawRecord) {
       return NextResponse.json(
-        { error: 'Mã đồng bộ không tồn tại hoặc đã hết hạn sau 15 phút. Vui lòng quét lại mã QR trên máy tính.' },
-        { status: 404, headers: corsHeaders }
+        {
+          error:
+            'Mã PIN không tồn tại, đã được nhận trước đó hoặc đã hết hạn sau 15 phút. Vui lòng tạo mã QR mới trên thiết bị nguồn.',
+        },
+        { status: 404, headers: cors.headers }
+      );
+    }
+
+    let record: SyncRecord | null = null;
+    try {
+      record =
+        typeof rawRecord === 'string'
+          ? (JSON.parse(rawRecord) as SyncRecord)
+          : rawRecord;
+    } catch {
+      record = null;
+    }
+
+    if (!record || !record.data) {
+      return NextResponse.json(
+        { error: 'Gói dữ liệu chuyển bị hỏng hoặc không hợp lệ.' },
+        { status: 500, headers: cors.headers }
       );
     }
 
     if (Date.now() > record.expiresAt) {
-      syncStore.delete(code);
       return NextResponse.json(
-        { error: 'Mã đồng bộ đã hết hạn. Vui lòng tạo mã mới trên máy tính.' },
-        { status: 410, headers: corsHeaders }
+        { error: 'Mã PIN đã hết hạn 15 phút. Vui lòng tạo mã mới.' },
+        { status: 410, headers: cors.headers }
       );
     }
 
@@ -125,13 +325,13 @@ export async function GET(req: NextRequest) {
         payload: record.data,
         transferredAt: new Date().toISOString(),
       },
-      { headers: corsHeaders }
+      { headers: cors.headers }
     );
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('Error in GET /api/sync/session:', err);
     return NextResponse.json(
-      { error: 'Không thể nhận dữ liệu đồng bộ: ' + (err?.message || 'Lỗi hệ thống') },
-      { status: 500, headers: corsHeaders }
+      { error: 'Không thể nhận dữ liệu chuyển từ máy chủ.' },
+      { status: 500, headers: cors.headers }
     );
   }
 }

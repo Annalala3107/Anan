@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { StorageEngine, ExamRecord } from '@/lib/storage';
+import { DailyStats } from '@/lib/types';
 import {
   Flame,
   Brain,
@@ -18,11 +19,12 @@ import {
   Sparkles,
 } from 'lucide-react';
 import QrSyncModal from '@/components/QrSyncModal';
+import ConfirmModal from '@/components/ConfirmModal';
 import { useQuizStore } from '@/lib/quizStore';
 
 export default function ProfilePage() {
   const [streak, setStreak] = useState(1);
-  const [dailyStats, setDailyStats] = useState<any>(null);
+  const [dailyStats, setDailyStats] = useState<DailyStats | null>(null);
   const [wordProgressCount, setWordProgressCount] = useState(0);
   const [masteredCount, setMasteredCount] = useState(0);
   const [examHistory, setExamHistory] = useState<ExamRecord[]>([]);
@@ -31,6 +33,7 @@ export default function ProfilePage() {
     text: string;
   } | null>(null);
   const [showQrSync, setShowQrSync] = useState(false);
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
 
   const showConstellationHud = useQuizStore((s) => s.showConstellationHud);
   const setShowConstellationHud = useQuizStore((s) => s.setShowConstellationHud);
@@ -121,18 +124,12 @@ export default function ProfilePage() {
     reader.readAsText(file);
   };
 
-  const handleResetProgress = () => {
-    if (
-      confirm(
-        'CẢNH BÁO: Bạn có chắc chắn muốn xóa toàn bộ lịch sử học, streak và bắt đầu lại từ đầu? Hãy xuất file sao lưu trước nếu cần!'
-      )
-    ) {
-      localStorage.removeItem('ananquiz_word_progress');
-      localStorage.removeItem('ananquiz_daily_stats');
-      localStorage.removeItem('ananquiz_streak');
-      localStorage.removeItem('ananquiz_exam_history');
-      window.location.reload();
-    }
+  const executeResetProgress = () => {
+    localStorage.removeItem('ananquiz_word_progress');
+    localStorage.removeItem('ananquiz_daily_stats');
+    localStorage.removeItem('ananquiz_streak');
+    localStorage.removeItem('ananquiz_exam_history');
+    window.location.reload();
   };
 
   return (
@@ -147,7 +144,7 @@ export default function ProfilePage() {
             Học Viên AnanQuiz
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            Hồ sơ học tập cá nhân • Chế độ Lưu trữ Cục Bộ & Đồng bộ Đám mây
+            Hồ sơ học tập cá nhân • Lưu trữ cục bộ &amp; Chuyển dữ liệu qua QR / Mã PIN 15 phút
           </p>
         </div>
       </div>
@@ -168,11 +165,11 @@ export default function ProfilePage() {
           </div>
 
           <div className="p-5 rounded-2xl glass-surface hover:border-cyan-400/40 transition-colors">
-            <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Từ đã học hôm nay</p>
+            <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Câu đã học hôm nay</p>
             <p className="text-3xl font-black text-indigo-500 mt-1">
               {dailyStats?.wordsLearned || 0}
             </p>
-            <p className="text-[11px] text-slate-500 mt-0.5">Qua chế độ Learn</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">Qua chế độ Học (Learn)</p>
           </div>
 
           <div className="p-5 rounded-2xl glass-surface hover:border-cyan-400/40 transition-colors">
@@ -220,11 +217,12 @@ export default function ProfilePage() {
             {/* Action Buttons */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
               <button
+                type="button"
                 onClick={() => setShowQrSync(true)}
-                className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all shadow-glow text-xs"
+                className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition-all shadow-glow text-xs cursor-pointer"
               >
                 <Smartphone className="w-4 h-4" />
-                <span>Đồng Bộ QR 1-Chạm</span>
+                <span>Chuyển QR / Mã PIN</span>
               </button>
 
               <button
@@ -347,17 +345,17 @@ export default function ProfilePage() {
         </div>
 
         <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-          Mỗi khi bạn trả lời &quot;Đã thuộc&quot; hoặc chọn đúng trong các bài trắc nghiệm, thuật toán sẽ tăng hệ số dễ (Ease Factor) và giãn khoảng cách ngày ôn tập: <strong>1 ngày &rarr; 3 ngày &rarr; 7 ngày &rarr; 16 ngày &rarr; 30 ngày</strong>. Ngược lại, nếu chọn &quot;Chưa nhớ&quot; hoặc trả lời sai, từ vựng sẽ tự động được đưa vào danh sách ưu tiên của chế độ <em>Khắc Phục Lỗi (Mistakes)</em>.
+          Mỗi khi bạn chọn &quot;Đã thuộc&quot; hoặc trả lời đúng trong các bài trắc nghiệm, thuật toán sẽ tăng hệ số dễ (Ease Factor) và giãn khoảng cách ngày ôn tập: <strong>1 ngày &rarr; 3 ngày &rarr; 7 ngày &rarr; 16 ngày &rarr; 30 ngày</strong>. Ngược lại, nếu chọn &quot;Chưa nhớ&quot; hoặc trả lời sai, câu hỏi sẽ tự động được đưa vào danh sách ưu tiên của chế độ <em>Khắc Phục Lỗi (Mistakes)</em>.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
           <div className="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-indigo-200/70 dark:border-white/10 text-slate-700 dark:text-slate-300">
-            <span className="font-bold text-slate-900 dark:text-white block mb-1">1. Phản xạ ban đầu</span>
-            Học 3 bước (Lật thẻ &rarr; Điền câu &rarr; Phân biệt từ gây nhiễu).
+            <span className="font-bold text-slate-900 dark:text-white block mb-1">1. Phản xạ chủ động</span>
+            Lật thẻ Flashcard 3D, điền trắc nghiệm &amp; đối chiếu giải thích chi tiết từng đáp án.
           </div>
           <div className="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-indigo-200/70 dark:border-white/10 text-slate-700 dark:text-slate-300">
             <span className="font-bold text-slate-900 dark:text-white block mb-1">2. Giãn cách chu kỳ</span>
-            Từ đạt trên 80% độ nhớ sẽ được phân loại là <em>Đã Thành Thạo (Mastered)</em>.
+            Câu hỏi đạt trên 80% độ nhớ sẽ được phân loại là <em>Đã Thành Thạo (Mastered)</em>.
           </div>
           <div className="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-indigo-200/70 dark:border-white/10 text-slate-700 dark:text-slate-300">
             <span className="font-bold text-slate-900 dark:text-white block mb-1">3. Kháng bẫy đề thi</span>
@@ -414,10 +412,10 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      {/* Cloud & Storage Status */}
+      {/* Storage & Transfer Status */}
       <div className="p-6 rounded-3xl glass-surface space-y-4">
         <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-          <Database className="w-5 h-5 text-indigo-500" /> Trạng Thái Cơ Sở Dữ Liệu & Đồng Bộ
+          <Database className="w-5 h-5 text-indigo-500" /> Trạng Thái Cơ Sở Dữ Liệu &amp; Chuyển Thiết Bị
         </h3>
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
@@ -430,7 +428,7 @@ export default function ProfilePage() {
                 Bộ nhớ cục bộ trình duyệt (Local Storage)
               </p>
               <p className="text-xs text-slate-500">
-                Đang lưu trữ {wordProgressCount} câu hỏi / từ vựng với toàn bộ lịch sử điểm số.
+                Đang lưu trữ {wordProgressCount} câu hỏi với toàn bộ lịch sử điểm số.
               </p>
             </div>
           </div>
@@ -446,10 +444,10 @@ export default function ProfilePage() {
             </div>
             <div>
               <p className="text-sm font-bold text-slate-900 dark:text-white">
-                Đồng bộ 1-Chạm đa thiết bị (QR Code & Gzip Hash)
+                Chuyển dữ liệu qua QR / Mã PIN 15 phút
               </p>
               <p className="text-xs text-slate-500">
-                Truyền trực tiếp 100% tiến độ SRS, bộ đề tự tạo và streak sang điện thoại không cần tài khoản.
+                Truyền trực tiếp 100% tiến độ SRS, bộ đề tự tạo và streak sang thiết bị khác không cần tài khoản (mã tự hủy ngay khi nhận).
               </p>
             </div>
           </div>
@@ -461,8 +459,9 @@ export default function ProfilePage() {
         {/* Reset Button */}
         <div className="pt-2">
           <button
-            onClick={handleResetProgress}
-            className="flex items-center gap-2 text-xs font-bold text-rose-500 hover:text-rose-600 dark:hover:text-rose-400 transition-colors"
+            type="button"
+            onClick={() => setShowResetConfirm(true)}
+            className="flex items-center gap-2 text-xs font-bold text-rose-500 hover:text-rose-600 dark:hover:text-rose-400 transition-colors cursor-pointer"
           >
             <Trash2 className="w-4 h-4" />
             <span>Xoá toàn bộ tiến độ và đặt lại từ đầu</span>
@@ -472,6 +471,18 @@ export default function ProfilePage() {
 
       {/* QR Sync Device Transfer Modal */}
       <QrSyncModal isOpen={showQrSync} onClose={() => setShowQrSync(false)} />
+
+      {/* Reset Progress Confirmation Modal */}
+      <ConfirmModal
+        isOpen={showResetConfirm}
+        title="Xóa toàn bộ tiến độ học?"
+        message="CẢNH BÁO: Thao tác này sẽ xóa vĩnh viễn lịch sử SRS, streak và lịch sử thi thử trên trình duyệt này. Hãy xuất file sao lưu JSON trước nếu cần!"
+        confirmText="Xóa toàn bộ & đặt lại"
+        cancelText="Hủy"
+        variant="danger"
+        onConfirm={executeResetProgress}
+        onCancel={() => setShowResetConfirm(false)}
+      />
     </div>
   );
 }

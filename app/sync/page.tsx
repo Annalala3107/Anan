@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, useCallback, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { StorageEngine } from '@/lib/storage';
 import confetti from 'canvas-confetti';
@@ -16,6 +16,30 @@ import {
   Sparkles,
   Loader2,
 } from 'lucide-react';
+
+async function decompressFromHash(): Promise<string | null> {
+  try {
+    if (typeof window === 'undefined' || typeof DecompressionStream === 'undefined') {
+      return null;
+    }
+    const hash = window.location.hash;
+    if (!hash.startsWith('#d=')) return null;
+    const b64 = hash.slice(3).replace(/-/g, '+').replace(/_/g, '/');
+    const pad = b64.length % 4 === 0 ? '' : '='.repeat(4 - (b64.length % 4));
+    const binary = atob(b64 + pad);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+    const ds = new DecompressionStream('gzip');
+    const writer = ds.writable.getWriter();
+    writer.write(bytes);
+    writer.close();
+    return await new Response(ds.readable).text();
+  } catch {
+    return null;
+  }
+}
 
 function SyncContent() {
   const router = useRouter();
@@ -34,53 +58,7 @@ function SyncContent() {
   } | null>(null);
   const [countdown, setCountdown] = useState(4);
 
-  // Decompress URL-safe Base64 gzip payload from hash `#d=...` if present
-  const decompressFromHash = async (): Promise<string | null> => {
-    try {
-      if (typeof window === 'undefined' || typeof DecompressionStream === 'undefined') return null;
-      const hash = window.location.hash;
-      if (!hash.startsWith('#d=')) return null;
-      const b64 = hash.slice(3).replace(/-/g, '+').replace(/_/g, '/');
-      const pad = b64.length % 4 === 0 ? '' : '='.repeat(4 - (b64.length % 4));
-      const binary = atob(b64 + pad);
-      const bytes = new Uint8Array(binary.length);
-      for (let i = 0; i < binary.length; i++) {
-        bytes[i] = binary.charCodeAt(i);
-      }
-      const ds = new DecompressionStream('gzip');
-      const writer = ds.writable.getWriter();
-      writer.write(bytes);
-      writer.close();
-      return await new Response(ds.readable).text();
-    } catch {
-      return null;
-    }
-  };
-
-  // Auto-sync if code or hash payload is provided in URL (e.g. from camera QR scan)
-  useEffect(() => {
-    if (initialCode || (typeof window !== 'undefined' && window.location.hash.startsWith('#d='))) {
-      handlePerformSync(initialCode);
-    }
-  }, [initialCode]);
-
-  // Countdown timer to auto-redirect after successful sync
-  useEffect(() => {
-    if (!syncSuccess) return;
-
-    if (countdown <= 0) {
-      router.push('/');
-      return;
-    }
-
-    const timer = setInterval(() => {
-      setCountdown((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [syncSuccess, countdown, router]);
-
-  const handlePerformSync = async (codeToUse: string) => {
+  const handlePerformSync = useCallback(async (codeToUse: string) => {
     setLoading(true);
     setErrorMsg(null);
 
@@ -90,20 +68,28 @@ function SyncContent() {
       if (!jsonStr) {
         const cleanCode = codeToUse.replace(/[^0-9]/g, '').trim();
         if (cleanCode.length !== 6) {
-          setErrorMsg('Mã đồng bộ gồm đúng 6 chữ số (Ví dụ: 482915).');
+          setErrorMsg('Mã PIN chuyển dữ liệu gồm đúng 6 chữ số (Ví dụ: 482915).');
           setLoading(false);
           return;
         }
 
         const res = await fetch(`/api/sync/session?code=${cleanCode}`);
-        const data = await res.json();
-
-        if (!res.ok || !data.success) {
-          throw new Error(data.error || 'Mã đồng bộ không hợp lệ hoặc đã hết hạn.');
+        const rawText = await res.text();
+        let data: { success?: boolean; payload?: unknown; error?: string } = {};
+        try {
+          data = rawText ? JSON.parse(rawText) : {};
+        } catch {
+          data = {};
         }
 
-        const payload = data.payload;
-        jsonStr = typeof payload === 'string' ? payload : JSON.stringify(payload);
+        if (!res.ok || !data.success || !data.payload) {
+          throw new Error(
+            data.error || 'Mã PIN không hợp lệ, đã được nhận hoặc đã hết hạn sau 15 phút.'
+          );
+        }
+
+        jsonStr =
+          typeof data.payload === 'string' ? data.payload : JSON.stringify(data.payload);
       }
 
       const importResult = StorageEngine.importAllData(jsonStr);
@@ -112,7 +98,6 @@ function SyncContent() {
         throw new Error(importResult.message);
       }
 
-      // Extract stats for congratulation summary
       const parsedData = JSON.parse(jsonStr);
       const innerData = parsedData.data || parsedData;
       const wordsCount = Object.keys(innerData.wordProgress || {}).length;
@@ -129,18 +114,45 @@ function SyncContent() {
 
       setSyncSuccess(true);
 
-      // Trigger Confetti explosion
       confetti({
         particleCount: 120,
         spread: 70,
         origin: { y: 0.6 },
       });
-    } catch (err: any) {
-      setErrorMsg(err?.message || 'Có lỗi xảy ra khi kết nối máy chủ.');
+    } catch (err: unknown) {
+      const msg =
+        err instanceof Error ? err.message : 'Có lỗi xảy ra khi kết nối máy chủ.';
+      setErrorMsg(msg);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  // Auto-claim if code or hash payload is present in URL
+  useEffect(() => {
+    if (
+      initialCode ||
+      (typeof window !== 'undefined' && window.location.hash.startsWith('#d='))
+    ) {
+      handlePerformSync(initialCode);
+    }
+  }, [initialCode, handlePerformSync]);
+
+  // Countdown timer to auto-redirect after successful transfer
+  useEffect(() => {
+    if (!syncSuccess) return;
+
+    if (countdown <= 0) {
+      router.push('/');
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [syncSuccess, countdown, router]);
 
   const handleSubmitManual = (e: React.FormEvent) => {
     e.preventDefault();
@@ -150,10 +162,8 @@ function SyncContent() {
   return (
     <div className="min-h-[85vh] flex items-center justify-center px-4 py-8 animate-fade-in">
       <div className="w-full max-w-lg p-6 sm:p-8 rounded-3xl glass-elevated relative overflow-hidden">
-        {/* Glow backdrop */}
         <div className="absolute top-0 right-0 -mt-8 -mr-8 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* ==================== STATE 1: SYNC SUCCESS ==================== */}
         {syncSuccess && restoredStats ? (
           <div className="text-center space-y-6 animate-scale-up">
             <div className="w-16 h-16 rounded-3xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(16,185,129,0.3)]">
@@ -162,17 +172,16 @@ function SyncContent() {
 
             <div className="space-y-1.5">
               <span className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                1-Chạm Hoàn Tất
+                Nhận Dữ Liệu Hoàn Tất
               </span>
               <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white pt-2">
-                Đồng Bộ Thành Công! 🎉
+                Chuyển Dữ Liệu Thành Công!
               </h1>
               <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
-                Toàn bộ tiến trình học tập từ máy tính đã được đồng bộ nguyên vẹn sang điện thoại của bạn.
+                Toàn bộ tiến trình ôn thi đã được nhập vào thiết bị này và mã PIN cũ đã bị hủy trên máy chủ.
               </p>
             </div>
 
-            {/* Restored Stats Grid */}
             <div className="grid grid-cols-2 gap-3 text-left">
               <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
@@ -215,20 +224,18 @@ function SyncContent() {
               </div>
             </div>
 
-            {/* Redirect Action Button */}
             <div className="pt-2">
               <button
                 type="button"
                 onClick={() => router.push('/')}
-                className="w-full py-4 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black flex items-center justify-center gap-2 shadow-glow text-sm transition-all"
+                className="w-full py-4 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black flex items-center justify-center gap-2 shadow-glow text-sm transition-all cursor-pointer"
               >
-                <span>Vào Học Ngay Trên Điện Thoại ({countdown}s)</span>
+                <span>Vào Học Ngay ({countdown}s)</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         ) : (
-          /* ==================== STATE 2: INPUT / LOADING ==================== */
           <div className="space-y-6">
             <div className="flex items-center gap-3.5 pb-4 border-b border-slate-100 dark:border-slate-800">
               <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold shadow-sm">
@@ -236,10 +243,10 @@ function SyncContent() {
               </div>
               <div>
                 <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-                  Device Transfer
+                  15 Phút • Dùng 1 Lần
                 </span>
                 <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-0.5">
-                  Đồng Bộ Sang Điện Thoại
+                  Chuyển dữ liệu qua QR / Mã PIN 15 phút
                 </h1>
               </div>
             </div>
@@ -248,7 +255,7 @@ function SyncContent() {
               <div className="text-center py-12 space-y-4">
                 <Loader2 className="w-10 h-10 text-indigo-500 animate-spin mx-auto" />
                 <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
-                  Đang nhận và giải nén dữ liệu từ máy tính...
+                  Đang nhận và kiểm tra cấu trúc dữ liệu...
                 </p>
                 <p className="text-xs text-slate-400">
                   Chuẩn bị cập nhật chuỗi streak và tiến độ thẻ nhớ SRS...
@@ -257,10 +264,9 @@ function SyncContent() {
             ) : (
               <form onSubmit={handleSubmitManual} className="space-y-5">
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Nếu bạn quét mã QR từ camera mà chưa nhận được dữ liệu tự động, hãy nhập <strong>mã 6 chữ số</strong> đang hiển thị trên màn hình máy tính của bạn:
+                  Nhập <strong>mã PIN 6 chữ số</strong> đang hiển thị trên máy tính để nhận dữ liệu. Mã chỉ có tác dụng <strong>1 lần trong vòng 15 phút</strong> và sẽ tự xóa khỏi máy chủ ngay sau khi nhận:
                 </p>
 
-                {/* 6-Digit PIN Input Box */}
                 <div>
                   <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
                     Mã PIN chuyển dữ liệu (6 số)
@@ -290,7 +296,7 @@ function SyncContent() {
                   <button
                     type="submit"
                     disabled={inputCode.length !== 6}
-                    className="w-full py-4 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 text-white font-black flex items-center justify-center gap-2 shadow-glow text-sm transition-all"
+                    className="w-full py-4 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 text-white font-black flex items-center justify-center gap-2 shadow-glow text-sm transition-all cursor-pointer"
                   >
                     <span>Nhận Dữ Liệu Ngay</span>
                     <ArrowRight className="w-4 h-4" />
@@ -306,16 +312,15 @@ function SyncContent() {
               </form>
             )}
 
-            {/* Quick Helper Tips */}
             <div className="pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-400 space-y-1.5">
               <p className="font-bold text-slate-500 dark:text-slate-300">
-                💡 Làm thế nào để lấy mã trên máy tính?
+                Làm thế nào để lấy mã trên thiết bị nguồn?
               </p>
               <p>
-                1. Mở AnanQuiz trên máy tính &rarr; Bấm nút <strong>&quot;Đồng bộ ĐT&quot;</strong> ở thanh trên cùng.
+                1. Mở AnanQuiz trên máy tính &rarr; Bấm nút <strong>&quot;Chuyển ĐT&quot; / &quot;Đồng bộ ĐT&quot;</strong> ở thanh trên cùng.
               </p>
               <p>
-                2. Dùng camera điện thoại quét mã QR hoặc nhìn dãy 6 chữ số để nhập vào ô trên.
+                2. Dùng camera quét mã QR hoặc nhập dãy 6 chữ số vào ô bên trên.
               </p>
             </div>
           </div>
@@ -332,7 +337,9 @@ export default function SyncPage() {
         <div className="min-h-[85vh] flex items-center justify-center p-4">
           <div className="text-center space-y-3">
             <Loader2 className="w-8 h-8 text-indigo-500 animate-spin mx-auto" />
-            <p className="text-sm font-bold text-slate-400">Đang chuẩn bị phiên đồng bộ...</p>
+            <p className="text-sm font-bold text-slate-400">
+              Đang chuẩn bị trang nhận dữ liệu...
+            </p>
           </div>
         </div>
       }

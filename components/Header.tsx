@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Flame, Sparkles, Moon, Sun, Layers, AlertTriangle, Smartphone } from 'lucide-react';
+import { Flame, Sparkles, Moon, Sun, Layers, Smartphone } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { getQuizDisplayName } from '@/lib/defaultBanks';
 import { useEffect, useState } from 'react';
 import QrSyncModal from './QrSyncModal';
+import ConfirmModal, { EXAM_EXIT_CONFIRM_COPY } from './ConfirmModal';
 import HeaderMusicWidget from './music/HeaderMusicWidget';
 
 export default function Header() {
@@ -185,14 +186,14 @@ export default function Header() {
           {/* Global Study Music Widget */}
           <HeaderMusicWidget />
 
-          {/* QR Device Sync */}
+          {/* QR Device Transfer */}
           <button
             onClick={() => setShowQrSync(true)}
-            title="Đồng bộ 1-chạm sang điện thoại (Mã QR)"
-            className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl transition-[transform,background-color,border-color] duration-150 flex items-center gap-1.5 text-xs font-bold border bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 shadow-sm active:scale-95 touch-manipulation whitespace-nowrap shrink-0"
+            title="Chuyển dữ liệu qua QR / Mã PIN 15 phút"
+            className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl transition-[transform,background-color,border-color] duration-150 flex items-center gap-1.5 text-xs font-bold border bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 shadow-sm active:scale-95 touch-manipulation whitespace-nowrap shrink-0 cursor-pointer"
           >
             <Smartphone className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-            <span className="hidden xl:inline">Đồng bộ ĐT</span>
+            <span className="hidden xl:inline">Chuyển QR / PIN</span>
           </button>
 
           {/* Streak Counter */}
@@ -222,40 +223,12 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Exam Exit Confirmation Modal */}
-      {showExitConfirm && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fade-in">
-          <div className="relative w-full max-w-md bg-white dark:bg-[#111827] border border-rose-500/30 rounded-3xl p-6 shadow-2xl text-center space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-rose-500/10 text-rose-500 mx-auto flex items-center justify-center">
-              <AlertTriangle className="w-7 h-7" />
-            </div>
-            <div>
-              <h3 className="text-xl font-black text-slate-900 dark:text-white">
-                Bạn đang trong phòng thi!
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
-                Rời khỏi trang lúc này sẽ hủy bỏ toàn bộ kết quả bài thi hiện tại và không được lưu. Bạn có chắc chắn muốn thoát không?
-              </p>
-            </div>
-            <div className="flex items-center gap-3 pt-2">
-              <button
-                type="button"
-                onClick={cancelExitExam}
-                className="flex-1 py-3 px-4 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-sm"
-              >
-                Tiếp tục làm bài
-              </button>
-              <button
-                type="button"
-                onClick={confirmExitExam}
-                className="flex-1 py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold transition-colors text-sm shadow-sm"
-              >
-                Hủy bài & Thoát
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ConfirmModal
+        isOpen={showExitConfirm}
+        {...EXAM_EXIT_CONFIRM_COPY}
+        onCancel={cancelExitExam}
+        onConfirm={confirmExitExam}
+      />
     </header>
     {/* Device Transfer QR Sync Modal (rendered outside transformed header via Portal) */}
     <QrSyncModal isOpen={showQrSync} onClose={() => setShowQrSync(false)} />

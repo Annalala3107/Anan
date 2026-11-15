@@ -105,7 +105,7 @@ export default function Home() {
                 className="text-xs font-bold py-2.5 px-4 rounded-xl bg-white/90 dark:bg-slate-800/80 hover:bg-indigo-50 dark:hover:bg-slate-700 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700/60 transition-colors flex items-center gap-1.5 cursor-pointer"
               >
                 <Smartphone className="w-4 h-4" />
-                <span>Khôi phục bằng QR</span>
+                <span>Chuyển QR / PIN</span>
               </button>
               <Link
                 href="/quizzes"
@@ -197,7 +197,7 @@ export default function Home() {
                   className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-white/80 dark:bg-slate-800/80 text-indigo-700 dark:text-indigo-300 border border-slate-200 dark:border-slate-700 hover:border-indigo-400 transition-colors cursor-pointer"
                 >
                   <Smartphone className="w-3.5 h-3.5" />
-                  <span>Đồng bộ ĐT</span>
+                  <span>Chuyển QR / PIN</span>
                 </button>
               </div>
               <h1 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight text-slate-900 dark:text-white">
@@ -206,7 +206,7 @@ export default function Home() {
               <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-base max-w-2xl leading-relaxed text-balance">
                 Bộ câu hỏi gồm{' '}
                 <strong className="text-slate-900 dark:text-white">{totalWords || quizInfo.count || 0}</strong>{' '}
-                câu hỏi trắc nghiệm / từ vựng đã được chuẩn hoá với đáp án và giải thích chi tiết.
+                câu hỏi trắc nghiệm đã được chuẩn hoá với đáp án và giải thích chi tiết.
               </p>
             </div>
 

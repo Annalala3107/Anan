@@ -1,39 +1,103 @@
 import { z } from 'zod';
 
 export const WordSchema = z.object({
-  id: z.union([z.string(), z.number()]).optional(),
-  word: z.string().optional().default(''),
-  question: z.string().optional(),
-  options: z.array(z.string()).optional(),
-  answer: z.string().optional(),
-  correctWord: z.string().optional(),
-  explanation: z.string().optional(),
-  subject: z.string().optional(),
-  topic: z.string().optional(),
-  part_of_speech: z.string().optional(),
-  phonetic: z.string().optional(),
-  vi: z.string().optional(),
-  ru: z.string().optional(),
-  simple_examples: z.array(z.string()).optional(),
-  advanced_example: z.string().optional(),
+  id: z.union([z.string().max(200), z.number().finite()]).optional(),
+  word: z.string().max(2000).optional().default(''),
+  question: z.string().max(5000).optional(),
+  options: z.array(z.string().max(2000)).max(12).optional(),
+  answer: z.string().max(1000).optional(),
+  correctWord: z.string().max(2000).optional(),
+  explanation: z.string().max(8000).optional(),
+  subject: z.string().max(120).optional(),
+  topic: z.string().max(300).optional(),
+  category: z.string().max(200).optional(),
+  vi: z.string().max(4000).optional(),
+  ru: z.string().max(4000).optional(),
+  definition: z.string().max(4000).optional(),
+  simple_examples: z.array(z.string().max(1000)).max(20).optional(),
+  advanced_example: z.string().max(1000).optional(),
+});
+
+export const WordProgressSchema = z.object({
+  word: z.string().max(500),
+  strength: z.number().finite().min(0).max(1),
+  lastSeen: z.number().finite().nonnegative(),
+  nextDue: z.number().finite().nonnegative(),
+  seenCount: z.number().int().min(0),
+  wrongStreak: z.number().int().min(0),
+  status: z.enum(['new', 'learning', 'review', 'mastered']),
+  intervalDays: z.number().finite().min(0).optional(),
+  easeFactor: z.number().finite().min(1).max(10).optional(),
+  mistakesCount: z.number().int().min(0).optional(),
+  lastMistakeTime: z.number().finite().nonnegative().optional(),
+});
+
+export const CustomQuizSchema = z.object({
+  id: z.string().min(1).max(200),
+  user_id: z.string().max(200).optional(),
+  name: z.string().min(1).max(300),
+  description: z.string().max(2000).optional(),
+  words: z.array(WordSchema).max(2000),
+  is_public: z.boolean().optional().default(true),
+  author_name: z.string().max(200).optional().default('AnanQuiz'),
+  created_at: z.string().max(100),
+  updated_at: z.string().max(100).optional(),
+  subject: z.string().max(120).optional(),
+  topic: z.string().max(300).optional(),
+});
+
+export const CustomSubjectSchema = z.object({
+  id: z.string().min(1).max(200),
+  title: z.string().min(1).max(200),
+  subjectCode: z.string().min(1).max(60),
+  description: z.string().max(1000).optional(),
+  iconName: z.string().max(100).optional(),
+  color: z.string().max(200),
+  created_at: z.string().max(100),
+});
+
+export const DailyStatsSchema = z.object({
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  wordsLearned: z.number().int().min(0),
+  wordsDrilled: z.number().int().min(0),
+  wordsExamined: z.number().int().min(0),
+  mistakesCount: z.number().int().min(0),
+  accuracy: z.number().finite().min(0).max(100),
+  accuracySum: z.number().finite().min(0).optional(),
+  accuracySamples: z.number().int().min(0).optional(),
+});
+
+export const ExamRecordSchema = z.object({
+  id: z.string().min(1).max(200),
+  date: z.number().finite().nonnegative(),
+  score: z.number().finite().min(0),
+  total: z.number().int().min(0),
+  percent: z.number().finite().min(0).max(100),
+  wrongCount: z.number().int().min(0),
+  quizTitle: z.string().max(300).optional(),
 });
 
 export const QuizDatasetSchema = z.array(WordSchema);
 
 export const BackupDataSchema = z.object({
-  version: z.string(),
-  exportedAt: z.string(),
-  appName: z.string(),
+  version: z.string().max(40),
+  exportedAt: z.string().max(100),
+  appName: z.literal('AnanQuiz').or(z.string().min(1).max(80)),
   data: z.object({
-    wordProgress: z.record(z.string(), z.any()),
-    customQuizzes: z.array(z.any()).optional().default([]),
-    customSubjects: z.array(z.any()).optional().default([]),
-    dailyStats: z.any().optional(),
-    streak: z.number().optional().default(1),
-    selectedQuiz: z.string().optional(),
-    examHistory: z.array(z.any()).optional().default([]),
+    wordProgress: z.record(z.string().max(500), WordProgressSchema),
+    customQuizzes: z.array(CustomQuizSchema).max(200).optional().default([]),
+    customSubjects: z.array(CustomSubjectSchema).max(100).optional().default([]),
+    dailyStats: DailyStatsSchema.nullable().optional(),
+    streak: z.number().int().min(0).max(100000).optional().default(1),
+    selectedQuiz: z.string().max(500).optional(),
+    examHistory: z.array(ExamRecordSchema).max(200).optional().default([]),
   }),
 });
 
 export type ValidatedWord = z.infer<typeof WordSchema>;
+export type ValidatedWordProgress = z.infer<typeof WordProgressSchema>;
+export type ValidatedCustomQuiz = z.infer<typeof CustomQuizSchema>;
+export type ValidatedCustomSubject = z.infer<typeof CustomSubjectSchema>;
+export type ValidatedDailyStats = z.infer<typeof DailyStatsSchema>;
+export type ValidatedExamRecord = z.infer<typeof ExamRecordSchema>;
 export type ValidatedBackup = z.infer<typeof BackupDataSchema>;

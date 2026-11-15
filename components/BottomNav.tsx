@@ -15,7 +15,7 @@ export default function BottomNav() {
   const navItems = [
     { label: 'Học tập', href: '/', icon: Home },
     { label: 'Bộ đề & AI', href: '/quizzes', icon: Layers },
-    { label: 'Tra từ', href: '/library', icon: BookMarked },
+    { label: 'Tra cứu', href: '/library', icon: BookMarked },
     { label: 'Hồ sơ', href: '/profile', icon: User },
   ];
 

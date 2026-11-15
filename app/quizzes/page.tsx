@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Sparkles,
@@ -28,6 +28,7 @@ import { CustomQuiz, CustomSubject, QuizSet, Word, WordProgress } from '@/lib/ty
 import AIPromptModal from '@/components/ai/AIPromptModal';
 import QuickTextParserModal from '@/components/QuickTextParserModal';
 import CustomSubjectModal, { SUBJECT_ICONS } from '@/components/CustomSubjectModal';
+import ConfirmModal from '@/components/ConfirmModal';
 import { QUESTION_BANKS } from '@/lib/defaultBanks';
 
 const getSubjectIcon = (iconName?: string) => {
@@ -103,6 +104,11 @@ export default function QuizzesPage() {
   const [isSubjectModalOpen, setIsSubjectModalOpen] = useState(false);
   const [editingSubject, setEditingSubject] = useState<CustomSubject | null>(null);
   const [modalDefaultSubject, setModalDefaultSubject] = useState<string | undefined>(undefined);
+  const [pendingDelete, setPendingDelete] = useState<
+    | { type: 'quiz'; id: string }
+    | { type: 'subject'; sub: CustomSubject }
+    | null
+  >(null);
 
   const refreshData = () => {
     setCustomQuizzes(StorageEngine.getCustomQuizzes());
@@ -166,41 +172,44 @@ export default function QuizzesPage() {
     }));
   };
 
-  const matchesQuizFilter = (params: {
-    name: string;
-    description?: string;
-    subject?: string;
-    topic?: string;
-    tags?: string[];
-    isCustom: boolean;
-    stat: QuizMasteryStat;
-  }) => {
-    const query = searchQuery.trim().toLowerCase();
-    if (query) {
-      const haystack = [
-        params.name,
-        params.description || '',
-        params.subject || '',
-        params.topic || '',
-        ...(params.tags || []),
-      ]
-        .join(' ')
-        .toLowerCase();
-      if (!haystack.includes(query)) {
-        return false;
+  const matchesQuizFilter = useCallback(
+    (params: {
+      name: string;
+      description?: string;
+      subject?: string;
+      topic?: string;
+      tags?: string[];
+      isCustom: boolean;
+      stat: QuizMasteryStat;
+    }) => {
+      const query = searchQuery.trim().toLowerCase();
+      if (query) {
+        const haystack = [
+          params.name,
+          params.description || '',
+          params.subject || '',
+          params.topic || '',
+          ...(params.tags || []),
+        ]
+          .join(' ')
+          .toLowerCase();
+        if (!haystack.includes(query)) {
+          return false;
+        }
       }
-    }
 
-    if (statusFilter === 'custom') return params.isCustom;
-    if (statusFilter === 'in_progress') {
-      return params.stat.seen > 0 && params.stat.mastered < params.stat.total;
-    }
-    if (statusFilter === 'unstarted') return params.stat.seen === 0;
-    if (statusFilter === 'mastered') {
-      return params.stat.total > 0 && params.stat.mastered >= params.stat.total;
-    }
-    return true;
-  };
+      if (statusFilter === 'custom') return params.isCustom;
+      if (statusFilter === 'in_progress') {
+        return params.stat.seen > 0 && params.stat.mastered < params.stat.total;
+      }
+      if (statusFilter === 'unstarted') return params.stat.seen === 0;
+      if (statusFilter === 'mastered') {
+        return params.stat.total > 0 && params.stat.mastered >= params.stat.total;
+      }
+      return true;
+    },
+    [searchQuery, statusFilter]
+  );
 
   const handleSelectQuiz = (path: string) => {
     setActiveCustomQuiz(null);
@@ -252,13 +261,7 @@ export default function QuizzesPage() {
 
   const handleDeleteCustomQuiz = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    if (confirm('Bạn có chắc chắn muốn xóa bộ đề tự tạo này?')) {
-      StorageEngine.deleteCustomQuiz(id);
-      refreshData();
-      if (activeCustomQuiz?.id === id) {
-        setActiveCustomQuiz(null);
-      }
-    }
+    setPendingDelete({ type: 'quiz', id });
   };
 
   const handleOpenAddQuiz = (subjectCode?: string, mode: 'parser' | 'ai' = 'parser') => {
@@ -278,27 +281,38 @@ export default function QuizzesPage() {
 
   const handleDeleteCustomSubject = (sub: CustomSubject, e: React.MouseEvent) => {
     e.stopPropagation();
-    if (
-      confirm(
-        `Bạn có chắc chắn muốn xóa môn học "${sub.title} (${sub.subjectCode})"? Các đề thi thuộc môn này vẫn được bảo lưu an toàn.`
-      )
-    ) {
-      StorageEngine.deleteCustomSubject(sub.id);
+    setPendingDelete({ type: 'subject', sub });
+  };
+
+  const executePendingDelete = () => {
+    if (!pendingDelete) return;
+    if (pendingDelete.type === 'quiz') {
+      StorageEngine.deleteCustomQuiz(pendingDelete.id);
       refreshData();
-      if (activeSubjectTab === `custom_${sub.id}`) {
+      if (activeCustomQuiz?.id === pendingDelete.id) {
+        setActiveCustomQuiz(null);
+      }
+    } else {
+      StorageEngine.deleteCustomSubject(pendingDelete.sub.id);
+      refreshData();
+      if (activeSubjectTab === `custom_${pendingDelete.sub.id}`) {
         setActiveSubjectTab('all');
       }
     }
+    setPendingDelete(null);
   };
 
-  const getBuiltInStat = (quiz: QuizSet): QuizMasteryStat => {
-    const stat = builtInStats[quiz.file_path];
-    return {
-      mastered: stat?.mastered || 0,
-      seen: stat?.seen || 0,
-      total: stat?.total || quiz.wordCount || 1,
-    };
-  };
+  const getBuiltInStat = useCallback(
+    (quiz: QuizSet): QuizMasteryStat => {
+      const stat = builtInStats[quiz.file_path];
+      return {
+        mastered: stat?.mastered || 0,
+        seen: stat?.seen || 0,
+        total: stat?.total || quiz.wordCount || 1,
+      };
+    },
+    [builtInStats]
+  );
 
   const totalBuiltInQuizzes = useMemo(
     () => QUESTION_BANKS.reduce((acc, sec) => acc + sec.quizzes.length, 0),
@@ -413,9 +427,8 @@ export default function QuizzesPage() {
     filteredDefaultSections,
     customQuizzes,
     progressMap,
-    builtInStats,
-    searchQuery,
-    statusFilter,
+    getBuiltInStat,
+    matchesQuizFilter,
     isAllSubjects,
     unassignedCustomQuizzes.length,
   ]);
@@ -1215,6 +1228,26 @@ export default function QuizzesPage() {
           }}
         />
       )}
+
+      {/* Delete Confirmation Modal */}
+      <ConfirmModal
+        isOpen={pendingDelete !== null}
+        title={
+          pendingDelete?.type === 'subject'
+            ? `Xóa môn học "${pendingDelete.sub.title}"?`
+            : 'Xóa bộ đề tự tạo này?'
+        }
+        message={
+          pendingDelete?.type === 'subject'
+            ? `Bạn có chắc chắn muốn xóa môn học "${pendingDelete.sub.title} (${pendingDelete.sub.subjectCode})"? Các đề thi thuộc môn này vẫn được bảo lưu an toàn.`
+            : 'Bộ đề tự tạo này sẽ bị xóa vĩnh viễn khỏi trình duyệt. Hành động này không thể hoàn tác.'
+        }
+        confirmText="Xác nhận xóa"
+        cancelText="Hủy"
+        variant="danger"
+        onConfirm={executePendingDelete}
+        onCancel={() => setPendingDelete(null)}
+      />
     </div>
   );
 }

@@ -71,7 +71,7 @@ export const POPULAR_PRESETS = [
   {
     code: 'JPD113',
     title: 'Tiếng Nhật Sơ Cấp (Elementary Japanese)',
-    description: 'Ngữ pháp, từ vựng, Hiragana, Katakana, Kanji và hội thoại cơ bản kỳ 1.',
+    description: 'Ngữ pháp, mẫu câu, Hiragana, Katakana, Kanji và hội thoại cơ bản kỳ 1.',
     iconName: 'BookOpen',
     color: 'from-rose-600 to-pink-500',
   },

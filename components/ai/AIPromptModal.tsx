@@ -68,8 +68,16 @@ export default function AIPromptModal({
   const [manualJson, setManualJson] = useState('');
 
   useEffect(() => {
-    const savedKey = localStorage.getItem('gemini_custom_api_key');
-    if (savedKey) setUserApiKey(savedKey);
+    try {
+      // Remove any legacy persistent key left in localStorage from older versions
+      if (localStorage.getItem('gemini_custom_api_key') !== null) {
+        localStorage.removeItem('gemini_custom_api_key');
+      }
+      const savedSessionKey = sessionStorage.getItem('gemini_custom_api_key');
+      if (savedSessionKey) setUserApiKey(savedSessionKey);
+    } catch {
+      // Ignore storage access errors in private mode
+    }
   }, []);
 
   useEffect(() => {
@@ -99,7 +107,27 @@ export default function AIPromptModal({
 
   const handleSaveUserKey = (val: string) => {
     setUserApiKey(val);
-    localStorage.setItem('gemini_custom_api_key', val.trim());
+    const cleaned = val.trim();
+    try {
+      localStorage.removeItem('gemini_custom_api_key');
+      if (cleaned) {
+        sessionStorage.setItem('gemini_custom_api_key', cleaned);
+      } else {
+        sessionStorage.removeItem('gemini_custom_api_key');
+      }
+    } catch {
+      // Ignore storage access errors
+    }
+  };
+
+  const handleClearUserKey = () => {
+    setUserApiKey('');
+    try {
+      sessionStorage.removeItem('gemini_custom_api_key');
+      localStorage.removeItem('gemini_custom_api_key');
+    } catch {
+      // Ignore storage access errors
+    }
   };
 
   const handleGenerateAI = async () => {
@@ -112,19 +140,38 @@ export default function AIPromptModal({
     setError(null);
 
     try {
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      };
+      if (userApiKey.trim()) {
+        headers['x-goog-api-key'] = userApiKey.trim();
+      }
+
       const res = await fetch('/api/ai/generate-quiz', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           prompt: prompt.trim(),
           subject: subject.trim(),
           count,
           difficulty,
-          userApiKey: userApiKey.trim() || undefined,
         }),
       });
 
-      const data = await res.json();
+      const rawText = await res.text();
+      let data: {
+        success?: boolean;
+        error?: string;
+        title?: string;
+        subject?: string;
+        topic?: string;
+        words?: Word[];
+      } = {};
+      try {
+        data = rawText ? JSON.parse(rawText) : {};
+      } catch {
+        data = {};
+      }
 
       if (!res.ok || !data.success) {
         throw new Error(data.error || 'Lỗi khi yêu cầu Gemini AI tạo câu hỏi.');
@@ -132,7 +179,7 @@ export default function AIPromptModal({
 
       // Open interactive Preview step before saving
       setPreviewDraft({
-        title: data.title || `${subject} — ${prompt.trim()} (${data.words.length} câu)`,
+        title: data.title || `${subject} — ${prompt.trim()} (${(data.words || []).length} câu)`,
         subject: data.subject || subject.trim(),
         topic: data.topic || prompt.trim(),
         words: data.words || [],
@@ -254,6 +301,8 @@ export default function AIPromptModal({
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in overflow-y-auto cursor-pointer"
     >
       <div
+        role="dialog"
+        aria-modal="true"
         onClick={(e) => e.stopPropagation()}
         className="relative w-full max-w-2xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-7 max-h-[92vh] overflow-y-auto cursor-default"
       >
@@ -551,17 +600,31 @@ export default function AIPromptModal({
                 <span>{showKeyInput ? 'Ẩn cài đặt API Key' : 'Tùy chỉnh API Key cá nhân (nếu muốn)'}</span>
               </button>
               {showKeyInput && (
-                <div className="mt-2 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1.5">
-                  <p className="text-[11px] text-slate-400">
-                    Nếu bạn đã thêm <code>GEMINI_API_KEY</code> trên Vercel, bạn <strong>không cần</strong> nhập vào đây.
-                  </p>
-                  <input
-                    type="password"
-                    placeholder="AQ.Ab8RN... hoặc AIzaSy..."
-                    value={userApiKey}
-                    onChange={(e) => handleSaveUserKey(e.target.value)}
-                    className="w-full p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-900 dark:text-white"
-                  />
+                <div className="mt-2 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2.5">
+                  <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/35 border border-amber-300/60 dark:border-amber-700/50 text-[11px] text-amber-800 dark:text-amber-300 leading-relaxed">
+                    <strong>Bảo mật API Key:</strong> Key cá nhân tuyệt đối <strong>không</strong> lưu lâu dài ở <code>localStorage</code> (tránh lộ qua XSS/máy công cộng) mà chỉ giữ tạm trong <code>sessionStorage</code> (tự xóa khi đóng tab). Nếu đã đặt <code>GEMINI_API_KEY</code> trên Vercel, hãy để trống ô này.
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="password"
+                      autoComplete="off"
+                      placeholder="AIzaSy... (tùy chọn, tự xóa khi đóng tab)"
+                      value={userApiKey}
+                      onChange={(e) => handleSaveUserKey(e.target.value)}
+                      className="flex-1 p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-900 dark:text-white"
+                    />
+                    {userApiKey.trim().length > 0 && (
+                      <button
+                        type="button"
+                        onClick={handleClearUserKey}
+                        className="px-3 py-2.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/25 text-xs font-bold inline-flex items-center gap-1 shrink-0 cursor-pointer transition-colors"
+                        title="Xóa ngay API Key khỏi sessionStorage"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                        <span>Xóa Key ngay</span>
+                      </button>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
