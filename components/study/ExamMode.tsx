@@ -5,6 +5,7 @@ import { Word, ExamQuestion } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { getQuestionKey, cleanOptionText, isQuestionAnsweredCorrectly } from '@/lib/utils';
 import { useQuizStore } from '@/lib/quizStore';
+import { useMusicStore } from '@/lib/musicStore';
 import { buildStandardQuestions } from '@/lib/quizHelpers';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import ExamConfigView from './exam/ExamConfigView';
@@ -30,6 +31,8 @@ interface ExamModeProps {
 
 export default function ExamMode({ words, onExit }: ExamModeProps) {
   const setIsExamActive = useQuizStore((s) => s.setIsExamActive);
+  const examAutoDuckMusic = useMusicStore((s) => s.examAutoDuckMusic);
+  const setDucked = useMusicStore((s) => s.setDucked);
 
   // Configuration State
   const [isConfiguring, setIsConfiguring] = useState(true);
@@ -48,6 +51,17 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   const [timeLeft, setTimeLeft] = useState(600); // in seconds, or -1 for untimed
   const [elapsedSeconds, setElapsedSeconds] = useState(0); // counts up when untimed
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Auto-duck background music (15%) while actively taking an exam
+  useEffect(() => {
+    setDucked(!isConfiguring && !isSubmitted && examAutoDuckMusic);
+  }, [isConfiguring, isSubmitted, examAutoDuckMusic, setDucked]);
+
+  useEffect(() => {
+    return () => {
+      setDucked(false);
+    };
+  }, [setDucked]);
   const [isNavOpen, setIsNavOpen] = useState(false); // Collapsible navigator on mobile
 
   // Result Review Filter States (Tính năng 2: Lọc xem câu hỏi theo chuyên đề & câu sai)

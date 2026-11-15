@@ -6,6 +6,7 @@ import BottomNav from '@/components/BottomNav';
 import DynamicConstellationBackground from '@/components/DynamicConstellationBackground';
 import YouTubeAudioEngine from '@/components/music/YouTubeAudioEngine';
 import FloatingMiniPlayer from '@/components/music/FloatingMiniPlayer';
+import ZenFocusOverlay from '@/components/music/ZenFocusOverlay';
 
 const beVietnamPro = Be_Vietnam_Pro({
   subsets: ['vietnamese', 'latin'],
@@ -37,6 +38,10 @@ export default function RootLayout({
       lang="vi"
       className={`dark ${beVietnamPro.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="preconnect" href="https://i.ytimg.com" />
+      </head>
       <body className="min-h-screen flex flex-col relative overflow-x-hidden">
         {/* Dynamic Procedural Constellation & Aurora Background */}
         <DynamicConstellationBackground />
@@ -52,9 +57,10 @@ export default function RootLayout({
         {/* Mobile Navigation Bar */}
         <BottomNav />
 
-        {/* Persistent Global YouTube Music Engine & Floating Mini-Player */}
+        {/* Persistent Global YouTube Music Engine, Floating Mini-Player & Zen Focus Overlay */}
         <YouTubeAudioEngine />
         <FloatingMiniPlayer />
+        <ZenFocusOverlay />
       </body>
     </html>
   );

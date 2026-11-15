@@ -144,6 +144,48 @@ class AmbientAudioSynthesizer {
       }
     }
   }
+
+  /**
+   * Plays a gentle 2-note Web Audio bell chime when a Pomodoro interval ends,
+   * reusing the singleton AudioContext with zero external audio assets.
+   */
+  public playPomodoroChime(nextMode: 'focus' | 'break') {
+    const ctx = this.ensureContext();
+    if (!ctx) return;
+
+    const freqs = nextMode === 'break' ? [587.33, 880] : [880, 739.99];
+    try {
+      freqs.forEach((freq, idx) => {
+        const startAt = ctx.currentTime + idx * 0.22;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, startAt);
+
+        gain.gain.setValueAtTime(0.0001, startAt);
+        gain.gain.linearRampToValueAtTime(0.16, startAt + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startAt + 1.2);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.onended = () => {
+          try {
+            osc.disconnect();
+            gain.disconnect();
+          } catch {
+            // Ignore cleanup errors
+          }
+        };
+
+        osc.start(startAt);
+        osc.stop(startAt + 1.25);
+      });
+    } catch {
+      // Ignore Web Audio errors if AudioContext is locked by browser policy
+    }
+  }
 }
 
 export const AmbientAudioEngine = new AmbientAudioSynthesizer();

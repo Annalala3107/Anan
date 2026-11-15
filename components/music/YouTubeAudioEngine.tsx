@@ -1,7 +1,11 @@
 'use client';
 
 import { useEffect, useMemo, useRef } from 'react';
-import { useMusicStore, registerMusicPlayerController } from '@/lib/musicStore';
+import {
+  useMusicStore,
+  registerMusicPlayerController,
+  getTrackErrorKey,
+} from '@/lib/musicStore';
 
 declare global {
   interface Window {
@@ -79,9 +83,14 @@ function getYouTubeErrorMessage(code: number): string {
   }
 }
 
+function computeEffectiveVolume(isMuted: boolean, volume: number, isDucked: boolean): number {
+  if (isMuted || volume <= 0) return 0;
+  return isDucked ? Math.min(volume, 15) : volume;
+}
+
 function syncPlayerAudio(player: any, isMuted: boolean, volume: number, isDucked: boolean) {
   if (!player) return;
-  const effectiveVolume = isMuted ? 0 : isDucked ? Math.min(volume, 15) : volume;
+  const effectiveVolume = computeEffectiveVolume(isMuted, volume, isDucked);
   try {
     if (isMuted || effectiveVolume === 0) {
       player.mute?.();
@@ -115,7 +124,11 @@ export default function YouTubeAudioEngine() {
   const playerRef = useRef<any>(null);
   const isPlayerReadyRef = useRef(false);
   const activeVideoIdRef = useRef<string>('');
-  const syncedIntentRef = useRef<{ videoId: string; isPlaying: boolean } | null>(null);
+  const activeMediaKeyRef = useRef<string>('');
+  const syncedIntentRef = useRef<{ mediaKey: string; isPlaying: boolean } | null>(null);
+  const fadeTimerRef = useRef<number | null>(null);
+  const autoSkipTimerRef = useRef<number | null>(null);
+  const isFadingOutRef = useRef(false);
 
   // Initialize singleton YT.Player once per mount with React.StrictMode cleanup protection
   useEffect(() => {
@@ -123,27 +136,138 @@ export default function YouTubeAudioEngine() {
     const hostEl = hostRef.current;
     if (!hostEl) return;
 
-    useMusicStore.getState().hydratePrefs();
+    const clearFade = () => {
+      if (fadeTimerRef.current !== null) {
+        window.clearInterval(fadeTimerRef.current);
+        fadeTimerRef.current = null;
+      }
+      isFadingOutRef.current = false;
+    };
 
-    registerMusicPlayerController({
-      loadTrack: (videoId: string, autoPlay: boolean) => {
-        const player = playerRef.current;
-        if (!isPlayerReadyRef.current || !player) return;
-        const latest = useMusicStore.getState();
-        activeVideoIdRef.current = videoId;
-        syncedIntentRef.current = { videoId, isPlaying: autoPlay };
+    const fadeVolumeTo = (
+      player: any,
+      targetVol: number,
+      durationMs = 260,
+      onComplete?: () => void
+    ) => {
+      clearFade();
+      if (!player) {
+        onComplete?.();
+        return;
+      }
+
+      let startVol = targetVol;
+      try {
+        const cur = Number(player.getVolume?.());
+        if (Number.isFinite(cur)) startVol = cur;
+        if (player.isMuted?.()) startVol = 0;
+      } catch {
+        // Ignore read error
+      }
+
+      if (Math.abs(targetVol - startVol) <= 2 || durationMs <= 0) {
         try {
-          syncPlayerAudio(player, latest.isMuted, latest.volume, latest.isDucked);
+          if (targetVol === 0) {
+            player.setVolume?.(0);
+          } else {
+            player.unMute?.();
+            player.setVolume?.(targetVol);
+          }
+        } catch {
+          // Ignore
+        }
+        onComplete?.();
+        return;
+      }
+
+      const steps = 5;
+      const stepMs = Math.max(30, Math.round(durationMs / steps));
+      let step = 0;
+
+      if (targetVol > 0) {
+        try {
+          player.unMute?.();
+        } catch {
+          // Ignore
+        }
+      }
+
+      fadeTimerRef.current = window.setInterval(() => {
+        step += 1;
+        const progress = Math.min(1, step / steps);
+        const nextVol = Math.round(startVol + (targetVol - startVol) * progress);
+        try {
+          player.setVolume?.(Math.max(0, Math.min(100, nextVol)));
+        } catch {
+          // Ignore
+        }
+        if (step >= steps) {
+          clearFade();
+          onComplete?.();
+        }
+      }, stepMs);
+    };
+
+    const loadIntoPlayer = (
+      player: any,
+      videoId: string,
+      autoPlay: boolean,
+      playlistId?: string
+    ) => {
+      const mediaKey = playlistId ? `playlist:${playlistId}` : videoId;
+      activeVideoIdRef.current = videoId;
+      activeMediaKeyRef.current = mediaKey;
+      syncedIntentRef.current = { mediaKey, isPlaying: autoPlay };
+      const latest = useMusicStore.getState();
+      const targetVol = computeEffectiveVolume(latest.isMuted, latest.volume, latest.isDucked);
+      clearFade();
+      syncPlayerAudio(player, latest.isMuted, latest.volume, latest.isDucked);
+      try {
+        player.setPlaybackQuality?.('small');
+      } catch {
+        // Ignore
+      }
+
+      if (playlistId && typeof player.loadPlaylist === 'function') {
+        if (autoPlay) {
+          if (targetVol > 0) {
+            try {
+              player.setVolume?.(0);
+            } catch {
+              // Ignore
+            }
+          }
+          player.loadPlaylist({ list: playlistId, listType: 'playlist' });
+          if (targetVol > 0) fadeVolumeTo(player, targetVol, 280);
+        } else {
+          player.cuePlaylist?.({ list: playlistId, listType: 'playlist' });
+        }
+        return;
+      }
+
+      if (autoPlay && typeof player.loadVideoById === 'function') {
+        if (targetVol > 0) {
           try {
-            player.setPlaybackQuality?.('small');
+            player.setVolume?.(0);
           } catch {
             // Ignore
           }
-          if (autoPlay && typeof player.loadVideoById === 'function') {
-            player.loadVideoById(videoId);
-          } else if (typeof player.cueVideoById === 'function') {
-            player.cueVideoById(videoId);
-          }
+        }
+        player.loadVideoById(videoId);
+        if (targetVol > 0) fadeVolumeTo(player, targetVol, 280);
+      } else if (typeof player.cueVideoById === 'function') {
+        player.cueVideoById(videoId);
+      }
+    };
+
+    useMusicStore.getState().hydratePrefs();
+
+    registerMusicPlayerController({
+      loadTrack: (videoId: string, autoPlay: boolean, playlistId?: string) => {
+        const player = playerRef.current;
+        if (!isPlayerReadyRef.current || !player) return;
+        try {
+          loadIntoPlayer(player, videoId, autoPlay, playlistId);
         } catch {
           // Ignore if player is mid-transition
         }
@@ -154,23 +278,38 @@ export default function YouTubeAudioEngine() {
         const latest = useMusicStore.getState();
         const targetTrack =
           latest.tracks.find((t) => t.id === latest.currentTrackId) || latest.tracks[0];
+        if (!targetTrack) return;
+        const targetMediaKey = getTrackErrorKey(targetTrack);
+        const targetVol = computeEffectiveVolume(latest.isMuted, latest.volume, latest.isDucked);
+
         try {
-          syncPlayerAudio(player, latest.isMuted, latest.volume, latest.isDucked);
           try {
             player.setPlaybackQuality?.('small');
           } catch {
             // Ignore
           }
-          if (targetTrack && activeVideoIdRef.current !== targetTrack.videoId) {
-            activeVideoIdRef.current = targetTrack.videoId;
-            syncedIntentRef.current = { videoId: targetTrack.videoId, isPlaying: true };
-            player.loadVideoById?.(targetTrack.videoId);
+          if (activeMediaKeyRef.current !== targetMediaKey) {
+            loadIntoPlayer(player, targetTrack.videoId, true, targetTrack.playlistId);
           } else {
             syncedIntentRef.current = {
-              videoId: activeVideoIdRef.current,
+              mediaKey: activeMediaKeyRef.current,
               isPlaying: true,
             };
+            clearFade();
+            if (targetVol > 0) {
+              try {
+                player.unMute?.();
+                player.setVolume?.(0);
+              } catch {
+                // Ignore
+              }
+            }
             player.playVideo?.();
+            if (targetVol > 0) {
+              fadeVolumeTo(player, targetVol, 260);
+            } else {
+              syncPlayerAudio(player, latest.isMuted, latest.volume, latest.isDucked);
+            }
           }
         } catch {
           // Ignore
@@ -180,14 +319,29 @@ export default function YouTubeAudioEngine() {
         const player = playerRef.current;
         if (!isPlayerReadyRef.current || !player) return;
         syncedIntentRef.current = {
-          videoId: activeVideoIdRef.current,
+          mediaKey: activeMediaKeyRef.current,
           isPlaying: false,
         };
-        try {
-          player.pauseVideo?.();
-        } catch {
-          // Ignore
+        const latest = useMusicStore.getState();
+        const effectiveVol = computeEffectiveVolume(latest.isMuted, latest.volume, latest.isDucked);
+        if (effectiveVol === 0) {
+          clearFade();
+          try {
+            player.pauseVideo?.();
+          } catch {
+            // Ignore
+          }
+          return;
         }
+        isFadingOutRef.current = true;
+        fadeVolumeTo(player, 0, 240, () => {
+          isFadingOutRef.current = false;
+          try {
+            player.pauseVideo?.();
+          } catch {
+            // Ignore
+          }
+        });
       },
       seekTo: (seconds: number) => {
         const player = playerRef.current;
@@ -201,8 +355,11 @@ export default function YouTubeAudioEngine() {
       },
       syncAudio: (muted: boolean, vol: number, ducked: boolean) => {
         const player = playerRef.current;
-        if (!isPlayerReadyRef.current || !player) return;
-        syncPlayerAudio(player, muted, vol, ducked);
+        if (!isPlayerReadyRef.current || !player || isFadingOutRef.current) return;
+        const targetVol = computeEffectiveVolume(muted, vol, ducked);
+        fadeVolumeTo(player, targetVol, 180, () => {
+          syncPlayerAudio(player, muted, vol, ducked);
+        });
       },
     });
 
@@ -220,12 +377,14 @@ export default function YouTubeAudioEngine() {
         const initialTrack =
           initial.tracks.find((t) => t.id === initial.currentTrackId) || initial.tracks[0];
         const initialVideoId = initialTrack?.videoId || '';
+        const initialPlaylistId = initialTrack?.playlistId;
         activeVideoIdRef.current = initialVideoId;
+        activeMediaKeyRef.current = initialTrack ? getTrackErrorKey(initialTrack) : initialVideoId;
 
         const player = new YT.Player(mountDiv, {
           width: '256',
           height: '144',
-          videoId: initialVideoId,
+          videoId: initialPlaylistId ? undefined : initialVideoId,
           playerVars: {
             autoplay: 0,
             controls: 1,
@@ -233,6 +392,7 @@ export default function YouTubeAudioEngine() {
             playsinline: 1,
             modestbranding: 1,
             enablejsapi: 1,
+            ...(initialPlaylistId ? { listType: 'playlist', list: initialPlaylistId } : {}),
             origin: typeof window !== 'undefined' ? window.location.origin : undefined,
           },
           events: {
@@ -261,6 +421,7 @@ export default function YouTubeAudioEngine() {
               const latest = useMusicStore.getState();
               const latestTrack =
                 latest.tracks.find((t) => t.id === latest.currentTrackId) || latest.tracks[0];
+              const latestMediaKey = latestTrack ? getTrackErrorKey(latestTrack) : '';
 
               syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
               try {
@@ -270,26 +431,22 @@ export default function YouTubeAudioEngine() {
               }
               latest.setReady(true);
 
-              if (latestTrack && latestTrack.videoId !== activeVideoIdRef.current) {
-                activeVideoIdRef.current = latestTrack.videoId;
-                syncedIntentRef.current = {
-                  videoId: latestTrack.videoId,
-                  isPlaying: latest.isPlaying,
-                };
-                if (latest.isPlaying) {
-                  event.target.loadVideoById?.(latestTrack.videoId);
-                } else {
-                  event.target.cueVideoById?.(latestTrack.videoId);
-                }
+              if (latestTrack && latestMediaKey !== activeMediaKeyRef.current) {
+                loadIntoPlayer(
+                  event.target,
+                  latestTrack.videoId,
+                  latest.isPlaying,
+                  latestTrack.playlistId
+                );
               } else if (latest.isPlaying) {
                 syncedIntentRef.current = {
-                  videoId: activeVideoIdRef.current,
+                  mediaKey: activeMediaKeyRef.current,
                   isPlaying: true,
                 };
                 event.target.playVideo?.();
               } else {
                 syncedIntentRef.current = {
-                  videoId: activeVideoIdRef.current,
+                  mediaKey: activeMediaKeyRef.current,
                   isPlaying: false,
                 };
                 latest.setPlayerState('cued');
@@ -303,7 +460,7 @@ export default function YouTubeAudioEngine() {
               // YT.PlayerState: -1 UNSTARTED, 0 ENDED, 1 PLAYING, 2 PAUSED, 3 BUFFERING, 5 CUED
               if (stateCode === 1) {
                 // Race-condition safeguard: kill delayed playback only once PLAYING actually starts if paused
-                if (!latest.isPlaying) {
+                if (!latest.isPlaying && !isFadingOutRef.current) {
                   try {
                     event.target?.pauseVideo?.();
                   } catch {
@@ -314,18 +471,22 @@ export default function YouTubeAudioEngine() {
                   return;
                 }
 
-                syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
+                if (!isFadingOutRef.current && fadeTimerRef.current === null) {
+                  syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
+                }
                 try {
                   event.target?.setPlaybackQuality?.('small');
                 } catch {
                   // Ignore
                 }
-                if (activeVideoIdRef.current) {
-                  latest.clearTrackError(activeVideoIdRef.current);
+                if (activeMediaKeyRef.current) {
+                  latest.clearTrackError(activeMediaKeyRef.current);
                 }
                 latest.setPlayerState('playing');
               } else if (stateCode === 3) {
-                syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
+                if (!isFadingOutRef.current && fadeTimerRef.current === null) {
+                  syncPlayerAudio(event.target, latest.isMuted, latest.volume, latest.isDucked);
+                }
                 latest.setPlayerState('buffering');
               } else if (stateCode === 2) {
                 latest.setPlayerState('paused');
@@ -345,7 +506,10 @@ export default function YouTubeAudioEngine() {
               } else if (stateCode === 0) {
                 latest.setPlayerState('ended');
                 if (latest.isPlaying) {
-                  if (latest.loopMode === 'one' || latest.tracks.length <= 1) {
+                  if (latest.sleepTimerMode === 'end') {
+                    latest.setSleepTimer('off');
+                    latest.setPlaying(false);
+                  } else if (latest.loopMode === 'one' || latest.tracks.length <= 1) {
                     event.target?.seekTo?.(0);
                     event.target?.playVideo?.();
                   } else {
@@ -359,16 +523,38 @@ export default function YouTubeAudioEngine() {
               const latest = useMusicStore.getState();
               const code = Number(event.data ?? -1);
               const failedTrack =
-                latest.tracks.find((t) => t.videoId === activeVideoIdRef.current) ||
+                latest.tracks.find((t) => getTrackErrorKey(t) === activeMediaKeyRef.current) ||
                 latest.tracks.find((t) => t.id === latest.currentTrackId);
-              const videoId = failedTrack?.videoId || activeVideoIdRef.current;
+              const errorKey = failedTrack
+                ? getTrackErrorKey(failedTrack)
+                : activeMediaKeyRef.current || activeVideoIdRef.current;
               const msg = getYouTubeErrorMessage(code);
 
-              if (videoId) {
-                latest.recordTrackError(videoId, code, msg);
+              if (errorKey) {
+                latest.recordTrackError(errorKey, code, msg);
               }
-              latest.setPlayerState('error');
-              latest.setPlaying(false);
+
+              // Auto-skip to next valid track if user intended to play and another playable track exists
+              const hasOtherPlayable = latest.tracks.some((t) => {
+                const key = getTrackErrorKey(t);
+                return key !== errorKey && !latest.trackErrors[key];
+              });
+
+              if (latest.isPlaying && hasOtherPlayable) {
+                latest.setPlayerState('buffering');
+                if (autoSkipTimerRef.current !== null) {
+                  window.clearTimeout(autoSkipTimerRef.current);
+                }
+                autoSkipTimerRef.current = window.setTimeout(() => {
+                  autoSkipTimerRef.current = null;
+                  if (!cancelled && useMusicStore.getState().isPlaying) {
+                    useMusicStore.getState().nextTrack();
+                  }
+                }, 350);
+              } else {
+                latest.setPlayerState('error');
+                latest.setPlaying(false);
+              }
             },
           },
         });
@@ -385,6 +571,11 @@ export default function YouTubeAudioEngine() {
 
     return () => {
       cancelled = true;
+      clearFade();
+      if (autoSkipTimerRef.current !== null) {
+        window.clearTimeout(autoSkipTimerRef.current);
+        autoSkipTimerRef.current = null;
+      }
       isPlayerReadyRef.current = false;
       syncedIntentRef.current = null;
       registerMusicPlayerController(null);
@@ -405,29 +596,38 @@ export default function YouTubeAudioEngine() {
   }, []);
 
   const currentVideoId = currentTrack?.videoId;
+  const currentPlaylistId = currentTrack?.playlistId;
+  const currentMediaKey = currentTrack ? getTrackErrorKey(currentTrack) : undefined;
 
   // Unified reactive fallback effect for track changes & play/pause (e.g. Pomodoro or state changes before onReady)
   useEffect(() => {
-    if (!currentVideoId || !isReady || !isPlayerReadyRef.current || !playerRef.current) return;
+    if (!currentVideoId || !currentMediaKey || !isReady || !isPlayerReadyRef.current || !playerRef.current) return;
 
     const intent = syncedIntentRef.current;
-    if (intent && intent.videoId === currentVideoId && intent.isPlaying === isPlaying) {
+    if (intent && intent.mediaKey === currentMediaKey && intent.isPlaying === isPlaying) {
       return;
     }
 
     const latest = useMusicStore.getState();
-    syncedIntentRef.current = { videoId: currentVideoId, isPlaying };
+    syncedIntentRef.current = { mediaKey: currentMediaKey, isPlaying };
 
     try {
-      if (activeVideoIdRef.current !== currentVideoId) {
+      if (activeMediaKeyRef.current !== currentMediaKey) {
         activeVideoIdRef.current = currentVideoId;
+        activeMediaKeyRef.current = currentMediaKey;
         syncPlayerAudio(playerRef.current, latest.isMuted, latest.volume, latest.isDucked);
         try {
           playerRef.current?.setPlaybackQuality?.('small');
         } catch {
           // Ignore
         }
-        if (isPlaying && typeof playerRef.current.loadVideoById === 'function') {
+        if (currentPlaylistId && typeof playerRef.current.loadPlaylist === 'function') {
+          if (isPlaying) {
+            playerRef.current.loadPlaylist({ list: currentPlaylistId, listType: 'playlist' });
+          } else {
+            playerRef.current.cuePlaylist?.({ list: currentPlaylistId, listType: 'playlist' });
+          }
+        } else if (isPlaying && typeof playerRef.current.loadVideoById === 'function') {
           playerRef.current.loadVideoById(currentVideoId);
         } else if (typeof playerRef.current.cueVideoById === 'function') {
           playerRef.current.cueVideoById(currentVideoId);
@@ -443,17 +643,17 @@ export default function YouTubeAudioEngine() {
           // Ignore
         }
         playerRef.current.playVideo?.();
-      } else {
+      } else if (!isFadingOutRef.current) {
         playerRef.current.pauseVideo?.();
       }
     } catch {
       // Ignore if player is mid-transition
     }
-  }, [currentVideoId, isPlaying, isReady]);
+  }, [currentVideoId, currentPlaylistId, currentMediaKey, isPlaying, isReady]);
 
   // Mute / Volume / Ducking synchronization effect
   useEffect(() => {
-    if (!isReady || !playerRef.current) return;
+    if (!isReady || !playerRef.current || isFadingOutRef.current) return;
     syncPlayerAudio(playerRef.current, isMuted, volume, isDucked);
   }, [isMuted, volume, isDucked, isReady]);
 
@@ -469,11 +669,14 @@ export default function YouTubeAudioEngine() {
     }
   }, [seekRequest, isReady]);
 
-  // Poll current playback timeline once per second while playing (whole second deduplication)
+  // Poll current playback timeline & Sleep Timer once per second while playing
   useEffect(() => {
     if (!isReady || !isPlaying) return;
     let lastSec = -1;
     const updateNow = () => {
+      const store = useMusicStore.getState();
+      store.tickSleepTimer();
+
       const p = playerRef.current;
       if (!p) return;
       try {
@@ -482,7 +685,7 @@ export default function YouTubeAudioEngine() {
         const sec = Math.floor(cur);
         if (sec !== lastSec && (dur > 0 || cur > 0)) {
           lastSec = sec;
-          useMusicStore.getState().setProgress(cur, dur);
+          store.setProgress(cur, dur);
         }
       } catch {
         // Ignore if tearing down

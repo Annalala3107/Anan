@@ -284,4 +284,130 @@
   .flashcard-3d-inner {
     transition-duration: 0.01ms !important;
   }
+
+  .vinyl-disc-spin,
+  .studio-eq-bar {
+    animation: none !important;
+  }
+}
+
+/* ============================================================================
+   Focus Studio V2: GPU-Composited Vinyl, Equalizer & Custom Range Controls
+   ============================================================================ */
+@keyframes vinylSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vinyl-disc-spin {
+  animation: vinylSpin 14s linear infinite;
+  will-change: transform;
+}
+
+.vinyl-disc-paused {
+  animation-play-state: paused;
+}
+
+@keyframes studioEqPulse {
+  0%,
+  100% {
+    transform: scaleY(0.24);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.studio-eq-bar {
+  transform-origin: bottom center;
+  will-change: transform;
+  animation: studioEqPulse 0.8s ease-in-out infinite;
+}
+
+.studio-eq-bar-1 {
+  animation-duration: 0.78s;
+  animation-delay: 0s;
+}
+
+.studio-eq-bar-2 {
+  animation-duration: 0.62s;
+  animation-delay: -0.22s;
+}
+
+.studio-eq-bar-3 {
+  animation-duration: 0.88s;
+  animation-delay: -0.44s;
+}
+
+.studio-eq-bar-4 {
+  animation-duration: 0.70s;
+  animation-delay: -0.15s;
+}
+
+.studio-eq-paused {
+  animation-play-state: paused;
+  transform: scaleY(0.24);
+}
+
+/* Custom Transparent Range Overlay over GPU-scaled Track */
+.studio-range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.studio-range-input::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 16px;
+}
+
+.studio-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 2px solid #6366f1;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.45);
+  opacity: 0.72;
+  transform: scale(0.82);
+  transition: transform 0.14s ease, opacity 0.14s ease;
+}
+
+.studio-range-input:hover::-webkit-slider-thumb,
+.studio-range-input:focus-visible::-webkit-slider-thumb,
+.studio-range-input:active::-webkit-slider-thumb {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+.studio-range-input::-moz-range-track {
+  background: transparent;
+  height: 16px;
+}
+
+.studio-range-input::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 2px solid #6366f1;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.45);
+  opacity: 0.72;
+  transform: scale(0.82);
+  transition: transform 0.14s ease, opacity 0.14s ease;
+}
+
+.studio-range-input:hover::-moz-range-thumb,
+.studio-range-input:focus-visible::-moz-range-thumb,
+.studio-range-input:active::-moz-range-thumb {
+  opacity: 1;
+  transform: scale(1.12);
 }

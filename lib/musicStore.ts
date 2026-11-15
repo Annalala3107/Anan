@@ -4,14 +4,20 @@ import { AmbientAudioEngine, AmbientPreset } from './ambientAudio';
 export interface MusicTrack {
   id: string;
   videoId: string;
+  playlistId?: string;
   title: string;
   artist: string;
   url: string;
   isCustom?: boolean;
+  isPinned?: boolean;
+}
+
+export function getTrackErrorKey(track: Pick<MusicTrack, 'videoId' | 'playlistId'>): string {
+  return track.playlistId ? `playlist:${track.playlistId}` : track.videoId;
 }
 
 export interface MusicPlayerController {
-  loadTrack: (videoId: string, autoPlay: boolean) => void;
+  loadTrack: (videoId: string, autoPlay: boolean, playlistId?: string) => void;
   play: () => void;
   pause: () => void;
   seekTo: (seconds: number) => void;
@@ -40,6 +46,27 @@ export interface TrackErrorInfo {
 const PREFS_STORAGE_KEY = 'anan_music_prefs_v1';
 export const POMODORO_FOCUS_SECONDS = 25 * 60;
 export const POMODORO_BREAK_SECONDS = 5 * 60;
+
+export type PomodoroPresetKey = '15/3' | '25/5' | '50/10';
+
+export const POMODORO_PRESETS: Record<
+  PomodoroPresetKey,
+  { label: string; focusSeconds: number; breakSeconds: number }
+> = {
+  '15/3': { label: '15/3', focusSeconds: 15 * 60, breakSeconds: 3 * 60 },
+  '25/5': { label: '25/5', focusSeconds: 25 * 60, breakSeconds: 5 * 60 },
+  '50/10': { label: '50/10', focusSeconds: 50 * 60, breakSeconds: 10 * 60 },
+};
+
+export type SleepTimerMode = 'off' | '15' | '30' | '60' | 'end';
+
+function getTodayDateKey(): string {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
 
 /**
  * Formats seconds cleanly as m:ss or mm:ss for seek bars and Pomodoro counters.
@@ -98,6 +125,42 @@ export function extractYouTubeVideoId(input: string): string | null {
   return fallbackMatch ? fallbackMatch[1] : null;
 }
 
+/**
+ * Extracts a YouTube playlist ID (?list=...) from common YouTube playlist or watch URLs.
+ */
+export function extractYouTubePlaylistId(input: string): string | null {
+  const trimmed = (input || '').trim();
+  if (!trimmed) return null;
+
+  if (/^(PL|OLAK5uy_|UU|LL|RD)[A-Za-z0-9_-]{10,}$/.test(trimmed)) {
+    return trimmed;
+  }
+
+  try {
+    const normalized = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+    const url = new URL(normalized);
+    const host = url.hostname.replace(/^www\./i, '').toLowerCase();
+
+    if (
+      host === 'youtube.com' ||
+      host === 'm.youtube.com' ||
+      host === 'music.youtube.com' ||
+      host === 'youtube-nocookie.com' ||
+      host === 'youtu.be'
+    ) {
+      const listParam = url.searchParams.get('list');
+      if (listParam && /^[A-Za-z0-9_-]{12,}$/.test(listParam)) {
+        return listParam;
+      }
+    }
+  } catch {
+    // Fallback regex
+  }
+
+  const listMatch = trimmed.match(/[?&]list=([A-Za-z0-9_-]{12,})/i);
+  return listMatch ? listMatch[1] : null;
+}
+
 export const DEFAULT_MUSIC_TRACKS: MusicTrack[] = [
   {
     id: 'track-1',
@@ -129,8 +192,14 @@ interface MusicPrefs {
   loopMode?: 'all' | 'one';
   isShuffle?: boolean;
   customTracks?: MusicTrack[];
+  pinnedTrackIds?: string[];
+  trackOrderIds?: string[];
   ambientVolume?: number;
+  pomodoroPreset?: PomodoroPresetKey;
   pomodoroAutoPauseMusic?: boolean;
+  pomodoroCompletedToday?: number;
+  pomodoroCompletedDate?: string;
+  examAutoDuckMusic?: boolean;
   showMiniPlayer?: boolean;
   miniPlayerCollapsed?: boolean;
 }
@@ -147,14 +216,15 @@ function savePrefs(partial: MusicPrefs) {
 }
 
 async function fetchYouTubeMetaViaNoembed(
-  videoId: string
+  targetUrlOrVideoId: string
 ): Promise<{ title?: string; artist?: string }> {
   try {
     const controller = new AbortController();
     const timer = window.setTimeout(() => controller.abort(), 3500);
-    const endpoint = `https://noembed.com/embed?url=${encodeURIComponent(
-      `https://www.youtube.com/watch?v=${videoId}`
-    )}`;
+    const targetUrl = /^https?:\/\//i.test(targetUrlOrVideoId)
+      ? targetUrlOrVideoId
+      : `https://www.youtube.com/watch?v=${targetUrlOrVideoId}`;
+    const endpoint = `https://noembed.com/embed?url=${encodeURIComponent(targetUrl)}`;
     const res = await fetch(endpoint, { signal: controller.signal });
     window.clearTimeout(timer);
     if (!res.ok) return {};
@@ -192,15 +262,24 @@ export interface MusicStoreState {
   duration: number;
   seekRequest: number | null;
 
-  // Ambient Sound Mixer
+  // Ambient Sound Presets ('off' | 'rain' | 'brown')
   ambientPreset: AmbientPreset;
   ambientVolume: number;
 
-  // Pomodoro Study Timer
+  // Smart Pomodoro Study Timer
+  pomodoroPreset: PomodoroPresetKey;
   pomodoroMode: 'focus' | 'break';
   pomodoroSecondsLeft: number;
   pomodoroRunning: boolean;
   pomodoroAutoPauseMusic: boolean;
+  pomodoroCompletedToday: number;
+  pomodoroCompletedDate: string;
+
+  // Exam Auto-Duck & Sleep Timer & Zen Focus Overlay
+  examAutoDuckMusic: boolean;
+  sleepTimerMode: SleepTimerMode;
+  sleepSecondsLeft: number;
+  isZenModeOpen: boolean;
 
   // Floating Mini-Player UI (hidden by default; appears when user plays music or pins it)
   showMiniPlayer: boolean;
@@ -223,6 +302,8 @@ export interface MusicStoreState {
     customTitle?: string
   ) => Promise<{ ok: boolean; error?: string }>;
   removeCustomTrack: (trackId: string) => void;
+  togglePinTrack: (trackId: string) => void;
+  moveTrack: (trackId: string, direction: 'up' | 'down') => void;
   setReady: (ready: boolean) => void;
   setPlayerState: (state: MusicPlayerState) => void;
   setProgress: (currentTime: number, duration: number) => void;
@@ -231,13 +312,18 @@ export interface MusicStoreState {
   setAmbientPreset: (preset: AmbientPreset) => void;
   setAmbientVolume: (volume: number) => void;
   togglePomodoro: () => void;
+  setPomodoroPreset: (preset: PomodoroPresetKey) => void;
   resetPomodoro: (mode?: 'focus' | 'break') => void;
   tickPomodoro: () => void;
   setPomodoroAutoPause: (enabled: boolean) => void;
+  setExamAutoDuck: (enabled: boolean) => void;
+  setSleepTimer: (mode: SleepTimerMode) => void;
+  tickSleepTimer: () => void;
+  setZenModeOpen: (open: boolean) => void;
   setShowMiniPlayer: (show: boolean) => void;
   setMiniPlayerCollapsed: (collapsed: boolean) => void;
-  recordTrackError: (videoId: string, code: number, message: string) => void;
-  clearTrackError: (videoId: string) => void;
+  recordTrackError: (errorKey: string, code: number, message: string) => void;
+  clearTrackError: (errorKey: string) => void;
   hydratePrefs: () => void;
 }
 
@@ -261,10 +347,18 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   ambientPreset: 'off',
   ambientVolume: 35,
 
+  pomodoroPreset: '25/5',
   pomodoroMode: 'focus',
-  pomodoroSecondsLeft: POMODORO_FOCUS_SECONDS,
+  pomodoroSecondsLeft: POMODORO_PRESETS['25/5'].focusSeconds,
   pomodoroRunning: false,
   pomodoroAutoPauseMusic: true,
+  pomodoroCompletedToday: 0,
+  pomodoroCompletedDate: getTodayDateKey(),
+
+  examAutoDuckMusic: true,
+  sleepTimerMode: 'off',
+  sleepSecondsLeft: 0,
+  isZenModeOpen: false,
 
   showMiniPlayer: false,
   miniPlayerCollapsed: true,
@@ -279,16 +373,53 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
 
       const customList: MusicTrack[] = Array.isArray(prefs.customTracks)
         ? prefs.customTracks
-            .filter((t) => t && typeof t.videoId === 'string' && /^[A-Za-z0-9_-]{11}$/.test(t.videoId))
-            .map((t) => ({ ...t, isCustom: true }))
+            .filter(
+              (t) =>
+                t &&
+                ((typeof t.videoId === 'string' && /^[A-Za-z0-9_-]{11}$/.test(t.videoId)) ||
+                  (typeof t.playlistId === 'string' && t.playlistId.length >= 12))
+            )
+            .map((t) => ({
+              ...t,
+              videoId:
+                typeof t.videoId === 'string' && /^[A-Za-z0-9_-]{11}$/.test(t.videoId)
+                  ? t.videoId
+                  : DEFAULT_MUSIC_TRACKS[0].videoId,
+              isCustom: true,
+            }))
         : [];
-      const mergedTracks = [
+
+      const pinnedSet = new Set(Array.isArray(prefs.pinnedTrackIds) ? prefs.pinnedTrackIds : []);
+      const baseMerged = [
         ...DEFAULT_MUSIC_TRACKS,
-        ...customList.filter((ct) => !DEFAULT_MUSIC_TRACKS.some((dt) => dt.videoId === ct.videoId)),
-      ];
+        ...customList.filter(
+          (ct) =>
+            !DEFAULT_MUSIC_TRACKS.some(
+              (dt) => !ct.playlistId && dt.videoId === ct.videoId
+            )
+        ),
+      ].map((t) => ({
+        ...t,
+        isPinned: pinnedSet.has(t.id),
+      }));
+
+      let orderedTracks = baseMerged;
+      if (Array.isArray(prefs.trackOrderIds) && prefs.trackOrderIds.length > 0) {
+        const orderIndex = new Map<string, number>(
+          prefs.trackOrderIds.map((id, idx) => [id, idx])
+        );
+        orderedTracks = [...baseMerged].sort((a, b) => {
+          const ia = orderIndex.get(a.id);
+          const ib = orderIndex.get(b.id);
+          if (ia !== undefined && ib !== undefined) return ia - ib;
+          if (ia !== undefined) return -1;
+          if (ib !== undefined) return 1;
+          return 0;
+        });
+      }
 
       const validTrack =
-        prefs.currentTrackId && mergedTracks.some((t) => t.id === prefs.currentTrackId)
+        prefs.currentTrackId && orderedTracks.some((t) => t.id === prefs.currentTrackId)
           ? prefs.currentTrackId
           : get().currentTrackId;
       const validVolume =
@@ -303,10 +434,29 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
         typeof prefs.ambientVolume === 'number' && !Number.isNaN(prefs.ambientVolume)
           ? Math.max(0, Math.min(100, Math.round(prefs.ambientVolume)))
           : get().ambientVolume;
+      const validPreset: PomodoroPresetKey =
+        prefs.pomodoroPreset === '15/3' ||
+        prefs.pomodoroPreset === '25/5' ||
+        prefs.pomodoroPreset === '50/10'
+          ? prefs.pomodoroPreset
+          : get().pomodoroPreset;
       const validAutoPause =
         typeof prefs.pomodoroAutoPauseMusic === 'boolean'
           ? prefs.pomodoroAutoPauseMusic
           : get().pomodoroAutoPauseMusic;
+      const validExamAutoDuck =
+        typeof prefs.examAutoDuckMusic === 'boolean'
+          ? prefs.examAutoDuckMusic
+          : get().examAutoDuckMusic;
+
+      const today = getTodayDateKey();
+      const validCompletedToday =
+        prefs.pomodoroCompletedDate === today &&
+        typeof prefs.pomodoroCompletedToday === 'number' &&
+        prefs.pomodoroCompletedToday >= 0
+          ? Math.floor(prefs.pomodoroCompletedToday)
+          : 0;
+
       const validShowMini =
         typeof prefs.showMiniPlayer === 'boolean' ? prefs.showMiniPlayer : get().showMiniPlayer;
       const validMiniCollapsed =
@@ -317,14 +467,19 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       AmbientAudioEngine.setVolume(validAmbientVol);
 
       set({
-        tracks: mergedTracks,
+        tracks: orderedTracks,
         currentTrackId: validTrack,
         volume: validVolume,
         isMuted: validMuted,
         loopMode: validLoop,
         isShuffle: validShuffle,
         ambientVolume: validAmbientVol,
+        pomodoroPreset: validPreset,
+        pomodoroSecondsLeft: POMODORO_PRESETS[validPreset].focusSeconds,
         pomodoroAutoPauseMusic: validAutoPause,
+        pomodoroCompletedToday: validCompletedToday,
+        pomodoroCompletedDate: today,
+        examAutoDuckMusic: validExamAutoDuck,
         showMiniPlayer: validShowMini,
         miniPlayerCollapsed: validMiniCollapsed,
       });
@@ -346,7 +501,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       duration: 0,
       showMiniPlayer: shouldRevealMini,
     });
-    playerController?.loadTrack(track.videoId, autoPlay);
+    playerController?.loadTrack(track.videoId, autoPlay, track.playlistId);
   },
 
   togglePlay: () => {
@@ -422,17 +577,28 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   },
 
   nextTrack: () => {
-    const { tracks, currentTrackId, isShuffle } = get();
+    const { tracks, currentTrackId, isShuffle, trackErrors } = get();
     if (tracks.length === 0) return;
 
-    if (isShuffle && tracks.length > 1) {
-      const candidates = tracks.filter((t) => t.id !== currentTrackId);
-      const picked = candidates[Math.floor(Math.random() * candidates.length)];
+    const validOthers = tracks.filter(
+      (t) => t.id !== currentTrackId && !trackErrors[getTrackErrorKey(t)]
+    );
+
+    if (isShuffle && validOthers.length > 0) {
+      const picked = validOthers[Math.floor(Math.random() * validOthers.length)];
       get().selectTrack(picked.id, true);
       return;
     }
 
     const idx = tracks.findIndex((t) => t.id === currentTrackId);
+    for (let step = 1; step <= tracks.length; step++) {
+      const candidate = tracks[(idx + step) % tracks.length];
+      if (!trackErrors[getTrackErrorKey(candidate)]) {
+        get().selectTrack(candidate.id, true);
+        return;
+      }
+    }
+
     const next = tracks[(idx + 1) % tracks.length];
     get().selectTrack(next.id, true);
   },
@@ -447,16 +613,65 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   },
 
   addCustomTrackAsync: async (urlOrId, customTitle) => {
+    const playlistId = extractYouTubePlaylistId(urlOrId);
     const videoId = extractYouTubeVideoId(urlOrId);
-    if (!videoId) {
+
+    if (!videoId && !playlistId) {
       return {
         ok: false,
         error:
-          'Link hoặc Video ID YouTube không hợp lệ (cần đúng ID 11 ký tự hoặc link youtu.be / youtube.com).',
+          'Link hoặc ID YouTube không hợp lệ (hỗ trợ video youtu.be / youtube.com và YouTube Playlist ?list=...).',
       };
     }
 
-    const existing = get().tracks.find((t) => t.videoId === videoId);
+    if (playlistId) {
+      const existingPlaylist = get().tracks.find((t) => t.playlistId === playlistId);
+      if (existingPlaylist) {
+        get().selectTrack(existingPlaylist.id, true);
+        return { ok: true };
+      }
+
+      const playlistUrl = `https://www.youtube.com/playlist?list=${playlistId}`;
+      const meta = customTitle?.trim()
+        ? {}
+        : await fetchYouTubeMetaViaNoembed(videoId ? `https://www.youtube.com/watch?v=${videoId}&list=${playlistId}` : playlistUrl);
+      const cleanTitle =
+        (customTitle || '').trim() || meta.title || `YouTube Playlist (${playlistId.slice(0, 10)})`;
+      const cleanArtist = meta.artist
+        ? `${meta.artist} · YouTube Playlist`
+        : 'YouTube Playlist';
+
+      const duplicateAfterFetch = get().tracks.find((t) => t.playlistId === playlistId);
+      if (duplicateAfterFetch) {
+        get().selectTrack(duplicateAfterFetch.id, true);
+        return { ok: true };
+      }
+
+      const newTrack: MusicTrack = {
+        id: `playlist-${playlistId}`,
+        videoId: videoId || DEFAULT_MUSIC_TRACKS[0].videoId,
+        playlistId,
+        title: cleanTitle,
+        artist: cleanArtist,
+        url: playlistUrl,
+        isCustom: true,
+      };
+
+      const nextTracks = [...get().tracks, newTrack];
+      savePrefs({
+        customTracks: nextTracks.filter((t) => t.isCustom),
+        trackOrderIds: nextTracks.map((t) => t.id),
+      });
+      set({ tracks: nextTracks });
+      get().selectTrack(newTrack.id, true);
+      return { ok: true };
+    }
+
+    if (!videoId) {
+      return { ok: false, error: 'Không tìm thấy mã Video YouTube hợp lệ.' };
+    }
+
+    const existing = get().tracks.find((t) => !t.playlistId && t.videoId === videoId);
     if (existing) {
       get().selectTrack(existing.id, true);
       return { ok: true };
@@ -470,7 +685,9 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       : `Custom YouTube · ${videoId}`;
 
     // Re-check deduplication after async fetch
-    const duplicateAfterFetch = get().tracks.find((t) => t.videoId === videoId);
+    const duplicateAfterFetch = get().tracks.find(
+      (t) => !t.playlistId && t.videoId === videoId
+    );
     if (duplicateAfterFetch) {
       get().selectTrack(duplicateAfterFetch.id, true);
       return { ok: true };
@@ -486,7 +703,10 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     };
 
     const nextTracks = [...get().tracks, newTrack];
-    savePrefs({ customTracks: nextTracks.filter((t) => t.isCustom) });
+    savePrefs({
+      customTracks: nextTracks.filter((t) => t.isCustom),
+      trackOrderIds: nextTracks.map((t) => t.id),
+    });
     set({ tracks: nextTracks });
     get().selectTrack(newTrack.id, true);
     return { ok: true };
@@ -504,6 +724,8 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
 
     savePrefs({
       customTracks: nextTracks.filter((t) => t.isCustom),
+      pinnedTrackIds: nextTracks.filter((t) => t.isPinned).map((t) => t.id),
+      trackOrderIds: nextTracks.map((t) => t.id),
       currentTrackId: fallbackId,
     });
 
@@ -512,6 +734,43 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       currentTrackId: fallbackId,
       ...(isRemovingCurrent ? { currentTime: 0, duration: 0 } : {}),
     });
+  },
+
+  togglePinTrack: (trackId) => {
+    const current = get().tracks;
+    const target = current.find((t) => t.id === trackId);
+    if (!target) return;
+
+    const nextPinned = !target.isPinned;
+    const toggled = current.map((t) =>
+      t.id === trackId ? { ...t, isPinned: nextPinned } : t
+    );
+
+    // Keep pinned tracks grouped neatly at the top while preserving relative order
+    const pinned = toggled.filter((t) => t.isPinned);
+    const unpinned = toggled.filter((t) => !t.isPinned);
+    const reordered = [...pinned, ...unpinned];
+
+    savePrefs({
+      pinnedTrackIds: pinned.map((t) => t.id),
+      trackOrderIds: reordered.map((t) => t.id),
+    });
+    set({ tracks: reordered });
+  },
+
+  moveTrack: (trackId, direction) => {
+    const current = get().tracks;
+    const idx = current.findIndex((t) => t.id === trackId);
+    if (idx === -1) return;
+    const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
+    if (swapIdx < 0 || swapIdx >= current.length) return;
+
+    const next = [...current];
+    const [moved] = next.splice(idx, 1);
+    next.splice(swapIdx, 0, moved);
+
+    savePrefs({ trackOrderIds: next.map((t) => t.id) });
+    set({ tracks: next });
   },
 
   setReady: (ready) => set({ isReady: ready }),
@@ -552,10 +811,22 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     set({ pomodoroRunning: !get().pomodoroRunning });
   },
 
+  setPomodoroPreset: (preset) => {
+    const cfg = POMODORO_PRESETS[preset];
+    if (!cfg) return;
+    savePrefs({ pomodoroPreset: preset });
+    set({
+      pomodoroPreset: preset,
+      pomodoroMode: 'focus',
+      pomodoroSecondsLeft: cfg.focusSeconds,
+      pomodoroRunning: false,
+    });
+  },
+
   resetPomodoro: (mode) => {
     const targetMode = mode || get().pomodoroMode;
-    const nextSeconds =
-      targetMode === 'focus' ? POMODORO_FOCUS_SECONDS : POMODORO_BREAK_SECONDS;
+    const cfg = POMODORO_PRESETS[get().pomodoroPreset] || POMODORO_PRESETS['25/5'];
+    const nextSeconds = targetMode === 'focus' ? cfg.focusSeconds : cfg.breakSeconds;
     set({
       pomodoroMode: targetMode,
       pomodoroSecondsLeft: nextSeconds,
@@ -564,7 +835,16 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   },
 
   tickPomodoro: () => {
-    const { pomodoroRunning, pomodoroSecondsLeft, pomodoroMode, pomodoroAutoPauseMusic } = get();
+    const {
+      pomodoroRunning,
+      pomodoroSecondsLeft,
+      pomodoroMode,
+      pomodoroAutoPauseMusic,
+      pomodoroPreset,
+      pomodoroCompletedToday,
+      pomodoroCompletedDate,
+      isPlaying,
+    } = get();
     if (!pomodoroRunning) return;
 
     if (pomodoroSecondsLeft > 1) {
@@ -572,17 +852,34 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       return;
     }
 
+    const cfg = POMODORO_PRESETS[pomodoroPreset] || POMODORO_PRESETS['25/5'];
+
     if (pomodoroMode === 'focus') {
+      AmbientAudioEngine.playPomodoroChime('break');
+      const today = getTodayDateKey();
+      const nextCount = (pomodoroCompletedDate === today ? pomodoroCompletedToday : 0) + 1;
+      savePrefs({
+        pomodoroCompletedToday: nextCount,
+        pomodoroCompletedDate: today,
+      });
+
+      if (pomodoroAutoPauseMusic && isPlaying) {
+        playerController?.pause();
+      }
+
       set({
         pomodoroMode: 'break',
-        pomodoroSecondsLeft: POMODORO_BREAK_SECONDS,
+        pomodoroSecondsLeft: cfg.breakSeconds,
         pomodoroRunning: false,
+        pomodoroCompletedToday: nextCount,
+        pomodoroCompletedDate: today,
         ...(pomodoroAutoPauseMusic ? { isPlaying: false } : {}),
       });
     } else {
+      AmbientAudioEngine.playPomodoroChime('focus');
       set({
         pomodoroMode: 'focus',
-        pomodoroSecondsLeft: POMODORO_FOCUS_SECONDS,
+        pomodoroSecondsLeft: cfg.focusSeconds,
         pomodoroRunning: false,
       });
     }
@@ -592,6 +889,48 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     savePrefs({ pomodoroAutoPauseMusic: enabled });
     set({ pomodoroAutoPauseMusic: enabled });
   },
+
+  setExamAutoDuck: (enabled) => {
+    savePrefs({ examAutoDuckMusic: enabled });
+    set({ examAutoDuckMusic: enabled });
+    if (!enabled && get().isDucked) {
+      get().setDucked(false);
+    }
+  },
+
+  setSleepTimer: (mode) => {
+    const nextSeconds =
+      mode === '15'
+        ? 15 * 60
+        : mode === '30'
+        ? 30 * 60
+        : mode === '60'
+        ? 60 * 60
+        : 0;
+    set({
+      sleepTimerMode: mode,
+      sleepSecondsLeft: nextSeconds,
+    });
+  },
+
+  tickSleepTimer: () => {
+    const { isPlaying, sleepTimerMode, sleepSecondsLeft } = get();
+    if (!isPlaying || (sleepTimerMode !== '15' && sleepTimerMode !== '30' && sleepTimerMode !== '60')) {
+      return;
+    }
+    if (sleepSecondsLeft > 1) {
+      set({ sleepSecondsLeft: sleepSecondsLeft - 1 });
+      return;
+    }
+    playerController?.pause();
+    set({
+      sleepTimerMode: 'off',
+      sleepSecondsLeft: 0,
+      isPlaying: false,
+    });
+  },
+
+  setZenModeOpen: (open) => set({ isZenModeOpen: open }),
 
   setShowMiniPlayer: (show) => {
     savePrefs({ showMiniPlayer: show });
@@ -603,19 +942,19 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     set({ miniPlayerCollapsed: collapsed });
   },
 
-  recordTrackError: (videoId, code, message) =>
+  recordTrackError: (errorKey, code, message) =>
     set((state) => ({
       trackErrors: {
         ...state.trackErrors,
-        [videoId]: { code, message },
+        [errorKey]: { code, message },
       },
     })),
 
-  clearTrackError: (videoId) =>
+  clearTrackError: (errorKey) =>
     set((state) => {
-      if (!state.trackErrors[videoId]) return state;
+      if (!state.trackErrors[errorKey]) return state;
       const next = { ...state.trackErrors };
-      delete next[videoId];
+      delete next[errorKey];
       return { trackErrors: next };
     }),
 }));
