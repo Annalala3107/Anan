@@ -87,6 +87,8 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const [problemQuestions, setProblemQuestions] = useState<StandardQuestion[]>([]);
 
   const advanceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const totalAttemptsRef = useRef(0);
+  const correctAttemptsRef = useRef(0);
 
   const refreshProgress = useCallback(() => {
     setProgressMap(StorageEngine.getWordProgress());
@@ -154,6 +156,27 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         shuffleChoices: false,
       });
 
+      if (canonicalList.length === 0) {
+        totalAttemptsRef.current = 0;
+        correctAttemptsRef.current = 0;
+        setCards([]);
+        setActiveQueue([]);
+        setNextReserveIndex(0);
+        setTurnCount(0);
+        setSelectedOpts([]);
+        setFeedbackState('idle');
+        setIsFlipped(false);
+        setIsConfiguring(false);
+        setStartTime(Date.now());
+        setTotalAttempts(0);
+        setCorrectAttempts(0);
+        setSessionCombo(0);
+        setMaxCombo(0);
+        setProblemQuestions([]);
+        setIsCompleted(true);
+        return;
+      }
+
       const initialCards: CardItem[] = canonicalList.map((q, idx) => {
         const cleanedOpts = q.options.map((opt) => cleanOptionText(opt));
         const activeOpts = shuffleChoices ? shuffleArray(cleanedOpts, true) : q.options;
@@ -196,6 +219,8 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       setIsConfiguring(false);
       setIsCompleted(false);
       setStartTime(Date.now());
+      totalAttemptsRef.current = 0;
+      correctAttemptsRef.current = 0;
       setTotalAttempts(0);
       setCorrectAttempts(0);
       setSessionCombo(0);
@@ -255,7 +280,11 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       spread: 80,
       origin: { y: 0.6 },
     });
-    StorageEngine.recordActivity('learn', 100);
+    const sessionAccuracy =
+      totalAttemptsRef.current > 0
+        ? Math.round((correctAttemptsRef.current / totalAttemptsRef.current) * 100)
+        : 100;
+    StorageEngine.recordActivity('learn', sessionAccuracy, false);
   }, [refreshProgress]);
 
   // Rotate active pool queue to the next question
@@ -366,10 +395,12 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         currentQ.correctOptions
       );
 
+      totalAttemptsRef.current += 1;
       setTotalAttempts((prev) => prev + 1);
 
       if (isCorrect) {
         setFeedbackState('correct');
+        correctAttemptsRef.current += 1;
         setCorrectAttempts((prev) => prev + 1);
         setSessionCombo((prev) => {
           const next = prev + 1;
@@ -445,12 +476,14 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const handleRateFlashcard = useCallback(
     (quality: 1 | 3 | 5) => {
       if (!currentItem || !currentQ) return;
+      totalAttemptsRef.current += 1;
       setTotalAttempts((prev) => prev + 1);
 
       const activeId = currentItem.id;
       const restQueue = activeQueue.slice(1);
 
       if (quality >= 3) {
+        correctAttemptsRef.current += 1;
         setCorrectAttempts((prev) => prev + 1);
         setSessionCombo((prev) => {
           const next = prev + 1;
@@ -476,7 +509,9 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             : c
         );
         setCards(updatedCards);
-        StorageEngine.updateWordProgress(currentQ.id, quality);
+        StorageEngine.updateWordProgress(currentQ.id, quality, {
+          markMastered: quality === 5,
+        });
 
         if (updatedCards.every((c) => c.correctStreak >= streakTarget)) {
           finishSession();
@@ -1056,8 +1091,8 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 </div>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-1">
                   {studyMethod === 'flashcard'
-                    ? 'Đạt đánh giá [Đã thuộc lầu] 1 lần là hoàn thành câu ngay. Dành cho người đã ôn trước.'
-                    : 'Bấm đúng 1 lần là qua luôn. Dành cho người đã ôn sơ qua và cần kiểm tra lại tốc độ.'}
+                    ? 'Đạt đánh giá [Đã thuộc lầu] 1 lần là đánh dấu Thành thạo ngay. Dành cho người đã ôn trước.'
+                    : 'Đúng 1 lần là qua câu trong đợt này (đưa vào Đang ôn; hoàn thành thêm 1 lượt nữa để đạt Thành thạo ≥80%).'}
                 </p>
               </button>
             </div>
@@ -1132,11 +1167,15 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2">
             {unmasteredCount === 0
               ? 'ĐÃ PHÁ ĐẢO TRỌN VẸN 100% CẢ ĐỀ!'
+              : studyMethod === 'rapid' && streakTarget === 1
+              ? `HOÀN THÀNH LƯỢT LƯỚT NHANH (${totalInitialCount} CÂU)!`
               : `ĐÃ THUỘC LẦU ĐỢT NÀY (${totalInitialCount} CÂU)!`}
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-sm max-w-lg mx-auto">
             {unmasteredCount === 0
               ? `Tuyệt đỉnh! Bạn đã thuộc sạch sẽ ${availableCount}/${availableCount} câu của bộ đề này mà không sót bất kỳ câu lẻ nào.`
+              : studyMethod === 'rapid' && streakTarget === 1
+              ? `Tổng cộng ${masteredCount}/${availableCount} câu trong bộ đề đã đạt Thành thạo ≥80%. Chọn lại chế độ 2 chu kỳ hoặc học tiếp 1 lượt để khóa chắc kiến thức!`
               : `Bạn đã thuộc tổng cộng ${masteredCount}/${availableCount} câu trong bộ đề. Còn ${unmasteredCount} câu chưa thuộc đang chờ bạn quét sạch!`}
           </p>
 

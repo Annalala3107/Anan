@@ -54,6 +54,8 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   const [resultFilterMode, setResultFilterMode] = useState<'all' | 'wrong' | 'flagged'>('all');
   const [resultFilterTopic, setResultFilterTopic] = useState<string | null>(null);
 
+  const initializedTopicsWordsRef = useRef<Word[] | null>(null);
+
   // Extract available topics from dataset
   const availableTopics = useMemo(() => {
     if (!words || words.length === 0) return [];
@@ -65,17 +67,18 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     return Array.from(map.entries()).map(([name, count]) => ({ name, count }));
   }, [words]);
 
-  // Initialize selected topics with all topics once words load
+  // Initialize selected topics with all topics once per dataset (never override user "Unselect all")
   useEffect(() => {
-    if (availableTopics.length > 0 && selectedTopics.length === 0) {
+    if (availableTopics.length > 0 && initializedTopicsWordsRef.current !== words) {
+      initializedTopicsWordsRef.current = words;
       setSelectedTopics(availableTopics.map((t) => t.name));
     }
-  }, [availableTopics, selectedTopics.length]);
+  }, [words, availableTopics]);
 
   // Compute number of questions matching selected topics
   const filteredAvailableCount = useMemo(() => {
-    if (!words || words.length === 0) return 0;
-    if (selectedTopics.length === 0 || selectedTopics.length === availableTopics.length) {
+    if (!words || words.length === 0 || selectedTopics.length === 0) return 0;
+    if (selectedTopics.length === availableTopics.length) {
       return words.length;
     }
     return words.filter((w) => {
@@ -93,10 +96,8 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
 
   const toggleAllTopics = () => {
     if (selectedTopics.length === availableTopics.length) {
-      // Unselect all (keep empty or none)
       setSelectedTopics([]);
     } else {
-      // Select all
       setSelectedTopics(availableTopics.map((t) => t.name));
     }
   };
@@ -113,19 +114,20 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
 
   // Launch the exam with the configured settings
   const handleStartExam = useCallback(() => {
-    if (!words || words.length === 0) return;
+    if (!words || words.length === 0 || selectedTopics.length === 0) return;
 
     // Filter words by selected topics
     let eligibleWords = words;
-    if (selectedTopics.length > 0 && selectedTopics.length < availableTopics.length) {
+    if (selectedTopics.length < availableTopics.length) {
       eligibleWords = words.filter((w) => {
         const topicName = (w.topic || 'Chuyên đề chung').trim();
         return selectedTopics.includes(topicName);
       });
-      if (eligibleWords.length === 0) eligibleWords = words;
+      if (eligibleWords.length === 0) return;
     }
 
     const count = Math.min(eligibleWords.length, targetCount);
+    if (count <= 0) return;
     const list = buildStandardQuestions(eligibleWords, count, {
       mode: 'random',
       shuffleChoices,
@@ -162,14 +164,14 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   useEffect(() => {
     if (!isConfiguring) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Enter') {
+      if (e.key === 'Enter' && filteredAvailableCount > 0) {
         e.preventDefault();
         handleStartExam();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isConfiguring, handleStartExam]);
+  }, [isConfiguring, filteredAvailableCount, handleStartExam]);
 
   // Prevent accidental navigation or page refresh during active exam
   useEffect(() => {
@@ -258,7 +260,6 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       else if (key === 'C' || key === '3') chosenIdx = 2;
       else if (key === 'D' || key === '4') chosenIdx = 3;
       else if (key === 'E' || key === '5') chosenIdx = 4;
-      else if (key === 'F' && currentQ.options.length > 5 && !e.shiftKey) chosenIdx = 5;
       else if (key === '6') chosenIdx = 5;
 
       if (chosenIdx >= 0 && chosenIdx < currentQ.options.length) {
@@ -341,10 +342,12 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   }, [topicStats]);
 
   const handleDrillWeakTopic = (topicName: string) => {
-    setSelectedTopics([topicName]);
     const eligibleWords = words.filter(
       (w) => (w.topic || 'Chuyên đề chung').trim() === topicName
     );
+    if (eligibleWords.length === 0) return;
+
+    setSelectedTopics([topicName]);
     const count = Math.min(eligibleWords.length, 25);
     const list = buildStandardQuestions(eligibleWords, count, {
       mode: 'random',
@@ -362,6 +365,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     setShowSubmitConfirm(false);
     setIsSubmitted(false);
     setIsConfiguring(false);
+    setIsExamActive(true);
   };
 
   const filteredReviewQuestions = useMemo(() => {
@@ -802,7 +806,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
                     </span>
                   )}
                   <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500 hidden sm:inline-block">
-                    [{String.fromCharCode(65 + idx)}]
+                    [{idx < 5 ? String.fromCharCode(65 + idx) : idx + 1}]
                   </span>
                 </div>
               </button>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { parseRawExamText } from '@/lib/textQuizParser';
 import { isAnswerMatch } from '@/lib/utils';
 import { StorageEngine } from '@/lib/storage';
@@ -63,7 +64,8 @@ export default function QuickTextParserModal({
   onQuizCreated,
   defaultSubject,
 }: QuickTextParserModalProps) {
-  const { setActiveCustomQuiz, setSelectedQuizPath } = useQuizStore();
+  const router = useRouter();
+  const { setActiveCustomQuiz } = useQuizStore();
 
   const [title, setTitle] = useState('');
   const [subject, setSubject] = useState('PRF192');
@@ -126,9 +128,9 @@ export default function QuickTextParserModal({
     onClose();
 
     if (mode === 'exam') {
-      window.location.href = '/session/exam';
+      router.push('/session/exam');
     } else if (mode === 'drill') {
-      window.location.href = '/session/drill';
+      router.push('/session/drill');
     }
   };
 
@@ -326,10 +328,24 @@ export default function QuickTextParserModal({
               {parsedResult.errors.length > 0 && (
                 <span className="text-[11px] font-semibold text-amber-500 flex items-center gap-1">
                   <AlertTriangle className="w-3.5 h-3.5" />
-                  {parsedResult.errors.length} cảnh báo
+                  {parsedResult.errors.length} lỗi bị bỏ qua
                 </span>
               )}
             </div>
+
+            {parsedResult.errors.length > 0 && (
+              <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-700 dark:text-amber-300 space-y-1 max-h-28 overflow-y-auto">
+                <p className="font-bold flex items-center gap-1.5">
+                  <AlertTriangle className="w-3.5 h-3.5 shrink-0 text-amber-500" />
+                  <span>Các câu chưa đủ điều kiện (không tự đoán đáp án để tránh sai lệch):</span>
+                </p>
+                <ul className="list-disc pl-5 space-y-0.5">
+                  {parsedResult.errors.map((errMsg, errIdx) => (
+                    <li key={errIdx}>{errMsg}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Questions Live Preview List */}
             <div className="flex-1 overflow-y-auto space-y-3.5 max-h-[380px] lg:max-h-[460px] pr-1">

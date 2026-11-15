@@ -32,6 +32,19 @@ interface MistakesModeProps {
   onExit: () => void;
 }
 
+const filterUnresolvedMistakes = (sourceWords: Word[]): Word[] => {
+  if (!sourceWords || sourceWords.length === 0) return [];
+  const progressMap = StorageEngine.getWordProgress();
+  return sourceWords.filter((w) => {
+    const p = StorageEngine.getItemProgress(w, progressMap);
+    return Boolean(
+      p &&
+        ((p.wrongStreak || 0) > 0 ||
+          ((p.mistakesCount || 0) > 0 && p.status !== 'mastered'))
+    );
+  });
+};
+
 export default function MistakesMode({ words, onExit }: MistakesModeProps) {
   const [mistakeWords, setMistakeWords] = useState<Word[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -41,22 +54,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
   const [shuffleOptions, setShuffleOptions] = useState(true);
 
   useEffect(() => {
-    if (!words || words.length === 0) return;
-
-    const progressMap = StorageEngine.getWordProgress();
-
-    // Filter words matching priority list, or words with wrongStreak > 0, mistakesCount > 0, or low strength
-    const matched = words.filter((w) => {
-      const p = StorageEngine.getItemProgress(w, progressMap);
-      return (
-        p &&
-        (p.wrongStreak > 0 ||
-          (p.mistakesCount && p.mistakesCount > 0) ||
-          p.strength < 0.6)
-      );
-    });
-
-    setMistakeWords(matched);
+    setMistakeWords(filterUnresolvedMistakes(words));
   }, [words]);
 
   const currentWord = mistakeWords[currentIndex];
@@ -146,6 +144,8 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
         <div className="space-y-3">
           <button
             onClick={() => {
+              const remaining = filterUnresolvedMistakes(words);
+              setMistakeWords(remaining);
               setIsFinished(false);
               setCurrentIndex(0);
             }}

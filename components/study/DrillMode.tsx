@@ -39,6 +39,7 @@ interface DrillModeProps {
 
 interface PartQuestionItem {
   id: string;
+  rawWord: Word;
   originalNumber: number; // 1-based index in the full deck
   sentence: string;
   correctWord: string;
@@ -110,6 +111,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           const meta = getQuestionAnswerMeta(rawCorrect, target.answer, target.options);
           return {
             id: key,
+            rawWord: target,
             originalNumber: idx + 1,
             sentence: target.question,
             correctWord: rawCorrect,
@@ -135,6 +137,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
         const finalOpts = options.length >= 2 ? options : [target.word, 'Đáp án khác'];
         return {
           id: key,
+          rawWord: target,
           originalNumber: idx + 1,
           sentence,
           correctWord: target.word,
@@ -157,13 +160,17 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
     let masteredTotal = 0;
 
     allItems.forEach((item) => {
-      const p = progressMap[item.id];
+      const p = StorageEngine.getItemProgress(item.rawWord, progressMap);
       if (p?.status === 'mastered') {
         masteredTotal++;
       } else {
         unmasteredItems.push(item);
       }
-      if (p && ((p.mistakesCount || 0) > 0 || (p.wrongStreak || 0) > 0)) {
+      if (
+        p &&
+        ((p.wrongStreak || 0) > 0 ||
+          ((p.mistakesCount || 0) > 0 && p.status !== 'mastered'))
+      ) {
         mistakeItems.push(item);
       }
     });
@@ -178,10 +185,16 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       let lCount = 0;
       let errCount = 0;
       slice.forEach((it) => {
-        const p = progressMap[it.id];
+        const p = StorageEngine.getItemProgress(it.rawWord, progressMap);
         if (p?.status === 'mastered') mCount++;
         else if (p && p.seenCount > 0) lCount++;
-        if (p && ((p.mistakesCount || 0) > 0 || (p.wrongStreak || 0) > 0)) errCount++;
+        if (
+          p &&
+          ((p.wrongStreak || 0) > 0 ||
+            ((p.mistakesCount || 0) > 0 && p.status !== 'mastered'))
+        ) {
+          errCount++;
+        }
       });
 
       parts.push({
