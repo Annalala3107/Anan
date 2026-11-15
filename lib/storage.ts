@@ -27,6 +27,7 @@ const STORAGE_KEYS = {
   STREAK: 'ananquiz_streak',
   LAST_ACTIVE_DATE: 'ananquiz_last_active_date',
   SELECTED_QUIZ: 'ananquiz_selected_quiz',
+  ACTIVE_CUSTOM_QUIZ_ID: 'ananquiz_active_custom_quiz_id',
   USER_PROFILE: 'ananquiz_user_profile',
   EXAM_HISTORY: 'ananquiz_exam_history',
 };
@@ -65,7 +66,8 @@ export class StorageEngine {
    */
   public static updateWordProgress(
     target: string | { id?: string; question?: string; word: string; correctWord?: string },
-    quality: number // 1 to 5
+    quality: number, // 1 to 5
+    options?: { markMastered?: boolean }
   ): WordProgress {
     const key = typeof target === 'string' ? target : getQuestionKey(target);
     const allProgress = this.getWordProgress();
@@ -82,7 +84,9 @@ export class StorageEngine {
       mistakesCount: 0,
     };
 
-    const updated = SRSEngine.calculateNextReview(existing, quality);
+    const updated = SRSEngine.calculateNextReview(existing, quality, {
+      markMastered: options?.markMastered,
+    });
     allProgress[key] = updated;
 
     if (typeof window !== 'undefined') {
@@ -124,6 +128,9 @@ export class StorageEngine {
     existing.mistakesCount = (existing.mistakesCount || 0) + 1;
     existing.lastSeen = Date.now();
     existing.wrongStreak = (existing.wrongStreak || 0) + 1;
+    if (existing.strength > 0) {
+      existing.strength = Math.max(0.1, Math.round((existing.strength - 0.2) * 1000) / 1000);
+    }
     if (existing.status === 'mastered') {
       existing.status = 'learning';
     }
@@ -171,9 +178,15 @@ export class StorageEngine {
   }
 
   // ---- DAILY STATS & STREAK ----
+  private static formatLocalDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
   public static getTodayDateString(): string {
-    const today = new Date();
-    return today.toISOString().split('T')[0];
+    return this.formatLocalDate(new Date());
   }
 
   public static getDailyStats(): DailyStats {
@@ -185,6 +198,8 @@ export class StorageEngine {
       wordsExamined: 0,
       mistakesCount: 0,
       accuracy: 100,
+      accuracySum: 0,
+      accuracySamples: 0,
     };
 
     if (typeof window === 'undefined') return defaultStats;
@@ -203,19 +218,36 @@ export class StorageEngine {
 
   public static recordActivity(
     type: 'learn' | 'drill' | 'exam' | 'mistake',
-    accuracyScore?: number
+    accuracyScore?: number,
+    incrementCounter = true
   ) {
     if (typeof window === 'undefined') return;
     const stats = this.getDailyStats();
-    if (type === 'learn') stats.wordsLearned += 1;
-    if (type === 'drill') stats.wordsDrilled += 1;
-    if (type === 'exam') stats.wordsExamined += 1;
-    if (type === 'mistake') stats.mistakesCount += 1;
+    if (incrementCounter) {
+      if (type === 'learn') stats.wordsLearned += 1;
+      if (type === 'drill') stats.wordsDrilled += 1;
+      if (type === 'exam') stats.wordsExamined += 1;
+      if (type === 'mistake') stats.mistakesCount += 1;
+    }
 
-    if (accuracyScore !== undefined) {
-      stats.accuracy = Math.round(
-        stats.accuracy === 100 ? accuracyScore : (stats.accuracy + accuracyScore) / 2
-      );
+    if (accuracyScore !== undefined && Number.isFinite(accuracyScore)) {
+      const clampedScore = Math.max(0, Math.min(100, accuracyScore));
+      const priorSamples =
+        typeof stats.accuracySamples === 'number'
+          ? stats.accuracySamples
+          : stats.accuracy !== 100
+          ? 1
+          : 0;
+      const priorSum =
+        typeof stats.accuracySum === 'number'
+          ? stats.accuracySum
+          : priorSamples > 0
+          ? stats.accuracy
+          : 0;
+
+      stats.accuracySum = priorSum + clampedScore;
+      stats.accuracySamples = priorSamples + 1;
+      stats.accuracy = Math.round(stats.accuracySum / stats.accuracySamples);
     }
 
     try {
@@ -249,7 +281,7 @@ export class StorageEngine {
     } else {
       const yesterday = new Date();
       yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayStr = yesterday.toISOString().split('T')[0];
+      const yesterdayStr = this.formatLocalDate(yesterday);
 
       if (lastActive === yesterdayStr) {
         currentStreak += 1;
@@ -293,6 +325,9 @@ export class StorageEngine {
     const list = this.getCustomQuizzes().filter((q) => q.id !== id);
     if (typeof window !== 'undefined') {
       localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(list));
+      if (this.getActiveCustomQuizId() === id) {
+        this.setActiveCustomQuizId(null);
+      }
     }
   }
 
@@ -359,6 +394,28 @@ export class StorageEngine {
   public static setSelectedQuiz(path: string): void {
     if (typeof window !== 'undefined') {
       localStorage.setItem(STORAGE_KEYS.SELECTED_QUIZ, path);
+    }
+  }
+
+  public static getActiveCustomQuizId(): string | null {
+    if (typeof window === 'undefined') return null;
+    try {
+      return localStorage.getItem(STORAGE_KEYS.ACTIVE_CUSTOM_QUIZ_ID);
+    } catch {
+      return null;
+    }
+  }
+
+  public static setActiveCustomQuizId(id: string | null): void {
+    if (typeof window === 'undefined') return;
+    try {
+      if (id) {
+        localStorage.setItem(STORAGE_KEYS.ACTIVE_CUSTOM_QUIZ_ID, id);
+      } else {
+        localStorage.removeItem(STORAGE_KEYS.ACTIVE_CUSTOM_QUIZ_ID);
+      }
+    } catch {
+      // Ignore private mode / quota errors
     }
   }
 

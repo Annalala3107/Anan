@@ -7,6 +7,7 @@ interface QuizStoreState {
   selectedQuizPath: string;
   activeCustomQuiz: CustomQuiz | null;
   loadedQuizKey: string | null;
+  hasHydratedSelection: boolean;
   words: Word[];
   isLoadingWords: boolean;
 
@@ -14,6 +15,7 @@ interface QuizStoreState {
   isExamActive: boolean;
   setIsExamActive: (val: boolean) => void;
 
+  hydrateSelection: () => void;
   setSelectedQuizPath: (path: string) => void;
   setActiveCustomQuiz: (quiz: CustomQuiz | null) => void;
   setWords: (words: Word[]) => void;
@@ -24,26 +26,72 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
   selectedQuizPath: '/data/cea201_all.json',
   activeCustomQuiz: null,
   loadedQuizKey: null,
+  hasHydratedSelection: false,
   words: [],
   isLoadingWords: false,
 
   isExamActive: false,
   setIsExamActive: (isExamActive: boolean) => set({ isExamActive }),
 
+  hydrateSelection: () => {
+    if (typeof window === 'undefined' || get().hasHydratedSelection) return;
+
+    const savedCustomId = StorageEngine.getActiveCustomQuizId();
+    const savedPath = StorageEngine.getSelectedQuiz();
+
+    if (savedCustomId) {
+      const matchedCustom = StorageEngine.getCustomQuizzes().find((q) => q.id === savedCustomId);
+      if (matchedCustom) {
+        set({
+          selectedQuizPath: savedPath,
+          activeCustomQuiz: matchedCustom,
+          words: matchedCustom.words,
+          loadedQuizKey: `custom:${matchedCustom.id}`,
+          hasHydratedSelection: true,
+        });
+        return;
+      }
+      StorageEngine.setActiveCustomQuizId(null);
+    }
+
+    set({
+      selectedQuizPath: savedPath,
+      activeCustomQuiz: null,
+      hasHydratedSelection: true,
+    });
+  },
+
   setSelectedQuizPath: (path: string) => {
-    if (get().selectedQuizPath === path && get().activeCustomQuiz === null && get().words.length > 0) {
+    StorageEngine.setSelectedQuiz(path);
+    StorageEngine.setActiveCustomQuizId(null);
+    if (
+      get().selectedQuizPath === path &&
+      get().activeCustomQuiz === null &&
+      get().words.length > 0 &&
+      get().hasHydratedSelection
+    ) {
       return;
     }
-    StorageEngine.setSelectedQuiz(path);
-    set({ selectedQuizPath: path, activeCustomQuiz: null, loadedQuizKey: null });
+    set({
+      selectedQuizPath: path,
+      activeCustomQuiz: null,
+      loadedQuizKey: null,
+      hasHydratedSelection: true,
+    });
     get().loadQuizWords(path);
   },
 
   setActiveCustomQuiz: (quiz: CustomQuiz | null) => {
+    StorageEngine.setActiveCustomQuizId(quiz ? quiz.id : null);
     if (quiz) {
-      set({ activeCustomQuiz: quiz, words: quiz.words, loadedQuizKey: `custom:${quiz.id}` });
+      set({
+        activeCustomQuiz: quiz,
+        words: quiz.words,
+        loadedQuizKey: `custom:${quiz.id}`,
+        hasHydratedSelection: true,
+      });
     } else {
-      set({ activeCustomQuiz: null, loadedQuizKey: null });
+      set({ activeCustomQuiz: null, loadedQuizKey: null, hasHydratedSelection: true });
       get().loadQuizWords(get().selectedQuizPath);
     }
   },
@@ -51,6 +99,9 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
   setWords: (words: Word[]) => set({ words }),
 
   loadQuizWords: async (target) => {
+    if (!target && !get().hasHydratedSelection) {
+      get().hydrateSelection();
+    }
     const active = target || get().activeCustomQuiz || get().selectedQuizPath;
     const targetKey = typeof active === 'object' ? `custom:${active.id}` : active;
 

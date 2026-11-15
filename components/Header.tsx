@@ -48,7 +48,7 @@ export default function Header() {
   };
 
   useEffect(() => {
-    setStreak(StorageEngine.getStreak());
+    useQuizStore.getState().hydrateSelection();
 
     const savedTheme = localStorage.getItem('theme');
     const shouldBeDark = savedTheme ? savedTheme === 'dark' : true;
@@ -59,6 +59,10 @@ export default function Header() {
       document.documentElement.classList.remove('dark');
     }
   }, []);
+
+  useEffect(() => {
+    setStreak(StorageEngine.getStreak());
+  }, [pathname]);
 
   const toggleTheme = () => {
     const nextDark = !isDark;

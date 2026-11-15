@@ -102,4 +102,6 @@ export interface DailyStats {
   wordsExamined: number;
   mistakesCount: number;
   accuracy: number;
+  accuracySum?: number;
+  accuracySamples?: number;
 }

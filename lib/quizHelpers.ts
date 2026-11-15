@@ -31,6 +31,10 @@ export interface BuildQuestionsOptions {
   shuffleChoices?: boolean;
 }
 
+function escapeRegExp(str: string): string {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 /**
  * Standardized question builder for all quiz & study modes.
  * Supports Smart SRS Queue (prioritizing unseen & mistake items without random duplication),
@@ -60,9 +64,10 @@ export function buildStandardQuestions(
       const p = StorageEngine.getItemProgress(word, progressMap);
       return p?.status !== 'mastered';
     });
-    if (unmastered.length > 0) {
-      candidatePool = unmastered;
+    if (unmastered.length === 0) {
+      return [];
     }
+    candidatePool = unmastered;
   }
 
   let orderedPool = [...candidatePool];
@@ -154,11 +159,17 @@ export function buildStandardQuestions(
 
       const options = shuffleArray([target.word, ...otherWords]);
 
+      const escapedWord = escapeRegExp(target.word);
+      const maskRegex = new RegExp(
+        `${/^\w/.test(target.word) ? '\\b' : ''}${escapedWord}${/\w$/.test(target.word) ? '\\w*' : ''}`,
+        'gi'
+      );
+
       list.push({
         id: String(target.id || getQuestionKey(target)),
         originalNumber,
         sentence: sentence.includes(target.word)
-          ? sentence.replace(new RegExp(`\\b${target.word}\\w*`, 'gi'), '________')
+          ? sentence.replace(maskRegex, '________')
           : sentence,
         correctWord: target.word,
         options: options.length >= 2 ? options : [target.word, 'Đáp án khác'],
