@@ -3,13 +3,31 @@ import { Word, CustomQuiz } from './types';
 import { StorageEngine } from './storage';
 import { QuizDatasetSchema } from './schema';
 
+const HUD_PREF_KEY = 'ananquiz_show_constellation_hud';
+
+export interface ConstellationActionRequest {
+  type: 'regenerate' | 'shooting_star';
+  seq: number;
+}
+
 interface QuizStoreState {
   selectedQuizPath: string;
   activeCustomQuiz: CustomQuiz | null;
   loadedQuizKey: string | null;
   hasHydratedSelection: boolean;
+  hasExplicitSelection: boolean;
   words: Word[];
   isLoadingWords: boolean;
+
+  // Live Streak State (synced with StorageEngine + custom events)
+  streak: number;
+  syncStreak: () => void;
+
+  // Background Constellation HUD visibility (default false)
+  showConstellationHud: boolean;
+  setShowConstellationHud: (show: boolean) => void;
+  constellationAction: ConstellationActionRequest | null;
+  triggerConstellationAction: (type: 'regenerate' | 'shooting_star') => void;
 
   // Active Exam Guard state
   isExamActive: boolean;
@@ -27,8 +45,29 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
   activeCustomQuiz: null,
   loadedQuizKey: null,
   hasHydratedSelection: false,
+  hasExplicitSelection: false,
   words: [],
   isLoadingWords: false,
+
+  streak: 1,
+  syncStreak: () => set({ streak: StorageEngine.getStreak() }),
+
+  showConstellationHud: false,
+  setShowConstellationHud: (show: boolean) => {
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem(HUD_PREF_KEY, show ? 'true' : 'false');
+      } catch {
+        // Ignore storage quota errors
+      }
+    }
+    set({ showConstellationHud: show });
+  },
+  constellationAction: null,
+  triggerConstellationAction: (type) =>
+    set((state) => ({
+      constellationAction: { type, seq: (state.constellationAction?.seq ?? 0) + 1 },
+    })),
 
   isExamActive: false,
   setIsExamActive: (isExamActive: boolean) => set({ isExamActive }),
@@ -38,6 +77,14 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
 
     const savedCustomId = StorageEngine.getActiveCustomQuizId();
     const savedPath = StorageEngine.getSelectedQuiz();
+    const explicit = StorageEngine.hasExplicitSelectedQuiz();
+    const currentStreak = StorageEngine.getStreak();
+    let storedHud = false;
+    try {
+      storedHud = localStorage.getItem(HUD_PREF_KEY) === 'true';
+    } catch {
+      storedHud = false;
+    }
 
     if (savedCustomId) {
       const matchedCustom = StorageEngine.getCustomQuizzes().find((q) => q.id === savedCustomId);
@@ -48,6 +95,9 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
           words: matchedCustom.words,
           loadedQuizKey: `custom:${matchedCustom.id}`,
           hasHydratedSelection: true,
+          hasExplicitSelection: true,
+          streak: currentStreak,
+          showConstellationHud: storedHud,
         });
         return;
       }
@@ -58,6 +108,9 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
       selectedQuizPath: savedPath,
       activeCustomQuiz: null,
       hasHydratedSelection: true,
+      hasExplicitSelection: explicit,
+      streak: currentStreak,
+      showConstellationHud: storedHud,
     });
   },
 
@@ -68,7 +121,8 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
       get().selectedQuizPath === path &&
       get().activeCustomQuiz === null &&
       get().words.length > 0 &&
-      get().hasHydratedSelection
+      get().hasHydratedSelection &&
+      get().hasExplicitSelection
     ) {
       return;
     }
@@ -77,6 +131,7 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
       activeCustomQuiz: null,
       loadedQuizKey: null,
       hasHydratedSelection: true,
+      hasExplicitSelection: true,
     });
     get().loadQuizWords(path);
   },
@@ -89,9 +144,15 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
         words: quiz.words,
         loadedQuizKey: `custom:${quiz.id}`,
         hasHydratedSelection: true,
+        hasExplicitSelection: true,
       });
     } else {
-      set({ activeCustomQuiz: null, loadedQuizKey: null, hasHydratedSelection: true });
+      set({
+        activeCustomQuiz: null,
+        loadedQuizKey: null,
+        hasHydratedSelection: true,
+        hasExplicitSelection: StorageEngine.hasExplicitSelectedQuiz(),
+      });
       get().loadQuizWords(get().selectedQuizPath);
     }
   },

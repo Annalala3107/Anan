@@ -15,8 +15,10 @@ import {
   AlertTriangle,
   History,
   Smartphone,
+  Sparkles,
 } from 'lucide-react';
 import QrSyncModal from '@/components/QrSyncModal';
+import { useQuizStore } from '@/lib/quizStore';
 
 export default function ProfilePage() {
   const [streak, setStreak] = useState(1);
@@ -29,6 +31,11 @@ export default function ProfilePage() {
     text: string;
   } | null>(null);
   const [showQrSync, setShowQrSync] = useState(false);
+
+  const showConstellationHud = useQuizStore((s) => s.showConstellationHud);
+  const setShowConstellationHud = useQuizStore((s) => s.setShowConstellationHud);
+  const triggerConstellationAction = useQuizStore((s) => s.triggerConstellationAction);
+  const hydrateSelection = useQuizStore((s) => s.hydrateSelection);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -43,8 +50,12 @@ export default function ProfilePage() {
   };
 
   useEffect(() => {
+    hydrateSelection();
     loadData();
-  }, []);
+    const onStatsUpdated = () => loadData();
+    window.addEventListener('ananquiz:stats-updated', onStatsUpdated);
+    return () => window.removeEventListener('ananquiz:stats-updated', onStatsUpdated);
+  }, [hydrateSelection]);
 
   const handleExportBackup = () => {
     try {
@@ -127,7 +138,7 @@ export default function ProfilePage() {
   return (
     <div className="w-full px-3.5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-5 md:py-10 pb-28 md:pb-12 space-y-6 sm:space-y-8 animate-fade-in">
       {/* Profile Header */}
-      <div className="flex items-center gap-4 p-6 rounded-3xl story-glass shadow-xl">
+      <div className="flex items-center gap-4 p-6 rounded-3xl glass-surface">
         <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white text-2xl font-black shadow-glow">
           A
         </div>
@@ -148,32 +159,32 @@ export default function ProfilePage() {
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="p-5 rounded-2xl story-glass hover:border-cyan-400/40 transition-colors">
-            <p className="text-xs font-bold text-slate-400 uppercase">Chuỗi ngày (Streak)</p>
+          <div className="p-5 rounded-2xl glass-surface hover:border-cyan-400/40 transition-colors">
+            <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Chuỗi ngày (Streak)</p>
             <p className="text-3xl font-black text-amber-500 mt-1 flex items-center gap-1.5">
               <Flame className="w-6 h-6 fill-amber-500" /> {streak}
             </p>
             <p className="text-[11px] text-slate-500 mt-0.5">Ngày học liên tiếp</p>
           </div>
 
-          <div className="p-5 rounded-2xl story-glass hover:border-cyan-400/40 transition-colors">
-            <p className="text-xs font-bold text-slate-400 uppercase">Từ đã học hôm nay</p>
+          <div className="p-5 rounded-2xl glass-surface hover:border-cyan-400/40 transition-colors">
+            <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Từ đã học hôm nay</p>
             <p className="text-3xl font-black text-indigo-500 mt-1">
               {dailyStats?.wordsLearned || 0}
             </p>
             <p className="text-[11px] text-slate-500 mt-0.5">Qua chế độ Learn</p>
           </div>
 
-          <div className="p-5 rounded-2xl story-glass hover:border-cyan-400/40 transition-colors">
-            <p className="text-xs font-bold text-slate-400 uppercase">Luyện Drill & Thi</p>
+          <div className="p-5 rounded-2xl glass-surface hover:border-cyan-400/40 transition-colors">
+            <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Luyện Drill & Thi</p>
             <p className="text-3xl font-black text-emerald-500 mt-1">
               {(dailyStats?.wordsDrilled || 0) + (dailyStats?.wordsExamined || 0)}
             </p>
             <p className="text-[11px] text-slate-500 mt-0.5">Câu hỏi đã vượt qua</p>
           </div>
 
-          <div className="p-5 rounded-2xl story-glass hover:border-cyan-400/40 transition-colors">
-            <p className="text-xs font-bold text-slate-400 uppercase">Độ chính xác TB</p>
+          <div className="p-5 rounded-2xl glass-surface hover:border-cyan-400/40 transition-colors">
+            <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Độ chính xác TB</p>
             <p className="text-3xl font-black text-purple-500 mt-1">
               {dailyStats?.accuracy || 100}%
             </p>
@@ -185,7 +196,7 @@ export default function ProfilePage() {
       {/* 2-column Layout on Desktop for Backup and History */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* DISASTER RECOVERY & BACKUP CENTER */}
-        <div className="p-6 md:p-8 rounded-3xl story-glass shadow-xl space-y-5 flex flex-col justify-between">
+        <div className="p-6 md:p-8 rounded-3xl glass-surface space-y-5 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
               <div className="flex items-center gap-3">
@@ -263,7 +274,7 @@ export default function ProfilePage() {
         </div>
 
         {/* RECENT EXAM HISTORY */}
-        <div className="p-6 md:p-8 rounded-3xl story-glass shadow-xl space-y-4">
+        <div className="p-6 md:p-8 rounded-3xl glass-surface space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <History className="w-5 h-5 text-indigo-500" /> Lịch Sử Thi Thử Gần Đây ({examHistory.length})
@@ -320,43 +331,91 @@ export default function ProfilePage() {
       </div>
 
       {/* SRS Algorithm Explanation Card */}
-      <div className="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-indigo-950/60 to-purple-950/40 border border-indigo-800/60 text-slate-200 space-y-4">
+      <div className="p-6 md:p-8 rounded-3xl glass-elevated bg-gradient-to-br from-indigo-50/90 via-purple-50/75 to-white/95 dark:from-indigo-950/60 dark:via-slate-900/60 dark:to-purple-950/40 border border-indigo-200 dark:border-indigo-800/60 text-slate-700 dark:text-slate-200 space-y-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-indigo-500/15 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
             <Brain className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-white">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white">
               Cơ Chế Lặp Lại Ngắt Quãng (SuperMemo SM-2 & Leitner)
             </h3>
-            <p className="text-xs text-indigo-300">
+            <p className="text-xs text-indigo-700 dark:text-indigo-300">
               Thuật toán tối ưu hóa đường cong lãng quên (Forgetting Curve) của não bộ
             </p>
           </div>
         </div>
 
-        <p className="text-sm text-slate-300 leading-relaxed">
+        <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
           Mỗi khi bạn trả lời &quot;Đã thuộc&quot; hoặc chọn đúng trong các bài trắc nghiệm, thuật toán sẽ tăng hệ số dễ (Ease Factor) và giãn khoảng cách ngày ôn tập: <strong>1 ngày &rarr; 3 ngày &rarr; 7 ngày &rarr; 16 ngày &rarr; 30 ngày</strong>. Ngược lại, nếu chọn &quot;Chưa nhớ&quot; hoặc trả lời sai, từ vựng sẽ tự động được đưa vào danh sách ưu tiên của chế độ <em>Khắc Phục Lỗi (Mistakes)</em>.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
-          <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-            <span className="font-bold text-white block mb-1">1. Phản xạ ban đầu</span>
+          <div className="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-indigo-200/70 dark:border-white/10 text-slate-700 dark:text-slate-300">
+            <span className="font-bold text-slate-900 dark:text-white block mb-1">1. Phản xạ ban đầu</span>
             Học 3 bước (Lật thẻ &rarr; Điền câu &rarr; Phân biệt từ gây nhiễu).
           </div>
-          <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-            <span className="font-bold text-white block mb-1">2. Giãn cách chu kỳ</span>
+          <div className="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-indigo-200/70 dark:border-white/10 text-slate-700 dark:text-slate-300">
+            <span className="font-bold text-slate-900 dark:text-white block mb-1">2. Giãn cách chu kỳ</span>
             Từ đạt trên 80% độ nhớ sẽ được phân loại là <em>Đã Thành Thạo (Mastered)</em>.
           </div>
-          <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-            <span className="font-bold text-white block mb-1">3. Kháng bẫy đề thi</span>
+          <div className="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-indigo-200/70 dark:border-white/10 text-slate-700 dark:text-slate-300">
+            <span className="font-bold text-slate-900 dark:text-white block mb-1">3. Kháng bẫy đề thi</span>
             Rèn luyện phản xạ nhận diện các câu hỏi gài bẫy và đáp án gây nhiễu trong đề thi.
           </div>
         </div>
       </div>
 
+      {/* Appearance & Performance Controls (Constellation HUD Settings) */}
+      <div className="p-6 rounded-3xl glass-surface space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                Giao Diện & Bảng Thông Số Chòm Sao
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Bật/tắt thanh điều khiển FPS & chòm sao nền nổi ở góc dưới bên trái màn hình.
+              </p>
+            </div>
+          </div>
+
+          <label className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer select-none self-start sm:self-center">
+            <input
+              type="checkbox"
+              checked={showConstellationHud}
+              onChange={(e) => setShowConstellationHud(e.target.checked)}
+              className="rounded accent-cyan-600 w-4 h-4"
+            />
+            <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+              {showConstellationHud ? 'Đang hiện HUD hiệu năng' : 'Ẩn HUD (Gọn gàng)'}
+            </span>
+          </label>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2.5 pt-1">
+          <button
+            type="button"
+            onClick={() => triggerConstellationAction('regenerate')}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60 text-xs font-bold transition-colors cursor-pointer"
+          >
+            🎲 Tạo chòm sao mới
+          </button>
+          <button
+            type="button"
+            onClick={() => triggerConstellationAction('shooting_star')}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 hover:bg-cyan-100 dark:hover:bg-cyan-900/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/60 text-xs font-bold transition-colors cursor-pointer"
+          >
+            ☄️ Thả sao băng ngay
+          </button>
+        </div>
+      </div>
+
       {/* Cloud & Storage Status */}
-      <div className="p-6 rounded-3xl story-glass space-y-4">
+      <div className="p-6 rounded-3xl glass-surface space-y-4">
         <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
           <Database className="w-5 h-5 text-indigo-500" /> Trạng Thái Cơ Sở Dữ Liệu & Đồng Bộ
         </h3>

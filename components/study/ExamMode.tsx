@@ -573,7 +573,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       </div>
 
       {/* Mobile Question Navigator Toggle */}
-      <div className="flex sm:hidden items-center justify-between p-2.5 rounded-2xl story-glass mb-3 select-none">
+      <div className="flex sm:hidden items-center justify-between p-2.5 rounded-2xl glass-surface mb-3 select-none">
         <button
           type="button"
           onClick={() => setIsNavOpen(!isNavOpen)}
@@ -592,7 +592,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
 
       {/* Filter Toolbar & Statistics (Collapsible on mobile when closed) */}
       <div className={`${isNavOpen ? 'flex' : 'hidden sm:flex'} flex-wrap items-center justify-between gap-2 mb-3 animate-fade-in`}>
-        <div className="flex items-center gap-1 p-1 rounded-xl story-glass text-xs">
+        <div className="flex items-center gap-1 p-1 rounded-xl glass-surface text-xs">
           <button
             onClick={() => setFilterView('all')}
             className={`px-2.5 sm:px-3 py-1 rounded-lg font-semibold transition-all ${
@@ -634,7 +634,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       </div>
 
       {/* Question Navigator Grid (Collapsible on mobile) */}
-      <div className={`${isNavOpen ? 'flex' : 'hidden sm:flex'} flex-wrap gap-1.5 mb-5 p-3 rounded-2xl story-glass max-h-36 overflow-y-auto animate-fade-in`}>
+      <div className={`${isNavOpen ? 'flex' : 'hidden sm:flex'} flex-wrap gap-1.5 mb-5 p-3 rounded-2xl glass-surface max-h-36 overflow-y-auto animate-fade-in`}>
         {questions.map((_, idx) => {
           const isAnswered = Boolean(answers[idx]?.length);
           const isFlagged = Boolean(flags[idx]);
@@ -717,7 +717,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       {/* Question & Choices Animated Container */}
       <div key={currentIndex} className="animate-question-enter transform-gpu">
         {/* Question Card */}
-        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl story-glass shadow-xl mb-5 sm:mb-6">
+        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl glass-surface mb-5 sm:mb-6">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2 text-xs font-bold text-indigo-500 uppercase tracking-wider flex-wrap">
               <HelpCircle className="w-4 h-4" />
@@ -845,7 +845,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       {/* Pre-submission Confirmation Modal */}
       {showSubmitConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
-          <div className="max-w-md w-full p-6 rounded-3xl story-glass-strong shadow-2xl space-y-4">
+          <div className="max-w-md w-full p-6 rounded-3xl glass-elevated space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto">
               <AlertTriangle className="w-6 h-6" />
             </div>

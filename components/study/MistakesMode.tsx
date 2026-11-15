@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { Word } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { SpeechService } from '@/lib/speech';
@@ -216,7 +216,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
     submitMistakeSelection(selectedWords);
   };
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (currentIndex < mistakeWords.length - 1) {
       setCurrentIndex((i) => i + 1);
     } else {
@@ -227,7 +227,47 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
         origin: { y: 0.6 },
       });
     }
-  };
+  }, [currentIndex, mistakeWords.length]);
+
+  // Keyboard shortcuts: 1-4 (select option), Enter (confirm multi-select or advance)
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (isFinished || !currentWord) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.tagName === 'SELECT' ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+
+      if (e.key === 'Enter') {
+        if (isAnswered) {
+          e.preventDefault();
+          handleNext();
+        } else if (answerMeta.isMultiSelect && selectedWords.length > 0) {
+          e.preventDefault();
+          submitMistakeSelection(selectedWords);
+        }
+        return;
+      }
+
+      if (!isAnswered && /^[1-9]$/.test(e.key)) {
+        const idx = parseInt(e.key, 10) - 1;
+        if (idx >= 0 && idx < options.length) {
+          e.preventDefault();
+          handleSelect(options[idx]);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  });
 
   return (
     <div className="w-full max-w-4xl mx-auto py-6 px-4 sm:px-6">
@@ -282,7 +322,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
       {/* Question & Choices Animated Container */}
       <div key={currentIndex} className="animate-question-enter transform-gpu">
         {/* Question Card */}
-        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl story-glass shadow-xl mb-5 sm:mb-6">
+        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl glass-surface mb-5 sm:mb-6">
           <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
             <div className="flex items-center gap-2 flex-wrap">
               <p className="text-xs font-bold text-amber-500 uppercase tracking-wider">
@@ -423,7 +463,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
           >
             <Check className="w-4 h-4" />
             <span>
-              Xác nhận đáp án ({selectedWords.length}/{answerMeta.requiredCount})
+              Xác nhận đáp án ({selectedWords.length}/{answerMeta.requiredCount}) [Enter]
             </span>
           </button>
         )}
@@ -449,12 +489,18 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
           )}
           <button
             onClick={handleNext}
-            className="w-full py-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold flex items-center justify-center gap-2 shadow-glow transition-all"
+            className="w-full py-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold flex items-center justify-center gap-2 shadow-glow transition-all cursor-pointer"
           >
-            <span>Tiếp tục câu kế tiếp</span>
+            <span>Tiếp tục câu kế tiếp [Enter]</span>
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
+      )}
+
+      {!isAnswered && (
+        <p className="hidden sm:block text-center text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-1">
+          Mẹo phím nhanh: Nhấn <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono">1</kbd>–<kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono">{Math.min(options.length, 4)}</kbd> để chọn đáp án{answerMeta.isMultiSelect ? ', [Enter] để xác nhận' : ', [Enter] sang câu tiếp theo'}.
+        </p>
       )}
     </div>
   );

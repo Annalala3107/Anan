@@ -202,9 +202,10 @@ export interface MusicStoreState {
   pomodoroRunning: boolean;
   pomodoroAutoPauseMusic: boolean;
 
-  // Floating Mini-Player UI
+  // Floating Mini-Player UI (hidden by default; appears when user plays music or pins it)
   showMiniPlayer: boolean;
   miniPlayerCollapsed: boolean;
+  miniPlayerDismissed: boolean;
 
   selectTrack: (trackId: string, autoPlay?: boolean) => void;
   togglePlay: () => void;
@@ -265,8 +266,9 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   pomodoroRunning: false,
   pomodoroAutoPauseMusic: true,
 
-  showMiniPlayer: true,
+  showMiniPlayer: false,
   miniPlayerCollapsed: true,
+  miniPlayerDismissed: false,
 
   hydratePrefs: () => {
     if (typeof window === 'undefined') return;
@@ -335,21 +337,25 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     const track = get().tracks.find((t) => t.id === trackId);
     if (!track) return;
     savePrefs({ currentTrackId: trackId });
+    const shouldRevealMini = autoPlay && !get().miniPlayerDismissed ? true : get().showMiniPlayer;
     set({
       currentTrackId: trackId,
       isPlaying: autoPlay,
       playerState: autoPlay ? 'buffering' : 'cued',
       currentTime: 0,
       duration: 0,
+      showMiniPlayer: shouldRevealMini,
     });
     playerController?.loadTrack(track.videoId, autoPlay);
   },
 
   togglePlay: () => {
-    const { isPlaying, playerState } = get();
+    const { isPlaying, playerState, miniPlayerDismissed, showMiniPlayer } = get();
     const next = !isPlaying;
+    const shouldRevealMini = next && !miniPlayerDismissed ? true : showMiniPlayer;
     set({
       isPlaying: next,
+      showMiniPlayer: shouldRevealMini,
       ...(next && playerState === 'error' ? { playerState: 'buffering' } : {}),
     });
     if (next) {
@@ -360,9 +366,11 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   },
 
   setPlaying: (playing) => {
-    const { playerState } = get();
+    const { playerState, miniPlayerDismissed, showMiniPlayer } = get();
+    const shouldRevealMini = playing && !miniPlayerDismissed ? true : showMiniPlayer;
     set({
       isPlaying: playing,
+      showMiniPlayer: shouldRevealMini,
       ...(playing && playerState === 'error' ? { playerState: 'buffering' } : {}),
     });
     if (playing) {
@@ -587,7 +595,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
 
   setShowMiniPlayer: (show) => {
     savePrefs({ showMiniPlayer: show });
-    set({ showMiniPlayer: show });
+    set({ showMiniPlayer: show, miniPlayerDismissed: !show });
   },
 
   setMiniPlayerCollapsed: (collapsed) => {

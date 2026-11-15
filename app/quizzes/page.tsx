@@ -41,6 +41,12 @@ interface QuizMasteryStat {
   total: number;
 }
 
+interface DataManifestEntry {
+  count: number;
+  subject?: string;
+  keys: string[];
+}
+
 type StatusFilterKey = 'all' | 'in_progress' | 'unstarted' | 'mastered' | 'custom';
 
 function computeWordsStat(
@@ -90,7 +96,7 @@ export default function QuizzesPage() {
   const [customQuizzes, setCustomQuizzes] = useState<CustomQuiz[]>([]);
   const [customSubjects, setCustomSubjects] = useState<CustomSubject[]>([]);
   const [progressMap, setProgressMap] = useState<Record<string, WordProgress>>({});
-  const [builtInStats, setBuiltInStats] = useState<Record<string, QuizMasteryStat>>({});
+  const [manifestFiles, setManifestFiles] = useState<Record<string, DataManifestEntry>>({});
 
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
   const [isTextParserOpen, setIsTextParserOpen] = useState(false);
@@ -106,41 +112,52 @@ export default function QuizzesPage() {
 
   useEffect(() => {
     refreshData();
+    const onStats = () => setProgressMap(StorageEngine.getWordProgress());
+    window.addEventListener('ananquiz:stats-updated', onStats);
+    return () => window.removeEventListener('ananquiz:stats-updated', onStats);
   }, []);
 
-  // Compute mastery progress for built-in quizzes asynchronously
+  // Fetch single lightweight manifest (public/data/index.json) once instead of N+1 fetching all 38 JSON files
   useEffect(() => {
-    if (Object.keys(progressMap).length === 0) return;
     let cancelled = false;
-
-    const allPaths = QUESTION_BANKS.flatMap((sec) => sec.quizzes.map((q) => q.file_path));
-
-    Promise.all(
-      allPaths.map(async (path) => {
-        try {
-          const res = await fetch(path);
-          if (!res.ok) return null;
-          const data: Word[] = await res.json();
-          return [path, computeWordsStat(data, progressMap)] as const;
-        } catch {
-          return null;
-        }
+    fetch('/data/index.json')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (cancelled || !data?.files) return;
+        setManifestFiles(data.files as Record<string, DataManifestEntry>);
       })
-    ).then((entries) => {
-      if (cancelled) return;
-      const map: Record<string, QuizMasteryStat> = {};
-      for (const entry of entries) {
-        if (entry) {
-          map[entry[0]] = entry[1];
-        }
-      }
-      setBuiltInStats(map);
-    });
+      .catch(() => {
+        // Ignore network errors cleanly; fallback wordCount remains intact
+      });
 
     return () => {
       cancelled = true;
     };
-  }, [progressMap]);
+  }, []);
+
+  // Compute mastery progress for built-in quizzes instantaneously via manifest keys + progressMap
+  const builtInStats = useMemo<Record<string, QuizMasteryStat>>(() => {
+    const map: Record<string, QuizMasteryStat> = {};
+    const hasProgress = Object.keys(progressMap).length > 0;
+
+    for (const [path, entry] of Object.entries(manifestFiles)) {
+      let mastered = 0;
+      let seen = 0;
+      if (hasProgress && Array.isArray(entry.keys)) {
+        for (const key of entry.keys) {
+          const p = progressMap[key];
+          if (p?.status === 'mastered') {
+            mastered++;
+            seen++;
+          } else if (p && p.seenCount > 0) {
+            seen++;
+          }
+        }
+      }
+      map[path] = { mastered, seen, total: entry.count };
+    }
+    return map;
+  }, [manifestFiles, progressMap]);
 
   const toggleSectionCollapse = (sectionKey: string) => {
     setCollapsedSections((prev) => ({
@@ -459,23 +476,22 @@ export default function QuizzesPage() {
       card.stat.total > 0 ? Math.min(100, Math.round((card.stat.mastered / card.stat.total) * 100)) : 0;
 
     return (
-      <div
+      <article
         key={card.key}
-        onClick={card.onSelect}
-        className={`p-5 rounded-3xl border cursor-pointer transition-all duration-200 relative overflow-hidden flex flex-col justify-between group gpu-card ${
+        className={`p-5 rounded-3xl border transition-all duration-200 relative overflow-hidden flex flex-col justify-between group gpu-card ${
           card.isSelected
             ? 'bg-indigo-50/90 dark:bg-indigo-950/55 border-indigo-500 shadow-glow'
             : card.isFullExam
-            ? 'story-glass border-indigo-300/70 dark:border-indigo-500/35 hover:border-indigo-400 dark:hover:border-sky-400/60 hover:shadow-[0_0_28px_rgba(99,102,241,0.18)]'
-            : 'story-glass hover:border-indigo-400/60 dark:hover:border-cyan-400/50 hover:shadow-[0_0_28px_rgba(56,189,248,0.15)]'
+            ? 'glass-surface border-indigo-300/70 dark:border-indigo-500/35 hover:border-indigo-400 dark:hover:border-sky-400/60 hover:shadow-[0_0_28px_rgba(99,102,241,0.18)]'
+            : 'glass-surface hover:border-indigo-400/60 dark:hover:border-cyan-400/50 hover:shadow-[0_0_28px_rgba(56,189,248,0.15)]'
         }`}
       >
         {card.isFullExam && (
           <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 via-sky-400 to-emerald-400" />
         )}
 
-        <div>
-          {/* Card Header Tags */}
+        <div className="flex-1 flex flex-col">
+          {/* Card Header Tags (sibling container keeps card.onDelete outside selection button) */}
           <div className="flex items-start justify-between gap-2 mb-3">
             <div className="flex flex-wrap items-center gap-1.5 min-w-0">
               {card.isFullExam && (
@@ -495,11 +511,19 @@ export default function QuizzesPage() {
             </div>
 
             <div className="flex items-center gap-1 shrink-0">
-              {card.isSelected && (
+              {card.isSelected ? (
                 <span className="inline-flex items-center gap-1 text-xs font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/60 border border-indigo-300/60 dark:border-indigo-700/60 px-2.5 py-0.5 rounded-full whitespace-nowrap">
                   <Check className="w-3.5 h-3.5 shrink-0" />
                   Đang Học
                 </span>
+              ) : (
+                <button
+                  type="button"
+                  onClick={card.onSelect}
+                  className="text-[11px] font-bold text-indigo-600 dark:text-cyan-300 hover:bg-indigo-500/10 px-2 py-0.5 rounded-full transition-colors cursor-pointer"
+                >
+                  Chọn đề
+                </button>
               )}
               {card.onDelete && (
                 <button
@@ -515,15 +539,19 @@ export default function QuizzesPage() {
             </div>
           </div>
 
-          {/* Title */}
-          <h3 className="text-base font-bold text-slate-900 dark:text-white leading-snug mb-1.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors line-clamp-2">
-            {card.title}
-          </h3>
-
-          {/* Description */}
-          <p className="text-xs text-slate-600 dark:text-slate-300/90 line-clamp-2 leading-relaxed mb-4">
-            {card.description}
-          </p>
+          {/* Clickable Title & Description Button (no nested interactive elements inside) */}
+          <button
+            type="button"
+            onClick={card.onSelect}
+            className="w-full text-left flex-1 mb-4 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer"
+          >
+            <h3 className="text-base font-bold text-slate-900 dark:text-white leading-snug mb-1.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors line-clamp-2">
+              {card.title}
+            </h3>
+            <p className="text-xs text-slate-600 dark:text-slate-300/90 line-clamp-2 leading-relaxed">
+              {card.description}
+            </p>
+          </button>
         </div>
 
         {/* Footer Progress + 2-Tier Action Buttons */}
@@ -593,7 +621,7 @@ export default function QuizzesPage() {
             </div>
           </div>
         </div>
-      </div>
+      </article>
     );
   };
 
@@ -667,7 +695,7 @@ export default function QuizzesPage() {
       </div>
 
       {/* Unified Search + Status Filter + Compact Subject Pill Bar */}
-      <div className="story-glass rounded-2xl p-3.5 sm:p-4 space-y-3">
+      <div className="glass-surface rounded-2xl p-3.5 sm:p-4 space-y-3">
         {/* Search Input + Status Filter Chips */}
         <div className="flex flex-col lg:flex-row lg:items-center gap-2.5">
           <div className="relative flex-1 min-w-0">
@@ -828,7 +856,7 @@ export default function QuizzesPage() {
 
       {/* Global Empty Filter State */}
       {hasActiveFilter && visibleMatchCount === 0 && (
-        <div className="story-glass rounded-3xl p-8 text-center space-y-3">
+        <div className="glass-surface rounded-3xl p-8 text-center space-y-3">
           <p className="text-sm font-bold text-slate-800 dark:text-slate-100">
             Không tìm thấy bộ đề nào khớp với bộ lọc hiện tại.
           </p>

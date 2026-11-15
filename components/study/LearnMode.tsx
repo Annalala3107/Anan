@@ -714,7 +714,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
     return (
       <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-6 sm:py-8 px-4 sm:px-8 animate-fade-in">
-        <div className="p-6 sm:p-8 md:p-10 rounded-3xl story-glass-strong shadow-2xl space-y-6">
+        <div className="p-6 sm:p-8 md:p-10 rounded-3xl glass-elevated space-y-6">
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-4">
@@ -1160,7 +1160,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
     return (
       <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-8 px-4 sm:px-8 animate-fade-in space-y-6">
-        <div className="text-center p-8 rounded-3xl story-glass-strong shadow-2xl">
+        <div className="text-center p-8 rounded-3xl glass-elevated">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-white mx-auto flex items-center justify-center mb-4 shadow-glow-success">
             <Trophy className="w-8 h-8 animate-bounce" />
           </div>
@@ -1424,7 +1424,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
         /* Main Flash Question Arena (Rapid Drill) */
         <div
           key={`${currentItem.id}_${turnCount}`}
-          className={`p-6 sm:p-8 rounded-3xl story-glass border transition-[transform,border-color,box-shadow] duration-200 shadow-xl relative transform-gpu animate-question-enter ${
+          className={`p-6 sm:p-8 rounded-3xl glass-surface border transition-[transform,border-color,box-shadow] duration-200 relative transform-gpu animate-question-enter ${
             feedbackState === 'correct'
               ? 'border-emerald-500/80 shadow-glow-success animate-pop-correct'
               : feedbackState === 'wrong'
@@ -1589,18 +1589,18 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
           {/* Wrong Feedback Anchor Action Bar */}
           {feedbackState === 'wrong' && (
-            <div className="mt-6 p-4 rounded-2xl bg-slate-900 border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-3 animate-fade-in">
-              <div className="flex items-center gap-2 text-xs text-slate-300">
+            <div className="mt-6 p-4 rounded-2xl bg-rose-50/95 dark:bg-slate-900 border border-rose-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-3 animate-fade-in">
+              <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                 <span>
-                  Nhìn kỹ nội dung đáp án màu <strong className="text-emerald-400 font-bold">Xanh Lá</strong> ở trên! Câu này sẽ xuất hiện lại sau <strong>3 câu nữa</strong> {shuffleChoices ? '(với vị trí A–D đảo mới)' : ''}.
+                  Nhìn kỹ nội dung đáp án màu <strong className="text-emerald-700 dark:text-emerald-400 font-bold">Xanh Lá</strong> ở trên! Câu này sẽ xuất hiện lại sau <strong>3 câu nữa</strong> {shuffleChoices ? '(với vị trí A–D đảo mới)' : ''}.
                 </span>
               </div>
 
               <button
                 type="button"
                 onClick={advanceNext}
-                className="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-glow transition-all"
+                className="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-glow transition-all cursor-pointer"
               >
                 <span>Đã Nhớ, Tiếp Tục [Space]</span>
                 <ArrowRight className="w-4 h-4" />

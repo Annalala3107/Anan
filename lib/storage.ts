@@ -253,6 +253,7 @@ export class StorageEngine {
     try {
       localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(stats));
       this.updateStreak();
+      window.dispatchEvent(new CustomEvent('ananquiz:stats-updated'));
     } catch (e) {
       console.error('Failed to save daily stats:', e);
     }
@@ -292,6 +293,7 @@ export class StorageEngine {
 
     localStorage.setItem(STORAGE_KEYS.STREAK, currentStreak.toString());
     localStorage.setItem(STORAGE_KEYS.LAST_ACTIVE_DATE, today);
+    window.dispatchEvent(new CustomEvent('ananquiz:stats-updated'));
     return currentStreak;
   }
 
@@ -382,6 +384,18 @@ export class StorageEngine {
   }
 
   // ---- ACTIVE QUIZ SELECTION ----
+  public static hasExplicitSelectedQuiz(): boolean {
+    if (typeof window === 'undefined') return false;
+    try {
+      const savedQuiz = localStorage.getItem(STORAGE_KEYS.SELECTED_QUIZ);
+      const savedCustom = localStorage.getItem(STORAGE_KEYS.ACTIVE_CUSTOM_QUIZ_ID);
+      if (savedCustom && savedCustom.trim().length > 0) return true;
+      return Boolean(savedQuiz && !savedQuiz.includes('/sat/'));
+    } catch {
+      return false;
+    }
+  }
+
   public static getSelectedQuiz(): string {
     if (typeof window === 'undefined') return '/data/cea201_all.json';
     const saved = localStorage.getItem(STORAGE_KEYS.SELECTED_QUIZ);
@@ -492,6 +506,7 @@ export class StorageEngine {
       }
 
       const restoredWordCount = Object.keys(data.wordProgress || {}).length;
+      window.dispatchEvent(new CustomEvent('ananquiz:stats-updated'));
 
       return {
         success: true,

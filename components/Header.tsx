@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Flame, Sparkles, Moon, Sun, Layers, AlertTriangle, Smartphone } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
-import { StorageEngine } from '@/lib/storage';
 import { getQuizDisplayName } from '@/lib/defaultBanks';
 import { useEffect, useState } from 'react';
 import QrSyncModal from './QrSyncModal';
@@ -16,10 +15,13 @@ export default function Header() {
   const {
     selectedQuizPath,
     activeCustomQuiz,
+    hasHydratedSelection,
+    hasExplicitSelection,
+    streak,
+    syncStreak,
     isExamActive,
     setIsExamActive,
   } = useQuizStore();
-  const [streak, setStreak] = useState(1);
   const [isDark, setIsDark] = useState(true);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [pendingUrl, setPendingUrl] = useState<string | null>(null);
@@ -61,8 +63,18 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    setStreak(StorageEngine.getStreak());
-  }, [pathname]);
+    syncStreak();
+  }, [pathname, syncStreak]);
+
+  useEffect(() => {
+    const handleSync = () => syncStreak();
+    window.addEventListener('ananquiz:stats-updated', handleSync);
+    window.addEventListener('storage', handleSync);
+    return () => {
+      window.removeEventListener('ananquiz:stats-updated', handleSync);
+      window.removeEventListener('storage', handleSync);
+    };
+  }, [syncStreak]);
 
   const toggleTheme = () => {
     const nextDark = !isDark;
@@ -97,14 +109,23 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Active Quiz Indicator */}
+          {/* Active Quiz Indicator (visible from lg / laptop screens upward) */}
           <Link
             href="/quizzes"
             onClick={(e) => handleNavClick(e, '/quizzes')}
-            className="hidden 2xl:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60 hover:bg-indigo-100 transition-colors shrink-0"
+            title={
+              hasHydratedSelection && !hasExplicitSelection && !activeCustomQuiz
+                ? 'Chọn môn học bắt đầu'
+                : quizInfo.title
+            }
+            className="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-colors shrink-0"
           >
             <Layers className="w-3.5 h-3.5 shrink-0" />
-            <span className="max-w-[180px] truncate">{quizInfo.shortName}</span>
+            <span className="max-w-[140px] xl:max-w-[180px] truncate">
+              {hasHydratedSelection && !hasExplicitSelection && !activeCustomQuiz
+                ? 'Chọn môn học'
+                : quizInfo.shortName}
+            </span>
           </Link>
         </div>
 
@@ -113,7 +134,7 @@ export default function Header() {
           <Link
             href="/"
             onClick={(e) => handleNavClick(e, '/')}
-            className={`px-2 lg:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
+            className={`px-2 lg:px-2.5 xl:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
               pathname === '/'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -124,38 +145,38 @@ export default function Header() {
           <Link
             href="/quizzes"
             onClick={(e) => handleNavClick(e, '/quizzes')}
-            className={`px-2 lg:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
+            className={`px-2 lg:px-2.5 xl:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
               pathname === '/quizzes'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            <span className="lg:hidden">Kho Đề</span>
-            <span className="hidden lg:inline">Kho Đề Thi &amp; Chuyên Đề</span>
+            <span className="xl:hidden">Kho Đề</span>
+            <span className="hidden xl:inline">Kho Đề Thi &amp; Chuyên Đề</span>
           </Link>
           <Link
             href="/library"
             onClick={(e) => handleNavClick(e, '/library')}
-            className={`px-2 lg:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
+            className={`px-2 lg:px-2.5 xl:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
               pathname === '/library'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            <span className="lg:hidden">Ngân hàng</span>
-            <span className="hidden lg:inline">Ngân hàng câu hỏi</span>
+            <span className="xl:hidden">Tra cứu</span>
+            <span className="hidden xl:inline">Ngân hàng câu hỏi</span>
           </Link>
           <Link
             href="/profile"
             onClick={(e) => handleNavClick(e, '/profile')}
-            className={`px-2 lg:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
+            className={`px-2 lg:px-2.5 xl:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
               pathname === '/profile'
                 ? 'text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-950/40'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            <span className="lg:hidden">SRS</span>
-            <span className="hidden lg:inline">Thống kê SRS</span>
+            <span className="xl:hidden">Thống kê</span>
+            <span className="hidden xl:inline">Thống kê SRS</span>
           </Link>
         </nav>
 

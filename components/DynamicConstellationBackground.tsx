@@ -262,7 +262,7 @@ export default function DynamicConstellationBackground({
   showAmbientGlows = true,
   showStars = true,
   interactive = true,
-  showHud = true,
+  showHud = false,
 }: DynamicConstellationBackgroundProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -274,7 +274,21 @@ export default function DynamicConstellationBackground({
   const regenerateRef = useRef<(() => void) | null>(null);
 
   const isExamActive = useQuizStore((state) => state.isExamActive);
+  const showConstellationHud = useQuizStore((state) => state.showConstellationHud);
+  const setShowConstellationHud = useQuizStore((state) => state.setShowConstellationHud);
+  const constellationAction = useQuizStore((state) => state.constellationAction);
   const [hudCollapsed, setHudCollapsed] = useState(false);
+
+  const effectiveShowHud = showHud || showConstellationHud;
+
+  useEffect(() => {
+    if (!constellationAction) return;
+    if (constellationAction.type === 'regenerate') {
+      regenerateRef.current?.();
+    } else if (constellationAction.type === 'shooting_star') {
+      spawnShootingStarRef.current?.();
+    }
+  }, [constellationAction]);
 
   const handleRegenerate = useCallback(() => {
     regenerateRef.current?.();
@@ -803,14 +817,14 @@ export default function DynamicConstellationBackground({
       </div>
 
       {/* Collapsible Telemetry & Interactive Control HUD Pill (Zero-React-Rerender FPS DOM updates) */}
-      {showHud && !isExamActive && (
+      {effectiveShowHud && !isExamActive && (
         <div className="fixed bottom-20 md:bottom-5 left-4 z-30 max-w-[calc(100vw-2rem)] pointer-events-auto">
           {hudCollapsed ? (
             <button
               type="button"
               onClick={() => setHudCollapsed(false)}
               title="Mở bảng điều khiển chòm sao & thông số hiệu năng"
-              className="glass-pill inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-cyan-300 border border-cyan-400/30 hover:border-cyan-400/70 shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all cursor-pointer"
+              className="glass-surface inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-cyan-700 dark:text-cyan-300 border-cyan-500/35 hover:border-cyan-500/70 transition-all cursor-pointer"
             >
               <span>✦</span>
               <span ref={collapsedFpsRef} className="font-mono">
@@ -818,22 +832,22 @@ export default function DynamicConstellationBackground({
               </span>
             </button>
           ) : (
-            <div className="glass-pill flex flex-wrap items-center gap-2 px-3 py-2 rounded-2xl sm:rounded-full border border-white/15 shadow-[0_8px_30px_rgba(0,0,0,0.45)] text-[11px] sm:text-xs text-slate-200">
-              <span className="inline-flex items-center gap-1.5 font-mono text-cyan-300 font-semibold">
-                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="glass-surface flex flex-wrap items-center gap-2 px-3 py-2 rounded-2xl sm:rounded-full text-[11px] sm:text-xs text-slate-700 dark:text-slate-200">
+              <span className="inline-flex items-center gap-1.5 font-mono text-cyan-700 dark:text-cyan-300 font-semibold">
+                <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
                 <span ref={countsRef}>✦ 5 Chòm sao · 65 Sao</span>
-                <span className="text-slate-500">·</span>
+                <span className="text-slate-400 dark:text-slate-500">·</span>
                 <span ref={fpsRef}>60 FPS</span>
-                <span className="text-slate-500">·</span>
+                <span className="text-slate-400 dark:text-slate-500">·</span>
                 <span>1x Batch</span>
               </span>
 
-              <span className="hidden sm:inline text-slate-500">|</span>
+              <span className="hidden sm:inline text-slate-400 dark:text-slate-500">|</span>
 
               <button
                 type="button"
                 onClick={handleRegenerate}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-indigo-500/20 hover:bg-indigo-500/35 border border-indigo-400/40 text-indigo-100 font-semibold transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-indigo-500/15 dark:bg-indigo-500/20 hover:bg-indigo-500/25 dark:hover:bg-indigo-500/35 border border-indigo-400/40 text-indigo-700 dark:text-indigo-100 font-semibold transition-colors cursor-pointer"
               >
                 🎲 Tạo chòm sao mới
               </button>
@@ -841,17 +855,23 @@ export default function DynamicConstellationBackground({
               <button
                 type="button"
                 onClick={handleSpawnShootingStar}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-cyan-500/20 hover:bg-cyan-500/35 border border-cyan-400/40 text-cyan-100 font-semibold transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-cyan-500/15 dark:bg-cyan-500/20 hover:bg-cyan-500/25 dark:hover:bg-cyan-500/35 border border-cyan-400/40 text-cyan-800 dark:text-cyan-100 font-semibold transition-colors cursor-pointer"
               >
                 ☄️ Sao băng
               </button>
 
               <button
                 type="button"
-                onClick={() => setHudCollapsed(true)}
-                aria-label="Thu gọn HUD nền"
-                title="Thu gọn"
-                className="w-6 h-6 inline-flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                onClick={() => {
+                  if (showConstellationHud) {
+                    setShowConstellationHud(false);
+                  } else {
+                    setHudCollapsed(true);
+                  }
+                }}
+                aria-label="Ẩn HUD nền"
+                title={showConstellationHud ? 'Ẩn HUD (bật lại trong Hồ sơ)' : 'Thu gọn'}
+                className="w-6 h-6 inline-flex items-center justify-center rounded-full text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-white/10 transition-colors cursor-pointer"
               >
                 ×
               </button>

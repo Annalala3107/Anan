@@ -528,7 +528,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
 
     return (
       <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-6 sm:py-8 px-4 sm:px-8 animate-fade-in">
-        <div className="p-5 sm:p-8 md:p-10 rounded-3xl story-glass-strong shadow-2xl space-y-7">
+        <div className="p-5 sm:p-8 md:p-10 rounded-3xl glass-elevated space-y-7">
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-4">
@@ -831,7 +831,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
 
     return (
       <div className="max-w-lg mx-auto text-center py-10 px-6 animate-fade-in">
-        <div className="p-7 sm:p-8 rounded-3xl story-glass-strong shadow-2xl">
+        <div className="p-7 sm:p-8 rounded-3xl glass-elevated">
           <div className="w-20 h-20 rounded-3xl bg-emerald-500/10 text-emerald-500 mx-auto flex items-center justify-center mb-5 shadow-glow">
             <Trophy className="w-10 h-10 animate-bounce" />
           </div>
@@ -1009,7 +1009,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       {/* Question & Choices Animated Container */}
       <div key={`${isRetryPhase ? 'retry' : 'main'}_${currentIndex}`} className="animate-question-enter transform-gpu">
         {/* Question Card */}
-        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl story-glass shadow-xl mb-5">
+        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl glass-surface mb-5">
           <div className="flex items-center justify-between gap-2 mb-2.5 flex-wrap">
             <div className="flex items-center gap-2 text-xs font-bold text-indigo-500 uppercase tracking-wider flex-wrap">
               <HelpCircle className="w-4 h-4" />
