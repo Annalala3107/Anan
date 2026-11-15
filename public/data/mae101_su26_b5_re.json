@@ -1,0 +1,847 @@
+[
+  {
+    "id": "mae101_su26_b5_re_q1",
+    "word": "MAE101 SU26 B5 RE Q1: Find the domain of the function f(x) = ³√(x + 4)...",
+    "question": "Find the domain of the function f(x) = ³√(x + 4)\n(i) (-∞, ∞)\n(ii) (-∞, -4)\n(iii) [-4, ∞)\n(iv) (-∞, -4]\n(v) (-4, ∞)",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. (v)",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. (i)",
+    "explanation": "Answer: A. Because ³√(x + 4) is a cube root (odd index 3), it is defined for all real values of the radicand x + 4 (positive, zero, or negative). Therefore, x can be any real number, so the domain is (-∞, ∞), which corresponds to (i).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q2",
+    "word": "MAE101 SU26 B5 RE Q2: Describe how the graph of y = f(3x) + 1 is obtained...",
+    "question": "Describe how the graph of y = f(3x) + 1 is obtained from graph of y = f(x)",
+    "options": [
+      "A. Compress horizontally by a factor of 3, and then shift 1 unit upward",
+      "B. Compress vertically by a factor of 3, and then shift 1 unit upward",
+      "C. Stretch horizontally by a factor of 3, and then shift 1 unit upward",
+      "D. Stretch vertically by a factor of 3, and then shift 1 unit upward",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. Compress horizontally by a factor of 3, and then shift 1 unit upward",
+    "explanation": "Answer: A. Replacing x with 3x in y = f(x) produces y = f(3x), which compresses the graph horizontally by a factor of 3. Adding 1 outside gives y = f(3x) + 1, which shifts the graph 1 unit upward.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q3",
+    "word": "MAE101 SU26 B5 RE Q3: Find the limit lim_{x → 1^-} (x - 1)/(x(x - 2))...",
+    "question": "Find the limit\nlim_{x → 1^-} (x - 1) / (x(x - 2))",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. -1",
+      "D. positive infinity",
+      "E. negative infinity",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Answer: A. The rational function (x - 1)/(x(x - 2)) is continuous at x = 1 because the denominator 1(1 - 2) = -1 ≠ 0. Direct substitution gives lim_{x → 1^-} (x - 1)/(x(x - 2)) = (1 - 1)/(1(1 - 2)) = 0 / (-1) = 0.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q4",
+    "word": "MAE101 SU26 B5 RE Q4: Find c so that the function is continuous on ℝ...",
+    "question": "Find c so that the function is continuous on ℝ\nf(x) = (√(x + 2) - 2) / (x - 2) if x ≠ 2; and 2c + 1/4 if x = 2",
+    "options": [
+      "A. 0",
+      "B. 3",
+      "C. 2",
+      "D. 1",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Answer: A. For continuity at x = 2, we need lim_{x → 2} f(x) = f(2). Rationalizing the numerator: lim_{x → 2} (√(x + 2) - 2)/(x - 2) = lim_{x → 2} ((x + 2) - 4) / ((x - 2)(√(x + 2) + 2)) = lim_{x → 2} 1 / (√(x + 2) + 2) = 1 / (2 + 2) = 1/4. Setting f(2) = 2c + 1/4 = 1/4 gives 2c = 0, so c = 0. (For x ≠ 2, √(x + 2) - 2 is defined for x ≥ -2; on the domain where the expression is defined, c = 0 ensures continuity at x = 2.)",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q5",
+    "word": "MAE101 SU26 B5 RE Q5: Simplify the quotient (f(x + h) - f(x))/h for f(x)...",
+    "question": "Simplify the quotient (f(x + h) - f(x)) / h for f(x) = -1/x\n(i) -1 / ((x + h)x)\n(ii) 1 / x^2\n(iii) 1 / ((x + h)x)\n(iv) -1 / x^2",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. Compute (f(x + h) - f(x))/h = (-1/(x + h) - (-1/x))/h = (1/x - 1/(x + h))/h = ((x + h - x)/(x(x + h)))/h = h / (h x(x + h)) = 1 / ((x + h)x) for h ≠ 0. This matches (iii).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q6",
+    "word": "MAE101 SU26 B5 RE Q6: Find the value of the derivative of f(x) = 4x^(3/2)...",
+    "question": "Find the value of the derivative of the function f(x) = 4x^(3/2) - 5x^(1/2) at x = 16",
+    "options": [
+      "A. 197/8",
+      "B. 187/8",
+      "C. 101/4",
+      "D. 91/4",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. 187/8",
+    "explanation": "Answer: B. Differentiating using the power rule gives f'(x) = 4(3/2)x^(1/2) - 5(1/2)x^(-1/2) = 6√x - 5/(2√x). Evaluating at x = 16 (so √16 = 4): f'(16) = 6(4) - 5/(2·4) = 24 - 5/8 = 192/8 - 5/8 = 187/8.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q7",
+    "word": "MAE101 SU26 B5 RE Q7: A particle moves along a straight line such that...",
+    "question": "A particle moves along a straight line such that its position at any time t is given by s(t) = 2t^2 - 20t + 51. Find the velocity of the particle at time t = 2.",
+    "options": [
+      "A. -10",
+      "B. 10",
+      "C. -12",
+      "D. 12",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. -12",
+    "explanation": "Answer: C. Velocity is the derivative of position: v(t) = s'(t) = 4t - 20. At t = 2, v(2) = 4(2) - 20 = 8 - 20 = -12.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q8",
+    "word": "MAE101 SU26 B5 RE Q8: Differentiate y = 5 / (2x - 3)^4...",
+    "question": "Differentiate y = 5 / (2x - 3)^4\n(i) dy/dx = 20 / (2x - 3)^5\n(ii) dy/dx = -20 / (2x - 3)^5\n(iii) dy/dx = 40 / (2x - 3)^5\n(iv) dy/dx = -40 / (2x - 3)^5",
+    "options": [
+      "A. (iv)",
+      "B. (i)",
+      "C. (ii)",
+      "D. (iii)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. (iv)",
+    "explanation": "Answer: A. Rewrite as y = 5(2x - 3)^(-4). By the chain rule, dy/dx = 5(-4)(2x - 3)^(-5) · d/dx(2x - 3) = -20(2x - 3)^(-5) · 2 = -40 / (2x - 3)^5, which is (iv).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q9",
+    "word": "MAE101 SU26 B5 RE Q9: Find dy/dx by implicit differentiation 9xy + 2y...",
+    "question": "Find dy/dx by implicit differentiation: 9xy + 2y - 2 = 0\n(i) (-9y(x + 1))/2\n(ii) (-9y)/(9xy + 2)\n(iii) -9(x + y)/2\n(iv) (-9y)/(9x + 2)",
+    "options": [
+      "A. (i)",
+      "B. None of the other choices is correct",
+      "C. (iv)",
+      "D. (ii)",
+      "E. (iii)"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iv)",
+    "explanation": "Answer: C. Differentiating implicitly with respect to x using the product rule on 9xy: 9y + 9x(dy/dx) + 2(dy/dx) = 0. Factoring out dy/dx gives (9x + 2)(dy/dx) = -9y, so dy/dx = (-9y)/(9x + 2), which is (iv).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q10",
+    "word": "MAE101 SU26 B5 RE Q10: Each side of a square is increasing at rate of 3...",
+    "question": "Each side of a square is increasing at rate of 3 cm/s. At what rate (in cm^2/s) is the area of the square increasing when the area of square is 25 cm^2?",
+    "options": [
+      "A. 30",
+      "B. 15",
+      "C. 5",
+      "D. 25",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 30",
+    "explanation": "Answer: A. Let s be the side length and A = s^2 be the area. Differentiating with respect to time t gives dA/dt = 2s(ds/dt). When A = 25 cm^2, s = 5 cm. With ds/dt = 3 cm/s, dA/dt = 2(5)(3) = 30 cm^2/s.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q11",
+    "word": "MAE101 SU26 B5 RE Q11: Given y = tan √t. Find dy if t = π^2 and dt = 1...",
+    "question": "Given y = tan √t. Find dy if t = π^2 and dt = 1\n(i) 1/(2π)\n(ii) -1/π\n(iii) -1/(2π)\n(iv) 1/(4π)",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. (i)",
+    "explanation": "Answer: A. By the chain rule, dy/dt = sec^2(√t) · 1/(2√t), so dy = (sec^2(√t)/(2√t)) dt. When t = π^2 and dt = 1, √t = π and sec(π) = -1, so sec^2(π) = 1. Thus dy = 1/(2π) · 1 = 1/(2π), which is (i).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q12",
+    "word": "MAE101 SU26 B5 RE Q12: Find the absolute maximum value of y = √(144 - x^2)...",
+    "question": "Find the absolute maximum value of y = √(144 - x^2) on the interval [-12, 12].",
+    "options": [
+      "A. 12",
+      "B. 0",
+      "C. 144",
+      "D. 1",
+      "E. None of others"
+    ],
+    "answer": "A",
+    "correctWord": "A. 12",
+    "explanation": "Answer: A. On [-12, 12], y' = -x / √(144 - x^2) = 0 at the critical point x = 0. Evaluating y at the critical point and endpoints gives y(0) = √144 = 12 and y(-12) = y(12) = 0. Hence the absolute maximum value is 12.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q13",
+    "word": "MAE101 SU26 B5 RE Q13: Find the relative extrema of f(x) = 3x^4 + 16x^3...",
+    "question": "Find the relative extrema, if they exist, of the function f(x) = 3x^4 + 16x^3 + 24x^2 + 32",
+    "options": [
+      "A. Relative minimum at (-2, 48); relative maximum at (0, 32)",
+      "B. Relative minimum at (-2, 48), No relative maximum",
+      "C. Relative minimum at (0, 32); relative maximum at (-2, 48)",
+      "D. Relative minimum at (0, 32), No relative maximum",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. Relative minimum at (0, 32), No relative maximum",
+    "explanation": "Answer: D. Differentiating gives f'(x) = 12x^3 + 48x^2 + 48x = 12x(x^2 + 4x + 4) = 12x(x + 2)^2. The critical numbers are x = 0 and x = -2. Since (x + 2)^2 ≥ 0 everywhere, f'(x) < 0 for x < -2 and for -2 < x < 0 (no sign change at x = -2, so no extremum there), and f'(x) > 0 for x > 0. Because f'(x) changes from negative to positive at x = 0, there is a relative minimum at (0, f(0)) = (0, 32) and no relative maximum.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q14",
+    "word": "MAE101 SU26 B5 RE Q14: Find the limit lim_{x → -∞} (2x^4 - 3x^2 + 5)...",
+    "question": "Find the limit\nlim_{x → -∞} (2x^4 - 3x^2 + 5) / ((3x - 1)(5x^3 + 2))",
+    "options": [
+      "A. 2/15",
+      "B. -2/15",
+      "C. 0",
+      "D. infinity",
+      "E. -5/2",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 2/15",
+    "explanation": "Answer: A. Expanding the denominator gives (3x - 1)(5x^3 + 2) = 15x^4 - 5x^3 + 6x - 2. Both numerator and denominator are degree-4 polynomials with leading terms 2x^4 and 15x^4. Dividing numerator and denominator by x^4 and taking x → -∞ gives 2/15.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q15",
+    "word": "MAE101 SU26 B5 RE Q15: Find the minimum value of the product of two...",
+    "question": "Find the minimum value of the product of two numbers in which one number is 2 more than three times the other.",
+    "options": [
+      "A. -1/3",
+      "B. None of the other choices is correct",
+      "C. 1",
+      "D. 1/3",
+      "E. 1/2"
+    ],
+    "answer": "A",
+    "correctWord": "A. -1/3",
+    "explanation": "Answer: A. Let the numbers be x and y = 3x + 2. Their product is P(x) = x(3x + 2) = 3x^2 + 2x. Setting P'(x) = 6x + 2 = 0 gives x = -1/3. Since P''(x) = 6 > 0, P has a global minimum at x = -1/3, where P(-1/3) = (-1/3)(3(-1/3) + 2) = (-1/3)(1) = -1/3.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q16",
+    "word": "MAE101 SU26 B5 RE Q16: Using Newton's method, what is the specific...",
+    "question": "Using Newton's method, what is the specific iterative formula for finding the root of the equation cos(x) = x?\n(i) x_{n+1} = x_n - (cos(x_n) - x_n) / (sin(x_n) - 1)\n(ii) x_{n+1} = cos(x_n)\n(iii) x_{n+1} = x_n + (cos(x_n) - x_n) / (sin(x_n) + 1)\n(iv) x_{n+1} = x_n + cos(x_n) / sin(x_n)",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. Rewrite cos(x) = x as f(x) = cos(x) - x = 0, so f'(x) = -sin(x) - 1 = -(sin(x) + 1). Newton's method gives x_{n+1} = x_n - f(x_n)/f'(x_n) = x_n - (cos(x_n) - x_n)/(-(sin(x_n) + 1)) = x_n + (cos(x_n) - x_n)/(sin(x_n) + 1), which is (iii).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q17",
+    "word": "MAE101 SU26 B5 RE Q17: Use the Right-endpoint rule with n = 4 to estimate...",
+    "question": "Use the Right-endpoint rule with n = 4 to estimate the value of the integral ∫_{1}^{3} f(x) dx\nTable:\nx: 1, 1.5, 2, 2.5, 3\nf(x): 0.31, 0.54, 0.36, 1.35, 2.04",
+    "options": [
+      "A. 2.302",
+      "B. 1.281",
+      "C. 2.145",
+      "D. 2.431",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. 2.145",
+    "explanation": "Answer: C. With a = 1, b = 3, and n = 4, the step size is Δx = (3 - 1)/4 = 0.5. Using the right endpoints x = 1.5, 2, 2.5, 3, the approximation is R_4 = Δx [f(1.5) + f(2) + f(2.5) + f(3)] = 0.5(0.54 + 0.36 + 1.35 + 2.04) = 0.5(4.29) = 2.145.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q18",
+    "word": "MAE101 SU26 B5 RE Q18: Express the limits as a definite integral over...",
+    "question": "Express the limits as a definite integral over [0, 1]:\nlim_{n → ∞} ∑_{i=1}^{n} cos^2(2π x_i*) Δx\n(i) ∫_{0}^{1} cos^2(2π) dx\n(ii) ∫_{0}^{1} cos^2(2π/x) dx\n(iii) ∫_{-1}^{1} cos^2(2πx) dx\n(iv) ∫_{0}^{1} cos^2(2πx) dx",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. (iv)",
+    "explanation": "Answer: D. By the definition of the definite integral over [0, 1], lim_{n → ∞} ∑_{i=1}^{n} f(x_i*) Δx = ∫_{0}^{1} f(x) dx. Here f(x_i*) = cos^2(2π x_i*), so f(x) = cos^2(2πx), giving ∫_{0}^{1} cos^2(2πx) dx, which is (iv).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q19",
+    "word": "MAE101 SU26 B5 RE Q19: Find the derivative of g(x) = ∫_{x}^{6} t^2 tan t...",
+    "question": "Find the derivative of the following function\ng(x) = ∫_{x}^{6} t^2 tan t dt\n(i) -x^2 tan x\n(ii) x^2 tan x\n(iii) (6 - x)^2 tan(6 - x)\n(iv) -(6 - x)^2 tan(6 - x)",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. (i)",
+    "explanation": "Answer: A. Reversing the limits gives g(x) = -∫_{6}^{x} t^2 tan t dt. By the Fundamental Theorem of Calculus Part 1, g'(x) = -x^2 tan x, which is (i).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q20",
+    "word": "MAE101 SU26 B5 RE Q20: A honeybee population starts with 85 bees and...",
+    "question": "A honeybee population starts with 85 bees and increases at a rate of n'(t) bees in week t. What is represented by the quantity 85 + ∫_{0}^{10} n'(t) dt ?",
+    "options": [
+      "A. The total increase in the bee population after 10 weeks.",
+      "B. The total bee population after 10 weeks.",
+      "C. The total bee population after 10 days.",
+      "D. The rate at which the bee population increases after 10 weeks have passed.",
+      "E. The average rate at which the bee population increases over the first 10 weeks.",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. The total bee population after 10 weeks.",
+    "explanation": "Answer: B. By the Net Change Theorem, ∫_{0}^{10} n'(t) dt = n(10) - n(0) is the net change in the bee population over the first 10 weeks. Adding the initial population n(0) = 85 yields n(10), which is the total bee population after 10 weeks.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q21",
+    "word": "MAE101 SU26 B5 RE Q21: Evaluate ∫ (ln 9x)/x dx...",
+    "question": "Evaluate ∫ (ln 9x) / x dx\n(i) (1/18)(ln 9x)^2 + C\n(ii) (1/2)(ln 9x)^2 + C\n(iii) (1/2)(ln 9x)^3 + C\n(iv) 2(ln 9x)^2 + C",
+    "options": [
+      "A. (iv)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (i)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. (ii)",
+    "explanation": "Answer: B. Use the substitution u = ln(9x). Then du = (9/(9x)) dx = (1/x) dx. The integral becomes ∫ u du = (1/2)u^2 + C = (1/2)(ln 9x)^2 + C, which matches (ii).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q22",
+    "word": "MAE101 SU26 B5 RE Q22: Suppose f(x) is continuous and differentiable...",
+    "question": "Suppose f(x) is continuous and differentiable, f(1) = 5 and ∫_{0}^{1} f(x) dx = 4. Find ∫_{0}^{1} x f'(x) dx.",
+    "options": [
+      "A. -2",
+      "B. 2",
+      "C. -1",
+      "D. 1",
+      "E. 3",
+      "F. -3"
+    ],
+    "answer": "D",
+    "correctWord": "D. 1",
+    "explanation": "Answer: D. Apply integration by parts with u = x and dv = f'(x) dx, so du = dx and v = f(x). Then ∫_{0}^{1} x f'(x) dx = [x f(x)]_{0}^{1} - ∫_{0}^{1} f(x) dx = (1 · f(1) - 0 · f(0)) - 4 = 5 - 4 = 1.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q23",
+    "word": "MAE101 SU26 B5 RE Q23: Use the Trapezoidal Rule with n = 4 to estimate...",
+    "question": "Use the Trapezoidal Rule with n = 4 to estimate the value of the integral ∫_{0}^{2} f(x) dx\nTable:\nx: 0.00, 0.50, 1.00, 1.50, 2.00\nf(x): 1.00, 0.49, 0.37, 0.29, 0.24",
+    "options": [
+      "A. 0.785",
+      "B. 1.77",
+      "C. 1.57",
+      "D. None of the other choices is correct",
+      "E. 0.885"
+    ],
+    "answer": "E",
+    "correctWord": "E. 0.885",
+    "explanation": "Answer: E. Here Δx = (2 - 0)/4 = 0.5. By the Trapezoidal Rule, T_4 = (Δx / 2)[f(0.00) + 2f(0.50) + 2f(1.00) + 2f(1.50) + f(2.00)] = 0.25[1.00 + 2(0.49) + 2(0.37) + 2(0.29) + 0.24] = 0.25(3.54) = 0.885.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q24",
+    "word": "MAE101 SU26 B5 RE Q24: Calculate the following integral (if it converges)...",
+    "question": "Calculate the following integral (if it converges)\n∫_{0}^{2} (2x) / (x^2 - 4) dx.",
+    "options": [
+      "A. It diverges",
+      "B. 0",
+      "C. 16",
+      "D. -16",
+      "E. None of the choice is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. It diverges",
+    "explanation": "Answer: A. The integrand 2x/(x^2 - 4) has an infinite discontinuity at the upper endpoint x = 2. Setting u = x^2 - 4 (du = 2x dx), this improper integral is lim_{t → 2^-} ∫_{0}^{t} (2x)/(x^2 - 4) dx = lim_{t → 2^-} [ln|x^2 - 4|]_{0}^{t} = lim_{t → 2^-} (ln|t^2 - 4| - ln 4) = -∞. Hence the integral diverges.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q25",
+    "word": "MAE101 SU26 B5 RE Q25: Determine whether the matrix is in row-echelon...",
+    "question": "Determine whether the matrix is in row-echelon form. If it is, determine if it is also in reduced row-echelon form.\n[ 1  -8  4  -8 ]\n[ 0   1  0  -3 ]\n[ 0   0  1   1 ]",
+    "options": [
+      "A. neither",
+      "B. row-echelon form but not reduced-row echelon form",
+      "C. row-echelon form and reduced-row echelon form"
+    ],
+    "answer": "B",
+    "correctWord": "B. row-echelon form but not reduced-row echelon form",
+    "explanation": "Answer: B. Every nonzero row has a leading 1, each leading 1 is to the right of the leading 1 in the row above it (columns 1, 2, 3), and there are no zero rows above nonzero rows, so the matrix is in row-echelon form. However, it is not in reduced row-echelon form because columns 2 and 3 (which contain leading 1s) have nonzero entries (-8 and 4) in row 1.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q26",
+    "word": "MAE101 SU26 B5 RE Q26: Find all solutions of the following system...",
+    "question": "Find all solutions of the following system of linear equations:\n{ x - y + z = 3\n{ 2x + y - 4z = -3",
+    "options": [
+      "A. x = t, y = 2t - 3, z = t",
+      "B. x = 2t - 3, y = t, z = t",
+      "C. None of the other choices is correct",
+      "D. x = 2, y = 1, z = 2"
+    ],
+    "answer": "A",
+    "correctWord": "A. x = t, y = 2t - 3, z = t",
+    "explanation": "Answer: A. Add the two equations to eliminate y: (x - y + z) + (2x + y - 4z) = 3 + (-3), which gives 3x - 3z = 0, so x = z. Let z = t (where t is any real parameter); then x = t. Substituting into the first equation yields t - y + t = 3, so y = 2t - 3. Checking the second equation: 2t + (2t - 3) - 4t = -3, which holds for all t.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q27",
+    "word": "MAE101 SU26 B5 RE Q27: Find conditions on a, b, c such that the...",
+    "question": "Find conditions on a, b, c such that the following system has no solution:\n{ x - y + 2z = a\n{ 3x + y - z = b\n{ 5x + 3y - 4z = c",
+    "options": [
+      "A. a - 2b + c = 0",
+      "B. a - 2b + c is not 0",
+      "C. b - 2c + a is not 0",
+      "D. b - 2c + a = 0"
+    ],
+    "answer": "B",
+    "correctWord": "B. a - 2b + c is not 0",
+    "explanation": "Answer: B. Perform row reduction on the augmented matrix:\nR2 ← R2 - 3R1 gives 4y - 7z = b - 3a.\nR3 ← R3 - 5R1 gives 8y - 14z = c - 5a.\nThen R3 ← R3 - 2R2 gives 0 = (c - 5a) - 2(b - 3a) = a - 2b + c.\nFor the system to be inconsistent (no solution), the right-hand side of this zero row must be nonzero, i.e., a - 2b + c ≠ 0.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q28",
+    "word": "MAE101 SU26 B5 RE Q28: Consider a homogeneous system of linear eq...",
+    "question": "Consider a homogeneous system of linear equations of 5 equations and in 8 variables. Assume that the row-echelon form of the coefficient matrix has a row of zeros. How many solutions would it have?",
+    "options": [
+      "A. There is not enough information to conclude",
+      "B. No solution",
+      "C. Unique solution",
+      "D. 5 solutions",
+      "E. Infinitely many solutions"
+    ],
+    "answer": "E",
+    "correctWord": "E. Infinitely many solutions",
+    "explanation": "Answer: E. Every homogeneous system has at least the trivial solution (so it is always consistent). With 5 equations and 8 variables, the rank of the coefficient matrix is at most 5 (in fact at most 4 because its row-echelon form has a row of zeros). Since rank < 8, there are free variables, so the system has infinitely many solutions.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q29",
+    "word": "MAE101 SU26 B5 RE Q29: Given that 3[[x, 2, 1], [0, z, y]] = [[9,...",
+    "question": "Given that\n3 [ x  2  1 ]\n  [ 0  z  y ]\n= [ 9  2z  -y ]\n  [ 0   t   s ].\nFind t + s.",
+    "options": [
+      "A. 0",
+      "B. 5",
+      "C. 9",
+      "D. 12",
+      "E. None of the other choice is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Answer: A. Equating corresponding entries after scalar multiplication by 3:\n- Entry (1,2): 3(2) = 2z ⇒ 6 = 2z ⇒ z = 3.\n- Entry (1,3): 3(1) = -y ⇒ y = -3.\n- Entry (2,2): 3z = t ⇒ t = 3(3) = 9.\n- Entry (2,3): 3y = s ⇒ s = 3(-3) = -9.\nTherefore, t + s = 9 + (-9) = 0.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q30",
+    "word": "MAE101 SU26 B5 RE Q30: Compute Ax where x = [-2  1  0]^T and A ...",
+    "question": "Compute Ax where x = [-2  1  0]^T and\nA = [  1   2   3 ]\n    [  4   5   6 ]\n    [  7   8   9 ]\n    [ 10  11  12 ]\n\n(i) [0  3  -6  -9]^T\n(ii) [0  -3  6  -9]^T\n(iii) [0  -3  -6  -9]^T\n(iv) [0  -3  -6  9]^T",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. Compute each component of Ax:\n- Row 1: 1(-2) + 2(1) + 3(0) = 0\n- Row 2: 4(-2) + 5(1) + 6(0) = -3\n- Row 3: 7(-2) + 8(1) + 9(0) = -6\n- Row 4: 10(-2) + 11(1) + 12(0) = -9\nThus Ax = [0  -3  -6  -9]^T, which matches (iii).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q31",
+    "word": "MAE101 SU26 B5 RE Q31: Let A, B be matrices of the same sizes. ...",
+    "question": "Let A, B be matrices of the same sizes. Which of the following statements are FALSE?\n(i) (A + B)^T = A^T + B^T\n(ii) (kA)^T = kA^T, k is a real number\n(iii) (AB)^T = A^T B^T\n(iv) (A - B)^T = A^T - B^T",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. Statements (i), (ii), and (iv) are standard true properties of matrix transposition. Statement (iii) is false because the transpose of a product reverses the order: (AB)^T = B^T A^T (and if A and B are non-square matrices of the same size, AB and A^T B^T may not even be defined).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q32",
+    "word": "MAE101 SU26 B5 RE Q32: Let A be an invertible matrix such that ...",
+    "question": "Let A be an invertible matrix such that\n(2A^T)^{-1} = [ 1  -1 ]\n             [ 0   1 ].\nFind A^{-1}.\n\n(i) [  2  0 ]\n    [ -2  2 ]\n(ii) [ 1/2  -1/2 ]\n     [   0   1/2 ]\n(iii) [  1/2    0 ]\n      [ -1/2  1/2 ]\n(iv) [ 2  -2 ]\n     [ 0   2 ]",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)"
+    ],
+    "answer": "A",
+    "correctWord": "A. (i)",
+    "explanation": "Answer: A. Using (cM)^{-1} = (1/c)M^{-1} and (A^T)^{-1} = (A^{-1})^T, we have:\n(1/2)(A^{-1})^T = [ 1  -1 ; 0  1 ].\nMultiplying both sides by 2 gives (A^{-1})^T = [ 2  -2 ; 0  2 ].\nTaking the transpose of both sides yields A^{-1} = [ 2  0 ; -2  2 ], which is (i).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q33",
+    "word": "MAE101 SU26 B5 RE Q33: Let A = (a_{ij}) be the 2x2 matrix of re...",
+    "question": "Let A = (a_{ij}) be the 2×2 matrix of reflection in the x-axis followed by reflection in the line y = x. Find a_{22}.",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. -1",
+      "D. 2",
+      "E. -2"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Answer: A. Reflection in the x-axis has matrix R_x = [ 1  0 ; 0  -1 ], and reflection in the line y = x has matrix R_{y=x} = [ 0  1 ; 1  0 ]. Applying R_x first and then R_{y=x} gives:\nA = R_{y=x} R_x = [ 0  1 ; 1  0 ][ 1  0 ; 0  -1 ] = [ 0  -1 ; 1  0 ].\nTherefore, the (2,2)-entry is a_{22} = 0.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q34",
+    "word": "MAE101 SU26 B5 RE Q34: Let T: R^2 -> R^2 be a linear transforma...",
+    "question": "Let T: R^2 → R^2 be a linear transformation such that\nT([1  2]^T) = [5  1]^T and T([2  3]^T) = [-1  5]^T.\nCompute T([3  5]^T).\n\n(i) [4  6]^T\n(ii) [6  4]^T\n(iii) [-4  -6]^T\n(iv) [-6  -4]^T",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)"
+    ],
+    "answer": "A",
+    "correctWord": "A. (i)",
+    "explanation": "Answer: A. Notice that [3  5]^T = [1  2]^T + [2  3]^T. By linearity of T:\nT([3  5]^T) = T([1  2]^T) + T([2  3]^T) = [5  1]^T + [-1  5]^T = [4  6]^T,\nwhich matches (i).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q35",
+    "word": "MAE101 SU26 B5 RE Q35: If det([[a, b, c], [p, q, r], [x, y, z]]...",
+    "question": "If det [ a  b  c ]\n       [ p  q  r ]\n       [ x  y  z ] = -1,\ncompute\ndet [   -2a     -2b     -2c ]\n    [ 2p + x  2q + y  2r + z ]\n    [    3x      3y      3z ].",
+    "options": [
+      "A. 12",
+      "B. 6",
+      "C. -6",
+      "D. -12",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 12",
+    "explanation": "Answer: A. Factor -2 out of Row 1 and 3 out of Row 3:\n= (-2)(3) det [ a  b  c ; 2p + x  2q + y  2r + z ; x  y  z ].\nSubtract Row 3 from Row 2 (which leaves the determinant unchanged):\n= -6 det [ a  b  c ; 2p  2q  2r ; x  y  z ].\nFactor 2 out of Row 2:\n= (-6)(2) det [ a  b  c ; p  q  r ; x  y  z ] = -12(-1) = 12.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q36",
+    "word": "MAE101 SU26 B5 RE Q36: Find A when (A^{-1} - 2I)^T = -2[[2, 3]...",
+    "question": "Find A when (A^{-1} - 2I)^T = -2 [ 2  3 ]\n                                 [ 1  1 ].\n\n(i) [    0  -1/6 ]\n    [ -1/2   1/6 ]\n(ii) [   0  1/6 ]\n     [ 1/2  1/6 ]\n(iii) [    0  -1/6 ]\n      [ -1/2  -1/6 ]\n(iv) [   0   1/6 ]\n     [ 1/2  -1/6 ]",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. (i)",
+    "explanation": "Answer: A. First distribute -2:\n(A^{-1} - 2I)^T = [ -4  -6 ; -2  -2 ].\nTaking the transpose gives A^{-1} - 2I = [ -4  -2 ; -6  -2 ].\nAdding 2I = [ 2  0 ; 0  2 ] gives A^{-1} = [ -2  -2 ; -6  0 ].\nNow invert A^{-1}: det(A^{-1}) = (-2)(0) - (-2)(-6) = -12, so\nA = (1/(-12)) [ 0  2 ; 6  -2 ] = [ 0  -1/6 ; -1/2  1/6 ],\nwhich matches (i).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q37",
+    "word": "MAE101 SU26 B5 RE Q37: Find the (2,3)-entry of A^{-1} if A = [...",
+    "question": "Find the (2,3)-entry of A^{-1} if\nA = [ 1  2  -1 ]\n    [ 3  1   1 ]\n    [ 0  4   7 ]",
+    "options": [
+      "A. 4/71",
+      "B. 3/41",
+      "C. 2/31",
+      "D. 4/51",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. 4/51",
+    "explanation": "Answer: D. First compute det(A) by expanding along the first row:\ndet(A) = 1(1·7 - 1·4) - 2(3·7 - 1·0) + (-1)(3·4 - 1·0) = 3 - 42 - 12 = -51.\nUsing A^{-1} = (1/det(A)) adj(A), the (2,3)-entry of A^{-1} is C_{3,2}/det(A), where C_{3,2} is the (3,2)-cofactor of A:\nC_{3,2} = (-1)^{3+2} det [ 1  -1 ; 3  1 ] = -(1 - (-3)) = -4.\nThus the (2,3)-entry of A^{-1} is (-4)/(-51) = 4/51.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q38",
+    "word": "MAE101 SU26 B5 RE Q38: Given that -3 is an eigenvalue for the m...",
+    "question": "Given that -3 is an eigenvalue for the matrix\n[ 3   -6 ]\n[ 8  -11 ]\nFind all eigenvectors corresponding to this eigenvalue λ = -3.",
+    "options": [
+      "A. t(1,-1), t is nonzero",
+      "B. t(1,-2), t is nonzero",
+      "C. t(2,1), t is nonzero",
+      "D. t(1,1), t is nonzero",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. t(1,1), t is nonzero",
+    "explanation": "Answer: D. Solve (A - (-3)I)v = (A + 3I)v = 0:\nA + 3I = [ 6  -6 ; 8  -8 ].\nThis gives 6x - 6y = 0, so x = y. Since eigenvectors must be nonzero, all eigenvectors for λ = -3 have the form t(1, 1) with t ≠ 0.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q39",
+    "word": "MAE101 SU26 B5 RE Q39: Find the characteristic polynomial of th...",
+    "question": "Find the characteristic polynomial of the matrix:\n[ 3  4 ]\n[ 5  6 ]\n\n(i) -X^2 + 9X - 2\n(ii) X^2 + 9X - 2\n(iii) X^2 - 9X - 2",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. The characteristic polynomial of a 2×2 matrix A is det(XI - A) = det [ X - 3  -4 ; -5  X - 6 ] = (X - 3)(X - 6) - (-4)(-5) = X^2 - 9X + 18 - 20 = X^2 - 9X - 2 (note that det(A - XI) gives the same polynomial for a 2×2 matrix). This matches (iii).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q40",
+    "word": "MAE101 SU26 B5 RE Q40: Let A(3,-1,-1), B(1,-2,0), C(1,-1,2) be ...",
+    "question": "Let A(3,-1,-1), B(1,-2,0), C(1,-1,2) be three vertices of the parallelogram with two adjacent sides AB and AC. Find the fourth vertex.",
+    "options": [
+      "A. (-1, 2, 3)",
+      "B. None of the other choices is correct",
+      "C. (-1, -2, -3)",
+      "D. (1, -2, 3)",
+      "E. (-1, -2, 3)"
+    ],
+    "answer": "E",
+    "correctWord": "E. (-1, -2, 3)",
+    "explanation": "Answer: E. Since AB and AC are two adjacent sides meeting at A, the fourth vertex D satisfies vector AD = vector AB + vector AC, so D = B + C - A.\nComputing coordinatewise:\nD = (1 + 1 - 3, -2 + (-1) - (-1), 0 + 2 - (-1)) = (-1, -2, 3).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q41",
+    "word": "MAE101 SU26 B5 RE Q41: Find an equation for the plane passing ...",
+    "question": "Find an equation for the plane passing through (2, 1, 4), (1, -1, 2), (4, -1, 1).",
+    "options": [
+      "A. 2x - 7y + 6z = 21;",
+      "B. 2x - 7y + 6z = -21;",
+      "C. 2x - 7y - 6z = 21;",
+      "D. 2x + 7y - 6z = -21.",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 2x - 7y + 6z = 21;",
+    "explanation": "Answer: A. Let P = (2, 1, 4), Q = (1, -1, 2), and R = (4, -1, 1). Form two vectors in the plane:\nPQ = (-1, -2, -2), PR = (2, -2, -3).\nTheir cross product gives a normal vector:\nn = PQ × PR = ((-2)(-3) - (-2)(-2), -((-1)(-3) - (-2)(2)), (-1)(-2) - (-2)(2)) = (2, -7, 6).\nUsing point P(2, 1, 4), the plane equation is 2(x - 2) - 7(y - 1) + 6(z - 4) = 0, which simplifies to 2x - 7y + 6z = 21. Checking Q and R confirms 2(1) - 7(-1) + 6(2) = 21 and 2(4) - 7(-1) + 6(1) = 21.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q42",
+    "word": "MAE101 SU26 B5 RE Q42: Let L be the line with a parametric eq...",
+    "question": "Let L be the line with a parametric equation\n[x, y, z] = [-1, 2, 3] + t[2, -1, 0],\nand K be the line passing through P(1, -1, 0) and parallel to the vector [1, 2, -3].\nWhich of these two lines lie in the plane with the equation x + y + z = 0?",
+    "options": [
+      "A. None of L and K",
+      "B. Both L and K",
+      "C. Only K",
+      "D. Only L"
+    ],
+    "answer": "C",
+    "correctWord": "C. Only K",
+    "explanation": "Answer: C. Check L: at t = 0, the point (-1, 2, 3) has -1 + 2 + 3 = 4 ≠ 0, so L does not lie in the plane x + y + z = 0.\nCheck K: every point on K has the form (1 + s, -1 + 2s, -3s). Substituting into the plane equation gives (1 + s) + (-1 + 2s) + (-3s) = 0 for all real s. Hence only K lies in the plane.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q43",
+    "word": "MAE101 SU26 B5 RE Q43: Find the volume of the parallelepiped ...",
+    "question": "Find the volume of the parallelepiped determined by the vectors:\nw = [1; -2; -1]^T, u = [1; 0; 1]^T, v = [2; 1; 0]^T",
+    "options": [
+      "A. - 6",
+      "B. 6",
+      "C. None of other choices is correct",
+      "D. -2",
+      "E. 2",
+      "F. 4"
+    ],
+    "answer": "B",
+    "correctWord": "B. 6",
+    "explanation": "Answer: B. The volume of the parallelepiped is |det([w  u  v])|:\ndet [ 1  -2  -1 ]\n    [ 1   0   1 ]\n    [ 2   1   0 ]\n= 1(0·0 - 1·1) - (-2)(1·0 - 1·2) + (-1)(1·1 - 0·2) = -1 - 4 - 1 = -6.\nTaking the absolute value gives Volume = |-6| = 6.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q44",
+    "word": "MAE101 SU26 B5 RE Q44: Determine if T: R^2 -> R^2, T(x, y) = ...",
+    "question": "Determine if\nT: R^2 → R^2, T(x, y) = (1/2)(x - y, y - x)\nis either projection on a line, reflection in a line, or rotation through an angle, and find the line or angle.",
+    "options": [
+      "A. Projection on y = x",
+      "B. Reflection in y = -x",
+      "C. Rotation through an angle of 90 degree",
+      "D. Projection on y = -x",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. Projection on y = -x",
+    "explanation": "Answer: D. A unit direction vector along the line y = -x is d = (1/√2, -1/√2). The orthogonal projection of (x, y) onto this line is ((x, y)·d)d = ((x - y)/√2)(1/√2, -1/√2) = (1/2)(x - y, y - x) = T(x, y). Moreover, T fixes every point on y = -x and maps every point on the orthogonal line y = x to (0, 0). Hence T is the orthogonal projection on y = -x.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q45",
+    "word": "MAE101 SU26 B5 RE Q45: Let W be a subspace of a vector space ...",
+    "question": "Let W be a subspace of a vector space V. Which of the following statements are correct?\n(i) u + v = v + u for all u, v ∈ W,\n(ii) ku ∈ W for all u ∈ W and k is a scalar,\n(iii) p(qu) = (pq)u for all u ∈ W and p, q are scalars.",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. All of (i), (ii) and (iii)",
+      "E. (i) and (ii)"
+    ],
+    "answer": "D",
+    "correctWord": "D. All of (i), (ii) and (iii)",
+    "explanation": "Answer: D. Since W is a subspace of the vector space V, W is closed under scalar multiplication (so (ii) holds), and W inherits all vector space axioms from V, including commutativity of addition (i) and associativity of scalar multiplication (iii). (Note: the original screenshot has a minor typo \"u, y ∈ W\" in (i), meaning u, v ∈ W.) Therefore, all of (i), (ii), and (iii) are correct.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q46",
+    "word": "MAE101 SU26 B5 RE Q46: Determine whether U is a subspace of R^3...",
+    "question": "Determine whether U is a subspace of R^3.\n(i) U = {[0  1  s]^T : s ∈ R}\n(ii) U = {[0  a  b]^T : a, b ∈ R}\n(iii) U = {[a  b  a+1]^T : a, b ∈ R}",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. (ii)",
+    "explanation": "Answer: B. A subspace of R^3 must contain the zero vector [0  0  0]^T and be closed under addition and scalar multiplication.\n- (i) does not contain [0  0  0]^T because its second coordinate is always 1.\n- (iii) does not contain [0  0  0]^T because setting a = 0 gives third coordinate 1 ≠ 0.\n- (ii) contains [0  0  0]^T (a = b = 0) and is closed under vector addition and scalar multiplication. Thus only (ii) is a subspace of R^3.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q47",
+    "word": "MAE101 SU26 B5 RE Q47: Let W = {(x, y, z) ∈ R^3 | x = y}. The...",
+    "question": "Let W = {(x, y, z) ∈ R^3 | x = y}. The dimension of W is ______\n(i) 1.\n(ii) 2.\n(iii) 3.\n(iv) 4.",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of them"
+    ],
+    "answer": "B",
+    "correctWord": "B. (ii)",
+    "explanation": "Answer: B. Every vector in W has the form (y, y, z) = y(1, 1, 0) + z(0, 0, 1) with y, z ∈ R. Since (1, 1, 0) and (0, 0, 1) are linearly independent and span W, they form a basis of W, so dim(W) = 2, which corresponds to (ii).",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q48",
+    "word": "MAE101 SU26 B5 RE Q48: Let {X,Y,Z} be a set of linearly indep...",
+    "question": "Let {X,Y,Z} be a set of linearly independent vectors. Which of the following sets are linearly independent?\n(i) {X+Y, Y+Z, Z+X}\n(ii) {X-Y, Y-Z, Z-X}",
+    "options": [
+      "A. Only (ii)",
+      "B. None of (i) or (ii)",
+      "C. Both (i) and (ii)",
+      "D. Only (i)"
+    ],
+    "answer": "D",
+    "correctWord": "D. Only (i)",
+    "explanation": "Answer: D.\nFor (i): Suppose c_1(X + Y) + c_2(Y + Z) + c_3(Z + X) = 0, so (c_1 + c_3)X + (c_1 + c_2)Y + (c_2 + c_3)Z = 0. Since {X, Y, Z} is linearly independent, c_1 + c_3 = 0, c_1 + c_2 = 0, and c_2 + c_3 = 0. Adding all three gives 2(c_1 + c_2 + c_3) = 0 ⇒ c_1 + c_2 + c_3 = 0, hence c_1 = c_2 = c_3 = 0. So (i) is linearly independent.\nFor (ii): (X - Y) + (Y - Z) + (Z - X) = 0 is a nontrivial linear relation with coefficients 1, 1, 1, so (ii) is linearly dependent.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q49",
+    "word": "MAE101 SU26 B5 RE Q49: Let {v_1, v_2, v_3} = {(2, 1, 0), (1, ...",
+    "question": "Let {v_1, v_2, v_3} = {(2, 1, 0), (1, -2, 0), (0, 0, 3)} be an orthogonal basis of U = R^3. Find the coefficient of v_1 when expressing u = (1, 2, 2) as a linear combination of {v_1, v_2, v_3}.",
+    "options": [
+      "A. -4/5",
+      "B. 5",
+      "C. -5",
+      "D. 4/5",
+      "E. 0"
+    ],
+    "answer": "D",
+    "correctWord": "D. 4/5",
+    "explanation": "Answer: D. Since {v_1, v_2, v_3} is an orthogonal basis, the coefficient c_1 of v_1 in u = c_1 v_1 + c_2 v_2 + c_3 v_3 is given by:\nc_1 = (u · v_1) / (v_1 · v_1) = (1·2 + 2·1 + 2·0) / (2^2 + 1^2 + 0^2) = 4/5.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  },
+  {
+    "id": "mae101_su26_b5_re_q50",
+    "word": "MAE101 SU26 B5 RE Q50: Let A be a 3x4 matrix. If dim(Row(A)) ...",
+    "question": "Let A be a 3×4 matrix. If dim(Row(A)) = 3, what is dim(Null(A))?",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4",
+      "E. 0"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1",
+    "explanation": "Answer: A. By the Rank-Nullity Theorem, for an m×n matrix A, rank(A) + dim(Null(A)) = n, where rank(A) = dim(Row(A)) and n is the number of columns. Here n = 4 and dim(Row(A)) = 3, so dim(Null(A)) = 4 - 3 = 1.",
+    "subject": "MAE101",
+    "topic": "SU26 - B5 - RE"
+  }
+]

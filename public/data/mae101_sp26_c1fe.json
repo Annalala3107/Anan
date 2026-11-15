@@ -1,0 +1,844 @@
+[
+  {
+    "id": "mae101_sp26_c1fe_q1",
+    "word": "MAE101 SP26 C1FE Q1: Simplify the quotient (f(x + h) - f(x))/h for f(x) = -x^2 + 3x...",
+    "question": "Simplify the quotient (f(x + h) - f(x)) / h for f(x) = -x^2 + 3x.",
+    "options": [
+      "A. -2x-h+3",
+      "B. -2x+h-3",
+      "C. 2x-h-3",
+      "D. 2x-h+3",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. -2x-h+3",
+    "explanation": "Answer: A. Compute f(x + h) = -(x + h)^2 + 3(x + h) = -x^2 - 2xh - h^2 + 3x + 3h. Subtract f(x) = -x^2 + 3x to get f(x + h) - f(x) = -2xh - h^2 + 3h. Dividing by h (for h ≠ 0) gives -2x - h + 3.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q2",
+    "word": "MAE101 SP26 C1FE Q2: A ball dropped from the top of a building has a height of s = 576...",
+    "question": "A ball dropped from the top of a building has a height of s = 576 - 16t^2 meters after t seconds. How long does it take the ball to reach the ground? What is the ball's velocity at the moment of impact?",
+    "options": [
+      "A. 6 sec, -192 m/sec",
+      "B. 6 sec, 192 m/sec",
+      "C. 36 sec, -1152 m/sec",
+      "D. 12 sec, -96 m/sec",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 6 sec, -192 m/sec",
+    "explanation": "Answer: A. The ball reaches the ground when s = 0: 576 - 16t^2 = 0 ⇒ t^2 = 36 ⇒ t = 6 sec (since t ≥ 0). The velocity is v(t) = ds/dt = -32t. At t = 6, v(6) = -32(6) = -192 m/sec.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q3",
+    "word": "MAE101 SP26 C1FE Q3: Find y'(1) for y = (5x + 7)/(9x - 2)",
+    "question": "Find y'(1) for y = (5x + 7) / (9x - 2).",
+    "options": [
+      "A. 73/49",
+      "B. 73/7",
+      "C. -73/7",
+      "D. -73/49",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. -73/49",
+    "explanation": "Answer: D. By the quotient rule, y' = [5(9x - 2) - (5x + 7)(9)] / (9x - 2)^2 = (45x - 10 - 45x - 63) / (9x - 2)^2 = -73 / (9x - 2)^2. Evaluating at x = 1 gives y'(1) = -73 / (9 - 2)^2 = -73/49.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q4",
+    "word": "MAE101 SP26 C1FE Q4: Differentiate implicitly to find the slope of the curve at (2, 1)...",
+    "question": "Differentiate implicitly to find the slope of the curve at the point (2, 1): x^4 y^4 = 16.",
+    "options": [
+      "A. None of the other choices is correct",
+      "B. 1/2",
+      "C. -1/2",
+      "D. 3/2",
+      "E. 2"
+    ],
+    "answer": "C",
+    "correctWord": "C. -1/2",
+    "explanation": "Answer: C. Differentiating x^4 y^4 = 16 implicitly with respect to x gives 4x^3 y^4 + 4x^4 y^3 (dy/dx) = 0, so dy/dx = -y/x (for x, y ≠ 0). At (2, 1), the slope is dy/dx = -1/2.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q5",
+    "word": "MAE101 SP26 C1FE Q5: Evaluate d^2y/dx^2 at x = 2 for y = 1/(x^2 - 1)",
+    "question": "Evaluate d^2y/dx^2 at x = 2 for y = 1 / (x^2 - 1).",
+    "options": [
+      "A. 25/3",
+      "B. 26/3",
+      "C. 25/27",
+      "D. 26/27",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. 26/27",
+    "explanation": "Answer: D. Write y = (x^2 - 1)^(-1). Then y' = -2x(x^2 - 1)^(-2). Differentiating again gives y'' = -2(x^2 - 1)^(-2) - 2x(-2)(x^2 - 1)^(-3)(2x) = [-2(x^2 - 1) + 8x^2] / (x^2 - 1)^3 = (6x^2 + 2) / (x^2 - 1)^3. At x = 2, y''(2) = (6(4) + 2) / (4 - 1)^3 = 26/27.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q6",
+    "word": "MAE101 SP26 C1FE Q6: If 4y^2 + 9z^2 = 36, and dz/dt = 4, find dy/dt when z = √2...",
+    "question": "If 4y^2 + 9z^2 = 36, and dz/dt = 4, find dy/dt when z = √2.\n(i) ±3/√2\n(ii) ±2/√3\n(iii) ±2\n(iv) ±6",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. (iv)",
+    "explanation": "Answer: D. When z = √2, 4y^2 + 9(2) = 36 ⇒ 4y^2 = 18 ⇒ y = ±3/√2. Differentiating 4y^2 + 9z^2 = 36 with respect to t yields 8y(dy/dt) + 18z(dz/dt) = 0, so dy/dt = -(9z / (4y))(dz/dt). Substituting z = √2, dz/dt = 4, and y = ±3/√2 gives dy/dt = -(9√2 / (±6√2)) · 4 = ∓6, i.e., ±6, which matches (iv).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q7",
+    "word": "MAE101 SP26 C1FE Q7: Find the total area between f(x) = sin x and the x-axis on [π/2...",
+    "question": "Find the total area between the function f(x) = sin x and the x-axis over the interval [π/2, 4π/3].",
+    "options": [
+      "A. 0.5",
+      "B. 1",
+      "C. 1.5",
+      "D. 2"
+    ],
+    "answer": "C",
+    "correctWord": "C. 1.5",
+    "explanation": "Answer: C. On [π/2, π], sin x ≥ 0; on [π, 4π/3], sin x ≤ 0. Thus the total area is ∫_{π/2}^{π} sin x dx + ∫_{π}^{4π/3} (-sin x) dx = [-cos x]_{π/2}^{π} + [cos x]_{π}^{4π/3} = (-(-1) + 0) + (-1/2 - (-1)) = 1 + 0.5 = 1.5.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q8",
+    "word": "MAE101 SP26 C1FE Q8: Find the absolute minimum and maximum of f(x) = x^3 - 3x^2 + 1...",
+    "question": "Find the absolute minimum and absolute maximum values of f(x) = x^3 - 3x^2 + 1 on [-1, 3].",
+    "options": [
+      "A. No absolute maximum, absolute minimum: -3",
+      "B. Absolute maximum: 3, absolute minimum: -1",
+      "C. Absolute maximum: 3, no absolute minimum",
+      "D. Absolute maximum: 1, absolute minimum: -3",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. Absolute maximum: 1, absolute minimum: -3",
+    "explanation": "Answer: D. Critical points occur where f'(x) = 3x^2 - 6x = 3x(x - 2) = 0, giving x = 0 and x = 2 (both in [-1, 3]). Evaluating f at endpoints and critical points: f(-1) = -3, f(0) = 1, f(2) = -3, f(3) = 1. Therefore, the absolute maximum is 1 and the absolute minimum is -3.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q9",
+    "word": "MAE101 SP26 C1FE Q9: Find the intervals on which f(x) = 2x^3 - 3x^2 - 12x is increa...",
+    "question": "Find the intervals on which the function is increasing: f(x) = 2x^3 - 3x^2 - 12x.",
+    "options": [
+      "A. x < -1",
+      "B. x > 2",
+      "C. -1 < x < 2",
+      "D. x < -1 or x > 2",
+      "E. None of these"
+    ],
+    "answer": "D",
+    "correctWord": "D. x < -1 or x > 2",
+    "explanation": "Answer: D. Compute f'(x) = 6x^2 - 6x - 12 = 6(x + 1)(x - 2). The derivative is positive when x + 1 and x - 2 have the same sign, which occurs for x < -1 or x > 2.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q10",
+    "word": "MAE101 SP26 C1FE Q10: Evaluate the limit lim_{x → ∞} √(4x^2 + 1) / (3x - 5)",
+    "question": "Evaluate the limit lim_{x → ∞} √(4x^2 + 1) / (3x - 5).",
+    "options": [
+      "A. -4/3",
+      "B. All of the other choices are incorrect",
+      "C. 4/3",
+      "D. -2/3",
+      "E. 2/3"
+    ],
+    "answer": "E",
+    "correctWord": "E. 2/3",
+    "explanation": "Answer: E. For x > 0, divide numerator and denominator by x = √(x^2): lim_{x → ∞} √(4 + 1/x^2) / (3 - 5/x) = √4 / 3 = 2/3.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q11",
+    "word": "MAE101 SP26 C1FE Q11: A box with a square base and open top must have 8 volume units...",
+    "question": "A box with a square base and open top must have 8 volume units. Find the length of one side of the base that minimizes the surface area.\n(i) 4\n(ii) 2\n(iii) 2·³√2\n(iv) 2·³√4",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. Let x > 0 be the base side length and h > 0 be the height. Volume x^2 h = 8 gives h = 8/x^2. The open-top surface area is S(x) = x^2 + 4xh = x^2 + 32/x. Setting S'(x) = 2x - 32/x^2 = 0 gives x^3 = 16, so x = ³√16 = 2·³√2. Since S''(x) = 2 + 64/x^3 > 0, this minimizes S(x), matching (iii).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q12",
+    "word": "MAE101 SP26 C1FE Q12: Use Newton's method with x_1 = 2 to find x_3 for ln(x^2+4)-2x=0",
+    "question": "Use Newton's method with the specified initial approximation x_1 = 2 to find x_3 of the following equation: ln(x^2 + 4) - 2x = 0.",
+    "options": [
+      "A. 0.76054",
+      "B. 0.71963",
+      "C. 0.76070",
+      "D. 0.71696",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0.76054",
+    "explanation": "Answer: A. Let g(x) = ln(x^2 + 4) - 2x, so g'(x) = 2x/(x^2 + 4) - 2. With x_1 = 2: g(2) = ln(8) - 4 ≈ -1.920558 and g'(2) = 4/8 - 2 = -1.5, giving x_2 = 2 - (-1.920558)/(-1.5) ≈ 0.719628. Next, g(x_2) ≈ 0.068089 and g'(x_2) ≈ -1.681534, so x_3 = 0.719628 - (0.068089)/(-1.681534) ≈ 0.760536 ≈ 0.76054.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q13",
+    "word": "MAE101 SP26 C1FE Q13: Use left-endpoint approximation for f(x) = 2^x on [0, 2], n = 4",
+    "question": "Use left-endpoint approximation to approximate the area under the curve of f(x) = 2^x on the interval [0, 2] with n = 4.",
+    "options": [
+      "A. 10.24",
+      "B. 3.62",
+      "C. 5.12",
+      "D. 7.24",
+      "E. 9",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. 3.62",
+    "explanation": "Answer: B. Here Δx = (2 - 0)/4 = 0.5 and the left endpoints are x_0 = 0, x_1 = 0.5, x_2 = 1, x_3 = 1.5. Thus L_4 = 0.5 · (2^0 + 2^0.5 + 2^1 + 2^1.5) = 0.5 · (1 + √2 + 2 + 2√2) = 0.5 · (3 + 3√2) ≈ 3.6213 ≈ 3.62.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q14",
+    "word": "MAE101 SP26 C1FE Q14: Given ∫_{4}^{6} f(x) dx = 6/57, find ∫_{6}^{4} f(x) dx",
+    "question": "Given that ∫_{4}^{6} f(x) dx = 6/57, find ∫_{6}^{4} f(x) dx.",
+    "options": [
+      "A. -6/57",
+      "B. 6/57",
+      "C. 57/6",
+      "D. -57/6",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. -6/57",
+    "explanation": "Answer: A. Reversing the limits of integration negates the value of the definite integral: ∫_{6}^{4} f(x) dx = -∫_{4}^{6} f(x) dx = -6/57.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q15",
+    "word": "MAE101 SP26 C1FE Q15: Find the derivative of g(x) = ∫_{0}^{sin x} ((t^5 + 4t)/e^(5t)) dt",
+    "question": "Find the derivative of the following function: g(x) = ∫_{0}^{sin x} ((t^5 + 4t) / e^(5t)) dt.\n(i) (sin^5 x + 4 sin x) / e^(5 sin x)\n(ii) ((sin^5 x + 4 sin x) / e^(5 sin x)) · sin x\n(iii) ((sin^5 x + 4 sin x) / e^(5 sin x)) · cos x\n(iv) -((sin^5 x + 4 sin x) / e^(5 sin x)) · cos x",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. By the Fundamental Theorem of Calculus Part 1 and the Chain Rule, g'(x) = [(sin^5 x + 4 sin x) / e^(5 sin x)] · d/dx(sin x) = [(sin^5 x + 4 sin x) / e^(5 sin x)] · cos x, which is (iii).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q16",
+    "word": "MAE101 SP26 C1FE Q16: Find the average value of f(x) = x^2 - 1 on the interval [0, 3]",
+    "question": "Find the average value of f(x) = x^2 - 1 on the interval [0, 3].",
+    "options": [
+      "A. 6",
+      "B. 3",
+      "C. 2",
+      "D. 1",
+      "E. 0",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. 2",
+    "explanation": "Answer: C. The average value is f_avg = (1 / (3 - 0)) ∫_{0}^{3} (x^2 - 1) dx = (1/3)[x^3/3 - x]_{0}^{3} = (1/3)(9 - 3 - 0) = 6/3 = 2.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q17",
+    "word": "MAE101 SP26 C1FE Q17: Evaluate ∫ (8 / (y - 9)^3) dy",
+    "question": "Evaluate ∫ (8 / (y - 9)^3) dy.\n(i) -4 / (y - 9)^2 + C\n(ii) 4 / (y - 9)^2 + C\n(iii) -4 / (y - 9) + C\n(iv) -1 / (4(y - 9)^2) + C",
+    "options": [
+      "A. (ii)",
+      "B. (i)",
+      "C. (iv)",
+      "D. (iii)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. (i)",
+    "explanation": "Answer: B. Substituting u = y - 9 (du = dy), the indefinite integral is ∫ 8 u^(-3) du = 8 · u^(-2)/(-2) + C = -4/(y - 9)^2 + C, which corresponds to (i) in option B.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q18",
+    "word": "MAE101 SP26 C1FE Q18: When using Simpson's rule to approximate a definite integral...",
+    "question": "Choose the correct answer. When using Simpson's rule to approximate a definite integral, it is necessary for the number of subintervals to be __________",
+    "options": [
+      "A. an odd number.",
+      "B. an even number.",
+      "C. a multiple of 3.",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. an even number.",
+    "explanation": "Answer: B. Simpson's rule fits parabolic arcs across consecutive pairs of subintervals, so the total number of subintervals n must be an even positive integer.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q19",
+    "word": "MAE101 SP26 C1FE Q19: Find the integral ∫ 4x^2 e^(-2x) dx",
+    "question": "Find the integral ∫ 4x^2 e^(-2x) dx.\n(i) e^(-2x) (2x^2 + 2x - 1) + C\n(ii) e^(-2x) (2x^2 + 2x + 1) + C\n(iii) e^(-2x) (2x^2 - 2x + 1) + C\n(iv) -e^(-2x) (2x^2 + 2x + 1) + C",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. (iv)",
+    "explanation": "Answer: D. Applying integration by parts twice (or tabular integration) with u = 4x^2 and dv = e^(-2x) dx: ∫ 4x^2 e^(-2x) dx = 4x^2(-e^(-2x)/2) - 8x(e^(-2x)/4) + 8(-e^(-2x)/8) + C = -e^(-2x)(2x^2 + 2x + 1) + C, which is (iv).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q20",
+    "word": "MAE101 SP26 C1FE Q20: Which of the following matrix has reduced echelon-form?",
+    "question": "Which of the following matrix has reduced echelon-form?\n(i) [[1, 3, -1, 2], [0, 1, 2/7, -6/7], [0, 0, 1, 25]]\n(ii) [[1, 0, 0, 3], [0, 1, 0, -8], [0, 0, 1, 25]]\n(iii) [[1, 0, -1, -22], [0, 1, 0, -8], [0, 0, 1, 25]]\n(iv) [[1, 3, -1, 2], [0, 1, 0, -8], [0, 0, 1, 25]]",
+    "options": [
+      "A. (ii)",
+      "B. (i)",
+      "C. (iv)",
+      "D. (iii)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. (ii)",
+    "explanation": "Answer: A. In reduced row echelon form (RREF), every leading entry is 1 and is the only nonzero entry in its column. Only matrix (ii) has zeros above every leading 1 in columns 1, 2, and 3. Thus (ii) (option A) is in reduced echelon form.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q21",
+    "word": "MAE101 SP26 C1FE Q21: Which of the following integrals is divergent?",
+    "question": "Which of the following integrals is divergent?\n(i) ∫_{1}^{∞} (2010 / (5x^2)) dx\n(ii) ∫_{1}^{∞} (1 / √(x^3)) dx\n(iii) ∫_{1}^{∞} ((1 + x e^(-2x)) / x) dx",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. By the p-integral test on [1, ∞), ∫_{1}^{∞} (1/x^p) dx converges for p > 1 and diverges for p ≤ 1. Thus (i) converges (p = 2) and (ii) converges (p = 3/2). For (iii), (1 + x e^(-2x))/x = 1/x + e^(-2x) > 1/x on [1, ∞), and ∫_{1}^{∞} (1/x) dx diverges (p = 1), so (iii) is divergent.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q22",
+    "word": "MAE101 SP26 C1FE Q22: Let x = [1, 1, 2]^T, y = [2, 6, 0]^T, z = [2, 2, 4]^T and v = [-1...",
+    "question": "Let x = [1, 1, 2]^T, y = [2, 6, 0]^T, z = [2, 2, 4]^T and v = [-1, 9, 6]^T. Write v as a linear combination of x, y and z.",
+    "options": [
+      "A. v = -2x + 5y – 2z",
+      "B. v = x + 2y + 2z",
+      "C. There is no linear combination",
+      "D. v = -4x + 5y - z",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. There is no linear combination",
+    "explanation": "Answer: C. Suppose v = c_1 x + c_2 y + c_3 z. From the third component, 2c_1 + 4c_3 = 6 ⇒ c_1 + 2c_3 = 3. Substituting c_1 + 2c_3 = 3 into the first component gives (c_1 + 2c_3) + 2c_2 = -1 ⇒ 3 + 2c_2 = -1 ⇒ c_2 = -2. Substituting into the second component gives (c_1 + 2c_3) + 6c_2 = 9 ⇒ 3 + 6c_2 = 9 ⇒ c_2 = 1. Since -2 ≠ 1, the system is inconsistent and there is no linear combination.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q23",
+    "word": "MAE101 SP26 C1FE Q23: Find all values of m so that the system has no solution...",
+    "question": "Find all values of m so that the system { x - y - z = 1; x + y - z = 2; -x + 3y + z = m } has no solution.",
+    "options": [
+      "A. any number but 0",
+      "B. any real number",
+      "C. any number but 1",
+      "D. 0",
+      "E. 1",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. any number but 0",
+    "explanation": "Answer: A. Subtracting the first equation from the second gives 2y = 1, so y = 1/2. Adding the first and third equations gives 2y = 1 + m. For consistency we need 1 + m = 1 ⇒ m = 0 (which gives infinitely many solutions x - z = 3/2, y = 1/2). For any m ≠ 0, 2y = 1 and 2y = 1 + m contradict each other, so the system has no solution.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q24",
+    "word": "MAE101 SP26 C1FE Q24: Solve for z in the system of equations: { x + y - z = 3; ...",
+    "question": "Solve for z in the system of equations: { x + y - z = 3; x + 2y - 2z = 4; 2x + y + 2z = 5 }.",
+    "options": [
+      "A. 0",
+      "B. z is arbitrary",
+      "C. 2",
+      "D. -1",
+      "E. 1",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 0",
+    "explanation": "Answer: A. Subtracting the first equation from the second gives y - z = 1, so y = z + 1. Substituting into the first equation yields x + (z + 1) - z = 3 ⇒ x = 2. Substituting x = 2 and y = z + 1 into the third equation gives 2(2) + (z + 1) + 2z = 5 ⇒ 5 + 3z = 5 ⇒ z = 0.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q25",
+    "word": "MAE101 SP26 C1FE Q25: Solve for A if 3A - 2A^T = [[2, 4], [-1, 0]]",
+    "question": "Solve for A if 3A - 2A^T = [[2, 4], [-1, 0]].\n(i) [[2, 0], [5, 0]]\n(ii) [[2, 2], [1, 0]]\n(iii) [[5, 0], [2, 0]]",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. (ii)",
+    "explanation": "Answer: B. Let A = [[a, b], [c, d]]. Then 3A - 2A^T = [[a, 3b - 2c], [3c - 2b, d]] = [[2, 4], [-1, 0]]. Thus a = 2, d = 0, and 3b - 2c = 4, -2b + 3c = -1. Multiplying the first by 3 and the second by 2 and adding gives 5b = 10 ⇒ b = 2, so c = 1. Hence A = [[2, 2], [1, 0]], which is (ii).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q26",
+    "word": "MAE101 SP26 C1FE Q26: Given a matrix A and column vectors x, b...",
+    "question": "Given a matrix A and column vectors x, b. Which of the following statements are correct?\n(i) If Ax = 0 then either A = 0 or x = 0.\n(ii) If x₁, x₂ are solutions to the system Ax = b then A(x₁ - x₂) = 0.",
+    "options": [
+      "A. Only (i)",
+      "B. Only (ii)",
+      "C. Both (i) and (ii)",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. Only (ii)",
+    "explanation": "Answer: B. Statement (i) is false because a nonzero singular (or non-square) matrix A can have a nontrivial null space; for instance, if A = [[1, 1], [1, 1]] and x = [1, -1]^T, then Ax = 0 even though A ≠ 0 and x ≠ 0. Statement (ii) is true because if Ax₁ = b and Ax₂ = b, then by linearity A(x₁ - x₂) = Ax₁ - Ax₂ = b - b = 0.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q27",
+    "word": "MAE101 SP26 C1FE Q27: Let A = [[1, 1], [0, 1]]. Compute A^10...",
+    "question": "Let A = [[1, 1], [0, 1]]. Compute A^10.\n(i) [[1, 10], [0, 1]]\n(ii) [[10, 10], [0, 10]]\n(iii) [[1, 1], [0, 1]]",
+    "options": [
+      "A. All of the other choices are incorrect",
+      "B. (i)",
+      "C. (ii)",
+      "D. (iii)"
+    ],
+    "answer": "B",
+    "correctWord": "B. (i)",
+    "explanation": "Answer: B. Write A = I + N where I = [[1, 0], [0, 1]] and N = [[0, 1], [0, 0]]. Since N^2 = 0, by the binomial expansion A^10 = (I + N)^10 = I + 10N = [[1, 10], [0, 1]], which matches (i).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q28",
+    "word": "MAE101 SP26 C1FE Q28: Let 3x + 4y = a, 4x + 5y = b, find x, y...",
+    "question": "Let { 3x + 4y = a; 4x + 5y = b }, find x, y in terms of a and b.\n(i) [x, y]^T = [5a - 4b, -4a + 3b]^T\n(ii) [x, y]^T = [-5a + 4b, 4a - 3b]^T\n(iii) [x, y]^T = [4a - 3b, -5a + 4b]^T\n(iv) [x, y]^T = [-4a - 3b, 5a - 4b]^T",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. (ii)",
+    "explanation": "Answer: B. The coefficient matrix is M = [[3, 4], [4, 5]] with det(M) = 3(5) - 4(4) = -1. Its inverse is M^(-1) = (1/(-1)) * [[5, -4], [-4, 3]] = [[-5, 4], [4, -3]]. Multiplying M^(-1)[a, b]^T gives [x, y]^T = [-5a + 4b, 4a - 3b]^T, which is (ii).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q29",
+    "word": "MAE101 SP26 C1FE Q29: Let T : R^2 -> R^2 be a linear transform...",
+    "question": "Let T : R^2 → R^2 be a linear transformation that satisfies T(1, 1) = (2, 3) and T(2, 1) = (4, 3). Find T(1, 0).",
+    "options": [
+      "A. (2, 0)",
+      "B. (1, 1)",
+      "C. (1, 3)",
+      "D. (2, 2)",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. (2, 0)",
+    "explanation": "Answer: A. Notice that (1, 0) = (2, 1) - (1, 1). By linearity of T, T(1, 0) = T(2, 1) - T(1, 1) = (4, 3) - (2, 3) = (2, 0).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q30",
+    "word": "MAE101 SP26 C1FE Q30: Let T : R^2 -> R^2 be rotation through...",
+    "question": "Let T : R^2 → R^2 be rotation through π/2 followed by reflection in the line y = x. Then T is:",
+    "options": [
+      "A. Reflection in the x-axis.",
+      "B. Reflection in the y-axis.",
+      "C. Reflection about y = - x.",
+      "D. Rotation through 180 degrees",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. Reflection in the x-axis.",
+    "explanation": "Answer: A. Counterclockwise rotation through π/2 has matrix R = [[0, -1], [1, 0]], and reflection in y = x has matrix F = [[0, 1], [1, 0]]. The composition T has matrix F * R = [[0, 1], [1, 0]] * [[0, -1], [1, 0]] = [[1, 0], [0, -1]], which maps (x, y) to (x, -y) — a reflection in the x-axis.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q31",
+    "word": "MAE101 SP26 C1FE Q31: Let A be a 3 x 3 matrix. Choose correct...",
+    "question": "Let A be a 3 x 3 matrix. Choose correct statements:\n(i) det(-A) = -det(A)\n(ii) If A has two equal rows, then det(A) = 0\n(iii) If det(A) = 0, then A has two equal rows.",
+    "options": [
+      "A. All of (i), (ii) and (iii)",
+      "B. (ii) and (iii)",
+      "C. (i) and (ii)",
+      "D. (iii)",
+      "E. (i) and (iii)"
+    ],
+    "answer": "C",
+    "correctWord": "C. (i) and (ii)",
+    "explanation": "Answer: C. For a 3 x 3 matrix, det(-A) = (-1)^3 det(A) = -det(A), so (i) is true. If A has two equal rows, swapping them gives the same matrix while negating the determinant, so det(A) = 0, making (ii) true. Statement (iii) is false: for example, A = [[1, 0, 0], [2, 0, 0], [0, 0, 1]] has det(A) = 0 without having two equal rows.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q32",
+    "word": "MAE101 SP26 C1FE Q32: Find all values of m such that A is...",
+    "question": "Find all values of m such that the following matrix is invertible:\nA = [[1, 2, 1], [2, 3, m], [3, 2, -1]] * [[1, 1, 1], [2, 3, 2], [5, 7, 5]].",
+    "options": [
+      "A. No such m",
+      "B. m is arbitrary",
+      "C. m = 0",
+      "D. m = 1",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. No such m",
+    "explanation": "Answer: A. Let B = [[1, 2, 1], [2, 3, m], [3, 2, -1]] and C = [[1, 1, 1], [2, 3, 2], [5, 7, 5]]. Since the first and third columns of C are identical ([1, 2, 5]^T), det(C) = 0. Therefore det(A) = det(B) * det(C) = 0 for all m, so A is never invertible.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q33",
+    "word": "MAE101 SP26 C1FE Q33: Let A be a 3x3 matrix. Find det A if...",
+    "question": "Let A be an 3×3 matrix. Find det A if A A^T = 3I.\n(i) 1\n(ii) 3√3 or 1\n(iii) 3√3 or -3√3\n(iv) √3 or -√3",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. Taking determinants of both sides of A A^T = 3I for a 3×3 matrix gives det(A) * det(A^T) = det(3I), so (det A)^2 = 3^3 * det(I) = 27. Hence det A = ±√27 = ±3√3, which is (iii).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q34",
+    "word": "MAE101 SP26 C1FE Q34: Given A = [[4, 3, 1], [3, 6, -1], [1, 0...",
+    "question": "Given A = [[4, 3, 1], [3, 6, -1], [1, 0, 2]]. Choose the correct statement.",
+    "options": [
+      "A. 4 is an eigenvalue of A",
+      "B. 5 is an eigenvalue of A",
+      "C. Both 5 and 4 are eigenvalues of A",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. None of the other choices is correct",
+    "explanation": "Answer: D. An integer λ is an eigenvalue of A if and only if det(A - λI) = 0. For λ = 4, det(A - 4I) = det([[0, 3, 1], [3, 2, -1], [1, 0, -2]]) = -3(-6 + 1) + 1(0 - 2) = 13 ≠ 0. For λ = 5, det(A - 5I) = det([[-1, 3, 1], [3, 1, -1], [1, 0, -3]]) = -1(-3) - 3(-9 + 1) + 1(-1) = 26 ≠ 0. Neither 4 nor 5 is an eigenvalue of A.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q35",
+    "word": "MAE101 SP26 C1FE Q35: Let A = [[1, 4, 2], [0, 2, -1], [0, 1...",
+    "question": "Let A = [[1, 4, 2], [0, 2, -1], [0, 1, 1]]. What is the characteristic polynomial c(x) of the matrix A?\n(i) c(x) = (x - 1)^2 (x - 2)\n(ii) c(x) = (x - 1)(x^2 + 3x + 3)\n(iii) c(x) = (x - 1)(x^2 - 3x + 3)\n(iv) c(x) = (x - 1)(x - 2)",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. Expanding det(xI - A) along the first column gives c(x) = (x - 1) * det([[x - 2, 1], [-1, x - 1]]) = (x - 1)((x - 2)(x - 1) + 1) = (x - 1)(x^2 - 3x + 3), which is (iii).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q36",
+    "word": "MAE101 SP26 C1FE Q36: Which points of {P(1,2,3), Q(3,1,4), R...",
+    "question": "Which points of the set {P(1, 2, 3), Q(3, 1, 4), R(2, 1, 1)} lie on the line x = 2 + t, y = -1 + 2t, z = 1 + 3t ?",
+    "options": [
+      "A. Only R",
+      "B. Only P",
+      "C. All of the other choices are incorrect",
+      "D. Only Q"
+    ],
+    "answer": "D",
+    "correctWord": "D. Only Q",
+    "explanation": "Answer: D. Test each point in x = 2 + t, y = -1 + 2t, z = 1 + 3t: For P(1, 2, 3), x = 1 gives t = -1, which yields y = -3 ≠ 2. For Q(3, 1, 4), x = 3 gives t = 1, which yields y = -1 + 2(1) = 1 and z = 1 + 3(1) = 4, so Q lies on the line. For R(2, 1, 1), x = 2 gives t = 0, which yields y = -1 ≠ 1. Thus only Q lies on the line.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q37",
+    "word": "MAE101 SP26 C1FE Q37: Find the parametric equation of the line...",
+    "question": "Find the parametric equation of the line passing through the origin, intersecting the line x = 1 + 2t, y = 2 - 3t, z = t and perpendicular to that line.",
+    "options": [
+      "A. x = 11t, y = 8t, z = 2t",
+      "B. x = 3t, y = -2t, z = 0",
+      "C. x = t, y = 0, z = -t",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. x = 11t, y = 8t, z = 2t",
+    "explanation": "Answer: A. Let the given line L₁ be parameterized by s: P(s) = (1 + 2s, 2 - 3s, s) with direction vector d₁ = (2, -3, 1). If the required line passes through the origin O(0, 0, 0) and intersects L₁ at P(s), its direction vector is OP = (1 + 2s, 2 - 3s, s). Perpendicularity requires OP · d₁ = 0: 2(1 + 2s) - 3(2 - 3s) + 1(s) = 14s - 4 = 0, so s = 2/7. Then P(2/7) = (11/7, 8/7, 2/7), which is parallel to (11, 8, 2). Hence the parametric equations are x = 11t, y = 8t, z = 2t.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q38",
+    "word": "MAE101 SP26 C1FE Q38: Find the second coordinate of the...",
+    "question": "Find the second coordinate of the projection of the vector u = [1, 2, -1]^T on the vector v = [0, 2, 1]^T",
+    "options": [
+      "A. 2/5",
+      "B. All of the other choices are incorrect",
+      "C. 6/5",
+      "D. 3/5"
+    ],
+    "answer": "C",
+    "correctWord": "C. 6/5",
+    "explanation": "Answer: C. The projection of u onto v is proj_v(u) = ((u · v)/(v · v)) v. Here u · v = 1(0) + 2(2) + (-1)(1) = 3 and v · v = 0^2 + 2^2 + 1^2 = 5. Thus proj_v(u) = (3/5)[0, 2, 1]^T = [0, 6/5, 3/5]^T, whose second coordinate is 6/5.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q39",
+    "word": "MAE101 SP26 C1FE Q39: Let T: R^3 -> R^3 be linear...",
+    "question": "Let T: R^3 → R^3 be linear transformation given by T([x, y, z]^T) = [y + 2x, 2x - y, z + x]^T. Let u = [1, 0, 1]^T, v = [1, -1, 2]^T, w = [2, 1, -1]^T. Find the volume of the parallelepiped determined by T(u), T(v) and T(w).",
+    "options": [
+      "A. 8",
+      "B. 4",
+      "C. 2",
+      "D. 16",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 8",
+    "explanation": "Answer: A. Computing the images directly: T(u) = [2, 2, 2]^T, T(v) = [1, 3, 3]^T, and T(w) = [5, 3, 1]^T. The volume of the parallelepiped is |det([T(u), T(v), T(w)])| = |det([[2, 1, 5], [2, 3, 3], [2, 3, 1]])| = |2(3 - 9) - 1(2 - 6) + 5(6 - 6)| = |-12 + 4| = 8.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q40",
+    "word": "MAE101 SP26 C1FE Q40: Let T: R^2 -> R^2 be the linear...",
+    "question": "Let T: R^2 → R^2 be the linear transformation such that T([x, y]^T) = [(25x + 15y)/34, (15x + 9y)/34]^T. Determine if T is projection on a line or reflection in a line.",
+    "options": [
+      "A. Reflection in the line 3x-5y=0",
+      "B. Projection on the line 3x-5y=0",
+      "C. Reflection in the line 5x-3y=0",
+      "D. Projection on the line 5x-3y=0",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "B",
+    "correctWord": "B. Projection on the line 3x-5y=0",
+    "explanation": "Answer: B. The standard matrix of T is A = (1/34)[[25, 15], [15, 9]]. Since det(A) = (25·9 - 15^2)/34^2 = 0 and A^2 = A (as (1/34^2)[[850, 510], [510, 306]] = (1/34)[[25, 15], [15, 9]]), T is an orthogonal projection onto its column space. The columns are multiples of [5, 3]^T, which spans the line 3x - 5y = 0.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q41",
+    "word": "MAE101 SP26 C1FE Q41: Find the value of t for which (1, 2, t)...",
+    "question": "Find the value of t for which (1, 2, t) lies in U = span{(1, 3, 4); (0, 2, 2)}",
+    "options": [
+      "A. 3",
+      "B. 1",
+      "C. 5",
+      "D. -1",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 3",
+    "explanation": "Answer: A. Write (1, 2, t) = a(1, 3, 4) + b(0, 2, 2). Comparing components: a = 1, 3a + 2b = 2 ⇒ 3 + 2b = 2 ⇒ b = -1/2. Then t = 4a + 2b = 4(1) + 2(-1/2) = 4 - 1 = 3.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q42",
+    "word": "MAE101 SP26 C1FE Q42: Let U = span{(1, 1, 2, 1), (0, 1, 1...",
+    "question": "Let U = span{(1, 1, 2, 1), (0, 1, 1, -2)}. Find all values of t such that (1, t, 3, 4) is in U.",
+    "options": [
+      "A. There is no such t",
+      "B. -2",
+      "C. All nonzero numbers",
+      "D. None of the other choices is correct",
+      "E. All number different from -1"
+    ],
+    "answer": "A",
+    "correctWord": "A. There is no such t",
+    "explanation": "Answer: A. Suppose (1, t, 3, 4) = a(1, 1, 2, 1) + b(0, 1, 1, -2). From the first component, a = 1. From the third component, 2a + b = 3 ⇒ 2(1) + b = 3 ⇒ b = 1. Checking the fourth component gives a - 2b = 1 - 2(1) = -1 ≠ 4, a contradiction. Hence there is no such t.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q43",
+    "word": "MAE101 SP26 C1FE Q43: Find a basis for the subspace of R^3...",
+    "question": "Find a basis for the subspace of R^3 defined as U = { [a, b, a - b]^T | a, b are real numbers }.\n(i) {[1, 0, 1]^T, [0, 1, -1]^T}\n(ii) {[1, 1, 0]^T}\n(iii) {[1, 0, 1]^T, [-1, 0, -1]^T, [0, 1, -1]^T}",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. (i)",
+    "explanation": "Answer: A. Every vector in U can be written as [a, b, a - b]^T = a[1, 0, 1]^T + b[0, 1, -1]^T. The two vectors [1, 0, 1]^T and [0, 1, -1]^T span U and are linearly independent (neither is a scalar multiple of the other), so (i) is a basis for U.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q44",
+    "word": "MAE101 SP26 C1FE Q44: Let {u, v, w} be independent. Which of...",
+    "question": "Let {u, v, w} be independent. Which of the following sets are independent?\n(i) {u, v - w, w}\n(ii) {u, u - v, u + v, w}",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (i) and (ii)",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. (i)",
+    "explanation": "Answer: A. For (i), if c₁u + c₂(v - w) + c₃w = 0, then c₁u + c₂v + (c₃ - c₂)w = 0. Since {u, v, w} is linearly independent, c₁ = 0, c₂ = 0, and c₃ - c₂ = 0 ⇒ c₃ = 0, so (i) is independent. For (ii), 2u - (u - v) - (u + v) + 0w = 0 is a nontrivial linear relation, so (ii) is linearly dependent.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q45",
+    "word": "MAE101 SP26 C1FE Q45: Assume that the set {[1, 2, 3], [-2, 1...",
+    "question": "Assume that the set {[1, 2, 3], [-2, 1, 0], [1, a, b]} is orthogonal. Find a - b.",
+    "options": [
+      "A. 11/3",
+      "B. 7/3",
+      "C. 1/3",
+      "D. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. 11/3",
+    "explanation": "Answer: A. Pairwise dot products must be zero. From [-2, 1, 0] · [1, a, b] = -2 + a = 0, we get a = 2. From [1, 2, 3] · [1, a, b] = 1 + 2a + 3b = 0, substituting a = 2 gives 1 + 4 + 3b = 0 ⇒ b = -5/3. Therefore a - b = 2 - (-5/3) = 11/3.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q46",
+    "word": "MAE101 SP26 C1FE Q46: Let A be a 3x5 matrix. If dim(Null(A))...",
+    "question": "Let A be a 3x5 matrix. If dim(Null(A))=4, what is the rank of A?",
+    "options": [
+      "A. 4",
+      "B. 3",
+      "C. 2",
+      "D. 1",
+      "E. 5"
+    ],
+    "answer": "D",
+    "correctWord": "D. 1",
+    "explanation": "Answer: D. By the Rank-Nullity Theorem for a 3×5 matrix A (which has n = 5 columns), rank(A) + dim(Null(A)) = 5. Thus rank(A) = 5 - 4 = 1.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q47",
+    "word": "MAE101 SP26 C1FE Q47: Find the equation of the line that...",
+    "question": "Find the equation of the line that passes through the points (7,4) and (-9,4).",
+    "options": [
+      "A. y = 4",
+      "B. y = 4x+7",
+      "C. 9y = 7x+4",
+      "D. y = -4",
+      "E. None of the other choices is correct"
+    ],
+    "answer": "A",
+    "correctWord": "A. y = 4",
+    "explanation": "Answer: A. Both points have the same y-coordinate 4, so the slope is (4 - 4)/(-9 - 7) = 0. The horizontal line passing through (7, 4) and (-9, 4) has equation y = 4.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q48",
+    "word": "MAE101 SP26 C1FE Q48: Find the domain of f(x) = ln(3x + 6)...",
+    "question": "Find the domain of the function f(x) = ln(3x + 6)\n(i) [-2, ∞)\n(ii) [-6, ∞)\n(iii) (-2, ∞)\n(iv) (6, ∞)\n(v) (-∞, ∞)",
+    "options": [
+      "A. (i)",
+      "B. (ii)",
+      "C. (iii)",
+      "D. (iv)",
+      "E. (v)",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. (iii)",
+    "explanation": "Answer: C. The argument of the natural logarithm must be strictly positive: 3x + 6 > 0 ⇒ 3x > -6 ⇒ x > -2. In interval notation, the domain is (-2, ∞), which is (iii).",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q49",
+    "word": "MAE101 SP26 C1FE Q49: Evaluate lim_{x -> π} [5 cos(2x) + 16...",
+    "question": "Evaluate the limit, if it exists: lim_{x → π} [5 cos(2x) + 16 tan(x)]",
+    "options": [
+      "A. -3",
+      "B. -5",
+      "C. 5",
+      "D. 3",
+      "E. 0",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "C",
+    "correctWord": "C. 5",
+    "explanation": "Answer: C. Both cos(2x) and tan(x) are continuous at x = π (since cos(π) = -1 ≠ 0). By direct substitution, lim_{x → π} [5 cos(2x) + 16 tan(x)] = 5 cos(2π) + 16 tan(π) = 5(1) + 16(0) = 5.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "mae101_sp26_c1fe_q50",
+    "word": "MAE101 SP26 C1FE Q50: Determine where f is discontinuous...",
+    "question": "Determine where f is discontinuous.\nf(x) = { √(-x) if x < 0; 3 - x if 0 ≤ x < 3; (3 - x)^2 if x > 3 }",
+    "options": [
+      "A. 0 and -3",
+      "B. 0 only",
+      "C. -3 only",
+      "D. 0 and 3",
+      "E. 3 only",
+      "F. None of the other choices is correct"
+    ],
+    "answer": "D",
+    "correctWord": "D. 0 and 3",
+    "explanation": "Answer: D. Each piece is continuous on its open interval ((-∞, 0), (0, 3), and (3, ∞)), so we only check the split points x = 0 and x = 3. At x = 0, lim_{x → 0^-} f(x) = √0 = 0 while lim_{x → 0^+} f(x) = 3 - 0 = 3, so f has a jump discontinuity at x = 0. At x = 3, neither branch includes x = 3 (0 ≤ x < 3 and x > 3), so f(3) is undefined, creating a removable discontinuity at x = 3. Hence f is discontinuous at 0 and 3.",
+    "subject": "MAE101",
+    "topic": "SP26 - C1FE"
+  }
+]

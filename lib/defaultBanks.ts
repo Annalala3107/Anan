@@ -1,4 +1,4 @@
-import { Cpu, GraduationCap, Code2, Layers } from 'lucide-react';
+import { Cpu, GraduationCap, Code2, Layers, Sigma } from 'lucide-react';
 import { QuizSet, CustomQuiz, Word } from './types';
 
 export interface SubjectSection {
@@ -526,6 +526,59 @@ export const QUESTION_BANKS: SubjectSection[] = [
         tags: ['Đề 3', '50 Câu'],
         subject: 'PFP191',
         topic: 'Đề 3'
+      }
+    ]
+  },
+  {
+    id: 'mae101',
+    title: 'MAE101',
+    subjectCode: 'MAE101',
+    icon: Sigma,
+    color: 'from-rose-600 to-pink-600',
+    quizzes: [
+      {
+        id: 'mae101_sp26_c2fe',
+        name: 'MAE101 - SP26 - C2FE',
+        description: 'Trọn bộ 50 câu hỏi đề thi MAE101 - SP26 - C2FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/mae101_sp26_c2fe.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SP26', 'C2FE', '50 Câu'],
+        subject: 'MAE101',
+        topic: 'SP26 - C2FE'
+      },
+      {
+        id: 'mae101_su26_b5_re',
+        name: 'MAE101 - SU26 - B5 - RE',
+        description: 'Trọn bộ 50 câu hỏi đề thi MAE101 - SU26 - B5 - RE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/mae101_su26_b5_re.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SU26', 'B5', 'RE', '50 Câu'],
+        subject: 'MAE101',
+        topic: 'SU26 - B5 - RE'
+      },
+      {
+        id: 'mae101_su26_re',
+        name: 'MAE101 - SU26 - RE',
+        description: 'Trọn bộ 50 câu hỏi đề thi MAE101 - SU26 - RE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/mae101_su26_re.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SU26', 'RE', '50 Câu'],
+        subject: 'MAE101',
+        topic: 'SU26 - RE'
+      },
+      {
+        id: 'mae101_sp26_c1fe',
+        name: 'MAE101_SP26_C1FE',
+        description: 'Trọn bộ 50 câu hỏi đề thi MAE101_SP26_C1FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/mae101_sp26_c1fe.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SP26', 'C1FE', '50 Câu'],
+        subject: 'MAE101',
+        topic: 'SP26 - C1FE'
       }
     ]
   }
