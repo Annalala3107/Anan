@@ -1175,16 +1175,19 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
               </span>
             )}
           </div>
-          <p className="text-sm sm:text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
-            {formatExplanationForCurrentOptions(
-              currentQ.explanation,
-              currentQ.options,
-              currentQ.correctWord,
-              currentQ.answerKey,
-              shuffleOptions,
-              currentQ.correctOptions
-            )}
-          </p>
+          <div className="text-sm sm:text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
+            <CodeQuestionRenderer
+              content={formatExplanationForCurrentOptions(
+                currentQ.explanation,
+                currentQ.options,
+                currentQ.correctWord,
+                currentQ.answerKey,
+                shuffleOptions,
+                currentQ.correctOptions
+              )}
+              className="text-sm sm:text-base"
+            />
+          </div>
         </div>
       )}
 

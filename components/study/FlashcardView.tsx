@@ -313,11 +313,14 @@ export default function FlashcardView({
               {displayedExplanation && (
                 <div className="p-4 rounded-2xl bg-indigo-50/90 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/30 text-xs sm:text-sm text-slate-800 dark:text-indigo-100 leading-relaxed flex items-start gap-3">
                   <BookOpen className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-indigo-700 dark:text-indigo-300">
-                      Giải thích bản chất:{' '}
+                  <div className="flex-1 min-w-0">
+                    <span className="font-bold text-indigo-700 dark:text-indigo-300 block mb-1">
+                      Giải thích bản chất:
                     </span>
-                    {displayedExplanation}
+                    <CodeQuestionRenderer
+                      content={displayedExplanation}
+                      className="text-xs sm:text-sm text-slate-800 dark:text-indigo-100"
+                    />
                   </div>
                 </div>
               )}

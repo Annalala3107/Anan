@@ -30,6 +30,7 @@ const STORAGE_KEYS = {
   ACTIVE_CUSTOM_QUIZ_ID: 'ananquiz_active_custom_quiz_id',
   USER_PROFILE: 'ananquiz_user_profile',
   EXAM_HISTORY: 'ananquiz_exam_history',
+  BOOKMARKED_QUESTIONS: 'ananquiz_bookmarked_questions',
 };
 
 export class StorageEngine {
@@ -518,6 +519,48 @@ export class StorageEngine {
         success: false,
         message: 'Lỗi khi đọc file JSON: ' + (err?.message || 'File không hợp lệ.'),
       };
+    }
+  }
+
+  // ---- BOOKMARKS / FLAGGED QUESTIONS ----
+  public static getBookmarks(): string[] {
+    if (typeof window === 'undefined') return [];
+    try {
+      const data = localStorage.getItem(STORAGE_KEYS.BOOKMARKED_QUESTIONS);
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      console.error('Failed to read bookmarks:', e);
+      return [];
+    }
+  }
+
+  public static isBookmarked(questionId: string): boolean {
+    if (!questionId) return false;
+    const list = this.getBookmarks();
+    return list.includes(questionId);
+  }
+
+  public static toggleBookmark(questionId: string): boolean {
+    if (typeof window === 'undefined' || !questionId) return false;
+    try {
+      const list = this.getBookmarks();
+      const idx = list.indexOf(questionId);
+      let updated: string[];
+      let isAdded = false;
+      if (idx !== -1) {
+        updated = list.filter((id) => id !== questionId);
+      } else {
+        updated = [...list, questionId];
+        isAdded = true;
+      }
+      localStorage.setItem(STORAGE_KEYS.BOOKMARKED_QUESTIONS, JSON.stringify(updated));
+      window.dispatchEvent(
+        new CustomEvent('ananquiz:bookmarks-updated', { detail: { id: questionId, isAdded } })
+      );
+      return isAdded;
+    } catch (e) {
+      console.error('Failed to toggle bookmark:', e);
+      return false;
     }
   }
 }

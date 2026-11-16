@@ -480,17 +480,22 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
         <div className="space-y-4">
           {currentWord.explanation && (
             <div className="p-4 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-900/60 text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-              <span className="font-bold text-amber-600 dark:text-amber-400">Giải thích: </span>
-              {isMCQ
-                ? formatExplanationForCurrentOptions(
-                    currentWord.explanation,
-                    options,
-                    currentWord.correctWord || currentWord.word,
-                    currentWord.answer,
-                    shuffleOptions,
-                    answerMeta.correctChoices
-                  )
-                : currentWord.explanation}
+              <span className="font-bold text-amber-600 dark:text-amber-400 block mb-1">💡 Giải thích chi tiết:</span>
+              <CodeQuestionRenderer
+                content={
+                  isMCQ
+                    ? formatExplanationForCurrentOptions(
+                        currentWord.explanation,
+                        options,
+                        currentWord.correctWord || currentWord.word,
+                        currentWord.answer,
+                        shuffleOptions,
+                        answerMeta.correctChoices
+                      )
+                    : currentWord.explanation
+                }
+                className="text-xs sm:text-sm"
+              />
             </div>
           )}
           <button

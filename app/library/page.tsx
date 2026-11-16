@@ -8,7 +8,7 @@ import { QUESTION_BANKS, getQuizDisplayName } from '@/lib/defaultBanks';
 import { getQuestionKey, isAnswerMatch } from '@/lib/utils';
 import WordModal from '@/components/WordModal';
 import OptionContent from '@/components/OptionContent';
-import { Search, BookOpen, ChevronRight, Loader2, Layers } from 'lucide-react';
+import { Search, BookOpen, ChevronRight, Loader2, Layers, Bookmark } from 'lucide-react';
 
 type SearchScope = 'current' | 'all' | string;
 
@@ -20,9 +20,12 @@ export default function LibraryPage() {
   const [isLoadingScope, setIsLoadingScope] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterStatus, setFilterStatus] = useState<'all' | 'mastered' | 'learning' | 'new'>('all');
+  const [filterStatus, setFilterStatus] = useState<
+    'all' | 'mastered' | 'learning' | 'new' | 'bookmarked'
+  >('all');
   const [filterTopic, setFilterTopic] = useState<string>('all');
   const [progressMap, setProgressMap] = useState<Record<string, WordProgress>>({});
+  const [bookmarks, setBookmarks] = useState<string[]>([]);
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
   const [visibleCount, setVisibleCount] = useState(36);
   const deferredSearchTerm = useDeferredValue(searchTerm);
@@ -34,10 +37,16 @@ export default function LibraryPage() {
     hydrateSelection();
     loadQuizWords();
     setProgressMap(StorageEngine.getWordProgress());
+    setBookmarks(StorageEngine.getBookmarks());
 
     const onStats = () => setProgressMap(StorageEngine.getWordProgress());
+    const onBookmarks = () => setBookmarks(StorageEngine.getBookmarks());
     window.addEventListener('ananquiz:stats-updated', onStats);
-    return () => window.removeEventListener('ananquiz:stats-updated', onStats);
+    window.addEventListener('ananquiz:bookmarks-updated', onBookmarks);
+    return () => {
+      window.removeEventListener('ananquiz:stats-updated', onStats);
+      window.removeEventListener('ananquiz:bookmarks-updated', onBookmarks);
+    };
   }, [hydrateSelection, loadQuizWords]);
 
   useEffect(() => {
@@ -161,15 +170,22 @@ export default function LibraryPage() {
       if (filterTopic !== 'all' && w.topic !== filterTopic) return false;
 
       if (filterStatus !== 'all') {
-        const prog = StorageEngine.getItemProgress(w, progressMap);
-        if (filterStatus === 'mastered') return prog?.status === 'mastered';
-        if (filterStatus === 'learning') return prog?.status === 'learning';
-        if (filterStatus === 'new') return !prog || prog.status === 'new';
+        if (filterStatus === 'bookmarked') {
+          const qId = String(w.id || getQuestionKey(w));
+          if (!bookmarks.includes(qId) && !(w.id && bookmarks.includes(w.id))) {
+            return false;
+          }
+        } else {
+          const prog = StorageEngine.getItemProgress(w, progressMap);
+          if (filterStatus === 'mastered') return prog?.status === 'mastered';
+          if (filterStatus === 'learning') return prog?.status === 'learning';
+          if (filterStatus === 'new') return !prog || prog.status === 'new';
+        }
       }
 
       return true;
     });
-  }, [activeWordPool, deferredSearchTerm, filterTopic, filterStatus, progressMap]);
+  }, [activeWordPool, deferredSearchTerm, filterTopic, filterStatus, progressMap, bookmarks]);
 
   const visibleWords = useMemo(
     () => filteredWords.slice(0, visibleCount),
@@ -279,6 +295,7 @@ export default function LibraryPage() {
               { id: 'mastered', label: 'Đã thuộc' },
               { id: 'learning', label: 'Đang ôn' },
               { id: 'new', label: 'Chưa làm' },
+              { id: 'bookmarked', label: `Đã ghim 🔖 (${bookmarks.length})` },
             ].map((f) => (
               <button
                 key={f.id}
@@ -331,6 +348,8 @@ export default function LibraryPage() {
               const strengthPercent = prog?.strength ? Math.round(prog.strength * 100) : 0;
               const isMastered = prog?.status === 'mastered';
               const isMCQ = Boolean(w.question && w.options);
+              const qKey = String(w.id || getQuestionKey(w));
+              const isFlagged = bookmarks.includes(qKey) || (w.id ? bookmarks.includes(w.id) : false);
 
               return (
                 <div
@@ -341,21 +360,38 @@ export default function LibraryPage() {
                   <div>
                     {/* Top tags */}
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 truncate max-w-[65%]">
                         {w.subject ? `${w.subject} • ` : ''}
                         {w.topic || 'Câu ' + (idx + 1)}
                       </span>
-                      <span
-                        className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
-                          isMastered
-                            ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
-                            : prog?.seenCount
-                            ? 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20'
-                            : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
-                        }`}
-                      >
-                        {strengthPercent}% Thuộc
-                      </span>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            StorageEngine.toggleBookmark(qKey);
+                          }}
+                          className={`p-1 rounded-lg border transition-colors cursor-pointer ${
+                            isFlagged
+                              ? 'text-amber-500 bg-amber-500/10 border-amber-500/30'
+                              : 'text-slate-400 hover:text-amber-500 border-transparent hover:border-slate-300 dark:hover:border-slate-700'
+                          }`}
+                          title={isFlagged ? 'Bỏ ghim' : 'Ghim câu hỏi'}
+                        >
+                          <Bookmark className={`w-3.5 h-3.5 ${isFlagged ? 'fill-current' : ''}`} />
+                        </button>
+                        <span
+                          className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
+                            isMastered
+                              ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
+                              : prog?.seenCount
+                              ? 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20'
+                              : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                          }`}
+                        >
+                          {strengthPercent}% Thuộc
+                        </span>
+                      </div>
                     </div>
 
                     {/* Question text */}

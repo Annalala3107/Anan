@@ -1,9 +1,9 @@
 'use client';
 
 import { Word, WordProgress } from '@/lib/types';
-import { X, BookOpen, CheckCircle, HelpCircle } from 'lucide-react';
+import { X, BookOpen, CheckCircle, HelpCircle, Bookmark } from 'lucide-react';
 import { StorageEngine } from '@/lib/storage';
-import { cleanOptionText, isAnswerMatch } from '@/lib/utils';
+import { cleanOptionText, isAnswerMatch, getQuestionKey } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
 import { useEffect, useId, useState } from 'react';
@@ -15,12 +15,15 @@ interface WordModalProps {
 
 export default function WordModal({ word, onClose }: WordModalProps) {
   const [progress, setProgress] = useState<WordProgress | null>(null);
+  const [isBookmarked, setIsBookmarked] = useState(false);
   const titleId = useId();
 
   useEffect(() => {
     if (word) {
       const all = StorageEngine.getWordProgress();
       setProgress(StorageEngine.getItemProgress(word, all));
+      const qId = String(word.id || getQuestionKey(word));
+      setIsBookmarked(StorageEngine.isBookmarked(qId));
     }
   }, [word]);
 
@@ -78,10 +81,29 @@ export default function WordModal({ word, onClose }: WordModalProps) {
               </span>
             )}
           </div>
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-            <CheckCircle className="w-3 h-3 text-emerald-500" />
-            {strengthPercent}% Độ nhớ
-          </span>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <button
+              type="button"
+              onClick={() => {
+                if (!word) return;
+                const qId = String(word.id || getQuestionKey(word));
+                const nextState = StorageEngine.toggleBookmark(qId);
+                setIsBookmarked(nextState);
+              }}
+              className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold border transition-colors cursor-pointer ${
+                isBookmarked
+                  ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-amber-500'
+              }`}
+            >
+              <Bookmark className={`w-3 h-3 ${isBookmarked ? 'fill-current' : ''}`} />
+              <span>{isBookmarked ? 'Đã ghim' : 'Ghim câu'}</span>
+            </button>
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+              <CheckCircle className="w-3 h-3 text-emerald-500" />
+              {strengthPercent}% Độ nhớ
+            </span>
+          </div>
         </div>
 
         {isMCQ ? (
@@ -147,9 +169,10 @@ export default function WordModal({ word, onClose }: WordModalProps) {
                 <p className="text-xs uppercase font-bold text-indigo-600 dark:text-indigo-400 mb-1">
                   Giải thích đáp án:
                 </p>
-                <p className="text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-                  {word.explanation}
-                </p>
+                <CodeQuestionRenderer
+                  content={word.explanation}
+                  className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium"
+                />
               </div>
             )}
           </div>
