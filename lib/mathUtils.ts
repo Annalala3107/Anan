@@ -49,28 +49,67 @@ export function convertDataTableToMarkdown(text: string): string {
   );
 }
 
+const C_KEYWORDS =
+  /\b(?:int|float|double|char|void|long|short|unsigned|signed|struct|union|enum|typedef|const|static|extern|return|if|else|switch|case|default|break|continue|for|while|do|goto|sizeof|printf|scanf|malloc|free|fopen|include|def|class|print|cout|cin|Algorithm|Purpose)\b/i;
+const C_OPERATORS =
+  /(?:!=|==|\+=|-=|\*=|\/=|%=|\+\+|--|&&|\|\||<<|>>|->|#include|<stdio|<stdlib)/;
+
+function isLinearEquationLine(line: string): boolean {
+  const trimmed = line.trim();
+  if (!trimmed) return false;
+  if (C_OPERATORS.test(trimmed)) return false;
+  if (C_KEYWORDS.test(trimmed)) return false;
+  if (
+    trimmed.includes('"') ||
+    trimmed.includes("'") ||
+    trimmed.includes(';') ||
+    trimmed.includes('{') ||
+    trimmed.includes('}')
+  )
+    return false;
+  const parts = trimmed.split('=');
+  if (parts.length !== 2) return false;
+  const lhs = parts[0].trim();
+  const rhs = parts[1].trim();
+  if (!lhs || !rhs) return false;
+  if (!/^[-+0-9a-zA-Z\s*/^()_.]+$/.test(lhs)) return false;
+  if (!/^[-+0-9a-zA-Z\s*/^()_.]+$/.test(rhs)) return false;
+  return true;
+}
+
 /**
  * Converts systems of linear equations wrapped in curly braces into standard LaTeX cases environments.
  */
 export function convertLinearSystem(text: string): string {
   if (!text) return '';
   let s = text;
-  // Multiline system: {\n ... \n}
+  // 1. Multiline system: {\n ... \n}
   s = s.replace(/\{\s*\n([\s\S]*?)\n\s*\}/g, (match, body: string) => {
     const lines = body
       .split('\n')
       .map((l: string) => l.trim())
       .filter(Boolean);
+
+    if (lines.length < 2) return match;
+    const allEqs = lines.every(isLinearEquationLine);
+    if (!allEqs) return match;
+
     return `\\begin{cases} ${lines.join(' \\\\ ')} \\end{cases}`;
   });
-  // Semicolon single-line system: { eq1; eq2; eq3 }
+
+  // 2. Semicolon single-line system: { eq1; eq2; eq3 }
   s = s.replace(
-    /\{\s*([^{}]+=[^{}]+;[^{}]+)\s*\}/g,
+    /\{\s*([^{}\n]+=[^{}\n]+;[^{}\n]+)\s*\}/g,
     (match, body: string) => {
       const lines = body
         .split(';')
         .map((l: string) => l.trim())
         .filter(Boolean);
+
+      if (lines.length < 2) return match;
+      const allEqs = lines.every(isLinearEquationLine);
+      if (!allEqs) return match;
+
       return `\\begin{cases} ${lines.join(' \\\\ ')} \\end{cases}`;
     }
   );

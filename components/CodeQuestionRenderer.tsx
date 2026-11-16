@@ -122,9 +122,9 @@ function highlightPythonLine(line: string): string {
 }
 
 /**
- * Checks if a string contains programming code snippets or formatted blocks
+ * Checks if a string contains actual programming source code (C, Python, etc.)
  */
-export function hasCodeBlock(text?: string): boolean {
+export function isProgrammingCode(text?: string): boolean {
   if (!text) return false;
   if (text.includes('```')) return true;
   if (
@@ -146,6 +146,16 @@ export function hasCodeBlock(text?: string): boolean {
   ) {
     return true;
   }
+  return false;
+}
+
+/**
+ * Checks if a string contains programming code snippets or formatted blocks
+ */
+export function hasCodeBlock(text?: string): boolean {
+  if (!text) return false;
+  if (isProgrammingCode(text)) return true;
+
   // Check for pipe tables (at least 2 lines containing |)
   const lines = text.split('\n');
   const pipeCount = lines.filter((l) => l.includes('|')).length;
@@ -364,10 +374,14 @@ export default function CodeQuestionRenderer({
 
   if (!content && !image) return null;
 
-  // Pre-process multiline ASCII matrices and transpose vectors
-  const preparedContent = convertAsciiMatrix(content);
+  const isCode = isProgrammingCode(content);
+
+  // Pre-process multiline ASCII matrices and transpose vectors only for non-code content
+  const preparedContent = isCode ? content : convertAsciiMatrix(content);
   // Extract any sub-choices (i), (ii), etc.
-  const { stem, romanChoices } = extractRomanChoices(preparedContent);
+  const { stem, romanChoices } = isCode
+    ? { stem: content, romanChoices: null }
+    : extractRomanChoices(preparedContent);
   const blocks = parseBlocks(stem);
 
   const handleCopy = async (text: string, idx: number, e: React.MouseEvent) => {
