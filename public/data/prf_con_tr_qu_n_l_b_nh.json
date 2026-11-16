@@ -4,13 +4,13 @@
     "word": "Câu 5: Choose the correct statement for declaring a float pointer:",
     "question": "Choose the correct statement for declaring a float pointer:",
     "options": [
-      "A. float* ptr;",
-      "B. float  ptr;",
-      "C. *float ptr;",
-      "D. float  ptr*;"
+      "A. float* ptr",
+      "B. float ptr*",
+      "C. *float ptr",
+      "D. float ptr&"
     ],
     "answer": "A",
-    "correctWord": "A. float* ptr;",
+    "correctWord": "A. float* ptr",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
@@ -39,7 +39,7 @@
       "A. int *p;",
       "B. int p*;",
       "C. int +p;",
-      "D. int $p;"
+      "D. int &p;"
     ],
     "answer": "A",
     "correctWord": "A. int *p;",
@@ -65,41 +65,71 @@
   },
   {
     "id": "prf_37",
-    "word": "Câu 37: int *ptr = malloc( sizeof( int ) );\nTo reallocate ptr to be ...",
-    "question": "int *ptr = malloc( sizeof( int ) );\nTo reallocate ptr to be an array of 5 elements, which of the following statements generates an error?",
+    "word": "Câu 37: The pow() function in the math.h library is used to calculat...",
+    "question": "The pow() function in the math.h library is used to calculate the value of a number raised to a specified power. What is the return value type of the pow() function?",
     "options": [
-      "A. ptr = realloc( ptr, 5 * sizeof(int) );",
-      "B. realloc( ptr, 5 * sizeof(int) );",
-      "C. ptr += malloc( 5 * sizeof( int ) );",
-      "D. realloc( ptr, 20);",
-      "E. ptr = realloc( ptr, 20);"
+      "A. double",
+      "B. int",
+      "C. long double",
+      "D. float"
     ],
-    "answer": "C",
-    "correctWord": "C. ptr += malloc( 5 * sizeof( int ) );",
+    "answer": "A",
+    "correctWord": "A. double",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_67",
-    "word": "Câu 67: What is the result displayed on the screen of the following ...",
-    "question": "What is the result displayed on the screen of the following program?\n#include <stdio.h>\nint main()\n{\n    int x, *p;\n    x = 3;\n    x = 6;\n    p = &x;\n    *p = 9;\n    printf(\"%d\", x);\n    printf(\"%d\", *p);\n}",
+    "word": "Câu 67: What is the output of this code?",
+    "question": "What is the output of this code?\n```c\nint i = 5;\nfor (; i > 0; i--) {\nprintf(\"%d\", i);\n}\n```",
     "options": [
-      "A. None of these",
-      "B. 99",
-      "C. 39",
-      "D. 69"
+      "A. 54321",
+      "B. 543210",
+      "C. 5431",
+      "D. 542"
     ],
-    "answer": "B",
-    "correctWord": "B. 99",
+    "answer": "A",
+    "correctWord": "A. 54321",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_68",
-    "word": "Câu 68: What is the output of the following code snippet?\nvoid main(...",
-    "question": "What is the output of the following code snippet?\nvoid main(){\n    int x = 4;\n    int *p = &x;\n    int *k = p++;\n    int r = p - k;\n    printf(\"%d\", r);\n}",
+    "word": "Câu 68: What is the output of the following code?",
+    "question": "What is the output of the following code?\n```c\nchar s[] = \"fpt\";\nint i = strlen(s);\nwhile (i)\nprintf(\"%s\", s + --i);\n```",
+    "options": [
+      "A. tptfpt",
+      "B. tpt",
+      "C. tptp",
+      "D. Compile error"
+    ],
+    "answer": "A",
+    "correctWord": "A. tptfpt",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_84",
+    "word": "Câu 84: What is the result displayed on the screen of the following ...",
+    "question": "What is the result displayed on the screen of the following program?\n```c\n#include <stdio.h>\nint isTriangle(float a, float b, float c) {\nif ((a > 0) && (b > 0) && (c > 0) && (a < b + c) && (b < c + a) && (c < a + b))\nreturn 1;\nelse\nreturn 0;\n}\nint main() {\nfloat a = 1, b = 1, c = 1.25;\nif (isTriangle(a, b, c))\nprintf(\"%.2f, %.2f, %.2f: a triangle\\n\", a, b, c);\nelse\nprintf(\"%.2f, %.2f, %.2f: not a triangle\\n\", a, b, c);\n}\n```",
+    "options": [
+      "A. a, b, c: a triangle",
+      "B. 1.00, 1.00, 1.25: a triangle",
+      "C. 1.00, 1.00, 1.25: not a triangle"
+    ],
+    "answer": "B",
+    "correctWord": "B. 1.00, 1.00, 1.25: a triangle",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_85",
+    "word": "Câu 85: What is the output of the following code snippet?",
+    "question": "What is the output of the following code snippet?\n```c\nvoid main() {\nint x = 4;\nint *p = &x;\nint *k = p++;\nint r = p - k;\nprintf(\"%d\", r);\n}\n```",
     "options": [
       "A. 1",
       "B. 4",
@@ -113,57 +143,43 @@
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "prf_84",
-    "word": "Câu 84: Assume we have the following code:\nint i=4;\nint *p = &i;\nWha...",
-    "question": "Assume we have the following code:\nint i=4;\nint *p = &i;\nWhat is the result of the following expression: ++*p?",
-    "options": [
-      "A. 5",
-      "B. 4",
-      "C. 9",
-      "D. 12"
-    ],
-    "answer": "A",
-    "correctWord": "A. 5",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_85",
-    "word": "Câu 85: Assume we have a snippet code in C:\nint main() {\n    int *p ...",
-    "question": "Assume we have a snippet code in C:\nint main() {\n    int *p = NULL;\n    printf(\"%d\",p);\n    getchar();\n    return 0;\n}\nThe output will be:",
-    "options": [
-      "A. 0",
-      "B. 1",
-      "C. 10",
-      "D. 100"
-    ],
-    "answer": "A",
-    "correctWord": "A. 0",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
     "id": "prf_87",
-    "word": "Câu 87: What will be the output of the following program?\nvoid func(...",
-    "question": "What will be the output of the following program?\nvoid func(int *p){\n    int j =11;\n    *p = j;\n}\nint main() {\n    int i = 1;\n    int *p = &i;\n    func(p);\n    printf(\"%d,%d\", i, *p);\n    getchar();\n    return 0;\n}",
+    "word": "Câu 87: What is the result of the `printf(\"%d\", 0x11 | 010);` comman...",
+    "question": "What is the result of the `printf(\"%d\", 0x11 | 010);` command?",
     "options": [
-      "A. 11,11",
-      "B. 1,1",
-      "C. 0,0",
-      "D. 0,1"
+      "A. 15",
+      "B. 22",
+      "C. 18",
+      "D. 25",
+      "E. 28"
     ],
-    "answer": "A",
-    "correctWord": "A. 11,11",
-    "explanation": "Đáp án: A.",
+    "answer": "D",
+    "correctWord": "D. 25",
+    "explanation": "Đáp án: D. 0x11 = 17, 010 = 8 -> 17 | 8 = 25",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_88",
-    "word": "Câu 88: What does the following program print?\n#include <stdio.h>\nin...",
-    "question": "What does the following program print?\n#include <stdio.h>\nint main() {\n    int a = 4, *b = &a;\n    a--;\n    *b = *b - 1;\n    printf(\"%d %d\", a, *b);\n    return 0;\n}",
+    "word": "Câu 88: In the sample code `int a = 0x10 | 011;` the variable a will...",
+    "question": "In the sample code `int a = 0x10 | 011;` the variable a will contain the value (in decimal number system):",
+    "options": [
+      "A. 3",
+      "B. 13",
+      "C. 19",
+      "D. 25",
+      "E. 27"
+    ],
+    "answer": "D",
+    "correctWord": "D. 25",
+    "explanation": "Đáp án: D. 0x10 = 16, 011 = 9 -> 16 | 9 = 25",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_93",
+    "word": "Câu 93: What does the following program print?",
+    "question": "What does the following program print?\n```c\n#include <stdio.h>\nint main() {\nint a = 4, *b = &a;\na--;\n*b = *b - 1;\nprintf(\"%d %d\", a, *b);\nreturn 0;\n}\n```",
     "options": [
       "A. 2 2",
       "B. 2 1",
@@ -177,9 +193,41 @@
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "prf_93",
-    "word": "Câu 93: What will be the output of the following program?\nint main()...",
-    "question": "What will be the output of the following program?\nint main()\n{\n    int i = 101;\n    int *p = &i;\n    printf(\"%d\\n\", *p++);\n    return 0;\n}",
+    "id": "prf_94",
+    "word": "Câu 94: What is the output of the following code snippet?",
+    "question": "What is the output of the following code snippet?\n```c\n#include <stdio.h>\nint num(int a, int b) {\nint sum;\nsum = a + b;\nreturn sum;\n}\nint main() {\nint a, b, result;\na = 10;\nb = 12;\nresult = num(a, b);\nprintf(\"%d\", result);\nreturn 0;\n}\n```",
+    "options": [
+      "A. 22",
+      "B. 10",
+      "C. 12",
+      "D. 21"
+    ],
+    "answer": "A",
+    "correctWord": "A. 22",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_95",
+    "word": "Câu 95: How many times will the loop execute?",
+    "question": "How many times will the loop execute?\n```c\nint i = 0;\nwhile (i < 4) {\nprintf(\"%d\", i);\ni += 2;\n}\n```",
+    "options": [
+      "A. 2",
+      "B. 1",
+      "C. 3",
+      "D. 4"
+    ],
+    "answer": "A",
+    "correctWord": "A. 2",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_98",
+    "word": "Câu 98: What will be the output of the following program?",
+    "question": "What will be the output of the following program?\n```c\nint main() {\nint i = 101;\nint *p = &i;\nprintf(\"%d\\n\", *p++);\nreturn 0;\n}\n```",
     "options": [
       "A. 101",
       "B. 102",
@@ -188,14 +236,14 @@
     ],
     "answer": "A",
     "correctWord": "A. 101",
-    "explanation": "Đáp án: A.",
+    "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "prf_94",
-    "word": "Câu 94: What will be printed by the code below?\n#include <stdio.h>\n#...",
-    "question": "What will be printed by the code below?\n#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int *p = (int*) malloc(sizeof(int));\n    *p = 50;\n    printf(\"%d\", *p);\n    free(p);\n    return 0;\n}",
+    "id": "prf_99",
+    "word": "Câu 99: What will be printed by the code below?",
+    "question": "What will be printed by the code below?\n```c\n#include <stdio.h>\n#include <stdlib.h>\nint main() {\nint *p = (int*) malloc(sizeof(int));\n*p = 50;\nprintf(\"%d\", *p);\nfree(p);\nreturn 0;\n}\n```",
     "options": [
       "A. Address of p",
       "B. Garbage value",
@@ -204,126 +252,110 @@
     ],
     "answer": "C",
     "correctWord": "C. 50",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_95",
-    "word": "Câu 95: Assume we have the following codes:\ndouble d=9;\ndouble *p = ...",
-    "question": "Assume we have the following codes:\ndouble d=9;\ndouble *p = &d;\nSuppose that a double occupies the memory block of 8 bytes, and the address of d is 1200. What is the result of the following expression: p + 8?",
-    "options": [
-      "A. 1264",
-      "B. 1200",
-      "C. 1208",
-      "D. 1209"
-    ],
-    "answer": "A",
-    "correctWord": "A. 1264",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_98",
-    "word": "Câu 98: What will be the output of the C program?\nint arr[5] = { 2, ...",
-    "question": "What will be the output of the C program?\nint arr[5] = { 2, 3, 5, 4, 7 };\nint *ptr = (&arr + 1);\nprintf(\"%d %d\\n\", *(arr + 1), *(ptr - 1));",
-    "options": [
-      "A. 2 3",
-      "B. 3 2",
-      "C. 3 7",
-      "D. 2 6356728"
-    ],
-    "answer": "C",
-    "correctWord": "C. 3 7",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_99",
-    "word": "Câu 99: What will be printed when the following code is executed?\n#i...",
-    "question": "What will be printed when the following code is executed?\n#include <stdio.h>\nint main() {\n    int a[] = {1,2,3,4,5,6};\n    int* p = a;\n    p += 3;\n    printf(\"%d, %d\", *(a+3), *(p++));\n    return 0;\n}",
-    "options": [
-      "A. 4 5",
-      "B. 3 4",
-      "C. 3 3",
-      "D. 4 4"
-    ],
-    "answer": "D",
-    "correctWord": "D. 4 4",
     "explanation": "Đáp án: D (D. 4 4). (Lưu ý đề gốc: printf có dấu phẩy \"%d, %d\" nên output đúng chuẩn là \"4, 4\", nhưng đáp án D bỏ dấu phẩy thành \"4 4\").",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_108",
-    "word": "Câu 108: What will be the output of the following C code?\n#include <s...",
-    "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main()\n{\n    int *ptr, a = 10;\n    ptr = &a;\n    *ptr += 1;\n    printf(\"%d,%d\\n\", *ptr, a);\n}",
+    "word": "Câu 108: What will be the output of the following code snippet?",
+    "question": "What will be the output of the following code snippet?\n```c\n#include <stdlib.h>\n#include <stdio.h>\nint x = 5;\nvoid SomeFunction() {\nint x = 10;\n{\nint x = 15;\nprintf(\"%d \", x);\n}\nprintf(\"%d \", x);\n}\nint main() {\nSomeFunction();\nprintf(\"%d\", x);\nreturn 0;\n}\n```",
     "options": [
-      "A. 10,10",
-      "B. 10,11",
-      "C. 11,10",
-      "D. 11,11"
+      "A. 15 10 5",
+      "B. 15 5 10",
+      "C. 10 15 5",
+      "D. 10 10 5"
     ],
-    "answer": "D",
-    "correctWord": "D. 11,11",
+    "answer": "A",
+    "correctWord": "A. 15 10 5",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_109",
-    "word": "Câu 109: What will be printed when the following code is executed?\n#i...",
-    "question": "What will be printed when the following code is executed?\n#include <stdio.h>\nint main()\n{\n    int a[]={7,4,8,5,9};\n    int* b=a;\n    b++;\n    printf(\"%d %d\", *(b++), *(a+3));\n    getchar();\n    return 0;\n}",
+    "word": "Câu 109: What will be the output of the following C code?",
+    "question": "What will be the output of the following C code?\n```c\n#include <stdio.h>\nint main() {\nint a, b, c;\na = b = c = 10;\nc = a++ || ++b && ++c;\nprintf(\"%d %d %d\", c, a, b);\nreturn 0;\n}\n```",
     "options": [
-      "A. 8 8",
-      "B. 4 8",
-      "C. 8 5",
-      "D. 4 5"
+      "A. 1 11 10",
+      "B. 10 11 1",
+      "C. 10 11 10",
+      "D. 11 10 1"
     ],
-    "answer": "D",
-    "correctWord": "D. 4 5",
-    "explanation": "Đáp án: D.",
+    "answer": "A",
+    "correctWord": "A. 1 11 10",
+    "explanation": "Đáp án: A. a++ là 10 khác 0 nên toán tử || đoản mạch, không chạy vế sau",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_110",
-    "word": "Câu 110: What will be the output of the following program?\n#include <...",
-    "question": "What will be the output of the following program?\n#include <stdio.h>\nint main() {\n    int *pa = a;\n    int a = 10;\n    (*pa)++;\n    a = a + 10;\n    printf(\"%d\", ++a);\n    getchar();\n    return 0;\n}",
+    "word": "Câu 110: What is the output of the following code snippet?",
+    "question": "What is the output of the following code snippet?\n```c\n#include <stdio.h>\nint x = 9;\nvoid someFunction() {\nint x = 8;\nprintf(\"%d \", x);\n}\nint main() {\nsomeFunction();\nprintf(\"%d\", x);\nreturn 0;\n}\n```",
     "options": [
-      "A. Compiler error",
-      "B. 22",
-      "C. 21",
-      "D. 20"
+      "A. 8 9",
+      "B. 9 8",
+      "C. 8 8",
+      "D. 9 9"
     ],
     "answer": "A",
-    "correctWord": "A. Compiler error",
+    "correctWord": "A. 8 9",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_114",
-    "word": "Câu 114: What will be the output of the following program?\nint main()...",
-    "question": "What will be the output of the following program?\nint main()\n{\n    int i = 100;\n    int *p = &i;\n    *p +=2;\n    printf(\"%d, %d\", i, *p);\n    getchar();\n    return 0;\n}",
+    "word": "Câu 114: What will be printed when the following code is executed?",
+    "question": "What will be printed when the following code is executed?\n```c\n#include <stdio.h>\nint main() {\nint a[] = {7, 4, 8, 5, 9};\nint* b = a;\nb++;\nprintf(\"%d %d\", *(b++), *(a + 3));\ngetchar();\nreturn 0;\n}\n```",
     "options": [
-      "A. 102, 102",
-      "B. 100, 102",
-      "C. 100, 100",
-      "D. 102, 100"
+      "A. 4 8",
+      "B. 4 5",
+      "C. 8 5",
+      "D. 4 5"
     ],
-    "answer": "A",
-    "correctWord": "A. 102, 102",
+    "answer": "C",
+    "correctWord": "C. 8 5",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_134",
-    "word": "Câu 134: What is the output of the following code snippet?\nvoid main(...",
-    "question": "What is the output of the following code snippet?\nvoid main()\n{\n    int const *p = 5;\n    printf(\"%d\", ++(*p));\n    getchar();\n}",
+    "word": "Câu 134: What does the following program display?",
+    "question": "What does the following program display?\n```c\n#include<stdio.h>\nint main() {\nint x[] = {1, 2, 3, 4, 5};\nint y = 3;\nprintf(\"%d\", x[y]);\nreturn 0;\n}\n```",
+    "options": [
+      "A. 2",
+      "B. 3",
+      "C. 4",
+      "D. An error will be raised."
+    ],
+    "answer": "C",
+    "correctWord": "C. 4",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_136",
+    "word": "Câu 136: What will be the output of the C program?",
+    "question": "What will be the output of the C program?\n```c\nint default = 1, a = 3;\nif (a > 2)\nprintf(\"%d\", default);\n```",
+    "options": [
+      "A. 2",
+      "B. 5",
+      "C. Compilation error",
+      "D. 3"
+    ],
+    "answer": "C",
+    "correctWord": "C. Compilation error",
+    "explanation": "Đáp án: C. default là từ khóa trong C, không thể dùng đặt tên biến",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_139",
+    "word": "Câu 139: What is the output of the following code snippet?",
+    "question": "What is the output of the following code snippet?\n```c\nvoid main() {\nint const *p = 5;\nprintf(\"%d\", ++(*p));\ngetchar();\n}\n```",
     "options": [
       "A. Compile error",
       "B. 5",
@@ -337,129 +369,307 @@
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "prf_136",
-    "word": "Câu 136: What will be the output of the following C code?\n#include <s...",
-    "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main()\n{\n    int k = 5;\n    int *p = &k;\n    int **m = &p;\n    **m = 6;\n    printf(\"%d\\n\", k);\n}",
-    "options": [
-      "A. 5",
-      "B. Run time error",
-      "C. 6",
-      "D. Junk"
-    ],
-    "answer": "C",
-    "correctWord": "C. 6",
-    "explanation": "Đáp án: C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
-    "id": "prf_139",
-    "word": "Câu 139: What is the output of the following code snippet?\n#include<s...",
-    "question": "What is the output of the following code snippet?\n#include<stdio.h>\nint main()\n{\n    const int *p;\n    int a = 100;\n    p = &a;\n    printf(\"%d\", *p);\n    return 0;\n}",
-    "options": [
-      "A. 100",
-      "B. 0",
-      "C. 101",
-      "D. Compile error"
-    ],
-    "answer": "A",
-    "correctWord": "A. 100",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
-  },
-  {
     "id": "prf_143",
-    "word": "Câu 143: What will be the output of the following program?\nint main()...",
-    "question": "What will be the output of the following program?\nint main()\n{\n    int i = 1;\n    int *p = &i;\n    int **k = &p;\n    i += 2;\n    printf(\"%d%d%d\", *p, **k, *(*k));\n    getchar();\n    return 0;\n}",
+    "word": "Câu 143: What is the output of the following code if the user enters ...",
+    "question": "What is the output of the following code if the user enters the value \"20\"?\n```c\nint r;\nchar c;\nscanf(\"%d\", &r);\nc = getchar();\nprintf(\"%d\", c);\n```",
     "options": [
-      "A. 333",
-      "B. 111",
-      "C. 222",
-      "D. Compile error"
+      "A. 10",
+      "B. 20",
+      "C. 0",
+      "D. Undefined"
     ],
     "answer": "A",
-    "correctWord": "A. 333",
-    "explanation": "Đáp án: A.",
+    "correctWord": "A. 10",
+    "explanation": "Đáp án: A. getchar() đọc ký tự Enter '\\n' có mã ASCII là 10 còn sót lại trong bộ đệm",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_152",
-    "word": "Câu 152: Which of the following statements correctly allocates memory...",
-    "question": "Which of the following statements correctly allocates memory for a dynamic array of 10 integers in C?",
+    "word": "Câu 152: What is the results will be displayed on the screen after ex...",
+    "question": "What is the results will be displayed on the screen after executing the following code:\n```c\nint a[] = {1, 2, 3, 4};\nint i = 0, s = 0;\nfor (; a[i]; ++i)\ns += a[i];\nprintf(\"%d\", s);\n```",
     "options": [
-      "A. int* a = (int*)malloc(10 * sizeof(int));",
-      "B. int a[10] = malloc(10 * sizeof(int));",
-      "C. int* a = (int*)calloc(sizeof(int), 10);",
-      "D. int* a = (int*)malloc(10);"
+      "A. 10",
+      "B. Compiler error",
+      "C. Runtime error",
+      "D. Garbage value"
     ],
     "answer": "A",
-    "correctWord": "A. int* a = (int*)malloc(10 * sizeof(int));",
-    "explanation": "Đáp án: A. C cũng đúng",
+    "correctWord": "A. 10",
+    "explanation": "Đáp án: A. Theo slide bản này; mảng không có phần tử kết thúc 0 nên truy cập vượt biên có thể ra giá trị rác",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_157",
-    "word": "Câu 157: Consider the following program and answer the following ques...",
-    "question": "Consider the following program and answer the following questions.\n#include <stdio.h>\nvoid updatePosition(int *time, float* position, float v)\n{\n    if ((*position <= 5) && (*position > -5))\n        *position += v;\n    else\n        *position += -0.1*(*position);\n    *time += 1;\n}\nint main()\n{\n    float p = 4.0, v = 1;\n    int t = 0;\n    printf(\"t = %d, p = %f\\n\", t, p);\n    updatePosition(&t, &p, v);\n    updatePosition(&t, &p, v);\n    printf(\"t = %d, p = %f\\n\", t, p);\n}\nWhat is the result displayed to the screen?",
+    "word": "Câu 157: What will be the output of the following code?",
+    "question": "What will be the output of the following code?\n```c\nprintf(\"%c\", tolower('c'));\n```",
     "options": [
-      "A. t = 0, p = 4.000000\n   t = 2, p = 6.000000",
-      "B. t = 0, p = 4.000000\n   t = 2, p = 5.000000",
-      "C. t = 0, p = 4.000000\n   t = 2, p = 4.500000",
-      "D. t = 0, p = 4.000000\n   t = 2, p = 4.000000"
+      "A. c",
+      "B. C",
+      "C. 'c' or 'C' (depending on IDE)",
+      "D. Compilation error"
     ],
     "answer": "A",
-    "correctWord": "A. t = 0, p = 4.000000\n   t = 2, p = 6.000000",
+    "correctWord": "A. c",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_164",
-    "word": "Câu 164: What are the sizes of the memory blocks allocated for d and ...",
-    "question": "What are the sizes of the memory blocks allocated for d and e?\nint size = 100;\nfloat *d = malloc(size);\nfloat *e = calloc(size, sizeof(float));",
+    "word": "Câu 164: Which of the following correctly represents the updated arra...",
+    "question": "Which of the following correctly represents the updated array after the execution of the below code?\n```c\nint a[] = {1, 2, 3, 4, 5};\nfor (int i = 2; i < 4; i++) {\na[i] = a[i + 1];\n}\n```",
     "options": [
-      "A. 400 bytes and 400 bytes",
-      "B. 400 bytes and 100 bytes",
-      "C. 100 bytes and 800 bytes",
-      "D. 100 bytes and 400 bytes"
+      "A. {1, 2, 4, 5, 5}",
+      "B. {1, 2, 4, 5}",
+      "C. {1, 3, 4, 5}",
+      "D. {1, 2, 3, 4}"
     ],
-    "answer": "D",
-    "correctWord": "D. 100 bytes and 400 bytes",
+    "answer": "A",
+    "correctWord": "A. {1, 2, 4, 5, 5}",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
-    "id": "prf_393",
-    "word": "Câu 393: In the C programming language, which of the following statem...",
-    "question": "In the C programming language, which of the following statements about the pointer operators & and * is true?",
+    "id": "prf_189",
+    "word": "Câu 189: What is the result will be displayed on the screen after exe...",
+    "question": "What is the result will be displayed on the screen after executing the following code:\n```c\nchar a[] = \"AbCdEf\";\nchar *s = a;\nfor (; *s; s += 3)\nprintf(\"%s\", s);\n```",
     "options": [
-      "A. The & operator is used to get the address of a variable, while the * operator is used to access the value at the address the pointer points to.",
-      "B. The & operator is used to get the value of a variable, while the * operator is used to access the address of a variable.",
-      "C. The & operator is used to get the value of a variable, while the * operator can only be used with global variables.",
+      "A. Runtime error",
+      "B. Ad",
+      "C. Compiler error",
+      "D. AbCdEfdEf",
+      "E. AbC",
+      "F. dEf"
+    ],
+    "answer": "D",
+    "correctWord": "D. AbCdEfdEf",
+    "explanation": "Đáp án: D. Lần 1 in \"AbCdEf\", lần 2 s+=3 trỏ vào 'd' in tiếp \"dEf\"",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_207",
+    "word": "Câu 207: What is the result displayed on the screen of the following ...",
+    "question": "What is the result displayed on the screen of the following program?\n```c\n#include <stdio.h>\nvoid level2(int** ppa) {\nprintf(\"%d\\n\", **ppa);\n}\nvoid level1(int* pa) {\nlevel2(&pa);\n}\nmain() {\nint a = 10;\nlevel1(&a);\n}\n```",
+    "options": [
+      "A. The address of variable a",
+      "B. The address of the pointer pa",
+      "C. The address of the double pointer ppa",
+      "D. 10"
+    ],
+    "answer": "D",
+    "correctWord": "D. 10",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_219",
+    "word": "Câu 219: Assume we have the following code:",
+    "question": "Assume we have the following code:\n```c\nint i = 4;\nint *p = &i;\n```\nSuppose that an int occupies a memory block of 4 bytes, and the address of i is 1008. What is the result of the following expression: `p + 4`?",
+    "options": [
+      "A. 1024",
+      "B. 1020",
+      "C. 1016",
+      "D. 1012"
+    ],
+    "answer": "A",
+    "correctWord": "A. 1024",
+    "explanation": "Đáp án: A. 1008 + 4 * 4 = 1024",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_224",
+    "word": "Câu 224: What will be the output of the following C code?",
+    "question": "What will be the output of the following C code?\n```c\n#include <stdio.h>\nvoid main() {\nint *ptr, a = 10;\nptr = &a;\n*ptr += 1;\nprintf(\"%d,%d\\n\", *ptr, a);\n}\n```",
+    "options": [
+      "A. 10,10",
+      "B. 10,11",
+      "C. 11,10",
+      "D. 11,11"
+    ],
+    "answer": "D",
+    "correctWord": "D. 11,11",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_231",
+    "word": "Câu 231: In C programming, when declaring a variable of a type intege...",
+    "question": "In C programming, when declaring a variable of a type integer, the computer stores it in a numbered storage location. What is this numbered location called?",
+    "options": [
+      "A. Address",
+      "B. Pointer",
+      "C. Integer",
+      "D. Byte"
+    ],
+    "answer": "A",
+    "correctWord": "A. Address",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_232",
+    "word": "Câu 232: In C programming, a variable is frequently used to store the...",
+    "question": "In C programming, a variable is frequently used to store the address of another variable. What is the name of this variable?",
+    "options": [
+      "A. Pointer",
+      "B. Address",
+      "C. Integer",
+      "D. Byte"
+    ],
+    "answer": "A",
+    "correctWord": "A. Pointer",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_251",
+    "word": "Câu 251: Which of the following operators can be applied to the point...",
+    "question": "Which of the following operators can be applied to the pointer variable(s)?",
+    "options": [
+      "A. Increments",
+      "B. Square root",
+      "C. Division",
+      "D. Multiplication"
+    ],
+    "answer": "A",
+    "correctWord": "A. Increments",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_328",
+    "word": "Câu 328: What is the `free(p)` function used for?",
+    "question": "What is the `free(p)` function used for?",
+    "options": [
+      "A. De-allocates space to which p points",
+      "B. Returns pointer to allocated space for existing contents of p",
+      "C. To abnormally terminate the program",
       "D. None of the others"
     ],
     "answer": "A",
-    "correctWord": "A. The & operator is used to get the address of a variable, while the * operator is used to access the value at the address the pointer points to.",
+    "correctWord": "A. De-allocates space to which p points",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_335",
+    "word": "Câu 335: What is an array in C programming?",
+    "question": "What is an array in C programming?",
+    "options": [
+      "A. A collection of elements of the same data type stored in contiguous memory locations",
+      "B. A single variable that holds multiple values of different data types",
+      "C. A pointer to a single element in memory",
+      "D. A function that performs mathematical calculations"
+    ],
+    "answer": "A",
+    "correctWord": "A. A collection of elements of the same data type stored in contiguous memory locations",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_338",
+    "word": "Câu 338: What is the purpose of the `calloc` function in C?",
+    "question": "What is the purpose of the `calloc` function in C?",
+    "options": [
+      "A. Allocate memory and initialize it to zero",
+      "B. Free memory allocated",
+      "C. Deallocate memory",
+      "D. Copy memory from one location to another"
+    ],
+    "answer": "A",
+    "correctWord": "A. Allocate memory and initialize it to zero",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_346",
+    "word": "Câu 346: What is a pointer in C programming?",
+    "question": "What is a pointer in C programming?",
+    "options": [
+      "A. A variable stores anything",
+      "B. A variable stores address of another variable or a variable stores address of the dynamically allocated memory",
+      "C. An address in the memory",
+      "D. A variable stores any number"
+    ],
+    "answer": "B",
+    "correctWord": "B. A variable stores address of another variable or a variable stores address of the dynamically allocated memory",
+    "explanation": "Đáp án: B. Slide gốc khoanh A, định nghĩa chuẩn xác nhất là B",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_351",
+    "word": "Câu 351: What is incorrect about pointer?",
+    "question": "What is incorrect about pointer?",
+    "options": [
+      "A. Pointers are containers for storing data values, like numbers and characters.",
+      "B. If one variable contains the address of another variable, the first variable is said to point to the second variable.",
+      "C. A pointer provides an indirect method of accessing the value of a data item.",
+      "D. Pointers can point to variables of other fundamental data types like int, char, or double or data aggregates like arrays or structures."
+    ],
+    "answer": "A",
+    "correctWord": "A. Pointers are containers for storing data values, like numbers and characters.",
+    "explanation": "Đáp án: A. Con trỏ lưu địa chỉ bộ nhớ, không phải lưu trực tiếp giá trị dữ liệu như số hay ký tự",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_393",
+    "word": "Câu 393: During the compilation process, what will be done with comme...",
+    "question": "During the compilation process, what will be done with comments?",
+    "options": [
+      "A. The comment mark will be removed. The content of the comments will be compiled line by line.",
+      "B. The comment is treated as an array of characters.",
+      "C. Comments are removed in the pre-processing step.",
+      "D. Each comment is compiled as a statement that does nothing."
+    ],
+    "answer": "C",
+    "correctWord": "C. Comments are removed in the pre-processing step.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
   },
   {
     "id": "prf_400",
-    "word": "Câu 400: In the following C function, what is the purpose of the para...",
-    "question": "In the following C function, what is the purpose of the parameter int* a?\nvoid input(int* a, int n);",
+    "word": "Câu 400: In the context of arrays in the C language, what does traver...",
+    "question": "In the context of arrays in the C language, what does traversal refer to?",
     "options": [
-      "A. It is a pointer to the first element of the array",
-      "B. It holds the array size",
-      "C. It defines the function return type",
-      "D. It stores the index of the element"
+      "A. The process of accessing elements in an array sequentially",
+      "B. The process of searching for a specific element in an array",
+      "C. The process of resizing the array during runtime",
+      "D. The process of inserting elements into an array"
     ],
     "answer": "A",
-    "correctWord": "A. It is a pointer to the first element of the array",
+    "correctWord": "A. The process of accessing elements in an array sequentially",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Con Trỏ & Quản Lý Bộ Nhớ"
+  },
+  {
+    "id": "prf_427",
+    "word": "Câu 427: In the C language, which method is used when a function rece...",
+    "question": "In the C language, which method is used when a function receives a copy of the argument's value, ensuring that changes inside the function do not affect the original variable?",
+    "options": [
+      "A. Pass by value",
+      "B. Pass by reference",
+      "C. Pass by address",
+      "D. Pass by pointer"
+    ],
+    "answer": "A",
+    "correctWord": "A. Pass by value",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Con Trỏ & Quản Lý Bộ Nhớ"

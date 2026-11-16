@@ -1,23 +1,7 @@
 [
   {
     "id": "prf_16",
-    "word": "Câu 16: What function in C is used to check if the end of a file has...",
-    "question": "What function in C is used to check if the end of a file has been reached?",
-    "options": [
-      "A. feof()",
-      "B. eof()",
-      "C. fscanf()",
-      "D. checkEOF()"
-    ],
-    "answer": "A",
-    "correctWord": "A. feof()",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
-  },
-  {
-    "id": "prf_17",
-    "word": "Câu 17: Which function is used to open a text file?",
+    "word": "Câu 16: Which function is used to open a text file?",
     "question": "Which function is used to open a text file?",
     "options": [
       "A. open()",
@@ -27,29 +11,61 @@
     ],
     "answer": "B",
     "correctWord": "B. fopen()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_17",
+    "word": "Câu 17: What function in C is used to check if the end of file has b...",
+    "question": "What function in C is used to check if the end of file has been reached?",
+    "options": [
+      "A. feof()",
+      "B. eof()",
+      "C. fscanf()",
+      "D. checkEOF()"
+    ],
+    "answer": "A",
+    "correctWord": "A. feof()",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_32",
-    "word": "Câu 32: Which function writes the character value of the argument c ...",
-    "question": "Which function writes the character value of the argument c to the output stream referenced by fp?",
+    "word": "Câu 32: Which of the following is the correct syntax of the do-while...",
+    "question": "Which of the following is the correct syntax of the do-while statement?",
     "options": [
-      "A. int fputc( int c, FILE *fp );",
-      "B. int fputs( const char *s, FILE *fp );",
-      "C. int fgetc( FILE *fp );",
-      "D. char *fgets( char *buf, int n, FILE *fp );"
+      "A. do { statements; } while (condition);",
+      "B. do while (condition) { statements; }",
+      "C. do { statements; } while (condition)",
+      "D. do ( statements; ) while (condition);"
     ],
     "answer": "A",
-    "correctWord": "A. int fputc( int c, FILE *fp );",
+    "correctWord": "A. do { statements; } while (condition);",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_36",
-    "word": "Câu 36: What commands are used to write data appended to the end of ...",
+    "word": "Câu 36: The function which will compute the average of two real numb...",
+    "question": "The function which will compute the average of two real numbers should be prototyped as:",
+    "options": [
+      "A. int average( double, double);",
+      "B. double average( double, double);",
+      "C. char average( double, double);",
+      "D. void average( double, double);"
+    ],
+    "answer": "B",
+    "correctWord": "B. double average( double, double);",
+    "explanation": "Đáp án: B, C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_39",
+    "word": "Câu 39: What commands are used to write data appended to the end of ...",
     "question": "What commands are used to write data appended to the end of the file? (Choose 2 answers)",
     "options": [
       "A. FILE *f = fwrite(\"output.txt\", \"a\" );",
@@ -58,128 +74,397 @@
       "D. FILE *f = fopen(\"output.txt\", \"w+\" );",
       "E. FILE *f = fopen(\"output.txt\", \"w\" );"
     ],
-    "answer": "B, C",
-    "correctWord": "B. FILE *f = fopen(\"output.txt\", \"a\" ); | C. FILE *f = fopen(\"output.txt\", \"a+\" );",
-    "explanation": "Đáp án: B, C.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
-  },
-  {
-    "id": "prf_39",
-    "word": "Câu 39: What is a proper method of opening a file for writing as bin...",
-    "question": "What is a proper method of opening a file for writing as binary file?",
-    "options": [
-      "A. FILE *f = fwrite( \"test.bin\", \"b\" );",
-      "B. FILE *f = fopen( \"test.bin\", \"w\" );",
-      "C. FILE *f = fopen( \"test.bin\", \"wb\" );",
-      "D. FILE *f = fwriteb( \"test.bin\" );",
-      "E. FILE *f = fopen( \"test.bin\", \"bwr\" );"
-    ],
-    "answer": "C",
-    "correctWord": "C. FILE *f = fopen( \"test.bin\", \"wb\" );",
+    "answer": "B",
+    "correctWord": "B. FILE *f = fopen(\"output.txt\", \"a\" );",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_40",
-    "word": "Câu 40: Which library should you include to work with the FILE data ...",
-    "question": "Which library should you include to work with the FILE data type in C?",
+    "word": "Câu 40: `int* ptr = malloc( sizeof(int) );` To reallocate ptr to be ...",
+    "question": "`int* ptr = malloc( sizeof(int) );` To reallocate ptr to be an array of 5 elements, which of the following statements generates an error?",
     "options": [
-      "A. stdio.h",
-      "B. stdlib.h",
-      "C. string.h",
-      "D. type.h"
+      "A. ptr = realloc( ptr, 5 * sizeof(int) );",
+      "B. realloc( ptr, 5 * sizeof(int) );",
+      "C. ptr += malloc( 5 * sizeof(int) );",
+      "D. realloc( ptr, 20 );",
+      "E. ptr = realloc( ptr, 20 );"
+    ],
+    "answer": "C",
+    "correctWord": "C. ptr += malloc( 5 * sizeof(int) );",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_197",
+    "word": "Câu 197: Consider the following code snippet that reads and prints th...",
+    "question": "Consider the following code snippet that reads and prints the contents of a text file named `sample.txt` containing `\"This is a sample text file.\"`:\n```c\nFILE *f_ptr = fopen(\"sample.txt\", \"r\");\nif (f_ptr == NULL) printf(\"Cannot open file\");\nchar ch;\nwhile ((ch = fgetc(f_ptr)) != EOF)\nprintf(\"%c\", ch);\nfclose(f_ptr);\n```",
+    "options": [
+      "A. This is a sample text file.",
+      "B. Cannot open file",
+      "C. T",
+      "D. This"
     ],
     "answer": "A",
-    "correctWord": "A. stdio.h",
+    "correctWord": "A. This is a sample text file.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_216",
+    "word": "Câu 216: Consider the following complete C program that reads data fr...",
+    "question": "Consider the following complete C program that reads data from a file containing `\"Hello World\\n42\"`:\n```c\n#include <stdio.h>\nint main() {\nFILE *fp = fopen(\"data.txt\", \"r\");\nchar buffer[100];\nint number;\nif (fp != NULL) {\nfgets(buffer, 100, fp);\nfscanf(fp, \"%d\", &number);\nfclose(fp);\n}\nreturn 0;\n}\n```\nWhat will be stored in the variables after execution?",
+    "options": [
+      "A. buffer = \"Hello World\\n\", number = 42",
+      "B. buffer = \"Hello World\", number = 42",
+      "C. buffer = \"Hello\", number = 0",
+      "D. buffer = \"Hello World\", number = undefined"
+    ],
+    "answer": "A",
+    "correctWord": "A. buffer = \"Hello World\\n\", number = 42",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_221",
+    "word": "Câu 221: Consider the following code snippet that writes text to a fi...",
+    "question": "Consider the following code snippet that writes text to a file named `output.txt`:\n```c\n#include <stdio.h>\nint main() {\nFILE *file_ptr = fopen(\"output.txt\", \"w\");\nif (file_ptr == NULL) {\nprintf(\"Unable to open the file.\");\nreturn 1;\n}\nfprintf(file_ptr, \"Hello, World!\\nThis is a test.\");\nfclose(file_ptr);\nreturn 0;\n}\n```\nAssuming the code executed successfully, what will be the content of `output.txt`?",
+    "options": [
+      "A. Hello, World! \\ This is a test.",
+      "B. Hello, World! This is a test.",
+      "C. Unable to open the file.",
+      "D. Empty file"
+    ],
+    "answer": "A",
+    "correctWord": "A. Hello, World! \\ This is a test.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_240",
+    "word": "Câu 240: What is the purpose of the `fscanf()` function in the C prog...",
+    "question": "What is the purpose of the `fscanf()` function in the C programming language?",
+    "options": [
+      "A. Read data from the file.",
+      "B. Print to the screen.",
+      "C. Read data from the keyboard.",
+      "D. Open a file.",
+      "E. Print to file."
+    ],
+    "answer": "A",
+    "correctWord": "A. Read data from the file.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_265",
+    "word": "Câu 265: The fopen function is used to open a file. Is the following ...",
+    "question": "The fopen function is used to open a file. Is the following true or false? `\"r\"` - tells fopen you will be reading data from the file. If no such file exists, fopen will fail.",
+    "options": [
+      "A. True",
+      "B. False"
+    ],
+    "answer": "A",
+    "correctWord": "A. True",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_285",
+    "word": "Câu 285: What function is used to send formatted output to a file?",
+    "question": "What function is used to send formatted output to a file?",
+    "options": [
+      "A. fprintf",
+      "B. fwritef",
+      "C. fsendf",
+      "D. fputs"
+    ],
+    "answer": "A",
+    "correctWord": "A. fprintf",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_286",
+    "word": "Câu 286: What function is used to read a line from the specified stre...",
+    "question": "What function is used to read a line from the specified stream and store it in the string pointed from a file?",
+    "options": [
+      "A. fgets",
+      "B. fgetc",
+      "C. fputs",
+      "D. fputc"
+    ],
+    "answer": "A",
+    "correctWord": "A. fgets",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_287",
+    "word": "Câu 287: Which of the following functions provide buffered input faci...",
+    "question": "Which of the following functions provide buffered input facilities on the standard input stream?",
+    "options": [
+      "A. getchar(), scanf()",
+      "B. getchar(), fgets()",
+      "C. scanf(), fgetc()",
+      "D. fgets(), fgetc()"
+    ],
+    "answer": "B",
+    "correctWord": "B. getchar(), fgets()",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_288",
+    "word": "Câu 288: Which function is used to write a string to a file in C?",
+    "question": "Which function is used to write a string to a file in C?",
+    "options": [
+      "A. fputs()",
+      "B. fscanf()",
+      "C. fgets()",
+      "D. fopen()"
+    ],
+    "answer": "A",
+    "correctWord": "A. fputs()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_289",
+    "word": "Câu 289: To read an entire line from a file in C, which function is c...",
+    "question": "To read an entire line from a file in C, which function is commonly used?",
+    "options": [
+      "A. fgets()",
+      "B. gets()",
+      "C. readLine()",
+      "D. scanLine()"
+    ],
+    "answer": "A",
+    "correctWord": "A. fgets()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_290",
+    "word": "Câu 290: Which function is used to read a single character from the s...",
+    "question": "Which function is used to read a single character from the standard input in C?",
+    "options": [
+      "A. getchar()",
+      "B. fscanf()",
+      "C. fgets()",
+      "D. getc()"
+    ],
+    "answer": "A",
+    "correctWord": "A. getchar()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_294",
+    "word": "Câu 294: Which function is used to read a string from a file in C?",
+    "question": "Which function is used to read a string from a file in C?",
+    "options": [
+      "A. fgets()",
+      "B. fputs()",
+      "C. ftell()",
+      "D. fopen()"
+    ],
+    "answer": "A",
+    "correctWord": "A. fgets()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_300",
+    "word": "Câu 300: The `fopen` function is used to open a file. Is the followin...",
+    "question": "The `fopen` function is used to open a file. Is the following true or false? `\"r\"` - tells fopen you will be reading data from the file. If no such file exists, fopen will fail.",
+    "options": [
+      "A. True",
+      "B. False"
+    ],
+    "answer": "A",
+    "correctWord": "A. True",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_302",
+    "word": "Câu 302: Which function is used to open a file for reading in C?",
+    "question": "Which function is used to open a file for reading in C?",
+    "options": [
+      "A. fopen(\"file.txt\", \"r\")",
+      "B. open(\"file.txt\", \"w\")",
+      "C. fopen(\"file.txt\", \"w\")",
+      "D. open(\"file.txt\", \"r\")"
+    ],
+    "answer": "A",
+    "correctWord": "A. fopen(\"file.txt\", \"r\")",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_339",
+    "word": "Câu 339: What is the `rewind()` function used for?",
+    "question": "What is the `rewind()` function used for?",
+    "options": [
+      "A. To reset the file pointer to the beginning of the file.",
+      "B. To read the entire file into memory.",
+      "C. To close the file.",
+      "D. To move the file pointer to the end of the file."
+    ],
+    "answer": "A",
+    "correctWord": "A. To reset the file pointer to the beginning of the file.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_341",
+    "word": "Câu 341: What is the `fseek()` function used for?",
+    "question": "What is the `fseek()` function used for?",
+    "options": [
+      "A. To move the file position indicator to a specific location.",
+      "B. To close a file.",
+      "C. To read characters from a file.",
+      "D. To write characters to a file."
+    ],
+    "answer": "A",
+    "correctWord": "A. To move the file position indicator to a specific location.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_352",
-    "word": "Câu 352: What does the statement rewind(fp) do?",
-    "question": "What does the statement rewind(fp) do?",
+    "word": "Câu 352: What is incorrect about `getchar()` function?",
+    "question": "What is incorrect about `getchar()` function?",
     "options": [
-      "A. Bring the pointer fp back to the beginning of the file",
-      "B. Assign to the pointer fp the address 0x00 (NULL)",
-      "C. Bring the pointer fp to the end of the file",
-      "D. Bring the pointer fp back to the beginning of the current line"
+      "A. The getchar() function is defined in the `<stdio.h>` header file.",
+      "B. getchar() gets a string from stdin.",
+      "C. getchar() retrieves a single character from the standard input stream buffer without translating the input.",
+      "D. getchar() gets a character (an unsigned char) from stdin."
     ],
-    "answer": "A",
-    "correctWord": "A. Bring the pointer fp back to the beginning of the file",
+    "answer": "B",
+    "correctWord": "B. getchar() gets a string from stdin.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_373",
-    "word": "Câu 373: How can you check if a file was successfully opened for writ...",
-    "question": "How can you check if a file was successfully opened for writing in C?",
+    "word": "Câu 373: Which of the following statements is incorrect?",
+    "question": "Which of the following statements is incorrect?",
     "options": [
-      "A. Checking the return value of fopen()",
-      "B. Using ferror()",
-      "C. Using feof()",
-      "D. Using fprintf()"
+      "A. To make our programs longer, we use higher-level languages",
+      "B. Program code in a high level language can not run, it must be translated to binary code (machine code) before running",
+      "C. C is based on a view of structured programming",
+      "D. Programs that perform relatively simple tasks and are written in assembly language contain a large number of statements"
     ],
     "answer": "A",
-    "correctWord": "A. Checking the return value of fopen()",
+    "correctWord": "A. To make our programs longer, we use higher-level languages",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_386",
-    "word": "Câu 386: In C programming language, what is the function fprintf() us...",
-    "question": "In C programming language, what is the function fprintf() used for?",
+    "word": "Câu 386: How does compilation differ from interpretation in the conte...",
+    "question": "How does compilation differ from interpretation in the context of C programming language?",
     "options": [
-      "A. Writing formatted data to a file.",
-      "B. Reading formatted data from a file.",
-      "C. Appending formatted data to a file.",
-      "D. Closing a file."
+      "A. Compilation translates the entire source code into machine code before execution, whereas interpretation translates and executes line by line.",
+      "B. Compilation and interpretation are two terms that are used interchangeably.",
+      "C. Algorithm is another term for interpretation in programming languages.",
+      "D. IDE tools are responsible for both compilation and interpretation processes."
     ],
     "answer": "A",
-    "correctWord": "A. Writing formatted data to a file.",
+    "correctWord": "A. Compilation translates the entire source code into machine code before execution, whereas interpretation translates and executes line by line.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_395",
-    "word": "Câu 395: What is the main difference between opening a file with mode...",
-    "question": "What is the main difference between opening a file with mode \"a+\" and mode \"w+\" in C?",
+    "word": "Câu 395: In C, what is the purpose of `|` operator?",
+    "question": "In C, what is the purpose of `|` operator?",
     "options": [
-      "A. \"w+\" truncates existing files, \"a+\" preserves them.",
-      "B. \"a+\" can only append data, while \"w+\" can only write from the beginning.",
-      "C. \"a+\" opens binary files, while \"w+\" opens text files.",
-      "D. \"a+\" allows reading only, while \"w+\" allows both reading and writing."
+      "A. It is a bitwise operator OR",
+      "B. It is a logical operator AND",
+      "C. It is a bitwise operator AND",
+      "D. It is a logical operator OR"
     ],
     "answer": "A",
-    "correctWord": "A. \"w+\" truncates existing files, \"a+\" preserves them.",
+    "correctWord": "A. It is a bitwise operator OR",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_409",
-    "word": "Câu 409: What does the following statement do?\nFILE *fp = fopen(\"empl...",
-    "question": "What does the following statement do?\nFILE *fp = fopen(\"employee.dat\", \"a\");",
+    "word": "Câu 409: In the C programming language, which of the following statem...",
+    "question": "In the C programming language, which of the following statements about local variables within a function is true?",
     "options": [
-      "A. Create a file named employee.dat. The address of the newly created file is assigned to the file pointer fp.",
-      "B. Open a file named employee.dat to read data. If the file exists, the address of the file is assigned to the file pointer fp.",
-      "C. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp. If the file does not exist, a new file named employee.dat will be created and its address will be assigned to fp.",
-      "D. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp and all existing data will be overwritten. If the file does not exist, a new file named employee.dat will be created and its address will be assigned to fp."
+      "A. Local variables within a function are declared and initialized each time the function is called.",
+      "B. Local variables within a function can be accessed from any other function in the program.",
+      "C. Local variables within a function retain their value between different function calls.",
+      "D. Local variables within a function can be declared outside the function and still maintain local scope."
     ],
-    "answer": "C",
-    "correctWord": "C. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp. If the file does not exist, a new file named employee.dat will be created and its address will be assigned to fp.",
+    "answer": "A",
+    "correctWord": "A. Local variables within a function are declared and initialized each time the function is called.",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
     "id": "prf_411",
-    "word": "Câu 411: Which of the following functions in C is used to reset the f...",
+    "word": "Câu 411: What is the main purpose of a module in programming?",
+    "question": "What is the main purpose of a module in programming?",
+    "options": [
+      "A. To carry out a specific function and may be used alone or combined with other modules to create a program",
+      "B. To store data in a database",
+      "C. To handle user input exclusively",
+      "D. To perform arithmetic calculations only"
+    ],
+    "answer": "A",
+    "correctWord": "A. To carry out a specific function and may be used alone or combined with other modules to create a program",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_419",
+    "word": "Câu 419: What does the following statement do? `FILE *fp = fopen(\"emp...",
+    "question": "What does the following statement do? `FILE *fp = fopen(\"employee.dat\", \"a\");`",
+    "options": [
+      "A. Create a file named employee.dat. The address of the newly created file is assigned to the file pointer fp.",
+      "B. Open a file named employee.dat to read data.",
+      "C. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp. If the file does not exist, a new file is created.",
+      "D. Delete existing contents of employee.dat."
+    ],
+    "answer": "C",
+    "correctWord": "C. Open a file named employee.dat to append data to the end of the file. If the file exists, the address of the file is assigned to the file pointer fp. If the file does not exist, a new file is created.",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_421",
+    "word": "Câu 421: Which of the following functions in C is used to reset the f...",
     "question": "Which of the following functions in C is used to reset the file position indicator to the beginning of the file?",
     "options": [
       "A. fseek()",

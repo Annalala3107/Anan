@@ -13,7 +13,7 @@ Dự án tích hợp sẵn **5 môn học**, tổng cộng **38 bộ đề JSON*
 | **CEA201** | Computer Organization & Architecture | 10 | 318 |
 | **CSI106** | Introduction to Computer Science | 10 | 524 |
 | **SSA101** | Study Skills for Academic Success | 8 | 355 |
-| **PRF192** | Programming Fundamentals (C) | 6 | 253 |
+| **PRF192** | Programming Fundamentals (C) | 6 | 428 |
 | **PFP191** | Programming Fundamentals with Python | 4 | 200 |
 
 - Manifest `public/data/index.json` lưu metadata + danh sách khóa câu hỏi để tải danh mục bộ đề tức thì, chỉ nạp toàn bộ file JSON khi mở đề hoặc tra cứu.

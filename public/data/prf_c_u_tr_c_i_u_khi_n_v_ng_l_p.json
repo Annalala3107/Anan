@@ -11,14 +11,14 @@
     ],
     "answer": "A",
     "correctWord": "A. for ( Init1, Init2; Condition ; Task1, Task2);",
-    "explanation": "Đáp án: A.",
+    "explanation": "Đáp án: A. Cú pháp for cho phép nhiều biểu thức ngăn cách bằng dấu phẩy.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_23",
-    "word": "Câu 23: What will be the output of the following code?\nint i = 10;\nw...",
-    "question": "What will be the output of the following code?\nint i = 10;\nwhile (i > 0) {\n    printf(\"%d \", i);\n    i -= 3;\n}",
+    "word": "Câu 23: What will be the output of the following code?",
+    "question": "What will be the output of the following code?\n```c\nint i = 10;\nwhile (i > 0) {\nprintf(\"%d \", i);\ni -= 3;\n}\n```",
     "options": [
       "A. 10 7 4 1",
       "B. 10 9 8 7 6 5 4 3 2 1",
@@ -33,200 +33,216 @@
   },
   {
     "id": "prf_30",
-    "word": "Câu 30: Which of the following is the correct syntax of the do-while...",
-    "question": "Which of the following is the correct syntax of the do-while statement?",
+    "word": "Câu 30: Which of the following statements has a different result fro...",
+    "question": "Which of the following statements has a different result from the other statements?",
     "options": [
-      "A. do{ statements; } while(condition) ;",
-      "B. do while(condition) { statements;}",
-      "C. do{ statements; } while (condition)",
-      "D. do{ statements; } while (condition) ;"
+      "A. char c1 = 'B'; printf(\"%c\", c1);",
+      "B. char c2 = 066; printf(\"%c\", c2);",
+      "C. char c3 = 0x42; printf(\"%c\", c3);",
+      "D. char c4 = 0102; printf(\"%c\", c4);"
     ],
-    "answer": "A",
-    "correctWord": "A. do{ statements; } while(condition) ;",
+    "answer": "B",
+    "correctWord": "B. char c2 = 066; printf(\"%c\", c2);",
     "explanation": "Đáp án: A. D cũng đúng vì giống A",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_31",
-    "word": "Câu 31: Which of the following is an incorrect iteration construct?",
-    "question": "Which of the following is an incorrect iteration construct?",
+    "word": "Câu 31: Which of the following statements is invalid?",
+    "question": "Which of the following statements is invalid?",
     "options": [
-      "A. (condition) ? True_Value : False_Value",
-      "B. for ( InitBlock; Condition; Task2) Task1;",
-      "C. do{ statements;} while (condition) ;",
-      "D. while (condition){ statements; }"
+      "A. printf(\"\");",
+      "B. printf(\"abc\");",
+      "C. printf(\"%%\");",
+      "D. printf(\"\\n\");"
     ],
     "answer": "A",
-    "correctWord": "A. (condition) ? True_Value : False_Value",
+    "correctWord": "A. printf(\"\");",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_35",
-    "word": "Câu 35: Which of the following is the correct syntax of the while st...",
-    "question": "Which of the following is the correct syntax of the while statement?",
+    "word": "Câu 35: What is the syntax of the conditional operator in C?",
+    "question": "What is the syntax of the conditional operator in C?",
     "options": [
-      "A. while (condition) { statements; }",
-      "B. (condition){ statements ;}",
-      "C. while (condition) { statements ;}",
-      "D. { statements } while (condition);"
+      "A. condition ? expression1 : expression2",
+      "B. condition ? expression1, expression2",
+      "C. condition : expression1 ? expression2",
+      "D. expression1 ? condition : expression2"
     ],
     "answer": "A",
-    "correctWord": "A. while (condition) { statements; }",
+    "correctWord": "A. condition ? expression1 : expression2",
     "explanation": "Đáp án: A. C cũng đúng vì giống A",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_41",
-    "word": "Câu 41: In C, which of the following statements allows to move to th...",
-    "question": "In C, which of the following statements allows to move to the next loop without having to do the rest of the loop",
+    "word": "Câu 41: How to print \"Hello, World!\" in C?",
+    "question": "How to print \"Hello, World!\" in C?",
     "options": [
-      "A. break;",
-      "B. goto;",
-      "C. continue;",
-      "D. return;"
+      "A. printf(\"Hello, World!\");",
+      "B. cout << \"Hello, World!\" << endl;",
+      "C. System.out.println(\"Hello, World!\");",
+      "D. echo \"Hello, World!\";"
     ],
-    "answer": "C",
-    "correctWord": "C. continue;",
+    "answer": "A",
+    "correctWord": "A. printf(\"Hello, World!\");",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_44",
-    "word": "Câu 44: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include <stdio.h>\nint main()\n{\n    int x = 7;\n    for(x > 3)\n        printf(\"Yes\");\n        x--;\n    return 0;\n}",
+    "word": "Câu 44: In C, which of the following statements allows to move to th...",
+    "question": "In C, which of the following statements allows to move to the next loop without having to do the rest of the loop?",
     "options": [
-      "A. Infinite loop",
-      "B. Compile time error",
-      "C. YesYesYesYes",
-      "D. Yes"
+      "A. break",
+      "B. goto",
+      "C. continue",
+      "D. return"
     ],
-    "answer": "B",
-    "correctWord": "B. Compile time error",
+    "answer": "C",
+    "correctWord": "C. continue",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_46",
-    "word": "Câu 46: What happens in this do/while loop?\nint n;\ndo {\n    printf(\"...",
-    "question": "What happens in this do/while loop?\nint n;\ndo {\n    printf(\"Enter a number:\");\n    scanf(\"%d\", &n);\n} while (n < 1 || n > 5);",
+    "word": "Câu 46: What is the output of this reverse loop?",
+    "question": "What is the output of this reverse loop?\n```c\n#define SIZE 5\nint nums[SIZE] = {5, 10, 2, -45, 6};\nfor (int i = SIZE - 1; i >= 0; i--)\nprintf(\"%d \", nums[i]);\n```",
     "options": [
-      "A. Never runs",
-      "B. Runs only when n = 1",
-      "C. Infinite loop",
-      "D. Runs at least once"
+      "A. 5 10 2 -45 6",
+      "B. 6 -45 2 10 5",
+      "C. -45 2 10 5 6",
+      "D. Error"
     ],
-    "answer": "D",
-    "correctWord": "D. Runs at least once",
-    "explanation": "Đáp án: D.",
+    "answer": "B",
+    "correctWord": "B. 6 -45 2 10 5",
+    "explanation": "Đáp án: B. Vòng lặp bắt đầu từ i = 4 và giảm dần về 0 nên in ngược từ cuối mảng lên đầu mảng",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_56",
-    "word": "Câu 56: What will the following if-else statement output if x = 10?\n...",
-    "question": "What will the following if-else statement output if x = 10?\nif (x > 5)\n    printf(\"Greater\");\nelse\n    printf(\"Smaller\");",
+    "word": "Câu 56: Given the following code snippet `int a[10] = {1, 2, 3};` Wh...",
+    "question": "Given the following code snippet `int a[10] = {1, 2, 3};` What is the value of a[3]?",
     "options": [
-      "A. Greater",
-      "B. Smaller",
-      "C. Equal",
-      "D. None of the others"
+      "A. 0",
+      "B. 1",
+      "C. 2",
+      "D. 3"
     ],
     "answer": "A",
-    "correctWord": "A. Greater",
-    "explanation": "Đáp án: A.",
+    "correctWord": "A. 0",
+    "explanation": "Đáp án: A. Các phần tử không được khởi tạo tường minh sẽ tự động bằng 0",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_64",
-    "word": "Câu 64: What is the output of this code?\nint i = 5;\nfor (; i > 0; i-...",
-    "question": "What is the output of this code?\nint i = 5;\nfor (; i > 0; i--) {\n    printf(\"%d\", i);\n}",
+    "word": "Câu 64: What is the output?",
+    "question": "What is the output?\n```c\nchar temp;\nchar arr[10] = {1, 2, 3, 4, 5, 6, 7, 8};\ntemp = (arr + 1)[2];\nprintf(\"%d\\n\", temp);\n```",
     "options": [
-      "A. 5 4 3 2 1",
-      "B. 5 4 3 2 1 0",
-      "C. 5 3 1",
-      "D. 5 4 2"
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
     ],
-    "answer": "A",
-    "correctWord": "A. 5 4 3 2 1",
-    "explanation": "Đáp án: A. thực tế in \"54321\" không có khoảng trắng, A là gần nhất",
+    "answer": "D",
+    "correctWord": "D. 4",
+    "explanation": "Đáp án: D. (arr + 1)[2] tương đương arr[3] = 4",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_72",
-    "word": "Câu 72: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include <stdio.h>\nint main()\n{\n    int i, j, result = 0;\n    for(i = 3; i <= 5; i++){\n        for(j = 5; j > i; j--)\n            result += j;\n    }\n    printf(\"%d\", result);\n    return 0;\n}",
+    "word": "Câu 72: What is the result displayed on the screen of the following ...",
+    "question": "What is the result displayed on the screen of the following program?\n```c\n#include <stdio.h>\nint main() {\nint x = 10;\nprintf(\"%o\", x);\n}\n```",
     "options": [
-      "A. 14",
-      "B. 15",
-      "C. 16",
-      "D. 20"
+      "A. 12",
+      "B. 8",
+      "C. 10",
+      "D. None of these"
     ],
     "answer": "A",
-    "correctWord": "A. 14",
-    "explanation": "Đáp án: A.",
+    "correctWord": "A. 12",
+    "explanation": "Đáp án: A. %o in số ở hệ bát phân, 10 hệ thập phân = 12 hệ bát phân",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_77",
-    "word": "Câu 77: What will the following program print?\n#include <stdio.h>\nin...",
-    "question": "What will the following program print?\n#include <stdio.h>\nint main() {\n    int i = 1, j = 0;\n    do {\n        printf(\"%d %d \", i, j);\n        i += 1;\n        j -= 1;\n    } while (i < j);\n    return 0;\n}",
+    "word": "Câu 77: What is the maximum index of the last character in a charact...",
+    "question": "What is the maximum index of the last character in a character array initialized with a size is 10?",
     "options": [
-      "A. 4 -1",
-      "B. 0 1",
-      "C. 1 0",
-      "D. 0 2"
+      "A. 9",
+      "B. 10",
+      "C. 8",
+      "D. It depends on the contents of the array"
     ],
-    "answer": "C",
-    "correctWord": "C. 1 0",
+    "answer": "A",
+    "correctWord": "A. 9",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_78",
-    "word": "Câu 78: What will the following program print?\n#include <stdio.h>\nin...",
-    "question": "What will the following program print?\n#include <stdio.h>\nint main()\n{\n    int x = 5, y = 10;\n    while(x++ < y--)\n    {\n        printf(\"%d %d\\n\", x, y);\n    }\n    return 0;\n}",
+    "word": "Câu 78: What is the result of the expression `!1`?",
+    "question": "What is the result of the expression `!1`?",
     "options": [
-      "A. 2 5\n   3 4\n   4 3",
-      "B. 6 9\n   7 8\n   8 7",
-      "C. 5 10\n   7 8\n   8 7",
-      "D. 6 9\n   2 2\n   8 7"
+      "A. 0",
+      "B. 1",
+      "C. 10",
+      "D. -1"
     ],
-    "answer": "B",
-    "correctWord": "B. 6 9\n   7 8\n   8 7",
+    "answer": "A",
+    "correctWord": "A. 0",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_79",
-    "word": "Câu 79: What will be the output of the following C code?\n#include <s...",
-    "question": "What will be the output of the following C code?\n#include <stdio.h>\nint main() {\n    int x = 5, y = 10;\n    if (x >= y) {\n        printf(\"x is greater than or equal to y\\n\");\n    } else {\n        printf(\"x is less than y\\n\");\n    }\n    return 0;\n}",
+    "word": "Câu 79: What will be the output of the C program?",
+    "question": "What will be the output of the C program?\n```c\nint a = 4, b = 2;\nprintf(\"a^b = %d\", a^b);\n```",
     "options": [
-      "A. x is greater than or equal to y",
-      "B. x is less than y",
-      "C. x is equal to y",
-      "D. Compilation error"
+      "A. 2",
+      "B. 8",
+      "C. 16",
+      "D. 6"
     ],
-    "answer": "B",
-    "correctWord": "B. x is less than y",
-    "explanation": "Đáp án: B.",
+    "answer": "D",
+    "correctWord": "D. 6",
+    "explanation": "Đáp án: D. 4 XOR 2: 100 ^ 010 = 110 = 6",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_81",
-    "word": "Câu 81: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    int x=10,i;\n    for(i=9;i<x;i+=3){\n        printf(\"%d\",i++);\n        break;\n        printf(\"%d\",--i);\n    }\n    return 0;\n}",
+    "word": "Câu 81: What is the output of the following code?",
+    "question": "What is the output of the following code?\n```c\nint x = 5, y = 10;\nwhile (x++ < y--) {\nprintf(\"%d %d \", x, y);\n}\n```",
+    "options": [
+      "A. 5 10 6 9 7 8",
+      "B. 6 9 7 8 8 7",
+      "C. 6 9 7 8",
+      "D. Infinite loop"
+    ],
+    "answer": "B",
+    "correctWord": "B. 6 9 7 8 8 7",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_86",
+    "word": "Câu 86: What is the output when the sample code below is executed?",
+    "question": "What is the output when the sample code below is executed?\n```c\n#include<stdio.h>\nint main() {\nint x = 10, i;\nfor(i = 9; i < x; i += 3) {\nprintf(\"%d\", i++);\nbreak;\nprintf(\"%d\", i);\n}\nreturn 0;\n}\n```",
     "options": [
       "A. 9",
       "B. 8",
@@ -235,254 +251,305 @@
     ],
     "answer": "A",
     "correctWord": "A. 9",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_86",
-    "word": "Câu 86: What will be the output of the C program?\nint i = 1, j = 2;\n...",
-    "question": "What will be the output of the C program?\nint i = 1, j = 2;\nif(--i == j)\n    printf(\"i = %d\", --i);\nelse\n    printf(\"j = %d\", ++j);",
-    "options": [
-      "A. i = 2",
-      "B. i = 0",
-      "C. j = 3",
-      "D. j = 1"
-    ],
-    "answer": "C",
-    "correctWord": "C. j = 3",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_90",
-    "word": "Câu 90: How many times will the loop execute?\nint i = 0;\nwhile (i < ...",
-    "question": "How many times will the loop execute?\nint i = 0;\nwhile (i < 4) {\n    printf(\"%d\", i);\n    i += 2;\n}",
+    "word": "Câu 90: Assume we have a snippet code in C:",
+    "question": "Assume we have a snippet code in C:\n```c\nint main() {\nint *p = NULL;\nprintf(\"%d\", p);\ngetchar();\nreturn 0;\n}\n```\nThe output will be:",
     "options": [
-      "A. 2",
+      "A. 0",
       "B. 1",
-      "C. 3",
-      "D. 4"
+      "C. 10",
+      "D. 100"
     ],
     "answer": "A",
-    "correctWord": "A. 2",
+    "correctWord": "A. 0",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_96",
-    "word": "Câu 96: What will be the output of the following C code?\n#include <s...",
-    "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main()\n{\n    int total=0;\n    for(int s=1; s<15; s++)\n        total=total+s;\n    printf(\"%d\",total);\n}",
+    "word": "Câu 96: What is the value of z after the `int a = 8, b = 6, c = 4, z...",
+    "question": "What is the value of z after the `int a = 8, b = 6, c = 4, z = b++ * ++c + --a;` command?",
     "options": [
-      "A. 105",
-      "B. 150",
-      "C. 120",
-      "D. 210"
+      "A. 16",
+      "B. 28",
+      "C. 37",
+      "D. 32",
+      "E. -28"
     ],
-    "answer": "A",
-    "correctWord": "A. 105",
-    "explanation": "Đáp án: A.",
+    "answer": "C",
+    "correctWord": "C. 37",
+    "explanation": "Đáp án: C. 6 * 5 + 7 = 37",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_100",
-    "word": "Câu 100: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    int a=5, b=10;\n    while(a>0)\n    {\n        label:{\n            a--;\n            b--;\n        }\n        while(b>5)\n        {\n            goto label;\n        }\n    }\n    printf(\"%d %d\",a,b);\n    return 0;\n}",
+    "word": "Câu 100: Assume we have the following code:",
+    "question": "Assume we have the following code:\n```c\ndouble d = 9;\ndouble *p = &d;\n```\nSuppose that a double occupies the memory block of 8 bytes, and the address of d is 1200. What is the result of the following expression: `p + 8`?",
     "options": [
-      "A. 0 5",
-      "B. 5 10",
-      "C. 10 5",
-      "D. 0 0"
+      "A. 1264",
+      "B. 1200",
+      "C. 1208",
+      "D. 1209"
     ],
     "answer": "A",
-    "correctWord": "A. 0 5",
-    "explanation": "Đáp án: A.",
+    "correctWord": "A. 1264",
+    "explanation": "Đáp án: A. 1200 + 8 * 8 = 1264",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_107",
-    "word": "Câu 107: What is the output of s?\n#include <stdio.h>\nint main()\n{\n   ...",
-    "question": "What is the output of s?\n#include <stdio.h>\nint main()\n{\n    int h = 5;\n    int m = 3;\n    int n = 1, s = 0;\n    do {\n        s += m;\n        n++;\n    } while (h > n++);\n    printf(\"%d %d\", s, n);\n}",
+    "word": "Câu 107: What will be the output of the following code snippet?",
+    "question": "What will be the output of the following code snippet?\n```c\n#include <stdlib.h>\n#include <stdio.h>\nint main() {\nint a = 5;\n{\nint a = 10;\nprintf(\"%d \", a);\n}\nprintf(\"%d\", a);\nreturn 0;\n}\n```",
     "options": [
-      "A. 15 5",
-      "B. 15 6",
-      "C. 12 5",
-      "D. 12 6"
+      "A. 10 5",
+      "B. 5 10",
+      "C. 5 5",
+      "D. 10 10"
     ],
     "answer": "A",
-    "correctWord": "A. 15 5",
+    "correctWord": "A. 10 5",
     "explanation": "Đáp án ngân hàng đề ghi tạm: A (A. 15 5). (Lưu ý đề gốc bị lỗi: chạy code C thực tế s+=m, n++ trong while(h > n++) ra kết quả \"9 7\", không khớp bất kỳ phương án A/B/C/D nào).",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_115",
-    "word": "Câu 115: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    int a=10,b=20,c=30;\n    while(a>1)\n    {\n        if(b%2!=0)\n            a/=10;\n        b--;\n        c*=2;\n    }\n    printf(\"%d ; %d ; %d\",a,b,c);\n    return 0;\n}",
+    "word": "Câu 115: What will be the output of the following program?",
+    "question": "What will be the output of the following program?\n```c\n#include <stdio.h>\nint main() {\nint *pa = a;\nint a = 10;\n(*pa)++;\na = a + 10;\nprintf(\"%d\", ++a);\ngetchar();\nreturn 0;\n}\n```",
     "options": [
-      "A. 1 ; 18 ; 120",
-      "B. 10 ; 19 ; 60",
-      "C. 1 ; 20 ; 60",
-      "D. 10 ; 19 ; 120"
+      "A. Compiler error",
+      "B. 22",
+      "C. 21"
     ],
     "answer": "A",
-    "correctWord": "A. 1 ; 18 ; 120",
-    "explanation": "Đáp án: A.",
+    "correctWord": "A. Compiler error",
+    "explanation": "Đáp án: A. Biến a chưa được khai báo trước dòng `int *pa = a;` và gán sai kiểu con trỏ",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_116",
-    "word": "Câu 116: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    int a=70,b=90,c=80;\n    if(a!=b){\n        a-=b; c/=10;\n    }\n    else\n        a+=c;\n    printf(\"%d;%d;%d\",a,b,c);\n    return 0;\n}",
+    "word": "Câu 116: What will this code print?",
+    "question": "What will this code print?\n```c\nint x[5] = {0};\nprintf(\"%d\", x[3]);\n```",
     "options": [
-      "A. -20;90;8",
-      "B. 70;90;80",
-      "C. 150;80;8",
-      "D. 150;90;80"
+      "A. 0",
+      "B. Garbage value",
+      "C. 3",
+      "D. Error"
     ],
     "answer": "A",
-    "correctWord": "A. -20;90;8",
+    "correctWord": "A. 0",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_118",
-    "word": "Câu 118: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include <stdio.h>\nint main() {\n    int i = 10;\n    do {\n        printf(\"%d \", i);\n        i -= 2;\n    } while (i >= 1);\n    return 0;\n}",
+    "word": "Câu 118: What is the result of the `printf(\"%d %d\", 12 & 5, 12 | 5);`...",
+    "question": "What is the result of the `printf(\"%d %d\", 12 & 5, 12 | 5);` command?",
     "options": [
-      "A. 10 8 6 4 2",
-      "B. 10 8 6 4 2 0",
-      "C. 10 8 6 4 2 0 -2 -4",
-      "D. 10 9 8 7 6 5 4 3 2"
+      "A. 4 13",
+      "B. 5 12",
+      "C. 4 1",
+      "D. 5 13"
     ],
     "answer": "A",
-    "correctWord": "A. 10 8 6 4 2",
-    "explanation": "Đáp án: A.",
+    "correctWord": "A. 4 13",
+    "explanation": "Đáp án: A. 12 & 5 = 4, 12 | 5 = 13",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_119",
-    "word": "Câu 119: What will the following program print?\n#include <stdio.h>\nin...",
-    "question": "What will the following program print?\n#include <stdio.h>\nint main()\n{\n    int i, j;\n    for(i = 0, j = 9; i < j; i--, j -= 1)\n        printf(\"%d %d \", i, j);\n    return 0;\n}",
+    "word": "Câu 119: What will be the output of the following program?",
+    "question": "What will be the output of the following program?\n```c\nint main() {\nint i = 100;\nint *p = &i;\n*p += 2;\nprintf(\"%d, %d\", i, *p);\ngetchar();\nreturn 0;\n}\n```",
     "options": [
-      "A. 0 1 0 1 9 2 8 3 7 4 6",
-      "B. 0 1 0 1 8 2 6 3 4",
-      "C. 0 9 1 8 2 7 3 6 4 5",
-      "D. An error will be raised."
+      "A. 102, 102",
+      "B. 100, 102",
+      "C. 100, 100",
+      "D. 102, 100"
     ],
-    "answer": "C",
-    "correctWord": "C. 0 9 1 8 2 7 3 6 4 5",
+    "answer": "A",
+    "correctWord": "A. 102, 102",
     "explanation": "Đáp án: C. đề có lỗi: i-- làm vòng lặp vô hạn, ý đề là i++ nên kết quả C",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_126",
-    "word": "Câu 126: How many times will the do-while loop execute the code if th...",
-    "question": "How many times will the do-while loop execute the code if the condition is false?",
+    "word": "Câu 126: What does the following code print?",
+    "question": "What does the following code print?\n```c\nfloat a = 3.0;\nfloat b = 2.0;\nint r = a % b;\nprintf(\"%d\", r);\n```",
     "options": [
-      "A. 1",
-      "B. 0",
-      "C. Loop infinitely",
-      "D. Compile time error"
+      "A. Compiler error",
+      "B. 1.000000",
+      "C. 1.500000",
+      "D. 1.0",
+      "E. 1.5",
+      "F. 1"
     ],
     "answer": "A",
-    "correctWord": "A. 1",
-    "explanation": "Đáp án: A.",
+    "correctWord": "A. Compiler error",
+    "explanation": "Đáp án: A. Toán tử % không áp dụng cho số thực float/double",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_133",
-    "word": "Câu 133: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include<stdio.h>\nint main()\n{\n    const int a=5;\n    if(a>3)\n        a++;\n        break;\n    else\n        a--;\n    printf(\"%d\",a);\n    return 0;\n}",
+    "word": "Câu 133: What is the output of the following code?",
+    "question": "What is the output of the following code?\n```c\nint a = 10, b = 20;\nprintf(\"%d\", (a > 5 && b < 25));\n```",
     "options": [
-      "A. Compile time error",
-      "B. 6",
-      "C. 4",
-      "D. 5"
+      "A. 0",
+      "B. 1",
+      "C. 10",
+      "D. 20"
     ],
-    "answer": "A",
-    "correctWord": "A. Compile time error",
+    "answer": "B",
+    "correctWord": "B. 1",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_147",
-    "word": "Câu 147: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include <stdio.h>\nint main()\n{\n    int n = 50, m = 60;\n    if (n > 50)\n        if (m > 50)\n            printf(\"True\");\n        else\n            printf(\"False\");\n    return 0;\n}",
+    "word": "Câu 147: What is the result of the `printf(\"%d %d\", 12<<2, 8>>2);` co...",
+    "question": "What is the result of the `printf(\"%d %d\", 12<<2, 8>>2);` command?",
     "options": [
-      "A. No the output",
-      "B. True",
-      "C. False",
-      "D. Compile time error"
+      "A. 48 8",
+      "B. 24 2",
+      "C. 48 4",
+      "D. 48 2",
+      "E. 0 0"
     ],
-    "answer": "A",
-    "correctWord": "A. No the output",
+    "answer": "D",
+    "correctWord": "D. 48 2",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_151",
-    "word": "Câu 151: How many times will the loop execute?\nfor (int i = 0; i < 5;...",
-    "question": "How many times will the loop execute?\nfor (int i = 0; i < 5; i++) {\n    printf(\"%d \", i);\n}",
+    "word": "Câu 151: What will be the output of the C program?",
+    "question": "What will be the output of the C program?\n```c\nint 2_var = 15;\nprintf(\"%d\", 2_var);\n```",
     "options": [
-      "A. 5",
-      "B. 4",
-      "C. 6",
-      "D. 0"
+      "A. 0",
+      "B. 15",
+      "C. Compilation error",
+      "D. Runtime error"
     ],
-    "answer": "A",
-    "correctWord": "A. 5",
-    "explanation": "Đáp án: A.",
+    "answer": "C",
+    "correctWord": "C. Compilation error",
+    "explanation": "Đáp án: C. Tên biến không được bắt đầu bằng chữ số",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_172",
-    "word": "Câu 172: What will be the output of the following C code?\n#include <s...",
-    "question": "What will be the output of the following C code?\n#include <stdio.h>\nvoid main() {\n    int x = 0;\n    if (x == 0)\n        printf(\"Hi\");\n    else\n        printf(\"How are you\");\n    printf(\"Hello\");\n}",
+    "word": "Câu 172: What is the result of `floor(-5.9)` and `floor(5.9)`?",
+    "question": "What is the result of `floor(-5.9)` and `floor(5.9)`?",
     "options": [
-      "A. Hi",
-      "B. How are you",
-      "C. Hello",
-      "D. HiHello"
+      "A. -6 and 5",
+      "B. -5 and 5",
+      "C. -6 and 6",
+      "D. -5 and 6"
     ],
-    "answer": "D",
-    "correctWord": "D. HiHello",
+    "answer": "A",
+    "correctWord": "A. -6 and 5",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_177",
-    "word": "Câu 177: What will be the output of the C program?\nint i = 5, j = 8;\n...",
-    "question": "What will be the output of the C program?\nint i = 5, j = 8;\nwhile (++i < --j)\n    printf(\"loop\");",
+    "word": "Câu 177: What will the following code output?",
+    "question": "What will the following code output?\n```c\n#include <stdio.h>\nint main() {\nint a = 7;\nprintf(\"%d\", (a << 2) | 1);\nreturn 0;\n}\n```",
     "options": [
-      "A. loop",
-      "B. Infinite loop",
-      "C. loop loop loop",
-      "D. loop loop"
+      "A. 28",
+      "B. 29",
+      "C. 15",
+      "D. 30"
     ],
-    "answer": "A",
-    "correctWord": "A. loop",
-    "explanation": "Đáp án: A.",
+    "answer": "B",
+    "correctWord": "B. 29",
+    "explanation": "Đáp án: B. 7 << 2 = 28; 28 | 1 = 29",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_181",
-    "word": "Câu 181: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include <stdio.h>\nint main() {\n    int x = 7;\n    for (; x > 3;)\n        printf(\"Yes\");\n    x--;\n    return 0;\n}",
+    "word": "Câu 181: What will be the output of the following C code?",
+    "question": "What will be the output of the following C code?\n```c\n#include <stdio.h>\nvoid main() {\nint x = 0;\nif (x = 0)\nprintf(\"Hi\");\nelse\nprintf(\"How are you\");\nprintf(\"Hello\");\n}\n```",
+    "options": [
+      "A. Hi",
+      "B. How are you",
+      "C. Hello",
+      "D. How are youHello"
+    ],
+    "answer": "D",
+    "correctWord": "D. How are youHello",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_182",
+    "word": "Câu 182: What is the output of the following code snippet?",
+    "question": "What is the output of the following code snippet?\n```c\nchar words[4][11];\nstrcpy(words[0], \"apple\");\nstrcat(words[0], \"juice\");\nprintf(\"%s\\n\", words[0]);\n```",
+    "options": [
+      "A. applejuice",
+      "B. apple",
+      "C. juice",
+      "D. juiceapple"
+    ],
+    "answer": "A",
+    "correctWord": "A. applejuice",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_183",
+    "word": "Câu 183: What will be the output of the following code if the input i...",
+    "question": "What will be the output of the following code if the input is `abcdef`?\n```c\nchar s[5];\nfgets(s, sizeof(s), stdin);\nprintf(\"%s\", s);\n```",
+    "options": [
+      "A. abcd",
+      "B. abcdef",
+      "C. abc",
+      "D. Syntax Error in fgets function"
+    ],
+    "answer": "A",
+    "correctWord": "A. abcd",
+    "explanation": "Đáp án: A. Đọc tối đa 4 ký tự + 1 ký tự '\\0'",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_185",
+    "word": "Câu 185: What does this code print?",
+    "question": "What does this code print?\n```c\nint n = 30, m = 5;\nfloat x = 3.5F, y = 8.12F;\nprintf(\"%d %d\", (n < m || x >= y), !(x > y));\n```",
+    "options": [
+      "A. 1 0",
+      "B. 0 1",
+      "C. 1 1",
+      "D. 0 0"
+    ],
+    "answer": "B",
+    "correctWord": "B. 0 1",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_190",
+    "word": "Câu 190: What is the output when the sample code below is executed?",
+    "question": "What is the output when the sample code below is executed?\n```c\n#include <stdio.h>\nint main() {\nint x = 7;\nfor (; x > 3; )\nprintf(\"Yes\");\nreturn 0;\n}\n```",
     "options": [
       "A. Infinite loop",
       "B. Compile time error",
@@ -496,9 +563,9 @@
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_182",
-    "word": "Câu 182: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include <stdio.h>\nint main() {\n    int x = 10, i;\n    for (i = 0; i < x; i += 3) {\n        printf(\"One\");\n        continue;\n        printf(\"Two\");\n    }\n    return 0;\n}",
+    "id": "prf_191",
+    "word": "Câu 191: What is the output when the sample code below is executed?",
+    "question": "What is the output when the sample code below is executed?\n```c\n#include <stdio.h>\nint main() {\nint x = 10, i;\nfor (i = 0; i < x; i += 3) {\nprintf(\"One\");\ncontinue;\nprintf(\"Two\");\n}\nreturn 0;\n}\n```",
     "options": [
       "A. OneOneOneOne",
       "B. OneTwoOneOne",
@@ -512,9 +579,9 @@
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_183",
-    "word": "Câu 183: What is the output when the sample code below is executed?\n#...",
-    "question": "What is the output when the sample code below is executed?\n#include <stdio.h>\nint main() {\n    int a = 1;\n    switch (a) {\n        case 2: printf(\"Two\");\n        case 1: printf(\"One\");\n        case 3: printf(\"Three\");\n        case 4: printf(\"Four\");\n    }\n    return 0;\n}",
+    "id": "prf_192",
+    "word": "Câu 192: What is the output when the sample code below is executed?",
+    "question": "What is the output when the sample code below is executed?\n```c\n#include <stdio.h>\nint main() {\nint a = 1;\nswitch (a) {\ncase 2: printf(\"Two\");\ncase 1: printf(\"One\");\ncase 3: printf(\"Three\");\ncase 4: printf(\"Four\");\n}\nreturn 0;\n}\n```",
     "options": [
       "A. OneThreeFour",
       "B. OneTwoThreeFour",
@@ -523,14 +590,14 @@
     ],
     "answer": "A",
     "correctWord": "A. OneThreeFour",
-    "explanation": "Đáp án: A.",
+    "explanation": "Đáp án: A. Không có break nên bị trôi lệnh từ case 1 qua case 3 và 4",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
-    "id": "prf_185",
-    "word": "Câu 185: Choose the best comment about the output of the following C ...",
-    "question": "Choose the best comment about the output of the following C code:\n#include <stdio.h>\nvoid main() {\n    int i = 0;\n    while (i < 5) {\n        i++;\n        printf(\"Hi-\");\n        while (i < 4) {\n            i++;\n            printf(\"Hello-\");\n        }\n    }\n}",
+    "id": "prf_194",
+    "word": "Câu 194: Choose the best comment about the output of the following C ...",
+    "question": "Choose the best comment about the output of the following C code:\n```c\n#include <stdio.h>\nvoid main() {\nint i = 0;\nwhile (i < 5) {\nprintf(\"Hi-\");\ni += 1;\nwhile (i < 4) {\nprintf(\"Hello-\");\ni += 1;\n}\n}\n}\n```",
     "options": [
       "A. Hi-Hi-Hi-Hi-Hello-Hello-Hello-Hi-",
       "B. Hi-Hi-Hi-Hi-Hi-Hello-Hello-Hello-",
@@ -544,9 +611,490 @@
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
+    "id": "prf_195",
+    "word": "Câu 195: Consider following program. What will be printed on the scre...",
+    "question": "Consider following program. What will be printed on the screen?\n```c\nint a = 10;\nif (a > 5) printf(\"A\");\nelse printf(\"B\");\n```",
+    "options": [
+      "A. A",
+      "B. B",
+      "C. AB",
+      "D. Nothing"
+    ],
+    "answer": "A",
+    "correctWord": "A. A",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_196",
+    "word": "Câu 196: What is the output of the following code snippet?",
+    "question": "What is the output of the following code snippet?\n```c\n#include <stdio.h>\nint main() {\nchar char_array[] = {'a', 'b', 'c', 'd', 'e', 'f'};\nint array_size = sizeof(char_array) / sizeof(char);\nfor (int i = 0; i < array_size; i++) {\nchar_array[i] = char_array[i] + 1;\n}\nfor (int i = 0; i < array_size; i++) {\nprintf(\"%c\", char_array[i]);\n}\nreturn 0;\n}\n```",
+    "options": [
+      "A. bcdefg",
+      "B. abcdef",
+      "C. 98 99 100 101 102 103",
+      "D. defgh"
+    ],
+    "answer": "A",
+    "correctWord": "A. bcdefg",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_199",
+    "word": "Câu 199: Switch-case menu output when choosing case 1:",
+    "question": "Switch-case menu output when choosing case 1:",
+    "options": [
+      "A. Case 1 output",
+      "B. Case 2 output",
+      "C. Case 3 output",
+      "D. Default output"
+    ],
+    "answer": "A",
+    "correctWord": "A. Case 1 output",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_201",
+    "word": "Câu 201: What is the output of the following code?",
+    "question": "What is the output of the following code?\n```c\n#include <stdio.h>\nint main() {\nint a = -5;\nif (a % 2 == 0)\nprintf(\"a is an positive number.\");\nelse if (a == 0)\nprintf(\"a is zero.\");\nelse\nprintf(\"a is an negative number.\");\nreturn 0;\n}\n```",
+    "options": [
+      "A. a is an positive number.",
+      "B. a is an negative number.",
+      "C. a is zero.",
+      "D. An error will be raised."
+    ],
+    "answer": "B",
+    "correctWord": "B. a is an negative number.",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_202",
+    "word": "Câu 202: Which of the following switch statement will correctly compu...",
+    "question": "Which of the following switch statement will correctly compute the result for the expression `5 * 4`?\n```c\ndouble result;\nchar op = '*';\nint num1 = 5, num2 = 4;\nswitch (op) {\ncase '+': result = num1 + num2; break;\ncase '-': result = num1 - num2; break;\ncase '*': result = num1 * num2; break;\ncase '/': if (num2 != 0) result = num1 / num2; break;\ndefault: printf(\"Invalid Operator\");\n}\nprintf(\"%.0lf\", result);\n```",
+    "options": [
+      "A. 20",
+      "B. 9",
+      "C. 1.25",
+      "D. 0"
+    ],
+    "answer": "A",
+    "correctWord": "A. 20",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_203",
+    "word": "Câu 203: Why the following code is wrong?",
+    "question": "Why the following code is wrong?\n```c\n#include<stdio.h>\nint main() {\nint choice;\nscanf(\"%d\", &choice);\nswitch(choice) {\ncase 1.5: printf(\"You choice 1.5\");\ncase 2.3: printf(\"You choice 2.3\");\n}\nreturn 0;\n}\n```",
+    "options": [
+      "A. The case labels are real numbers",
+      "B. Missing \"break\" command",
+      "C. Missing \"default\" command",
+      "D. Syntax error in scanf"
+    ],
+    "answer": "A",
+    "correctWord": "A. The case labels are real numbers",
+    "explanation": "Đáp án: A. Nhãn case trong switch bắt buộc phải là hằng số nguyên",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_208",
+    "word": "Câu 208: What does the following code print?",
+    "question": "What does the following code print?\n```c\nint x = 10;\nif (x = 0)\nprintf(\"Zero\");\nelse\nprintf(\"Non-zero\");\n```",
+    "options": [
+      "A. Runs and prints \"Non-zero\"",
+      "B. Compiler error",
+      "C. Runs but prints nothing",
+      "D. Runs and prints garbage value",
+      "E. Runs and prints \"Zero\"",
+      "F. Runtime error"
+    ],
+    "answer": "A",
+    "correctWord": "A. Runs and prints \"Non-zero\"",
+    "explanation": "Đáp án: A. x = 0 là phép gán trả về giá trị 0 tức false, nên nhảy vào nhánh else",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_215",
+    "word": "Câu 215: Choose the best comment about the output of the following C ...",
+    "question": "Choose the best comment about the output of the following C code:\n```c\n#include <stdio.h>\nint main() {\nint a = 1;\nswitch (a) {\ncase 1: printf(\"%d\", a);\ncase 2: printf(\"%d\", a);\ncase 3: printf(\"%d\", a);\n}\nreturn 0;\n}\n```",
+    "options": [
+      "A. No error, outputs 111",
+      "B. No error, output is 1",
+      "C. Compile time error, case label outside switch statement"
+    ],
+    "answer": "A",
+    "correctWord": "A. No error, outputs 111",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_228",
+    "word": "Câu 228: What is the output when the sample code below is executed?",
+    "question": "What is the output when the sample code below is executed?\n```c\n#include <stdio.h>\nint main() {\nint i, j, result = 0;\nfor (i = 3; i <= 5; i++) {\nfor (j = 5; j > i; j--)\nresult += j;\n}\nprintf(\"%d\", result);\nreturn 0;\n}\n```",
+    "options": [
+      "A. 14",
+      "B. 15",
+      "C. 16",
+      "D. 20"
+    ],
+    "answer": "A",
+    "correctWord": "A. 14",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_230",
+    "word": "Câu 230: What will be the output of this program?",
+    "question": "What will be the output of this program?\n```c\nint n = 5, i, S = 1;\nfor (i = 2; i <= n; i++) {\nS *= i;\n}\nprintf(\"%d\", S);\n```",
+    "options": [
+      "A. 120",
+      "B. 60",
+      "C. 24",
+      "D. 100"
+    ],
+    "answer": "A",
+    "correctWord": "A. 120",
+    "explanation": "Đáp án: A. 5! = 120",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_239",
+    "word": "Câu 239: What is not a loop in C programming language?",
+    "question": "What is not a loop in C programming language?",
+    "options": [
+      "A. While",
+      "B. Do while",
+      "C. For",
+      "D. Repeat until"
+    ],
+    "answer": "D",
+    "correctWord": "D. Repeat until",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_245",
+    "word": "Câu 245: What technique in programming to solve this complex problem ...",
+    "question": "What technique in programming to solve this complex problem is to break the program into a series of smaller programs?",
+    "options": [
+      "A. Modularity",
+      "B. Repeat",
+      "C. Select",
+      "D. Sequentially"
+    ],
+    "answer": "A",
+    "correctWord": "A. Modularity",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_246",
+    "word": "Câu 246: What will happen if the while loop does NOT have the loop's ...",
+    "question": "What will happen if the while loop does NOT have the loop's condition?",
+    "options": [
+      "A. Compile time error",
+      "B. Loop infinitely",
+      "C. No Output will be printed",
+      "D. The loop will not work"
+    ],
+    "answer": "A",
+    "correctWord": "A. Compile time error",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_264",
+    "word": "Câu 264: In a for loop, what part of the loop is executed before the ...",
+    "question": "In a for loop, what part of the loop is executed before the loop starts?",
+    "options": [
+      "A. The condition",
+      "B. The initialization block",
+      "C. The iteration statement",
+      "D. The body of the loop"
+    ],
+    "answer": "B",
+    "correctWord": "B. The initialization block",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_266",
+    "word": "Câu 266: The statement `for( ; ; )` does indeed represent an infinite...",
+    "question": "The statement `for( ; ; )` does indeed represent an infinite loop... However, an infinite loop can still be terminated by using:",
+    "options": [
+      "A. exit(0)",
+      "B. abort()",
+      "C. break",
+      "D. terminate"
+    ],
+    "answer": "C",
+    "correctWord": "C. break",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_273",
+    "word": "Câu 273: Which of the following statements is used to move to the nex...",
+    "question": "Which of the following statements is used to move to the next loop without executing the remaining part of the loop?",
+    "options": [
+      "A. continue",
+      "B. goto",
+      "C. return",
+      "D. break"
+    ],
+    "answer": "A",
+    "correctWord": "A. continue",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_275",
+    "word": "Câu 275: Which of the following statements is used to stop the select...",
+    "question": "Which of the following statements is used to stop the select or loop statement?",
+    "options": [
+      "A. break",
+      "B. goto",
+      "C. continue",
+      "D. while"
+    ],
+    "answer": "A",
+    "correctWord": "A. break",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_313",
+    "word": "Câu 313: Which of the following is a valid variable name?",
+    "question": "Which of the following is a valid variable name?",
+    "options": [
+      "A. break",
+      "B. 2_var",
+      "C. for",
+      "D. _2"
+    ],
+    "answer": "D",
+    "correctWord": "D. _2",
+    "explanation": "Đáp án: D.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_315",
+    "word": "Câu 315: Which of the following is not a keyword in C?",
+    "question": "Which of the following is not a keyword in C?",
+    "options": [
+      "A. shorter",
+      "B. break",
+      "C. default",
+      "D. goto"
+    ],
+    "answer": "A",
+    "correctWord": "A. shorter",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_327",
+    "word": "Câu 327: What is the sequence construct in programming?",
+    "question": "What is the sequence construct in programming?",
+    "options": [
+      "A. A single line of code",
+      "B. A simple statement or a code block executed in order",
+      "C. A function call",
+      "D. A loop that repeats indefinitely"
+    ],
+    "answer": "B",
+    "correctWord": "B. A simple statement or a code block executed in order",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_331",
+    "word": "Câu 331: What is the main difference between a while loop and a do......",
+    "question": "What is the main difference between a while loop and a do...while loop?",
+    "options": [
+      "A. while loop checks the condition before executing the loop body, do...while checks it after.",
+      "B. do...while loop runs only once, while loop can run multiple times.",
+      "C. while loop requires an increment statement, do...while does not.",
+      "D. There is no difference; they are identical in function."
+    ],
+    "answer": "A",
+    "correctWord": "A. while loop checks the condition before executing the loop body, do...while checks it after.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_336",
+    "word": "Câu 336: What is the loop in C language used for?",
+    "question": "What is the loop in C language used for?",
+    "options": [
+      "A. To execute a block of codes repeatedly as long as a specified condition is true.",
+      "B. To perform mathematical calculations.",
+      "C. To define variables within a program.",
+      "D. To execute a statement based on a condition."
+    ],
+    "answer": "A",
+    "correctWord": "A. To execute a block of codes repeatedly as long as a specified condition is true.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_342",
+    "word": "Câu 342: What is the purpose of the `continue` statement in a loop?",
+    "question": "What is the purpose of the `continue` statement in a loop?",
+    "options": [
+      "A. To skip the rest of the code inside the loop and move to the next iteration.",
+      "B. To jump to the beginning of the loop.",
+      "C. To exit the entire program.",
+      "D. The way increment/decrement variable in the loop."
+    ],
+    "answer": "A",
+    "correctWord": "A. To skip the rest of the code inside the loop and move to the next iteration.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_343",
+    "word": "Câu 343: What is the purpose of an if-else statement in programming?",
+    "question": "What is the purpose of an if-else statement in programming?",
+    "options": [
+      "A. It is used to decide whether the part of the code will be executed or not based on the specified condition.",
+      "B. It allows you to repeat a block of code a specified number of times.",
+      "C. It is used to define a function in a programming language.",
+      "D. It is used to declare variables and assign values to them."
+    ],
+    "answer": "A",
+    "correctWord": "A. It is used to decide whether the part of the code will be executed or not based on the specified condition.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_344",
+    "word": "Câu 344: What is the purpose of the increment or decrement expression...",
+    "question": "What is the purpose of the increment or decrement expression in a for loop?",
+    "options": [
+      "A. It is executed after each iteration of the loop to update loop control variables.",
+      "B. It determines when the loop should stop.",
+      "C. It is executed before the loop starts and used to initialize loop control variables.",
+      "D. It specifies the condition to be checked."
+    ],
+    "answer": "A",
+    "correctWord": "A. It is executed after each iteration of the loop to update loop control variables.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_345",
+    "word": "Câu 345: What is the difference between a while loop and a do-while l...",
+    "question": "What is the difference between a while loop and a do-while loop?",
+    "options": [
+      "A. The way the condition is checked.",
+      "B. They are essentially the same.",
+      "C. The type of tasks they can perform.",
+      "D. The variable in loop construct."
+    ],
+    "answer": "A",
+    "correctWord": "A. The way the condition is checked.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
     "id": "prf_354",
-    "word": "Câu 354: What will happen if a break statement is not used in a switc...",
-    "question": "What will happen if a break statement is not used in a switch case?",
+    "word": "Câu 354: What is the function of `fflush(stdin);` command?",
+    "question": "What is the function of `fflush(stdin);` command?",
+    "options": [
+      "A. Print string out to screen",
+      "B. Receive a string entered from the keyboard",
+      "C. Remove characters are entered from keyboard",
+      "D. Remove characters are remained in the keyboard buffer"
+    ],
+    "answer": "D",
+    "correctWord": "D. Remove characters are remained in the keyboard buffer",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_355",
+    "word": "Câu 355: What is the primary use of the `const` keyword when used wit...",
+    "question": "What is the primary use of the `const` keyword when used with function parameters in C?",
+    "options": [
+      "A. It prevents the function from modifying the parameter's value",
+      "B. It ensures the parameter is passed by reference",
+      "C. It restricts the parameter's scope to the function",
+      "D. It specifies that the parameter should be initialized"
+    ],
+    "answer": "A",
+    "correctWord": "A. It prevents the function from modifying the parameter's value",
+    "explanation": "Đáp án: B. (Lưu ý đề gốc: câu hỏi bị gõ thiếu động từ \"update/change\" sau cụm \"does NOT\").",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_356",
+    "word": "Câu 356: What is the primary difference between global variables and ...",
+    "question": "What is the primary difference between global variables and local variables in C?",
+    "options": [
+      "A. Global variables have a wider scope and can be accessed from any function, while local variables are limited to their function's scope",
+      "B. Global variables are initialized automatically to zero, while local variables require explicit initialization",
+      "C. Local variables cannot be modified after initialization, while global variables allow modification at any time",
+      "D. Global variables can only be used within the main function"
+    ],
+    "answer": "A",
+    "correctWord": "A. Global variables have a wider scope and can be accessed from any function, while local variables are limited to their function's scope",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_358",
+    "word": "Câu 358: What does a data type tell us about a variable?",
+    "question": "What does a data type tell us about a variable?",
+    "options": [
+      "A. The color of the variable",
+      "B. How much space the variable needs in memory (and how to interpret it)",
+      "C. How fast the variable runs",
+      "D. The name of the variable"
+    ],
+    "answer": "B",
+    "correctWord": "B. How much space the variable needs in memory (and how to interpret it)",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
+  },
+  {
+    "id": "prf_363",
+    "word": "Câu 363: What will happen if a `break` statement is not used in a swi...",
+    "question": "What will happen if a `break` statement is not used in a switch case?",
     "options": [
       "A. The program will execute the next case(s) until a break is encountered or the switch ends",
       "B. The program will terminate immediately",
@@ -555,230 +1103,168 @@
     ],
     "answer": "A",
     "correctWord": "A. The program will execute the next case(s) until a break is encountered or the switch ends",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_355",
-    "word": "Câu 355: What will happen if the while loop does NOT the loop's condi...",
-    "question": "What will happen if the while loop does NOT the loop's condition?",
-    "options": [
-      "A. Compile time error",
-      "B. Loop infinitely",
-      "C. No Output will be printed",
-      "D. The loop will not work"
-    ],
-    "answer": "B",
-    "correctWord": "B. Loop infinitely",
-    "explanation": "Đáp án: B. (Lưu ý đề gốc: câu hỏi bị gõ thiếu động từ \"update/change\" sau cụm \"does NOT\").",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_356",
-    "word": "Câu 356: What will happen if the condition in a while loop is initial...",
-    "question": "What will happen if the condition in a while loop is initially false?",
-    "options": [
-      "A. The loop is skipped entirely.",
-      "B. The loop executes indefinitely.",
-      "C. The loop executes once and then terminates.",
-      "D. An error occurs."
-    ],
-    "answer": "A",
-    "correctWord": "A. The loop is skipped entirely.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_358",
-    "word": "Câu 358: What will happen if the loop's condition is always true?",
-    "question": "What will happen if the loop's condition is always true?",
-    "options": [
-      "A. Loop infinitely",
-      "B. No Output will be printed",
-      "C. Compile time error",
-      "D. The loop will not work"
-    ],
-    "answer": "A",
-    "correctWord": "A. Loop infinitely",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
-  },
-  {
-    "id": "prf_363",
-    "word": "Câu 363: Which of the following is true about the default case in a s...",
-    "question": "Which of the following is true about the default case in a switch statement?",
-    "options": [
-      "A. It must always be placed at the beginning of the switch statement",
-      "B. It is mandatory for every switch statement",
-      "C. It executes when none of the case conditions match",
-      "D. It can be used multiple times within a single switch"
-    ],
-    "answer": "C",
-    "correctWord": "C. It executes when none of the case conditions match",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_364",
-    "word": "Câu 364: Which of the following statements is incorrect?",
-    "question": "Which of the following statements is incorrect?",
+    "word": "Câu 364: What happens if a loop's condition is initially false (in a ...",
+    "question": "What happens if a loop's condition is initially false (in a `for` or `while` loop)?",
     "options": [
-      "A. To make our programs longer, we use higher-level languages.",
-      "B. Program code in a high level language can not run, it must be translated to binary code (machine code) before running.",
-      "C. C is based on a view of structured programming.",
-      "D. Programs that perform relatively simple tasks and are written in assembly language contain a large number of statements."
+      "A. Compile time error",
+      "B. Loop infinitely",
+      "C. No Output will be printed",
+      "D. The loop runs once"
     ],
-    "answer": "A",
-    "correctWord": "A. To make our programs longer, we use higher-level languages.",
+    "answer": "C",
+    "correctWord": "C. No Output will be printed",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_368",
-    "word": "Câu 368: Which of the following is TRUE about the while loop in C?",
-    "question": "Which of the following is TRUE about the while loop in C?",
+    "word": "Câu 368: What benefit does `#define` offer when dealing with magic va...",
+    "question": "What benefit does `#define` offer when dealing with magic values in code?",
     "options": [
-      "A. The loop will always execute at least once.",
-      "B. The condition is checked after each iteration.",
-      "C. The loop will never execute if the condition is initially false.",
-      "D. The loop requires an increment statement inside the body."
+      "A. It improves code portability and readability",
+      "B. It makes the code shorter",
+      "C. It prevents the use of symbolic names",
+      "D. It increases code complexity"
     ],
-    "answer": "C",
-    "correctWord": "C. The loop will never execute if the condition is initially false.",
+    "answer": "A",
+    "correctWord": "A. It improves code portability and readability",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_370",
-    "word": "Câu 370: Which of the following about the switch case statement is tr...",
-    "question": "Which of the following about the switch case statement is true?",
+    "word": "Câu 370: What happens when you try to access the 11th element of an a...",
+    "question": "What happens when you try to access the 11th element of an array with a size of 10 in the C language?",
     "options": [
-      "A. It can only be used with integer or character type expressions.",
-      "B. It can be used with any data type.",
-      "C. It can only be used in functions.",
-      "D. It can only have one case statement inside."
+      "A. The program compiles and runs without any errors, but the behavior is undefined",
+      "B. The program compiles and runs without any errors, and the 11th element is accessed",
+      "C. The program fails to compile due to a compilation error",
+      "D. The program compiles and runs without any errors, and the 11th element is automatically added to the array"
     ],
     "answer": "A",
-    "correctWord": "A. It can only be used with integer or character type expressions.",
+    "correctWord": "A. The program compiles and runs without any errors, but the behavior is undefined",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_377",
-    "word": "Câu 377: How does a \"for\" loop differ from a \"while\" loop in C progra...",
-    "question": "How does a \"for\" loop differ from a \"while\" loop in C programming?",
+    "word": "Câu 377: Which of the following is TRUE about the `while` loop in C?",
+    "question": "Which of the following is TRUE about the `while` loop in C?",
     "options": [
-      "A. A \"for\" loop is used for iterating over a sequence of elements, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
-      "B. A \"for\" loop is primarily used for conditional statements, while a \"while\" loop is designed for sequential processing.",
-      "C. The use of \"for\" and \"while\" loops is interchangeable; there is no substantial difference between them.",
-      "D. A \"for\" loop is exclusively used with arrays, while a \"while\" loop is used with numerical calculations.."
+      "A. The loop will always execute at least once",
+      "B. The condition is checked after each iteration",
+      "C. The loop will never execute if the condition is initially false",
+      "D. The loop requires an increment statement inside the body"
     ],
-    "answer": "A",
-    "correctWord": "A. A \"for\" loop is used for iterating over a sequence of elements, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
+    "answer": "C",
+    "correctWord": "C. The loop will never execute if the condition is initially false",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_384",
-    "word": "Câu 384: Real-world example of a switch statement in C is:",
-    "question": "Real-world example of a switch statement in C is:",
+    "word": "Câu 384: How are strings typically represented in C?",
+    "question": "How are strings typically represented in C?",
     "options": [
-      "A. Check the day of the week.",
-      "B. Sort an array ascending.",
-      "C. Sort an array descending.",
-      "D. Find the average value of a sequence."
+      "A. As an array of characters",
+      "B. As an array of strings",
+      "C. As individual characters",
+      "D. As integers referencing ASCII values"
     ],
     "answer": "A",
-    "correctWord": "A. Check the day of the week.",
+    "correctWord": "A. As an array of characters",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_387",
-    "word": "Câu 387: In a C program, what happens if none of the conditions in an...",
-    "question": "In a C program, what happens if none of the conditions in an if-else statement are true?",
+    "word": "Câu 387: How does a \"for\" loop differ from a \"while\" loop in C progra...",
+    "question": "How does a \"for\" loop differ from a \"while\" loop in C programming?",
     "options": [
-      "A. The program will skip the if-else block and continue with the next statement.",
-      "B. The program will raise an error.",
-      "C. The else if block will be executed.",
-      "D. The program will terminate abruptly."
+      "A. A \"for\" loop is typically used when the number of iterations is known/iterating over a sequence, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
+      "B. A \"for\" loop is primarily used for conditional statements, while a \"while\" loop is designed for sequential processing.",
+      "C. The use of \"for\" and \"while\" loops is interchangeable; there is no substantial difference between them.",
+      "D. A \"for\" loop is exclusively used with arrays."
     ],
     "answer": "A",
-    "correctWord": "A. The program will skip the if-else block and continue with the next statement.",
+    "correctWord": "A. A \"for\" loop is typically used when the number of iterations is known/iterating over a sequence, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_391",
-    "word": "Câu 391: In a switch statement, what is the purpose of the default ca...",
-    "question": "In a switch statement, what is the purpose of the default case?",
+    "word": "Câu 391: Choose the correct definition for \"Simple data types\" in C p...",
+    "question": "Choose the correct definition for \"Simple data types\" in C programming.",
     "options": [
-      "A. To specify a condition to stop execution",
-      "B. To exit the program",
-      "C. To define the first case in the switch statement",
-      "D. To handle values that are not matched by any case label"
+      "A. Changing from one form of representation to another",
+      "B. A category of data that represents individual, non-complex elements such as integers, floating-point numbers, and characters",
+      "C. Performing operations and expressions on data",
+      "D. Storing a collection of elements accessible by an index or a key"
     ],
-    "answer": "D",
-    "correctWord": "D. To handle values that are not matched by any case label",
+    "answer": "B",
+    "correctWord": "B. A category of data that represents individual, non-complex elements such as integers, floating-point numbers, and characters",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_396",
-    "word": "Câu 396: What happens when you use a break statement inside a for loo...",
-    "question": "What happens when you use a break statement inside a for loop?",
+    "word": "Câu 396: In C programming language, what is the function `fprintf()` ...",
+    "question": "In C programming language, what is the function `fprintf()` used for?",
     "options": [
-      "A. The loop exits immediately.",
-      "B. The loop continues with the next iteration and skips the remaining statements.",
-      "C. The program terminates completely, and all variables are destroyed.",
-      "D. Nothing happens; the break statement is completely ignored in for loops."
+      "A. Writing formatted data to a file.",
+      "B. Reading formatted data from a file.",
+      "C. Appending formatted data to a file.",
+      "D. Closing a file."
     ],
     "answer": "A",
-    "correctWord": "A. The loop exits immediately.",
+    "correctWord": "A. Writing formatted data to a file.",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_404",
-    "word": "Câu 404: Which is the correct syntax for a for loop in C?",
-    "question": "Which is the correct syntax for a for loop in C?",
+    "word": "Câu 404: The `^` operator in the C programming language is used to:",
+    "question": "The `^` operator in the C programming language is used to:",
     "options": [
-      "A. for (initialization, condition, increment) { statements; }",
-      "B. for { initialization; condition; increment; } { statements; }",
-      "C. for (initialization; condition; increment) { statements; }",
-      "D. for: (initialization; condition; increment) { statements; }"
+      "A. XOR two bit sequences.",
+      "B. OR two bit sequences.",
+      "C. AND two bit sequences.",
+      "D. SHIFT UP a bit sequences.",
+      "E. NOT a bit sequences.",
+      "F. Calculate the exponential value, for example 2^3 = 8."
     ],
-    "answer": "C",
-    "correctWord": "C. for (initialization; condition; increment) { statements; }",
+    "answer": "A",
+    "correctWord": "A. XOR two bit sequences.",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"
   },
   {
     "id": "prf_413",
-    "word": "Câu 413: Which statement is specifically designed for efficiently han...",
-    "question": "Which statement is specifically designed for efficiently handling multiple discrete cases of a single variable, providing a clear structure for selecting one among several possible paths?",
+    "word": "Câu 413: What is the correct syntax for declaring a static array in C...",
+    "question": "What is the correct syntax for declaring a static array in C?",
     "options": [
-      "A. if",
-      "B. switch",
-      "C. while",
-      "D. for"
+      "A. DataType ArrayName[NumberOfElements];",
+      "B. ArrayName DataType[NumberOfElements];",
+      "C. DataType[NumberOfElements] ArrayName;",
+      "D. [NumberOfElements] DataType ArrayName;"
     ],
-    "answer": "B",
-    "correctWord": "B. switch",
+    "answer": "A",
+    "correctWord": "A. DataType ArrayName[NumberOfElements];",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Cấu Trúc Điều Khiển & Vòng Lặp"

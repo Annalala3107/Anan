@@ -378,11 +378,11 @@ export const QUESTION_BANKS: SubjectSection[] = [
       {
         id: 'prf_all',
         name: 'PRF192 — Đề Thi Trắc Nghiệm C Toàn Diện',
-        description: 'Trọn bộ 253 câu hỏi trắc nghiệm code C, phân tích output chương trình và ngữ pháp lập trình C.',
+        description: 'Trọn bộ 428 câu hỏi trắc nghiệm code C, phân tích output chương trình và ngữ pháp lập trình C.',
         file_path: '/data/prf192_all.json',
         is_public: true,
-        wordCount: 253,
-        tags: ['Full Exam', '253 Câu', 'C Code'],
+        wordCount: 428,
+        tags: ['Full Exam', '428 Câu', 'C Code'],
         subject: 'PRF192',
         topic: 'Tổng Hợp'
       },
@@ -392,7 +392,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Vòng lặp for, while, do-while, cấu trúc rẽ nhánh if-else, switch-case, break và continue.',
         file_path: '/data/prf_c_u_tr_c_i_u_khi_n_v_ng_l_p.json',
         is_public: true,
-        wordCount: 49,
+        wordCount: 79,
         tags: ['Loops', 'Switch Case', 'If-Else'],
         subject: 'PRF192',
         topic: 'Vòng Lặp & Điều Khiển'
@@ -403,7 +403,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Toán tử con trỏ *, &, số học con trỏ, con trỏ cấp 2, hàm malloc(), calloc(), realloc(), free().',
         file_path: '/data/prf_con_tr_qu_n_l_b_nh.json',
         is_public: true,
-        wordCount: 29,
+        wordCount: 42,
         tags: ['Pointers', 'Malloc', 'Memory'],
         subject: 'PRF192',
         topic: 'Con Trỏ'
@@ -414,7 +414,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Mảng ký tự, ký tự kết thúc chuỗi \\0, các hàm strcmp, strcpy, strcat, strlen, gets, puts.',
         file_path: '/data/prf_chu_i_k_t_strings.json',
         is_public: true,
-        wordCount: 33,
+        wordCount: 61,
         tags: ['Strings', 'strcmp', 'strcpy'],
         subject: 'PRF192',
         topic: 'Chuỗi Ký Tự'
@@ -425,7 +425,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Toán tử bitwise &, |, ^, dịch bit <<, >>, toán tử điều kiện ?:, độ ưu tiên toán tử, ép kiểu dữ liệu.',
         file_path: '/data/prf_c_ph_p_ki_u_d_li_u_to_n_t.json',
         is_public: true,
-        wordCount: 66,
+        wordCount: 115,
         tags: ['Data Types', 'Bitwise', 'Operators'],
         subject: 'PRF192',
         topic: 'Toán Tử & Kiểu Dữ Liệu'
@@ -436,7 +436,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Khai báo nguyên mẫu hàm (Prototype), truyền tham trị vs truyền tham chiếu, biến local vs global.',
         file_path: '/data/prf_h_m_ph_m_vi_bi_n.json',
         is_public: true,
-        wordCount: 34,
+        wordCount: 58,
         tags: ['Functions', 'Scope', 'Parameters'],
         subject: 'PRF192',
         topic: 'Hàm'
@@ -447,7 +447,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Mảng 1 chiều, mảng 2 chiều (matrix), duyệt mảng, tìm kiếm tuần tự (linear), nhị phân, Bubble/Selection sort.',
         file_path: '/data/prf_m_ng_gi_i_thu_t_c_b_n.json',
         is_public: true,
-        wordCount: 30,
+        wordCount: 43,
         tags: ['Arrays', 'Matrix', 'Sorting'],
         subject: 'PRF192',
         topic: 'Mảng'
@@ -458,7 +458,7 @@ export const QUESTION_BANKS: SubjectSection[] = [
         description: 'Mở file fopen, chế độ r, w, a, a+, wb, đọc ghi file fprintf, fscanf, fgetc, fputc, hàm feof, rewind.',
         file_path: '/data/prf_t_p_tin_file_i_o.json',
         is_public: true,
-        wordCount: 12,
+        wordCount: 30,
         tags: ['File I/O', 'fopen', 'rewind'],
         subject: 'PRF192',
         topic: 'Tệp Tin'
