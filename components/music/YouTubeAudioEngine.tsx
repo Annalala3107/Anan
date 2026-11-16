@@ -482,6 +482,28 @@ export default function YouTubeAudioEngine() {
                 if (activeMediaKeyRef.current) {
                   latest.clearTrackError(activeMediaKeyRef.current);
                 }
+                try {
+                  const vd = event.target?.getVideoData?.();
+                  if (vd && typeof vd.title === 'string' && vd.title.trim()) {
+                    latest.repairTrackMeta(latest.currentTrackId, vd.title, vd.author);
+                    const activeTrack = latest.tracks.find(
+                      (t) => t.id === latest.currentTrackId
+                    );
+                    if (activeTrack?.playlistId) {
+                      const plArr = event.target?.getPlaylist?.();
+                      const plIdx = Number(event.target?.getPlaylistIndex?.() ?? -1);
+                      latest.setLiveTrackInfo({
+                        videoId: vd.video_id || null,
+                        title: vd.title.trim(),
+                        artist: vd.author ? `${vd.author} · Playlist` : 'YouTube Playlist',
+                        playlistIndex: plIdx,
+                        playlistTotal: Array.isArray(plArr) ? plArr.length : 0,
+                      });
+                    }
+                  }
+                } catch {
+                  // Ignore getVideoData unavailability
+                }
                 latest.setPlayerState('playing');
               } else if (stateCode === 3) {
                 if (!isFadingOutRef.current && fadeTimerRef.current === null) {
@@ -686,6 +708,21 @@ export default function YouTubeAudioEngine() {
         if (sec !== lastSec && (dur > 0 || cur > 0)) {
           lastSec = sec;
           store.setProgress(cur, dur);
+        }
+        const activeTrack = store.tracks.find((t) => t.id === store.currentTrackId);
+        if (activeTrack?.playlistId) {
+          const vd = p.getVideoData?.();
+          if (vd?.video_id && vd.video_id !== store.liveVideoId && vd.title) {
+            const plArr = p.getPlaylist?.();
+            const plIdx = Number(p.getPlaylistIndex?.() ?? -1);
+            store.setLiveTrackInfo({
+              videoId: vd.video_id,
+              title: vd.title.trim(),
+              artist: vd.author ? `${vd.author} · Playlist` : 'YouTube Playlist',
+              playlistIndex: plIdx,
+              playlistTotal: Array.isArray(plArr) ? plArr.length : 0,
+            });
+          }
         }
       } catch {
         // Ignore if tearing down

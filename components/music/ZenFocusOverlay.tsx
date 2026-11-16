@@ -1,38 +1,47 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
   Check,
+  ChevronDown,
+  ChevronUp,
   CloudRain,
+  Compass,
   Disc3,
   Eye,
-  EyeOff,
   ListMusic,
   Loader2,
   Minimize2,
   Moon,
-  Palette,
   Pause,
   Pencil,
   Pin,
   Play,
+  Plus,
+  Radio,
   Repeat,
   Repeat1,
   RotateCcw,
+  Search,
   Shuffle,
   SkipBack,
   SkipForward,
   Sparkles,
   Target,
   Timer,
+  Trash2,
   Volume2,
   VolumeX,
   Wind,
   X,
 } from 'lucide-react';
 import {
+  CURATED_FOCUS_STATIONS,
+  CuratedStation,
   formatSecondsMmSs,
+  getTrackErrorKey,
   POMODORO_PRESETS,
   PomodoroPresetKey,
   SleepTimerMode,
@@ -41,8 +50,8 @@ import {
 import { AmbientPreset } from '@/lib/ambientAudio';
 import {
   getStudioContextTone,
+  OuterReactiveVisuals,
   STUDIO_TONE_TOKENS,
-  StudioContextTone,
   StudioEqualizer,
   StudioSceneBackdrop,
   StudioSceneMode,
@@ -71,9 +80,19 @@ const AMBIENT_OPTIONS: {
 ];
 
 const SCENE_MODES: { id: StudioSceneMode; label: string; desc: string }[] = [
-  { id: 'aura', label: 'Album Aura', desc: 'Mờ khí quyển bài hát' },
-  { id: 'midnight', label: 'Pure Midnight', desc: 'Đen sâu tĩnh mịch' },
-  { id: 'glow', label: 'Ambient Glow', desc: 'Hào quang Pomodoro' },
+  { id: 'aura', label: 'Album', desc: 'Mờ khí quyển động theo bìa nhạc' },
+  { id: 'midnight', label: 'Midnight', desc: 'Đen sâu tối giản hoàn toàn' },
+  { id: 'glow', label: 'Ambient', desc: 'Hào quang ngữ cảnh Pomodoro' },
+];
+
+const STATION_FILTERS: {
+  id: 'all' | CuratedStation['category'];
+  label: string;
+}[] = [
+  { id: 'all', label: 'Tất cả' },
+  { id: 'lofi', label: 'Lofi Study' },
+  { id: 'coding', label: 'Chill / Coding' },
+  { id: 'piano', label: 'Piano Việt' },
 ];
 
 /**
@@ -131,14 +150,81 @@ function ZenSeekBar() {
 }
 
 /**
- * Isolated 1-second Pomodoro display inside Zen Mode.
+ * Isolated 1-second Pomodoro progress bar on the top edge of the card.
  */
-function ZenPomodoroCountdown() {
+function ZenPomodoroProgressBar() {
+  const pomodoroPreset = useMusicStore((s) => s.pomodoroPreset);
+  const pomodoroMode = useMusicStore((s) => s.pomodoroMode);
   const pomodoroSecondsLeft = useMusicStore((s) => s.pomodoroSecondsLeft);
+  const pomodoroRunning = useMusicStore((s) => s.pomodoroRunning);
+
+  const tone = getStudioContextTone(pomodoroRunning, pomodoroMode);
+  const fillGradient = STUDIO_TONE_TOKENS[tone].fillGradient;
+  const cfg = POMODORO_PRESETS[pomodoroPreset] || POMODORO_PRESETS['25/5'];
+  const totalSec =
+    pomodoroMode === 'focus' ? cfg.focusSeconds : cfg.breakSeconds;
+  const ratio = Math.min(1, Math.max(0, 1 - pomodoroSecondsLeft / totalSec));
 
   return (
-    <div className="text-5xl sm:text-6xl font-mono font-bold tabular-nums tracking-tight text-white drop-shadow-sm">
-      {formatSecondsMmSs(pomodoroSecondsLeft, true)}
+    <div className="absolute top-0 inset-x-0 h-1 bg-white/[0.06] overflow-hidden">
+      <div
+        className={`h-full w-full origin-left bg-gradient-to-r ${fillGradient} transition-transform duration-500`}
+        style={{ transform: `scaleX(${ratio})` }}
+      />
+    </div>
+  );
+}
+
+/**
+ * Isolated 1-second Pomodoro countdown & estimated end time inside Zen Mode.
+ */
+function ZenPomodoroCountdown({ compact = false }: { compact?: boolean }) {
+  const pomodoroPreset = useMusicStore((s) => s.pomodoroPreset);
+  const pomodoroMode = useMusicStore((s) => s.pomodoroMode);
+  const pomodoroSecondsLeft = useMusicStore((s) => s.pomodoroSecondsLeft);
+  const pomodoroRunning = useMusicStore((s) => s.pomodoroRunning);
+
+  const cfg = POMODORO_PRESETS[pomodoroPreset] || POMODORO_PRESETS['25/5'];
+
+  const estimatedEndTimeStr = useMemo(() => {
+    if (!pomodoroRunning) return null;
+    const est = new Date(Date.now() + pomodoroSecondsLeft * 1000);
+    const hh = String(est.getHours()).padStart(2, '0');
+    const mm = String(est.getMinutes()).padStart(2, '0');
+    return `${hh}:${mm}`;
+  }, [pomodoroRunning, pomodoroSecondsLeft]);
+
+  if (compact) {
+    return (
+      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10">
+        <Timer className="w-3.5 h-3.5 text-cyan-400" />
+        <span className="text-sm font-mono font-bold tabular-nums text-white">
+          {formatSecondsMmSs(pomodoroSecondsLeft, true)}
+        </span>
+        {pomodoroRunning && (
+          <span className="text-[11px] text-slate-400">
+            • {pomodoroMode === 'focus' ? 'Focus' : 'Nghỉ'}
+          </span>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="text-center py-1">
+      <div className="text-5xl sm:text-6xl font-mono font-bold tabular-nums tracking-tight text-white drop-shadow-sm">
+        {formatSecondsMmSs(pomodoroSecondsLeft, true)}
+      </div>
+      {estimatedEndTimeStr ? (
+        <p className="mt-1 text-xs text-slate-400 font-medium">
+          Dự kiến {pomodoroMode === 'focus' ? 'nghỉ lúc' : 'bắt đầu lại lúc'}{' '}
+          <strong className="text-white font-mono">{estimatedEndTimeStr}</strong>
+        </p>
+      ) : (
+        <p className="mt-1 text-xs text-slate-400">
+          Thời lượng: {Math.round(cfg.focusSeconds / 60)} phút tập trung
+        </p>
+      )}
     </div>
   );
 }
@@ -178,7 +264,9 @@ function SessionIntentionBar() {
     try {
       const saved = localStorage.getItem('anan_zen_intention');
       if (saved) setIntention(saved);
-    } catch {}
+    } catch {
+      // Ignore storage failures
+    }
   }, []);
 
   const handleStartEdit = () => {
@@ -194,7 +282,9 @@ function SessionIntentionBar() {
     setIsEditing(false);
     try {
       localStorage.setItem('anan_zen_intention', finalVal);
-    } catch {}
+    } catch {
+      // Ignore storage failures
+    }
   };
 
   return (
@@ -215,11 +305,12 @@ function SessionIntentionBar() {
             onBlur={handleSave}
             placeholder="Nhập mục tiêu phiên học (VD: 50 câu PRF192)"
             maxLength={60}
-            className="flex-1 px-3 py-1 rounded-xl text-xs bg-black/60 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400"
+            className="flex-1 px-3 py-1 rounded-xl text-xs bg-black/70 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400"
           />
           <button
             type="submit"
-            className="p-1 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500"
+            aria-label="Lưu mục tiêu"
+            className="p-1.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500"
           >
             <Check className="w-3.5 h-3.5" />
           </button>
@@ -229,13 +320,13 @@ function SessionIntentionBar() {
           type="button"
           onClick={handleStartEdit}
           title="Nhấn để chỉnh sửa mục tiêu phiên học"
-          className="group inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 transition-colors"
+          className="group inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs text-slate-300 hover:text-white bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 transition-colors"
         >
           <Target className="w-3.5 h-3.5 text-indigo-400 group-hover:scale-110 transition-transform" />
           <span className="truncate max-w-[240px] sm:max-w-[320px]">
             {intention}
           </span>
-          <Pencil className="w-2.5 h-2.5 opacity-40 group-hover:opacity-100" />
+          <Pencil className="w-2.5 h-2.5 opacity-45 group-hover:opacity-100" />
         </button>
       )}
     </div>
@@ -252,16 +343,25 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
   const isDucked = useMusicStore((s) => s.isDucked);
   const loopMode = useMusicStore((s) => s.loopMode);
   const isShuffle = useMusicStore((s) => s.isShuffle);
+  const trackErrors = useMusicStore((s) => s.trackErrors);
+
+  const liveVideoId = useMusicStore((s) => s.liveVideoId);
+  const liveTitle = useMusicStore((s) => s.liveTitle);
+  const liveArtist = useMusicStore((s) => s.liveArtist);
+  const livePlaylistIndex = useMusicStore((s) => s.livePlaylistIndex);
+  const livePlaylistTotal = useMusicStore((s) => s.livePlaylistTotal);
 
   const ambientPreset = useMusicStore((s) => s.ambientPreset);
   const ambientVolume = useMusicStore((s) => s.ambientVolume);
 
   const pomodoroPreset = useMusicStore((s) => s.pomodoroPreset);
   const pomodoroMode = useMusicStore((s) => s.pomodoroMode);
-  const pomodoroSecondsLeft = useMusicStore((s) => s.pomodoroSecondsLeft);
   const pomodoroRunning = useMusicStore((s) => s.pomodoroRunning);
   const pomodoroCompletedToday = useMusicStore((s) => s.pomodoroCompletedToday);
-
+  const pomodoroAutoPauseMusic = useMusicStore(
+    (s) => s.pomodoroAutoPauseMusic
+  );
+  const examAutoDuckMusic = useMusicStore((s) => s.examAutoDuckMusic);
   const sleepTimerMode = useMusicStore((s) => s.sleepTimerMode);
 
   const selectTrack = useMusicStore((s) => s.selectTrack);
@@ -278,30 +378,59 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
   const togglePomodoro = useMusicStore((s) => s.togglePomodoro);
   const setPomodoroPreset = useMusicStore((s) => s.setPomodoroPreset);
   const resetPomodoro = useMusicStore((s) => s.resetPomodoro);
+  const setPomodoroAutoPause = useMusicStore((s) => s.setPomodoroAutoPause);
+  const setExamAutoDuck = useMusicStore((s) => s.setExamAutoDuck);
+  const addCustomTrackAsync = useMusicStore((s) => s.addCustomTrackAsync);
+  const removeCustomTrack = useMusicStore((s) => s.removeCustomTrack);
+  const togglePinTrack = useMusicStore((s) => s.togglePinTrack);
+  const moveTrack = useMusicStore((s) => s.moveTrack);
+  const playCuratedStation = useMusicStore((s) => s.playCuratedStation);
+  const addStationToQueue = useMusicStore((s) => s.addStationToQueue);
 
-  // New Studio WOW state: Scene Mode & Pure Zen Mode & Right Column View
   const [sceneMode, setSceneMode] = useState<StudioSceneMode>('aura');
   const [isPureZen, setIsPureZen] = useState(false);
-  const [rightPanelTab, setRightPanelTab] = useState<'focus' | 'queue'>('focus');
+  const [rightPanelTab, setRightPanelTab] = useState<
+    'focus' | 'queue' | 'stations'
+  >('focus');
 
-  // Load Scene preference
+  // Queue tab states
+  const [queueFilter, setQueueFilter] = useState('');
+  const [customUrl, setCustomUrl] = useState('');
+  const [customTitle, setCustomTitle] = useState('');
+  const [isAdding, setIsAdding] = useState(false);
+  const [formMsg, setFormMsg] = useState<{
+    type: 'ok' | 'err';
+    text: string;
+  } | null>(null);
+
+  // Stations tab state
+  const [stationFilter, setStationFilter] = useState<
+    'all' | CuratedStation['category']
+  >('all');
+  const [queuedNoticeId, setQueuedNoticeId] = useState<string | null>(null);
+
   useEffect(() => {
     try {
-      const savedScene = localStorage.getItem('anan_zen_scene') as StudioSceneMode | null;
+      const savedScene = localStorage.getItem(
+        'anan_zen_scene'
+      ) as StudioSceneMode | null;
       if (savedScene && ['aura', 'midnight', 'glow'].includes(savedScene)) {
         setSceneMode(savedScene);
       }
-    } catch {}
+    } catch {
+      // Ignore storage errors
+    }
   }, []);
 
   const handleChangeScene = (nextScene: StudioSceneMode) => {
     setSceneMode(nextScene);
     try {
       localStorage.setItem('anan_zen_scene', nextScene);
-    } catch {}
+    } catch {
+      // Ignore
+    }
   };
 
-  // Keyboard shortcuts: Space (Play/Pause), M (Mute), Z (Pure Zen), Esc (Close/Exit Pure)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
@@ -309,6 +438,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
         target &&
         (target.tagName === 'INPUT' ||
           target.tagName === 'TEXTAREA' ||
+          target.tagName === 'SELECT' ||
           target.isContentEditable);
 
       if (e.key === 'Escape') {
@@ -347,33 +477,59 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
     [tracks, currentTrackId]
   );
 
+  const filteredTracks = useMemo(() => {
+    const q = queueFilter.trim().toLowerCase();
+    if (!q) return tracks;
+    return tracks.filter(
+      (t) =>
+        t.title.toLowerCase().includes(q) || t.artist.toLowerCase().includes(q)
+    );
+  }, [tracks, queueFilter]);
+
+  const filteredStations = useMemo(() => {
+    if (stationFilter === 'all') return CURATED_FOCUS_STATIONS;
+    return CURATED_FOCUS_STATIONS.filter((s) => s.category === stationFilter);
+  }, [stationFilter]);
+
   const tone = getStudioContextTone(pomodoroRunning, pomodoroMode);
   const toneTokens = STUDIO_TONE_TOKENS[tone];
+  const currentPresetCfg =
+    POMODORO_PRESETS[pomodoroPreset] || POMODORO_PRESETS['25/5'];
 
   const cycleLoopMode = () => {
     setLoopMode(loopMode === 'all' ? 'one' : 'all');
   };
 
-  // Calculate Pomodoro Progress ratio and estimated completion time
-  const currentPresetCfg = POMODORO_PRESETS[pomodoroPreset] || POMODORO_PRESETS['25/5'];
-  const totalModeSeconds =
-    pomodoroMode === 'focus'
-      ? currentPresetCfg.focusSeconds
-      : currentPresetCfg.breakSeconds;
-  const progressRatio = Math.min(
-    1,
-    Math.max(0, 1 - pomodoroSecondsLeft / totalModeSeconds)
-  );
-
-  const estimatedEndTimeStr = useMemo(() => {
-    if (!pomodoroRunning) return null;
-    const est = new Date(Date.now() + pomodoroSecondsLeft * 1000);
-    const hh = String(est.getHours()).padStart(2, '0');
-    const mm = String(est.getMinutes()).padStart(2, '0');
-    return `${hh}:${mm}`;
-  }, [pomodoroRunning, pomodoroSecondsLeft]);
+  const handleAddTrack = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!customUrl.trim() || isAdding) return;
+    setFormMsg(null);
+    setIsAdding(true);
+    try {
+      const res = await addCustomTrackAsync(
+        customUrl.trim(),
+        customTitle.trim() || undefined
+      );
+      if (res.ok) {
+        setCustomUrl('');
+        setCustomTitle('');
+        setFormMsg({ type: 'ok', text: 'Đã thêm và phát ngay trong Studio.' });
+      } else {
+        setFormMsg({
+          type: 'err',
+          text: res.error || 'Link YouTube hoặc Playlist không hợp lệ.',
+        });
+      }
+    } finally {
+      setIsAdding(false);
+    }
+  };
 
   if (typeof document === 'undefined' || !currentTrack) return null;
+
+  const displayVideoId = liveVideoId || currentTrack.videoId;
+  const displayTitle = liveTitle || currentTrack.title;
+  const displayArtist = liveArtist || currentTrack.artist;
 
   return createPortal(
     <div
@@ -382,16 +538,22 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
       aria-label="Zen Focus Studio"
       className="fixed inset-0 z-[90] overflow-y-auto bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-indigo-500/30"
     >
-      {/* Immersive Scene Backdrop: Aura / Midnight / Glow */}
+      {/* Immersive Living Scene Backdrop (Orbiting Album Clouds / Motes) */}
       <StudioSceneBackdrop
         scene={sceneMode}
-        videoId={currentTrack.videoId}
+        videoId={displayVideoId}
         tone={tone}
+        isPlaying={isPlaying}
       />
 
-      {/* Top Navigation Bar (Fades smoothly in Pure Zen mode) */}
+      {/* Full-Viewport Outer Reactive Visuals (Side Wave Curtains + Bottom Horizon Spectrum) */}
+      {sceneMode !== 'midnight' && (
+        <OuterReactiveVisuals isPlaying={isPlaying} tone={tone} />
+      )}
+
+      {/* Top Navigation Bar */}
       <header
-        className={`relative z-10 max-w-5xl w-full mx-auto px-4 sm:px-8 pt-5 flex items-center justify-between gap-3 transition-opacity duration-300 ${
+        className={`relative z-10 max-w-6xl xl:max-w-7xl w-full mx-auto px-4 sm:px-8 pt-4 sm:pt-5 flex items-center justify-between gap-3 transition-opacity duration-300 ${
           isPureZen ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
@@ -411,26 +573,19 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                   ? pomodoroMode === 'focus'
                     ? 'Đang Focus'
                     : 'Đang Nghỉ'
-                  : 'Midnight Vinyl'}
+                  : 'Không Quảng Cáo'}
               </span>
             </div>
             <p className="text-xs text-slate-400">
-              Hôm nay: <strong className="text-white">{pomodoroCompletedToday}</strong> phiên • Phím tắt{' '}
-              <kbd className="px-1 py-0.5 rounded bg-white/10 font-mono text-[10px] text-slate-300">
-                Space
-              </kbd>{' '}
-              (Phát/Dừng),{' '}
-              <kbd className="px-1 py-0.5 rounded bg-white/10 font-mono text-[10px] text-slate-300">
-                Z
-              </kbd>{' '}
-              (Pure Zen)
+              Hôm nay:{' '}
+              <strong className="text-white">{pomodoroCompletedToday}</strong>{' '}
+              phiên • Không cần mở tab YouTube ngoài
             </p>
           </div>
         </div>
 
-        {/* Top Right Actions: Scene Mode Switcher, Pure Zen, Exit */}
+        {/* Scene Switcher, Pure Zen & Minimize */}
         <div className="flex items-center gap-1.5 sm:gap-2">
-          {/* Scene Selector */}
           <div className="flex items-center p-0.5 rounded-xl bg-white/[0.06] border border-white/10">
             {SCENE_MODES.map((sc) => {
               const active = sceneMode === sc.id;
@@ -440,76 +595,78 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                   type="button"
                   onClick={() => handleChangeScene(sc.id)}
                   title={sc.desc}
-                  className={`px-2 py-1 rounded-lg text-[11px] font-medium transition-colors ${
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-colors ${
                     active
                       ? 'bg-indigo-600 text-white shadow-sm'
                       : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  {sc.label.split(' ')[0]}
+                  {sc.label}
                 </button>
               );
             })}
           </div>
 
-          {/* Pure Zen Mode Toggle */}
           <button
             type="button"
             onClick={() => setIsPureZen(true)}
-            title="Bật chế độ Pure Zen siêu tối giản (Phím tắt Z)"
+            title="Bật chế độ Pure Zen siêu tối giản (Phím Z)"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/10 bg-white/[0.06] hover:bg-white/10 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
           >
             <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
             <span className="hidden sm:inline">Pure Zen</span>
           </button>
 
-          {/* Minimize / Close */}
           <button
             type="button"
             onClick={onClose}
-            aria-label="Thoát chế độ Zen (Esc)"
-            title="Thoát chế độ Zen (Esc)"
+            aria-label="Quay lại học bài (Esc)"
+            title="Thu nhỏ & quay lại học bài (Esc)"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/15 bg-white/[0.06] hover:bg-white/10 text-xs font-semibold text-slate-200 transition-colors"
           >
             <Minimize2 className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Thu nhỏ</span>
+            <span className="hidden sm:inline">Về bài học</span>
             <X className="w-3.5 h-3.5 sm:hidden" />
           </button>
         </div>
       </header>
 
-      {/* Pure Zen floating banner when active */}
+      {/* Pure Zen floating exit banner */}
       {isPureZen && (
-        <div className="relative z-20 mx-auto pt-4 flex items-center justify-center animate-fade-in">
+        <div className="relative z-20 mx-auto pt-4 flex items-center justify-center gap-3 flex-wrap px-4">
+          <ZenPomodoroCountdown compact />
           <button
             type="button"
             onClick={() => setIsPureZen(false)}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-black/60 border border-white/15 text-slate-300 hover:text-white shadow-lg hover:border-indigo-400 transition-all"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-black/65 border border-white/15 text-slate-300 hover:text-white shadow-lg hover:border-indigo-400 transition-all"
           >
             <Eye className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Chế độ Pure Zen • Bấm <kbd className="px-1 py-0.2 bg-white/15 rounded text-[10px]">Z</kbd> hoặc click để hiện đầy đủ</span>
+            <span>
+              Chế độ Pure Zen • Bấm{' '}
+              <kbd className="px-1 bg-white/15 rounded text-[10px]">Z</kbd> để
+              hiện bảng điều khiển
+            </span>
           </button>
         </div>
       )}
 
       {/* Main Studio Stage */}
-      <main className="relative z-10 max-w-5xl w-full mx-auto px-4 sm:px-8 py-4 sm:py-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center flex-1">
-        {/* Left: Turntable Deck & Music Transport */}
+      <main className="relative z-10 max-w-6xl xl:max-w-7xl w-full mx-auto px-4 sm:px-8 py-4 sm:py-6 grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-center flex-1">
+        {/* Left: Reactive Turntable Deck + Song Metadata + Transport */}
         <section
           className={`flex flex-col items-center text-center space-y-4 sm:space-y-5 transition-all duration-500 ${
             isPureZen ? 'lg:col-span-12 scale-105' : 'lg:col-span-6'
           }`}
         >
-          {/* Turntable Deck: Platter + Spinning Vinyl + Tonearm */}
           <StudioTurntable
-            videoId={currentTrack.videoId}
-            title={currentTrack.title}
+            videoId={displayVideoId}
+            title={displayTitle}
             isPlaying={isPlaying}
             tone={tone}
           />
 
-          {/* Track Info & Equalizer / Pause Status */}
-          <div className="space-y-1.5 max-w-md">
+          {/* Track Info & Playback Indicator */}
+          <div className="space-y-1.5 max-w-md px-2">
             <div className="flex items-center justify-center gap-2">
               {isPlaying ? (
                 <StudioEqualizer isPlaying={true} tone={tone} size="md" />
@@ -519,21 +676,24 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                   Tạm dừng
                 </span>
               )}
-              <h2 className="text-lg sm:text-xl font-bold truncate max-w-[280px] sm:max-w-[360px] text-white">
-                {currentTrack.title}
+              <h2 className="text-lg sm:text-xl font-bold truncate max-w-[260px] sm:max-w-[360px] text-white">
+                {displayTitle}
               </h2>
             </div>
-            <p className="text-sm text-slate-400">
-              {currentTrack.artist}
-              {currentTrack.playlistId ? ' • YouTube Playlist' : ''}
+
+            <p className="text-sm text-slate-400 truncate">
+              {displayArtist}
+              {currentTrack.playlistId && livePlaylistTotal > 0
+                ? ` • Bài ${livePlaylistIndex + 1}/${livePlaylistTotal}`
+                : currentTrack.playlistId
+                ? ' • YouTube Playlist'
+                : ''}
               {isDucked ? ' • Tự giảm 15% khi thi' : ''}
             </p>
           </div>
 
-          {/* Session Intention Line */}
           <SessionIntentionBar />
 
-          {/* Seeker Slider */}
           <ZenSeekBar />
 
           {/* Transport Controls */}
@@ -543,6 +703,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
               onClick={toggleShuffle}
               aria-label="Phát ngẫu nhiên"
               aria-pressed={isShuffle}
+              title="Phát ngẫu nhiên"
               className={`p-2.5 rounded-full transition-colors ${
                 isShuffle
                   ? 'bg-indigo-500/20 text-cyan-300 border border-indigo-500/30'
@@ -556,6 +717,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
               type="button"
               onClick={prevTrack}
               aria-label="Bài trước (Mũi tên trái)"
+              title="Bài trước"
               className="p-3 rounded-full text-slate-200 hover:bg-white/10 transition-colors"
             >
               <SkipBack className="w-5 h-5" />
@@ -565,7 +727,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
               type="button"
               onClick={togglePlay}
               aria-label={isPlaying ? 'Tạm dừng (Space)' : 'Phát nhạc (Space)'}
-              className="w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/35 hover:scale-105 active:scale-95 transition-transform flex items-center justify-center ring-2 ring-white/20"
+              className="w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/35 hover:scale-105 active:scale-95 transition-transform flex items-center justify-center ring-2 ring-white/25"
             >
               {!isReady && isPlaying ? (
                 <Loader2 className="w-6 h-6 animate-spin" />
@@ -580,6 +742,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
               type="button"
               onClick={nextTrack}
               aria-label="Bài tiếp theo (Mũi tên phải)"
+              title="Bài tiếp theo"
               className="p-3 rounded-full text-slate-200 hover:bg-white/10 transition-colors"
             >
               <SkipForward className="w-5 h-5" />
@@ -605,54 +768,61 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
           </div>
         </section>
 
-        {/* Right: Studio Focus Stage OR Quick Queue (hidden in Pure Zen) */}
+        {/* Right Studio Hub: Focus | Queue + Add YouTube | Curated Focus Stations */}
         {!isPureZen && (
           <section className="lg:col-span-6 space-y-4">
-            {/* Right Stage Tabs Header: Pomodoro vs Quick Queue */}
-            <div className="flex items-center justify-between p-1 rounded-xl bg-slate-900/60 border border-white/10">
+            {/* 3-Tab Studio Dock Header */}
+            <div className="grid grid-cols-3 gap-1 p-1 rounded-xl bg-slate-900/65 backdrop-blur-xl border border-white/10">
               <button
                 type="button"
                 onClick={() => setRightPanelTab('focus')}
-                className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-all ${
+                className={`py-2 px-2.5 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-all ${
                   rightPanelTab === 'focus'
                     ? 'bg-indigo-600 text-white shadow-sm'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                <Timer className="w-3.5 h-3.5" />
-                Phiên Tập Trung
+                <Timer className="w-3.5 h-3.5 shrink-0" />
+                <span className="truncate">Tập Trung</span>
               </button>
+
               <button
                 type="button"
                 onClick={() => setRightPanelTab('queue')}
-                className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-all ${
+                className={`py-2 px-2.5 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-all ${
                   rightPanelTab === 'queue'
                     ? 'bg-indigo-600 text-white shadow-sm'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                <ListMusic className="w-3.5 h-3.5" />
-                Danh Sách Phát ({tracks.length})
+                <ListMusic className="w-3.5 h-3.5 shrink-0" />
+                <span className="truncate">Hàng Đợi ({tracks.length})</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setRightPanelTab('stations')}
+                className={`py-2 px-2.5 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-all ${
+                  rightPanelTab === 'stations'
+                    ? 'bg-indigo-600 text-white shadow-sm'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <Compass className="w-3.5 h-3.5 shrink-0" />
+                <span className="truncate">Kênh Nhạc</span>
               </button>
             </div>
 
-            {/* TAB CONTENT: FOCUS STAGE */}
-            {rightPanelTab === 'focus' ? (
-              <>
-                {/* Pomodoro Timer Stage Card */}
+            {/* TAB 1: POMODORO + VOLUME + SLEEP + AMBIENT */}
+            {rightPanelTab === 'focus' && (
+              <div className="space-y-4">
+                {/* Pomodoro Stage Card */}
                 <div
                   className={`relative rounded-2xl border p-5 sm:p-6 bg-slate-900/60 backdrop-blur-xl transition-all duration-300 space-y-4 shadow-2xl overflow-hidden ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
                 >
-                  {/* Top Slim Progress Bar */}
-                  <div className="absolute top-0 inset-x-0 h-1 bg-white/[0.06] overflow-hidden">
-                    <div
-                      className={`h-full w-full origin-left bg-gradient-to-r ${toneTokens.fillGradient} transition-transform duration-500`}
-                      style={{ transform: `scaleX(${progressRatio})` }}
-                    />
-                  </div>
+                  <ZenPomodoroProgressBar />
 
                   <div className="flex items-center justify-between gap-2 pt-1">
-                    {/* Status Pill: Neutral when stopped, glowing when active */}
                     {pomodoroRunning ? (
                       <span
                         className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${
@@ -671,7 +841,6 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                       </span>
                     )}
 
-                    {/* Presets 15/3, 25/5, 50/10 */}
                     <div className="flex items-center gap-1.5">
                       {PRESET_ORDER.map((presetKey) => {
                         const active = pomodoroPreset === presetKey;
@@ -693,22 +862,8 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                     </div>
                   </div>
 
-                  {/* Big Countdown */}
-                  <div className="text-center py-1">
-                    <ZenPomodoroCountdown />
-                    {estimatedEndTimeStr ? (
-                      <p className="mt-1 text-xs text-slate-400 font-medium">
-                        Dự kiến {pomodoroMode === 'focus' ? 'nghỉ lúc' : 'bắt đầu lại lúc'}{' '}
-                        <strong className="text-white font-mono">{estimatedEndTimeStr}</strong>
-                      </p>
-                    ) : (
-                      <p className="mt-1 text-xs text-slate-400">
-                        Thời lượng: {Math.round(currentPresetCfg.focusSeconds / 60)} phút tập trung
-                      </p>
-                    )}
-                  </div>
+                  <ZenPomodoroCountdown />
 
-                  {/* Pomodoro Action Buttons */}
                   <div className="flex items-center gap-2.5">
                     <button
                       type="button"
@@ -741,17 +896,37 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                       <RotateCcw className="w-4 h-4" />
                     </button>
                   </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-white/10 text-[11px] text-slate-400">
+                    <label className="inline-flex items-center gap-1.5 cursor-pointer hover:text-slate-200">
+                      <input
+                        type="checkbox"
+                        checked={pomodoroAutoPauseMusic}
+                        onChange={(e) => setPomodoroAutoPause(e.target.checked)}
+                        className="rounded border-white/20 bg-white/5 text-indigo-500 focus:ring-indigo-500"
+                      />
+                      Tạm dừng nhạc khi nghỉ
+                    </label>
+                    <label className="inline-flex items-center gap-1.5 cursor-pointer hover:text-slate-200">
+                      <input
+                        type="checkbox"
+                        checked={examAutoDuckMusic}
+                        onChange={(e) => setExamAutoDuck(e.target.checked)}
+                        className="rounded border-white/20 bg-white/5 text-indigo-500 focus:ring-indigo-500"
+                      />
+                      Hạ nhạc còn 15% khi thi
+                    </label>
+                  </div>
                 </div>
 
-                {/* Master Volume, Sleep Timer & Single Ambient Card */}
+                {/* Audio & Ambient Glass Card */}
                 <div className="rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl p-4 sm:p-5 space-y-4 shadow-xl">
-                  {/* Master Volume */}
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
                       onClick={toggleMute}
                       aria-label={isMuted ? 'Bật tiếng (M)' : 'Tắt tiếng (M)'}
-                      title="Tắt / Bật tiếng (Phím M)"
+                      title="Tắt / Bật tiếng (M)"
                       className="p-1.5 rounded-lg hover:bg-white/10 text-slate-300 hover:text-white"
                     >
                       {isMuted || volume === 0 ? (
@@ -776,7 +951,6 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                     </span>
                   </div>
 
-                  {/* Sleep Timer */}
                   <div className="flex items-center justify-between gap-2 pt-3 border-t border-white/10">
                     <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300">
                       <Moon className="w-3.5 h-3.5 text-indigo-400" />
@@ -807,7 +981,6 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                     </div>
                   </div>
 
-                  {/* Single Preset Ambient Selector */}
                   <div className="pt-3 border-t border-white/10 space-y-2.5">
                     <div className="flex items-center justify-between">
                       <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300">
@@ -859,62 +1032,298 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                     )}
                   </div>
                 </div>
-              </>
-            ) : (
-              /* TAB CONTENT: QUICK QUEUE (DANH SÁCH BÀI HÁT TẠI CHỖ) */
-              <div className="rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl p-4 space-y-2 shadow-2xl max-h-[460px] flex flex-col">
-                <div className="flex items-center justify-between pb-2 border-b border-white/10 text-xs font-semibold text-slate-300">
-                  <span>Danh sách phát ({tracks.length} bài)</span>
-                  <span className="text-[11px] text-slate-500">Bấm bài để phát</span>
+              </div>
+            )}
+
+            {/* TAB 2: QUEUE MANAGER + ADD YOUTUBE VIDEO/PLAYLIST INLINE */}
+            {rightPanelTab === 'queue' && (
+              <div className="rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl p-4 space-y-3 shadow-2xl flex flex-col max-h-[500px]">
+                {/* Search Queue Filter */}
+                <div className="relative">
+                  <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={queueFilter}
+                    onChange={(e) => setQueueFilter(e.target.value)}
+                    placeholder="Tìm nhanh trong hàng đợi..."
+                    className="w-full pl-8 pr-3 py-1.5 rounded-xl text-xs bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400"
+                  />
                 </div>
 
-                <div className="flex-1 overflow-y-auto space-y-1.5 pr-1">
-                  {tracks.map((t, idx) => {
+                {/* Track List */}
+                <div className="flex-1 overflow-y-auto space-y-1.5 pr-1 min-h-[180px]">
+                  {filteredTracks.map((t, idx) => {
                     const isCurrent = t.id === currentTrackId;
+                    const errKey = getTrackErrorKey(t);
+                    const hasErr = Boolean(trackErrors[errKey]);
+
                     return (
-                      <button
+                      <div
                         key={t.id}
-                        type="button"
-                        onClick={() => selectTrack(t.id)}
-                        className={`w-full flex items-center gap-2.5 p-2 rounded-xl text-left border transition-all ${
+                        className={`group flex items-center gap-2 p-2 rounded-xl border transition-all ${
                           isCurrent
-                            ? 'bg-indigo-500/20 border-indigo-500/40 text-white shadow-sm'
-                            : 'bg-white/[0.02] border-transparent hover:bg-white/[0.06] text-slate-300'
+                            ? 'bg-indigo-500/20 border-indigo-500/40 shadow-sm'
+                            : 'bg-white/[0.02] border-transparent hover:bg-white/[0.06]'
                         }`}
                       >
-                        <div
-                          className={`w-7 h-7 rounded-lg shrink-0 flex items-center justify-center text-xs font-mono font-semibold ${
-                            isCurrent
-                              ? 'bg-indigo-600 text-white'
-                              : 'bg-white/10 text-slate-400'
-                          }`}
+                        <button
+                          type="button"
+                          onClick={() => selectTrack(t.id)}
+                          className="min-w-0 flex-1 flex items-center gap-2.5 text-left"
                         >
-                          {isCurrent && isPlaying ? (
-                            <StudioEqualizer isPlaying={true} tone={tone} size="sm" />
-                          ) : (
-                            idx + 1
-                          )}
-                        </div>
-
-                        <div className="min-w-0 flex-1">
-                          <div className="flex items-center gap-1.5">
-                            <p className="text-xs font-semibold truncate text-white">
-                              {t.title}
-                            </p>
-                            {t.isPinned && (
-                              <Pin className="w-2.5 h-2.5 text-amber-400 shrink-0" />
-                            )}
-                            {t.playlistId && (
-                              <span className="px-1 py-0.2 rounded text-[9px] font-semibold bg-indigo-500/20 text-indigo-300">
-                                Playlist
+                          <div className="relative w-9 h-9 rounded-lg overflow-hidden shrink-0 bg-slate-800 border border-white/10">
+                            <Image
+                              src={`https://i.ytimg.com/vi/${t.videoId}/mqdefault.jpg`}
+                              alt={t.title}
+                              width={72}
+                              height={72}
+                              unoptimized
+                              className="w-full h-full object-cover"
+                            />
+                            {isCurrent && (
+                              <span className="absolute inset-0 bg-black/45 flex items-center justify-center">
+                                <StudioEqualizer
+                                  isPlaying={isPlaying}
+                                  tone={tone}
+                                  size="sm"
+                                />
                               </span>
                             )}
                           </div>
+
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-[10px] font-mono text-slate-500">
+                                {idx + 1}.
+                              </span>
+                              <p className="text-xs font-semibold truncate text-white">
+                                {t.title}
+                              </p>
+                              {t.playlistId && (
+                                <span className="shrink-0 px-1 py-0.2 rounded text-[9px] font-semibold bg-indigo-500/20 text-indigo-300">
+                                  Playlist
+                                </span>
+                              )}
+                              {hasErr && (
+                                <span className="shrink-0 px-1 py-0.2 rounded text-[9px] font-semibold bg-rose-500/20 text-rose-300">
+                                  Lỗi
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-[11px] text-slate-400 truncate">
+                              {t.artist}
+                            </p>
+                          </div>
+                        </button>
+
+                        {/* Row controls */}
+                        <div className="flex items-center gap-0.5 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => togglePinTrack(t.id)}
+                            aria-label={t.isPinned ? 'Bỏ ghim' : 'Ghim bài'}
+                            title={t.isPinned ? 'Bỏ ghim' : 'Ghim lên đầu'}
+                            className={`p-1 rounded-md transition-colors ${
+                              t.isPinned
+                                ? 'text-amber-400 bg-amber-500/15'
+                                : 'text-slate-500 hover:text-amber-400 hover:bg-white/10'
+                            }`}
+                          >
+                            <Pin className="w-3 h-3" />
+                          </button>
+
+                          {!queueFilter && (
+                            <>
+                              <button
+                                type="button"
+                                disabled={idx === 0}
+                                onClick={() => moveTrack(t.id, 'up')}
+                                aria-label="Lên"
+                                className="p-1 rounded-md text-slate-500 hover:text-white hover:bg-white/10 disabled:opacity-25 disabled:pointer-events-none"
+                              >
+                                <ChevronUp className="w-3 h-3" />
+                              </button>
+                              <button
+                                type="button"
+                                disabled={idx === tracks.length - 1}
+                                onClick={() => moveTrack(t.id, 'down')}
+                                aria-label="Xuống"
+                                className="p-1 rounded-md text-slate-500 hover:text-white hover:bg-white/10 disabled:opacity-25 disabled:pointer-events-none"
+                              >
+                                <ChevronDown className="w-3 h-3" />
+                              </button>
+                            </>
+                          )}
+
+                          {t.isCustom && (
+                            <button
+                              type="button"
+                              onClick={() => removeCustomTrack(t.id)}
+                              aria-label="Xóa bài"
+                              className="p-1 rounded-md text-slate-500 hover:text-rose-400 hover:bg-rose-500/10"
+                            >
+                              <Trash2 className="w-3 h-3" />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  {filteredTracks.length === 0 && (
+                    <p className="text-center text-xs text-slate-500 py-8">
+                      Không tìm thấy bài phù hợp.
+                    </p>
+                  )}
+                </div>
+
+                {/* Inline Add YouTube Video / Playlist directly inside Zen */}
+                <form
+                  onSubmit={handleAddTrack}
+                  className="pt-3 border-t border-white/10 space-y-2"
+                >
+                  <p className="text-[11px] font-semibold text-slate-300 flex items-center gap-1.5">
+                    <Radio className="w-3.5 h-3.5 text-cyan-400" />
+                    Thêm trực tiếp Video hoặc Playlist YouTube
+                  </p>
+                  <input
+                    type="text"
+                    value={customUrl}
+                    onChange={(e) => setCustomUrl(e.target.value)}
+                    placeholder="Dán link YouTube (tự động lấy tên bài, không quảng cáo)"
+                    className="w-full px-3 py-1.5 rounded-xl text-xs bg-black/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400"
+                  />
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={customTitle}
+                      onChange={(e) => setCustomTitle(e.target.value)}
+                      placeholder="Đặt tên riêng (không bắt buộc)"
+                      className="flex-1 px-3 py-1.5 rounded-xl text-xs bg-black/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400"
+                    />
+                    <button
+                      type="submit"
+                      disabled={!customUrl.trim() || isAdding}
+                      className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white inline-flex items-center gap-1 transition-colors"
+                    >
+                      {isAdding ? (
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      ) : (
+                        <Plus className="w-3.5 h-3.5" />
+                      )}
+                      Phát ngay
+                    </button>
+                  </div>
+                  {formMsg && (
+                    <p
+                      className={`text-[11px] ${
+                        formMsg.type === 'ok'
+                          ? 'text-emerald-400'
+                          : 'text-rose-400'
+                      }`}
+                    >
+                      {formMsg.text}
+                    </p>
+                  )}
+                </form>
+              </div>
+            )}
+
+            {/* TAB 3: CURATED AD-FREE FOCUS STATIONS */}
+            {rightPanelTab === 'stations' && (
+              <div className="rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl p-4 space-y-3 shadow-2xl flex flex-col max-h-[500px]">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <div className="flex items-center gap-1 flex-wrap">
+                    {STATION_FILTERS.map((f) => (
+                      <button
+                        key={f.id}
+                        type="button"
+                        onClick={() => setStationFilter(f.id)}
+                        className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-colors ${
+                          stationFilter === f.id
+                            ? 'bg-indigo-600 text-white'
+                            : 'bg-white/[0.05] text-slate-400 hover:text-white'
+                        }`}
+                      >
+                        {f.label}
+                      </button>
+                    ))}
+                  </div>
+                  <span className="text-[11px] text-slate-400">
+                    1 chạm để nghe
+                  </span>
+                </div>
+
+                <div className="flex-1 overflow-y-auto space-y-2 pr-1">
+                  {filteredStations.map((st) => {
+                    const isActive =
+                      currentTrack.videoId === st.videoId &&
+                      !currentTrack.playlistId;
+                    const justAdded = queuedNoticeId === st.id;
+
+                    return (
+                      <div
+                        key={st.id}
+                        className={`flex items-center gap-3 p-2.5 rounded-xl border transition-all ${
+                          isActive
+                            ? 'bg-indigo-500/20 border-indigo-500/40'
+                            : 'bg-white/[0.03] border-white/5 hover:border-white/15 hover:bg-white/[0.06]'
+                        }`}
+                      >
+                        <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 border border-white/10 bg-slate-800">
+                          <Image
+                            src={`https://i.ytimg.com/vi/${st.videoId}/mqdefault.jpg`}
+                            alt={st.title}
+                            width={96}
+                            height={96}
+                            unoptimized
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+
+                        <div className="min-w-0 flex-1">
+                          <p className="text-xs font-semibold text-white truncate">
+                            {st.title}
+                          </p>
                           <p className="text-[11px] text-slate-400 truncate">
-                            {t.artist}
+                            {st.artist}
                           </p>
                         </div>
-                      </button>
+
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              addStationToQueue(st);
+                              setQueuedNoticeId(st.id);
+                              window.setTimeout(
+                                () =>
+                                  setQueuedNoticeId((cur) =>
+                                    cur === st.id ? null : cur
+                                  ),
+                                1500
+                              );
+                            }}
+                            title="Thêm vào hàng đợi"
+                            className="p-1.5 rounded-lg bg-white/[0.06] hover:bg-white/15 text-slate-300 hover:text-white transition-colors"
+                          >
+                            {justAdded ? (
+                              <Check className="w-3.5 h-3.5 text-emerald-400" />
+                            ) : (
+                              <Plus className="w-3.5 h-3.5" />
+                            )}
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => playCuratedStation(st)}
+                            className="px-2.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold inline-flex items-center gap-1 transition-colors"
+                          >
+                            <Play className="w-3 h-3 fill-current" />
+                            Nghe
+                          </button>
+                        </div>
+                      </div>
                     );
                   })}
                 </div>
@@ -924,17 +1333,33 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
         )}
       </main>
 
-      {/* Bottom Subtle Shortcut Bar (Fades in Pure Zen) */}
+      {/* Bottom Shortcut Bar */}
       <footer
-        className={`relative z-10 max-w-5xl w-full mx-auto px-4 sm:px-8 pb-4 text-center text-[11px] text-slate-400 transition-opacity duration-300 ${
+        className={`relative z-10 max-w-6xl xl:max-w-7xl w-full mx-auto px-4 sm:px-8 pb-4 text-center text-[11px] text-slate-400 transition-opacity duration-300 ${
           isPureZen ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
-        Phím tắt: <kbd className="px-1 py-0.5 rounded bg-white/10 text-slate-300 font-mono">Space</kbd> Phát/Dừng •{' '}
-        <kbd className="px-1 py-0.5 rounded bg-white/10 text-slate-300 font-mono">M</kbd> Tắt tiếng •{' '}
-        <kbd className="px-1 py-0.5 rounded bg-white/10 text-slate-300 font-mono">Z</kbd> Pure Zen •{' '}
-        <kbd className="px-1 py-0.5 rounded bg-white/10 text-slate-300 font-mono">← / →</kbd> Chuyển bài •{' '}
-        <kbd className="px-1 py-0.5 rounded bg-white/10 text-slate-300 font-mono">Esc</kbd> Thu nhỏ
+        Phím tắt:{' '}
+        <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-slate-300 font-mono">
+          Space
+        </kbd>{' '}
+        Phát/Dừng •{' '}
+        <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-slate-300 font-mono">
+          M
+        </kbd>{' '}
+        Tắt tiếng •{' '}
+        <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-slate-300 font-mono">
+          Z
+        </kbd>{' '}
+        Pure Zen •{' '}
+        <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-slate-300 font-mono">
+          ← / →
+        </kbd>{' '}
+        Chuyển bài •{' '}
+        <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-slate-300 font-mono">
+          Esc
+        </kbd>{' '}
+        Về bài học
       </footer>
     </div>,
     document.body

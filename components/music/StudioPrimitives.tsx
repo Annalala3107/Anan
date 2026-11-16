@@ -24,47 +24,55 @@ export const STUDIO_TONE_TOKENS: Record<
     eqBar: string;
     badge: string;
     accentText: string;
+    pulseBorder: string;
+    horizonBar: string;
   }
 > = {
   indigo: {
     cardBorder: 'border-indigo-500/25 dark:border-indigo-400/25',
     cardGlow: 'shadow-[0_0_24px_-6px_rgba(99,102,241,0.34)]',
-    vinylRing: 'ring-indigo-500/45 shadow-[0_0_18px_rgba(99,102,241,0.38)]',
+    vinylRing: 'ring-indigo-500/50 shadow-[0_0_22px_rgba(99,102,241,0.45)]',
     fillGradient: 'from-indigo-500 to-cyan-400',
     eqBar: 'bg-indigo-500 dark:bg-cyan-400',
     badge:
       'bg-indigo-500/12 text-indigo-600 dark:text-indigo-300 border-indigo-500/25',
     accentText: 'text-indigo-600 dark:text-cyan-400',
+    pulseBorder: 'border-indigo-400/45',
+    horizonBar: 'from-indigo-500/70 via-cyan-400/55 to-transparent',
   },
   amber: {
     cardBorder: 'border-amber-500/40 dark:border-amber-400/35',
     cardGlow: 'shadow-[0_0_26px_-6px_rgba(245,158,11,0.42)]',
-    vinylRing: 'ring-amber-500/55 shadow-[0_0_20px_rgba(245,158,11,0.45)]',
+    vinylRing: 'ring-amber-500/60 shadow-[0_0_24px_rgba(245,158,11,0.5)]',
     fillGradient: 'from-amber-500 to-orange-400',
     eqBar: 'bg-amber-500 dark:bg-amber-400',
     badge:
       'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30',
     accentText: 'text-amber-600 dark:text-amber-400',
+    pulseBorder: 'border-amber-400/45',
+    horizonBar: 'from-amber-500/70 via-orange-400/55 to-transparent',
   },
   emerald: {
     cardBorder: 'border-emerald-500/35 dark:border-emerald-400/35',
     cardGlow: 'shadow-[0_0_26px_-6px_rgba(16,185,129,0.4)]',
-    vinylRing: 'ring-emerald-500/55 shadow-[0_0_20px_rgba(16,185,129,0.42)]',
+    vinylRing: 'ring-emerald-500/60 shadow-[0_0_24px_rgba(16,185,129,0.48)]',
     fillGradient: 'from-emerald-500 to-teal-400',
     eqBar: 'bg-emerald-500 dark:bg-emerald-400',
     badge:
       'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30',
     accentText: 'text-emerald-600 dark:text-emerald-400',
+    pulseBorder: 'border-emerald-400/45',
+    horizonBar: 'from-emerald-500/70 via-teal-400/55 to-transparent',
   },
 };
 
 export const HALO_RADIAL_MAP: Record<StudioContextTone, string> = {
   indigo:
-    'radial-gradient(circle, rgba(99,102,241,0.28) 0%, rgba(34,211,238,0.08) 48%, transparent 72%)',
+    'radial-gradient(circle, rgba(99,102,241,0.34) 0%, rgba(34,211,238,0.14) 44%, transparent 74%)',
   amber:
-    'radial-gradient(circle, rgba(245,158,11,0.3) 0%, rgba(251,146,60,0.09) 48%, transparent 72%)',
+    'radial-gradient(circle, rgba(245,158,11,0.34) 0%, rgba(251,146,60,0.12) 44%, transparent 74%)',
   emerald:
-    'radial-gradient(circle, rgba(16,185,129,0.28) 0%, rgba(20,184,166,0.08) 48%, transparent 72%)',
+    'radial-gradient(circle, rgba(16,185,129,0.34) 0%, rgba(20,184,166,0.12) 44%, transparent 74%)',
 };
 
 interface VinylArtworkProps {
@@ -109,7 +117,7 @@ const VINYL_SIZE_MAP: Record<
   },
   lg: {
     outer: 'w-44 h-44 sm:w-56 sm:h-56',
-    rim: 'p-[12%]',
+    rim: 'p-[13%]',
     spindle: 'w-6 h-6',
     pin: 'w-1.5 h-1.5',
     imgSize: 320,
@@ -118,7 +126,7 @@ const VINYL_SIZE_MAP: Record<
 
 /**
  * Pure GPU-composited spinning vinyl disc artwork using YouTube thumbnail (`mqdefault.jpg`).
- * Pauses cleanly at the exact rotation angle via `animation-play-state: paused`.
+ * Includes etched groove texture + rotating conic specular sheen so motion is immediately crisp.
  */
 export function VinylArtwork({
   videoId,
@@ -141,12 +149,22 @@ export function VinylArtwork({
           isPlaying ? '' : 'vinyl-disc-paused'
         } relative w-full h-full rounded-full bg-slate-950 ${cfg.rim} flex items-center justify-center overflow-hidden shadow-inner`}
         style={{
-          backgroundImage:
-            'repeating-radial-gradient(circle at center, rgba(255,255,255,0.065) 0px, rgba(255,255,255,0.065) 1px, rgba(2,6,23,0.92) 2px, rgba(2,6,23,0.92) 5px)',
+          backgroundImage: [
+            'conic-gradient(from 35deg, rgba(255,255,255,0.14) 0deg, transparent 38deg, transparent 175deg, rgba(255,255,255,0.1) 212deg, transparent 255deg, transparent 360deg)',
+            'repeating-radial-gradient(circle at center, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 1px, rgba(2,6,23,0.92) 2px, rgba(2,6,23,0.92) 5px)',
+          ].join(', '),
         }}
       >
+        {/* Asymmetric subtle vinyl rim glint marker so rotation velocity is visibly clear */}
+        {size === 'lg' && (
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute top-2 left-1/2 -translate-x-1/2 w-2 h-1 rounded-full bg-white/45 blur-[0.5px]"
+          />
+        )}
+
         {/* Center album cover label */}
-        <div className="relative w-full h-full rounded-full overflow-hidden ring-1 ring-white/15">
+        <div className="relative w-full h-full rounded-full overflow-hidden ring-1 ring-white/25">
           <Image
             src={`https://i.ytimg.com/vi/${safeVideoId}/mqdefault.jpg`}
             alt={title}
@@ -155,12 +173,11 @@ export function VinylArtwork({
             unoptimized
             className="w-full h-full object-cover scale-[1.35]"
           />
-          {/* Subtle vinyl sheen over label */}
           <div
             className="pointer-events-none absolute inset-0 rounded-full"
             style={{
               background:
-                'radial-gradient(circle at 30% 25%, rgba(255,255,255,0.18), transparent 55%)',
+                'radial-gradient(circle at 30% 25%, rgba(255,255,255,0.2), transparent 55%)',
             }}
           />
         </div>
@@ -168,9 +185,9 @@ export function VinylArtwork({
         {/* Center spindle hole */}
         <div
           aria-hidden="true"
-          className={`pointer-events-none absolute ${cfg.spindle} rounded-full bg-slate-950 border border-white/40 flex items-center justify-center shadow-sm`}
+          className={`pointer-events-none absolute ${cfg.spindle} rounded-full bg-slate-950 border border-white/45 flex items-center justify-center shadow-sm`}
         >
-          <span className={`${cfg.pin} rounded-full bg-slate-200/80`} />
+          <span className={`${cfg.pin} rounded-full bg-slate-200/85`} />
         </div>
       </div>
     </div>
@@ -178,7 +195,8 @@ export function VinylArtwork({
 }
 
 /**
- * Minimalist Tonearm SVG: rotates into playing position when `isPlaying` is true.
+ * Minimalist Tonearm SVG positioned outside the right platter rim.
+ * Parks cleanly off-disc (-22deg) on a rest post when paused, and drops onto grooves (+12deg) when playing.
  */
 export function StudioTonearm({
   isPlaying,
@@ -197,12 +215,7 @@ export function StudioTonearm({
       aria-hidden="true"
       className={`pointer-events-none select-none ${className}`}
     >
-      <svg
-        viewBox="0 0 74 190"
-        className={`w-16 sm:w-20 h-auto overflow-visible turntable-tonearm ${
-          isPlaying ? 'turntable-tonearm-playing' : 'turntable-tonearm-parked'
-        }`}
-      >
+      <svg viewBox="0 0 84 210" className="w-16 sm:w-20 h-auto overflow-visible">
         <defs>
           <linearGradient id="armMetalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#94a3b8" />
@@ -211,90 +224,128 @@ export function StudioTonearm({
           </linearGradient>
           <radialGradient id="pivotGrad" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#f1f5f9" />
-            <stop offset="70%" stopColor="#475569" />
+            <stop offset="68%" stopColor="#475569" />
             <stop offset="100%" stopColor="#0f172a" />
           </radialGradient>
         </defs>
 
-        {/* Counterweight rear cylinder */}
-        <rect
-          x="25"
-          y="6"
-          width="14"
-          height="14"
-          rx="2"
-          fill="#334155"
-          stroke="#475569"
-          strokeWidth="1.5"
-        />
-        <line
-          x1="25"
-          y1="13"
-          x2="39"
-          y2="13"
-          stroke="#94a3b8"
-          strokeWidth="1"
-          opacity="0.6"
-        />
+        {/* Stationary Rest Cradle Post (visible off-disc at bottom-right park position) */}
+        <g transform="translate(65, 118)">
+          <circle
+            cx="0"
+            cy="0"
+            r="6"
+            fill="#0f172a"
+            stroke="#475569"
+            strokeWidth="1.5"
+          />
+          <rect x="-3" y="-4" width="6" height="8" rx="1.5" fill="#334155" />
+        </g>
 
-        {/* Pivot Gimbal Base */}
+        {/* Stationary Pivot Housing */}
         <circle
           cx="32"
           cy="32"
-          r="14"
-          fill="url(#pivotGrad)"
-          stroke="#1e293b"
-          strokeWidth="2"
-        />
-        <circle cx="32" cy="32" r="5" fill="#0f172a" />
-        <circle cx="32" cy="32" r="2" fill="#cbd5e1" />
-
-        {/* S-curved tonearm tube */}
-        <path
-          d="M 32 32 L 32 95 Q 32 125 22 145 L 14 165"
-          fill="none"
-          stroke="url(#armMetalGrad)"
-          strokeWidth="3.2"
-          strokeLinecap="round"
+          r="17"
+          fill="#020617"
+          stroke="rgba(255,255,255,0.12)"
+          strokeWidth="1.5"
         />
 
-        {/* Headshell / Cartridge mount */}
-        <g transform="translate(14, 165)">
-          <path
-            d="M -3 0 L 7 -2 L 11 18 L 1 20 Z"
-            fill="#1e293b"
-            stroke="#475569"
-            strokeWidth="1"
+        {/* Rotating Tonearm Assembly around (32, 32) */}
+        <g
+          className={`turntable-tonearm ${
+            isPlaying ? 'turntable-tonearm-playing' : 'turntable-tonearm-parked'
+          }`}
+        >
+          {/* Counterweight rear cylinder */}
+          <rect
+            x="24"
+            y="4"
+            width="16"
+            height="14"
+            rx="2.5"
+            fill="#334155"
+            stroke="#64748b"
+            strokeWidth="1.2"
           />
-          {/* Finger lift */}
+          <line
+            x1="24"
+            y1="11"
+            x2="40"
+            y2="11"
+            stroke="#cbd5e1"
+            strokeWidth="1"
+            opacity="0.65"
+          />
+
+          {/* Pivot Gimbal Ring */}
+          <circle
+            cx="32"
+            cy="32"
+            r="13"
+            fill="url(#pivotGrad)"
+            stroke="#1e293b"
+            strokeWidth="2"
+          />
+          <circle cx="32" cy="32" r="4.5" fill="#0f172a" />
+          <circle cx="32" cy="32" r="1.8" fill="#e2e8f0" />
+
+          {/* Curved tonearm tube */}
           <path
-            d="M 9 2 Q 15 4 17 0"
+            d="M 32 32 L 32 104 Q 32 138 22 162 L 15 178"
             fill="none"
-            stroke="#94a3b8"
-            strokeWidth="1.5"
+            stroke="url(#armMetalGrad)"
+            strokeWidth="3.4"
             strokeLinecap="round"
           />
-          {/* Stylus needle glowing contact point */}
-          <circle
-            cx="4"
-            cy="18"
-            r="1.8"
-            fill={needleDotColor}
-            className={isPlaying ? 'animate-pulse' : ''}
-            style={{
-              filter: isPlaying
-                ? `drop-shadow(0 0 4px ${needleDotColor})`
-                : 'none',
-            }}
-          />
+
+          {/* Headshell / Cartridge */}
+          <g transform="translate(15, 178) rotate(12)">
+            <path
+              d="M -4 0 L 7 -2 L 10 19 L -1 21 Z"
+              fill="#1e293b"
+              stroke="#64748b"
+              strokeWidth="1"
+            />
+            <path
+              d="M 8 3 Q 14 5 16 1"
+              fill="none"
+              stroke="#cbd5e1"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+            />
+            <circle
+              cx="4"
+              cy="19"
+              r="2.2"
+              fill={needleDotColor}
+              className={isPlaying ? 'animate-pulse' : ''}
+              style={{
+                filter: isPlaying
+                  ? `drop-shadow(0 0 6px ${needleDotColor})`
+                  : 'none',
+              }}
+            />
+          </g>
         </g>
       </svg>
     </div>
   );
 }
 
+const RADIAL_BAR_COUNT = 40;
+const RADIAL_BARS = Array.from({ length: RADIAL_BAR_COUNT }, (_, i) => {
+  const angle = (i * 360) / RADIAL_BAR_COUNT;
+  // Deterministic harmonic distribution so bars look musical without random hydration drift
+  const heightPx = 12 + ((i * 19 + (i % 3) * 11) % 24);
+  const durationSec = (0.44 + ((i * 7) % 11) * 0.048).toFixed(2);
+  const delaySec = (-((i * 13) % 17) * 0.06).toFixed(2);
+  return { angle, heightPx, durationSec, delaySec };
+});
+
 /**
- * Full Turntable Deck Stage (Base platter + Vinyl + Tonearm).
+ * Full Reactive Turntable Stage: Sonic Pulse Ripples + 40-Bar Radial Beat Ring + Platter + Vinyl + Tonearm.
  */
 export function StudioTurntable({
   videoId,
@@ -309,19 +360,69 @@ export function StudioTurntable({
   tone?: StudioContextTone;
   className?: string;
 }) {
+  const tokens = STUDIO_TONE_TOKENS[tone];
+  const pausedClass = isPlaying ? '' : 'studio-anim-paused';
+
   return (
     <div
-      className={`relative flex items-center justify-center select-none ${className}`}
+      className={`relative flex items-center justify-center select-none py-4 px-6 sm:px-10 ${className}`}
     >
-      {/* Platter deck base with subtle metallic sheen */}
-      <div className="relative rounded-full p-4 sm:p-5 bg-gradient-to-b from-slate-800/90 via-slate-900 to-black shadow-[0_25px_60px_-12px_rgba(0,0,0,0.85)] border border-white/10 ring-1 ring-white/5">
-        {/* Outer strobe dots pattern */}
+      {/* Expanding Sonic Pulse Ripples (active while music plays) */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-4 flex items-center justify-center transition-opacity duration-500 ${
+          isPlaying ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <span
+          className={`sonic-pulse-ring ${pausedClass} absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border ${tokens.pulseBorder}`}
+        />
+        <span
+          className={`sonic-pulse-ring ${pausedClass} absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border ${tokens.pulseBorder}`}
+          style={{ animationDelay: '-1.2s' }}
+        />
+        <span
+          className={`sonic-pulse-ring ${pausedClass} absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border ${tokens.pulseBorder}`}
+          style={{ animationDelay: '-2.4s' }}
+        />
+      </div>
+
+      {/* 40-Bar Circular Beat Spectrum hugging platter outer circumference */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute flex items-center justify-center transition-opacity duration-500 ${
+          isPlaying ? 'opacity-90' : 'opacity-25'
+        }`}
+      >
+        <div className="relative w-56 h-56 sm:w-[276px] sm:h-[276px]">
+          {RADIAL_BARS.map((bar, idx) => (
+            <div
+              key={idx}
+              className="absolute inset-0 flex justify-center"
+              style={{ transform: `rotate(${bar.angle}deg)` }}
+            >
+              <span
+                className={`radial-beat-bar ${
+                  isPlaying ? '' : 'studio-eq-paused'
+                } block w-[3px] rounded-full bg-gradient-to-t ${tokens.horizonBar}`}
+                style={{
+                  height: `${bar.heightPx}px`,
+                  marginTop: `-${Math.round(bar.heightPx * 0.65)}px`,
+                  animationDuration: `${bar.durationSec}s`,
+                  animationDelay: `${bar.delaySec}s`,
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Platter Deck */}
+      <div className="relative z-10 rounded-full p-4 sm:p-5 bg-gradient-to-b from-slate-800/95 via-slate-900 to-black shadow-[0_25px_65px_-12px_rgba(0,0,0,0.92)] border border-white/15 ring-1 ring-white/5">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-1.5 rounded-full border border-dashed border-white/10"
+          className="pointer-events-none absolute inset-1.5 rounded-full border border-dashed border-white/15"
         />
-
-        {/* Center Vinyl Artwork */}
         <VinylArtwork
           videoId={videoId}
           title={title}
@@ -331,27 +432,152 @@ export function StudioTurntable({
         />
       </div>
 
-      {/* Tonearm Assembly mounted top-right */}
-      <div className="absolute -top-3 sm:-top-5 -right-3 sm:-right-4 z-20">
+      {/* Mechanical Tonearm mounted OUTSIDE the platter right edge */}
+      <div className="absolute -top-1 sm:-top-2 -right-3 sm:-right-6 z-20">
         <StudioTonearm isPlaying={isPlaying} tone={tone} />
       </div>
     </div>
   );
 }
 
+const SIDE_BARS = Array.from({ length: 14 }, (_, i) => ({
+  widthPct: 35 + ((i * 23) % 65),
+  duration: (0.55 + ((i * 5) % 9) * 0.08).toFixed(2),
+  delay: (-((i * 11) % 13) * 0.08).toFixed(2),
+}));
+
+const HORIZON_BARS = Array.from({ length: 48 }, (_, i) => ({
+  heightPx: 18 + Math.round(Math.sin(i * 0.45) * 14 + ((i * 17) % 24)),
+  duration: (0.48 + ((i * 7) % 12) * 0.055).toFixed(2),
+  delay: (-((i * 9) % 15) * 0.07).toFixed(2),
+}));
+
+const MOTES = Array.from({ length: 12 }, (_, i) => ({
+  leftPct: 6 + ((i * 8.3) % 88),
+  topPct: 18 + ((i * 17) % 68),
+  sizePx: 3 + (i % 3) * 2,
+  durationSec: 15 + (i % 5) * 3,
+  delaySec: -(i * 2.1),
+}));
+
 /**
- * Scene Backdrop Renderer (Aura / Midnight / Glow)
+ * Full-Viewport Outer Reactive Visuals:
+ * - Symmetrical Side Wave Pillars in the wide left/right screen margins
+ * - Full-width Bottom Horizon Spectrum Wave
+ */
+export function OuterReactiveVisuals({
+  isPlaying,
+  tone = 'indigo',
+}: {
+  isPlaying: boolean;
+  tone?: StudioContextTone;
+}) {
+  const pausedBar = isPlaying ? '' : 'studio-eq-paused';
+  const sideGrad =
+    tone === 'amber'
+      ? 'from-amber-400/75 to-orange-500/10'
+      : tone === 'emerald'
+      ? 'from-emerald-400/75 to-teal-500/10'
+      : 'from-cyan-400/75 to-indigo-500/10';
+  const sideGradRight =
+    tone === 'amber'
+      ? 'from-orange-500/10 to-amber-400/75'
+      : tone === 'emerald'
+      ? 'from-teal-500/10 to-emerald-400/75'
+      : 'from-indigo-500/10 to-cyan-400/75';
+  const horizonGrad = STUDIO_TONE_TOKENS[tone].horizonBar;
+
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-[1] overflow-hidden select-none"
+    >
+      {/* Left Margin Sound-Wave Curtain */}
+      <div
+        className={`hidden xl:flex fixed left-4 top-1/2 -translate-y-1/2 flex-col gap-3 w-16 transition-opacity duration-500 ${
+          isPlaying ? 'opacity-60' : 'opacity-20'
+        }`}
+      >
+        {SIDE_BARS.map((bar, idx) => (
+          <div
+            key={`l-${idx}`}
+            className={`side-wave-bar ${
+              isPlaying ? '' : 'studio-anim-paused'
+            } origin-left h-[3px] rounded-full bg-gradient-to-r ${sideGrad}`}
+            style={{
+              width: `${bar.widthPct}%`,
+              animationDuration: `${bar.duration}s`,
+              animationDelay: `${bar.delay}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Right Margin Mirror Sound-Wave Curtain */}
+      <div
+        className={`hidden xl:flex fixed right-4 top-1/2 -translate-y-1/2 flex-col items-end gap-3 w-16 transition-opacity duration-500 ${
+          isPlaying ? 'opacity-60' : 'opacity-20'
+        }`}
+      >
+        {SIDE_BARS.map((bar, idx) => (
+          <div
+            key={`r-${idx}`}
+            className={`side-wave-bar ${
+              isPlaying ? '' : 'studio-anim-paused'
+            } origin-right h-[3px] rounded-full bg-gradient-to-l ${sideGradRight}`}
+            style={{
+              width: `${bar.widthPct}%`,
+              animationDuration: `${bar.duration}s`,
+              animationDelay: `${bar.delay}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Bottom Full-Width Horizon Equalizer Curtain */}
+      <div
+        className={`fixed inset-x-0 bottom-0 h-14 sm:h-20 flex items-end justify-between gap-1 px-2 sm:px-6 transition-opacity duration-500 ${
+          isPlaying ? 'opacity-50' : 'opacity-15'
+        }`}
+      >
+        {HORIZON_BARS.map((bar, idx) => (
+          <span
+            key={`h-${idx}`}
+            className={`radial-beat-bar ${pausedBar} flex-1 max-w-[10px] rounded-t-full bg-gradient-to-t ${horizonGrad}`}
+            style={{
+              height: `${bar.heightPx}px`,
+              animationDuration: `${bar.duration}s`,
+              animationDelay: `${bar.delay}s`,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Scene Backdrop Renderer (Living Aura / Pure Midnight / Contextual Glow + Cosmic Bokeh Motes)
  */
 export function StudioSceneBackdrop({
   scene = 'aura',
   videoId,
   tone = 'indigo',
+  isPlaying = false,
 }: {
   scene: StudioSceneMode;
   videoId?: string;
   tone: StudioContextTone;
+  isPlaying?: boolean;
 }) {
   const safeVideoId = videoId || 'jfKfPfyJRdk';
+  const pauseAnim = isPlaying ? '' : 'studio-anim-paused';
+  const moteColor =
+    tone === 'amber'
+      ? 'bg-amber-300/70 shadow-[0_0_8px_rgba(245,158,11,0.7)]'
+      : tone === 'emerald'
+      ? 'bg-emerald-300/70 shadow-[0_0_8px_rgba(16,185,129,0.7)]'
+      : 'bg-cyan-300/70 shadow-[0_0_8px_rgba(34,211,238,0.7)]';
 
   return (
     <div
@@ -360,29 +586,47 @@ export function StudioSceneBackdrop({
     >
       {/* Pure Midnight Scene */}
       {scene === 'midnight' && (
-        <div className="absolute inset-0 bg-[#05070f] transition-opacity duration-700" />
+        <div className="absolute inset-0 bg-[#04060d] transition-opacity duration-700" />
       )}
 
-      {/* Album Aura Scene (Blurs current album art with vignette) */}
+      {/* Living Album Aura Scene (Dual orbiting dynamic album color clouds) */}
       {scene === 'aura' && (
-        <div className="absolute inset-0 transition-opacity duration-700">
-          <div className="absolute inset-0 bg-slate-950" />
-          <div className="absolute inset-0 flex items-center justify-center opacity-30 blur-3xl scale-125 transform-gpu">
+        <div className="absolute inset-0 transition-opacity duration-700 bg-slate-950">
+          <div
+            className={`aura-orbit-a ${pauseAnim} absolute -top-1/4 -left-1/4 w-[85vw] h-[85vh] rounded-full overflow-hidden opacity-40 blur-3xl`}
+          >
             <Image
               src={`https://i.ytimg.com/vi/${safeVideoId}/mqdefault.jpg`}
-              alt="Scene Aura"
+              alt=""
               width={640}
               height={360}
               unoptimized
               className="w-full h-full object-cover"
             />
           </div>
-          {/* Dark vignette gradient overlay */}
+          <div
+            className={`aura-orbit-b ${pauseAnim} absolute -bottom-1/4 -right-1/4 w-[80vw] h-[80vh] rounded-full overflow-hidden opacity-35 blur-3xl`}
+          >
+            <Image
+              src={`https://i.ytimg.com/vi/${safeVideoId}/mqdefault.jpg`}
+              alt=""
+              width={640}
+              height={360}
+              unoptimized
+              className="w-full h-full object-cover"
+            />
+          </div>
+          {/* Soft contextual halo center-left */}
+          <div
+            className="absolute inset-0 opacity-65 transition-all duration-700"
+            style={{ background: HALO_RADIAL_MAP[tone] }}
+          />
+          {/* Balanced vignette so outer margins keep lush color without harsh distraction */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                'radial-gradient(ellipse at center, rgba(5,8,20,0.45) 0%, rgba(2,6,23,0.92) 80%, #020617 100%)',
+                'radial-gradient(ellipse at center, rgba(2,6,23,0.42) 0%, rgba(2,6,23,0.78) 78%, rgba(2,6,23,0.92) 100%)',
             }}
           />
         </div>
@@ -392,9 +636,33 @@ export function StudioSceneBackdrop({
       {scene === 'glow' && (
         <div className="absolute inset-0 bg-slate-950 flex items-center justify-center transition-opacity duration-700">
           <div
-            className="w-[560px] h-[560px] rounded-full transition-all duration-700 opacity-90"
+            className={`aura-orbit-a ${pauseAnim} w-[680px] h-[680px] rounded-full transition-all duration-700 opacity-95`}
             style={{ background: HALO_RADIAL_MAP[tone] }}
           />
+        </div>
+      )}
+
+      {/* Subtle Floating Cosmic Motes when playing (except Pure Midnight) */}
+      {scene !== 'midnight' && (
+        <div
+          className={`absolute inset-0 transition-opacity duration-700 ${
+            isPlaying ? 'opacity-80' : 'opacity-20'
+          }`}
+        >
+          {MOTES.map((m, idx) => (
+            <span
+              key={idx}
+              className={`zen-mote ${pauseAnim} absolute rounded-full ${moteColor}`}
+              style={{
+                left: `${m.leftPct}%`,
+                top: `${m.topPct}%`,
+                width: `${m.sizePx}px`,
+                height: `${m.sizePx}px`,
+                animationDuration: `${m.durationSec}s`,
+                animationDelay: `${m.delaySec}s`,
+              }}
+            />
+          ))}
         </div>
       )}
     </div>

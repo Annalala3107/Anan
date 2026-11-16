@@ -161,6 +161,90 @@ export function extractYouTubePlaylistId(input: string): string | null {
   return listMatch ? listMatch[1] : null;
 }
 
+export interface CuratedStation {
+  id: string;
+  videoId: string;
+  title: string;
+  artist: string;
+  category: 'lofi' | 'coding' | 'piano';
+  url: string;
+}
+
+export const CURATED_FOCUS_STATIONS: CuratedStation[] = [
+  {
+    id: 'station-lofi-study',
+    videoId: '5qap5aO4i9A',
+    title: 'Lofi Hip Hop Radio — Relax / Study',
+    artist: 'Lofi Girl · 24/7 Focus',
+    category: 'lofi',
+    url: 'https://www.youtube.com/watch?v=5qap5aO4i9A',
+  },
+  {
+    id: 'station-1am-study',
+    videoId: 'lTRiuFIWV54',
+    title: '1 A.M Study Session (Deep Focus)',
+    artist: 'Lofi Girl · Ambient Mix',
+    category: 'lofi',
+    url: 'https://www.youtube.com/watch?v=lTRiuFIWV54',
+  },
+  {
+    id: 'station-chillhop',
+    videoId: '7NOSDKb0HlU',
+    title: 'Chillhop Radio — Study & Chill Beats',
+    artist: 'Chillhop Music · 24/7 Stream',
+    category: 'lofi',
+    url: 'https://www.youtube.com/watch?v=7NOSDKb0HlU',
+  },
+  {
+    id: 'station-synthwave',
+    videoId: '4xDzrJKXOOY',
+    title: 'Synthwave Radio — Chill / Coding',
+    artist: 'Lofi Girl · Retro Focus',
+    category: 'coding',
+    url: 'https://www.youtube.com/watch?v=4xDzrJKXOOY',
+  },
+  {
+    id: 'station-lofi-best',
+    videoId: 'n61ULEU7CO0',
+    title: 'Best of Lofi Hip Hop (Focus Mix)',
+    artist: 'Lofi Girl · Long Session',
+    category: 'coding',
+    url: 'https://www.youtube.com/watch?v=n61ULEU7CO0',
+  },
+  {
+    id: 'station-sleep-chill',
+    videoId: 'DWcJFNfaw9c',
+    title: 'Beats to Sleep / Late Night Study',
+    artist: 'Lofi Girl · Soft Beats',
+    category: 'lofi',
+    url: 'https://www.youtube.com/watch?v=DWcJFNfaw9c',
+  },
+  {
+    id: 'track-1',
+    videoId: '9WO4_N9C0po',
+    title: 'Thiên Lý Ơi (Piano Cover)',
+    artist: 'Yuriko Piano · Jack',
+    category: 'piano',
+    url: 'https://youtu.be/9WO4_N9C0po',
+  },
+  {
+    id: 'track-2',
+    videoId: 'metsH3X9lmU',
+    title: 'Tìm Em (Piano Cover)',
+    artist: 'Vũ Ngọc Tiến · Hngle ft. Bảo Anh',
+    category: 'piano',
+    url: 'https://youtu.be/metsH3X9lmU',
+  },
+  {
+    id: 'track-3',
+    videoId: 'Jkvn7npQlbE',
+    title: 'Chúng Ta Của Hiện Tại (Piano Cover)',
+    artist: 'An Coong · Sơn Tùng M-TP',
+    category: 'piano',
+    url: 'https://youtu.be/Jkvn7npQlbE',
+  },
+];
+
 export const DEFAULT_MUSIC_TRACKS: MusicTrack[] = [
   {
     id: 'track-1',
@@ -215,15 +299,41 @@ function savePrefs(partial: MusicPrefs) {
   }
 }
 
-async function fetchYouTubeMetaViaNoembed(
+async function fetchYouTubeMeta(
   targetUrlOrVideoId: string
 ): Promise<{ title?: string; artist?: string }> {
+  const targetUrl = /^https?:\/\//i.test(targetUrlOrVideoId)
+    ? targetUrlOrVideoId
+    : `https://www.youtube.com/watch?v=${targetUrlOrVideoId}`;
+
+  // Primary: Local Next.js YouTube oEmbed proxy (immune to third-party noembed timeouts & CORS)
+  try {
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 4500);
+    const res = await fetch(
+      `/api/music/meta?url=${encodeURIComponent(targetUrl)}`,
+      { signal: controller.signal }
+    );
+    window.clearTimeout(timer);
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.ok && typeof data.title === 'string' && data.title.trim()) {
+        return {
+          title: data.title.trim(),
+          artist:
+            typeof data.artist === 'string' && data.artist.trim()
+              ? data.artist.trim()
+              : undefined,
+        };
+      }
+    }
+  } catch {
+    // Fall back to noembed
+  }
+
   try {
     const controller = new AbortController();
     const timer = window.setTimeout(() => controller.abort(), 3500);
-    const targetUrl = /^https?:\/\//i.test(targetUrlOrVideoId)
-      ? targetUrlOrVideoId
-      : `https://www.youtube.com/watch?v=${targetUrlOrVideoId}`;
     const endpoint = `https://noembed.com/embed?url=${encodeURIComponent(targetUrl)}`;
     const res = await fetch(endpoint, { signal: controller.signal });
     window.clearTimeout(timer);
@@ -261,6 +371,13 @@ export interface MusicStoreState {
   currentTime: number;
   duration: number;
   seekRequest: number | null;
+
+  // Live Active Song Info (updates dynamically inside YouTube Playlists & auto-heals custom titles)
+  liveVideoId: string | null;
+  liveTitle: string | null;
+  liveArtist: string | null;
+  livePlaylistIndex: number;
+  livePlaylistTotal: number;
 
   // Ambient Sound Presets ('off' | 'rain' | 'brown')
   ambientPreset: AmbientPreset;
@@ -302,6 +419,18 @@ export interface MusicStoreState {
     customTitle?: string
   ) => Promise<{ ok: boolean; error?: string }>;
   removeCustomTrack: (trackId: string) => void;
+  playCuratedStation: (station: CuratedStation) => void;
+  addStationToQueue: (station: CuratedStation) => void;
+  repairTrackMeta: (trackId: string, title: string, artist?: string) => void;
+  setLiveTrackInfo: (
+    info: {
+      videoId?: string | null;
+      title?: string | null;
+      artist?: string | null;
+      playlistIndex?: number;
+      playlistTotal?: number;
+    } | null
+  ) => void;
   togglePinTrack: (trackId: string) => void;
   moveTrack: (trackId: string, direction: 'up' | 'down') => void;
   setReady: (ready: boolean) => void;
@@ -343,6 +472,12 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   currentTime: 0,
   duration: 0,
   seekRequest: null,
+
+  liveVideoId: null,
+  liveTitle: null,
+  liveArtist: null,
+  livePlaylistIndex: -1,
+  livePlaylistTotal: 0,
 
   ambientPreset: 'off',
   ambientVolume: 35,
@@ -499,6 +634,11 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       playerState: autoPlay ? 'buffering' : 'cued',
       currentTime: 0,
       duration: 0,
+      liveVideoId: null,
+      liveTitle: null,
+      liveArtist: null,
+      livePlaylistIndex: -1,
+      livePlaylistTotal: 0,
       showMiniPlayer: shouldRevealMini,
     });
     playerController?.loadTrack(track.videoId, autoPlay, track.playlistId);
@@ -634,7 +774,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       const playlistUrl = `https://www.youtube.com/playlist?list=${playlistId}`;
       const meta = customTitle?.trim()
         ? {}
-        : await fetchYouTubeMetaViaNoembed(videoId ? `https://www.youtube.com/watch?v=${videoId}&list=${playlistId}` : playlistUrl);
+        : await fetchYouTubeMeta(videoId ? `https://www.youtube.com/watch?v=${videoId}&list=${playlistId}` : playlistUrl);
       const cleanTitle =
         (customTitle || '').trim() || meta.title || `YouTube Playlist (${playlistId.slice(0, 10)})`;
       const cleanArtist = meta.artist
@@ -677,7 +817,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       return { ok: true };
     }
 
-    const meta = customTitle?.trim() ? {} : await fetchYouTubeMetaViaNoembed(videoId);
+    const meta = customTitle?.trim() ? {} : await fetchYouTubeMeta(videoId);
     const cleanTitle =
       (customTitle || '').trim() || meta.title || `YouTube Custom (${videoId})`;
     const cleanArtist = meta.artist
@@ -732,7 +872,114 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     set({
       tracks: nextTracks,
       currentTrackId: fallbackId,
-      ...(isRemovingCurrent ? { currentTime: 0, duration: 0 } : {}),
+      ...(isRemovingCurrent
+        ? {
+            currentTime: 0,
+            duration: 0,
+            liveVideoId: null,
+            liveTitle: null,
+            liveArtist: null,
+            livePlaylistIndex: -1,
+            livePlaylistTotal: 0,
+          }
+        : {}),
+    });
+  },
+
+  playCuratedStation: (station) => {
+    const { tracks, selectTrack } = get();
+    const existing = tracks.find(
+      (t) => !t.playlistId && (t.id === station.id || t.videoId === station.videoId)
+    );
+    if (existing) {
+      selectTrack(existing.id, true);
+      return;
+    }
+
+    const newTrack: MusicTrack = {
+      id: `custom-${station.videoId}`,
+      videoId: station.videoId,
+      title: station.title,
+      artist: station.artist,
+      url: station.url,
+      isCustom: true,
+    };
+    const nextTracks = [...tracks, newTrack];
+    savePrefs({
+      customTracks: nextTracks.filter((t) => t.isCustom),
+      trackOrderIds: nextTracks.map((t) => t.id),
+    });
+    set({ tracks: nextTracks });
+    get().selectTrack(newTrack.id, true);
+  },
+
+  addStationToQueue: (station) => {
+    const { tracks } = get();
+    const existing = tracks.find(
+      (t) => !t.playlistId && (t.id === station.id || t.videoId === station.videoId)
+    );
+    if (existing) return;
+
+    const newTrack: MusicTrack = {
+      id: `custom-${station.videoId}`,
+      videoId: station.videoId,
+      title: station.title,
+      artist: station.artist,
+      url: station.url,
+      isCustom: true,
+    };
+    const nextTracks = [...tracks, newTrack];
+    savePrefs({
+      customTracks: nextTracks.filter((t) => t.isCustom),
+      trackOrderIds: nextTracks.map((t) => t.id),
+    });
+    set({ tracks: nextTracks });
+  },
+
+  repairTrackMeta: (trackId, title, artist) => {
+    const cleanTitle = (title || '').trim();
+    if (!cleanTitle) return;
+    const current = get().tracks;
+    const target = current.find((t) => t.id === trackId);
+    if (!target) return;
+
+    const needsHeal =
+      target.title.startsWith('YouTube Custom (') ||
+      target.title.startsWith('YouTube Playlist (');
+    if (!needsHeal) return;
+
+    const nextTracks = current.map((t) =>
+      t.id === trackId
+        ? {
+            ...t,
+            title: cleanTitle,
+            artist: artist?.trim() ? `${artist.trim()} · YouTube` : t.artist,
+          }
+        : t
+    );
+    savePrefs({
+      customTracks: nextTracks.filter((t) => t.isCustom),
+    });
+    set({ tracks: nextTracks });
+  },
+
+  setLiveTrackInfo: (info) => {
+    if (!info) {
+      set({
+        liveVideoId: null,
+        liveTitle: null,
+        liveArtist: null,
+        livePlaylistIndex: -1,
+        livePlaylistTotal: 0,
+      });
+      return;
+    }
+    set({
+      liveVideoId: info.videoId ?? null,
+      liveTitle: info.title ?? null,
+      liveArtist: info.artist ?? null,
+      livePlaylistIndex: info.playlistIndex ?? -1,
+      livePlaylistTotal: info.playlistTotal ?? 0,
     });
   },
 

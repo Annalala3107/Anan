@@ -287,7 +287,13 @@
 
   .vinyl-disc-spin,
   .studio-eq-bar,
-  .turntable-tonearm {
+  .turntable-tonearm,
+  .sonic-pulse-ring,
+  .radial-beat-bar,
+  .side-wave-bar,
+  .aura-orbit-a,
+  .aura-orbit-b,
+  .zen-mote {
     animation: none !important;
     transition: none !important;
   }
@@ -306,7 +312,7 @@
 }
 
 .vinyl-disc-spin {
-  animation: vinylSpin 14s linear infinite;
+  animation: vinylSpin 9s linear infinite;
   will-change: transform;
 }
 
@@ -317,16 +323,118 @@
 /* Studio Turntable Tonearm */
 .turntable-tonearm {
   transform-origin: 32px 32px;
-  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
 .turntable-tonearm-playing {
-  transform: rotate(26deg);
+  transform: rotate(12deg);
 }
 
 .turntable-tonearm-parked {
-  transform: rotate(0deg);
+  transform: rotate(-22deg);
+}
+
+/* Reactive Sonic Ripples & Spectrum Bars (100% GPU Transform + Opacity) */
+@keyframes sonicPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.46;
+  }
+  100% {
+    transform: scale(1.36);
+    opacity: 0;
+  }
+}
+
+.sonic-pulse-ring {
+  animation: sonicPulse 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes radialBarDance {
+  0%,
+  100% {
+    transform: scaleY(0.18);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.radial-beat-bar {
+  transform-origin: bottom center;
+  will-change: transform;
+  animation: radialBarDance 0.72s ease-in-out infinite;
+}
+
+@keyframes sideWavePulse {
+  0%,
+  100% {
+    transform: scaleX(0.2);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+}
+
+.side-wave-bar {
+  will-change: transform;
+  animation: sideWavePulse 0.85s ease-in-out infinite;
+}
+
+@keyframes auraOrbitA {
+  0% {
+    transform: translate3d(-4%, -3%, 0) scale(1.15) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(4%, 3%, 0) scale(1.26) rotate(12deg);
+  }
+}
+
+@keyframes auraOrbitB {
+  0% {
+    transform: translate3d(4%, 3%, 0) scale(1.2) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-5%, -2%, 0) scale(1.32) rotate(-14deg);
+  }
+}
+
+.aura-orbit-a {
+  animation: auraOrbitA 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.aura-orbit-b {
+  animation: auraOrbitB 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes moteFloat {
+  0% {
+    transform: translate3d(0, 12vh, 0) scale(0.7);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.55;
+  }
+  82% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate3d(18px, -18vh, 0) scale(1.15);
+    opacity: 0;
+  }
+}
+
+.zen-mote {
+  animation: moteFloat 18s linear infinite;
+  will-change: transform, opacity;
+}
+
+.studio-anim-paused {
+  animation-play-state: paused !important;
 }
 
 @keyframes studioEqPulse {
