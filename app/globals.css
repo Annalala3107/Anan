@@ -286,8 +286,10 @@
   }
 
   .vinyl-disc-spin,
-  .studio-eq-bar {
+  .studio-eq-bar,
+  .turntable-tonearm {
     animation: none !important;
+    transition: none !important;
   }
 }
 
@@ -310,6 +312,21 @@
 
 .vinyl-disc-paused {
   animation-play-state: paused;
+}
+
+/* Studio Turntable Tonearm */
+.turntable-tonearm {
+  transform-origin: 32px 32px;
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.turntable-tonearm-playing {
+  transform: rotate(26deg);
+}
+
+.turntable-tonearm-parked {
+  transform: rotate(0deg);
 }
 
 @keyframes studioEqPulse {

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 
 export type StudioContextTone = 'indigo' | 'amber' | 'emerald';
+export type StudioSceneMode = 'aura' | 'midnight' | 'glow';
 
 export function getStudioContextTone(
   pomodoroRunning: boolean,
@@ -22,6 +23,7 @@ export const STUDIO_TONE_TOKENS: Record<
     fillGradient: string;
     eqBar: string;
     badge: string;
+    accentText: string;
   }
 > = {
   indigo: {
@@ -32,6 +34,7 @@ export const STUDIO_TONE_TOKENS: Record<
     eqBar: 'bg-indigo-500 dark:bg-cyan-400',
     badge:
       'bg-indigo-500/12 text-indigo-600 dark:text-indigo-300 border-indigo-500/25',
+    accentText: 'text-indigo-600 dark:text-cyan-400',
   },
   amber: {
     cardBorder: 'border-amber-500/40 dark:border-amber-400/35',
@@ -41,6 +44,7 @@ export const STUDIO_TONE_TOKENS: Record<
     eqBar: 'bg-amber-500 dark:bg-amber-400',
     badge:
       'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30',
+    accentText: 'text-amber-600 dark:text-amber-400',
   },
   emerald: {
     cardBorder: 'border-emerald-500/35 dark:border-emerald-400/35',
@@ -50,7 +54,17 @@ export const STUDIO_TONE_TOKENS: Record<
     eqBar: 'bg-emerald-500 dark:bg-emerald-400',
     badge:
       'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30',
+    accentText: 'text-emerald-600 dark:text-emerald-400',
   },
+};
+
+export const HALO_RADIAL_MAP: Record<StudioContextTone, string> = {
+  indigo:
+    'radial-gradient(circle, rgba(99,102,241,0.28) 0%, rgba(34,211,238,0.08) 48%, transparent 72%)',
+  amber:
+    'radial-gradient(circle, rgba(245,158,11,0.3) 0%, rgba(251,146,60,0.09) 48%, transparent 72%)',
+  emerald:
+    'radial-gradient(circle, rgba(16,185,129,0.28) 0%, rgba(20,184,166,0.08) 48%, transparent 72%)',
 };
 
 interface VinylArtworkProps {
@@ -159,6 +173,230 @@ export function VinylArtwork({
           <span className={`${cfg.pin} rounded-full bg-slate-200/80`} />
         </div>
       </div>
+    </div>
+  );
+}
+
+/**
+ * Minimalist Tonearm SVG: rotates into playing position when `isPlaying` is true.
+ */
+export function StudioTonearm({
+  isPlaying,
+  tone = 'indigo',
+  className = '',
+}: {
+  isPlaying: boolean;
+  tone?: StudioContextTone;
+  className?: string;
+}) {
+  const needleDotColor =
+    tone === 'amber' ? '#f59e0b' : tone === 'emerald' ? '#10b981' : '#22d3ee';
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none select-none ${className}`}
+    >
+      <svg
+        viewBox="0 0 74 190"
+        className={`w-16 sm:w-20 h-auto overflow-visible turntable-tonearm ${
+          isPlaying ? 'turntable-tonearm-playing' : 'turntable-tonearm-parked'
+        }`}
+      >
+        <defs>
+          <linearGradient id="armMetalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#94a3b8" />
+            <stop offset="50%" stopColor="#f8fafc" />
+            <stop offset="100%" stopColor="#64748b" />
+          </linearGradient>
+          <radialGradient id="pivotGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#f1f5f9" />
+            <stop offset="70%" stopColor="#475569" />
+            <stop offset="100%" stopColor="#0f172a" />
+          </radialGradient>
+        </defs>
+
+        {/* Counterweight rear cylinder */}
+        <rect
+          x="25"
+          y="6"
+          width="14"
+          height="14"
+          rx="2"
+          fill="#334155"
+          stroke="#475569"
+          strokeWidth="1.5"
+        />
+        <line
+          x1="25"
+          y1="13"
+          x2="39"
+          y2="13"
+          stroke="#94a3b8"
+          strokeWidth="1"
+          opacity="0.6"
+        />
+
+        {/* Pivot Gimbal Base */}
+        <circle
+          cx="32"
+          cy="32"
+          r="14"
+          fill="url(#pivotGrad)"
+          stroke="#1e293b"
+          strokeWidth="2"
+        />
+        <circle cx="32" cy="32" r="5" fill="#0f172a" />
+        <circle cx="32" cy="32" r="2" fill="#cbd5e1" />
+
+        {/* S-curved tonearm tube */}
+        <path
+          d="M 32 32 L 32 95 Q 32 125 22 145 L 14 165"
+          fill="none"
+          stroke="url(#armMetalGrad)"
+          strokeWidth="3.2"
+          strokeLinecap="round"
+        />
+
+        {/* Headshell / Cartridge mount */}
+        <g transform="translate(14, 165)">
+          <path
+            d="M -3 0 L 7 -2 L 11 18 L 1 20 Z"
+            fill="#1e293b"
+            stroke="#475569"
+            strokeWidth="1"
+          />
+          {/* Finger lift */}
+          <path
+            d="M 9 2 Q 15 4 17 0"
+            fill="none"
+            stroke="#94a3b8"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+          {/* Stylus needle glowing contact point */}
+          <circle
+            cx="4"
+            cy="18"
+            r="1.8"
+            fill={needleDotColor}
+            className={isPlaying ? 'animate-pulse' : ''}
+            style={{
+              filter: isPlaying
+                ? `drop-shadow(0 0 4px ${needleDotColor})`
+                : 'none',
+            }}
+          />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+/**
+ * Full Turntable Deck Stage (Base platter + Vinyl + Tonearm).
+ */
+export function StudioTurntable({
+  videoId,
+  title,
+  isPlaying,
+  tone = 'indigo',
+  className = '',
+}: {
+  videoId: string;
+  title: string;
+  isPlaying: boolean;
+  tone?: StudioContextTone;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`relative flex items-center justify-center select-none ${className}`}
+    >
+      {/* Platter deck base with subtle metallic sheen */}
+      <div className="relative rounded-full p-4 sm:p-5 bg-gradient-to-b from-slate-800/90 via-slate-900 to-black shadow-[0_25px_60px_-12px_rgba(0,0,0,0.85)] border border-white/10 ring-1 ring-white/5">
+        {/* Outer strobe dots pattern */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-1.5 rounded-full border border-dashed border-white/10"
+        />
+
+        {/* Center Vinyl Artwork */}
+        <VinylArtwork
+          videoId={videoId}
+          title={title}
+          isPlaying={isPlaying}
+          tone={tone}
+          size="lg"
+        />
+      </div>
+
+      {/* Tonearm Assembly mounted top-right */}
+      <div className="absolute -top-3 sm:-top-5 -right-3 sm:-right-4 z-20">
+        <StudioTonearm isPlaying={isPlaying} tone={tone} />
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Scene Backdrop Renderer (Aura / Midnight / Glow)
+ */
+export function StudioSceneBackdrop({
+  scene = 'aura',
+  videoId,
+  tone = 'indigo',
+}: {
+  scene: StudioSceneMode;
+  videoId?: string;
+  tone: StudioContextTone;
+}) {
+  const safeVideoId = videoId || 'jfKfPfyJRdk';
+
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 overflow-hidden z-0 select-none"
+    >
+      {/* Pure Midnight Scene */}
+      {scene === 'midnight' && (
+        <div className="absolute inset-0 bg-[#05070f] transition-opacity duration-700" />
+      )}
+
+      {/* Album Aura Scene (Blurs current album art with vignette) */}
+      {scene === 'aura' && (
+        <div className="absolute inset-0 transition-opacity duration-700">
+          <div className="absolute inset-0 bg-slate-950" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-30 blur-3xl scale-125 transform-gpu">
+            <Image
+              src={`https://i.ytimg.com/vi/${safeVideoId}/mqdefault.jpg`}
+              alt="Scene Aura"
+              width={640}
+              height={360}
+              unoptimized
+              className="w-full h-full object-cover"
+            />
+          </div>
+          {/* Dark vignette gradient overlay */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(ellipse at center, rgba(5,8,20,0.45) 0%, rgba(2,6,23,0.92) 80%, #020617 100%)',
+            }}
+          />
+        </div>
+      )}
+
+      {/* Ambient Glow Scene (Focused contextual radial halo) */}
+      {scene === 'glow' && (
+        <div className="absolute inset-0 bg-slate-950 flex items-center justify-center transition-opacity duration-700">
+          <div
+            className="w-[560px] h-[560px] rounded-full transition-all duration-700 opacity-90"
+            style={{ background: HALO_RADIAL_MAP[tone] }}
+          />
+        </div>
+      )}
     </div>
   );
 }
