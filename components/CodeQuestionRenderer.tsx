@@ -9,6 +9,7 @@ import {
   extractRomanChoices,
   isStandaloneFormula,
   formatPiecewise,
+  convertAsciiMatrix,
 } from '@/lib/mathUtils';
 
 interface CodeQuestionRendererProps {
@@ -363,8 +364,10 @@ export default function CodeQuestionRenderer({
 
   if (!content && !image) return null;
 
+  // Pre-process multiline ASCII matrices and transpose vectors
+  const preparedContent = convertAsciiMatrix(content);
   // Extract any sub-choices (i), (ii), etc.
-  const { stem, romanChoices } = extractRomanChoices(content);
+  const { stem, romanChoices } = extractRomanChoices(preparedContent);
   const blocks = parseBlocks(stem);
 
   const handleCopy = async (text: string, idx: number, e: React.MouseEvent) => {

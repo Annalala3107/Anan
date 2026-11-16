@@ -25,10 +25,126 @@ export function formatPiecewise(text: string): string {
 }
 
 /**
+ * Converts multiline ASCII matrices and transpose vectors into standard LaTeX bmatrix format.
+ */
+export function convertAsciiMatrix(text: string): string {
+  if (!text) return '';
+  let s = text;
+
+  // 1. Convert named matrices like "A = [\n  -4 3 1\n  3 6 -1\n  1 0 2\n]" or "C = [\n ... \n]"
+  s = s.replace(
+    /([A-Z]\s*=\s*)\[\s*\n([\s\S]*?)\n\s*\]/g,
+    (match, prefix, matrixBody) => {
+      const lines = matrixBody
+        .split('\n')
+        .map((l: string) => l.trim())
+        .filter(Boolean);
+      const rows = lines.map((row: string) => {
+        return row.trim().split(/\s+/).join(' & ');
+      });
+      return `${prefix}\\begin{bmatrix} ${rows.join(' \\\\ ')} \\end{bmatrix}`;
+    }
+  );
+
+  // 2. Convert indented matrix pairs like "(2A^T)^{-1} = [ 1 -1 ]\n [ 0 1 ]" or "(i) [ 2 0 ]\n [ -2 2 ]"
+  s = s.replace(
+    /([^\n\[]*?\[\s*[-+0-9a-zA-Z\^/.,\s]+\s*\])\s*\n\s*(\[\s*[-+0-9a-zA-Z\^/.,\s]+\s*\][\s.,;]*)/g,
+    (match, top, bottom) => {
+      const topMatch = top.match(/([\s\S]*?)\[\s*([\s\S]*?)\s*\]/);
+      const bottomMatch = bottom.match(/\[\s*([\s\S]*?)\s*\]([\s.,;]*)/);
+      if (topMatch && bottomMatch) {
+        const prefix = topMatch[1];
+        const r1 = topMatch[2].trim().split(/\s+/).join(' & ');
+        const r2 = bottomMatch[1].trim().split(/\s+/).join(' & ');
+        const suffix = bottomMatch[2] || '';
+        return `${prefix}\\begin{bmatrix} ${r1} \\\\ ${r2} \\end{bmatrix}${suffix}`;
+      }
+      return match;
+    }
+  );
+
+  // 3. Convert consecutive multiline matrices "[ ... ]\n[ ... ]\n[ ... ]"
+  const lines = s.split('\n');
+  let inMatrix = false;
+  let matrixLines: string[] = [];
+  const resultLines: string[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    const isMatrixRow = /^\[\s*[-+0-9a-zA-Z\^|.,\s]+\s*\][,;.]?$/.test(line);
+
+    if (isMatrixRow) {
+      inMatrix = true;
+      matrixLines.push(line);
+    } else {
+      if (inMatrix) {
+        if (matrixLines.length >= 2) {
+          const rows = matrixLines.map((r) => {
+            const inner = r.replace(/^\[\s*/, '').replace(/\s*\][,;.]?$/, '');
+            if (inner.includes('|')) {
+              const parts = inner.split('|');
+              const left = parts[0].trim().split(/\s+/).join(' & ');
+              const right = parts[1].trim().split(/\s+/).join(' & ');
+              return `${left} & \\bigm| & ${right}`;
+            }
+            if (inner.includes(',')) {
+              return inner.split(',').map((c) => c.trim()).join(' & ');
+            }
+            return inner.trim().split(/\s+/).join(' & ');
+          });
+          resultLines.push(`\\begin{bmatrix} ${rows.join(' \\\\ ')} \\end{bmatrix}`);
+        } else {
+          resultLines.push(...matrixLines);
+        }
+        matrixLines = [];
+        inMatrix = false;
+      }
+      resultLines.push(lines[i]);
+    }
+  }
+
+  if (matrixLines.length >= 2) {
+    const rows = matrixLines.map((r) => {
+      const inner = r.replace(/^\[\s*/, '').replace(/\s*\][,;.]?$/, '');
+      if (inner.includes('|')) {
+        const parts = inner.split('|');
+        const left = parts[0].trim().split(/\s+/).join(' & ');
+        const right = parts[1].trim().split(/\s+/).join(' & ');
+        return `${left} & \\bigm| & ${right}`;
+      }
+      if (inner.includes(',')) {
+        return inner.split(',').map((c) => c.trim()).join(' & ');
+      }
+      return inner.trim().split(/\s+/).join(' & ');
+    });
+    resultLines.push(`\\begin{bmatrix} ${rows.join(' \\\\ ')} \\end{bmatrix}`);
+  } else if (matrixLines.length > 0) {
+    resultLines.push(...matrixLines);
+  }
+
+  s = resultLines.join('\n');
+
+  // 4. Convert transpose vectors like "[3 -1 2]^T" or "[-7 2 1]^T"
+  s = s.replace(/\[\s*([-+0-9a-zA-Z\s,;]+?)\s*\]\^T/g, (match, inner) => {
+    let cells;
+    if (inner.includes(',')) {
+      cells = inner.split(',').map((c: string) => c.trim()).join(' & ');
+    } else if (inner.includes(';')) {
+      cells = inner.split(';').map((c: string) => c.trim()).join(' & ');
+    } else {
+      cells = inner.trim().split(/\s+/).join(' & ');
+    }
+    return `\\begin{bmatrix} ${cells} \\end{bmatrix}^T`;
+  });
+
+  return s;
+}
+
+/**
  * Converts ASCII / MathType equation notation commonly found in exam sources into standard LaTeX.
  */
 export function cleanMathToLatex(expr: string): string {
-  let s = formatPiecewise(expr.trim());
+  let s = formatPiecewise(convertAsciiMatrix(expr.trim()));
 
   // Strip trailing period if not an ellipsis
   const hasTrailingPeriod = s.endsWith('.') && !s.endsWith('..');
@@ -63,51 +179,62 @@ export function cleanMathToLatex(expr: string): string {
   s = s.replace(/∈/g, '\\in ');
   s = s.replace(/\bR\b(?=\s*(?:[,\s\])}]|is in))/g, '\\mathbb{R}');
 
-  // 2. Simple exponents first so e^(5t) -> e^{5t}, x^2 -> x^{2}
+  // 2. Units with carets: cm^2/s -> \text{cm}^2/\text{s}, cm^2 -> \text{cm}^2
+  s = s.replace(
+    /\b(cm|m|km|s|ft|in)\^(\d+)\/([a-zA-Z]+)\b/g,
+    '\\text{$1}^{$2}/\\text{$3}'
+  );
+  s = s.replace(/\b(cm|m|km|s|ft|in)\^(\d+)\b/g, '\\text{$1}^{$2}');
+
+  // 3. Subscripts: x_1 -> x_{1}, L_3 -> L_{3}, R_8 -> R_{8}, x_n -> x_{n}
+  s = s.replace(/\b([a-zA-Z])_([0-9a-zA-Z]+)\b/g, '$1_{$2}');
+
+  // 4. Standard upright functions: \ln, \sin, \cos, \tan, etc.
+  s = s.replace(
+    /\b(sin|cos|tan|ln|log|exp|arcsin|arccos|arctan|sec|csc|cot|det|span)\b(?![a-zA-Z])/g,
+    '\\$1 '
+  );
+
+  // 5. Differential spacing: dx, dy, dt, dz, dp
+  s = s.replace(/\b(dx|dy|dt|dz|dp|d\theta)\b/g, '\\, $1');
+
+  // 6. Simple exponents
   s = s.replace(/([a-zA-Z0-9_]+)\^\(([^)]+)\)/g, '$1^{$2}');
   s = s.replace(/([a-zA-Z0-9_]+)\^(\d+)/g, '$1^{$2}');
 
-  // 3. Limits: lim_{x \to 1-} or lim_{x \to 0+} or lim_{x \to a}
+  // 7. Limits: lim_{x \to 1-} or lim_{x \to 0+} or lim_{x \to a}
   s = s.replace(/lim_\{([^}]+)\}/g, (m, p1) => {
     let sub = p1.trim().replace(/([0-9a-zA-Z\\]+)([-+])$/, '$1^{$2}');
     return '\\lim_{' + sub + '} ';
   });
 
-  // 4. Sums: ∑_{i=1}^{n}
+  // 8. Sums: ∑_{i=1}^{n}
   s = s.replace(/∑_\{([^}]+)\}\^\{([^}]+)\}/g, '\\sum_{$1}^{$2} ');
   s = s.replace(/∑/g, '\\sum ');
 
-  // 5. Integrals: ∫_{a}^{b} or ∫
+  // 9. Integrals: ∫_{a}^{b} or ∫
   s = s.replace(/∫_\{([^}]+)\}\^\{([^}]+)\}/g, '\\int_{$1}^{$2} ');
   s = s.replace(/∫/g, '\\int ');
 
-  // 6. Roots: ³√(expr) or √(expr) or √num
+  // 10. Roots: ³√(expr) or √(expr) or √num
   s = s.replace(/³√\(([^)]+)\)/g, '\\sqrt[3]{$1}');
   s = s.replace(/³√([a-zA-Z0-9]+)/g, '\\sqrt[3]{$1}');
   s = s.replace(/√\(([^)]+)\)/g, '\\sqrt{$1}');
   s = s.replace(/√([a-zA-Z0-9]+)/g, '\\sqrt{$1}');
 
-  // 7. Fractions:
-  // |A| / (B) -> \frac{|A|}{B}
+  // 11. Fractions:
   s = s.replace(/\|([^|]+)\|\s*\/\s*\(([^)]+)\)/g, '\\frac{|$1|}{$2}');
-  // ((A) / B) -> \frac{A}{B}
   s = s.replace(/\(\s*\(([^()]+)\)\s*\/\s*([^()]+)\s*\)/g, '\\frac{$1}{$2}');
-  // (A) / (B) -> \frac{A}{B}
-  s = s.replace(/\(([^()]+)\)\s*\/\s*\(([^)]+)\)/g, '\\frac{$1}{$2}');
-  // (A) / B -> \frac{A}{B}
-  s = s.replace(/\(([^()]+)\)\s*\/\s*([a-zA-Z0-9_^{}]+)/g, '\\frac{$1}{$2}');
-  // num / num or num / \sqrt{...}
+  s = s.replace(/\(([^)]+)\)\s*\/\s*\(([^)]+)\)/g, '\\frac{$1}{$2}');
+  s = s.replace(/\(([^)]+)\)\s*\/\s*([a-zA-Z0-9_^{}]+)/g, '\\frac{$1}{$2}');
   s = s.replace(/(\b[-+]?\d+)\s*\/\s*(\\sqrt\{[^}]+\}|\b\d+)/g, '\\frac{$1}{$2}');
   s = s.replace(/([a-zA-Z0-9]+)\s*\/\s*(\\sqrt\{[^}]+\})/g, '\\frac{$1}{$2}');
 
-  // 8. Derivatives: dz/dt, dy/dt, dy/dx, d^2y/dx^2
+  // 12. Derivatives: dz/dt, dy/dt, dy/dx, d^2y/dx^2
   s = s.replace(/\bd\^2y\/dx\^2\b/g, '\\frac{d^2y}{dx^2}');
   s = s.replace(/\b(d[a-z])\/(d[a-z])\b/g, '\\frac{$1}{$2}');
 
-  // 9. Standard function names: sin, cos, tan, ln, log, exp
-  s = s.replace(/\b(sin|cos|tan|ln|log|exp)\b\s*([a-zA-Z0-9])/g, '\\$1 $2');
-
-  // 10. Matrices: [[1, 2], [3, 4]]
+  // 13. Matrices from JSON: [[1, 2], [3, 4]]
   s = s.replace(/\[\[(.*?)\]\]/g, (m, inner) => {
     const rows = inner
       .split(/\],\s*\[/)
@@ -190,6 +317,7 @@ export function isStandaloneFormula(line: string): boolean {
       trimmed
     ) ||
     /^[a-zA-Z]\([a-zA-Z]\)\s*=\s*\{/.test(trimmed) ||
+    /^\\begin\{bmatrix\}/.test(trimmed) ||
     /^\$\$[\s\S]+\$\$$/.test(trimmed) ||
     /^\\\[[\s\S]+\\\]$/.test(trimmed)
   );
@@ -206,19 +334,22 @@ export function containsMath(text: string): boolean {
       text
     ) ||
     /\b[a-zA-Z0-9_]+\^[-+0-9a-zA-Z()]+\b/.test(text) ||
+    /\b[a-zA-Z]_[0-9a-zA-Z]+\b/.test(text) ||
     /\[\[.*?\]\]/.test(text) ||
+    /\\begin\{bmatrix\}/.test(text) ||
     /[-+]?\d+\/√\d+/.test(text) ||
-    /\$[^$]+\$/.test(text) ||
+    /\$(?!\s|\d)[^$\n]+(?<!\s)\$/.test(text) ||
     /\\\([^\)]+\\\)/.test(text) ||
     /\\\[[^\\]+\\\]/.test(text)
   );
 }
 
 /**
- * Master regex for capturing inline math tokens in sentences
+ * Master regex for capturing inline math tokens in sentences.
+ * Strictly separates currency ($20,000) from LaTeX delimiters ($x^2$).
  */
 const INLINE_MATH_REGEX =
-  /(?:\$[^$]+\$|\\\([^\)]+\\\)|lim_\{[^}]+\}\s*(?:\([^)]+\)|[a-zA-Z0-9_|^+\-*()]+)*(?:\s*=\s*[-+0-9a-zA-Z()]+)?|∫_\{[^}]+\}\^\{[^}]+\}[^,.:;]*\bd[a-z]\b|∫[^,.:;]*\bd[a-z]\b|\|[a-zA-Z0-9^+\-*\s()]+\|\s*=\s*[a-zA-Z0-9()^+\-*\s]+|(?:\b\d*[a-zA-Z](?:\^[0-9]+)?(?:\s*[-+*]\s*\d*[a-zA-Z](?:\^[0-9]+)?)*\s*=\s*[-+]?\d*[a-zA-Z0-9√^/().+-]+)|\(?[a-zA-Z0-9()^+\-*]+\)?\s*(?:<|>|<=|>=|≤|≥)\s*[-+]?\d+|\b[a-zA-Z]\s*→\s*[-+0-9a-zA-Z∞]+\b|\b(?:dy\/dt|dz\/dt|dy\/dx|d\^2y\/dx\^2|y'\(1\)|f'\(x\)|f\(x\)|g\(x\)|w'\(t\))\b|³?√\([^)]+\)|³?√[0-9a-zA-Z]+|\b[a-zA-Z]\^[0-9]+|\b[a-zA-Z]\^\([^)]+\)|±\s*\d+(?:\/√\d+)?|\[\s*[-+]?(?:\d+|π|∞|\w+)(?:\/\d+)?\s*,\s*[-+]?(?:\d+|π|∞|\w+)(?:\/\d+)?\s*\])/g;
+  /(?:\$(?!\s|\d)[^$\n]+(?<!\s)\$|\\\([^\)]+\\\)|\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\^T)?|lim_\{[^}]+\}\s*(?:\([^)]+\)|[a-zA-Z0-9_|^+\-*()]+)*(?:\s*=\s*[-+0-9a-zA-Z()]+)?|∫_\{[^}]+\}\^\{[^}]+\}[^,.:;]*\bd[a-z]\b|∫[^,.:;]*\bd[a-z]\b|\|[a-zA-Z0-9_|^+\-*\s()]+\||(?:\b\d*[a-zA-Z](?:_[0-9a-zA-Z]+|\^[0-9]+)?(?:\s*[-+*]\s*\d*[a-zA-Z](?:_[0-9a-zA-Z]+|\^[0-9]+)?)*\s*=\s*[-+]?\d*[a-zA-Z0-9√^/().+-]+)|\b[a-zA-Z]_[0-9a-zA-Z]+\s*=\s*[-+]?\d+|\(?[a-zA-Z0-9()^+\-*]+\)?\s*(?:<|>|<=|>=|≤|≥)\s*[-+]?\d+|\b[a-zA-Z]\s*→\s*[-+0-9a-zA-Z∞]+\b|\b(?:dy\/dt|dz\/dt|dy\/dx|d\^2y\/dx\^2|y'\(1\)|f'\(x\)|f\(x\)|g\(x\)|w'\(t\))\b|³?√\([^)]+\)|³?√[0-9a-zA-Z]+|\b[a-zA-Z]\^[0-9]+|\b[a-zA-Z]\^\([^)]+\)|\b[a-zA-Z]_[0-9a-zA-Z]+\b|\b[a-zA-Z]_\{[^}]+\}\b|\b\d*\s*(?:cm|m|km|s|ft|in)\^[0-9]+(?:\/[a-zA-Z]+)?\b|±\s*\d+(?:\/√\d+)?|\[\s*[-+]?(?:\d+|π|∞|\w+)(?:\/\d+)?\s*,\s*[-+]?(?:\d+|π|∞|\w+)(?:\/\d+)?\s*\])/g;
 
 export interface MathToken {
   type: 'text' | 'math';

@@ -17,17 +17,17 @@
   },
   {
     "id": "mae101_sp26_c2fe_q2",
-    "word": "MAE101 SP26 C2FE Q2: A car was purchased for $ 20000. The value of the car...",
-    "question": "A car was purchased for $ 20000. The value of the car depreciates by $ 1500 per year, find a linear function that models the value V of the car after t years.",
+    "word": "MAE101 SP26 C2FE Q2: A car was purchased for $20,000. The value of the car...",
+    "question": "A car was purchased for $20,000. The value of the car depreciates by $1,500 per year, find a linear function that models the value V of the car after t years.",
     "options": [
-      "A. V(t)= 20000+1500t",
-      "B. V(t)= 20000-1500t",
-      "C. V(t)= 1500+20000t",
-      "D. V(t)= (20000-1500)t",
+      "A. V(t) = 20000 + 1500t",
+      "B. V(t) = 20000 - 1500t",
+      "C. V(t) = 1500 + 20000t",
+      "D. V(t) = (20000 - 1500)t",
       "E. None of the other choices is correct"
     ],
     "answer": "B",
-    "correctWord": "B. V(t)= 20000-1500t",
+    "correctWord": "B. V(t) = 20000 - 1500t",
     "explanation": "Answer: B. At t = 0, the initial value is V(0) = 20000. Since the value depreciates (decreases) by 1500 each year, the slope is -1500. Thus, the linear model after t years is V(t) = 20000 - 1500t.",
     "subject": "MAE101",
     "topic": "SP26 - C2FE"
