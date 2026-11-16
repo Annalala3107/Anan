@@ -25,16 +25,93 @@ export function formatPiecewise(text: string): string {
 }
 
 /**
- * Converts multiline ASCII matrices and transpose vectors into standard LaTeX bmatrix format.
+ * Converts text-based numerical data tables (e.g. x: 2.00, 2.25... \n f(x): 1.50, 1.57...)
+ * into standard markdown pipe tables for rich rendering.
+ */
+export function convertDataTableToMarkdown(text: string): string {
+  if (!text) return '';
+  return text.replace(
+    /(?:from the table:?|Table:?)?\s*\n\s*x:\s*([0-9.,\s]+)\s*\n\s*f\(x\):\s*([0-9.,\s]+)/gi,
+    (match, xValsStr: string, fValsStr: string) => {
+      const xVals = xValsStr
+        .split(',')
+        .map((s: string) => s.trim())
+        .filter(Boolean);
+      const fVals = fValsStr
+        .split(',')
+        .map((s: string) => s.trim())
+        .filter(Boolean);
+      const headerRow = '| x | ' + xVals.join(' | ') + ' |';
+      const dividerRow = '|---' + xVals.map(() => '|---').join('') + '|';
+      const bodyRow = '| f(x) | ' + fVals.join(' | ') + ' |';
+      return `\n${headerRow}\n${dividerRow}\n${bodyRow}\n`;
+    }
+  );
+}
+
+/**
+ * Converts systems of linear equations wrapped in curly braces into standard LaTeX cases environments.
+ */
+export function convertLinearSystem(text: string): string {
+  if (!text) return '';
+  let s = text;
+  // Multiline system: {\n ... \n}
+  s = s.replace(/\{\s*\n([\s\S]*?)\n\s*\}/g, (match, body: string) => {
+    const lines = body
+      .split('\n')
+      .map((l: string) => l.trim())
+      .filter(Boolean);
+    return `\\begin{cases} ${lines.join(' \\\\ ')} \\end{cases}`;
+  });
+  // Semicolon single-line system: { eq1; eq2; eq3 }
+  s = s.replace(
+    /\{\s*([^{}]+=[^{}]+;[^{}]+)\s*\}/g,
+    (match, body: string) => {
+      const lines = body
+        .split(';')
+        .map((l: string) => l.trim())
+        .filter(Boolean);
+      return `\\begin{cases} ${lines.join(' \\\\ ')} \\end{cases}`;
+    }
+  );
+  return s;
+}
+
+/**
+ * Converts multiline ASCII matrices, column vectors with semicolons, and transpose vectors into LaTeX bmatrix format.
  */
 export function convertAsciiMatrix(text: string): string {
   if (!text) return '';
   let s = text;
 
-  // 1. Convert named matrices like "A = [\n  -4 3 1\n  3 6 -1\n  1 0 2\n]" or "C = [\n ... \n]"
+  // 1. Convert text data tables to markdown pipe tables
+  s = convertDataTableToMarkdown(s);
+
+  // 2. Convert systems of equations
+  s = convertLinearSystem(s);
+
+  // 3. Convert semicolon matrices/column vectors like [1 0 ; 0 -1], [1; 0; 0], [12; 7]
+  s = s.replace(
+    /\[\s*([-+0-9a-zA-Z\s,]+(?:;\s*[-+0-9a-zA-Z\s,]+)+)\s*\]/g,
+    (match, inner: string) => {
+      const rawRows = inner.split(';');
+      const rows = rawRows.map((r: string) => {
+        if (r.includes(',')) {
+          return r
+            .split(',')
+            .map((c: string) => c.trim())
+            .join(' & ');
+        }
+        return r.trim().split(/\s+/).join(' & ');
+      });
+      return `\\begin{bmatrix} ${rows.join(' \\\\ ')} \\end{bmatrix}`;
+    }
+  );
+
+  // 4. Convert named multiline matrices like "A = [\n  -4 3 1\n  3 6 -1\n  1 0 2\n]" or "C = [\n ... \n]"
   s = s.replace(
     /([A-Z]\s*=\s*)\[\s*\n([\s\S]*?)\n\s*\]/g,
-    (match, prefix, matrixBody) => {
+    (match, prefix: string, matrixBody: string) => {
       const lines = matrixBody
         .split('\n')
         .map((l: string) => l.trim())
@@ -46,10 +123,10 @@ export function convertAsciiMatrix(text: string): string {
     }
   );
 
-  // 2. Convert indented matrix pairs like "(2A^T)^{-1} = [ 1 -1 ]\n [ 0 1 ]" or "(i) [ 2 0 ]\n [ -2 2 ]"
+  // 5. Convert indented matrix pairs like "(2A^T)^{-1} = [ 1 -1 ]\n [ 0 1 ]" or "(i) [ 2 0 ]\n [ -2 2 ]"
   s = s.replace(
     /([^\n\[]*?\[\s*[-+0-9a-zA-Z\^/.,\s]+\s*\])\s*\n\s*(\[\s*[-+0-9a-zA-Z\^/.,\s]+\s*\][\s.,;]*)/g,
-    (match, top, bottom) => {
+    (match, top: string, bottom: string) => {
       const topMatch = top.match(/([\s\S]*?)\[\s*([\s\S]*?)\s*\]/);
       const bottomMatch = bottom.match(/\[\s*([\s\S]*?)\s*\]([\s.,;]*)/);
       if (topMatch && bottomMatch) {
@@ -63,7 +140,7 @@ export function convertAsciiMatrix(text: string): string {
     }
   );
 
-  // 3. Convert consecutive multiline matrices "[ ... ]\n[ ... ]\n[ ... ]"
+  // 6. Convert consecutive multiline matrices "[ ... ]\n[ ... ]\n[ ... ]"
   const lines = s.split('\n');
   let inMatrix = false;
   let matrixLines: string[] = [];
@@ -88,7 +165,7 @@ export function convertAsciiMatrix(text: string): string {
               return `${left} & \\bigm| & ${right}`;
             }
             if (inner.includes(',')) {
-              return inner.split(',').map((c) => c.trim()).join(' & ');
+              return inner.split(',').map((c: string) => c.trim()).join(' & ');
             }
             return inner.trim().split(/\s+/).join(' & ');
           });
@@ -113,7 +190,7 @@ export function convertAsciiMatrix(text: string): string {
         return `${left} & \\bigm| & ${right}`;
       }
       if (inner.includes(',')) {
-        return inner.split(',').map((c) => c.trim()).join(' & ');
+        return inner.split(',').map((c: string) => c.trim()).join(' & ');
       }
       return inner.trim().split(/\s+/).join(' & ');
     });
@@ -124,8 +201,8 @@ export function convertAsciiMatrix(text: string): string {
 
   s = resultLines.join('\n');
 
-  // 4. Convert transpose vectors like "[3 -1 2]^T" or "[-7 2 1]^T"
-  s = s.replace(/\[\s*([-+0-9a-zA-Z\s,;]+?)\s*\]\^T/g, (match, inner) => {
+  // 7. Convert transpose vectors like "[3 -1 2]^T" or "[-7 2 1]^T"
+  s = s.replace(/\[\s*([-+0-9a-zA-Z\s,;]+?)\s*\]\^T/g, (match, inner: string) => {
     let cells;
     if (inner.includes(',')) {
       cells = inner.split(',').map((c: string) => c.trim()).join(' & ');
@@ -161,6 +238,17 @@ export function cleanMathToLatex(expr: string): string {
     s = s.slice(2, -2).trim();
   }
 
+  // Linear transformation with vectors: L(\begin{bmatrix} ... \end{bmatrix}) -> L\left(\begin{bmatrix} ... \end{bmatrix}\right)
+  s = s.replace(
+    /L\(\\begin\{bmatrix\}([\s\S]*?)\\end\{bmatrix\}\)/g,
+    'L\\left(\\begin{bmatrix}$1\\end{bmatrix}\\right)'
+  );
+
+  // Set builder notation like { (x, y) | cond } or span{ ... }
+  s = s.replace(/\{\s*([^{}\n|]+?)\s*\|\s*([^{}\n|]+?)\s*\}/g, '\\{ $1 \\mid $2 \\}');
+  s = s.replace(/(?:^|\b)(span|dim)\s*\{\s*([^{}\n]+?)\s*\}/g, '\\$1\\{ $2 \\}');
+  s = s.replace(/(?:^|\s)\{\s*([a-zA-Z0-9_, ()^*/+-]+?)\s*\}/g, ' \\{ $1 \\}');
+
   // 1. Greek, set notation, and special mathematical symbols
   s = s.replace(/→/g, '\\to ');
   s = s.replace(/\+∞/g, '+\\infty ');
@@ -179,50 +267,57 @@ export function cleanMathToLatex(expr: string): string {
   s = s.replace(/∈/g, '\\in ');
   s = s.replace(/\bR\b(?=\s*(?:[,\s\])}]|is in))/g, '\\mathbb{R}');
 
-  // 2. Units with carets: cm^2/s -> \text{cm}^2/\text{s}, cm^2 -> \text{cm}^2
+  // 2. Matrix dimensions: 2×2, 2x2, 3 x 3 -> 2 \times 2
+  s = s.replace(/\b(\d+)\s*[×x]\s*(\d+)\b/g, '$1 \\times $2');
+
+  // 3. Units with carets: cm^2/s -> \text{cm}^2/\text{s}, cm^2 -> \text{cm}^2
   s = s.replace(
     /\b(cm|m|km|s|ft|in)\^(\d+)\/([a-zA-Z]+)\b/g,
     '\\text{$1}^{$2}/\\text{$3}'
   );
   s = s.replace(/\b(cm|m|km|s|ft|in)\^(\d+)\b/g, '\\text{$1}^{$2}');
 
-  // 3. Subscripts: x_1 -> x_{1}, L_3 -> L_{3}, R_8 -> R_{8}, x_n -> x_{n}
+  // 4. Subscripts: x_1 -> x_{1}, L_3 -> L_{3}, R_8 -> R_{8}, x_n -> x_{n}
   s = s.replace(/\b([a-zA-Z])_([0-9a-zA-Z]+)\b/g, '$1_{$2}');
 
-  // 4. Standard upright functions: \ln, \sin, \cos, \tan, etc.
+  // 5. Standard upright functions: \ln, \sin, \cos, etc.
   s = s.replace(
-    /\b(sin|cos|tan|ln|log|exp|arcsin|arccos|arctan|sec|csc|cot|det|span)\b(?![a-zA-Z])/g,
+    /\b(sin|cos|tan|ln|log|exp|arcsin|arccos|arctan|sec|csc|cot|det|span|dim)\b(?![a-zA-Z])/g,
     '\\$1 '
   );
 
-  // 5. Differential spacing: dx, dy, dt, dz, dp
+  // 6. Derivatives (MUST RUN BEFORE DIFFERENTIAL SPACING!)
+  s = s.replace(/\bd\^2y\/dx\^2\b/g, '\\frac{d^2y}{dx^2}');
+  s = s.replace(/\b(d[a-z])\/(d[a-z])\b/g, '\\frac{$1}{$2}');
+
+  // 7. Differential spacing: dx, dy, dt, dz, dp
   s = s.replace(/\b(dx|dy|dt|dz|dp|d\theta)\b/g, '\\, $1');
 
-  // 6. Simple exponents
+  // 8. Simple exponents
   s = s.replace(/([a-zA-Z0-9_]+)\^\(([^)]+)\)/g, '$1^{$2}');
   s = s.replace(/([a-zA-Z0-9_]+)\^(\d+)/g, '$1^{$2}');
 
-  // 7. Limits: lim_{x \to 1-} or lim_{x \to 0+} or lim_{x \to a}
+  // 9. Limits: lim_{x \to 1-} or lim_{x \to 0+} or lim_{x \to a}
   s = s.replace(/lim_\{([^}]+)\}/g, (m, p1) => {
     let sub = p1.trim().replace(/([0-9a-zA-Z\\]+)([-+])$/, '$1^{$2}');
     return '\\lim_{' + sub + '} ';
   });
 
-  // 8. Sums: ∑_{i=1}^{n}
+  // 10. Sums: ∑_{i=1}^{n}
   s = s.replace(/∑_\{([^}]+)\}\^\{([^}]+)\}/g, '\\sum_{$1}^{$2} ');
   s = s.replace(/∑/g, '\\sum ');
 
-  // 9. Integrals: ∫_{a}^{b} or ∫
+  // 11. Integrals: ∫_{a}^{b} or ∫
   s = s.replace(/∫_\{([^}]+)\}\^\{([^}]+)\}/g, '\\int_{$1}^{$2} ');
   s = s.replace(/∫/g, '\\int ');
 
-  // 10. Roots: ³√(expr) or √(expr) or √num
+  // 12. Roots: ³√(expr) or √(expr) or √num
   s = s.replace(/³√\(([^)]+)\)/g, '\\sqrt[3]{$1}');
   s = s.replace(/³√([a-zA-Z0-9]+)/g, '\\sqrt[3]{$1}');
   s = s.replace(/√\(([^)]+)\)/g, '\\sqrt{$1}');
   s = s.replace(/√([a-zA-Z0-9]+)/g, '\\sqrt{$1}');
 
-  // 11. Fractions:
+  // 13. Fractions:
   s = s.replace(/\|([^|]+)\|\s*\/\s*\(([^)]+)\)/g, '\\frac{|$1|}{$2}');
   s = s.replace(/\(\s*\(([^()]+)\)\s*\/\s*([^()]+)\s*\)/g, '\\frac{$1}{$2}');
   s = s.replace(/\(([^)]+)\)\s*\/\s*\(([^)]+)\)/g, '\\frac{$1}{$2}');
@@ -230,11 +325,7 @@ export function cleanMathToLatex(expr: string): string {
   s = s.replace(/(\b[-+]?\d+)\s*\/\s*(\\sqrt\{[^}]+\}|\b\d+)/g, '\\frac{$1}{$2}');
   s = s.replace(/([a-zA-Z0-9]+)\s*\/\s*(\\sqrt\{[^}]+\})/g, '\\frac{$1}{$2}');
 
-  // 12. Derivatives: dz/dt, dy/dt, dy/dx, d^2y/dx^2
-  s = s.replace(/\bd\^2y\/dx\^2\b/g, '\\frac{d^2y}{dx^2}');
-  s = s.replace(/\b(d[a-z])\/(d[a-z])\b/g, '\\frac{$1}{$2}');
-
-  // 13. Matrices from JSON: [[1, 2], [3, 4]]
+  // 14. Matrices from JSON: [[1, 2], [3, 4]]
   s = s.replace(/\[\[(.*?)\]\]/g, (m, inner) => {
     const rows = inner
       .split(/\],\s*\[/)
@@ -247,6 +338,8 @@ export function cleanMathToLatex(expr: string): string {
   const closeBraces = (s.match(/\}/g) || []).length;
   if (openBraces > closeBraces) {
     s += '}'.repeat(openBraces - closeBraces);
+  } else if (closeBraces > openBraces) {
+    s = s.replace(/\}+$/, (m) => '}'.repeat(Math.max(0, m.length - (closeBraces - openBraces))));
   }
 
   return hasTrailingPeriod ? s + '.' : s;
@@ -306,6 +399,32 @@ export function extractRomanChoices(questionText: string): {
 }
 
 /**
+ * Checks if a string is pure mathematical content without natural language English words.
+ */
+export function isPureMath(text: string): boolean {
+  if (!text) return false;
+  const trimmed = text.trim();
+  const hasEnglishProse =
+    /\b(?:the|and|find|when|where|with|that|from|which|estimate|approximate|evaluate|calculate|determine|suppose|assume|given|let|are|of|for|at|by|in|to|then|such|each|all|any|there|is\s+a|is\s+an|is\s+the|is\s+in|is\s+not)\b/i.test(
+      trimmed
+    );
+  if (hasEnglishProse) return false;
+
+  return (
+    /\\begin\{(?:cases|bmatrix)\}/.test(trimmed) ||
+    /^[A-Za-z]\([a-z]\)\s*=/.test(trimmed) ||
+    /^[A-Za-z]_[0-9a-zA-Z]+\s*=/.test(trimmed) ||
+    /^[0-9a-zA-Z^_+*/\s()-]+=[0-9a-zA-Z^_+*/\s()-]+$/.test(trimmed) ||
+    /^[±\d\s/\\sqrt{}[\]]+$/.test(trimmed) ||
+    /^\[\s*[-+0-9a-zA-Z\s,;]+?\s*\](?:\^T)?$/.test(trimmed) ||
+    /^∫/.test(trimmed) ||
+    /^lim_/.test(trimmed) ||
+    /^\\lim_/.test(trimmed) ||
+    /^[a-zA-Z0-9_]+\^[0-9]+$/.test(trimmed)
+  );
+}
+
+/**
  * Checks if a line or string is a standalone mathematical formula line
  */
 export function isStandaloneFormula(line: string): boolean {
@@ -313,11 +432,13 @@ export function isStandaloneFormula(line: string): boolean {
   if (!trimmed) return false;
 
   return (
-    /^(?:lim_\{|∫|\b\w+\(x\)\s*=|Evaluate the limit lim_|Find the limit\s*lim_)/.test(
+    /^(?:lim_\{|\\lim_\{|∫|\\int|\b\w+\(x\)\s*=|Evaluate the limit lim_|Find the limit\s*lim_)/.test(
       trimmed
     ) ||
     /^[a-zA-Z]\([a-zA-Z]\)\s*=\s*\{/.test(trimmed) ||
-    /^\\begin\{bmatrix\}/.test(trimmed) ||
+    /^\\begin\{(?:bmatrix|cases)\}/.test(trimmed) ||
+    /^[A-Z]\s*=\s*\\begin\{bmatrix\}/.test(trimmed) ||
+    (/^[a-zA-Z0-9^_+*/\s()-]+=[0-9a-zA-Z^_+*/\s()-]+$/.test(trimmed) && /\^/.test(trimmed)) ||
     /^\$\$[\s\S]+\$\$$/.test(trimmed) ||
     /^\\\[[\s\S]+\\\]$/.test(trimmed)
   );
@@ -335,8 +456,11 @@ export function containsMath(text: string): boolean {
     ) ||
     /\b[a-zA-Z0-9_]+\^[-+0-9a-zA-Z()]+\b/.test(text) ||
     /\b[a-zA-Z]_[0-9a-zA-Z]+\b/.test(text) ||
+    /\b[a-zA-Z]_\{[^}]+\}/.test(text) ||
+    /\b[a-zA-Z]\([a-zA-Z0-9]\)\s*=/.test(text) ||
+    /\b\d+\s*[×x]\s*\d+\b/.test(text) ||
     /\[\[.*?\]\]/.test(text) ||
-    /\\begin\{bmatrix\}/.test(text) ||
+    /\\begin\{(?:bmatrix|cases)\}/.test(text) ||
     /[-+]?\d+\/√\d+/.test(text) ||
     /\$(?!\s|\d)[^$\n]+(?<!\s)\$/.test(text) ||
     /\\\([^\)]+\\\)/.test(text) ||
@@ -349,7 +473,7 @@ export function containsMath(text: string): boolean {
  * Strictly separates currency ($20,000) from LaTeX delimiters ($x^2$).
  */
 const INLINE_MATH_REGEX =
-  /(?:\$(?!\s|\d)[^$\n]+(?<!\s)\$|\\\([^\)]+\\\)|\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\^T)?|lim_\{[^}]+\}\s*(?:\([^)]+\)|[a-zA-Z0-9_|^+\-*()]+)*(?:\s*=\s*[-+0-9a-zA-Z()]+)?|∫_\{[^}]+\}\^\{[^}]+\}[^,.:;]*\bd[a-z]\b|∫[^,.:;]*\bd[a-z]\b|\|[a-zA-Z0-9_|^+\-*\s()]+\||(?:\b\d*[a-zA-Z](?:_[0-9a-zA-Z]+|\^[0-9]+)?(?:\s*[-+*]\s*\d*[a-zA-Z](?:_[0-9a-zA-Z]+|\^[0-9]+)?)*\s*=\s*[-+]?\d*[a-zA-Z0-9√^/().+-]+)|\b[a-zA-Z]_[0-9a-zA-Z]+\s*=\s*[-+]?\d+|\(?[a-zA-Z0-9()^+\-*]+\)?\s*(?:<|>|<=|>=|≤|≥)\s*[-+]?\d+|\b[a-zA-Z]\s*→\s*[-+0-9a-zA-Z∞]+\b|\b(?:dy\/dt|dz\/dt|dy\/dx|d\^2y\/dx\^2|y'\(1\)|f'\(x\)|f\(x\)|g\(x\)|w'\(t\))\b|³?√\([^)]+\)|³?√[0-9a-zA-Z]+|\b[a-zA-Z]\^[0-9]+|\b[a-zA-Z]\^\([^)]+\)|\b[a-zA-Z]_[0-9a-zA-Z]+\b|\b[a-zA-Z]_\{[^}]+\}\b|\b\d*\s*(?:cm|m|km|s|ft|in)\^[0-9]+(?:\/[a-zA-Z]+)?\b|±\s*\d+(?:\/√\d+)?|\[\s*[-+]?(?:\d+|π|∞|\w+)(?:\/\d+)?\s*,\s*[-+]?(?:\d+|π|∞|\w+)(?:\/\d+)?\s*\])/g;
+  /(?:\$(?!\s|\d)[^$\n]+(?<!\s)\$|\\\([^\)]+\\\)|\\begin\{cases\}[\s\S]*?\\end\{cases\}|L(?:\\left)?\(\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\\right)?\)\s*=\s*\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}|[A-Za-z]\s*=\s*\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\^T)?|\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\^T)?|lim_\{[^}]+\}\s*(?:\([^)]+\)|[a-zA-Z0-9_|^+\-*()]+)*(?:\s*=\s*[-+0-9a-zA-Z()]+)?|∫_\{[^}]+\}\^\{[^}]+\}[^,.:;\n]*\bd[a-z]\b|∫[^,.:;\n]*\bd[a-z]\b|\|[a-zA-Z0-9_|^+\-*\s()]+\||(?:span\s*)?\{[^{}\n|]+\|[^{}\n|]+\}|(?:span\s*)?\{[^{}\n]+\}(?:\s*=\s*(?:span\s*)?\{[^{}\n]+\})*|[-+0-9a-zA-Z_()^*/{}π]+(?:\s*[-+*/]\s*[-+0-9a-zA-Z_()^*/{}π]+)*\s*=\s*(?:lim_\{[^}]+\}\s*)?[-+0-9a-zA-Z_()^*/{}√π]+(?:\s*[-+*/]\s*[-+0-9a-zA-Z_()^*/{}√π]+)*|\b[a-zA-Z]\s*→\s*[-+0-9a-zA-Z∞]+\b|\b(?:d\^2y\/dx\^2|dy\/dt|dz\/dt|dy\/dx|dp\/dt|y'\(1\)|f'\(x\)|f\(x\)|g\(x\)|w'\(t\))\b|³?√\([^)]+\)|³?√[0-9a-zA-Z]+|\b[a-zA-Z]\^[0-9]+|\b[a-zA-Z]\^\([^)]+\)|\b[a-zA-Z]_[0-9a-zA-Z]+\b|\b[a-zA-Z]_\{[^}]+\}|\b\d*\s*(?:cm|m|km|s|ft|in)\^[0-9]+(?:\/[a-zA-Z]+)?\b|\b\d+\s*[×x]\s*\d+\b|±\s*\d+(?:\/√\d+)?|\[\s*[-+]?(?:\d+|π|∞|\w+)(?:\/\d+)?\s*,\s*[-+]?(?:\d+|π|∞|\w+)(?:\/\d+)?\s*\])/g;
 
 export interface MathToken {
   type: 'text' | 'math';
@@ -361,8 +485,8 @@ export interface MathToken {
  */
 export function tokenizeSentenceWithMath(text: string): MathToken[] {
   if (!text) return [];
-  if (!containsMath(text)) {
-    return [{ type: 'text', value: text }];
+  if (isPureMath(text)) {
+    return [{ type: 'math', value: text }];
   }
 
   const tokens: MathToken[] = [];
@@ -381,8 +505,15 @@ export function tokenizeSentenceWithMath(text: string): MathToken[] {
     // Strip trailing punctuation like '.' or ',' from math token
     let mathVal = match[0];
     let trailingPunc = '';
-    if (/[.,;:]$/.test(mathVal) && !mathVal.endsWith('..')) {
+    if (/[.,;:?]$/.test(mathVal) && !mathVal.endsWith('..')) {
       trailingPunc = mathVal.slice(-1);
+      mathVal = mathVal.slice(0, -1);
+    }
+    // Also if trailing unbalanced closing brace, strip it
+    const openBraces = (mathVal.match(/\{/g) || []).length;
+    const closeBraces = (mathVal.match(/\}/g) || []).length;
+    if (closeBraces > openBraces && mathVal.endsWith('}')) {
+      trailingPunc = '}' + trailingPunc;
       mathVal = mathVal.slice(0, -1);
     }
 
