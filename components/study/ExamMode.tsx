@@ -732,7 +732,10 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       {/* Question & Choices Animated Container */}
       <div key={currentIndex} className="animate-question-enter transform-gpu">
         {/* Question Card */}
-        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl glass-surface mb-5 sm:mb-6">
+        <div
+          key={currentIndex}
+          className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl glass-surface mb-5 sm:mb-6 animate-question-enter"
+        >
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2 text-xs font-bold text-indigo-500 uppercase tracking-wider flex-wrap">
               <HelpCircle className="w-4 h-4" />

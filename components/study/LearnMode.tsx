@@ -1342,7 +1342,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
           {sessionCombo > 0 && (
             <div
-              className="px-2.5 py-1 rounded-full text-xs font-black flex items-center gap-1 bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 animate-fade-in"
+              key={sessionCombo}
+              className={`px-2.5 py-1 rounded-full text-xs font-black flex items-center gap-1 bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 combo-pop-enter ${
+                sessionCombo >= 5 ? 'shadow-[0_0_16px_rgba(245,158,11,0.35)]' : ''
+              }`}
               title="Chuỗi trả lời đúng liên tiếp trong phiên này"
             >
               <Flame className="w-3.5 h-3.5 fill-current text-amber-500" />
@@ -1514,8 +1517,11 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                     type="button"
                     disabled={feedbackState !== 'idle'}
                     onClick={() => handleSelectOption(opt)}
-                    className={`p-3 sm:p-5 rounded-xl sm:rounded-2xl border text-left text-sm sm:text-base transition-[transform,background-color,border-color,opacity] duration-150 flex items-start gap-3 sm:gap-3.5 group relative active:scale-[0.98] touch-manipulation select-none transform-gpu ${optionStyle}`}
+                    className={`p-3 sm:p-5 rounded-xl sm:rounded-2xl border text-left text-sm sm:text-base transition-[transform,background-color,border-color,opacity] duration-150 flex items-start gap-3 sm:gap-3.5 group relative overflow-hidden active:scale-[0.98] touch-manipulation select-none transform-gpu ${optionStyle}`}
                   >
+                    {feedbackState === 'correct' && (isSelected || isTrueAnswer) && (
+                      <span aria-hidden="true" className="shimmer-sweep-overlay" />
+                    )}
                     <span
                       className={`w-7 h-7 ${
                         currentQ.isMultiSelect ? 'rounded-lg' : 'rounded-xl'

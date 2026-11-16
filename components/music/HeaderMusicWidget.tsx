@@ -611,14 +611,21 @@ export default function HeaderMusicWidget() {
               </div>
             )}
 
-            {/* Studio Tabs */}
-            <div className="mt-3 grid grid-cols-2 gap-1 p-1 rounded-xl bg-slate-200/70 dark:bg-white/[0.05]">
+            {/* Studio Tabs (#8 Sliding Pill Indicator) */}
+            <div className="relative mt-3 grid grid-cols-2 p-1 rounded-xl bg-slate-200/70 dark:bg-white/[0.05]">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute top-1 bottom-1 left-1 w-[calc((100%-8px)/2)] rounded-lg bg-white dark:bg-slate-800 shadow-sm transition-transform duration-300 ease-out"
+                style={{
+                  transform: `translate3d(${activeTab === 'playlist' ? 0 : 100}%, 0, 0)`,
+                }}
+              />
               <button
                 type="button"
                 onClick={() => setActiveTab('playlist')}
-                className={`py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all ${
+                className={`relative z-10 py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors ${
                   activeTab === 'playlist'
-                    ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-white shadow-sm'
+                    ? 'text-indigo-600 dark:text-white'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
@@ -628,9 +635,9 @@ export default function HeaderMusicWidget() {
               <button
                 type="button"
                 onClick={() => setActiveTab('focus')}
-                className={`py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all ${
+                className={`relative z-10 py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors ${
                   activeTab === 'focus'
-                    ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-white shadow-sm'
+                    ? 'text-indigo-600 dark:text-white'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >

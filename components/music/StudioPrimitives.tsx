@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export type StudioContextTone = 'indigo' | 'amber' | 'emerald';
 export type StudioSceneMode = 'aura' | 'midnight' | 'glow';
@@ -345,7 +345,10 @@ const RADIAL_BARS = Array.from({ length: RADIAL_BAR_COUNT }, (_, i) => {
 });
 
 /**
- * Full Reactive Turntable Stage: Sonic Pulse Ripples + 40-Bar Radial Beat Ring + Platter + Vinyl + Tonearm.
+ * Full Reactive Turntable Stage:
+ * - #1 Vinyl Eject & Drop-In swap animation + automatic Tonearm lift/drop
+ * - #2 Zero-re-render 3D Parallax Tilt via rAF DOM CSS variables + Dual Organic Bass Breath halos
+ * - 40-Bar Radial Beat Ring + Sonic Pulse Ripples + Platter
  */
 export function StudioTurntable({
   videoId,
@@ -363,11 +366,88 @@ export function StudioTurntable({
   const tokens = STUDIO_TONE_TOKENS[tone];
   const pausedClass = isPlaying ? '' : 'studio-anim-paused';
 
+  const safeId = videoId || 'jfKfPfyJRdk';
+  const prevIdRef = useRef<string>(safeId);
+  const [isSwapping, setIsSwapping] = useState(false);
+
+  // Brief Tonearm lift when switching tracks while playing (#1)
+  useEffect(() => {
+    if (prevIdRef.current === safeId) return;
+    prevIdRef.current = safeId;
+    setIsSwapping(true);
+    const timer = window.setTimeout(() => setIsSwapping(false), 460);
+    return () => window.clearTimeout(timer);
+  }, [safeId]);
+
+  // Zero-render 3D mouse tilt using rAF + CSS custom properties (#2)
+  const tiltRef = useRef<HTMLDivElement | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const pendingRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, []);
+
+  const scheduleTiltUpdate = (xDeg: number, yDeg: number) => {
+    pendingRef.current = { x: xDeg, y: yDeg };
+    if (rafRef.current !== null) return;
+    rafRef.current = window.requestAnimationFrame(() => {
+      rafRef.current = null;
+      const el = tiltRef.current;
+      if (!el) return;
+      el.style.setProperty('--tilt-x', `${pendingRef.current.x.toFixed(2)}deg`);
+      el.style.setProperty('--tilt-y', `${pendingRef.current.y.toFixed(2)}deg`);
+    });
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === 'touch') return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const normX = (e.clientX - rect.left) / rect.width - 0.5;
+    const normY = (e.clientY - rect.top) / rect.height - 0.5;
+    scheduleTiltUpdate(normX * 8, -normY * 8);
+  };
+
+  const handlePointerLeave = () => {
+    scheduleTiltUpdate(0, 0);
+  };
+
+  const bassHaloBg =
+    tone === 'amber'
+      ? 'radial-gradient(circle, rgba(245,158,11,0.34), transparent 68%)'
+      : tone === 'emerald'
+      ? 'radial-gradient(circle, rgba(16,185,129,0.34), transparent 68%)'
+      : 'radial-gradient(circle, rgba(56,189,248,0.32), rgba(99,102,241,0.16) 48%, transparent 72%)';
+
   return (
     <div
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
       className={`relative flex items-center justify-center select-none py-4 px-6 sm:px-10 ${className}`}
     >
-      {/* Expanding Sonic Pulse Ripples (active while music plays) */}
+      {/* Dual-Layer Organic Bass Breathing Glow (#2) */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${
+          isPlaying ? 'opacity-100' : 'opacity-25'
+        }`}
+      >
+        <div
+          className={`bass-breath-a ${pausedClass} w-64 h-64 sm:w-80 sm:h-80 rounded-full`}
+          style={{ background: bassHaloBg }}
+        />
+        <div
+          className={`bass-breath-b ${pausedClass} absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full`}
+          style={{ background: bassHaloBg }}
+        />
+      </div>
+
+      {/* Expanding Sonic Pulse Ripples */}
       <div
         aria-hidden="true"
         className={`pointer-events-none absolute inset-4 flex items-center justify-center transition-opacity duration-500 ${
@@ -387,7 +467,7 @@ export function StudioTurntable({
         />
       </div>
 
-      {/* 40-Bar Circular Beat Spectrum hugging platter outer circumference */}
+      {/* 40-Bar Circular Beat Spectrum hugging platter circumference */}
       <div
         aria-hidden="true"
         className={`pointer-events-none absolute flex items-center justify-center transition-opacity duration-500 ${
@@ -417,24 +497,36 @@ export function StudioTurntable({
         </div>
       </div>
 
-      {/* Platter Deck */}
-      <div className="relative z-10 rounded-full p-4 sm:p-5 bg-gradient-to-b from-slate-800/95 via-slate-900 to-black shadow-[0_25px_65px_-12px_rgba(0,0,0,0.92)] border border-white/15 ring-1 ring-white/5">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-1.5 rounded-full border border-dashed border-white/15"
-        />
-        <VinylArtwork
-          videoId={videoId}
-          title={title}
-          isPlaying={isPlaying}
-          tone={tone}
-          size="lg"
-        />
-      </div>
+      {/* 3D Tilting Platter Deck + Swapping Vinyl */}
+      <div
+        ref={tiltRef}
+        className="relative z-10 flex items-center justify-center"
+        style={{
+          transform:
+            'perspective(900px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg))',
+          transition: 'transform 180ms ease-out',
+        }}
+      >
+        <div className="relative rounded-full p-4 sm:p-5 bg-gradient-to-b from-slate-800/95 via-slate-900 to-black shadow-[0_25px_65px_-12px_rgba(0,0,0,0.92)] border border-white/15 ring-1 ring-white/5">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-1.5 rounded-full border border-dashed border-white/15"
+          />
+          <div key={safeId} className="vinyl-swap-enter">
+            <VinylArtwork
+              videoId={safeId}
+              title={title}
+              isPlaying={isPlaying}
+              tone={tone}
+              size="lg"
+            />
+          </div>
+        </div>
 
-      {/* Mechanical Tonearm mounted OUTSIDE the platter right edge */}
-      <div className="absolute -top-1 sm:-top-2 -right-3 sm:-right-6 z-20">
-        <StudioTonearm isPlaying={isPlaying} tone={tone} />
+        {/* Mechanical Tonearm lifts smoothly during track swap (#1) */}
+        <div className="absolute -top-4 sm:-top-5 -right-8 sm:-right-12 z-20">
+          <StudioTonearm isPlaying={isPlaying && !isSwapping} tone={tone} />
+        </div>
       </div>
     </div>
   );
@@ -534,23 +626,65 @@ export function OuterReactiveVisuals({
         ))}
       </div>
 
-      {/* Bottom Full-Width Horizon Equalizer Curtain */}
+      {/* Bottom Dual Seamless SVG Liquid Sine Waves (#3) + Horizon Equalizer */}
       <div
-        className={`fixed inset-x-0 bottom-0 h-14 sm:h-20 flex items-end justify-between gap-1 px-2 sm:px-6 transition-opacity duration-500 ${
-          isPlaying ? 'opacity-50' : 'opacity-15'
+        className={`fixed inset-x-0 bottom-0 h-20 sm:h-24 overflow-hidden transition-opacity duration-500 ${
+          isPlaying ? 'opacity-75' : 'opacity-25'
         }`}
       >
-        {HORIZON_BARS.map((bar, idx) => (
-          <span
-            key={`h-${idx}`}
-            className={`radial-beat-bar ${pausedBar} flex-1 max-w-[10px] rounded-t-full bg-gradient-to-t ${horizonGrad}`}
-            style={{
-              height: `${bar.heightPx}px`,
-              animationDuration: `${bar.duration}s`,
-              animationDelay: `${bar.delay}s`,
-            }}
+        <svg
+          viewBox="0 0 1200 100"
+          preserveAspectRatio="none"
+          className={`liquid-wave-track ${
+            isPlaying ? '' : 'studio-anim-paused'
+          } absolute bottom-0 left-0 w-[200%] h-16 sm:h-20`}
+          style={{ animationDuration: '14s' }}
+        >
+          <path
+            d="M 0 56 C 150 18, 150 92, 300 56 C 450 18, 450 92, 600 56 C 750 18, 750 92, 900 56 C 1050 18, 1050 92, 1200 56 L 1200 100 L 0 100 Z"
+            fill={
+              tone === 'amber'
+                ? 'rgba(245,158,11,0.13)'
+                : tone === 'emerald'
+                ? 'rgba(16,185,129,0.13)'
+                : 'rgba(99,102,241,0.16)'
+            }
           />
-        ))}
+        </svg>
+
+        <svg
+          viewBox="0 0 1200 100"
+          preserveAspectRatio="none"
+          className={`liquid-wave-track ${
+            isPlaying ? '' : 'studio-anim-paused'
+          } absolute bottom-0 left-0 w-[200%] h-12 sm:h-16`}
+          style={{ animationDuration: '21s', animationDirection: 'reverse' }}
+        >
+          <path
+            d="M 0 60 C 150 92, 150 28, 300 60 C 450 92, 450 28, 600 60 C 750 92, 750 28, 900 60 C 1050 92, 1050 28, 1200 60 L 1200 100 L 0 100 Z"
+            fill={
+              tone === 'amber'
+                ? 'rgba(251,146,60,0.10)'
+                : tone === 'emerald'
+                ? 'rgba(20,184,166,0.10)'
+                : 'rgba(34,211,238,0.12)'
+            }
+          />
+        </svg>
+
+        <div className="absolute inset-x-0 bottom-0 h-14 sm:h-20 flex items-end justify-between gap-1 px-2 sm:px-6">
+          {HORIZON_BARS.map((bar, idx) => (
+            <span
+              key={`h-${idx}`}
+              className={`radial-beat-bar ${pausedBar} flex-1 max-w-[10px] rounded-t-full bg-gradient-to-t ${horizonGrad}`}
+              style={{
+                height: `${bar.heightPx}px`,
+                animationDuration: `${bar.duration}s`,
+                animationDelay: `${bar.delay}s`,
+              }}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -589,81 +723,89 @@ export function StudioSceneBackdrop({
         <div className="absolute inset-0 bg-[#04060d] transition-opacity duration-700" />
       )}
 
-      {/* Living Album Aura Scene (Dual orbiting dynamic album color clouds) */}
+      {/* Living Album Aura Scene (Optimized orb size for low-GPU laptop smoothness) */}
       {scene === 'aura' && (
         <div className="absolute inset-0 transition-opacity duration-700 bg-slate-950">
           <div
-            className={`aura-orbit-a ${pauseAnim} absolute -top-1/4 -left-1/4 w-[85vw] h-[85vh] rounded-full overflow-hidden opacity-40 blur-3xl`}
+            className={`aura-orbit-a ${pauseAnim} absolute -top-24 -left-24 w-[52vw] h-[52vh] min-w-[360px] max-w-[660px] rounded-full overflow-hidden opacity-45 blur-2xl`}
           >
             <Image
               src={`https://i.ytimg.com/vi/${safeVideoId}/mqdefault.jpg`}
               alt=""
-              width={640}
-              height={360}
+              width={320}
+              height={180}
               unoptimized
               className="w-full h-full object-cover"
             />
           </div>
           <div
-            className={`aura-orbit-b ${pauseAnim} absolute -bottom-1/4 -right-1/4 w-[80vw] h-[80vh] rounded-full overflow-hidden opacity-35 blur-3xl`}
+            className={`aura-orbit-b ${pauseAnim} absolute -bottom-24 -right-24 w-[50vw] h-[50vh] min-w-[360px] max-w-[640px] rounded-full overflow-hidden opacity-40 blur-2xl`}
           >
             <Image
               src={`https://i.ytimg.com/vi/${safeVideoId}/mqdefault.jpg`}
               alt=""
-              width={640}
-              height={360}
+              width={320}
+              height={180}
               unoptimized
               className="w-full h-full object-cover"
             />
           </div>
-          {/* Soft contextual halo center-left */}
           <div
             className="absolute inset-0 opacity-65 transition-all duration-700"
             style={{ background: HALO_RADIAL_MAP[tone] }}
           />
-          {/* Balanced vignette so outer margins keep lush color without harsh distraction */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                'radial-gradient(ellipse at center, rgba(2,6,23,0.42) 0%, rgba(2,6,23,0.78) 78%, rgba(2,6,23,0.92) 100%)',
+                'radial-gradient(ellipse at center, rgba(2,6,23,0.4) 0%, rgba(2,6,23,0.78) 78%, rgba(2,6,23,0.92) 100%)',
             }}
           />
         </div>
       )}
 
-      {/* Ambient Glow Scene (Focused contextual radial halo) */}
+      {/* Ambient Glow Scene */}
       {scene === 'glow' && (
         <div className="absolute inset-0 bg-slate-950 flex items-center justify-center transition-opacity duration-700">
           <div
-            className={`aura-orbit-a ${pauseAnim} w-[680px] h-[680px] rounded-full transition-all duration-700 opacity-95`}
+            className={`aura-orbit-a ${pauseAnim} w-[560px] h-[560px] rounded-full transition-all duration-700 opacity-95`}
             style={{ background: HALO_RADIAL_MAP[tone] }}
           />
         </div>
       )}
 
-      {/* Subtle Floating Cosmic Motes when playing (except Pure Midnight) */}
+      {/* Subtle Floating Motes + Rare Diagonal Shooting Stars (#6) */}
       {scene !== 'midnight' && (
-        <div
-          className={`absolute inset-0 transition-opacity duration-700 ${
-            isPlaying ? 'opacity-80' : 'opacity-20'
-          }`}
-        >
-          {MOTES.map((m, idx) => (
-            <span
-              key={idx}
-              className={`zen-mote ${pauseAnim} absolute rounded-full ${moteColor}`}
-              style={{
-                left: `${m.leftPct}%`,
-                top: `${m.topPct}%`,
-                width: `${m.sizePx}px`,
-                height: `${m.sizePx}px`,
-                animationDuration: `${m.durationSec}s`,
-                animationDelay: `${m.delaySec}s`,
-              }}
-            />
-          ))}
-        </div>
+        <>
+          <div
+            className={`absolute inset-0 transition-opacity duration-700 ${
+              isPlaying ? 'opacity-80' : 'opacity-20'
+            }`}
+          >
+            {MOTES.map((m, idx) => (
+              <span
+                key={idx}
+                className={`zen-mote ${pauseAnim} absolute rounded-full ${moteColor}`}
+                style={{
+                  left: `${m.leftPct}%`,
+                  top: `${m.topPct}%`,
+                  width: `${m.sizePx}px`,
+                  height: `${m.sizePx}px`,
+                  animationDuration: `${m.durationSec}s`,
+                  animationDelay: `${m.delaySec}s`,
+                }}
+              />
+            ))}
+          </div>
+
+          <span
+            className={`shooting-star ${pauseAnim} absolute top-[12%] left-[8%] w-28 h-[1.5px] rounded-full bg-gradient-to-r from-transparent via-white/80 to-cyan-300`}
+          />
+          <span
+            className={`shooting-star ${pauseAnim} absolute top-[20%] right-[12%] w-24 h-[1.5px] rounded-full bg-gradient-to-r from-transparent via-white/75 to-indigo-300`}
+            style={{ animationDuration: '23s', animationDelay: '-7s' }}
+          />
+        </>
       )}
     </div>
   );

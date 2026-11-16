@@ -293,7 +293,19 @@
   .side-wave-bar,
   .aura-orbit-a,
   .aura-orbit-b,
-  .zen-mote {
+  .zen-mote,
+  .vinyl-swap-enter,
+  .bass-breath-a,
+  .bass-breath-b,
+  .liquid-wave-track,
+  .zen-stage-enter,
+  .zen-plinth-enter,
+  .zen-dock-enter,
+  .digit-roll-enter,
+  .shooting-star,
+  .milestone-burst,
+  .shimmer-sweep-overlay,
+  .combo-pop-enter {
     animation: none !important;
     transition: none !important;
   }
@@ -535,4 +547,256 @@
 .studio-range-input:active::-moz-range-thumb {
   opacity: 1;
   transform: scale(1.12);
+}
+
+/* ============================================================================
+   Focus Studio V3 & Study Micro-Animations (100% GPU Transform + Opacity)
+   ============================================================================ */
+
+/* #1 Vinyl Track Eject / Slide-In + Spin-Up Inertia */
+@keyframes vinylSwapEnter {
+  0% {
+    opacity: 0;
+    transform: translate3d(34px, 0, 0) scale(0.84) rotate(-52deg);
+  }
+  58% {
+    opacity: 1;
+    transform: translate3d(-4px, 0, 0) scale(1.02) rotate(6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+}
+
+.vinyl-swap-enter {
+  animation: vinylSwapEnter 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+/* #2 Dual-Harmonic Organic Bass Breathing Halos */
+@keyframes bassBreathA {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.45;
+  }
+  45% {
+    transform: scale(1.07);
+    opacity: 0.85;
+  }
+}
+
+@keyframes bassBreathB {
+  0%,
+  100% {
+    transform: scale(1.04) rotate(0deg);
+    opacity: 0.32;
+  }
+  55% {
+    transform: scale(0.94) rotate(10deg);
+    opacity: 0.68;
+  }
+}
+
+.bass-breath-a {
+  animation: bassBreathA 2.1s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.bass-breath-b {
+  animation: bassBreathB 3.3s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* #3 Seamless GPU Horizontal SVG Liquid Sine Wave */
+@keyframes liquidWaveSlide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.liquid-wave-track {
+  animation: liquidWaveSlide 14s linear infinite;
+  will-change: transform;
+}
+
+/* #4 Zen Mode Staggered Stage Choreography */
+@keyframes zenStageFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zenPlinthEnter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes zenDockEnter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.zen-stage-enter {
+  animation: zenStageFade 200ms ease-out both;
+}
+
+.zen-plinth-enter {
+  animation: zenPlinthEnter 380ms cubic-bezier(0.22, 1, 0.36, 1) 40ms both;
+}
+
+.zen-dock-enter {
+  animation: zenDockEnter 360ms cubic-bezier(0.22, 1, 0.36, 1) 110ms both;
+}
+
+/* #5 Rolling Odometer Digit Transition */
+@keyframes digitRollIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 42%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.digit-roll-enter {
+  display: inline-block;
+  animation: digitRollIn 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+/* #6 Rare Diagonal Shooting Star Streak */
+@keyframes shootingStarGlide {
+  0%,
+  84% {
+    opacity: 0;
+    transform: translate3d(-8vw, -6vh, 0) rotate(24deg) scaleX(0.4);
+  }
+  88% {
+    opacity: 0.75;
+    transform: translate3d(6vw, 4vh, 0) rotate(24deg) scaleX(1);
+  }
+  96%,
+  100% {
+    opacity: 0;
+    transform: translate3d(26vw, 18vh, 0) rotate(24deg) scaleX(0.5);
+  }
+}
+
+.shooting-star {
+  animation: shootingStarGlide 16s linear infinite;
+  will-change: transform, opacity;
+}
+
+/* #7 Pomodoro Completion Milestone Burst */
+@keyframes milestoneBurst {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.14);
+  }
+}
+
+.milestone-burst {
+  animation: milestoneBurst 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* #9 Study Shimmer Sweep & Combo Spring Pop */
+@keyframes shimmerSweep {
+  0% {
+    transform: translate3d(-110%, 0, 0) skewX(-18deg);
+  }
+  100% {
+    transform: translate3d(260%, 0, 0) skewX(-18deg);
+  }
+}
+
+.shimmer-sweep-overlay {
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.36) 50%,
+    transparent 100%
+  );
+  animation: shimmerSweep 560ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform;
+}
+
+@keyframes comboPopEnter {
+  0% {
+    transform: scale(0.84);
+  }
+  55% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.combo-pop-enter {
+  animation: comboPopEnter 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* #10 Tactile Spring Button Feedback */
+.studio-tactile-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 180ms ease,
+    background-color 150ms ease;
+}
+
+.studio-tactile-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.28) 0%,
+    transparent 65%
+  );
+  opacity: 0;
+  transform: scale(0.5);
+  transition: transform 280ms ease-out, opacity 280ms ease-out;
+  pointer-events: none;
+}
+
+.studio-tactile-btn:active {
+  transform: scale(0.955);
+}
+
+.studio-tactile-btn:active::after {
+  opacity: 1;
+  transform: scale(1.35);
+  transition: transform 0s, opacity 0s;
 }

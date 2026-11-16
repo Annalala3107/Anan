@@ -176,7 +176,7 @@ function ZenPomodoroProgressBar() {
 }
 
 /**
- * Isolated 1-second Pomodoro countdown & estimated end time inside Zen Mode.
+ * Isolated 1-second Pomodoro countdown (#5 Rolling Odometer Digits) & estimated end time.
  */
 function ZenPomodoroCountdown({ compact = false }: { compact?: boolean }) {
   const pomodoroPreset = useMusicStore((s) => s.pomodoroPreset);
@@ -185,6 +185,7 @@ function ZenPomodoroCountdown({ compact = false }: { compact?: boolean }) {
   const pomodoroRunning = useMusicStore((s) => s.pomodoroRunning);
 
   const cfg = POMODORO_PRESETS[pomodoroPreset] || POMODORO_PRESETS['25/5'];
+  const formatted = formatSecondsMmSs(pomodoroSecondsLeft, true);
 
   const estimatedEndTimeStr = useMemo(() => {
     if (!pomodoroRunning) return null;
@@ -199,7 +200,7 @@ function ZenPomodoroCountdown({ compact = false }: { compact?: boolean }) {
       <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10">
         <Timer className="w-3.5 h-3.5 text-cyan-400" />
         <span className="text-sm font-mono font-bold tabular-nums text-white">
-          {formatSecondsMmSs(pomodoroSecondsLeft, true)}
+          {formatted}
         </span>
         {pomodoroRunning && (
           <span className="text-[11px] text-slate-400">
@@ -212,8 +213,24 @@ function ZenPomodoroCountdown({ compact = false }: { compact?: boolean }) {
 
   return (
     <div className="text-center py-1">
-      <div className="text-5xl sm:text-6xl font-mono font-bold tabular-nums tracking-tight text-white drop-shadow-sm">
-        {formatSecondsMmSs(pomodoroSecondsLeft, true)}
+      <div
+        aria-label={formatted}
+        className="text-5xl sm:text-6xl font-mono font-bold tabular-nums tracking-tight text-white drop-shadow-sm inline-flex items-center justify-center overflow-hidden"
+      >
+        {formatted.split('').map((ch, idx) =>
+          ch === ':' ? (
+            <span key={`sep-${idx}`} className="mx-0.5 text-indigo-300/80">
+              :
+            </span>
+          ) : (
+            <span
+              key={`slot-${idx}-${ch}`}
+              className="digit-roll-enter min-w-[0.62em] text-center"
+            >
+              {ch}
+            </span>
+          )
+        )}
       </div>
       {estimatedEndTimeStr ? (
         <p className="mt-1 text-xs text-slate-400 font-medium">
@@ -226,6 +243,39 @@ function ZenPomodoroCountdown({ compact = false }: { compact?: boolean }) {
         </p>
       )}
     </div>
+  );
+}
+
+/**
+ * Isolated Pomodoro Completion Milestone Burst (#7) when daily count increments.
+ */
+function ZenPomodoroMilestoneHalo() {
+  const pomodoroCompletedToday = useMusicStore((s) => s.pomodoroCompletedToday);
+  const prevCountRef = useRef(pomodoroCompletedToday);
+  const [showBurst, setShowBurst] = useState(false);
+
+  useEffect(() => {
+    if (pomodoroCompletedToday > prevCountRef.current) {
+      prevCountRef.current = pomodoroCompletedToday;
+      setShowBurst(true);
+      const timer = window.setTimeout(() => setShowBurst(false), 1800);
+      return () => window.clearTimeout(timer);
+    }
+    prevCountRef.current = pomodoroCompletedToday;
+  }, [pomodoroCompletedToday]);
+
+  if (!showBurst) return null;
+
+  return (
+    <>
+      <div
+        aria-hidden="true"
+        className="milestone-burst pointer-events-none absolute inset-0 rounded-2xl border-2 border-emerald-400/80 shadow-[0_0_32px_rgba(16,185,129,0.5)]"
+      />
+      <div className="pointer-events-none absolute top-3 right-3 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500 text-white shadow-md combo-pop-enter">
+        +1 phiên hoàn thành!
+      </div>
+    </>
   );
 }
 
@@ -531,12 +581,19 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
   const displayTitle = liveTitle || currentTrack.title;
   const displayArtist = liveArtist || currentTrack.artist;
 
+  const sceneIndex = Math.max(
+    0,
+    SCENE_MODES.findIndex((s) => s.id === sceneMode)
+  );
+  const dockTabIndex =
+    rightPanelTab === 'focus' ? 0 : rightPanelTab === 'queue' ? 1 : 2;
+
   return createPortal(
     <div
       role="dialog"
       aria-modal="true"
       aria-label="Zen Focus Studio"
-      className="fixed inset-0 z-[90] overflow-y-auto bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-indigo-500/30"
+      className="zen-stage-enter fixed inset-0 z-[90] overflow-y-auto bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-indigo-500/30"
     >
       {/* Immersive Living Scene Backdrop (Orbiting Album Clouds / Motes) */}
       <StudioSceneBackdrop
@@ -584,9 +641,14 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
           </div>
         </div>
 
-        {/* Scene Switcher, Pure Zen & Minimize */}
+        {/* Scene Switcher (#8 Sliding Pill), Pure Zen & Minimize */}
         <div className="flex items-center gap-1.5 sm:gap-2">
-          <div className="flex items-center p-0.5 rounded-xl bg-white/[0.06] border border-white/10">
+          <div className="relative grid grid-cols-3 p-0.5 rounded-xl bg-white/[0.06] border border-white/10">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute top-0.5 bottom-0.5 left-0.5 w-[calc((100%-4px)/3)] rounded-[10px] bg-indigo-600 shadow-sm transition-transform duration-300 ease-out"
+              style={{ transform: `translate3d(${sceneIndex * 100}%, 0, 0)` }}
+            />
             {SCENE_MODES.map((sc) => {
               const active = sceneMode === sc.id;
               return (
@@ -595,10 +657,8 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                   type="button"
                   onClick={() => handleChangeScene(sc.id)}
                   title={sc.desc}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-colors ${
-                    active
-                      ? 'bg-indigo-600 text-white shadow-sm'
-                      : 'text-slate-400 hover:text-white'
+                  className={`relative z-10 px-2.5 py-1 rounded-lg text-[11px] font-medium transition-colors text-center ${
+                    active ? 'text-white' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   {sc.label}
@@ -652,9 +712,9 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
 
       {/* Main Studio Stage */}
       <main className="relative z-10 max-w-6xl xl:max-w-7xl w-full mx-auto px-4 sm:px-8 py-4 sm:py-6 grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-center flex-1">
-        {/* Left: Reactive Turntable Deck + Song Metadata + Transport */}
+        {/* Left: Reactive Turntable Deck + Song Metadata + Transport (#4 Staggered) */}
         <section
-          className={`flex flex-col items-center text-center space-y-4 sm:space-y-5 transition-all duration-500 ${
+          className={`zen-plinth-enter flex flex-col items-center text-center space-y-4 sm:space-y-5 transition-all duration-500 ${
             isPureZen ? 'lg:col-span-12 scale-105' : 'lg:col-span-6'
           }`}
         >
@@ -727,7 +787,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
               type="button"
               onClick={togglePlay}
               aria-label={isPlaying ? 'Tạm dừng (Space)' : 'Phát nhạc (Space)'}
-              className="w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/35 hover:scale-105 active:scale-95 transition-transform flex items-center justify-center ring-2 ring-white/25"
+              className="studio-tactile-btn w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/35 hover:scale-105 transition-transform flex items-center justify-center ring-2 ring-white/25"
             >
               {!isReady && isPlaying ? (
                 <Loader2 className="w-6 h-6 animate-spin" />
@@ -768,17 +828,24 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
           </div>
         </section>
 
-        {/* Right Studio Hub: Focus | Queue + Add YouTube | Curated Focus Stations */}
+        {/* Right Studio Hub: Focus | Queue + Add YouTube | Curated Focus Stations (#4 + #8 Sliding Pill) */}
         {!isPureZen && (
-          <section className="lg:col-span-6 space-y-4">
-            {/* 3-Tab Studio Dock Header */}
-            <div className="grid grid-cols-3 gap-1 p-1 rounded-xl bg-slate-900/65 backdrop-blur-xl border border-white/10">
+          <section className="zen-dock-enter lg:col-span-6 space-y-4">
+            {/* 3-Tab Studio Dock Header with GPU Sliding Indicator */}
+            <div className="relative grid grid-cols-3 p-1 rounded-xl bg-slate-900/75 backdrop-blur-md border border-white/10">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute top-1 bottom-1 left-1 w-[calc((100%-8px)/3)] rounded-lg bg-indigo-600 shadow-sm transition-transform duration-300 ease-out"
+                style={{
+                  transform: `translate3d(${dockTabIndex * 100}%, 0, 0)`,
+                }}
+              />
               <button
                 type="button"
                 onClick={() => setRightPanelTab('focus')}
-                className={`py-2 px-2.5 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-all ${
+                className={`relative z-10 py-2 px-2.5 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-colors ${
                   rightPanelTab === 'focus'
-                    ? 'bg-indigo-600 text-white shadow-sm'
+                    ? 'text-white'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -789,9 +856,9 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
               <button
                 type="button"
                 onClick={() => setRightPanelTab('queue')}
-                className={`py-2 px-2.5 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-all ${
+                className={`relative z-10 py-2 px-2.5 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-colors ${
                   rightPanelTab === 'queue'
-                    ? 'bg-indigo-600 text-white shadow-sm'
+                    ? 'text-white'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -802,9 +869,9 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
               <button
                 type="button"
                 onClick={() => setRightPanelTab('stations')}
-                className={`py-2 px-2.5 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-all ${
+                className={`relative z-10 py-2 px-2.5 rounded-lg text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-colors ${
                   rightPanelTab === 'stations'
-                    ? 'bg-indigo-600 text-white shadow-sm'
+                    ? 'text-white'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -818,9 +885,10 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
               <div className="space-y-4">
                 {/* Pomodoro Stage Card */}
                 <div
-                  className={`relative rounded-2xl border p-5 sm:p-6 bg-slate-900/60 backdrop-blur-xl transition-all duration-300 space-y-4 shadow-2xl overflow-hidden ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
+                  className={`relative rounded-2xl border p-5 sm:p-6 bg-slate-900/72 backdrop-blur-md transition-all duration-300 space-y-4 shadow-2xl overflow-hidden ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
                 >
                   <ZenPomodoroProgressBar />
+                  <ZenPomodoroMilestoneHalo />
 
                   <div className="flex items-center justify-between gap-2 pt-1">
                     {pomodoroRunning ? (
@@ -868,7 +936,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                     <button
                       type="button"
                       onClick={togglePomodoro}
-                      className={`flex-1 py-2.5 px-4 rounded-xl text-sm font-semibold text-white inline-flex items-center justify-center gap-2 transition-all ${
+                      className={`studio-tactile-btn flex-1 py-2.5 px-4 rounded-xl text-sm font-semibold text-white inline-flex items-center justify-center gap-2 ${
                         pomodoroRunning
                           ? 'bg-amber-500 hover:bg-amber-600 shadow-md shadow-amber-500/25'
                           : 'bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-500/25'
@@ -920,7 +988,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                 </div>
 
                 {/* Audio & Ambient Glass Card */}
-                <div className="rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl p-4 sm:p-5 space-y-4 shadow-xl">
+                <div className="rounded-2xl border border-white/10 bg-slate-900/72 backdrop-blur-md p-4 sm:p-5 space-y-4 shadow-xl">
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
@@ -1037,7 +1105,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
 
             {/* TAB 2: QUEUE MANAGER + ADD YOUTUBE VIDEO/PLAYLIST INLINE */}
             {rightPanelTab === 'queue' && (
-              <div className="rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl p-4 space-y-3 shadow-2xl flex flex-col max-h-[500px]">
+              <div className="rounded-2xl border border-white/10 bg-slate-900/72 backdrop-blur-md p-4 space-y-3 shadow-2xl flex flex-col max-h-[500px]">
                 {/* Search Queue Filter */}
                 <div className="relative">
                   <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -1231,7 +1299,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
 
             {/* TAB 3: CURATED AD-FREE FOCUS STATIONS */}
             {rightPanelTab === 'stations' && (
-              <div className="rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl p-4 space-y-3 shadow-2xl flex flex-col max-h-[500px]">
+              <div className="rounded-2xl border border-white/10 bg-slate-900/72 backdrop-blur-md p-4 space-y-3 shadow-2xl flex flex-col max-h-[500px]">
                 <div className="flex items-center justify-between gap-2 flex-wrap">
                   <div className="flex items-center gap-1 flex-wrap">
                     {STATION_FILTERS.map((f) => (
@@ -1317,7 +1385,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                           <button
                             type="button"
                             onClick={() => playCuratedStation(st)}
-                            className="px-2.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold inline-flex items-center gap-1 transition-colors"
+                            className="studio-tactile-btn px-2.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold inline-flex items-center gap-1"
                           >
                             <Play className="w-3 h-3 fill-current" />
                             Nghe
