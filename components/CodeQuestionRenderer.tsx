@@ -3,6 +3,13 @@
 import { useState } from 'react';
 import { Copy, Check, Terminal, Table as TableIcon, FileText } from 'lucide-react';
 import QuestionMedia from '@/components/QuestionMedia';
+import MathText from '@/components/MathText';
+import RomanChoicesGrid from '@/components/RomanChoicesGrid';
+import {
+  extractRomanChoices,
+  isStandaloneFormula,
+  formatPiecewise,
+} from '@/lib/mathUtils';
 
 interface CodeQuestionRendererProps {
   content?: string;
@@ -356,7 +363,9 @@ export default function CodeQuestionRenderer({
 
   if (!content && !image) return null;
 
-  const blocks = parseBlocks(content);
+  // Extract any sub-choices (i), (ii), etc.
+  const { stem, romanChoices } = extractRomanChoices(content);
+  const blocks = parseBlocks(stem);
 
   const handleCopy = async (text: string, idx: number, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -377,13 +386,52 @@ export default function CodeQuestionRenderer({
       {/* Render Parsed Blocks Sequentially */}
       {blocks.map((block, bIdx) => {
         if (block.type === 'text') {
+          // If the text block is a piecewise function, render as display formula
+          if (/[a-zA-Z]\([a-zA-Z]\)\s*=\s*\{/.test(block.text)) {
+            return (
+              <div
+                key={bIdx}
+                className="my-3 py-3 px-4 rounded-2xl bg-indigo-950/20 dark:bg-slate-900/80 border border-indigo-500/30 text-indigo-100 shadow-md"
+              >
+                <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 dark:text-indigo-300 mb-1 flex items-center gap-1 select-none">
+                  <span>Hàm số định nghĩa từng khúc / Piecewise Function</span>
+                </div>
+                <MathText content={formatPiecewise(block.text)} displayMode={true} />
+              </div>
+            );
+          }
+
+          const textLines = block.text.split('\n');
           return (
-            <p
-              key={bIdx}
-              className="leading-relaxed font-semibold sm:font-bold text-slate-900 dark:text-slate-100 whitespace-pre-wrap break-words"
-            >
-              {block.text}
-            </p>
+            <div key={bIdx} className="space-y-2">
+              {textLines.map((line, lIdx) => {
+                const trimmed = line.trim();
+                if (!trimmed) return null;
+
+                if (isStandaloneFormula(trimmed)) {
+                  return (
+                    <div
+                      key={lIdx}
+                      className="my-3 py-3 px-4 rounded-2xl bg-indigo-950/20 dark:bg-slate-900/80 border border-indigo-500/30 text-indigo-100 shadow-md"
+                    >
+                      <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 dark:text-indigo-300 mb-1 flex items-center gap-1 select-none">
+                        <span>Biểu thức toán học / Công thức</span>
+                      </div>
+                      <MathText content={trimmed} displayMode={true} />
+                    </div>
+                  );
+                }
+
+                return (
+                  <MathText
+                    key={lIdx}
+                    as="p"
+                    content={line}
+                    className="leading-relaxed font-semibold sm:font-bold text-slate-900 dark:text-slate-100 whitespace-pre-wrap break-words"
+                  />
+                );
+              })}
+            </div>
           );
         }
 
@@ -539,6 +587,9 @@ export default function CodeQuestionRenderer({
           </div>
         );
       })}
+
+      {/* Roman Numeral Sub-Choices if present */}
+      {romanChoices && <RomanChoicesGrid items={romanChoices} />}
     </div>
   );
 }
