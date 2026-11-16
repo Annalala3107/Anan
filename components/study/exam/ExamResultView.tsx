@@ -401,6 +401,8 @@ export default function ExamResultView({
 
                 <CodeQuestionRenderer
                   content={q.sentence}
+                  image={q.image}
+                  imageCaption={q.imageCaption}
                   className="text-base font-medium text-slate-900 dark:text-slate-100 mb-3"
                 />
 

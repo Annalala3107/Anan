@@ -16,6 +16,8 @@ export const WordSchema = z.object({
   definition: z.string().max(4000).optional(),
   simple_examples: z.array(z.string().max(1000)).max(20).optional(),
   advanced_example: z.string().max(1000).optional(),
+  image: z.string().max(1000).optional(),
+  imageCaption: z.string().max(500).optional(),
 });
 
 export const WordProgressSchema = z.object({

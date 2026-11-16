@@ -16,6 +16,7 @@ import {
   QuestionSelectionMode,
 } from '@/lib/quizHelpers';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
+import OptionContent from '@/components/OptionContent';
 import FlashcardView from './FlashcardView';
 import {
   Zap,
@@ -1466,6 +1467,8 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
           <div className="mb-6">
             <CodeQuestionRenderer
               content={currentQ.sentence}
+              image={currentQ.image}
+              imageCaption={currentQ.imageCaption}
               className="text-base sm:text-lg md:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
             />
           </div>
@@ -1482,7 +1485,6 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                   currentQ.correctOptions
                 );
                 const letter = String.fromCharCode(65 + idx);
-                const displayOpt = cleanOptionText(opt);
 
                 let optionStyle =
                   'bg-slate-50 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 hover:border-indigo-500 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/30';
@@ -1530,9 +1532,9 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                       {letter}
                     </span>
 
-                    <span className="flex-1 font-medium leading-relaxed">
-                      {displayOpt}
-                    </span>
+                    <div className="flex-1 min-w-0 font-medium leading-relaxed">
+                      <OptionContent content={opt} />
+                    </div>
 
                     {feedbackState === 'idle' && currentQ.isMultiSelect && (
                       <span

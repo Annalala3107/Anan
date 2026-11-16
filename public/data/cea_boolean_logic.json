@@ -11,9 +11,11 @@
     ],
     "answer": "C",
     "correctWord": "C. F = A’B’D + AC’D’ + ABD",
-    "explanation": "Đáp án đúng: C (C. F = A’B’D + AC’D’ + ABD). (Lưu ý: Đề gốc thiếu ảnh sơ đồ mạch logic kèm theo).",
+    "explanation": "Đáp án đúng: C (C. F = A’B’D + AC’D’ + ABD). Cổng OR ngõ ra gộp 3 nhánh AND tương ứng: A’B’D, AC’D’, ABD.",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Đại Số Boolean & Mạch Logic Số"
+    "topic": "Đại Số Boolean & Mạch Logic Số",
+    "image": "/diagrams/cea_1_logic_circuit.svg",
+    "imageCaption": "Sơ đồ mạch logic tổ hợp gồm 4 ngõ vào A, B, C, D và ngõ ra F"
   },
   {
     "id": "CEA_16",

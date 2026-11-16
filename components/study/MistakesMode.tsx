@@ -13,6 +13,7 @@ import {
   shuffleArray,
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
+import OptionContent from '@/components/OptionContent';
 import {
   CheckCircle2,
   XCircle,
@@ -357,6 +358,8 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
           <div className="flex items-start justify-between gap-4 mb-4">
             <CodeQuestionRenderer
               content={currentWord.question || currentWord.word}
+              image={currentWord.image}
+              imageCaption={currentWord.imageCaption}
               className="text-base sm:text-xl font-black text-slate-900 dark:text-white leading-relaxed flex-1"
             />
           </div>
@@ -373,15 +376,13 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
             if (!isMCQ) {
               const optWordObj = words.find((w) => w.word.toLowerCase() === opt.toLowerCase());
               displayLabel = optWordObj?.vi || optWordObj?.definition || opt;
-            } else {
-              displayLabel = cleanOptionText(opt);
             }
 
             const isSelected = selectedWords.includes(opt);
             const isTarget = isOptionTarget(opt);
 
             let style =
-              'w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-[transform,background-color,border-color,opacity] duration-150 flex items-center justify-between active:scale-[0.99] touch-manipulation select-none transform-gpu ';
+              'w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-[transform,background-color,border-color,opacity] duration-150 flex items-start justify-between active:scale-[0.99] touch-manipulation select-none transform-gpu ';
 
             if (!isAnswered) {
               if (isSelected) {
@@ -409,11 +410,11 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
                 onClick={() => handleSelect(opt)}
                 className={style}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-start gap-3 flex-1 min-w-0">
                   <span
                     className={`w-7 h-7 ${
                       answerMeta.isMultiSelect ? 'rounded-lg' : 'rounded-xl'
-                    } text-xs flex items-center justify-center font-mono font-bold shrink-0 ${
+                    } text-xs flex items-center justify-center font-mono font-bold shrink-0 mt-0.5 ${
                       !isAnswered && isSelected
                         ? 'bg-indigo-600 text-white'
                         : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
@@ -421,7 +422,9 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
                   >
                     {String.fromCharCode(65 + idx)}
                   </span>
-                  <span className="text-sm sm:text-base">{displayLabel}</span>
+                  <div className="flex-1 min-w-0 text-sm sm:text-base">
+                    <OptionContent content={displayLabel} skipClean={!isMCQ} />
+                  </div>
                 </div>
                 {!isAnswered && answerMeta.isMultiSelect && (
                   <span

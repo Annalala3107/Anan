@@ -11,9 +11,11 @@
     ],
     "answer": "C",
     "correctWord": "C. F = A’B’D + AC’D’ + ABD",
-    "explanation": "Đáp án đúng: C (C. F = A’B’D + AC’D’ + ABD). (Lưu ý: Đề gốc thiếu ảnh sơ đồ mạch logic kèm theo).",
+    "explanation": "Đáp án đúng: C (C. F = A’B’D + AC’D’ + ABD). Cổng OR ngõ ra gộp 3 nhánh AND tương ứng: A’B’D, AC’D’, ABD.",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Đại Số Boolean & Mạch Logic Số"
+    "topic": "Đại Số Boolean & Mạch Logic Số",
+    "image": "/diagrams/cea_1_logic_circuit.svg",
+    "imageCaption": "Sơ đồ mạch logic tổ hợp gồm 4 ngõ vào A, B, C, D và ngõ ra F"
   },
   {
     "id": "CEA_2",
@@ -5005,9 +5007,11 @@
     ],
     "answer": "D",
     "correctWord": "D. They contain the address used by the instruction.",
-    "explanation": "Đáp án đúng: D (D. They contain the address used by the instruction.). (Lưu ý: Đề gốc thiếu ảnh minh họa khuôn dạng lệnh IAS/16-bit kèm theo).",
+    "explanation": "Đáp án đúng: D. Trong khuôn dạng lệnh 16-bit của máy tính IAS, 4 bits đầu (bits 0–3) lưu mã thao tác (Opcode), 12 bits tiếp theo (bits 4–15) lưu địa chỉ ô nhớ (Memory Address).",
     "subject": "Tổ Chức & Kiến Trúc Máy Tính (CEA201)",
-    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU"
+    "topic": "Tập Lệnh (ISA), Thanh Ghi & Xử Lý Lệnh CPU",
+    "image": "/diagrams/cea_311_ias_instruction.svg",
+    "imageCaption": "Khuôn dạng thanh ghi lệnh 16-bit IAS phân chia Opcode và Address"
   },
   {
     "id": "CEA_312",

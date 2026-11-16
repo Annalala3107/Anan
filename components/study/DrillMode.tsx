@@ -13,6 +13,7 @@ import {
   shuffleArray,
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
+import OptionContent from '@/components/OptionContent';
 import {
   ArrowRight,
   CheckCircle2,
@@ -50,6 +51,8 @@ interface PartQuestionItem {
   originalOptions: string[];
   explanation: string;
   answerKey?: string;
+  image?: string;
+  imageCaption?: string;
 }
 
 interface CheckpointPart {
@@ -123,6 +126,8 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
             explanation:
               target.explanation || `Answer: ${target.answer || target.options[0]}`,
             answerKey: target.answer,
+            image: target.image,
+            imageCaption: target.imageCaption,
           };
         }
         const sentence =
@@ -147,6 +152,8 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           options: finalOpts,
           originalOptions: finalOpts,
           explanation: `${target.word}: ${target.vi || 'Đáp án chính xác'}`,
+          image: target.image,
+          imageCaption: target.imageCaption,
         };
       });
   }, [words]);
@@ -1031,6 +1038,8 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           </div>
           <CodeQuestionRenderer
             content={currentQ.sentence}
+            image={currentQ.image || currentQ.rawWord?.image}
+            imageCaption={currentQ.imageCaption || currentQ.rawWord?.imageCaption}
             className="text-base sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
           />
         </div>
@@ -1041,7 +1050,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
             const isSelected = selectedWords.includes(opt);
             const isTarget = isOptionCorrect(opt, currentQ);
             let style =
-              'w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-[transform,background-color,border-color,opacity] duration-150 flex items-center justify-between active:scale-[0.99] touch-manipulation select-none transform-gpu ';
+              'w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-[transform,background-color,border-color,opacity] duration-150 flex items-start justify-between active:scale-[0.99] touch-manipulation select-none transform-gpu ';
 
             if (!isAnswered) {
               if (isSelected) {
@@ -1070,11 +1079,11 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                 onClick={() => handleSelect(opt)}
                 className={style}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-start gap-3 flex-1 min-w-0">
                   <span
                     className={`w-7 h-7 ${
                       currentQ.isMultiSelect ? 'rounded-lg' : 'rounded-xl'
-                    } text-xs flex items-center justify-center font-mono font-bold shrink-0 ${
+                    } text-xs flex items-center justify-center font-mono font-bold shrink-0 mt-0.5 ${
                       !isAnswered && isSelected
                         ? 'bg-indigo-600 text-white'
                         : 'bg-slate-100 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300'
@@ -1082,7 +1091,9 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                   >
                     {String.fromCharCode(65 + idx)}
                   </span>
-                  <span className="text-sm sm:text-base">{cleanOptionText(opt)}</span>
+                  <div className="flex-1 min-w-0 text-sm sm:text-base">
+                    <OptionContent content={opt} />
+                  </div>
                 </div>
                 {!isAnswered && currentQ.isMultiSelect && (
                   <span

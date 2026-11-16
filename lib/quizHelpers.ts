@@ -20,6 +20,8 @@ export interface StandardQuestion {
   answerKey?: string;
   subject?: string;
   topic?: string;
+  image?: string;
+  imageCaption?: string;
 }
 
 export type QuestionSelectionMode = 'smart' | 'sequential' | 'random';
@@ -143,6 +145,8 @@ export function buildStandardQuestions(
         answerKey: shuffleChoices ? undefined : target.answer,
         subject: target.subject,
         topic: target.topic,
+        image: target.image,
+        imageCaption: target.imageCaption,
       });
     } else if (target.word) {
       // Case 2: Academic Concept / Terminology question
@@ -176,6 +180,8 @@ export function buildStandardQuestions(
         explanation: `${target.word}: ${target.vi || 'Đáp án chính xác'}`,
         subject: target.subject,
         topic: target.topic,
+        image: target.image,
+        imageCaption: target.imageCaption,
       });
     }
   }

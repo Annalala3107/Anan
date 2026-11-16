@@ -7,6 +7,7 @@ import { StorageEngine } from '@/lib/storage';
 import { QUESTION_BANKS, getQuizDisplayName } from '@/lib/defaultBanks';
 import { getQuestionKey, isAnswerMatch } from '@/lib/utils';
 import WordModal from '@/components/WordModal';
+import OptionContent from '@/components/OptionContent';
 import { Search, BookOpen, ChevronRight, Loader2, Layers } from 'lucide-react';
 
 type SearchScope = 'current' | 'all' | string;
@@ -371,15 +372,17 @@ export default function LibraryPage() {
                           return (
                             <div
                               key={i}
-                              className={`px-2.5 py-1 rounded-xl text-xs flex items-center justify-between ${
+                              className={`px-2.5 py-1.5 rounded-xl text-xs flex items-start justify-between gap-1.5 ${
                                 isCorrect
                                   ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold border border-emerald-500/20'
                                   : 'text-slate-600 dark:text-slate-400'
                               }`}
                             >
-                              <span className="truncate">{opt}</span>
+                              <div className="flex-1 min-w-0">
+                                <OptionContent content={opt} className="line-clamp-2" />
+                              </div>
                               {isCorrect && (
-                                <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase ml-2 shrink-0">
+                                <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase ml-2 shrink-0 mt-0.5">
                                   Đúng
                                 </span>
                               )}

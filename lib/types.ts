@@ -24,6 +24,8 @@ export interface Word {
   explanation?: string;
   topic?: string;
   subject?: string;
+  image?: string; // Image/diagram URL or path
+  imageCaption?: string; // Optional caption
 }
 
 export type WordStatus = 'new' | 'learning' | 'review' | 'mastered';
@@ -93,6 +95,8 @@ export interface ExamQuestion {
   answerKey?: string;
   topic?: string;
   subject?: string;
+  image?: string;
+  imageCaption?: string;
 }
 
 export interface DailyStats {

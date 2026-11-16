@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" role="img" aria-labelledby="cea1-title cea1-desc">
+  <title id="cea1-title">Sơ đồ mạch logic tổ hợp câu CEA_1</title>
+  <desc id="cea1-desc">Mạch logic gồm 4 ngõ vào A, B, C, D qua các cổng NOT, 3 cổng AND 3 ngõ vào và 1 cổng OR 3 ngõ vào tạo ra ngõ ra F.</desc>
+
+  <defs>
+    <style>
+      .bg-card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 2; }
+      .grid-dot { fill: #e2e8f0; }
+      .rail { fill: none; stroke: #334155; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+      .wire { fill: none; stroke: #1e293b; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-out { fill: none; stroke: #4f46e5; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .dot { fill: #1e293b; }
+      .gate-and { fill: #eef2ff; stroke: #4338ca; stroke-width: 2.4; stroke-linejoin: round; }
+      .gate-or { fill: #ecfeff; stroke: #0e7490; stroke-width: 2.4; stroke-linejoin: round; }
+      .gate-not { fill: #fff1f2; stroke: #be123c; stroke-width: 2.1; stroke-linejoin: round; }
+      .bubble { fill: #ffffff; stroke: #be123c; stroke-width: 2.1; }
+      .pin-box { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.6; }
+      .pin-text { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; font-weight: 800; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+      .out-box { fill: #eef2ff; stroke: #4f46e5; stroke-width: 2; }
+      .out-text { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 16px; font-weight: 800; fill: #3730a3; text-anchor: middle; dominant-baseline: central; }
+      .gate-label { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; fill: #475569; text-anchor: middle; dominant-baseline: central; }
+      .tag-box { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1; }
+      .tag-text { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #475569; text-anchor: middle; dominant-baseline: central; }
+    </style>
+
+    <pattern id="subtle-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.9" class="grid-dot" />
+    </pattern>
+  </defs>
+
+  <!-- Canvas -->
+  <rect x="1" y="1" width="678" height="378" rx="16" class="bg-card" />
+  <rect x="8" y="8" width="664" height="364" rx="12" fill="url(#subtle-grid)" opacity="0.7" />
+
+  <!-- Corner Tag (no answer spoil) -->
+  <rect x="518" y="16" width="142" height="24" rx="8" class="tag-box" />
+  <text x="589" y="28" class="tag-text">CEA201 • LOGIC GATE</text>
+
+  <!-- Wires Layer (drawn beneath gates so curved joints seal cleanly) -->
+  <g id="wires">
+    <!-- Vertical Input Bus Rails -->
+    <line x1="65" y1="44" x2="65" y2="285" class="rail" />
+    <line x1="110" y1="44" x2="110" y2="305" class="rail" />
+    <line x1="155" y1="44" x2="155" y2="200" class="rail" />
+    <line x1="200" y1="44" x2="200" y2="325" class="rail" />
+
+    <!-- Term 1 Wires (AND 1: A', B', D) -->
+    <line x1="65" y1="75" x2="342" y2="75" class="wire" />
+    <line x1="110" y1="95" x2="342" y2="95" class="wire" />
+    <line x1="200" y1="115" x2="342" y2="115" class="wire" />
+
+    <!-- Term 2 Wires (AND 2: A, C', D') -->
+    <line x1="65" y1="180" x2="342" y2="180" class="wire" />
+    <line x1="155" y1="200" x2="342" y2="200" class="wire" />
+    <line x1="200" y1="220" x2="342" y2="220" class="wire" />
+
+    <!-- Term 3 Wires (AND 3: A, B, D) -->
+    <line x1="65" y1="285" x2="342" y2="285" class="wire" />
+    <line x1="110" y1="305" x2="342" y2="305" class="wire" />
+    <line x1="200" y1="325" x2="342" y2="325" class="wire" />
+
+    <!-- AND -> OR Routing Wires -->
+    <polyline points="415,95 462,95 462,181 516,181" class="wire" />
+    <line x1="415" y1="200" x2="518" y2="200" class="wire" />
+    <polyline points="415,305 462,305 462,219 516,219" class="wire" />
+
+    <!-- Output F Wire -->
+    <line x1="592" y1="200" x2="626" y2="200" class="wire-out" />
+  </g>
+
+  <!-- Junction Dots (only where a tap connects to a continuing vertical bus) -->
+  <g id="junctions">
+    <circle cx="65" cy="75" r="3.8" class="dot" />
+    <circle cx="65" cy="180" r="3.8" class="dot" />
+    <circle cx="110" cy="95" r="3.8" class="dot" />
+    <circle cx="200" cy="115" r="3.8" class="dot" />
+    <circle cx="200" cy="220" r="3.8" class="dot" />
+  </g>
+
+  <!-- Inline NOT Gates -->
+  <g id="not-gates">
+    <!-- NOT on A (Term 1, y=75) -->
+    <polygon points="246,66 246,84 264,75" class="gate-not" />
+    <circle cx="268" cy="75" r="4" class="bubble" />
+
+    <!-- NOT on B (Term 1, y=95) -->
+    <polygon points="246,86 246,104 264,95" class="gate-not" />
+    <circle cx="268" cy="95" r="4" class="bubble" />
+
+    <!-- NOT on C (Term 2, y=200) -->
+    <polygon points="246,191 246,209 264,200" class="gate-not" />
+    <circle cx="268" cy="200" r="4" class="bubble" />
+
+    <!-- NOT on D (Term 2, y=220) -->
+    <polygon points="246,211 246,229 264,220" class="gate-not" />
+    <circle cx="268" cy="220" r="4" class="bubble" />
+  </g>
+
+  <!-- 3-Input AND Gates -->
+  <g id="and-gates">
+    <!-- AND 1 (center y=95) -->
+    <path d="M 340 62 L 382 62 A 33 33 0 0 1 382 128 L 340 128 Z" class="gate-and" />
+    <text x="372" y="95" class="gate-label">AND</text>
+
+    <!-- AND 2 (center y=200) -->
+    <path d="M 340 167 L 382 167 A 33 33 0 0 1 382 233 L 340 233 Z" class="gate-and" />
+    <text x="372" y="200" class="gate-label">AND</text>
+
+    <!-- AND 3 (center y=305) -->
+    <path d="M 340 272 L 382 272 A 33 33 0 0 1 382 338 L 340 338 Z" class="gate-and" />
+    <text x="372" y="305" class="gate-label">AND</text>
+  </g>
+
+  <!-- 3-Input OR Gate -->
+  <g id="or-gate">
+    <path d="M 505 160 C 544 160 574 176 592 200 C 574 224 544 240 505 240 Q 527 200 505 160 Z" class="gate-or" />
+    <text x="548" y="200" class="gate-label">OR</text>
+  </g>
+
+  <!-- Input Pin Badges -->
+  <g id="input-pins">
+    <rect x="50" y="16" width="30" height="28" rx="7" class="pin-box" />
+    <text x="65" y="30" class="pin-text">A</text>
+
+    <rect x="95" y="16" width="30" height="28" rx="7" class="pin-box" />
+    <text x="110" y="30" class="pin-text">B</text>
+
+    <rect x="140" y="16" width="30" height="28" rx="7" class="pin-box" />
+    <text x="155" y="30" class="pin-text">C</text>
+
+    <rect x="185" y="16" width="30" height="28" rx="7" class="pin-box" />
+    <text x="200" y="30" class="pin-text">D</text>
+  </g>
+
+  <!-- Output Pin Badge -->
+  <g id="output-pin">
+    <rect x="626" y="184" width="34" height="32" rx="8" class="out-box" />
+    <text x="643" y="200" class="out-text">F</text>
+  </g>
+</svg>

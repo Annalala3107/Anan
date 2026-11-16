@@ -6,6 +6,7 @@ import { StorageEngine } from '@/lib/storage';
 import { QUESTION_BANKS } from '@/lib/defaultBanks';
 import { isAnswerMatch, cleanOptionText } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
+import OptionContent from '@/components/OptionContent';
 import {
   Sparkles,
   X,
@@ -435,6 +436,8 @@ export default function AIPromptModal({
 
                   <CodeQuestionRenderer
                     content={q.question || q.word}
+                    image={q.image}
+                    imageCaption={q.imageCaption}
                     className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-relaxed"
                   />
 
@@ -445,18 +448,20 @@ export default function AIPromptModal({
                         return (
                           <div
                             key={oIdx}
-                            className={`px-2.5 py-1.5 rounded-xl text-xs border flex items-center gap-1.5 ${
+                            className={`px-2.5 py-1.5 rounded-xl text-xs border flex items-start gap-1.5 ${
                               isTrue
                                 ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-700 dark:text-emerald-300 font-bold'
                                 : 'bg-white dark:bg-slate-800/70 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400'
                             }`}
                           >
                             <CheckCircle2
-                              className={`w-3.5 h-3.5 shrink-0 ${
+                              className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${
                                 isTrue ? 'text-emerald-500' : 'opacity-20'
                               }`}
                             />
-                            <span className="truncate">{cleanOptionText(opt)}</span>
+                            <div className="flex-1 min-w-0">
+                              <OptionContent content={opt} />
+                            </div>
                           </div>
                         );
                       })}

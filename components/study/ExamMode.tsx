@@ -8,6 +8,7 @@ import { useQuizStore } from '@/lib/quizStore';
 import { useMusicStore } from '@/lib/musicStore';
 import { buildStandardQuestions } from '@/lib/quizHelpers';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
+import OptionContent from '@/components/OptionContent';
 import ExamConfigView from './exam/ExamConfigView';
 import ExamResultView from './exam/ExamResultView';
 import {
@@ -775,6 +776,8 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
 
           <CodeQuestionRenderer
             content={currentQ.sentence}
+            image={currentQ.image}
+            imageCaption={currentQ.imageCaption}
             className="text-base sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
           />
         </div>
@@ -787,17 +790,17 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
               <button
                 key={idx}
                 onClick={() => handleSelectExamOption(currentIndex, opt)}
-                className={`w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-[transform,background-color,border-color,box-shadow] duration-150 flex items-center justify-between active:scale-[0.99] touch-manipulation select-none transform-gpu ${
+                className={`w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl font-semibold border text-left transition-[transform,background-color,border-color,box-shadow] duration-150 flex items-start justify-between active:scale-[0.99] touch-manipulation select-none transform-gpu ${
                   isChosen
                     ? 'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-500 text-indigo-700 dark:text-indigo-300 shadow-glow font-bold animate-pop-correct'
                     : 'bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:border-slate-400'
                 }`}
               >
-                <div className="flex items-center gap-2.5 sm:gap-3">
+                <div className="flex items-start gap-2.5 sm:gap-3 flex-1 min-w-0">
                   <span
                     className={`w-7 h-7 ${
                       currentQ.isMultiSelect ? 'rounded-lg' : 'rounded-xl'
-                    } text-xs flex items-center justify-center font-mono font-bold shrink-0 ${
+                    } text-xs flex items-center justify-center font-mono font-bold shrink-0 mt-0.5 ${
                       isChosen
                         ? 'bg-indigo-600 text-white'
                         : 'bg-slate-100 dark:bg-slate-700 text-slate-500'
@@ -805,9 +808,11 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
                   >
                     {String.fromCharCode(65 + idx)}
                   </span>
-                  <span className="text-sm sm:text-base leading-relaxed">{cleanOptionText(opt)}</span>
+                  <div className="flex-1 min-w-0 text-sm sm:text-base leading-relaxed">
+                    <OptionContent content={opt} />
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 shrink-0 ml-2">
+                <div className="flex items-center gap-2 shrink-0 ml-2 mt-0.5">
                   {currentQ.isMultiSelect && (
                     <span
                       className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${

@@ -9,6 +9,7 @@ import {
   formatChoicesWithDisplayLetters,
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
+import OptionContent from '@/components/OptionContent';
 import {
   RotateCcw,
   CheckCircle2,
@@ -122,6 +123,8 @@ export default function FlashcardView({
                 <div className="flex-1 min-w-0">
                   <CodeQuestionRenderer
                     content={currentQ.sentence}
+                    image={currentQ.image}
+                    imageCaption={currentQ.imageCaption}
                     className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 dark:text-white leading-relaxed"
                   />
                 </div>
@@ -149,16 +152,17 @@ export default function FlashcardView({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {currentQ.options.map((opt, i) => {
                       const letter = String.fromCharCode(65 + i);
-                      const cleaned = cleanOptionText(opt);
                       return (
                         <div
                           key={i}
                           className="p-3 rounded-xl bg-slate-50/90 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 text-xs sm:text-sm text-slate-800 dark:text-slate-300 font-medium flex items-start gap-2.5"
                         >
-                          <span className="w-6 h-6 rounded-lg bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-mono font-black text-xs flex items-center justify-center shrink-0">
+                          <span className="w-6 h-6 rounded-lg bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-mono font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
                             {letter}
                           </span>
-                          <span className="leading-relaxed">{cleaned}</span>
+                          <div className="flex-1 min-w-0">
+                            <OptionContent content={opt} />
+                          </div>
                         </div>
                       );
                     })}
@@ -266,7 +270,6 @@ export default function FlashcardView({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {currentQ.options.map((opt, i) => {
                       const letter = String.fromCharCode(65 + i);
-                      const cleaned = cleanOptionText(opt);
                       const isTrue = isAnswerMatch(
                         opt,
                         currentQ.correctWord,
@@ -276,15 +279,15 @@ export default function FlashcardView({
                       return (
                         <div
                           key={i}
-                          className={`p-2.5 px-3 rounded-xl border text-xs sm:text-sm flex items-center justify-between gap-2 ${
+                          className={`p-2.5 px-3 rounded-xl border text-xs sm:text-sm flex items-start justify-between gap-2 ${
                             isTrue
                               ? 'bg-emerald-500/15 dark:bg-emerald-500/20 border-emerald-500/60 dark:border-emerald-400 text-emerald-900 dark:text-emerald-200 font-bold'
                               : 'bg-slate-50/90 dark:bg-white/5 border-slate-200/80 dark:border-white/10 text-slate-600 dark:text-slate-400 opacity-75'
                           }`}
                         >
-                          <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="flex items-start gap-2.5 min-w-0 flex-1">
                             <span
-                              className={`w-6 h-6 rounded-lg font-mono font-black text-xs flex items-center justify-center shrink-0 ${
+                              className={`w-6 h-6 rounded-lg font-mono font-black text-xs flex items-center justify-center shrink-0 mt-0.5 ${
                                 isTrue
                                   ? 'bg-emerald-600 dark:bg-emerald-500 text-white dark:text-slate-950'
                                   : 'bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-400'
@@ -292,10 +295,12 @@ export default function FlashcardView({
                             >
                               {letter}
                             </span>
-                            <span className="truncate">{cleaned}</span>
+                            <div className="flex-1 min-w-0">
+                              <OptionContent content={opt} />
+                            </div>
                           </div>
                           {isTrue && (
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                           )}
                         </div>
                       );

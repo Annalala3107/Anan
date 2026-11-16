@@ -5,6 +5,7 @@ import { X, BookOpen, CheckCircle, HelpCircle } from 'lucide-react';
 import { StorageEngine } from '@/lib/storage';
 import { cleanOptionText, isAnswerMatch } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
+import OptionContent from '@/components/OptionContent';
 import { useEffect, useId, useState } from 'react';
 
 interface WordModalProps {
@@ -94,6 +95,8 @@ export default function WordModal({ word, onClose }: WordModalProps) {
               </span>
               <CodeQuestionRenderer
                 content={word.question || word.word}
+                image={word.image}
+                imageCaption={word.imageCaption}
                 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
               />
             </div>
@@ -109,15 +112,15 @@ export default function WordModal({ word, onClose }: WordModalProps) {
                 return (
                   <div
                     key={idx}
-                    className={`p-3.5 rounded-2xl border text-sm flex items-center justify-between ${
+                    className={`p-3.5 rounded-2xl border text-sm flex items-start justify-between gap-2 ${
                       isCorrect
                         ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-800 dark:text-emerald-200 font-bold shadow-sm'
                         : 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300'
                     }`}
                   >
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-start gap-2.5 flex-1 min-w-0">
                       <span
-                        className={`w-6 h-6 rounded-lg text-xs flex items-center justify-center font-bold shrink-0 ${
+                        className={`w-6 h-6 rounded-lg text-xs flex items-center justify-center font-bold shrink-0 mt-0.5 ${
                           isCorrect
                             ? 'bg-emerald-500 text-white'
                             : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
@@ -125,10 +128,12 @@ export default function WordModal({ word, onClose }: WordModalProps) {
                       >
                         {optLetter}
                       </span>
-                      <span>{cleanOptionText(opt)}</span>
+                      <div className="flex-1 min-w-0">
+                        <OptionContent content={opt} />
+                      </div>
                     </div>
                     {isCorrect && (
-                      <span className="text-xs text-emerald-600 dark:text-emerald-400 font-extrabold uppercase shrink-0 ml-2">
+                      <span className="text-xs text-emerald-600 dark:text-emerald-400 font-extrabold uppercase shrink-0 ml-2 mt-0.5">
                         Đáp án đúng
                       </span>
                     )}
@@ -159,6 +164,8 @@ export default function WordModal({ word, onClose }: WordModalProps) {
               </span>
               <CodeQuestionRenderer
                 content={word.question || word.word}
+                image={word.image}
+                imageCaption={word.imageCaption}
                 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
               />
             </div>
