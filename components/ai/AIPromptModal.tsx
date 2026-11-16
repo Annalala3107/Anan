@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Word, CustomQuiz, CustomSubject } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { QUESTION_BANKS } from '@/lib/defaultBanks';
-import { isAnswerMatch, cleanOptionText } from '@/lib/utils';
+import { isAnswerMatch, cleanOptionText, resolveCorrectOptionFromAnswer } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
 import {
@@ -241,17 +241,22 @@ export default function AIPromptModal({
         return;
       }
 
-      const validatedWords: Word[] = parsed.map((item: any, idx: number) => ({
-        id: `manual_ai_${Date.now()}_${idx + 1}`,
-        word: item.question || item.word || `Câu ${idx + 1}`,
-        question: item.question || item.word,
-        options: Array.isArray(item.options) ? item.options : [],
-        answer: item.answer ? String(item.answer).toUpperCase() : 'A',
-        correctWord: item.correctWord || (item.options ? item.options[0] : undefined),
-        explanation: item.explanation || undefined,
-        subject: item.subject || subject,
-        topic: item.topic || 'Tổng hợp',
-      }));
+      const validatedWords: Word[] = parsed.map((item: any, idx: number) => {
+        const itemOptions = Array.isArray(item.options) ? item.options : [];
+        const itemAnswer = item.answer ? String(item.answer).toUpperCase() : 'A';
+        const itemCorrect = resolveCorrectOptionFromAnswer(itemAnswer, itemOptions, item.correctWord);
+        return {
+          id: `manual_ai_${Date.now()}_${idx + 1}`,
+          word: item.question || item.word || `Câu ${idx + 1}`,
+          question: item.question || item.word,
+          options: itemOptions,
+          answer: itemAnswer,
+          correctWord: itemCorrect,
+          explanation: item.explanation || undefined,
+          subject: item.subject || subject,
+          topic: item.topic || 'Tổng hợp',
+        };
+      });
 
       const newQuiz = StorageEngine.saveCustomQuiz({
         name: manualTitle.trim(),

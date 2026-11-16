@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { resolveCorrectOptionFromAnswer } from '@/lib/utils';
 
 const ALLOWED_DIFFICULTIES = new Set(['easy', 'medium', 'hard']);
 const MAX_PROMPT_LENGTH = 6000;
@@ -221,10 +222,15 @@ QUY TẮC BẮT BUỘC:
         typeof item.answer === 'string' && item.answer.trim()
           ? item.answer.trim().toUpperCase()
           : 'A';
-      const correctWordStr =
+      const rawItemCorrectWord =
         typeof item.correctWord === 'string' && item.correctWord.trim()
-          ? item.correctWord
-          : optionsArr[0] || '';
+          ? item.correctWord.trim()
+          : undefined;
+      const correctWordStr = resolveCorrectOptionFromAnswer(
+        answerStr,
+        optionsArr,
+        rawItemCorrectWord
+      );
 
       return {
         id: `ai_q_${baseTime}_${idx + 1}`,

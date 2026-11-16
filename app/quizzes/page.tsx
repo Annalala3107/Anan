@@ -339,14 +339,14 @@ export default function QuizzesPage() {
     ? customSubjects
     : customSubjects.filter((s) => `custom_${s.id}` === activeSubjectTab);
 
-  const knownCodes = new Set([
-    'CEA201',
-    'CSI106',
-    'SSA101',
-    'PRF192',
-    'PFP191',
-    ...customSubjects.map((s) => s.subjectCode),
-  ]);
+  const knownCodes = useMemo(
+    () =>
+      new Set([
+        ...QUESTION_BANKS.map((s) => s.subjectCode),
+        ...customSubjects.map((s) => s.subjectCode),
+      ]),
+    [customSubjects]
+  );
   const unassignedCustomQuizzes = customQuizzes.filter((q) => {
     if (q.subject && knownCodes.has(q.subject)) return false;
     const stat = computeWordsStat(q.words || [], progressMap);

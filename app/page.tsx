@@ -94,7 +94,7 @@ export default function Home() {
                 Chọn môn học bạn muốn ôn thi ngay
               </h1>
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                Bấm chọn nhanh một trong 5 học phần bên dưới để kích hoạt bộ câu hỏi chính thức, hoặc vào Kho Đề để tạo đề riêng bằng AI.
+                Bấm chọn nhanh một trong {QUESTION_BANKS.length} học phần bên dưới để kích hoạt bộ câu hỏi chính thức, hoặc vào Kho Đề để tạo đề riêng bằng AI.
               </p>
             </div>
 
@@ -111,13 +111,13 @@ export default function Home() {
                 href="/quizzes"
                 className="text-xs font-bold py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition-colors flex items-center gap-1.5 shadow-sm"
               >
-                <span>Mở toàn bộ 38 chuyên đề</span>
+                <span>Mở toàn bộ {QUESTION_BANKS.reduce((acc, sec) => acc + sec.quizzes.length, 0)} chuyên đề</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
             {QUESTION_BANKS.map((section) => {
               const IconComp = section.icon || BookOpen;
               const primaryQuiz = section.quizzes[0];

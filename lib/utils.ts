@@ -58,6 +58,49 @@ export function parseAnswerKeys(answerKey?: string): ParsedAnswerKeys {
 }
 
 /**
+ * Resolves the correct option text from an answer letter/key and the options list.
+ * e.g. answer "C", options ["A. 1", "B. 2", "C. 3", "D. 4"] -> "C. 3"
+ * For multi-select answer keys (e.g. "A, C"), joins matching options with " | ".
+ * Gracefully falls back to options[0] only when no key could be mapped.
+ */
+export function resolveCorrectOptionFromAnswer(
+  answer?: string,
+  options?: string[],
+  correctWord?: string
+): string {
+  if (correctWord && correctWord.trim()) {
+    return correctWord.trim();
+  }
+  if (!options || options.length === 0) {
+    return answer || '';
+  }
+
+  if (answer && answer.trim()) {
+    const { keys } = parseAnswerKeys(answer);
+    if (keys.length > 0) {
+      const matched: string[] = [];
+      for (const k of keys) {
+        const idx = k.charCodeAt(0) - 65;
+        if (idx >= 0 && idx < options.length) {
+          matched.push(options[idx]);
+        }
+      }
+      if (matched.length > 0) {
+        return matched.join(' | ');
+      }
+    }
+
+    const exactMatch = options.find((opt) => {
+      const optKey = extractOptionKey(opt);
+      return optKey && optKey.toUpperCase() === answer.trim().toUpperCase();
+    });
+    if (exactMatch) return exactMatch;
+  }
+
+  return options[0] || '';
+}
+
+/**
  * Splits a single or pipe-delimited multi-answer correctWord string into individual choices,
  * without breaking logical OR operators ("||") inside programming questions.
  */

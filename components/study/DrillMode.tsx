@@ -9,6 +9,7 @@ import {
   isAnswerMatch,
   isQuestionAnsweredCorrectly,
   getQuestionAnswerMeta,
+  resolveCorrectOptionFromAnswer,
   formatExplanationForCurrentOptions,
   shuffleArray,
 } from '@/lib/utils';
@@ -110,7 +111,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       .map((target, idx) => {
         const key = String(target.id || getQuestionKey(target));
         if (target.question && target.options && target.options.length > 0) {
-          const rawCorrect = target.correctWord || target.options[0];
+          const rawCorrect = resolveCorrectOptionFromAnswer(target.answer, target.options, target.correctWord);
           const meta = getQuestionAnswerMeta(rawCorrect, target.answer, target.options);
           return {
             id: key,

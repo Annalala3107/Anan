@@ -4,6 +4,7 @@
   "private": true,
   "description": "An open-source, AI-powered interactive flashcard & quiz study platform inspired by OpenQuiz, Quizlet, and Anki.",
   "scripts": {
+    "prebuild": "node scripts/generate-data-manifest.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

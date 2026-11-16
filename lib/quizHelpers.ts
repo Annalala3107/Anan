@@ -4,6 +4,7 @@ import {
   cleanOptionText,
   shuffleArray,
   getQuestionAnswerMeta,
+  resolveCorrectOptionFromAnswer,
 } from './utils';
 import { StorageEngine } from './storage';
 
@@ -119,7 +120,7 @@ export function buildStandardQuestions(
     // Case 1: Standard Multiple Choice Question (CSI106, CEA201, SSA101, PRF192)
     if (target.question && target.options && target.options.length > 0) {
       const rawOptions = target.options;
-      const rawCorrect = target.correctWord || rawOptions[0];
+      const rawCorrect = resolveCorrectOptionFromAnswer(target.answer, rawOptions, target.correctWord);
       const meta = getQuestionAnswerMeta(rawCorrect, target.answer, rawOptions);
 
       const finalOptions = shuffleChoices
