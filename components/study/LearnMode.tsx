@@ -33,6 +33,7 @@ import {
   BookOpen,
   Shuffle,
   ListOrdered,
+  Clock,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -61,8 +62,9 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
   const [isConfiguring, setIsConfiguring] = useState(true);
   const [studyMethod, setStudyMethod] = useState<'flashcard' | 'rapid'>('flashcard');
   const [isFlipped, setIsFlipped] = useState(false);
-  const [batchMode, setBatchMode] = useState<'preset' | 'all' | 'remaining'>('preset');
+  const [batchMode, setBatchMode] = useState<'preset' | 'all' | 'remaining' | 'due'>('preset');
   const [batchSize, setBatchSize] = useState(20);
+  const autoDueAppliedRef = useRef(false);
   const [selectionMode, setSelectionMode] = useState<QuestionSelectionMode>('smart');
   const [shuffleChoices, setShuffleChoices] = useState(true);
   const [streakTarget, setStreakTarget] = useState(2); // 1 = Speed run, 2 = Ironclad memory
@@ -105,29 +107,47 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     };
   }, [refreshProgress]);
 
-  // Compute deck-wide mastery stats
-  const { availableCount, masteredCount, unmasteredCount } = useMemo(() => {
+  // Compute deck-wide mastery & SRS due stats
+  const { availableCount, masteredCount, unmasteredCount, dueWords, dueCount } = useMemo(() => {
     const total = words.length;
+    const now = Date.now();
     let mastered = 0;
+    const due: Word[] = [];
     for (const w of words) {
       const p = StorageEngine.getItemProgress(w, progressMap);
       if (p?.status === 'mastered') {
         mastered++;
+      }
+      if (p && p.seenCount > 0 && p.nextDue <= now) {
+        due.push(w);
       }
     }
     return {
       availableCount: total,
       masteredCount: mastered,
       unmasteredCount: Math.max(0, total - mastered),
+      dueWords: due,
+      dueCount: due.length,
     };
   }, [words, progressMap]);
 
+  // Automatically select 'due' filter when navigated with ?due=1
+  useEffect(() => {
+    if (autoDueAppliedRef.current || typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('due') === '1' && dueCount > 0) {
+      autoDueAppliedRef.current = true;
+      setBatchMode('due');
+    }
+  }, [dueCount]);
+
   // Calculate effective question count for the selected batch mode
   const effectiveTargetCount = useMemo(() => {
+    if (batchMode === 'due') return dueCount;
     if (batchMode === 'all') return availableCount;
     if (batchMode === 'remaining') return unmasteredCount > 0 ? unmasteredCount : availableCount;
     return Math.min(batchSize, availableCount);
-  }, [batchMode, batchSize, availableCount, unmasteredCount]);
+  }, [batchMode, batchSize, availableCount, unmasteredCount, dueCount]);
 
   // Start the Rapid Recall / Flashcard session
   const startSessionWithConfig = useCallback(
@@ -142,15 +162,27 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       const freshMap = StorageEngine.getWordProgress();
       setProgressMap(freshMap);
 
-      const countToUse =
-        overrideCount !== undefined ? overrideCount : effectiveTargetCount;
+      const useDueFilter = batchMode === 'due' && overrideCount === undefined && !forceOnlyUnmastered;
+      const nowTs = Date.now();
+      const sourcePool = useDueFilter
+        ? words.filter((w) => {
+            const p = StorageEngine.getItemProgress(w, freshMap);
+            return Boolean(p && p.seenCount > 0 && p.nextDue <= nowTs);
+          })
+        : words;
+
+      const countToUse = useDueFilter
+        ? sourcePool.length
+        : overrideCount !== undefined
+        ? overrideCount
+        : effectiveTargetCount;
       const onlyUnmastered =
         forceOnlyUnmastered !== undefined
           ? forceOnlyUnmastered
           : batchMode === 'remaining';
 
       // Build questions in canonical order first so we can preserve originalOptions for mid-session toggling
-      const canonicalList = buildStandardQuestions(words, countToUse, {
+      const canonicalList = buildStandardQuestions(sourcePool, countToUse, {
         mode: selectionMode,
         progressMap: freshMap,
         onlyUnmastered,
@@ -938,6 +970,42 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 </span>
               </button>
             </div>
+
+            {/* SRS Due Today Queue Filter Button */}
+            {dueCount > 0 && (
+              <button
+                type="button"
+                onClick={() => setBatchMode('due')}
+                className={`mt-3 w-full p-3.5 sm:p-4 rounded-2xl border-2 text-left transition-all flex items-center justify-between gap-3 cursor-pointer ${
+                  batchMode === 'due'
+                    ? 'bg-amber-500/15 dark:bg-amber-950/45 border-amber-500 shadow-[0_0_22px_rgba(245,158,11,0.25)]'
+                    : 'bg-amber-500/5 dark:bg-amber-950/15 border-amber-500/35 hover:border-amber-500/70'
+                }`}
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-sm font-black text-slate-900 dark:text-white">
+                      ⏰ Ôn câu đến hạn SRS hôm nay ({dueCount} câu)
+                    </p>
+                    <p className="text-[11px] text-slate-600 dark:text-slate-300">
+                      Chỉ lọc các câu đã tới lịch nhắc lại theo thuật toán lặp lại ngắt quãng SM-2.
+                    </p>
+                  </div>
+                </div>
+                <span
+                  className={`text-[11px] font-black uppercase px-2.5 py-1 rounded-full shrink-0 ${
+                    batchMode === 'due'
+                      ? 'bg-amber-500 text-white'
+                      : 'bg-amber-500/15 text-amber-700 dark:text-amber-300'
+                  }`}
+                >
+                  {batchMode === 'due' ? 'Đang chọn' : 'Chọn ôn'}
+                </span>
+              </button>
+            )}
           </div>
 
           {/* Smart Queue Order & Anti-Rote Option Shuffle */}

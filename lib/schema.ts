@@ -90,9 +90,11 @@ export const BackupDataSchema = z.object({
     customQuizzes: z.array(CustomQuizSchema).max(200).optional().default([]),
     customSubjects: z.array(CustomSubjectSchema).max(100).optional().default([]),
     dailyStats: DailyStatsSchema.nullable().optional(),
+    dailyHistory: z.array(DailyStatsSchema).max(60).optional().default([]),
     streak: z.number().int().min(0).max(100000).optional().default(1),
     selectedQuiz: z.string().max(500).optional(),
     examHistory: z.array(ExamRecordSchema).max(200).optional().default([]),
+    bookmarks: z.array(z.string().max(500)).max(2000).optional().default([]),
   }),
 });
 

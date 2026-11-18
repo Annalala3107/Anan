@@ -10,14 +10,19 @@ export interface MusicTrack {
   url: string;
   isCustom?: boolean;
   isPinned?: boolean;
+  isLocalFile?: boolean;
+  localBlobUrl?: string;
 }
 
-export function getTrackErrorKey(track: Pick<MusicTrack, 'videoId' | 'playlistId'>): string {
+export function getTrackErrorKey(
+  track: Pick<MusicTrack, 'videoId' | 'playlistId'> & { id?: string; isLocalFile?: boolean }
+): string {
+  if (track.isLocalFile && track.id) return track.id;
   return track.playlistId ? `playlist:${track.playlistId}` : track.videoId;
 }
 
 export interface MusicPlayerController {
-  loadTrack: (videoId: string, autoPlay: boolean, playlistId?: string) => void;
+  loadTrack: (videoId: string, autoPlay: boolean, playlistId?: string, localBlobUrl?: string) => void;
   play: () => void;
   pause: () => void;
   seekTo: (seconds: number) => void;
@@ -419,6 +424,7 @@ export interface MusicStoreState {
     urlOrId: string,
     customTitle?: string
   ) => Promise<{ ok: boolean; error?: string }>;
+  addLocalFileTrack: (file: File) => { ok: boolean; error?: string };
   removeCustomTrack: (trackId: string) => void;
   playCuratedStation: (station: CuratedStation) => void;
   addStationToQueue: (station: CuratedStation) => void;
@@ -670,7 +676,12 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       livePlaylistTotal: 0,
       showMiniPlayer: shouldRevealMini,
     });
-    playerController?.loadTrack(track.videoId, autoPlay, track.playlistId);
+    playerController?.loadTrack(
+      track.videoId,
+      autoPlay,
+      track.playlistId,
+      track.isLocalFile ? track.localBlobUrl : undefined
+    );
   },
 
   togglePlay: () => {
@@ -828,8 +839,8 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
 
       const nextTracks = [...get().tracks, newTrack];
       savePrefs({
-        customTracks: nextTracks.filter((t) => t.isCustom),
-        trackOrderIds: nextTracks.map((t) => t.id),
+        customTracks: nextTracks.filter((t) => t.isCustom && !t.isLocalFile),
+        trackOrderIds: nextTracks.filter((t) => !t.isLocalFile).map((t) => t.id),
       });
       set({ tracks: nextTracks });
       get().selectTrack(newTrack.id, true);
@@ -873,9 +884,43 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
 
     const nextTracks = [...get().tracks, newTrack];
     savePrefs({
-      customTracks: nextTracks.filter((t) => t.isCustom),
-      trackOrderIds: nextTracks.map((t) => t.id),
+      customTracks: nextTracks.filter((t) => t.isCustom && !t.isLocalFile),
+      trackOrderIds: nextTracks.filter((t) => !t.isLocalFile).map((t) => t.id),
     });
+    set({ tracks: nextTracks });
+    get().selectTrack(newTrack.id, true);
+    return { ok: true };
+  },
+
+  addLocalFileTrack: (file: File) => {
+    if (typeof window === 'undefined' || typeof URL === 'undefined' || !file) {
+      return { ok: false, error: 'Trình duyệt không hỗ trợ phát file âm thanh cục bộ.' };
+    }
+
+    const isSupportedExt = /\.(mp3|m4a|wav|ogg|aac|flac|webm|opus)$/i.test(file.name);
+    const isAudioMime = Boolean(file.type && file.type.startsWith('audio/'));
+    if (!isSupportedExt && !isAudioMime) {
+      return {
+        ok: false,
+        error: `File "${file.name}" không phải định dạng âm thanh (.mp3, .m4a, .wav, .ogg).`,
+      };
+    }
+
+    const blobUrl = URL.createObjectURL(file);
+    const cleanTitle =
+      file.name.replace(/\.[^.]+$/, '').trim() || 'Nhạc từ máy của bạn';
+    const newTrack: MusicTrack = {
+      id: `local-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      videoId: 'jfKfPfyJRdk',
+      title: cleanTitle,
+      artist: 'Nhạc trên thiết bị (Offline)',
+      url: blobUrl,
+      isCustom: true,
+      isLocalFile: true,
+      localBlobUrl: blobUrl,
+    };
+
+    const nextTracks = [...get().tracks, newTrack];
     set({ tracks: nextTracks });
     get().selectTrack(newTrack.id, true);
     return { ok: true };
@@ -885,6 +930,14 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     const target = get().tracks.find((t) => t.id === trackId);
     if (!target || !target.isCustom) return;
 
+    if (target.isLocalFile && target.localBlobUrl && typeof URL !== 'undefined') {
+      try {
+        URL.revokeObjectURL(target.localBlobUrl);
+      } catch {
+        // Ignore revoke errors
+      }
+    }
+
     const nextTracks = get().tracks.filter((t) => t.id !== trackId);
     const isRemovingCurrent = get().currentTrackId === trackId;
     const fallbackId = isRemovingCurrent
@@ -892,10 +945,12 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       : get().currentTrackId;
 
     savePrefs({
-      customTracks: nextTracks.filter((t) => t.isCustom),
-      pinnedTrackIds: nextTracks.filter((t) => t.isPinned).map((t) => t.id),
-      trackOrderIds: nextTracks.map((t) => t.id),
-      currentTrackId: fallbackId,
+      customTracks: nextTracks.filter((t) => t.isCustom && !t.isLocalFile),
+      pinnedTrackIds: nextTracks.filter((t) => t.isPinned && !t.isLocalFile).map((t) => t.id),
+      trackOrderIds: nextTracks.filter((t) => !t.isLocalFile).map((t) => t.id),
+      currentTrackId: nextTracks.find((t) => t.id === fallbackId)?.isLocalFile
+        ? DEFAULT_MUSIC_TRACKS[0].id
+        : fallbackId,
     });
 
     set({
@@ -935,8 +990,8 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     };
     const nextTracks = [...tracks, newTrack];
     savePrefs({
-      customTracks: nextTracks.filter((t) => t.isCustom),
-      trackOrderIds: nextTracks.map((t) => t.id),
+      customTracks: nextTracks.filter((t) => t.isCustom && !t.isLocalFile),
+      trackOrderIds: nextTracks.filter((t) => !t.isLocalFile).map((t) => t.id),
     });
     set({ tracks: nextTracks });
     get().selectTrack(newTrack.id, true);
@@ -959,8 +1014,8 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     };
     const nextTracks = [...tracks, newTrack];
     savePrefs({
-      customTracks: nextTracks.filter((t) => t.isCustom),
-      trackOrderIds: nextTracks.map((t) => t.id),
+      customTracks: nextTracks.filter((t) => t.isCustom && !t.isLocalFile),
+      trackOrderIds: nextTracks.filter((t) => !t.isLocalFile).map((t) => t.id),
     });
     set({ tracks: nextTracks });
   },
@@ -970,7 +1025,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     if (!cleanTitle) return;
     const current = get().tracks;
     const target = current.find((t) => t.id === trackId);
-    if (!target) return;
+    if (!target || target.isLocalFile) return;
 
     const needsHeal =
       target.title.startsWith('YouTube Custom (') ||
@@ -987,7 +1042,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
         : t
     );
     savePrefs({
-      customTracks: nextTracks.filter((t) => t.isCustom),
+      customTracks: nextTracks.filter((t) => t.isCustom && !t.isLocalFile),
     });
     set({ tracks: nextTracks });
   },
@@ -1028,8 +1083,8 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     const reordered = [...pinned, ...unpinned];
 
     savePrefs({
-      pinnedTrackIds: pinned.map((t) => t.id),
-      trackOrderIds: reordered.map((t) => t.id),
+      pinnedTrackIds: pinned.filter((t) => !t.isLocalFile).map((t) => t.id),
+      trackOrderIds: reordered.filter((t) => !t.isLocalFile).map((t) => t.id),
     });
     set({ tracks: reordered });
   },
@@ -1045,7 +1100,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     const [moved] = next.splice(idx, 1);
     next.splice(swapIdx, 0, moved);
 
-    savePrefs({ trackOrderIds: next.map((t) => t.id) });
+    savePrefs({ trackOrderIds: next.filter((t) => !t.isLocalFile).map((t) => t.id) });
     set({ tracks: next });
   },
 

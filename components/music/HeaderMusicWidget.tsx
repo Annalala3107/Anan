@@ -31,6 +31,8 @@ import {
   VolumeX,
   Wind,
   X,
+  Music,
+  Smartphone,
 } from 'lucide-react';
 import {
   formatSecondsMmSs,
@@ -217,6 +219,7 @@ export default function HeaderMusicWidget() {
   const nextTrack = useMusicStore((s) => s.nextTrack);
   const prevTrack = useMusicStore((s) => s.prevTrack);
   const addCustomTrackAsync = useMusicStore((s) => s.addCustomTrackAsync);
+  const addLocalFileTrack = useMusicStore((s) => s.addLocalFileTrack);
   const removeCustomTrack = useMusicStore((s) => s.removeCustomTrack);
   const togglePinTrack = useMusicStore((s) => s.togglePinTrack);
   const moveTrack = useMusicStore((s) => s.moveTrack);
@@ -248,12 +251,23 @@ export default function HeaderMusicWidget() {
     text: string;
   } | null>(null);
   const [isAdding, setIsAdding] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
 
   const triggerWrapRef = useRef<HTMLDivElement | null>(null);
   const popoverRef = useRef<HTMLDivElement | null>(null);
+  const localAudioInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     setMounted(true);
+    try {
+      const ua = navigator.userAgent || '';
+      const ios =
+        /iPad|iPhone|iPod/.test(ua) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      setIsIOS(ios);
+    } catch {
+      // Ignore
+    }
   }, []);
 
   const currentTrack = useMemo(
@@ -341,6 +355,29 @@ export default function HeaderMusicWidget() {
       }
     } finally {
       setIsAdding(false);
+    }
+  };
+
+  const handleLocalAudioFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files ? Array.from(e.target.files) : [];
+    e.target.value = '';
+    if (files.length === 0) return;
+
+    let added = 0;
+    let lastError: string | undefined;
+    for (const file of files) {
+      const res = addLocalFileTrack(file);
+      if (res.ok) added++;
+      else lastError = res.error;
+    }
+
+    if (added > 0) {
+      setFormMsg({
+        type: 'ok',
+        text: `Đã nạp ${added} file nhạc từ máy và phát ngay (hỗ trợ Offline).`,
+      });
+    } else if (lastError) {
+      setFormMsg({ type: 'err', text: lastError });
     }
   };
 
@@ -691,6 +728,15 @@ export default function HeaderMusicWidget() {
                     </span>
                   </div>
 
+                  {isIOS && currentTrack && !currentTrack.isLocalFile && (
+                    <p className="text-[10px] leading-snug text-amber-700 dark:text-amber-300 bg-amber-500/10 border border-amber-500/25 rounded-lg px-2 py-1.5 flex items-start gap-1.5">
+                      <Smartphone className="w-3.5 h-3.5 shrink-0 mt-0.5 text-amber-500" />
+                      <span>
+                        Trên iPhone/iPad, Safari khóa chỉnh âm lượng YouTube qua web — hãy dùng nút âm lượng máy, hoặc chọn file MP3 trên máy / âm nền bên Tab Pomodoro.
+                      </span>
+                    </p>
+                  )}
+
                   {/* Sleep Timer */}
                   <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-200/70 dark:border-white/10">
                     <span className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-600 dark:text-slate-300 shrink-0">
@@ -773,6 +819,11 @@ export default function HeaderMusicWidget() {
                               {track.playlistId && (
                                 <span className="shrink-0 px-1.5 py-0.2 rounded text-[9px] font-semibold bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">
                                   Playlist
+                                </span>
+                              )}
+                              {track.isLocalFile && (
+                                <span className="shrink-0 px-1.5 py-0.2 rounded text-[9px] font-semibold bg-emerald-500/15 text-emerald-600 dark:text-emerald-300">
+                                  Offline
                                 </span>
                               )}
                               {hasError && (
@@ -894,6 +945,25 @@ export default function HeaderMusicWidget() {
                       {formMsg.text}
                     </p>
                   )}
+
+                  <div className="pt-1.5 border-t border-slate-200/70 dark:border-white/10">
+                    <input
+                      ref={localAudioInputRef}
+                      type="file"
+                      accept="audio/*,.mp3,.m4a,.wav,.ogg"
+                      multiple
+                      onChange={handleLocalAudioFiles}
+                      className="hidden"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => localAudioInputRef.current?.click()}
+                      className="w-full py-1.5 px-2.5 rounded-lg text-[11px] font-bold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                    >
+                      <Music className="w-3.5 h-3.5 shrink-0" />
+                      <span>📂 Phát file nhạc trên máy (MP3/M4A/WAV)</span>
+                    </button>
+                  </div>
                 </form>
               </div>
             ) : (

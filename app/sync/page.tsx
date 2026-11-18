@@ -47,9 +47,11 @@ function SyncContent() {
   const initialCode = searchParams.get('code') || '';
 
   const [inputCode, setInputCode] = useState(initialCode);
+  const [importMode, setImportMode] = useState<'merge' | 'overwrite'>('merge');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [syncSuccess, setSyncSuccess] = useState(false);
+  const [appliedMode, setAppliedMode] = useState<'merge' | 'overwrite'>('merge');
   const [restoredStats, setRestoredStats] = useState<{
     wordsCount: number;
     streak: number;
@@ -58,9 +60,10 @@ function SyncContent() {
   } | null>(null);
   const [countdown, setCountdown] = useState(4);
 
-  const handlePerformSync = useCallback(async (codeToUse: string) => {
-    setLoading(true);
-    setErrorMsg(null);
+  const handlePerformSync = useCallback(
+    async (codeToUse: string, modeToUse: 'merge' | 'overwrite' = 'merge') => {
+      setLoading(true);
+      setErrorMsg(null);
 
     try {
       let jsonStr: string | null = await decompressFromHash();
@@ -92,11 +95,13 @@ function SyncContent() {
           typeof data.payload === 'string' ? data.payload : JSON.stringify(data.payload);
       }
 
-      const importResult = StorageEngine.importAllData(jsonStr);
+      const importResult = StorageEngine.importAllData(jsonStr, { mode: modeToUse });
 
       if (!importResult.success) {
         throw new Error(importResult.message);
       }
+
+      setAppliedMode(modeToUse);
 
       const parsedData = JSON.parse(jsonStr);
       const innerData = parsedData.data || parsedData;
@@ -134,7 +139,7 @@ function SyncContent() {
       initialCode ||
       (typeof window !== 'undefined' && window.location.hash.startsWith('#d='))
     ) {
-      handlePerformSync(initialCode);
+      handlePerformSync(initialCode, 'merge');
     }
   }, [initialCode, handlePerformSync]);
 
@@ -156,7 +161,7 @@ function SyncContent() {
 
   const handleSubmitManual = (e: React.FormEvent) => {
     e.preventDefault();
-    handlePerformSync(inputCode);
+    handlePerformSync(inputCode, importMode);
   };
 
   return (
@@ -178,7 +183,9 @@ function SyncContent() {
                 Chuyển Dữ Liệu Thành Công!
               </h1>
               <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
-                Toàn bộ tiến trình ôn thi đã được nhập vào thiết bị này và mã PIN cũ đã bị hủy trên máy chủ.
+                {appliedMode === 'merge'
+                  ? 'Dữ liệu từ thiết bị nguồn đã được hợp nhất thông minh (giữ tiến độ mới hơn từ cả 2 máy) và mã PIN cũ đã bị hủy.'
+                  : 'Toàn bộ tiến trình ôn thi đã được ghi đè theo thiết bị nguồn và mã PIN cũ đã bị hủy trên máy chủ.'}
               </p>
             </div>
 
@@ -291,6 +298,48 @@ function SyncContent() {
                     <span>{errorMsg}</span>
                   </div>
                 )}
+
+                {/* Merge Mode Selector */}
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
+                    Chế độ nhận dữ liệu:
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setImportMode('merge')}
+                      className={`p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                        importMode === 'merge'
+                          ? 'bg-indigo-500/15 border-indigo-500 text-indigo-700 dark:text-indigo-200'
+                          : 'bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'
+                      }`}
+                    >
+                      <span className="text-xs font-extrabold block">
+                        Hợp nhất thông minh (Khuyên dùng)
+                      </span>
+                      <span className="text-[11px] opacity-80 block mt-0.5">
+                        Giữ tiến độ mới hơn từ cả 2 máy &amp; gộp đề tự tạo.
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setImportMode('overwrite')}
+                      className={`p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                        importMode === 'overwrite'
+                          ? 'bg-rose-500/15 border-rose-500 text-rose-700 dark:text-rose-200'
+                          : 'bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'
+                      }`}
+                    >
+                      <span className="text-xs font-extrabold block">
+                        Ghi đè toàn bộ
+                      </span>
+                      <span className="text-[11px] opacity-80 block mt-0.5">
+                        Thay thế toàn bộ dữ liệu trên thiết bị này.
+                      </span>
+                    </button>
+                  </div>
+                </div>
 
                 <div className="pt-2 space-y-3">
                   <button

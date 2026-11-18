@@ -104,6 +104,18 @@ function syncPlayerAudio(player: any, isMuted: boolean, volume: number, isDucked
   }
 }
 
+function syncHtmlAudioVolume(
+  audio: HTMLAudioElement | null,
+  isMuted: boolean,
+  volume: number,
+  isDucked: boolean
+) {
+  if (!audio) return;
+  const effectiveVolume = computeEffectiveVolume(isMuted, volume, isDucked);
+  audio.muted = isMuted || effectiveVolume === 0;
+  audio.volume = Math.max(0, Math.min(1, effectiveVolume / 100));
+}
+
 export default function YouTubeAudioEngine() {
   const tracks = useMusicStore((s) => s.tracks);
   const currentTrackId = useMusicStore((s) => s.currentTrackId);
@@ -124,6 +136,8 @@ export default function YouTubeAudioEngine() {
   );
 
   const hostRef = useRef<HTMLDivElement | null>(null);
+  const localAudioRef = useRef<HTMLAudioElement | null>(null);
+  const activeIsLocalRef = useRef(false);
   const playerRef = useRef<any>(null);
   const isPlayerReadyRef = useRef(false);
   const activeVideoIdRef = useRef<string>('');
@@ -211,6 +225,69 @@ export default function YouTubeAudioEngine() {
       }, stepMs);
     };
 
+    const fadeHtmlAudioTo = (
+      audio: HTMLAudioElement | null,
+      targetVolPct: number,
+      durationMs = 240,
+      onComplete?: () => void
+    ) => {
+      clearFade();
+      if (!audio) {
+        onComplete?.();
+        return;
+      }
+
+      const startPct = audio.muted ? 0 : Math.round((audio.volume || 0) * 100);
+      if (Math.abs(targetVolPct - startPct) <= 2 || durationMs <= 0) {
+        audio.muted = targetVolPct <= 0;
+        audio.volume = Math.max(0, Math.min(1, targetVolPct / 100));
+        onComplete?.();
+        return;
+      }
+
+      const steps = 5;
+      const stepMs = Math.max(30, Math.round(durationMs / steps));
+      let step = 0;
+
+      if (targetVolPct > 0) {
+        audio.muted = false;
+      }
+
+      fadeTimerRef.current = window.setInterval(() => {
+        step += 1;
+        const progress = Math.min(1, step / steps);
+        const nextPct = startPct + (targetVolPct - startPct) * progress;
+        audio.volume = Math.max(0, Math.min(1, nextPct / 100));
+        if (step >= steps) {
+          audio.muted = targetVolPct <= 0;
+          clearFade();
+          onComplete?.();
+        }
+      }, stepMs);
+    };
+
+    const pauseYouTubeSafe = () => {
+      const p = playerRef.current;
+      if (isPlayerReadyRef.current && p) {
+        try {
+          p.pauseVideo?.();
+        } catch {
+          // Ignore
+        }
+      }
+    };
+
+    const pauseLocalSafe = () => {
+      const a = localAudioRef.current;
+      if (a) {
+        try {
+          a.pause();
+        } catch {
+          // Ignore
+        }
+      }
+    };
+
     const loadIntoPlayer = (
       player: any,
       videoId: string,
@@ -266,7 +343,55 @@ export default function YouTubeAudioEngine() {
     useMusicStore.getState().hydratePrefs();
 
     registerMusicPlayerController({
-      loadTrack: (videoId: string, autoPlay: boolean, playlistId?: string) => {
+      loadTrack: (
+        videoId: string,
+        autoPlay: boolean,
+        playlistId?: string,
+        localBlobUrl?: string
+      ) => {
+        if (localBlobUrl) {
+          clearFade();
+          pauseYouTubeSafe();
+          activeIsLocalRef.current = true;
+          const latest = useMusicStore.getState();
+          activeMediaKeyRef.current = latest.currentTrackId;
+          syncedIntentRef.current = {
+            mediaKey: latest.currentTrackId,
+            isPlaying: autoPlay,
+          };
+          const audio = localAudioRef.current;
+          if (!audio) return;
+          if (audio.getAttribute('data-blob-src') !== localBlobUrl) {
+            audio.src = localBlobUrl;
+            audio.setAttribute('data-blob-src', localBlobUrl);
+            audio.load();
+          }
+          latest.setReady(true);
+          const targetVol = computeEffectiveVolume(
+            latest.isMuted,
+            latest.volume,
+            latest.isDucked
+          );
+          if (autoPlay) {
+            audio.muted = latest.isMuted || targetVol === 0;
+            audio.volume = 0;
+            void audio
+              .play()
+              .then(() => {
+                fadeHtmlAudioTo(audio, targetVol, 240);
+              })
+              .catch(() => {
+                useMusicStore.getState().setPlayerState('paused');
+                useMusicStore.getState().setPlaying(false);
+              });
+          } else {
+            syncHtmlAudioVolume(audio, latest.isMuted, latest.volume, latest.isDucked);
+          }
+          return;
+        }
+
+        activeIsLocalRef.current = false;
+        pauseLocalSafe();
         const player = playerRef.current;
         if (!isPlayerReadyRef.current || !player) return;
         try {
@@ -276,12 +401,48 @@ export default function YouTubeAudioEngine() {
         }
       },
       play: () => {
-        const player = playerRef.current;
-        if (!isPlayerReadyRef.current || !player) return;
         const latest = useMusicStore.getState();
         const targetTrack =
           latest.tracks.find((t) => t.id === latest.currentTrackId) || latest.tracks[0];
         if (!targetTrack) return;
+
+        if (targetTrack.isLocalFile && targetTrack.localBlobUrl) {
+          clearFade();
+          pauseYouTubeSafe();
+          activeIsLocalRef.current = true;
+          activeMediaKeyRef.current = targetTrack.id;
+          syncedIntentRef.current = { mediaKey: targetTrack.id, isPlaying: true };
+          const audio = localAudioRef.current;
+          if (!audio) return;
+          if (audio.getAttribute('data-blob-src') !== targetTrack.localBlobUrl) {
+            audio.src = targetTrack.localBlobUrl;
+            audio.setAttribute('data-blob-src', targetTrack.localBlobUrl);
+            audio.load();
+          }
+          latest.setReady(true);
+          const targetVol = computeEffectiveVolume(
+            latest.isMuted,
+            latest.volume,
+            latest.isDucked
+          );
+          audio.muted = latest.isMuted || targetVol === 0;
+          audio.volume = 0;
+          void audio
+            .play()
+            .then(() => {
+              fadeHtmlAudioTo(audio, targetVol, 240);
+            })
+            .catch(() => {
+              useMusicStore.getState().setPlayerState('paused');
+              useMusicStore.getState().setPlaying(false);
+            });
+          return;
+        }
+
+        activeIsLocalRef.current = false;
+        pauseLocalSafe();
+        const player = playerRef.current;
+        if (!isPlayerReadyRef.current || !player) return;
         const targetMediaKey = getTrackErrorKey(targetTrack);
         const targetVol = computeEffectiveVolume(latest.isMuted, latest.volume, latest.isDucked);
 
@@ -319,6 +480,31 @@ export default function YouTubeAudioEngine() {
         }
       },
       pause: () => {
+        if (activeIsLocalRef.current) {
+          syncedIntentRef.current = {
+            mediaKey: activeMediaKeyRef.current,
+            isPlaying: false,
+          };
+          const audio = localAudioRef.current;
+          const latest = useMusicStore.getState();
+          const effectiveVol = computeEffectiveVolume(
+            latest.isMuted,
+            latest.volume,
+            latest.isDucked
+          );
+          if (!audio || effectiveVol === 0) {
+            clearFade();
+            pauseLocalSafe();
+            return;
+          }
+          isFadingOutRef.current = true;
+          fadeHtmlAudioTo(audio, 0, 220, () => {
+            isFadingOutRef.current = false;
+            pauseLocalSafe();
+          });
+          return;
+        }
+
         const player = playerRef.current;
         if (!isPlayerReadyRef.current || !player) return;
         syncedIntentRef.current = {
@@ -347,6 +533,15 @@ export default function YouTubeAudioEngine() {
         });
       },
       seekTo: (seconds: number) => {
+        if (activeIsLocalRef.current) {
+          const audio = localAudioRef.current;
+          if (audio) {
+            audio.currentTime = Math.max(0, seconds);
+          }
+          useMusicStore.getState().clearSeekRequest();
+          return;
+        }
+
         const player = playerRef.current;
         if (!isPlayerReadyRef.current || !player) return;
         try {
@@ -357,6 +552,21 @@ export default function YouTubeAudioEngine() {
         }
       },
       syncAudio: (muted: boolean, vol: number, ducked: boolean, immediate = false) => {
+        if (activeIsLocalRef.current) {
+          const audio = localAudioRef.current;
+          if (!audio || isFadingOutRef.current) return;
+          if (immediate) {
+            clearFade();
+            syncHtmlAudioVolume(audio, muted, vol, ducked);
+            return;
+          }
+          const targetVol = computeEffectiveVolume(muted, vol, ducked);
+          fadeHtmlAudioTo(audio, targetVol, 180, () => {
+            syncHtmlAudioVolume(audio, muted, vol, ducked);
+          });
+          return;
+        }
+
         const player = playerRef.current;
         if (!isPlayerReadyRef.current || !player || isFadingOutRef.current) return;
         if (immediate) {
@@ -592,7 +802,11 @@ export default function YouTubeAudioEngine() {
         playerRef.current = player;
       } catch {
         if (!cancelled) {
-          useMusicStore.getState().setPlayerState('error');
+          const cur = useMusicStore.getState();
+          const activeTrack = cur.tracks.find((t) => t.id === cur.currentTrackId);
+          if (!activeTrack?.isLocalFile) {
+            cur.setPlayerState('error');
+          }
         }
       }
     };
@@ -627,11 +841,61 @@ export default function YouTubeAudioEngine() {
 
   const currentVideoId = currentTrack?.videoId;
   const currentPlaylistId = currentTrack?.playlistId;
+  const currentLocalBlobUrl = currentTrack?.isLocalFile ? currentTrack.localBlobUrl : undefined;
+  const isLocalTrack = Boolean(currentLocalBlobUrl);
   const currentMediaKey = currentTrack ? getTrackErrorKey(currentTrack) : undefined;
 
-  // Unified reactive fallback effect for track changes & play/pause (e.g. Pomodoro or state changes before onReady)
+  // Unified reactive fallback effect for track changes & play/pause (YouTube + Local Audio)
   useEffect(() => {
-    if (!currentVideoId || !currentMediaKey || !isReady || !isPlayerReadyRef.current || !playerRef.current) return;
+    if (!currentMediaKey) return;
+
+    if (isLocalTrack && currentLocalBlobUrl) {
+      const intent = syncedIntentRef.current;
+      if (intent && intent.mediaKey === currentMediaKey && intent.isPlaying === isPlaying) {
+        return;
+      }
+
+      const audio = localAudioRef.current;
+      if (!audio) return;
+
+      activeIsLocalRef.current = true;
+      activeMediaKeyRef.current = currentMediaKey;
+      syncedIntentRef.current = { mediaKey: currentMediaKey, isPlaying };
+
+      if (isPlayerReadyRef.current && playerRef.current) {
+        try {
+          playerRef.current.pauseVideo?.();
+        } catch {
+          // Ignore
+        }
+      }
+
+      const latest = useMusicStore.getState();
+      if (audio.getAttribute('data-blob-src') !== currentLocalBlobUrl) {
+        audio.src = currentLocalBlobUrl;
+        audio.setAttribute('data-blob-src', currentLocalBlobUrl);
+        audio.load();
+      }
+      latest.setReady(true);
+      syncHtmlAudioVolume(audio, latest.isMuted, latest.volume, latest.isDucked);
+
+      if (isPlaying) {
+        void audio.play().catch(() => {
+          useMusicStore.getState().setPlayerState('paused');
+          useMusicStore.getState().setPlaying(false);
+        });
+      } else if (!isFadingOutRef.current) {
+        audio.pause();
+      }
+      return;
+    }
+
+    if (activeIsLocalRef.current) {
+      activeIsLocalRef.current = false;
+      localAudioRef.current?.pause();
+    }
+
+    if (!currentVideoId || !isReady || !isPlayerReadyRef.current || !playerRef.current) return;
 
     const intent = syncedIntentRef.current;
     if (intent && intent.mediaKey === currentMediaKey && intent.isPlaying === isPlaying) {
@@ -679,17 +943,36 @@ export default function YouTubeAudioEngine() {
     } catch {
       // Ignore if player is mid-transition
     }
-  }, [currentVideoId, currentPlaylistId, currentMediaKey, isPlaying, isReady]);
+  }, [
+    currentVideoId,
+    currentPlaylistId,
+    currentLocalBlobUrl,
+    isLocalTrack,
+    currentMediaKey,
+    isPlaying,
+    isReady,
+  ]);
 
   // Mute / Volume / Ducking synchronization effect
   useEffect(() => {
-    if (!isReady || !playerRef.current || isFadingOutRef.current || fadeTimerRef.current !== null) return;
+    if (isFadingOutRef.current || fadeTimerRef.current !== null) return;
+    if (isLocalTrack) {
+      syncHtmlAudioVolume(localAudioRef.current, isMuted, volume, isDucked);
+      return;
+    }
+    if (!isReady || !playerRef.current) return;
     syncPlayerAudio(playerRef.current, isMuted, volume, isDucked);
-  }, [isMuted, volume, isDucked, isReady]);
+  }, [isMuted, volume, isDucked, isReady, isLocalTrack]);
 
-  // Handle user seek bar drags via player.seekTo()
+  // Handle user seek bar drags
   useEffect(() => {
-    if (seekRequest === null || !isReady || !playerRef.current) return;
+    if (seekRequest === null) return;
+    if (isLocalTrack && localAudioRef.current) {
+      localAudioRef.current.currentTime = Math.max(0, seekRequest);
+      useMusicStore.getState().clearSeekRequest();
+      return;
+    }
+    if (!isReady || !playerRef.current) return;
     try {
       playerRef.current.seekTo?.(seekRequest, true);
     } catch {
@@ -697,15 +980,27 @@ export default function YouTubeAudioEngine() {
     } finally {
       useMusicStore.getState().clearSeekRequest();
     }
-  }, [seekRequest, isReady]);
+  }, [seekRequest, isReady, isLocalTrack]);
 
   // Poll current playback timeline & Sleep Timer once per second while playing
   useEffect(() => {
-    if (!isReady || !isPlaying) return;
+    if ((!isReady && !isLocalTrack) || !isPlaying) return;
     let lastSec = -1;
     const updateNow = () => {
       const store = useMusicStore.getState();
       store.tickSleepTimer();
+
+      if (activeIsLocalRef.current && localAudioRef.current) {
+        const a = localAudioRef.current;
+        const cur = Number.isFinite(a.currentTime) ? a.currentTime : 0;
+        const dur = Number.isFinite(a.duration) ? a.duration : 0;
+        const sec = Math.floor(cur);
+        if (sec !== lastSec && (dur > 0 || cur > 0)) {
+          lastSec = sec;
+          store.setProgress(cur, dur);
+        }
+        return;
+      }
 
       const p = playerRef.current;
       if (!p) return;
@@ -739,7 +1034,7 @@ export default function YouTubeAudioEngine() {
     updateNow();
     const timer = window.setInterval(updateNow, 1000);
     return () => window.clearInterval(timer);
-  }, [isReady, isPlaying, currentTrackId]);
+  }, [isReady, isLocalTrack, isPlaying, currentTrackId]);
 
   // Global Pomodoro Focus Timer ticker (survives route changes)
   useEffect(() => {
@@ -832,11 +1127,68 @@ export default function YouTubeAudioEngine() {
   }, []);
 
   return (
-    <div
-      className="fixed bottom-0 right-0 w-16 h-10 opacity-[0.01] pointer-events-none z-[1] overflow-hidden"
-      aria-hidden={true}
-    >
-      <div ref={hostRef} className="w-[256px] h-[144px]" />
-    </div>
+    <>
+      <audio
+        ref={localAudioRef}
+        preload="metadata"
+        className="hidden"
+        onLoadedMetadata={(e) => {
+          if (!activeIsLocalRef.current) return;
+          const a = e.currentTarget;
+          const store = useMusicStore.getState();
+          store.setReady(true);
+          store.setProgress(a.currentTime || 0, Number.isFinite(a.duration) ? a.duration : 0);
+        }}
+        onPlay={() => {
+          if (!activeIsLocalRef.current) return;
+          const store = useMusicStore.getState();
+          if (store.currentTrackId) {
+            store.clearTrackError(store.currentTrackId);
+          }
+          store.setPlayerState('playing');
+        }}
+        onPause={(e) => {
+          if (!activeIsLocalRef.current) return;
+          const a = e.currentTarget;
+          if (!a.ended && !isFadingOutRef.current) {
+            useMusicStore.getState().setPlayerState('paused');
+          }
+        }}
+        onEnded={(e) => {
+          if (!activeIsLocalRef.current) return;
+          const latest = useMusicStore.getState();
+          latest.setPlayerState('ended');
+          if (!latest.isPlaying) return;
+          if (latest.sleepTimerMode === 'end') {
+            latest.setSleepTimer('off');
+            latest.setPlaying(false);
+          } else if (latest.loopMode === 'one' || latest.tracks.length <= 1) {
+            e.currentTarget.currentTime = 0;
+            void e.currentTarget.play().catch(() => {});
+          } else {
+            latest.nextTrack();
+          }
+        }}
+        onError={() => {
+          if (!activeIsLocalRef.current) return;
+          const latest = useMusicStore.getState();
+          if (latest.currentTrackId) {
+            latest.recordTrackError(
+              latest.currentTrackId,
+              5,
+              'Không thể phát file âm thanh cục bộ này trên trình duyệt.'
+            );
+          }
+          latest.setPlayerState('error');
+          latest.setPlaying(false);
+        }}
+      />
+      <div
+        className="fixed bottom-0 right-0 w-16 h-10 opacity-[0.01] pointer-events-none z-[1] overflow-hidden"
+        aria-hidden={true}
+      >
+        <div ref={hostRef} className="w-[256px] h-[144px]" />
+      </div>
+    </>
   );
 }

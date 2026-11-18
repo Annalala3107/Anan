@@ -8,6 +8,7 @@ import DynamicConstellationBackground from '@/components/DynamicConstellationBac
 import YouTubeAudioEngine from '@/components/music/YouTubeAudioEngine';
 import FloatingMiniPlayer from '@/components/music/FloatingMiniPlayer';
 import ZenFocusOverlay from '@/components/music/ZenFocusOverlay';
+import PwaRegistrar from '@/components/PwaRegistrar';
 
 const beVietnamPro = Be_Vietnam_Pro({
   subsets: ['vietnamese', 'latin'],
@@ -27,6 +28,16 @@ export const metadata: Metadata = {
   title: 'AnanQuiz — The Open-Source Smart Quiz & Exam Prep App',
   description:
     'Nền tảng ôn thi trắc nghiệm đại học thông minh (CSI106, SSA101, PRF192) với thuật toán lặp lại ngắt quãng (SRS), hỗ trợ tạo đề bằng AI, 4 chế độ luyện thi và giao diện Cosmic Dark hiện đại.',
+  manifest: '/manifest.webmanifest',
+  icons: {
+    icon: '/icon.svg',
+    apple: '/icon.svg',
+  },
+  appleWebApp: {
+    capable: true,
+    title: 'AnanQuiz',
+    statusBarStyle: 'black-translucent',
+  },
 };
 
 export default function RootLayout({
@@ -68,6 +79,7 @@ export default function RootLayout({
         <YouTubeAudioEngine />
         <FloatingMiniPlayer />
         <ZenFocusOverlay />
+        <PwaRegistrar />
       </body>
     </html>
   );

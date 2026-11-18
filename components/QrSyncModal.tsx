@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useId } from 'react';
+import React, { useState, useEffect, useCallback, useId, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import QRCode from 'qrcode';
 import { StorageEngine } from '@/lib/storage';
@@ -61,6 +61,8 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [needsRedisForLargePayload, setNeedsRedisForLargePayload] = useState(false);
   const [backupSizeKb, setBackupSizeKb] = useState<string>('0');
+  const [compactMode, setCompactMode] = useState(false);
+  const autoSwitchedCompactRef = useRef(false);
   const [warningMsg, setWarningMsg] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const titleId = useId();
@@ -85,7 +87,14 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     setLoading(true);
     setErrorMsg(null);
     setNeedsRedisForLargePayload(false);
-    setWarningMsg(null);
+    if (autoSwitchedCompactRef.current) {
+      autoSwitchedCompactRef.current = false;
+      setWarningMsg(
+        'Gói dữ liệu đầy đủ vượt 512 KB do chứa nhiều bộ đề tự tạo. Đã tự động chuyển sang Chế độ Gọn (chỉ đồng bộ Tiến độ SRS, Streak & Lịch sử).'
+      );
+    } else {
+      setWarningMsg(null);
+    }
     setSyncCode(null);
     setSyncUrl(null);
     setQrDataUrl(null);
@@ -93,7 +102,9 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     setCopiedUrl(false);
 
     try {
-      const rawBackupJson = StorageEngine.exportAllData();
+      const rawBackupJson = StorageEngine.exportAllData({
+        excludeCustomQuizzes: compactMode,
+      });
       const backupJson = (() => {
         try {
           return JSON.stringify(JSON.parse(rawBackupJson));
@@ -142,6 +153,12 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
       }
 
       if (!res.ok || !resData.success || !resData.code) {
+        if (res.status === 413 && !compactMode) {
+          autoSwitchedCompactRef.current = true;
+          setCompactMode(true);
+          return;
+        }
+
         // If server Redis is unconfigured (503) but backup fits inside gzip QR hash, fall back cleanly
         if (res.status === 503 && compressedPayload && targetOrigin) {
           const offlineTargetUrl = `${targetOrigin}/sync#d=${compressedPayload}`;
@@ -195,7 +212,7 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [compactMode]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -313,6 +330,24 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
             <span>{warningMsg}</span>
           </div>
         )}
+
+        {/* Compact Mode Toggle */}
+        <label className="flex items-start gap-2.5 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 text-xs cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={compactMode}
+            onChange={(e) => setCompactMode(e.target.checked)}
+            className="mt-0.5 rounded accent-indigo-600 w-4 h-4 shrink-0"
+          />
+          <div className="min-w-0 flex-1">
+            <span className="font-bold text-slate-900 dark:text-white block">
+              Chế độ Gọn ({backupSizeKb} KB)
+            </span>
+            <span className="text-[11px] text-slate-500 dark:text-slate-400">
+              Chỉ đồng bộ Tiến độ SRS, Streak &amp; Lịch sử — bỏ qua đề tự tạo lớn để luôn vừa giới hạn QR/PIN.
+            </span>
+          </div>
+        </label>
 
         {/* Modal Body */}
         {loading ? (

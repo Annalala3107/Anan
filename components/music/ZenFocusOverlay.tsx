@@ -36,6 +36,8 @@ import {
   VolumeX,
   Wind,
   X,
+  Music,
+  Smartphone,
 } from 'lucide-react';
 import {
   CURATED_FOCUS_STATIONS,
@@ -431,6 +433,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
   const setPomodoroAutoPause = useMusicStore((s) => s.setPomodoroAutoPause);
   const setExamAutoDuck = useMusicStore((s) => s.setExamAutoDuck);
   const addCustomTrackAsync = useMusicStore((s) => s.addCustomTrackAsync);
+  const addLocalFileTrack = useMusicStore((s) => s.addLocalFileTrack);
   const removeCustomTrack = useMusicStore((s) => s.removeCustomTrack);
   const togglePinTrack = useMusicStore((s) => s.togglePinTrack);
   const moveTrack = useMusicStore((s) => s.moveTrack);
@@ -458,9 +461,16 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
     'all' | CuratedStation['category']
   >('all');
   const [queuedNoticeId, setQueuedNoticeId] = useState<string | null>(null);
+  const [isIOS, setIsIOS] = useState(false);
+  const localAudioInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     try {
+      const ua = navigator.userAgent || '';
+      setIsIOS(
+        /iPad|iPhone|iPod/.test(ua) ||
+          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+      );
       const savedScene = localStorage.getItem(
         'anan_zen_scene'
       ) as StudioSceneMode | null;
@@ -572,6 +582,29 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
       }
     } finally {
       setIsAdding(false);
+    }
+  };
+
+  const handleLocalAudioFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files ? Array.from(e.target.files) : [];
+    e.target.value = '';
+    if (files.length === 0) return;
+
+    let added = 0;
+    let lastError: string | undefined;
+    for (const file of files) {
+      const res = addLocalFileTrack(file);
+      if (res.ok) added++;
+      else lastError = res.error;
+    }
+
+    if (added > 0) {
+      setFormMsg({
+        type: 'ok',
+        text: `Đã thêm ${added} file nhạc trên máy & phát ngay (chạy Offline cực mượt).`,
+      });
+    } else if (lastError) {
+      setFormMsg({ type: 'err', text: lastError });
     }
   };
 
@@ -1019,6 +1052,15 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                     </span>
                   </div>
 
+                  {isIOS && currentTrack && !currentTrack.isLocalFile && (
+                    <p className="text-[11px] leading-snug text-amber-300 bg-amber-500/10 border border-amber-500/25 rounded-xl px-2.5 py-2 flex items-start gap-2">
+                      <Smartphone className="w-3.5 h-3.5 shrink-0 mt-0.5 text-amber-400" />
+                      <span>
+                        Trên iPhone/iPad, Safari khóa chỉnh âm lượng YouTube bằng thanh trượt web — hãy dùng phím âm lượng máy, chọn file MP3 cục bộ ở tab Hàng Đợi hoặc dùng Mưa rơi / Brown Noise để phát nền khi khóa màn hình.
+                      </span>
+                    </p>
+                  )}
+
                   <div className="flex items-center justify-between gap-2 pt-3 border-t border-white/10">
                     <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300">
                       <Moon className="w-3.5 h-3.5 text-indigo-400" />
@@ -1139,15 +1181,19 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                           onClick={() => selectTrack(t.id)}
                           className="min-w-0 flex-1 flex items-center gap-2.5 text-left"
                         >
-                          <div className="relative w-9 h-9 rounded-lg overflow-hidden shrink-0 bg-slate-800 border border-white/10">
-                            <Image
-                              src={`https://i.ytimg.com/vi/${t.videoId}/mqdefault.jpg`}
-                              alt={t.title}
-                              width={72}
-                              height={72}
-                              unoptimized
-                              className="w-full h-full object-cover"
-                            />
+                          <div className="relative w-9 h-9 rounded-lg overflow-hidden shrink-0 bg-slate-800 border border-white/10 flex items-center justify-center">
+                            {t.isLocalFile ? (
+                              <Music className="w-4 h-4 text-emerald-400" />
+                            ) : (
+                              <Image
+                                src={`https://i.ytimg.com/vi/${t.videoId}/mqdefault.jpg`}
+                                alt={t.title}
+                                width={72}
+                                height={72}
+                                unoptimized
+                                className="w-full h-full object-cover"
+                              />
+                            )}
                             {isCurrent && (
                               <span className="absolute inset-0 bg-black/45 flex items-center justify-center">
                                 <StudioEqualizer
@@ -1170,6 +1216,11 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                               {t.playlistId && (
                                 <span className="shrink-0 px-1 py-0.2 rounded text-[9px] font-semibold bg-indigo-500/20 text-indigo-300">
                                   Playlist
+                                </span>
+                              )}
+                              {t.isLocalFile && (
+                                <span className="shrink-0 px-1 py-0.2 rounded text-[9px] font-semibold bg-emerald-500/20 text-emerald-300">
+                                  Offline
                                 </span>
                               )}
                               {hasErr && (
@@ -1293,6 +1344,25 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                       {formMsg.text}
                     </p>
                   )}
+
+                  <div className="pt-2 border-t border-white/10">
+                    <input
+                      ref={localAudioInputRef}
+                      type="file"
+                      accept="audio/*,.mp3,.m4a,.wav,.ogg"
+                      multiple
+                      onChange={handleLocalAudioFiles}
+                      className="hidden"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => localAudioInputRef.current?.click()}
+                      className="w-full py-2 px-3 rounded-xl text-xs font-bold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                    >
+                      <Music className="w-3.5 h-3.5 shrink-0" />
+                      <span>📂 Phát file nhạc trên máy (MP3/M4A/WAV)</span>
+                    </button>
+                  </div>
                 </form>
               </div>
             )}

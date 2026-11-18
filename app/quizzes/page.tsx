@@ -21,6 +21,7 @@ import {
   ChevronUp,
   Award,
   Filter,
+  Download,
 } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
@@ -28,6 +29,7 @@ import { CustomQuiz, CustomSubject, QuizSet, Word, WordProgress } from '@/lib/ty
 import AIPromptModal from '@/components/ai/AIPromptModal';
 import QuickTextParserModal from '@/components/QuickTextParserModal';
 import CustomSubjectModal, { SUBJECT_ICONS } from '@/components/CustomSubjectModal';
+import CustomQuizEditorModal from '@/components/CustomQuizEditorModal';
 import ConfirmModal from '@/components/ConfirmModal';
 import { QUESTION_BANKS } from '@/lib/defaultBanks';
 
@@ -81,6 +83,8 @@ interface UnifiedCardData {
   onStartLearn: (e: React.MouseEvent) => void;
   onStartDrill: (e: React.MouseEvent) => void;
   onStartExam: (e: React.MouseEvent) => void;
+  onEdit?: (e: React.MouseEvent) => void;
+  onExport?: (e: React.MouseEvent) => void;
   onDelete?: (e: React.MouseEvent) => void;
 }
 
@@ -104,6 +108,7 @@ export default function QuizzesPage() {
   const [isTextParserOpen, setIsTextParserOpen] = useState(false);
   const [isSubjectModalOpen, setIsSubjectModalOpen] = useState(false);
   const [editingSubject, setEditingSubject] = useState<CustomSubject | null>(null);
+  const [editingCustomQuiz, setEditingCustomQuiz] = useState<CustomQuiz | null>(null);
   const [modalDefaultSubject, setModalDefaultSubject] = useState<string | undefined>(undefined);
   const [pendingDelete, setPendingDelete] = useState<
     | { type: 'quiz'; id: string }
@@ -119,7 +124,10 @@ export default function QuizzesPage() {
 
   useEffect(() => {
     refreshData();
-    const onStats = () => setProgressMap(StorageEngine.getWordProgress());
+    const onStats = () => {
+      setCustomQuizzes(StorageEngine.getCustomQuizzes());
+      setProgressMap(StorageEngine.getWordProgress());
+    };
     window.addEventListener('ananquiz:stats-updated', onStats);
     return () => window.removeEventListener('ananquiz:stats-updated', onStats);
   }, []);
@@ -272,6 +280,32 @@ export default function QuizzesPage() {
   const handleDeleteCustomQuiz = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     setPendingDelete({ type: 'quiz', id });
+  };
+
+  const handleEditCustomQuiz = (quiz: CustomQuiz, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setEditingCustomQuiz(quiz);
+  };
+
+  const handleExportCustomQuiz = (quiz: CustomQuiz, e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      const safeName = (quiz.name || 'ananquiz_custom')
+        .replace(/[^a-zA-Z0-9_\-\u00C0-\u1EF9\s]/g, '')
+        .trim()
+        .replace(/\s+/g, '_');
+      const blob = new Blob([JSON.stringify(quiz, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${safeName || 'AnanQuiz_Deck'}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Failed to export custom quiz:', err);
+    }
   };
 
   const handleOpenAddQuiz = (subjectCode?: string, mode: 'parser' | 'ai' = 'parser') => {
@@ -482,6 +516,8 @@ export default function QuizzesPage() {
       onStartLearn: (e) => handleStartLearnCustom(quiz, e),
       onStartDrill: (e) => handleStartDrillCustom(quiz, e),
       onStartExam: (e) => handleStartExamCustom(quiz, e),
+      onEdit: (e) => handleEditCustomQuiz(quiz, e),
+      onExport: (e) => handleExportCustomQuiz(quiz, e),
       onDelete: (e) => handleDeleteCustomQuiz(quiz.id, e),
     };
   };
@@ -566,6 +602,28 @@ export default function QuizzesPage() {
                   className="text-[11px] font-bold text-indigo-600 dark:text-cyan-300 hover:bg-indigo-500/10 px-2 py-0.5 rounded-full transition-colors cursor-pointer"
                 >
                   Chọn đề
+                </button>
+              )}
+              {card.onEdit && (
+                <button
+                  type="button"
+                  onClick={card.onEdit}
+                  title="Chỉnh sửa câu hỏi / thêm câu mới"
+                  aria-label="Chỉnh sửa bộ đề tự tạo"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-500 hover:bg-indigo-500/10 transition-colors cursor-pointer"
+                >
+                  <Pencil className="w-3.5 h-3.5" />
+                </button>
+              )}
+              {card.onExport && (
+                <button
+                  type="button"
+                  onClick={card.onExport}
+                  title="Xuất file bộ đề (.json)"
+                  aria-label="Xuất file bộ đề"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-emerald-500 hover:bg-emerald-500/10 transition-colors cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
                 </button>
               )}
               {card.onDelete && (
@@ -1263,6 +1321,22 @@ export default function QuizzesPage() {
           onQuizCreated={(quiz) => {
             refreshData();
             setActiveCustomQuiz(quiz);
+          }}
+        />
+      )}
+
+      {/* Custom Quiz Editor Modal */}
+      {editingCustomQuiz && (
+        <CustomQuizEditorModal
+          isOpen={Boolean(editingCustomQuiz)}
+          quiz={editingCustomQuiz}
+          customSubjects={customSubjects}
+          onClose={() => setEditingCustomQuiz(null)}
+          onSaved={(updated) => {
+            refreshData();
+            if (activeCustomQuiz?.id === updated.id) {
+              setActiveCustomQuiz(updated);
+            }
           }}
         />
       )}

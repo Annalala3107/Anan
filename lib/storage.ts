@@ -4,10 +4,11 @@
  * Supports transparent Supabase backend syncing when environment keys are provided.
  */
 
-import { WordProgress, CustomQuiz, CustomSubject, DailyStats, Word } from './types';
+import { WordProgress, CustomQuiz, CustomSubject, DailyStats } from './types';
 import { SRSEngine } from './srs';
 import { getQuestionKey } from './utils';
 import { BackupDataSchema } from './schema';
+import { idbGet, idbSet } from './idbStorage';
 
 export interface ExamRecord {
   id: string;
@@ -24,6 +25,7 @@ const STORAGE_KEYS = {
   CUSTOM_QUIZZES: 'ananquiz_custom_quizzes',
   CUSTOM_SUBJECTS: 'ananquiz_custom_subjects',
   DAILY_STATS: 'ananquiz_daily_stats',
+  DAILY_HISTORY: 'ananquiz_daily_history',
   STREAK: 'ananquiz_streak',
   LAST_ACTIVE_DATE: 'ananquiz_last_active_date',
   SELECTED_QUIZ: 'ananquiz_selected_quiz',
@@ -39,24 +41,101 @@ export class StorageEngine {
   private static customSubjectsCache: CustomSubject[] | null = null;
   private static bookmarksCache: string[] | null = null;
   private static storageListenerBound = false;
+  private static idbHydrationPromise: Promise<void> | null = null;
+  private static customQuizMutationVersion = 0;
 
   private static ensureStorageListener(): void {
-    if (typeof window === 'undefined' || this.storageListenerBound) return;
-    this.storageListenerBound = true;
-    window.addEventListener('storage', (e: StorageEvent) => {
-      if (!e.key || e.key === STORAGE_KEYS.WORD_PROGRESS) {
-        this.progressCache = null;
+    if (typeof window === 'undefined') return;
+    if (!this.storageListenerBound) {
+      this.storageListenerBound = true;
+      window.addEventListener('storage', (e: StorageEvent) => {
+        if (!e.key || e.key === STORAGE_KEYS.WORD_PROGRESS) {
+          this.progressCache = null;
+        }
+        if (!e.key || e.key === STORAGE_KEYS.CUSTOM_QUIZZES) {
+          this.customQuizzesCache = null;
+        }
+        if (!e.key || e.key === STORAGE_KEYS.CUSTOM_SUBJECTS) {
+          this.customSubjectsCache = null;
+        }
+        if (!e.key || e.key === STORAGE_KEYS.BOOKMARKED_QUESTIONS) {
+          this.bookmarksCache = null;
+        }
+      });
+    }
+    void this.hydrateFromIdb();
+  }
+
+  public static hydrateFromIdb(): Promise<void> {
+    if (typeof window === 'undefined') return Promise.resolve();
+    if (this.idbHydrationPromise) return this.idbHydrationPromise;
+
+    const startVersion = this.customQuizMutationVersion;
+    this.idbHydrationPromise = (async () => {
+      try {
+        const idbQuizzes = await idbGet<CustomQuiz[]>('custom_quizzes');
+        if (this.customQuizMutationVersion !== startVersion) {
+          return;
+        }
+
+        let localQuizzes: CustomQuiz[] = [];
+        try {
+          const raw = localStorage.getItem(STORAGE_KEYS.CUSTOM_QUIZZES);
+          localQuizzes = raw ? (JSON.parse(raw) as CustomQuiz[]) : [];
+        } catch {
+          localQuizzes = [];
+        }
+
+        if ((!idbQuizzes || idbQuizzes.length === 0) && localQuizzes.length > 0) {
+          await idbSet('custom_quizzes', localQuizzes);
+          return;
+        }
+
+        if (Array.isArray(idbQuizzes) && idbQuizzes.length > 0) {
+          const mergedMap = new Map<string, CustomQuiz>();
+          for (const q of idbQuizzes) {
+            if (q && q.id) mergedMap.set(q.id, q);
+          }
+          for (const q of localQuizzes) {
+            if (!q || !q.id) continue;
+            const prev = mergedMap.get(q.id);
+            if (!prev) {
+              mergedMap.set(q.id, q);
+            } else {
+              const prevTs = Date.parse(prev.updated_at || prev.created_at || '0') || 0;
+              const curTs = Date.parse(q.updated_at || q.created_at || '0') || 0;
+              if (curTs >= prevTs) {
+                mergedMap.set(q.id, q);
+              }
+            }
+          }
+
+          const merged = Array.from(mergedMap.values()).sort((a, b) => {
+            const ta = Date.parse(a.created_at || '0') || 0;
+            const tb = Date.parse(b.created_at || '0') || 0;
+            return tb - ta;
+          });
+
+          const changed =
+            merged.length !== localQuizzes.length ||
+            merged.some((item, idx) => item.id !== localQuizzes[idx]?.id || item.updated_at !== localQuizzes[idx]?.updated_at);
+
+          if (changed) {
+            this.customQuizzesCache = merged;
+            try {
+              localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(merged));
+            } catch {
+              // IndexedDB remains the durable store when localStorage is full
+            }
+            window.dispatchEvent(new CustomEvent('ananquiz:stats-updated'));
+          }
+        }
+      } catch {
+        // Ignore IndexedDB errors cleanly
       }
-      if (!e.key || e.key === STORAGE_KEYS.CUSTOM_QUIZZES) {
-        this.customQuizzesCache = null;
-      }
-      if (!e.key || e.key === STORAGE_KEYS.CUSTOM_SUBJECTS) {
-        this.customSubjectsCache = null;
-      }
-      if (!e.key || e.key === STORAGE_KEYS.BOOKMARKED_QUESTIONS) {
-        this.bookmarksCache = null;
-      }
-    });
+    })();
+
+    return this.idbHydrationPromise;
   }
 
   // ---- WORD PROGRESS (SRS) ----
@@ -253,6 +332,78 @@ export class StorageEngine {
     }
   }
 
+  private static getStoredDailyHistory(): DailyStats[] {
+    if (typeof window === 'undefined') return [];
+    try {
+      const raw = localStorage.getItem(STORAGE_KEYS.DAILY_HISTORY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  public static getDailyHistory(days = 14): DailyStats[] {
+    const safeDays = Math.max(1, Math.min(60, Math.floor(days)));
+    const map = new Map<string, DailyStats>();
+    for (const entry of this.getStoredDailyHistory()) {
+      if (entry && typeof entry.date === 'string') {
+        map.set(entry.date, entry);
+      }
+    }
+    const todayStats = this.getDailyStats();
+    const existingToday = map.get(todayStats.date);
+    if (
+      !existingToday ||
+      todayStats.wordsLearned + todayStats.wordsDrilled + todayStats.wordsExamined >=
+        existingToday.wordsLearned + existingToday.wordsDrilled + existingToday.wordsExamined
+    ) {
+      if (
+        todayStats.wordsLearned > 0 ||
+        todayStats.wordsDrilled > 0 ||
+        todayStats.wordsExamined > 0 ||
+        todayStats.mistakesCount > 0
+      ) {
+        map.set(todayStats.date, todayStats);
+      }
+    }
+
+    const result: DailyStats[] = [];
+    const baseDate = new Date();
+    for (let offset = safeDays - 1; offset >= 0; offset--) {
+      const d = new Date(baseDate);
+      d.setDate(d.getDate() - offset);
+      const dateStr = this.formatLocalDate(d);
+      const hit = map.get(dateStr);
+      result.push(
+        hit || {
+          date: dateStr,
+          wordsLearned: 0,
+          wordsDrilled: 0,
+          wordsExamined: 0,
+          mistakesCount: 0,
+          accuracy: 0,
+          accuracySum: 0,
+          accuracySamples: 0,
+        }
+      );
+    }
+    return result;
+  }
+
+  public static getDueWordsCount(allProgress?: Record<string, WordProgress>): number {
+    const map = allProgress || this.getWordProgress();
+    const now = Date.now();
+    let count = 0;
+    for (const p of Object.values(map)) {
+      if (p && p.seenCount > 0 && p.nextDue <= now) {
+        count += 1;
+      }
+    }
+    return count;
+  }
+
   public static recordActivity(
     type: 'learn' | 'drill' | 'exam' | 'mistake',
     accuracyScore?: number,
@@ -289,6 +440,20 @@ export class StorageEngine {
 
     try {
       localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(stats));
+
+      // Upsert into 30-day rolling dailyHistory
+      const historyMap = new Map<string, DailyStats>();
+      for (const entry of this.getStoredDailyHistory()) {
+        if (entry && entry.date) {
+          historyMap.set(entry.date, entry);
+        }
+      }
+      historyMap.set(stats.date, stats);
+      const sortedHistory = Array.from(historyMap.values())
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .slice(-30);
+      localStorage.setItem(STORAGE_KEYS.DAILY_HISTORY, JSON.stringify(sortedHistory));
+
       this.updateStreak();
       window.dispatchEvent(new CustomEvent('ananquiz:stats-updated'));
     } catch (e) {
@@ -364,19 +529,51 @@ export class StorageEngine {
     };
 
     list.unshift(newQuiz);
+    this.customQuizMutationVersion += 1;
     this.customQuizzesCache = list;
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(list));
       } catch (e) {
-        console.error('Failed to save custom quiz:', e);
+        console.warn('localStorage full when saving custom quiz, persisted in IndexedDB:', e);
       }
+      void idbSet('custom_quizzes', list);
     }
     return newQuiz;
   }
 
+  public static updateCustomQuiz(
+    id: string,
+    updates: Partial<Omit<CustomQuiz, 'id' | 'created_at'>>
+  ): CustomQuiz | null {
+    const list = [...this.getCustomQuizzes()];
+    const index = list.findIndex((q) => q.id === id);
+    if (index === -1) return null;
+
+    const updated: CustomQuiz = {
+      ...list[index],
+      ...updates,
+      updated_at: new Date().toISOString(),
+    };
+    list[index] = updated;
+    this.customQuizMutationVersion += 1;
+    this.customQuizzesCache = list;
+
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(list));
+      } catch (e) {
+        console.warn('localStorage full when updating custom quiz, persisted in IndexedDB:', e);
+      }
+      void idbSet('custom_quizzes', list);
+      window.dispatchEvent(new CustomEvent('ananquiz:stats-updated'));
+    }
+    return updated;
+  }
+
   public static deleteCustomQuiz(id: string): void {
     const list = this.getCustomQuizzes().filter((q) => q.id !== id);
+    this.customQuizMutationVersion += 1;
     this.customQuizzesCache = list;
     if (typeof window !== 'undefined') {
       try {
@@ -384,6 +581,7 @@ export class StorageEngine {
       } catch (e) {
         console.error('Failed to delete custom quiz:', e);
       }
+      void idbSet('custom_quizzes', list);
       if (this.getActiveCustomQuizId() === id) {
         this.setActiveCustomQuizId(null);
       }
@@ -520,19 +718,21 @@ export class StorageEngine {
   /**
    * Generates a complete, validated JSON backup of all user data
    */
-  public static exportAllData(): string {
+  public static exportAllData(options?: { excludeCustomQuizzes?: boolean }): string {
     const backupObj = {
-      version: '1.0.0',
+      version: '1.1.0',
       exportedAt: new Date().toISOString(),
       appName: 'AnanQuiz',
       data: {
         wordProgress: this.getWordProgress(),
-        customQuizzes: this.getCustomQuizzes(),
+        customQuizzes: options?.excludeCustomQuizzes ? [] : this.getCustomQuizzes(),
         customSubjects: this.getCustomSubjects(),
         dailyStats: this.getDailyStats(),
+        dailyHistory: this.getStoredDailyHistory().slice(-30),
         streak: this.getStreak(),
         selectedQuiz: this.getSelectedQuiz(),
         examHistory: this.getExamHistory(),
+        bookmarks: this.getBookmarks(),
       },
     };
 
@@ -541,13 +741,17 @@ export class StorageEngine {
 
   /**
    * Safely validates and restores user data from a backup JSON file
+   * Supports 'merge' (smart merge preserving newer device progress) or 'overwrite'.
    */
   public static importAllData(
-    jsonStr: string
+    jsonStr: string,
+    options?: { mode?: 'merge' | 'overwrite' }
   ): { success: boolean; message: string; restoredCount?: number } {
     if (typeof window === 'undefined') {
       return { success: false, message: 'Môi trường trình duyệt không hợp lệ.' };
     }
+
+    const mode = options?.mode ?? 'merge';
 
     try {
       const raw = JSON.parse(jsonStr);
@@ -563,32 +767,177 @@ export class StorageEngine {
       }
 
       const { data } = validation.data;
+      const normalizedIncomingQuizzes: CustomQuiz[] = (data.customQuizzes || []).map((q) => ({
+        ...q,
+        words: (q.words || []).map((w) => ({
+          ...w,
+          id: w.id !== undefined ? String(w.id) : undefined,
+        })),
+      }));
 
-      // Restore each storage key safely
       try {
-        if (data.wordProgress) {
-          localStorage.setItem(STORAGE_KEYS.WORD_PROGRESS, JSON.stringify(data.wordProgress));
-          this.progressCache = data.wordProgress;
-        }
-        if (data.customQuizzes) {
-          localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(data.customQuizzes));
-          this.customQuizzesCache = null;
-        }
-        if (data.customSubjects) {
-          localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(data.customSubjects));
-          this.customSubjectsCache = data.customSubjects;
-        }
-        if (data.dailyStats) {
-          localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(data.dailyStats));
-        }
-        if (typeof data.streak === 'number') {
-          localStorage.setItem(STORAGE_KEYS.STREAK, data.streak.toString());
-        }
-        if (data.selectedQuiz) {
-          localStorage.setItem(STORAGE_KEYS.SELECTED_QUIZ, data.selectedQuiz);
-        }
-        if (data.examHistory) {
-          localStorage.setItem(STORAGE_KEYS.EXAM_HISTORY, JSON.stringify(data.examHistory));
+        if (mode === 'overwrite') {
+          if (data.wordProgress) {
+            localStorage.setItem(STORAGE_KEYS.WORD_PROGRESS, JSON.stringify(data.wordProgress));
+            this.progressCache = data.wordProgress;
+          }
+          if (data.customQuizzes) {
+            this.customQuizMutationVersion += 1;
+            this.customQuizzesCache = normalizedIncomingQuizzes;
+            try {
+              localStorage.setItem(
+                STORAGE_KEYS.CUSTOM_QUIZZES,
+                JSON.stringify(normalizedIncomingQuizzes)
+              );
+            } catch {
+              // IndexedDB holds large custom quizzes if localStorage hits quota
+            }
+            void idbSet('custom_quizzes', normalizedIncomingQuizzes);
+          }
+          if (data.customSubjects) {
+            localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(data.customSubjects));
+            this.customSubjectsCache = data.customSubjects;
+          }
+          if (data.dailyStats) {
+            localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(data.dailyStats));
+          }
+          if (data.dailyHistory) {
+            localStorage.setItem(
+              STORAGE_KEYS.DAILY_HISTORY,
+              JSON.stringify(data.dailyHistory.slice(-30))
+            );
+          }
+          if (typeof data.streak === 'number') {
+            localStorage.setItem(STORAGE_KEYS.STREAK, data.streak.toString());
+          }
+          if (data.selectedQuiz) {
+            localStorage.setItem(STORAGE_KEYS.SELECTED_QUIZ, data.selectedQuiz);
+          }
+          if (data.examHistory) {
+            localStorage.setItem(STORAGE_KEYS.EXAM_HISTORY, JSON.stringify(data.examHistory));
+          }
+          if (data.bookmarks) {
+            this.bookmarksCache = data.bookmarks;
+            localStorage.setItem(
+              STORAGE_KEYS.BOOKMARKED_QUESTIONS,
+              JSON.stringify(data.bookmarks)
+            );
+          }
+        } else {
+          // SMART MERGE MODE
+          const mergedProgress: Record<string, WordProgress> = { ...this.getWordProgress() };
+          for (const [key, inc] of Object.entries(data.wordProgress || {})) {
+            const cur = mergedProgress[key];
+            if (!cur || inc.lastSeen > cur.lastSeen || (inc.lastSeen === cur.lastSeen && inc.seenCount > cur.seenCount)) {
+              mergedProgress[key] = inc;
+            }
+          }
+          this.progressCache = mergedProgress;
+          localStorage.setItem(STORAGE_KEYS.WORD_PROGRESS, JSON.stringify(mergedProgress));
+
+          if (normalizedIncomingQuizzes.length > 0) {
+            const quizMap = new Map<string, CustomQuiz>();
+            for (const q of this.getCustomQuizzes()) quizMap.set(q.id, q);
+            for (const q of normalizedIncomingQuizzes) {
+              const prev = quizMap.get(q.id);
+              if (!prev) {
+                quizMap.set(q.id, q);
+              } else {
+                const prevTs = Date.parse(prev.updated_at || prev.created_at || '0') || 0;
+                const incTs = Date.parse(q.updated_at || q.created_at || '0') || 0;
+                if (incTs >= prevTs) quizMap.set(q.id, q);
+              }
+            }
+            const mergedQuizzes = Array.from(quizMap.values());
+            this.customQuizMutationVersion += 1;
+            this.customQuizzesCache = mergedQuizzes;
+            try {
+              localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(mergedQuizzes));
+            } catch {
+              // Persist in IndexedDB if localStorage is full
+            }
+            void idbSet('custom_quizzes', mergedQuizzes);
+          }
+
+          if (Array.isArray(data.customSubjects) && data.customSubjects.length > 0) {
+            const subMap = new Map<string, CustomSubject>();
+            for (const s of this.getCustomSubjects()) subMap.set(s.id, s);
+            for (const s of data.customSubjects) {
+              if (!subMap.has(s.id)) subMap.set(s.id, s);
+            }
+            const mergedSubjects = Array.from(subMap.values());
+            this.customSubjectsCache = mergedSubjects;
+            localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(mergedSubjects));
+          }
+
+          if (data.dailyStats) {
+            const curDaily = this.getDailyStats();
+            if (
+              data.dailyStats.date === curDaily.date &&
+              data.dailyStats.wordsLearned + data.dailyStats.wordsDrilled + data.dailyStats.wordsExamined >
+                curDaily.wordsLearned + curDaily.wordsDrilled + curDaily.wordsExamined
+            ) {
+              localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(data.dailyStats));
+            }
+          }
+
+          const mergedHistoryMap = new Map<string, DailyStats>();
+          for (const d of this.getStoredDailyHistory()) {
+            mergedHistoryMap.set(d.date, d);
+          }
+          for (const d of data.dailyHistory || []) {
+            const prev = mergedHistoryMap.get(d.date);
+            const incTotal = d.wordsLearned + d.wordsDrilled + d.wordsExamined;
+            const prevTotal = prev ? prev.wordsLearned + prev.wordsDrilled + prev.wordsExamined : -1;
+            if (!prev || incTotal > prevTotal) {
+              mergedHistoryMap.set(d.date, d);
+            }
+          }
+          if (data.dailyStats) {
+            const prev = mergedHistoryMap.get(data.dailyStats.date);
+            const incTotal =
+              data.dailyStats.wordsLearned + data.dailyStats.wordsDrilled + data.dailyStats.wordsExamined;
+            const prevTotal = prev ? prev.wordsLearned + prev.wordsDrilled + prev.wordsExamined : -1;
+            if (!prev || incTotal > prevTotal) {
+              mergedHistoryMap.set(data.dailyStats.date, data.dailyStats);
+            }
+          }
+          const finalHistory = Array.from(mergedHistoryMap.values())
+            .sort((a, b) => a.date.localeCompare(b.date))
+            .slice(-30);
+          localStorage.setItem(STORAGE_KEYS.DAILY_HISTORY, JSON.stringify(finalHistory));
+
+          if (typeof data.streak === 'number') {
+            const nextStreak = Math.max(this.getStreak(), data.streak);
+            localStorage.setItem(STORAGE_KEYS.STREAK, nextStreak.toString());
+          }
+
+          if (data.selectedQuiz && !this.hasExplicitSelectedQuiz()) {
+            localStorage.setItem(STORAGE_KEYS.SELECTED_QUIZ, data.selectedQuiz);
+          }
+
+          if (Array.isArray(data.examHistory) && data.examHistory.length > 0) {
+            const examMap = new Map<string, ExamRecord>();
+            for (const ex of this.getExamHistory()) examMap.set(ex.id, ex);
+            for (const ex of data.examHistory) {
+              if (!examMap.has(ex.id)) examMap.set(ex.id, ex);
+            }
+            const mergedExams = Array.from(examMap.values())
+              .sort((a, b) => b.date - a.date)
+              .slice(0, 50);
+            localStorage.setItem(STORAGE_KEYS.EXAM_HISTORY, JSON.stringify(mergedExams));
+          }
+
+          if (Array.isArray(data.bookmarks) && data.bookmarks.length > 0) {
+            const mergedBookmarks = Array.from(
+              new Set([...this.getBookmarks(), ...data.bookmarks])
+            );
+            this.bookmarksCache = mergedBookmarks;
+            localStorage.setItem(
+              STORAGE_KEYS.BOOKMARKED_QUESTIONS,
+              JSON.stringify(mergedBookmarks)
+            );
+          }
         }
       } catch (e) {
         console.error('Failed to write restored backup data to storage:', e);
@@ -600,10 +949,14 @@ export class StorageEngine {
 
       const restoredWordCount = Object.keys(data.wordProgress || {}).length;
       window.dispatchEvent(new CustomEvent('ananquiz:stats-updated'));
+      window.dispatchEvent(new CustomEvent('ananquiz:bookmarks-updated'));
 
       return {
         success: true,
-        message: `Khôi phục thành công ${restoredWordCount} câu hỏi ghi nhớ, streak và toàn bộ lịch sử thi thử!`,
+        message:
+          mode === 'merge'
+            ? `Hợp nhất thông minh thành công (${restoredWordCount} câu SRS từ bản sao lưu)!`
+            : `Khôi phục (ghi đè) thành công ${restoredWordCount} câu hỏi ghi nhớ, streak và toàn bộ lịch sử!`,
         restoredCount: restoredWordCount,
       };
     } catch (err: any) {

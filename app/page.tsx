@@ -13,6 +13,7 @@ import {
   Smartphone,
   ArrowRight,
   BookOpen,
+  Clock,
 } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
 import { StorageEngine } from '@/lib/storage';
@@ -239,6 +240,32 @@ export default function Home() {
               />
             </div>
           </div>
+        </div>
+      )}
+
+      {/* SRS Due Today Queue Reminder */}
+      {needReviewCount > 0 && (
+        <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-amber-500/15 via-orange-500/10 to-indigo-500/15 border border-amber-500/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 shadow-sm">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-glow">
+              <Clock className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-sm sm:text-base font-black text-slate-900 dark:text-white">
+                ⏰ Bạn có {needReviewCount} câu hỏi đến hạn ôn tập SRS hôm nay
+              </p>
+              <p className="text-xs text-slate-600 dark:text-slate-300">
+                Ôn lại đúng chu kỳ lặp lại ngắt quãng để khóa chặt kiến thức vào trí nhớ dài hạn.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/session/learn?due=1"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xs sm:text-sm shadow-sm transition-all shrink-0 whitespace-nowrap"
+          >
+            <span>Ôn Ngay</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       )}
 
