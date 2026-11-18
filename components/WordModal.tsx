@@ -6,6 +6,7 @@ import { StorageEngine } from '@/lib/storage';
 import { cleanOptionText, isAnswerMatch, getQuestionKey } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
+import AITutorButton from '@/components/ai/AITutorButton';
 import { useEffect, useId, useState } from 'react';
 
 interface WordModalProps {
@@ -175,6 +176,15 @@ export default function WordModal({ word, onClose }: WordModalProps) {
                 />
               </div>
             )}
+
+            <AITutorButton
+              question={word.question || word.word}
+              options={word.options}
+              correctAnswer={word.correctWord || word.answer || ''}
+              subject={word.subject}
+              topic={word.topic}
+              className="mb-5"
+            />
           </div>
         ) : (
           <div className="space-y-4 mb-5">

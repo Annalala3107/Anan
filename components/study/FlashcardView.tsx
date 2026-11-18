@@ -10,6 +10,7 @@ import {
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
+import AITutorButton from '@/components/ai/AITutorButton';
 import {
   RotateCcw,
   CheckCircle2,
@@ -324,6 +325,14 @@ export default function FlashcardView({
                   </div>
                 </div>
               )}
+
+              <AITutorButton
+                question={currentQ.sentence}
+                options={currentQ.options}
+                correctAnswer={displayedCorrectList.join(' | ') || cleanOptionText(currentQ.correctWord)}
+                subject={currentQ.subject}
+                topic={currentQ.topic}
+              />
             </div>
 
             {/* Bottom Hint Bar (Back) */}

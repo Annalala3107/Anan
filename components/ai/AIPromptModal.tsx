@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { Word, CustomQuiz, CustomSubject } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
+import { useQuizStore } from '@/lib/quizStore';
 import { QUESTION_BANKS } from '@/lib/defaultBanks';
 import { isAnswerMatch, cleanOptionText, resolveCorrectOptionFromAnswer } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
@@ -19,6 +21,10 @@ import {
   Loader2,
   FileCode,
   Eye,
+  Upload,
+  Pencil,
+  Check,
+  Play,
 } from 'lucide-react';
 
 interface AIPromptModalProps {
@@ -50,7 +56,12 @@ export default function AIPromptModal({
   onQuizCreated,
   defaultSubject,
 }: AIPromptModalProps) {
+  const router = useRouter();
+  const { setActiveCustomQuiz } = useQuizStore();
+  const lectureFileInputRef = useRef<HTMLInputElement | null>(null);
+
   const [activeTab, setActiveTab] = useState<'direct_ai' | 'manual_json'>('direct_ai');
+  const [promptMode, setPromptMode] = useState<'topic' | 'document'>('topic');
   const [prompt, setPrompt] = useState('');
   const [subject, setSubject] = useState('PRF192');
   const [count, setCount] = useState(10);
@@ -59,6 +70,8 @@ export default function AIPromptModal({
   const [showKeyInput, setShowKeyInput] = useState(false);
   const [customSubjects, setCustomSubjects] = useState<CustomSubject[]>([]);
   const [previewDraft, setPreviewDraft] = useState<PreviewDraft | null>(null);
+  const [editingIndex, setEditingIndex] = useState<number | null>(null);
+  const [lectureNotice, setLectureNotice] = useState<string | null>(null);
 
   // Loading & Error States
   const [isLoading, setIsLoading] = useState(false);
@@ -86,6 +99,8 @@ export default function AIPromptModal({
       const subs = StorageEngine.getCustomSubjects();
       setCustomSubjects(subs);
       setPreviewDraft(null);
+      setEditingIndex(null);
+      setLectureNotice(null);
       setError(null);
       if (defaultSubject) {
         setSubject(defaultSubject);
@@ -179,10 +194,17 @@ export default function AIPromptModal({
       }
 
       // Open interactive Preview step before saving
+      const compactTopic =
+        prompt.trim().length > 70 ? `${prompt.trim().slice(0, 70)}...` : prompt.trim();
+      setEditingIndex(null);
       setPreviewDraft({
-        title: data.title || `${subject} — ${prompt.trim()} (${(data.words || []).length} câu)`,
+        title:
+          data.title ||
+          `${subject} — ${
+            promptMode === 'document' ? 'Trắc nghiệm từ bài giảng' : compactTopic
+          } (${(data.words || []).length} câu)`,
         subject: data.subject || subject.trim(),
-        topic: data.topic || prompt.trim(),
+        topic: data.topic || compactTopic,
         words: data.words || [],
       });
     } catch (err: any) {
@@ -192,7 +214,34 @@ export default function AIPromptModal({
     }
   };
 
-  const handleConfirmSavePreview = () => {
+  const handleUploadLectureFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+
+    setError(null);
+    setLectureNotice(null);
+
+    try {
+      const raw = (await file.text()).replace(/^\uFEFF/, '');
+      const trimmed = raw.slice(0, 24000);
+      setPromptMode('document');
+      setPrompt(trimmed);
+      if (raw.length > 24000) {
+        setLectureNotice(
+          `📂 Đã nạp "${file.name}" (cắt gọn từ ${raw.length.toLocaleString()} xuống 24.000 ký tự tối đa).`
+        );
+      } else {
+        setLectureNotice(
+          `📂 Đã nạp "${file.name}" (${trimmed.length.toLocaleString()} ký tự).`
+        );
+      }
+    } catch {
+      setError('Không thể đọc file bài giảng. Vui lòng chọn file .txt hoặc .md.');
+    }
+  };
+
+  const handleConfirmSavePreview = (launchExam = false) => {
     if (!previewDraft || previewDraft.words.length === 0) {
       setError('Không có câu hỏi nào để lưu.');
       return;
@@ -209,14 +258,60 @@ export default function AIPromptModal({
     });
 
     setPreviewDraft(null);
+    setEditingIndex(null);
     onQuizCreated(newQuiz);
     onClose();
+
+    if (launchExam) {
+      setActiveCustomQuiz(newQuiz);
+      router.push('/session/exam');
+    }
   };
 
   const handleRemovePreviewQuestion = (index: number) => {
     setPreviewDraft((prev) => {
       if (!prev) return null;
       const nextWords = prev.words.filter((_, i) => i !== index);
+      return { ...prev, words: nextWords };
+    });
+    if (editingIndex === index) {
+      setEditingIndex(null);
+    }
+  };
+
+  const handleSelectPreviewOption = (qIndex: number, optIndex: number, optText: string) => {
+    const letter = String.fromCharCode(65 + optIndex);
+    const cleaned = cleanOptionText(optText);
+    setPreviewDraft((prev) => {
+      if (!prev) return null;
+      const nextWords = prev.words.map((w, idx) =>
+        idx === qIndex
+          ? {
+              ...w,
+              answer: letter,
+              correctWord: cleaned,
+            }
+          : w
+      );
+      return { ...prev, words: nextWords };
+    });
+  };
+
+  const handleUpdatePreviewField = (
+    qIndex: number,
+    field: 'question' | 'explanation',
+    value: string
+  ) => {
+    setPreviewDraft((prev) => {
+      if (!prev) return null;
+      const nextWords = prev.words.map((w, idx) =>
+        idx === qIndex
+          ? {
+              ...w,
+              [field]: value,
+            }
+          : w
+      );
       return { ...prev, words: nextWords };
     });
   };
@@ -418,69 +513,119 @@ export default function AIPromptModal({
               />
             </div>
 
-            <div className="max-h-[320px] overflow-y-auto space-y-2.5 pr-1">
-              {previewDraft.words.map((q, idx) => (
-                <div
-                  key={idx}
-                  className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-2"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">
-                      Câu {idx + 1}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => handleRemovePreviewQuestion(idx)}
-                      title="Loại bỏ câu này"
-                      className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-400 hover:text-rose-500 cursor-pointer"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                      <span>Xóa</span>
-                    </button>
-                  </div>
-
-                  <CodeQuestionRenderer
-                    content={q.question || q.word}
-                    image={q.image}
-                    imageCaption={q.imageCaption}
-                    className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-relaxed"
-                  />
-
-                  {Array.isArray(q.options) && q.options.length > 0 && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                      {q.options.map((opt, oIdx) => {
-                        const isTrue = isAnswerMatch(opt, q.correctWord || q.word, q.answer);
-                        return (
-                          <div
-                            key={oIdx}
-                            className={`px-2.5 py-1.5 rounded-xl text-xs border flex items-start gap-1.5 ${
-                              isTrue
-                                ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-700 dark:text-emerald-300 font-bold'
-                                : 'bg-white dark:bg-slate-800/70 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400'
-                            }`}
-                          >
-                            <CheckCircle2
-                              className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${
-                                isTrue ? 'text-emerald-500' : 'opacity-20'
-                              }`}
-                            />
-                            <div className="flex-1 min-w-0">
-                              <OptionContent content={opt} />
-                            </div>
-                          </div>
-                        );
-                      })}
+            <div className="max-h-[340px] overflow-y-auto space-y-2.5 pr-1">
+              {previewDraft.words.map((q, idx) => {
+                const isEditing = editingIndex === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-2"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">
+                          Câu {idx + 1}
+                        </span>
+                        <span className="text-[10px] text-slate-400">
+                          (Bấm vào đáp án để đổi đáp án đúng)
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2.5">
+                        <button
+                          type="button"
+                          onClick={() => setEditingIndex(isEditing ? null : idx)}
+                          title="Chỉnh sửa câu hỏi hoặc giải thích"
+                          className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer"
+                        >
+                          {isEditing ? (
+                            <>
+                              <Check className="w-3.5 h-3.5" />
+                              <span>Xong</span>
+                            </>
+                          ) : (
+                            <>
+                              <Pencil className="w-3.5 h-3.5" />
+                              <span>Sửa</span>
+                            </>
+                          )}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleRemovePreviewQuestion(idx)}
+                          title="Loại bỏ câu này"
+                          className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-400 hover:text-rose-500 cursor-pointer"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Xóa</span>
+                        </button>
+                      </div>
                     </div>
-                  )}
 
-                  {q.explanation && (
-                    <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed pt-1 border-t border-slate-200/70 dark:border-slate-800">
-                      <strong className="text-indigo-600 dark:text-indigo-400">Giải thích:</strong>{' '}
-                      {q.explanation}
-                    </p>
-                  )}
-                </div>
-              ))}
+                    {isEditing ? (
+                      <div className="space-y-2">
+                        <textarea
+                          rows={2}
+                          value={q.question || q.word}
+                          onChange={(e) => handleUpdatePreviewField(idx, 'question', e.target.value)}
+                          className="w-full p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-indigo-400/60 text-xs font-medium text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        />
+                        <textarea
+                          rows={2}
+                          placeholder="Giải thích đáp án..."
+                          value={q.explanation || ''}
+                          onChange={(e) =>
+                            handleUpdatePreviewField(idx, 'explanation', e.target.value)
+                          }
+                          className="w-full p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-[11px] text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        />
+                      </div>
+                    ) : (
+                      <CodeQuestionRenderer
+                        content={q.question || q.word}
+                        image={q.image}
+                        imageCaption={q.imageCaption}
+                        className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-relaxed"
+                      />
+                    )}
+
+                    {Array.isArray(q.options) && q.options.length > 0 && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                        {q.options.map((opt, oIdx) => {
+                          const isTrue = isAnswerMatch(opt, q.correctWord || q.word, q.answer);
+                          return (
+                            <button
+                              key={oIdx}
+                              type="button"
+                              onClick={() => handleSelectPreviewOption(idx, oIdx, opt)}
+                              className={`w-full text-left px-2.5 py-1.5 rounded-xl text-xs border flex items-start gap-1.5 transition-colors cursor-pointer ${
+                                isTrue
+                                  ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-700 dark:text-emerald-300 font-bold'
+                                  : 'bg-white dark:bg-slate-800/70 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-indigo-400/60'
+                              }`}
+                            >
+                              <CheckCircle2
+                                className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${
+                                  isTrue ? 'text-emerald-500' : 'opacity-20'
+                                }`}
+                              />
+                              <div className="flex-1 min-w-0">
+                                <OptionContent content={opt} />
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {!isEditing && q.explanation && (
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed pt-1 border-t border-slate-200/70 dark:border-slate-800">
+                        <strong className="text-indigo-600 dark:text-indigo-400">Giải thích:</strong>{' '}
+                        {q.explanation}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             {error && (
@@ -493,19 +638,31 @@ export default function AIPromptModal({
             <div className="flex flex-col sm:flex-row gap-2.5 pt-2">
               <button
                 type="button"
-                onClick={() => setPreviewDraft(null)}
-                className="sm:w-1/3 py-3.5 px-4 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs sm:text-sm transition-colors cursor-pointer"
+                onClick={() => {
+                  setPreviewDraft(null);
+                  setEditingIndex(null);
+                }}
+                className="sm:w-1/4 py-3.5 px-4 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs sm:text-sm transition-colors cursor-pointer"
               >
                 Quay lại sửa Prompt
               </button>
               <button
                 type="button"
                 disabled={previewDraft.words.length === 0}
-                onClick={handleConfirmSavePreview}
-                className="flex-1 py-3.5 px-5 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:opacity-95 text-white font-black text-xs sm:text-sm shadow-glow flex items-center justify-center gap-2 transition-all disabled:opacity-40 cursor-pointer"
+                onClick={() => handleConfirmSavePreview(false)}
+                className="flex-1 py-3.5 px-4 rounded-2xl bg-slate-900 dark:bg-slate-700 hover:opacity-90 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all disabled:opacity-40 cursor-pointer"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 <span>Xác nhận Lưu Bộ Đề ({previewDraft.words.length} câu)</span>
+              </button>
+              <button
+                type="button"
+                disabled={previewDraft.words.length === 0}
+                onClick={() => handleConfirmSavePreview(true)}
+                className="flex-1 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:opacity-95 text-white font-black text-xs sm:text-sm shadow-glow flex items-center justify-center gap-2 transition-all disabled:opacity-40 cursor-pointer"
+              >
+                <Play className="w-4 h-4 fill-current" />
+                <span>⚡ Lưu &amp; Thi Thử Ngay</span>
               </button>
             </div>
           </div>
@@ -514,40 +671,111 @@ export default function AIPromptModal({
         {/* TAB 1 STEP A: 1-CLICK GEMINI AI PROMPT */}
         {activeTab === 'direct_ai' && !previewDraft && (
           <div className="space-y-4 pt-4">
-            {/* Quick Topic Chips */}
-            <div>
-              <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 block">
-                Chủ đề gợi ý phổ biến:
-              </label>
-              <div className="flex flex-wrap gap-1.5">
-                {QUICK_TOPICS.map((t, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => {
-                      setPrompt(t.label);
-                      setSubject(t.subject);
-                      setCount(t.count);
-                      setDifficulty(t.difficulty as any);
-                    }}
-                    className="px-2.5 py-1 rounded-xl text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium border border-slate-200 dark:border-slate-700 cursor-pointer"
-                  >
-                    {t.label} ({t.subject})
-                  </button>
-                ))}
+            {/* Prompt Mode Switcher + File Lecture Upload */}
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+                <button
+                  type="button"
+                  onClick={() => setPromptMode('topic')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    promptMode === 'topic'
+                      ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm'
+                      : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                  }`}
+                >
+                  Chủ đề ngắn gọn
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPromptMode('document')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    promptMode === 'document'
+                      ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-sm'
+                      : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                  }`}
+                >
+                  Dán bài giảng / tài liệu (tới 24.000 ký tự)
+                </button>
               </div>
+
+              <input
+                ref={lectureFileInputRef}
+                type="file"
+                accept=".txt,.md"
+                onChange={handleUploadLectureFile}
+                className="hidden"
+              />
+              <button
+                type="button"
+                onClick={() => lectureFileInputRef.current?.click()}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25 text-xs font-bold transition-colors cursor-pointer"
+              >
+                <Upload className="w-3.5 h-3.5" />
+                <span>📂 Tải file .txt/.md bài giảng</span>
+              </button>
             </div>
+
+            {lectureNotice && (
+              <div className="px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-bold text-emerald-700 dark:text-emerald-300 flex items-center justify-between gap-2">
+                <span>{lectureNotice}</span>
+                <button
+                  type="button"
+                  onClick={() => setLectureNotice(null)}
+                  className="hover:opacity-70 cursor-pointer"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            )}
+
+            {/* Quick Topic Chips */}
+            {promptMode === 'topic' && (
+              <div>
+                <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 block">
+                  Chủ đề gợi ý phổ biến:
+                </label>
+                <div className="flex flex-wrap gap-1.5">
+                  {QUICK_TOPICS.map((t, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => {
+                        setPrompt(t.label);
+                        setSubject(t.subject);
+                        setCount(t.count);
+                        setDifficulty(t.difficulty as any);
+                      }}
+                      className="px-2.5 py-1 rounded-xl text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium border border-slate-200 dark:border-slate-700 cursor-pointer"
+                    >
+                      {t.label} ({t.subject})
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Prompt input */}
             <div>
-              <label className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">
-                Chủ đề hoặc nội dung cần ra đề:
-              </label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  {promptMode === 'document'
+                    ? 'Nội dung bài giảng / ghi chú / giáo trình (tới 24.000 ký tự):'
+                    : 'Chủ đề hoặc nội dung cần ra đề:'}
+                </label>
+                <span className="text-[11px] font-mono text-slate-400">
+                  {prompt.length.toLocaleString()} / 24.000 ký tự
+                </span>
+              </div>
               <textarea
                 value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                rows={3}
-                placeholder="Ví dụ: 10 câu trắc nghiệm khó về cấp phát bộ nhớ động malloc(), free() và con trỏ cấp 2 trong ngôn ngữ C..."
+                onChange={(e) => setPrompt(e.target.value.slice(0, 24000))}
+                maxLength={24000}
+                rows={promptMode === 'document' ? 8 : 3}
+                placeholder={
+                  promptMode === 'document'
+                    ? 'Dán trực tiếp slide bài giảng, chương sách, note Markdown hoặc bấm nút Tải file .txt/.md ở trên...'
+                    : 'Ví dụ: 10 câu trắc nghiệm khó về cấp phát bộ nhớ động malloc(), free() và con trỏ cấp 2 trong ngôn ngữ C...'
+                }
                 className="w-full p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
@@ -580,6 +808,8 @@ export default function AIPromptModal({
                   <option value={10}>10 câu (Chuẩn ⭐)</option>
                   <option value={15}>15 câu (Mở rộng)</option>
                   <option value={20}>20 câu (Toàn diện)</option>
+                  <option value={25}>25 câu (Chuyên sâu)</option>
+                  <option value={30}>30 câu (Đề thi thử)</option>
                 </select>
               </div>
 

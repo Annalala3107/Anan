@@ -15,6 +15,7 @@ import {
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
+import AITutorButton from '@/components/ai/AITutorButton';
 import {
   ArrowRight,
   CheckCircle2,
@@ -1189,6 +1190,18 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
             />
           </div>
         </div>
+      )}
+
+      {isAnswered && (
+        <AITutorButton
+          question={currentQ.sentence}
+          options={currentQ.options}
+          correctAnswer={currentQ.correctWord}
+          userAnswer={wasAnsweredCorrect ? undefined : selectedWords.join(' | ')}
+          subject={currentQ.rawWord?.subject}
+          topic={currentQ.rawWord?.topic}
+          className="mb-5"
+        />
       )}
 
       {/* Continue Button */}

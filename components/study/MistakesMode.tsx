@@ -14,6 +14,7 @@ import {
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
+import AITutorButton from '@/components/ai/AITutorButton';
 import {
   CheckCircle2,
   XCircle,
@@ -476,37 +477,67 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
       </div>
 
       {/* Explanation & Advance Button */}
-      {isAnswered && (
-        <div className="space-y-4">
-          {currentWord.explanation && (
-            <div className="p-4 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-900/60 text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-              <span className="font-bold text-amber-600 dark:text-amber-400 block mb-1">💡 Giải thích chi tiết:</span>
-              <CodeQuestionRenderer
-                content={
-                  isMCQ
-                    ? formatExplanationForCurrentOptions(
-                        currentWord.explanation,
-                        options,
-                        currentWord.correctWord || currentWord.word,
-                        currentWord.answer,
-                        shuffleOptions,
-                        answerMeta.correctChoices
-                      )
-                    : currentWord.explanation
-                }
-                className="text-xs sm:text-sm"
-              />
-            </div>
-          )}
-          <button
-            onClick={handleNext}
-            className="w-full py-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold flex items-center justify-center gap-2 shadow-glow transition-all cursor-pointer"
-          >
-            <span>Tiếp tục câu kế tiếp [Enter]</span>
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
-      )}
+      {isAnswered && (() => {
+        const wasMistakeCorrect = isMCQ
+          ? isQuestionAnsweredCorrectly(
+              selectedWords,
+              currentWord.correctWord || currentWord.word,
+              shuffleOptions ? undefined : currentWord.answer,
+              answerMeta.correctChoices
+            )
+          : selectedWords.length === 1 &&
+            selectedWords[0].toLowerCase() === currentWord.word.toLowerCase();
+
+        return (
+          <div className="space-y-4">
+            {currentWord.explanation && (
+              <div className="p-4 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-900/60 text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
+                <span className="font-bold text-amber-600 dark:text-amber-400 block mb-1">💡 Giải thích chi tiết:</span>
+                <CodeQuestionRenderer
+                  content={
+                    isMCQ
+                      ? formatExplanationForCurrentOptions(
+                          currentWord.explanation,
+                          options,
+                          currentWord.correctWord || currentWord.word,
+                          currentWord.answer,
+                          shuffleOptions,
+                          answerMeta.correctChoices
+                        )
+                      : currentWord.explanation
+                  }
+                  className="text-xs sm:text-sm"
+                />
+              </div>
+            )}
+            <AITutorButton
+              question={isMCQ ? currentWord.question! : currentWord.word}
+              options={options}
+              correctAnswer={
+                isMCQ
+                  ? answerMeta.correctChoices.join(' | ') ||
+                    currentWord.correctWord ||
+                    currentWord.word
+                  : currentWord.word
+              }
+              userAnswer={
+                !wasMistakeCorrect && selectedWords.length > 0
+                  ? selectedWords.join(' | ')
+                  : undefined
+              }
+              subject={currentWord.subject}
+              topic={currentWord.topic}
+            />
+            <button
+              onClick={handleNext}
+              className="w-full py-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold flex items-center justify-center gap-2 shadow-glow transition-all cursor-pointer"
+            >
+              <span>Tiếp tục câu kế tiếp [Enter]</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        );
+      })()}
 
       {!isAnswered && (
         <p className="hidden sm:block text-center text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-1">

@@ -8,6 +8,7 @@ import {
   formatChoicesWithDisplayLetters,
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
+import AITutorButton from '@/components/ai/AITutorButton';
 import {
   Trophy,
   RotateCcw,
@@ -430,6 +431,15 @@ export default function ExamResultView({
                       💡 Giải thích: {displayedExplanation}
                     </p>
                   )}
+                  <AITutorButton
+                    question={q.sentence}
+                    options={q.options}
+                    correctAnswer={correctAnsList.join(' | ')}
+                    userAnswer={!isCorrect && userAnsList.length > 0 ? userAnsList.join(' | ') : undefined}
+                    subject={q.subject}
+                    topic={q.topic}
+                    className="pt-2"
+                  />
                 </div>
               </div>
             );
