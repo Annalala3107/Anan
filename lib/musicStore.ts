@@ -450,6 +450,7 @@ export interface MusicStoreState {
   togglePomodoro: () => void;
   setPomodoroPreset: (preset: PomodoroPresetKey) => void;
   resetPomodoro: (mode?: 'focus' | 'break') => void;
+  adjustPomodoroSeconds: (deltaSeconds: number) => void;
   tickPomodoro: () => void;
   setPomodoroAutoPause: (enabled: boolean) => void;
   setExamAutoDuck: (enabled: boolean) => void;
@@ -1164,6 +1165,12 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       pomodoroSecondsLeft: nextSeconds,
       pomodoroRunning: false,
     });
+  },
+
+  adjustPomodoroSeconds: (deltaSeconds) => {
+    const current = get().pomodoroSecondsLeft;
+    const next = Math.min(7200, Math.max(60, current + deltaSeconds));
+    set({ pomodoroSecondsLeft: next });
   },
 
   tickPomodoro: () => {

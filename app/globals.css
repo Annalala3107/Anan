@@ -327,16 +327,17 @@
 /* Studio Turntable Tonearm */
 .turntable-tonearm {
   transform-origin: 32px 32px;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
 .turntable-tonearm-playing {
   transform: rotate(12deg);
+  transition: transform 540ms cubic-bezier(0.34, 1.42, 0.64, 1);
 }
 
 .turntable-tonearm-parked {
   transform: rotate(-22deg);
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Reactive Sonic Ripples & Spectrum Bars (100% GPU Transform + Opacity) */
@@ -484,7 +485,7 @@
   will-change: auto !important;
 }
 
-/* Custom Transparent Range Overlay over GPU-scaled Track */
+/* Custom Transparent Range Overlay over GPU-Clipped Track & Custom Centered Thumb */
 .studio-range-input {
   -webkit-appearance: none;
   appearance: none;
@@ -494,53 +495,34 @@
 
 .studio-range-input::-webkit-slider-runnable-track {
   background: transparent;
-  height: 16px;
+  height: 20px;
 }
 
 .studio-range-input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  margin-top: 2px;
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
   border-radius: 9999px;
-  background: #ffffff;
-  border: 2px solid #6366f1;
-  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.45);
-  opacity: 0.72;
-  transform: scale(0.82);
-  transition: transform 0.14s ease, opacity 0.14s ease;
-}
-
-.studio-range-input:hover::-webkit-slider-thumb,
-.studio-range-input:focus-visible::-webkit-slider-thumb,
-.studio-range-input:active::-webkit-slider-thumb {
-  opacity: 1;
-  transform: scale(1.12);
+  background: transparent;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .studio-range-input::-moz-range-track {
   background: transparent;
-  height: 16px;
+  height: 20px;
 }
 
 .studio-range-input::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
   border-radius: 9999px;
-  background: #ffffff;
-  border: 2px solid #6366f1;
-  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.45);
-  opacity: 0.72;
-  transform: scale(0.82);
-  transition: transform 0.14s ease, opacity 0.14s ease;
-}
-
-.studio-range-input:hover::-moz-range-thumb,
-.studio-range-input:focus-visible::-moz-range-thumb,
-.studio-range-input:active::-moz-range-thumb {
-  opacity: 1;
-  transform: scale(1.12);
+  background: transparent;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 /* ============================================================================
