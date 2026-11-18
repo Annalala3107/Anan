@@ -4,120 +4,14 @@ import {
   parseAnswerKeys,
   resolveCorrectOptionFromAnswer,
 } from '@/lib/utils';
+import {
+  callGeminiStructured,
+  resolveGeminiApiKeys,
+  stripJsonFences,
+} from '@/lib/geminiServer';
 
 const ALLOWED_DIFFICULTIES = new Set(['easy', 'medium', 'hard']);
 const MAX_PROMPT_LENGTH = 24000;
-const TOTAL_DEADLINE_MS = 38_000;
-const PER_ATTEMPT_TIMEOUT_MS = 22_000;
-const GEMINI_MODELS = ['gemini-2.5-flash', 'gemini-2.0-flash'] as const;
-
-function sanitizeErrorMessage(msg: string, apiKey: string): string {
-  if (!msg) return 'Không thể xử lý phản hồi từ Gemini API.';
-  return apiKey ? msg.split(apiKey).join('[REDACTED]') : msg;
-}
-
-function stripJsonFences(text: string): string {
-  let cleaned = text.trim();
-  if (cleaned.startsWith('```json')) cleaned = cleaned.replace(/^```json/, '');
-  else if (cleaned.startsWith('```')) cleaned = cleaned.replace(/^```/, '');
-  if (cleaned.endsWith('```')) cleaned = cleaned.replace(/```$/, '');
-  return cleaned.trim();
-}
-
-async function callGeminiWithDeadline(params: {
-  apiKey: string;
-  systemText: string;
-  userText: string;
-  temperature: number;
-  responseSchema: Record<string, unknown>;
-}): Promise<{ text?: string; error?: string; status?: number }> {
-  const deadline = Date.now() + TOTAL_DEADLINE_MS;
-  let lastError = '';
-  let lastStatus = 502;
-
-  for (const model of GEMINI_MODELS) {
-    const remaining = deadline - Date.now();
-    if (remaining <= 2500) break;
-
-    const timeoutMs = Math.min(PER_ATTEMPT_TIMEOUT_MS, remaining);
-
-    try {
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-goog-api-key': params.apiKey,
-          },
-          signal: AbortSignal.timeout(timeoutMs),
-          body: JSON.stringify({
-            systemInstruction: {
-              parts: [{ text: params.systemText }],
-            },
-            contents: [
-              {
-                role: 'user',
-                parts: [{ text: params.userText }],
-              },
-            ],
-            generationConfig: {
-              temperature: params.temperature,
-              responseMimeType: 'application/json',
-              responseSchema: params.responseSchema,
-            },
-          }),
-        }
-      );
-
-      const rawResponseText = await response.text();
-      let data: {
-        candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
-        error?: { message?: string };
-      } | null = null;
-
-      try {
-        data = rawResponseText ? JSON.parse(rawResponseText) : null;
-      } catch {
-        data = null;
-      }
-
-      if (!response.ok) {
-        lastStatus = response.status === 429 ? 429 : response.status >= 400 && response.status < 500 ? response.status : 502;
-        lastError = sanitizeErrorMessage(
-          data?.error?.message || `Google Gemini API trả về mã lỗi HTTP ${response.status}.`,
-          params.apiKey
-        );
-        // Do not retry on client/auth errors (400, 401, 403)
-        if (response.status === 400 || response.status === 401 || response.status === 403) {
-          return { error: lastError, status: response.status };
-        }
-        continue;
-      }
-
-      const candidateText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (candidateText) {
-        return { text: candidateText };
-      }
-
-      lastError = sanitizeErrorMessage(
-        data?.error?.message || 'Gemini API không trả về nội dung hợp lệ.',
-        params.apiKey
-      );
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Lỗi kết nối tới Gemini API.';
-      lastError = sanitizeErrorMessage(msg, params.apiKey);
-      lastStatus = 504;
-    }
-  }
-
-  return {
-    error:
-      lastError ||
-      'Không thể kết nối tới Gemini API trong thời gian cho phép. Vui lòng thử lại sau.',
-    status: lastStatus,
-  };
-}
 
 export async function POST(req: NextRequest) {
   try {
@@ -140,12 +34,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const headerKey = req.headers.get('x-goog-api-key')?.trim() || '';
-    const bodyKey = typeof body.userApiKey === 'string' ? body.userApiKey.trim() : '';
-    const envKey = process.env.GEMINI_API_KEY?.trim() || '';
-    const apiKey = headerKey || bodyKey || envKey;
+    const apiKeys = resolveGeminiApiKeys(
+      req.headers.get('x-goog-api-key'),
+      body.userApiKey
+    );
 
-    if (!apiKey) {
+    if (apiKeys.length === 0) {
       return NextResponse.json(
         {
           error:
@@ -201,11 +95,13 @@ QUY TẮC:
         sanitizedQuestions
       )}`;
 
-      const result = await callGeminiWithDeadline({
-        apiKey,
+      const result = await callGeminiStructured({
+        apiKeys,
         systemText: solveSystemInstruction,
         userText: solveUserText,
         temperature: 0.2,
+        totalDeadlineMs: 38_000,
+        perAttemptTimeoutMs: 22_000,
         responseSchema: {
           type: 'ARRAY',
           items: {
@@ -311,11 +207,13 @@ QUY TẮC BẮT BUỘC:
       ? `Dựa trên nội dung bài giảng/tài liệu dưới đây cho môn "${subject}", hãy biên soạn ${questionCount} câu hỏi trắc nghiệm mức độ "${difficulty}":\n\n--- BẮT ĐẦU TÀI LIỆU ---\n${prompt}\n--- KẾT THÚC TÀI LIỆU ---`
       : `Hãy tạo ${questionCount} câu hỏi trắc nghiệm môn "${subject}" (độ khó: ${difficulty}) cho chủ đề: ${prompt}`;
 
-    const result = await callGeminiWithDeadline({
-      apiKey,
+    const result = await callGeminiStructured({
+      apiKeys,
       systemText: systemInstruction,
       userText: userContent,
       temperature: 0.4,
+      totalDeadlineMs: 38_000,
+      perAttemptTimeoutMs: 22_000,
       responseSchema: {
         type: 'ARRAY',
         items: {
