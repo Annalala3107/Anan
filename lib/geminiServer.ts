@@ -3,7 +3,10 @@
  * (`GEMINI_API_KEY`, `GEMINI_API_KEYS`, `GEMINI_API_KEY1..10`) and active model fallback.
  */
 
-export const ACTIVE_GEMINI_MODELS = ['gemini-3.8-flash', 'gemini-3.5-flash-lite'] as const;
+export const ACTIVE_GEMINI_MODELS = [
+  'gemini-3.5-flash-lite',
+  'gemini-3.8-flash',
+] as const;
 
 export function sanitizeErrorMessages(msg: string, keys: string[]): string {
   if (!msg) return 'Không thể xử lý phản hồi từ Gemini API.';
@@ -73,6 +76,7 @@ export async function callGeminiStructured(params: {
   let lastStatus = 502;
 
   for (let keyIdx = 0; keyIdx < params.apiKeys.length; keyIdx++) {
+    if (Date.now() + 2500 >= deadline) break;
     const apiKey = params.apiKeys[keyIdx];
     const hasNextKey = keyIdx < params.apiKeys.length - 1;
 
@@ -140,12 +144,13 @@ export async function callGeminiStructured(params: {
           if (response.status === 400) {
             return { error: lastError, status: response.status };
           }
-          // Auth or quota failure on this key: move immediately to next key if available
-          if (response.status === 401 || response.status === 403 || response.status === 429) {
+          // Auth failure on this key: move immediately to next key if available
+          if (response.status === 401 || response.status === 403) {
             if (hasNextKey) break;
             return { error: lastError, status: response.status };
           }
-          // 404 (model unavailable) or 5xx: try next fallback model
+          // 429 (model quota reached), 404, or 5xx:
+          // try remaining fallback model(s) on the SAME key first before advancing to next key
           continue;
         }
 

@@ -83,17 +83,23 @@ export default function AITutorButton({
   topic,
   className = '',
 }: AITutorButtonProps) {
+  const optionsSig = useMemo(
+    () => (Array.isArray(options) ? options.map((o) => o.trim()).join('|') : ''),
+    [options]
+  );
+
   const cacheKey = useMemo(
     () =>
       hashString(
-        `${question.trim()}::${correctAnswer.trim()}::${(userAnswer || '').trim()}`
+        `${question.trim()}::${optionsSig}::${correctAnswer.trim()}`
       ),
-    [question, correctAnswer, userAnswer]
+    [question, optionsSig, correctAnswer]
   );
 
   const [explanation, setExplanation] = useState<AIExplanationResult | null>(() =>
     readCachedExplanation(cacheKey)
   );
+  const [isSharedCache, setIsSharedCache] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -103,6 +109,7 @@ export default function AITutorButton({
   useEffect(() => {
     const cached = readCachedExplanation(cacheKey);
     setExplanation(cached);
+    setIsSharedCache(false);
     setIsOpen(false);
     setIsLoading(false);
     setError(null);
@@ -164,6 +171,7 @@ export default function AITutorButton({
       const rawText = await res.text();
       let data: {
         success?: boolean;
+        cached?: boolean;
         error?: string;
         explanation?: AIExplanationResult;
       } = {};
@@ -179,7 +187,11 @@ export default function AITutorButton({
           (data.error?.includes('GEMINI_API_KEY') || data.error?.includes('API'))
         ) {
           setNeedsApiKey(true);
-        } else if (res.status === 401 || res.status === 403) {
+        } else if (
+          res.status === 401 ||
+          res.status === 403 ||
+          res.status === 429
+        ) {
           setNeedsApiKey(true);
         }
         throw new Error(data.error || 'Không thể nhận giải thích từ Gemini AI.');
@@ -187,6 +199,7 @@ export default function AITutorButton({
 
       writeCachedExplanation(cacheKey, data.explanation);
       setExplanation(data.explanation);
+      setIsSharedCache(Boolean(data.cached));
       setNeedsApiKey(false);
       setIsOpen(true);
     } catch (err: unknown) {
@@ -287,19 +300,29 @@ export default function AITutorButton({
 
           {needsApiKey && (
             <form onSubmit={handleSaveAndRetryKey} className="space-y-2 pt-1">
-              <p className="text-[11px] text-slate-600 dark:text-slate-300 flex items-center gap-1">
-                <Key className="w-3 h-3 text-amber-500 shrink-0" />
-                <span>
-                  Nhập Gemini API Key cá nhân (chỉ lưu tạm ở <code>sessionStorage</code>):
-                </span>
-              </p>
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <p className="text-[11px] text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                  <Key className="w-3 h-3 text-amber-500 shrink-0" />
+                  <span>
+                    Nhập Gemini API Key cá nhân (chỉ lưu tạm ở <code>sessionStorage</code>):
+                  </span>
+                </p>
+                <a
+                  href="https://aistudio.google.com/apikey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-bold text-indigo-600 dark:text-cyan-400 hover:underline"
+                >
+                  Lấy key miễn phí tại Google AI Studio ↗
+                </a>
+              </div>
               <div className="flex items-center gap-1.5">
                 <input
                   type="password"
                   autoComplete="off"
                   value={tempApiKey}
                   onChange={(e) => setTempApiKey(e.target.value)}
-                  placeholder="AIzaSy..."
+                  placeholder="AQ... hoặc AIza..."
                   className="flex-1 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
                 <button
@@ -329,10 +352,17 @@ export default function AITutorButton({
         <div className="p-4 rounded-2xl bg-indigo-50/80 dark:bg-[#0B1326]/90 border border-indigo-200/90 dark:border-indigo-500/35 space-y-3 text-xs sm:text-sm animate-fade-in">
           {explanation.coreConcept && (
             <div className="space-y-1">
-              <p className="text-[11px] font-black uppercase tracking-wider text-indigo-700 dark:text-cyan-300 flex items-center gap-1.5">
-                <Target className="w-3.5 h-3.5" />
-                <span>Bản chất &amp; Đáp án đúng</span>
-              </p>
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <p className="text-[11px] font-black uppercase tracking-wider text-indigo-700 dark:text-cyan-300 flex items-center gap-1.5">
+                  <Target className="w-3.5 h-3.5" />
+                  <span>Bản chất &amp; Đáp án đúng</span>
+                </p>
+                {isSharedCache && (
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
+                    ⚡ Kho lời giải chung
+                  </span>
+                )}
+              </div>
               <CodeQuestionRenderer
                 content={explanation.coreConcept}
                 className="text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-relaxed"

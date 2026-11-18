@@ -517,7 +517,12 @@ export default function QuickTextParserModal({
         }
 
         if (!res.ok || !data.success || !Array.isArray(data.solutions)) {
-          if (res.status === 400 || res.status === 401 || res.status === 403) {
+          if (
+            res.status === 400 ||
+            res.status === 401 ||
+            res.status === 403 ||
+            res.status === 429
+          ) {
             setNeedsSolveApiKey(true);
           }
           throw new Error(data.error || 'Không thể nhờ AI giải đáp án lúc này.');
@@ -961,7 +966,7 @@ export default function QuickTextParserModal({
                       type="password"
                       value={solveApiKey}
                       onChange={(e) => setSolveApiKey(e.target.value)}
-                      placeholder="Nhập Gemini API Key (AIza...) lưu tạm phiên này rồi bấm AI Giải lại"
+                      placeholder="Nhập Gemini API Key (AQ... hoặc AIza...) lưu tạm phiên này rồi bấm AI Giải lại"
                       className="flex-1 px-2.5 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[11px] font-mono text-slate-900 dark:text-white"
                     />
                   </div>
