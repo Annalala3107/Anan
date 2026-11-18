@@ -231,6 +231,8 @@ export default function AITutorButton({
     }
   };
 
+  const hasKnownAnswer = Boolean(correctAnswer && correctAnswer.trim());
+
   return (
     <div
       onClick={(e) => e.stopPropagation()}
@@ -241,7 +243,11 @@ export default function AITutorButton({
           type="button"
           onClick={handleToggleClick}
           disabled={isLoading}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-indigo-600/15 via-purple-600/15 to-cyan-500/15 hover:from-indigo-600/25 hover:to-cyan-500/25 text-indigo-700 dark:text-cyan-300 border border-indigo-400/35 dark:border-cyan-400/35 transition-all cursor-pointer disabled:opacity-60 active:scale-[0.99]"
+          className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-indigo-600/15 via-purple-600/15 to-cyan-500/15 hover:from-indigo-600/25 hover:to-cyan-500/25 text-indigo-700 dark:text-cyan-300 border transition-all cursor-pointer disabled:opacity-60 active:scale-[0.99] ${
+            !hasKnownAnswer && !explanation
+              ? 'border-amber-400/50 dark:border-cyan-400/50 shadow-sm'
+              : 'border-indigo-400/35 dark:border-cyan-400/35'
+          }`}
         >
           {isLoading ? (
             <>
@@ -257,6 +263,11 @@ export default function AITutorButton({
               ) : (
                 <ChevronDown className="w-3.5 h-3.5" />
               )}
+            </>
+          ) : !hasKnownAnswer ? (
+            <>
+              <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-cyan-400" />
+              <span>🤖 Chưa có đáp án gốc — Bấm để AI Suy Luận &amp; Giảng Bản Chất</span>
             </>
           ) : (
             <>

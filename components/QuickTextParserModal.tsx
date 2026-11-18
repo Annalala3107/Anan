@@ -291,9 +291,14 @@ export default function QuickTextParserModal({
         const effectiveCorrectWord = ov?.correctWord ?? entry.raw.correctWord ?? '';
         const hasValidAnswer = Boolean(effectiveAnswer.trim() || effectiveCorrectWord.trim());
 
+        const rawWordText =
+          effectiveCorrectWord ||
+          (hasValidAnswer ? entry.raw.word : '') ||
+          effectiveQuestion;
+
         const resolvedWord: Word = {
           ...entry.raw,
-          word: effectiveCorrectWord || entry.raw.word || effectiveQuestion,
+          word: rawWordText.slice(0, 1900),
           question: effectiveQuestion,
           answer: effectiveAnswer,
           correctWord: effectiveCorrectWord || undefined,
@@ -313,13 +318,24 @@ export default function QuickTextParserModal({
   const savableQuestions = useMemo(
     () =>
       previewItems
-        .filter((item) => item.hasValidAnswer && item.resolvedWord.options && item.resolvedWord.options.length >= 2)
+        .filter((item) => item.resolvedWord.options && item.resolvedWord.options.length >= 2)
         .map((item) => item.resolvedWord),
     [previewItems]
   );
 
   const pendingUnansweredItems = useMemo(
     () => previewItems.filter((item) => !item.hasValidAnswer),
+    [previewItems]
+  );
+
+  const answeredCount = useMemo(
+    () =>
+      previewItems.filter(
+        (item) =>
+          item.hasValidAnswer &&
+          item.resolvedWord.options &&
+          item.resolvedWord.options.length >= 2
+      ).length,
     [previewItems]
   );
 
@@ -434,8 +450,13 @@ export default function QuickTextParserModal({
     }));
   };
 
-  const handleAiSolveUnanswered = async () => {
+  const handleAiSolveUnanswered = async (maxQuestionsToSolve?: number) => {
     if (pendingUnansweredItems.length === 0 || isAiSolving) return;
+
+    const itemsToSolve =
+      typeof maxQuestionsToSolve === 'number' && maxQuestionsToSolve > 0
+        ? pendingUnansweredItems.slice(0, maxQuestionsToSolve)
+        : pendingUnansweredItems;
 
     setIsAiSolving(true);
     setAiSolveError(null);
@@ -467,8 +488,8 @@ export default function QuickTextParserModal({
       const BATCH_SIZE = 15;
       let solvedTotal = 0;
 
-      for (let offset = 0; offset < pendingUnansweredItems.length; offset += BATCH_SIZE) {
-        const batch = pendingUnansweredItems.slice(offset, offset + BATCH_SIZE);
+      for (let offset = 0; offset < itemsToSolve.length; offset += BATCH_SIZE) {
+        const batch = itemsToSolve.slice(offset, offset + BATCH_SIZE);
         const res = await fetch('/api/ai/generate-quiz', {
           method: 'POST',
           headers,
@@ -856,32 +877,82 @@ export default function QuickTextParserModal({
               </div>
             </div>
 
-            {/* AI Auto-Solve Bar for unanswered questions */}
+            {/* AI Auto-Solve Bar & ~50-Question Rule for unanswered questions */}
             {pendingUnansweredItems.length > 0 && (
-              <div className="p-3 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 space-y-2.5">
-                <div className="flex items-center justify-between gap-2 flex-wrap">
-                  <p className="text-[11px] font-semibold text-indigo-800 dark:text-indigo-200 leading-snug">
-                    Phát hiện <strong>{pendingUnansweredItems.length} câu</strong> chưa có đáp án. Chọn thủ công ở thẻ câu hỏi hoặc dùng AI giải tự động:
-                  </p>
-                  <button
-                    type="button"
-                    disabled={isAiSolving}
-                    onClick={handleAiSolveUnanswered}
-                    className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:opacity-95 text-white text-[11px] font-black flex items-center gap-1.5 shadow-sm transition-all disabled:opacity-50 cursor-pointer shrink-0"
-                  >
-                    {isAiSolving ? (
-                      <>
-                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                        <span>AI đang giải...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Bot className="w-3.5 h-3.5" />
-                        <span>🤖 Dùng AI Giải &amp; Điền Đáp Án ({pendingUnansweredItems.length} câu)</span>
-                      </>
-                    )}
-                  </button>
-                </div>
+              <div className="p-3.5 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 space-y-2.5">
+                {pendingUnansweredItems.length <= 50 ? (
+                  <div className="space-y-2">
+                    <p className="text-[11px] font-semibold text-indigo-800 dark:text-indigo-200 leading-snug">
+                      Phát hiện <strong>{pendingUnansweredItems.length} câu</strong> chưa có đáp án (≤ 50 câu). Bạn có thể vào luyện/thi ngay để quen format đề &amp; gọi AI giải từng câu, hoặc dùng AI giải sẵn toàn bộ:
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <button
+                        type="button"
+                        disabled={isAiSolving}
+                        onClick={() => handleAiSolveUnanswered()}
+                        className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:opacity-95 text-white text-[11px] font-black flex items-center gap-1.5 shadow-sm transition-all disabled:opacity-50 cursor-pointer shrink-0"
+                      >
+                        {isAiSolving ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            <span>AI đang giải...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Bot className="w-3.5 h-3.5" />
+                            <span>🤖 AI Giải Nhanh Toàn Bộ ({pendingUnansweredItems.length} câu)</span>
+                          </>
+                        )}
+                      </button>
+
+                      <button
+                        type="button"
+                        disabled={savableQuestions.length === 0 || isAiSolving}
+                        onClick={() => handleSaveAndLaunch('exam')}
+                        className="px-3 py-1.5 rounded-xl bg-white/90 dark:bg-slate-800/90 hover:bg-indigo-50 dark:hover:bg-slate-700 text-indigo-700 dark:text-cyan-300 border border-indigo-300 dark:border-cyan-500/35 text-[11px] font-bold flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer shrink-0"
+                      >
+                        <Zap className="w-3.5 h-3.5" />
+                        <span>⚡ Vào Thi Thử Ngay (AI giải tại chỗ)</span>
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    <p className="text-[11px] font-semibold text-indigo-800 dark:text-indigo-200 leading-snug">
+                      Đề lớn gồm <strong>{pendingUnansweredItems.length} câu</strong> chưa có đáp án (&gt; 50 câu). Khuyên dùng: Vào thẳng phòng thi/luyện chặng ngay lập tức không cần chờ — bấm nút AI Suy Luận tại từng câu bạn cần xem!
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <button
+                        type="button"
+                        disabled={savableQuestions.length === 0 || isAiSolving}
+                        onClick={() => handleSaveAndLaunch('exam')}
+                        className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:opacity-95 text-white text-[11px] font-black flex items-center gap-1.5 shadow-sm transition-all disabled:opacity-50 cursor-pointer shrink-0"
+                      >
+                        <Zap className="w-3.5 h-3.5" />
+                        <span>⚡ Vào Phòng Thi Ngay — Không Chờ AI</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        disabled={isAiSolving}
+                        onClick={() => handleAiSolveUnanswered(30)}
+                        className="px-3 py-1.5 rounded-xl bg-white/90 dark:bg-slate-800/90 hover:bg-indigo-50 dark:hover:bg-slate-700 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-500/35 text-[11px] font-bold flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer shrink-0"
+                      >
+                        {isAiSolving ? (
+                          <>
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            <span>Đang giải 30 câu đầu...</span>
+                          </>
+                        ) : (
+                          <>
+                            <Bot className="w-3.5 h-3.5" />
+                            <span>🤖 Giải trước 30 câu đầu</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                )}
 
                 {needsSolveApiKey && (
                   <div className="flex items-center gap-2">
@@ -1072,22 +1143,23 @@ export default function QuickTextParserModal({
 
         {/* Footer Actions */}
         <div className="p-4 sm:p-6 bg-slate-50 dark:bg-[#0B1120] border-t border-slate-100 dark:border-slate-800 flex items-center justify-between flex-wrap gap-3 shrink-0">
-          <div className="text-xs text-slate-500">
+          <div className="text-xs text-slate-500 dark:text-slate-400">
             {savableQuestions.length > 0 ? (
               <span>
                 Sẵn sàng lưu{' '}
                 <strong className="text-emerald-500 font-mono">{savableQuestions.length}</strong>{' '}
-                câu hỏi có đáp án
+                câu hỏi ({answeredCount} câu đã có đáp án
                 {pendingUnansweredItems.length > 0
-                  ? ` (${pendingUnansweredItems.length} câu chưa chọn đáp án sẽ bị bỏ qua)`
-                  : '.'}
+                  ? `, ${pendingUnansweredItems.length} câu sẽ dùng AI giải tại chỗ khi học/thi`
+                  : ''}
+                ).
               </span>
             ) : (
-              <span>Nhập nội dung đề thi và chọn đáp án để kích hoạt lưu trữ.</span>
+              <span>Nhập nội dung đề thi có ít nhất 2 phương án để kích hoạt lưu trữ.</span>
             )}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center flex-wrap gap-2">
             <button
               type="button"
               onClick={(e) => {
@@ -1106,6 +1178,15 @@ export default function QuickTextParserModal({
               className="py-2.5 px-4 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs transition-all disabled:opacity-40 cursor-pointer"
             >
               Lưu Vào Kho Đề
+            </button>
+
+            <button
+              type="button"
+              disabled={savableQuestions.length === 0}
+              onClick={() => handleSaveAndLaunch('drill')}
+              className="py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs transition-all disabled:opacity-40 cursor-pointer shadow-sm"
+            >
+              LƯU &amp; LUYỆN CHẶNG
             </button>
 
             <button

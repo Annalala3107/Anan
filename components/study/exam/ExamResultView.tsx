@@ -70,10 +70,20 @@ export default function ExamResultView({
   shuffleChoices = false,
 }: ExamResultViewProps) {
   let correctCount = 0;
+  let gradedTotal = 0;
+  let unkeyedCount = 0;
   questions.forEach((q, idx) => {
+    const hasKnownKey =
+      q.hasAnswerKey !== false && Boolean(q.correctWord?.trim() || q.answerKey?.trim());
+    if (!hasKnownKey) {
+      unkeyedCount++;
+      return;
+    }
+    gradedTotal++;
     if (isAnswerCorrect(answers[idx], q)) correctCount++;
   });
-  const percent = Math.round((correctCount / questions.length) * 100);
+  const knownWrongCount = Math.max(0, gradedTotal - correctCount);
+  const percent = gradedTotal > 0 ? Math.round((correctCount / gradedTotal) * 100) : 0;
 
   return (
     <div className="w-full max-w-5xl xl:max-w-6xl mx-auto py-8 px-4 sm:px-6 animate-fade-in">
@@ -86,32 +96,47 @@ export default function ExamResultView({
           Kết Quả Bài Thi Thử
         </h2>
         <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
-          Đánh giá kiến thức & mức độ nắm vững các chủ đề trọng tâm
+          {gradedTotal === 0
+            ? 'Đề gốc chưa có đáp án sẵn — Hãy dùng AI suy luận & giảng bản chất cho từng câu bên dưới.'
+            : 'Đánh giá kiến thức & mức độ nắm vững các chủ đề trọng tâm'}
         </p>
 
-        <div className="flex justify-center items-center gap-8 mb-6">
-          <div>
-            <p className="text-xs font-bold text-slate-400 uppercase">Điểm số</p>
-            <p className="text-4xl font-black text-indigo-600 dark:text-indigo-400">
-              {correctCount} / {questions.length}
-            </p>
+        {gradedTotal === 0 ? (
+          <div className="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-indigo-500/10 border border-indigo-400/30 mb-6">
+            <span className="text-sm font-bold text-indigo-700 dark:text-cyan-300">
+              Đã hoàn thành {questions.length} câu hỏi làm quen format đề • Sẵn sàng nhờ AI chấm &amp; giải
+            </span>
           </div>
-          <div className="w-[1px] h-12 bg-slate-200 dark:bg-slate-700" />
-          <div>
-            <p className="text-xs font-bold text-slate-400 uppercase">Tỉ lệ đạt</p>
-            <p
-              className={`text-4xl font-black ${
-                percent >= 80
-                  ? 'text-emerald-500'
-                  : percent >= 50
-                  ? 'text-amber-500'
-                  : 'text-rose-500'
-              }`}
-            >
-              {percent}%
-            </p>
+        ) : (
+          <div className="flex justify-center items-center gap-8 mb-6 flex-wrap">
+            <div>
+              <p className="text-xs font-bold text-slate-400 uppercase">Điểm số</p>
+              <p className="text-4xl font-black text-indigo-600 dark:text-indigo-400">
+                {correctCount} / {gradedTotal}
+              </p>
+              {unkeyedCount > 0 && (
+                <p className="text-[11px] text-amber-500 font-semibold mt-0.5">
+                  (+{unkeyedCount} câu chưa có đáp án gốc)
+                </p>
+              )}
+            </div>
+            <div className="w-[1px] h-12 bg-slate-200 dark:bg-slate-700" />
+            <div>
+              <p className="text-xs font-bold text-slate-400 uppercase">Tỉ lệ đạt</p>
+              <p
+                className={`text-4xl font-black ${
+                  percent >= 80
+                    ? 'text-emerald-500'
+                    : percent >= 50
+                    ? 'text-amber-500'
+                    : 'text-rose-500'
+                }`}
+              >
+                {percent}%
+              </p>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="flex justify-center flex-wrap gap-3">
           <button
@@ -299,7 +324,7 @@ export default function ExamResultView({
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Chỉ câu sai ({questions.length - correctCount})
+            Chỉ câu sai ({knownWrongCount})
           </button>
           <button
             type="button"
@@ -336,7 +361,10 @@ export default function ExamResultView({
         <div className="space-y-4">
           {filteredReviewQuestions.map(({ q, idx }) => {
             const userAns = answers[idx];
-            const isCorrect = isAnswerCorrect(userAns, q);
+            const hasKnownKey =
+              q.hasAnswerKey !== false &&
+              Boolean(q.correctWord?.trim() || q.answerKey?.trim());
+            const isCorrect = hasKnownKey && isAnswerCorrect(userAns, q);
             const wasFlagged = Boolean(flags[idx]);
             const isShuffled = shuffleChoices || !q.answerKey;
             const userAnsList = formatChoicesWithDisplayLetters(
@@ -346,35 +374,42 @@ export default function ExamResultView({
             );
             const userAnsText =
               userAnsList.length > 0 ? userAnsList.join(' | ') : '(Bỏ trống)';
-            const rawCorrectList =
-              q.correctOptions && q.correctOptions.length > 0
+            const rawCorrectList = hasKnownKey
+              ? q.correctOptions && q.correctOptions.length > 0
                 ? q.correctOptions
-                : splitCorrectChoices(q.correctWord, q.answerKey, q.options);
-            const correctAnsList = formatChoicesWithDisplayLetters(
-              rawCorrectList,
-              q.options,
-              isShuffled
-            );
-            const displayedExplanation = formatExplanationForCurrentOptions(
-              q.explanation,
-              q.options,
-              q.correctWord,
-              q.answerKey,
-              isShuffled,
-              q.correctOptions
-            );
+                : splitCorrectChoices(q.correctWord, q.answerKey, q.options)
+              : [];
+            const correctAnsList = hasKnownKey
+              ? formatChoicesWithDisplayLetters(
+                  rawCorrectList,
+                  q.options,
+                  isShuffled
+                )
+              : [];
+            const displayedExplanation = hasKnownKey
+              ? formatExplanationForCurrentOptions(
+                  q.explanation,
+                  q.options,
+                  q.correctWord,
+                  q.answerKey,
+                  isShuffled,
+                  q.correctOptions
+                )
+              : q.explanation;
 
             return (
               <div
                 key={idx}
                 className={`p-5 rounded-2xl border transition-all ${
-                  isCorrect
+                  !hasKnownKey
+                    ? 'bg-indigo-50/40 dark:bg-indigo-950/20 border-indigo-300 dark:border-indigo-800/60'
+                    : isCorrect
                     ? 'bg-emerald-50/40 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800/60'
                     : 'bg-rose-50/40 dark:bg-rose-950/20 border-rose-300 dark:border-rose-800/60'
                 }`}
               >
                 <div className="flex items-start justify-between gap-3 mb-2">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-xs font-bold px-2.5 py-0.5 rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                       Câu {idx + 1}
                     </span>
@@ -389,12 +424,16 @@ export default function ExamResultView({
                       </span>
                     )}
                   </div>
-                  {isCorrect ? (
-                    <span className="flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                  {!hasKnownKey ? (
+                    <span className="flex items-center gap-1 text-xs font-bold text-amber-600 dark:text-amber-300 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/25 shrink-0">
+                      📌 Chưa có đáp án gốc
+                    </span>
+                  ) : isCorrect ? (
+                    <span className="flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 shrink-0">
                       <CheckCircle2 className="w-4 h-4" /> Đúng
                     </span>
                   ) : (
-                    <span className="flex items-center gap-1 text-xs font-bold text-rose-600 dark:text-rose-400">
+                    <span className="flex items-center gap-1 text-xs font-bold text-rose-600 dark:text-rose-400 shrink-0">
                       <XCircle className="w-4 h-4" /> Sai
                     </span>
                   )}
@@ -412,7 +451,9 @@ export default function ExamResultView({
                     <span className="text-slate-400">Bạn chọn: </span>
                     <span
                       className={`font-bold ${
-                        isCorrect
+                        !hasKnownKey
+                          ? 'text-indigo-600 dark:text-cyan-300'
+                          : isCorrect
                           ? 'text-emerald-600 dark:text-emerald-400'
                           : 'text-rose-600 dark:text-rose-400'
                       }`}
@@ -422,9 +463,15 @@ export default function ExamResultView({
                   </div>
                   <div>
                     <span className="text-slate-400">Đáp án đúng: </span>
-                    <span className="font-bold text-emerald-600 dark:text-emerald-400">
-                      {correctAnsList.join(' | ')}
-                    </span>
+                    {hasKnownKey ? (
+                      <span className="font-bold text-emerald-600 dark:text-emerald-400">
+                        {correctAnsList.join(' | ')}
+                      </span>
+                    ) : (
+                      <span className="font-semibold text-amber-600 dark:text-amber-300">
+                        Chưa có đáp án gốc (dùng AI suy luận bên dưới)
+                      </span>
+                    )}
                   </div>
                   {displayedExplanation && (
                     <p className="text-slate-500 dark:text-slate-400 italic mt-1">
@@ -434,8 +481,12 @@ export default function ExamResultView({
                   <AITutorButton
                     question={q.sentence}
                     options={q.options}
-                    correctAnswer={correctAnsList.join(' | ')}
-                    userAnswer={!isCorrect && userAnsList.length > 0 ? userAnsList.join(' | ') : undefined}
+                    correctAnswer={hasKnownKey ? correctAnsList.join(' | ') : ''}
+                    userAnswer={
+                      userAnsList.length > 0 && (!hasKnownKey || !isCorrect)
+                        ? userAnsList.join(' | ')
+                        : undefined
+                    }
                     subject={q.subject}
                     topic={q.topic}
                     className="pt-2"

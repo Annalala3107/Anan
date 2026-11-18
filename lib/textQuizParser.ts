@@ -736,9 +736,6 @@ export function parseRawExamText(
 
       if (!rawFinalAnswer) {
         stats.unansweredCount += 1;
-        errorLogs.push(
-          `Câu ${qNum}: Thiếu đáp án (bạn có thể bấm chọn trực tiếp ở khung Xem trước hoặc nhờ AI giải tự động).`
-        );
         unansweredList.push({
           id: baseId,
           word: `Câu ${qNum}: ${questionStem}`,

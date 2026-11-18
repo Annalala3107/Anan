@@ -19,6 +19,7 @@ export interface StandardQuestion {
   options: string[];
   explanation: string;
   answerKey?: string;
+  hasAnswerKey?: boolean;
   subject?: string;
   topic?: string;
   image?: string;
@@ -119,19 +120,34 @@ export function buildStandardQuestions(
 
     // Case 1: Standard Multiple Choice Question (CSI106, CEA201, SSA101, PRF192)
     if (target.question && target.options && target.options.length > 0) {
+      const hasAnswerKey = Boolean(target.answer?.trim() || target.correctWord?.trim());
       const rawOptions = target.options;
-      const rawCorrect = resolveCorrectOptionFromAnswer(target.answer, rawOptions, target.correctWord);
-      const meta = getQuestionAnswerMeta(rawCorrect, target.answer, rawOptions);
+      const rawCorrect = hasAnswerKey
+        ? resolveCorrectOptionFromAnswer(target.answer, rawOptions, target.correctWord)
+        : '';
+      const meta = hasAnswerKey
+        ? getQuestionAnswerMeta(rawCorrect, target.answer, rawOptions)
+        : {
+            isMultiSelect: false,
+            requiredCount: 1,
+            correctChoices: [],
+            answerKeys: [],
+            isOrMode: false,
+          };
 
       const finalOptions = shuffleChoices
         ? shuffleArray(rawOptions).map((opt) => cleanOptionText(opt))
         : rawOptions;
-      const finalCorrectOptions = shuffleChoices
-        ? meta.correctChoices.map((c) => cleanOptionText(c))
-        : meta.correctChoices;
-      const finalCorrect = shuffleChoices
-        ? finalCorrectOptions.join(' | ')
-        : rawCorrect;
+      const finalCorrectOptions = hasAnswerKey
+        ? shuffleChoices
+          ? meta.correctChoices.map((c) => cleanOptionText(c))
+          : meta.correctChoices
+        : [];
+      const finalCorrect = hasAnswerKey
+        ? shuffleChoices
+          ? finalCorrectOptions.join(' | ')
+          : rawCorrect
+        : '';
 
       list.push({
         id: String(target.id || getQuestionKey(target)),
@@ -142,8 +158,13 @@ export function buildStandardQuestions(
         isMultiSelect: meta.isMultiSelect,
         requiredCount: meta.requiredCount,
         options: finalOptions,
-        explanation: target.explanation || `Đáp án đúng: ${target.answer || rawOptions[0]}`,
+        explanation:
+          target.explanation ||
+          (hasAnswerKey
+            ? `Đáp án đúng: ${target.answer || rawOptions[0]}`
+            : 'Câu hỏi này chưa có đáp án gốc. Hãy bấm nút AI bên dưới để suy luận đáp án đúng và giảng bản chất bài.'),
         answerKey: shuffleChoices ? undefined : target.answer,
+        hasAnswerKey,
         subject: target.subject,
         topic: target.topic,
         image: target.image,

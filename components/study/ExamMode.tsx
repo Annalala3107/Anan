@@ -304,6 +304,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
   };
 
   const isAnswerCorrect = (userAns: string[] | undefined, q: ExamQuestion) => {
+    if (q.hasAnswerKey === false) return false;
     return isQuestionAnsweredCorrectly(userAns, q.correctWord, q.answerKey, q.correctOptions);
   };
 
@@ -314,6 +315,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     const map = new Map<string, { total: number; correct: number; wrong: number }>();
 
     questions.forEach((q, idx) => {
+      if (q.hasAnswerKey === false) return;
       const topicName = (q.topic || 'Chuyên đề chung').trim();
       if (!map.has(topicName)) {
         map.set(topicName, { total: 0, correct: 0, wrong: 0 });
@@ -395,7 +397,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
         );
         const wasFlagged = Boolean(flags[idx]);
 
-        if (resultFilterMode === 'wrong' && isCorrect) return false;
+        if (resultFilterMode === 'wrong' && (isCorrect || q.hasAnswerKey === false)) return false;
         if (resultFilterMode === 'flagged' && !wasFlagged) return false;
         if (resultFilterTopic && (q.topic || 'Chuyên đề chung').trim() !== resultFilterTopic) {
           return false;
@@ -438,10 +440,13 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
     setIsExamActive(false);
 
     let correctCount = 0;
+    let gradedTotal = 0;
     const wrongKeys: string[] = [];
 
     questions.forEach((q, idx) => {
       const ans = answers[idx];
+      if (q.hasAnswerKey === false) return;
+      gradedTotal += 1;
       const isCorrect = isAnswerCorrect(ans, q);
       const uniqueKey = q.id || getQuestionKey({ question: q.sentence, word: q.correctWord });
 
@@ -455,23 +460,26 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       }
     });
 
-    const percent = Math.round((correctCount / questions.length) * 100);
+    const percent = gradedTotal > 0 ? Math.round((correctCount / gradedTotal) * 100) : 0;
     StorageEngine.recordActivity('exam', percent);
-    StorageEngine.recordExamResult({
-      date: Date.now(),
-      score: correctCount,
-      total: questions.length,
-      percent,
-      wrongCount: wrongKeys.length,
-      quizTitle: words[0]?.subject || 'Đề thi trắc nghiệm',
-    });
-
-    if (percent >= 70) {
-      confetti({
-        particleCount: 150,
-        spread: 80,
-        origin: { y: 0.6 },
+    if (gradedTotal > 0) {
+      StorageEngine.recordExamResult({
+        date: Date.now(),
+        score: correctCount,
+        total: gradedTotal,
+        percent,
+        wrongCount: wrongKeys.length,
+        quizTitle: words[0]?.subject || 'Đề thi trắc nghiệm',
       });
+
+      if (percent >= 70) {
+        useQuizStore.getState().triggerConstellationAction('shooting_star');
+        confetti({
+          particleCount: 150,
+          spread: 80,
+          origin: { y: 0.6 },
+        });
+      }
     }
   };
   executeSubmitRef.current = executeSubmit;

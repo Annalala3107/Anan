@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { useQuizStore } from '@/lib/quizStore';
 import { useMusicStore } from '@/lib/musicStore';
 
@@ -283,6 +284,13 @@ export default function DynamicConstellationBackground({
   const showMiniPlayer = useMusicStore((state) => state.showMiniPlayer);
   const [hudCollapsed, setHudCollapsed] = useState(false);
 
+  const pathname = usePathname();
+  const isStudySession = Boolean(pathname?.startsWith('/session/'));
+  const isStudySessionRef = useRef(isStudySession);
+  useEffect(() => {
+    isStudySessionRef.current = isStudySession;
+  }, [isStudySession]);
+
   const effectiveShowHud = showHud || showConstellationHud;
   const effectiveShowStars = showStars && enableConstellationBg && !isZenModeOpen;
 
@@ -402,7 +410,7 @@ export default function DynamicConstellationBackground({
       if (shootingTimerId) clearTimeout(shootingTimerId);
       const wait = delayMs ?? randomInt(3800, 7200);
       shootingTimerId = setTimeout(() => {
-        if (!document.hidden) {
+        if (!document.hidden && !isStudySessionRef.current) {
           pushShootingStar();
         }
         scheduleNextShootingStar();
@@ -444,12 +452,13 @@ export default function DynamicConstellationBackground({
       }
 
       const pointerOn = interactive && pointer.mouseFade > 0.01;
+      const driftFactor = isStudySessionRef.current ? 0.3 : 1;
 
       // 1. Update micro-stars in-place (zero allocations)
       for (let i = 0; i < microStars.length; i++) {
         const m = microStars[i];
-        m.x += m.vx * dtScale;
-        m.y += m.vy * dtScale;
+        m.x += m.vx * dtScale * driftFactor;
+        m.y += m.vy * dtScale * driftFactor;
         if (m.x < -10) m.x = width + 10;
         else if (m.x > width + 10) m.x = -10;
         if (m.y < -10) m.y = height + 10;
@@ -472,8 +481,8 @@ export default function DynamicConstellationBackground({
       for (let c = 0; c < clusters.length; c++) {
         const cluster = clusters[c];
 
-        cluster.cx += cluster.vx * dtScale;
-        cluster.cy += cluster.vy * dtScale;
+        cluster.cx += cluster.vx * dtScale * driftFactor;
+        cluster.cy += cluster.vy * dtScale * driftFactor;
         if (cluster.cx < padX) {
           cluster.cx = padX;
           cluster.vx = Math.abs(cluster.vx);
@@ -790,7 +799,7 @@ export default function DynamicConstellationBackground({
       <div
         ref={containerRef}
         className={`fixed inset-0 pointer-events-none z-0 overflow-hidden bg-slate-50 dark:bg-[#080C14] transition-opacity duration-500 ${
-          isExamActive ? 'opacity-40' : 'opacity-100'
+          isExamActive ? 'opacity-35' : isStudySession ? 'opacity-55' : 'opacity-100'
         } ${className}`}
         aria-hidden="true"
       >

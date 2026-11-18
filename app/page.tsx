@@ -14,12 +14,19 @@ import {
   ArrowRight,
   BookOpen,
   Clock,
+  Headphones,
+  FileText,
+  CheckSquare,
+  Compass,
+  Bot,
 } from 'lucide-react';
 import { useQuizStore } from '@/lib/quizStore';
+import { useMusicStore } from '@/lib/musicStore';
 import { StorageEngine } from '@/lib/storage';
 import { QUESTION_BANKS, getQuizDisplayName } from '@/lib/defaultBanks';
 import { WordProgress } from '@/lib/types';
 import QrSyncModal from '@/components/QrSyncModal';
+import QuickTextParserModal from '@/components/QuickTextParserModal';
 
 export default function Home() {
   const {
@@ -31,9 +38,13 @@ export default function Home() {
     selectedQuizPath,
     setSelectedQuizPath,
     activeCustomQuiz,
+    setActiveCustomQuiz,
   } = useQuizStore();
+  const setZenModeOpen = useMusicStore((s) => s.setZenModeOpen);
+  const isPlayingMusic = useMusicStore((s) => s.isPlaying);
   const [progressMap, setProgressMap] = useState<Record<string, WordProgress>>({});
   const [showQrSync, setShowQrSync] = useState(false);
+  const [showQuickParser, setShowQuickParser] = useState(false);
 
   useEffect(() => {
     hydrateSelection();
@@ -81,41 +92,196 @@ export default function Home() {
     hasHydratedSelection && !hasExplicitSelection && !activeCustomQuiz;
 
   return (
-    <div className="w-full px-3.5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-5 md:py-10 pb-28 md:pb-12 space-y-6 sm:space-y-8 animate-fade-in">
-      {showOnboardingPicker ? (
-        /* First-Visit 5-Subject Onboarding Quick Picker */
-        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-8 glass-elevated bg-gradient-to-br from-indigo-50/95 via-white/90 to-cyan-50/90 dark:from-indigo-950/60 dark:via-slate-900/65 dark:to-purple-950/45 border border-indigo-200/80 dark:border-indigo-400/30 space-y-6">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-indigo-500/10 dark:bg-white/10 text-indigo-700 dark:text-indigo-200 border border-indigo-300/60 dark:border-white/10">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Chào mừng đến với AnanQuiz</span>
-              </div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
-                Chọn môn học bạn muốn ôn thi ngay
-              </h1>
-              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                Bấm chọn nhanh một trong {QUESTION_BANKS.length} học phần bên dưới để kích hoạt bộ câu hỏi chính thức, hoặc vào Kho Đề để tạo đề riêng bằng AI.
-              </p>
+    <div className="w-full px-3.5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-5 md:py-8 pb-28 md:pb-12 space-y-6 sm:space-y-8 animate-fade-in">
+      {/* First-3-Seconds Cosmic Hero & 3-Pillar Action Hub */}
+      <section className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-8 glass-elevated bg-gradient-to-br from-indigo-50/95 via-white/95 to-cyan-50/90 dark:from-[#0B1124]/90 dark:via-[#0F172A]/85 dark:to-[#181230]/85 border border-indigo-200/80 dark:border-indigo-400/30 space-y-6 transform-gpu">
+        {/* Subtle Celestial Nebula Glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-16 -right-16 w-72 h-72 rounded-full"
+          style={{
+            background:
+              'radial-gradient(circle, rgba(99,102,241,0.22) 0%, rgba(34,211,238,0.08) 45%, transparent 72%)',
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-20 -left-16 w-64 h-64 rounded-full"
+          style={{
+            background:
+              'radial-gradient(circle, rgba(139,92,246,0.16) 0%, transparent 70%)',
+          }}
+        />
+
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+          <div className="space-y-3 max-w-3xl">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-500/12 dark:bg-indigo-500/20 text-indigo-700 dark:text-cyan-300 border border-indigo-400/30 dark:border-cyan-400/30">
+              <Sparkles className="w-3.5 h-3.5 shrink-0" />
+              <span>✦ Nền tảng Ôn Thi Thiên Văn • Thay thế vượt trội cho Quizlet</span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2.5 shrink-0">
-              <button
-                type="button"
-                onClick={() => setShowQrSync(true)}
-                className="text-xs font-bold py-2.5 px-4 rounded-xl bg-white/90 dark:bg-slate-800/80 hover:bg-indigo-50 dark:hover:bg-slate-700 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700/60 transition-colors flex items-center gap-1.5 cursor-pointer"
-              >
-                <Smartphone className="w-4 h-4" />
-                <span>Chuyển QR / PIN</span>
-              </button>
-              <Link
-                href="/quizzes"
-                className="text-xs font-bold py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition-colors flex items-center gap-1.5 shadow-sm"
-              >
-                <span>Mở toàn bộ {QUESTION_BANKS.reduce((acc, sec) => acc + sec.quizzes.length, 0)} chuyên đề</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-slate-900 dark:text-white leading-tight text-balance">
+              Ôn thi trắc nghiệm{' '}
+              <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-cyan-500 dark:from-indigo-400 dark:via-purple-400 dark:to-cyan-300 bg-clip-text text-transparent">
+                học gấp vẫn hiểu sâu
+              </span>
+              , nghe nhạc không xao nhãng
+            </h1>
+
+            <p className="text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+              Luyện đề <strong>1 đáp án &amp; nhiều đáp án đúng</strong> chuẩn tâm lý phòng thi thật — hỗ trợ ngay cả <strong>đề chưa có đáp án sẵn</strong> với AI giảng bản chất, kèm trình phát nhạc Zen ngay trong ứng dụng để khỏi mở YouTube ngoài.
+            </p>
+
+            {/* Key Value Capability Pills */}
+            <div className="flex flex-wrap items-center gap-2 pt-0.5 text-[11px] font-semibold">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/80 dark:bg-white/[0.06] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200">
+                <CheckSquare className="w-3.5 h-3.5 text-indigo-500 dark:text-cyan-400" />
+                1 &amp; Nhiều đáp án (Multi-select)
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/80 dark:bg-white/[0.06] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200">
+                <Bot className="w-3.5 h-3.5 text-purple-500 dark:text-purple-400" />
+                Đề chưa đáp án → Vào thi ngay + AI giảng
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/80 dark:bg-white/[0.06] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200">
+                <Headphones className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" />
+                Nhạc &amp; Pomodoro chống xao nhãng
+              </span>
             </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={() => setShowQrSync(true)}
+              className="text-xs font-bold py-2.5 px-3.5 rounded-xl bg-white/90 dark:bg-white/[0.06] hover:bg-indigo-50 dark:hover:bg-white/10 text-indigo-700 dark:text-indigo-200 border border-indigo-200 dark:border-white/15 transition-colors duration-150 flex items-center gap-1.5 cursor-pointer active:scale-[0.98]"
+            >
+              <Smartphone className="w-4 h-4" />
+              <span>Đồng bộ QR / PIN</span>
+            </button>
+          </div>
+        </div>
+
+        {/* 3 Direct Entry Pillars (1-Tap Study Entry) */}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+          {/* Pillar 1: Prebuilt Quiz Banks & Active Study */}
+          <Link
+            href={showOnboardingPicker ? '#subject-picker' : '/session/drill'}
+            className="group p-4 sm:p-5 rounded-2xl glass-surface border border-indigo-200/80 dark:border-indigo-400/25 hover:border-indigo-500 dark:hover:border-cyan-400/70 hover:shadow-[0_0_26px_rgba(99,102,241,0.2)] transition-[transform,border-color,box-shadow] duration-150 flex flex-col justify-between gap-3 active:scale-[0.98]"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <span className="w-9 h-9 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 border border-indigo-500/25 flex items-center justify-center">
+                  <Compass className="w-4 h-4" />
+                </span>
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">
+                  {showOnboardingPicker
+                    ? `${QUESTION_BANKS.reduce((acc, s) => acc + s.quizzes.length, 0)} chuyên đề`
+                    : quizInfo.shortName}
+                </span>
+              </div>
+              <h2 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white">
+                {showOnboardingPicker
+                  ? '1. Luyện Kho Đề Có Sẵn'
+                  : '1. Tiếp Tục Bộ Đề Đang Chọn'}
+              </h2>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                {showOnboardingPicker
+                  ? 'Chọn nhanh học phần bên dưới để vào luyện chặng, thẻ nhớ SRS hoặc thi thử tính giờ ngay.'
+                  : `Vào thẳng ${quizInfo.title} để làm quen format thi và khóa kiến thức SRS.`}
+              </p>
+            </div>
+            <div className="flex items-center justify-between text-xs font-bold text-indigo-600 dark:text-cyan-300 pt-2 border-t border-slate-200/70 dark:border-white/10">
+              <span>{showOnboardingPicker ? 'Chọn môn ngay bên dưới' : 'Luyện chặng ngay'}</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-150" />
+            </div>
+          </Link>
+
+          {/* Pillar 2: Instant Raw Text / Unanswered Quiz Parser */}
+          <button
+            type="button"
+            onClick={() => setShowQuickParser(true)}
+            className="group text-left p-4 sm:p-5 rounded-2xl glass-surface border border-purple-200/80 dark:border-purple-400/25 hover:border-purple-500 dark:hover:border-purple-400/70 hover:shadow-[0_0_26px_rgba(139,92,246,0.2)] transition-[transform,border-color,box-shadow] duration-150 flex flex-col justify-between gap-3 cursor-pointer active:scale-[0.98]"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <span className="w-9 h-9 rounded-xl bg-purple-500/15 text-purple-600 dark:text-purple-300 border border-purple-500/25 flex items-center justify-center">
+                  <FileText className="w-4 h-4" />
+                </span>
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/25">
+                  Vào thi trong 5s
+                </span>
+              </div>
+              <h2 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white">
+                2. Dán Đề Tự Do / Chưa Đáp Án
+              </h2>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Copy đề từ Word, PDF hoặc Web — hệ thống bóc tách tức thì và cho phép AI suy luận đáp án tại chỗ.
+              </p>
+            </div>
+            <div className="flex items-center justify-between text-xs font-bold text-purple-600 dark:text-purple-300 pt-2 border-t border-slate-200/70 dark:border-white/10 w-full">
+              <span>Mở bộ nhập đề thần tốc</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-150" />
+            </div>
+          </button>
+
+          {/* Pillar 3: Zen Focus Studio (Music & Pomodoro) */}
+          <button
+            type="button"
+            onClick={() => setZenModeOpen(true)}
+            className="group text-left p-4 sm:p-5 rounded-2xl glass-surface border border-cyan-200/80 dark:border-cyan-400/25 hover:border-cyan-500 dark:hover:border-cyan-400/70 hover:shadow-[0_0_26px_rgba(34,211,238,0.2)] transition-[transform,border-color,box-shadow] duration-150 flex flex-col justify-between gap-3 cursor-pointer active:scale-[0.98]"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <span className="w-9 h-9 rounded-xl bg-cyan-500/15 text-cyan-600 dark:text-cyan-300 border border-cyan-500/25 flex items-center justify-center">
+                  <Headphones className="w-4 h-4" />
+                </span>
+                <span
+                  className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full border ${
+                    isPlayingMusic
+                      ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30'
+                      : 'bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border-cyan-500/25'
+                  }`}
+                >
+                  {isPlayingMusic ? '● Đang phát' : 'Không quảng cáo'}
+                </span>
+              </div>
+              <h2 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white">
+                3. Zen Focus Studio &amp; Nhạc
+              </h2>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Nghe Lofi/Piano, tiếng mưa rơi &amp; hẹn giờ Pomodoro 25/5 ngay trong app — dẹp bỏ xao nhãng YouTube.
+              </p>
+            </div>
+            <div className="flex items-center justify-between text-xs font-bold text-cyan-600 dark:text-cyan-300 pt-2 border-t border-slate-200/70 dark:border-white/10 w-full">
+              <span>Mở không gian tập trung</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-150" />
+            </div>
+          </button>
+        </div>
+      </section>
+
+      {showOnboardingPicker ? (
+        /* First-Visit Subject Quick Picker */
+        <div
+          id="subject-picker"
+          className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-7 glass-surface border border-indigo-200/80 dark:border-indigo-400/25 space-y-5"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h2 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white">
+                Chọn học phần bạn muốn ôn thi ngay
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+                Bấm chọn nhanh một trong {QUESTION_BANKS.length} môn bên dưới hoặc mở kho đề đầy đủ.
+              </p>
+            </div>
+            <Link
+              href="/quizzes"
+              className="text-xs font-bold py-2 px-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition-colors inline-flex items-center gap-1.5 self-start sm:self-center shadow-sm"
+            >
+              <span>Mở toàn bộ {QUESTION_BANKS.reduce((acc, sec) => acc + sec.quizzes.length, 0)} chuyên đề</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
@@ -141,7 +307,7 @@ export default function Home() {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between gap-2">
                       <div
-                        className={`w-10 h-10 rounded-xl bg-gradient-to-tr ${section.color} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}
+                        className={`w-10 h-10 rounded-xl bg-gradient-to-tr ${section.color} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-150`}
                       >
                         <IconComp className="w-5 h-5" />
                       </div>
@@ -151,9 +317,9 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <h2 className="text-base font-extrabold text-slate-900 dark:text-white leading-snug line-clamp-2">
+                      <h3 className="text-base font-extrabold text-slate-900 dark:text-white leading-snug line-clamp-2">
                         {section.title}
-                      </h2>
+                      </h3>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                         {section.quizzes.length} bộ đề • Tới {totalSubQuestions} câu/đề
                       </p>
@@ -162,7 +328,7 @@ export default function Home() {
 
                   <div className="flex items-center justify-between text-xs font-bold text-indigo-600 dark:text-cyan-300 pt-2 border-t border-slate-200/70 dark:border-white/10">
                     <span>Chọn môn này</span>
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-150" />
                   </div>
                 </button>
               );
@@ -170,21 +336,14 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        /* Hero Active Quiz & Progress Card */
-        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-8 glass-elevated bg-gradient-to-br from-indigo-50/95 via-white/90 to-sky-50/90 dark:from-indigo-950/55 dark:via-slate-900/50 dark:to-purple-950/45 border border-indigo-200/80 dark:border-indigo-400/30 text-slate-900 dark:text-white transform-gpu">
-          <div
-            className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 rounded-full pointer-events-none"
-            style={{
-              background: 'radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%)',
-            }}
-          />
-
+        /* Active Quiz Progress Summary Card */
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-7 glass-surface border border-indigo-200/80 dark:border-indigo-400/25 text-slate-900 dark:text-white transform-gpu">
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
             <div className="space-y-2.5 max-w-3xl">
               <div className="flex flex-wrap items-center gap-2">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-indigo-500/10 dark:bg-white/10 text-indigo-700 dark:text-indigo-200 border border-indigo-300/60 dark:border-white/10">
                   <Layers className="w-3.5 h-3.5" />
-                  <span>Đang kích hoạt</span>
+                  <span>Bộ đề đang kích hoạt</span>
                 </div>
                 <Link
                   href="/quizzes"
@@ -192,48 +351,38 @@ export default function Home() {
                 >
                   Đổi bộ đề
                 </Link>
-                <button
-                  type="button"
-                  onClick={() => setShowQrSync(true)}
-                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-white/80 dark:bg-slate-800/80 text-indigo-700 dark:text-indigo-300 border border-slate-200 dark:border-slate-700 hover:border-indigo-400 transition-colors cursor-pointer"
-                >
-                  <Smartphone className="w-3.5 h-3.5" />
-                  <span>Chuyển QR / PIN</span>
-                </button>
               </div>
-              <h1 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight text-slate-900 dark:text-white">
+              <h2 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-slate-900 dark:text-white">
                 {quizInfo.title}
-              </h1>
-              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-base max-w-2xl leading-relaxed text-balance">
-                Bộ câu hỏi gồm{' '}
-                <strong className="text-slate-900 dark:text-white">{totalWords || quizInfo.count || 0}</strong>{' '}
-                câu hỏi trắc nghiệm đã được chuẩn hoá với đáp án và giải thích chi tiết.
+              </h2>
+              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm max-w-2xl leading-relaxed text-balance">
+                Gồm <strong className="text-slate-900 dark:text-white">{totalWords || quizInfo.count || 0}</strong> câu hỏi trắc nghiệm sẵn sàng ôn theo chặng, thi thử hoặc tra cứu.
               </p>
             </div>
 
             {/* Quick Progress Badge */}
-            <div className="flex items-center justify-between sm:justify-start gap-4 bg-white/85 dark:bg-white/10 border border-indigo-200/70 dark:border-white/10 p-4 sm:p-5 rounded-2xl shrink-0">
+            <div className="flex items-center justify-between sm:justify-start gap-4 bg-white/85 dark:bg-white/[0.06] border border-indigo-200/70 dark:border-white/10 p-4 rounded-2xl shrink-0">
               <div>
-                <p className="text-[11px] sm:text-xs uppercase font-bold text-indigo-700 dark:text-indigo-200">
+                <p className="text-[11px] uppercase font-bold text-indigo-700 dark:text-indigo-200">
                   Đã thành thạo
                 </p>
-                <p className="text-xl sm:text-3xl font-black text-slate-900 dark:text-white">
+                <p className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
                   {masteredCount} / {totalWords || quizInfo.count || 0} câu
                 </p>
               </div>
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-4 border-indigo-500/70 dark:border-indigo-400 border-t-emerald-500 dark:border-t-emerald-400 flex items-center justify-center font-black text-xs sm:text-sm text-slate-900 dark:text-white">
+              <div className="w-12 h-12 rounded-full border-4 border-indigo-500/70 dark:border-indigo-400 border-t-emerald-500 dark:border-t-emerald-400 flex items-center justify-center font-black text-xs text-slate-900 dark:text-white">
                 {masteredPercent}%
               </div>
             </div>
           </div>
 
           {/* Progress Bar */}
-          <div className="mt-5 sm:mt-6 relative z-10">
-            <div className="flex justify-between text-[11px] sm:text-xs font-semibold text-slate-600 dark:text-slate-300 mb-2">
+          <div className="mt-4 relative z-10">
+            <div className="flex justify-between text-[11px] sm:text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1.5">
               <span>Tiến độ làm chủ kiến thức (Spaced Repetition)</span>
               <span>{masteredPercent}% Hoàn thành</span>
             </div>
-            <div className="w-full h-2.5 bg-slate-200/80 dark:bg-black/40 rounded-full overflow-hidden p-0.5">
+            <div className="w-full h-2 bg-slate-200/80 dark:bg-black/40 rounded-full overflow-hidden p-0.5">
               <div
                 className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 rounded-full transition-[width] duration-500 ease-out transform-gpu"
                 style={{ width: `${Math.max(masteredPercent, 4)}%` }}
@@ -438,6 +587,13 @@ export default function Home() {
 
       {/* QR Sync Device Transfer Modal */}
       <QrSyncModal isOpen={showQrSync} onClose={() => setShowQrSync(false)} />
+
+      {/* Direct Quick Text Parser Modal (Unanswered & Standard Quiz) */}
+      <QuickTextParserModal
+        isOpen={showQuickParser}
+        onClose={() => setShowQuickParser(false)}
+        onQuizCreated={(quiz) => setActiveCustomQuiz(quiz)}
+      />
     </div>
   );
 }

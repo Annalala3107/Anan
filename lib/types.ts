@@ -93,6 +93,7 @@ export interface ExamQuestion {
   options: string[];
   explanation?: string;
   answerKey?: string;
+  hasAnswerKey?: boolean;
   topic?: string;
   subject?: string;
   image?: string;

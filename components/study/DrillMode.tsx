@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { Word, WordProgress } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
+import { useQuizStore } from '@/lib/quizStore';
 import {
   getQuestionKey,
   cleanOptionText,
@@ -53,6 +54,7 @@ interface PartQuestionItem {
   originalOptions: string[];
   explanation: string;
   answerKey?: string;
+  hasAnswerKey: boolean;
   image?: string;
   imageCaption?: string;
 }
@@ -112,8 +114,19 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       .map((target, idx) => {
         const key = String(target.id || getQuestionKey(target));
         if (target.question && target.options && target.options.length > 0) {
-          const rawCorrect = resolveCorrectOptionFromAnswer(target.answer, target.options, target.correctWord);
-          const meta = getQuestionAnswerMeta(rawCorrect, target.answer, target.options);
+          const hasAnswerKey = Boolean(target.answer?.trim() || target.correctWord?.trim());
+          const rawCorrect = hasAnswerKey
+            ? resolveCorrectOptionFromAnswer(target.answer, target.options, target.correctWord)
+            : '';
+          const meta = hasAnswerKey
+            ? getQuestionAnswerMeta(rawCorrect, target.answer, target.options)
+            : {
+                isMultiSelect: false,
+                requiredCount: 1,
+                correctChoices: [],
+                answerKeys: [],
+                isOrMode: false,
+              };
           return {
             id: key,
             rawWord: target,
@@ -126,8 +139,12 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
             options: target.options,
             originalOptions: target.options,
             explanation:
-              target.explanation || `Answer: ${target.answer || target.options[0]}`,
+              target.explanation ||
+              (hasAnswerKey
+                ? `Answer: ${target.answer || target.options[0]}`
+                : 'Câu hỏi này chưa có đáp án gốc. Hãy bấm nút AI bên dưới để suy luận đáp án đúng & giảng bản chất bài.'),
             answerKey: target.answer,
+            hasAnswerKey,
             image: target.image,
             imageCaption: target.imageCaption,
           };
@@ -154,6 +171,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           options: finalOpts,
           originalOptions: finalOpts,
           explanation: `${target.word}: ${target.vi || 'Đáp án chính xác'}`,
+          hasAnswerKey: true,
           image: target.image,
           imageCaption: target.imageCaption,
         };
@@ -318,6 +336,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
 
   const isOptionCorrect = useCallback(
     (opt: string, q: PartQuestionItem) => {
+      if (!q.hasAnswerKey) return false;
       return isAnswerMatch(
         opt,
         q.correctWord,
@@ -386,6 +405,13 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       if (isSubmittedAnswer || !currentQ || choices.length === 0) return;
       setIsSubmittedAnswer(true);
 
+      if (!currentQ.hasAnswerKey) {
+        if (!isRetryPhase) {
+          setFirstTryScore((s) => s + 1);
+        }
+        return;
+      }
+
       const isCorrect = isQuestionAnsweredCorrectly(
         choices,
         currentQ.correctWord,
@@ -397,7 +423,11 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
         if (!isRetryPhase) {
           setFirstTryScore((s) => s + 1);
         }
-        setStreak((s) => s + 1);
+        const nextStreak = streak + 1;
+        setStreak(nextStreak);
+        if (nextStreak >= 3) {
+          useQuizStore.getState().triggerConstellationAction('shooting_star');
+        }
         StorageEngine.updateWordProgress(currentQ.id, isRetryPhase ? 4 : 5);
 
         if (autoAdvanceCorrect) {
@@ -424,6 +454,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       currentQ,
       shuffleOptions,
       isRetryPhase,
+      streak,
       autoAdvanceCorrect,
       retryMistakesAtEnd,
     ]
@@ -927,14 +958,16 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   // VIEW 3: ACTIVE TUTOR QUESTION & INSTANT EXPLANATION VIEW
   // =========================================================================
   const isAnswered = isSubmittedAnswer;
-  const wasAnsweredCorrect = isAnswered
-    ? isQuestionAnsweredCorrectly(
-        selectedWords,
-        currentQ.correctWord,
-        shuffleOptions ? undefined : currentQ.answerKey,
-        currentQ.correctOptions
-      )
-    : false;
+  const hasKnownKey = currentQ.hasAnswerKey;
+  const wasAnsweredCorrect =
+    isAnswered && hasKnownKey
+      ? isQuestionAnsweredCorrectly(
+          selectedWords,
+          currentQ.correctWord,
+          shuffleOptions ? undefined : currentQ.answerKey,
+          currentQ.correctOptions
+        )
+      : false;
 
   return (
     <div className="w-full max-w-4xl mx-auto py-5 px-4 sm:px-6">
@@ -1062,6 +1095,14 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                 style +=
                   'bg-white dark:bg-slate-800/90 border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-slate-900 dark:text-white cursor-pointer';
               }
+            } else if (!hasKnownKey) {
+              if (isSelected) {
+                style +=
+                  'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-500 text-indigo-700 dark:text-indigo-200 shadow-sm font-bold';
+              } else {
+                style +=
+                  'opacity-65 bg-slate-100/70 dark:bg-slate-800/70 border-transparent text-slate-500';
+              }
             } else if (isTarget) {
               style +=
                 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-700 dark:text-emerald-300 shadow-glow-success font-bold animate-pop-correct';
@@ -1086,7 +1127,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                     className={`w-7 h-7 ${
                       currentQ.isMultiSelect ? 'rounded-lg' : 'rounded-xl'
                     } text-xs flex items-center justify-center font-mono font-bold shrink-0 mt-0.5 ${
-                      !isAnswered && isSelected
+                      isSelected && (!isAnswered || !hasKnownKey)
                         ? 'bg-indigo-600 text-white'
                         : 'bg-slate-100 dark:bg-slate-700/80 text-slate-600 dark:text-slate-300'
                     }`}
@@ -1108,7 +1149,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                     {isSelected && <Check className="w-3.5 h-3.5" />}
                   </span>
                 )}
-                {isAnswered && isTarget && (
+                {isAnswered && hasKnownKey && isTarget && (
                   <div className="flex items-center gap-1.5 shrink-0 ml-2">
                     {!isSelected && currentQ.isMultiSelect && (
                       <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-600 dark:text-emerald-300">
@@ -1118,7 +1159,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                     <CheckCircle2 className="w-5 h-5 text-emerald-500" />
                   </div>
                 )}
-                {isAnswered && isSelected && !isTarget && (
+                {isAnswered && hasKnownKey && isSelected && !isTarget && (
                   <XCircle className="w-5 h-5 text-rose-500 shrink-0 ml-2" />
                 )}
               </button>
@@ -1150,45 +1191,53 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
       {isAnswered && (
         <div
           className={`p-4 sm:p-5 rounded-2xl border mb-5 animate-slide-up ${
-            wasAnsweredCorrect
+            !hasKnownKey
+              ? 'bg-indigo-50/70 dark:bg-indigo-950/30 border-indigo-300/70 dark:border-indigo-500/40'
+              : wasAnsweredCorrect
               ? 'bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-300/70 dark:border-emerald-800/70'
               : 'bg-rose-50/70 dark:bg-rose-950/30 border-rose-300/70 dark:border-rose-800/70'
           }`}
         >
-          <div className="flex items-center justify-between gap-2 mb-1.5">
+          <div className="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
             <p
               className={`text-xs font-extrabold uppercase tracking-wider flex items-center gap-1.5 ${
-                wasAnsweredCorrect
+                !hasKnownKey
+                  ? 'text-indigo-700 dark:text-cyan-300'
+                  : wasAnsweredCorrect
                   ? 'text-emerald-600 dark:text-emerald-400'
                   : 'text-rose-600 dark:text-rose-400'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
               <span>
-                {wasAnsweredCorrect
+                {!hasKnownKey
+                  ? '📌 Câu chưa có đáp án gốc — Đã ghi nhận lựa chọn của bạn. Bấm nút AI bên dưới để suy luận đáp án đúng & giảng bản chất:'
+                  : wasAnsweredCorrect
                   ? 'Chính xác! Giải thích chi tiết:'
                   : 'Chưa đúng! Hãy đọc kỹ giải thích:'}
               </span>
             </p>
-            {!wasAnsweredCorrect && retryMistakesAtEnd && (
+            {hasKnownKey && !wasAnsweredCorrect && retryMistakesAtEnd && (
               <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-600 dark:text-rose-300">
                 📌 Đã thêm vào vòng làm lại cuối chặng
               </span>
             )}
           </div>
-          <div className="text-sm sm:text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
-            <CodeQuestionRenderer
-              content={formatExplanationForCurrentOptions(
-                currentQ.explanation,
-                currentQ.options,
-                currentQ.correctWord,
-                currentQ.answerKey,
-                shuffleOptions,
-                currentQ.correctOptions
-              )}
-              className="text-sm sm:text-base"
-            />
-          </div>
+          {hasKnownKey && (
+            <div className="text-sm sm:text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
+              <CodeQuestionRenderer
+                content={formatExplanationForCurrentOptions(
+                  currentQ.explanation,
+                  currentQ.options,
+                  currentQ.correctWord,
+                  currentQ.answerKey,
+                  shuffleOptions,
+                  currentQ.correctOptions
+                )}
+                className="text-sm sm:text-base"
+              />
+            </div>
+          )}
         </div>
       )}
 
@@ -1196,8 +1245,14 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
         <AITutorButton
           question={currentQ.sentence}
           options={currentQ.options}
-          correctAnswer={currentQ.correctWord}
-          userAnswer={wasAnsweredCorrect ? undefined : selectedWords.join(' | ')}
+          correctAnswer={hasKnownKey ? currentQ.correctWord : ''}
+          userAnswer={
+            !hasKnownKey
+              ? selectedWords.join(' | ')
+              : wasAnsweredCorrect
+              ? undefined
+              : selectedWords.join(' | ')
+          }
           subject={currentQ.rawWord?.subject}
           topic={currentQ.rawWord?.topic}
           className="mb-5"
