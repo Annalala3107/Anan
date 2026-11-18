@@ -555,7 +555,7 @@
       "E. generate(n)"
     ],
     "answer": "A, B",
-    "correctWord": "A. list(range(n)), B. range(n)",
+    "correctWord": "A. list(range(n)) | B. range(n)",
     "explanation": "Answer: A, B. list(range(n)) explicitly constructs a list of integers from 0 to n-1, and range(n) generates the sequence of integers from 0 to n-1 (returning a list directly in Python 2 or a range object in Python 3). range(n, 0) is empty for positive n, and repeat/generate are not built-in Python functions.",
     "subject": "Lập Trình Python Cơ Bản (PFP191)",
     "topic": "PFP191 - SP26 - FE"

@@ -32,35 +32,18 @@
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_42",
-    "word": "Câu 42: What is a proper method of opening a file for writing as bin...",
-    "question": "What is a proper method of opening a file for writing as binary file?",
+    "id": "prf_29",
+    "word": "Câu 29: How can you initialize a character array in C?",
+    "question": "How can you initialize a character array in C?",
     "options": [
-      "A. FILE *f = fwrite( \"test.bin\", \"w\" );",
-      "B. FILE *f = fopen( \"test.bin\", \"w\" );",
-      "C. FILE *f = fopen( \"test.bin\", \"wb\" );",
-      "D. FILE *f = fwrite( \"test.bin\", \"wb\" );",
-      "E. FILE *f = fopen( \"test.bin\", \"bw\" );"
-    ],
-    "answer": "C",
-    "correctWord": "C. FILE *f = fopen( \"test.bin\", \"wb\" );",
-    "explanation": "Đáp án: D.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_43",
-    "word": "Câu 43: Which library should you include to work with the FILE datat...",
-    "question": "Which library should you include to work with the FILE datatype in C?",
-    "options": [
-      "A. stdio.h",
-      "B. stdlib.h",
-      "C. string.h",
-      "D. ctype.h"
+      "A. char arr[] = \"Hello\";",
+      "B. char arr[] = ['H', 'e', 'l', 'l', 'o', '\\0'];",
+      "C. Char[] arr = \"Hello\";",
+      "D. Char[] arr = {'H', 'e', 'l', 'l', 'o', '\\0'};"
     ],
     "answer": "A",
-    "correctWord": "A. stdio.h",
-    "explanation": "Đáp án: B.",
+    "correctWord": "A. char arr[] = \"Hello\";",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
@@ -76,199 +59,135 @@
     ],
     "answer": "D",
     "correctWord": "D. All the above",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_53",
-    "word": "Câu 53: What is the result of the statement `strcmp(\"abcde\", \"abdc\")...",
-    "question": "What is the result of the statement `strcmp(\"abcde\", \"abdc\")`?",
-    "options": [
-      "A. 1",
-      "B. 0",
-      "C. -1"
-    ],
-    "answer": "C",
-    "correctWord": "C. -1",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_60",
-    "word": "Câu 60: What will the following program output?",
-    "question": "What will the following program output?\n```c\n#include <stdio.h>\nint main() {\nint n, m;\nm = 6;\nn = ++m * 2;\nprintf(\"n and m is %d and %d \", n, m);\nn = 3 - m++;\nprintf(\"and n is %d and m is %d\\n\", n, m);\nreturn 0;\n}\n```",
-    "options": [
-      "A. 14 and 7 and -4 and 8",
-      "B. 6 2 and 9 5",
-      "C. Compilation Error",
-      "D. No Output"
-    ],
-    "answer": "A",
-    "correctWord": "A. 14 and 7 and -4 and 8",
-    "explanation": "Đáp án: A. ++m tăng trước thành 7 nên n = 14; m++ dùng 7 trước rồi mới tăng lên 8 nên n = 3 - 7 = -4",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_61",
-    "word": "Câu 61: What does the following program print?",
-    "question": "What does the following program print?\n```c\n#include <stdio.h>\nfloat max(float a, float b) {\nreturn a > b ? a : b;\n}\nint main() {\nfloat x = 5.5, y = 4.5, z = 2;\nprintf(\"%f\", max(x++, y--, ++z));\nreturn 0;\n}\n```",
-    "options": [
-      "A. 5.5",
-      "B. 5.500000",
-      "C. 4.500000",
-      "D. Error (Quá số lượng tham số truyền vào hàm max)"
-    ],
-    "answer": "D",
-    "correctWord": "D. Error (Quá số lượng tham số truyền vào hàm max)",
     "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_111",
-    "word": "Câu 111: What does the following program display?",
-    "question": "What does the following program display?\n```c\n#include <stdio.h>\nint main() {\nint a = 4, b = 1, c = 1;\na = a % 2 + b++;\nc = a * --b;\nprintf(\"%d %d %d\", a, b, c);\nreturn 0;\n}\n```",
+    "id": "prf_46",
+    "word": "Câu 46: What is the output of this reverse loop?",
+    "question": "What is the output of this reverse loop?\n```c\n#define SIZE 5\nint nums[SIZE] = {5, 10, 2, -45, 6};\nfor (int i = SIZE - 1; i >= 0; i--)\nprintf(\"%d \", nums[i]);\n```",
     "options": [
-      "A. 0 1 0",
-      "B. 1 1 1",
-      "C. 1 2 1"
+      "A. 5 10 2 -45 6",
+      "B. 6 -45 2 10 5",
+      "C. -45 2 10 5 6",
+      "D. Error"
     ],
     "answer": "B",
-    "correctWord": "B. 1 1 1",
-    "explanation": "Đáp án: A.",
+    "correctWord": "B. 6 -45 2 10 5",
+    "explanation": "Đáp án: B. Vòng lặp bắt đầu từ i = 4 và giảm dần về 0 nên in ngược từ cuối mảng lên đầu mảng",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_120",
-    "word": "Câu 120: What is the output when the sample code below is executed?",
-    "question": "What is the output when the sample code below is executed?\n```c\n#include<stdio.h>\nint main() {\nint a = 10, b = 20, c = 30;\nwhile(a > 1) {\nif(b % 2 != 0)\na /= 10;\nb--;\nc *= 2;\n}\nprintf(\"%d ; %d ; %d\", a, b, c);\nreturn 0;\n}\n```",
-    "options": [
-      "A. 1 ; 18 ; 120",
-      "B. 10 ; 19 ; 60",
-      "C. 1 ; 20 ; 60"
-    ],
-    "answer": "A",
-    "correctWord": "A. 1 ; 18 ; 120",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_123",
-    "word": "Câu 123: What is the output of the following code?",
-    "question": "What is the output of the following code?\n```c\n#include <stdio.h>\nint main() {\nint i = 10;\ndo {\nprintf(\"%d \", i);\ni -= 2;\n} while (i >= 1);\nreturn 0;\n}\n```",
-    "options": [
-      "A. 10 8 6 4 2",
-      "B. 10 8 6 4 2 0",
-      "C. 10 8 6 4 2 0 -2 -4",
-      "D. 10 9 8 7 6 5 4 3 2"
-    ],
-    "answer": "A",
-    "correctWord": "A. 10 8 6 4 2",
-    "explanation": "Đáp án: D.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_124",
-    "word": "Câu 124: What will the following program print?",
-    "question": "What will the following program print?\n```c\n#include <stdio.h>\nint main() {\nint i, j;\nfor (i = 0, j = 9; i < j; i++, j -= 1)\nprintf(\"%d %d \", i, j);\nreturn 0;\n}\n```",
-    "options": [
-      "A. 0 10 1 9 2 8 3 7 4 6",
-      "B. 0 10 1 8 2 6 3 4",
-      "C. 0 9 1 8 2 7 3 6 4 5",
-      "D. An error will be raised"
-    ],
-    "answer": "D",
-    "correctWord": "D. An error will be raised",
-    "explanation": "Đáp án: D. Theo bộ đề gốc; thực tế code chạy in ra phương án C",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_129",
-    "word": "Câu 129: What is the results will be displayed on the screen after ex...",
-    "question": "What is the results will be displayed on the screen after executing the following code:\n```c\nint a[] = {1, 2, 3, 4};\nint i, s = 0;\nfor (i = 0; i < 4; ++i)\ns += a[i];\nprintf(\"%.0f\", (float)(s / 4));\n```",
-    "options": [
-      "A. 2.5",
-      "B. 2",
-      "C. 2.500000",
-      "D. 2.000000"
-    ],
-    "answer": "B",
-    "correctWord": "B. 2",
-    "explanation": "Đáp án: B. s / 4 = 10 / 4 = 2, ép kiểu float thành 2.0, in %.0f ra 2",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_130",
-    "word": "Câu 130: What will be the output of the C program?",
-    "question": "What will be the output of the C program?\n```c\n#include<stdio.h>\nvoid myFunction(int i) {\nprintf(\"%d\", i);\n}\nint main() {\nmyFunction();\nreturn 0;\n}\n```",
+    "id": "prf_56",
+    "word": "Câu 56: Given the following code snippet `int a[10] = {1, 2, 3};` Wh...",
+    "question": "Given the following code snippet `int a[10] = {1, 2, 3};` What is the value of a[3]?",
     "options": [
       "A. 0",
-      "B. 2",
-      "C. Compiler error",
-      "D. 1"
-    ],
-    "answer": "C",
-    "correctWord": "C. Compiler error",
-    "explanation": "Đáp án: C. Thiếu đối số khi gọi hàm myFunction",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_153",
-    "word": "Câu 153: Choose the correct statement:",
-    "question": "Choose the correct statement:\n```c\n#include <stdio.h>\n#define MONTHS_IN_YEAR 12\nint main() {\nconst int WORKING_DAYS = 22;\nprintf(\"%d \", MONTHS_IN_YEAR);\nprintf(\"%d\", WORKING_DAYS);\nreturn 0;\n}\n```",
-    "options": [
-      "A. The output will be: 12 22",
-      "B. No output",
-      "C. Compile error",
-      "D. Runtime error"
+      "B. 1",
+      "C. 2",
+      "D. 3"
     ],
     "answer": "A",
-    "correctWord": "A. The output will be: 12 22",
-    "explanation": "Đáp án: A.",
+    "correctWord": "A. 0",
+    "explanation": "Đáp án: A. Các phần tử không được khởi tạo tường minh sẽ tự động bằng 0",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_155",
-    "word": "Câu 155: What does the following code print?",
-    "question": "What does the following code print?\n```c\nint i = 0;\nwhile (i < 5) {\nprintf(\"%d \", i);\ni--;\n}\n```",
+    "id": "prf_63",
+    "word": "Câu 63: What does the following program display?",
+    "question": "What does the following program display?\n```c\n#include <stdio.h>\nint main() {\nint arr[] = {2, 6, 9, 12};\nfor (int i = 3; i >= 0; i -= 2)\nprintf(\"%d \", arr[i]);\nreturn 0;\n}\n```",
     "options": [
-      "A. Infinite loop",
-      "B. 0 1 2 3 4",
-      "C. 5 4 3 2 1 0",
-      "D. No output",
-      "E. Compiler error",
-      "F. 0"
-    ],
-    "answer": "A",
-    "correctWord": "A. Infinite loop",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_156",
-    "word": "Câu 156: What does the following code print?",
-    "question": "What does the following code print?\n```c\n#include <stdio.h>\nvoid swap(int a, int *b) {\nint temp = a;\na = *b;\n*b = temp;\n}\nint main() {\nint x = 5;\nint y = 10;\nswap(x, y);\nprintf(\"x = %d, y = %d\\n\", x, y);\nreturn 0;\n}\n```",
-    "options": [
-      "A. Runtime error",
-      "B. Compiler error",
-      "C. x = 5, y = 10",
-      "D. x = 10, y = 5",
-      "E. x = 10, y = 10"
+      "A. 3 9",
+      "B. 12 6",
+      "C. 12 6 3",
+      "D. 12 9 6"
     ],
     "answer": "B",
-    "correctWord": "B. Compiler error",
-    "explanation": "Đáp án: B. Tham số thứ hai của swap là con trỏ `int *b` nhưng lại truyền giá trị nguyên `y`",
+    "correctWord": "B. 12 6",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_77",
+    "word": "Câu 77: What is the maximum index of the last character in a charact...",
+    "question": "What is the maximum index of the last character in a character array initialized with a size is 10?",
+    "options": [
+      "A. 9",
+      "B. 10",
+      "C. 8",
+      "D. It depends on the contents of the array"
+    ],
+    "answer": "A",
+    "correctWord": "A. 9",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_135",
+    "word": "Câu 135: What does the following program display?",
+    "question": "What does the following program display?\n```c\n#include <stdio.h>\nint main() {\nint a[5] = {1, 2, 3};\nprintf(\"%d\", a[0]);\nreturn 0;\n}\n```",
+    "options": [
+      "A. 3",
+      "B. 2",
+      "C. 1",
+      "D. An error will be raised"
+    ],
+    "answer": "C",
+    "correctWord": "C. 1",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_152",
+    "word": "Câu 152: What is the results will be displayed on the screen after ex...",
+    "question": "What is the results will be displayed on the screen after executing the following code:\n```c\nint a[] = {1, 2, 3, 4};\nint i = 0, s = 0;\nfor (; a[i]; ++i)\ns += a[i];\nprintf(\"%d\", s);\n```",
+    "options": [
+      "A. 10",
+      "B. Compiler error",
+      "C. Runtime error",
+      "D. Garbage value"
+    ],
+    "answer": "A",
+    "correctWord": "A. 10",
+    "explanation": "Đáp án: A. Theo slide bản này; mảng không có phần tử kết thúc 0 nên truy cập vượt biên có thể ra giá trị rác",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_162",
+    "word": "Câu 162: Given a matrix named mat with dimensions 6x6, what is the co...",
+    "question": "Given a matrix named mat with dimensions 6x6, what is the correct way to access the element in the last row and last column?",
+    "options": [
+      "A. mat[5][5]",
+      "B. mat[5][6]",
+      "C. mat[6][5]",
+      "D. mat[-1][-1]"
+    ],
+    "answer": "A",
+    "correctWord": "A. mat[5][5]",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_164",
+    "word": "Câu 164: Which of the following correctly represents the updated arra...",
+    "question": "Which of the following correctly represents the updated array after the execution of the below code?\n```c\nint a[] = {1, 2, 3, 4, 5};\nfor (int i = 2; i < 4; i++) {\na[i] = a[i + 1];\n}\n```",
+    "options": [
+      "A. {1, 2, 4, 5, 5}",
+      "B. {1, 2, 4, 5}",
+      "C. {1, 3, 4, 5}",
+      "D. {1, 2, 3, 4}"
+    ],
+    "answer": "A",
+    "correctWord": "A. {1, 2, 4, 5, 5}",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
@@ -289,17 +208,17 @@
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_187",
-    "word": "Câu 187: What will be the output of the following C code?",
-    "question": "What will be the output of the following C code?\n```c\n#include <stdio.h>\nvoid main() {\nint k = 4;\nint const p = k;\nint r = 3;\nprintf(\"%d\", p);\n}\n```",
+    "id": "prf_174",
+    "word": "Câu 174: In linear search, if the size of the array is n and the expe...",
+    "question": "In linear search, if the size of the array is n and the expected value does NOT exist in the array, how many comparisons will be made between the searching item and elements in the array?",
     "options": [
-      "A. The value of p is 4",
-      "B. Run time error",
-      "C. Compile time error",
-      "D. The value of p is a garbage value"
+      "A. n",
+      "B. n - 1",
+      "C. n + 1",
+      "D. n / 2"
     ],
     "answer": "A",
-    "correctWord": "A. The value of p is 4",
+    "correctWord": "A. n",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
@@ -481,97 +400,65 @@
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_353",
-    "word": "Câu 353: What is the correct order of the main components in the func...",
-    "question": "What is the correct order of the main components in the function?",
+    "id": "prf_362",
+    "word": "Câu 362: What does the expression `sizeof(arr) / sizeof(arr[0])` eval...",
+    "question": "What does the expression `sizeof(arr) / sizeof(arr[0])` evaluate to, where `arr` is an array?",
     "options": [
-      "A. Return type, function name, parameters, and function body",
-      "B. Return type, function name, return value, and function body",
-      "C. Return type, function name, parameters, and return value",
-      "D. Return value, function name, parameters, and function body"
+      "A. The number of elements in arr",
+      "B. The size of arr in bytes",
+      "C. The number of bytes occupied by each element in arr",
+      "D. The total size of arr in bytes"
     ],
     "answer": "A",
-    "correctWord": "A. Return type, function name, parameters, and function body",
+    "correctWord": "A. The number of elements in arr",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_357",
-    "word": "Câu 357: What does the following statement do? `fprintf(fp, \"%s:%.2lf...",
-    "question": "What does the following statement do? `fprintf(fp, \"%s:%.2lf,%s\\n\", name, salary, job);`",
+    "id": "prf_366",
+    "word": "Câu 366: What will be the result of performing a binary search on an ...",
+    "question": "What will be the result of performing a binary search on an unsorted array?",
     "options": [
-      "A. Print to the file location pointed by fp the string name, the double variable salary (2 decimal places), the string job and a newline character.",
-      "B. Print to the screen the string name, a colon, the double variable salary (2 decimal places), a comma, the string job and a newline character.",
-      "C. Print to the file location pointed by fp the string name, a colon, the double variable salary (2 decimal places), a comma, the string job and a newline character.",
-      "D. Read from the file location pointed by fp."
-    ],
-    "answer": "C",
-    "correctWord": "C. Print to the file location pointed by fp the string name, a colon, the double variable salary (2 decimal places), a comma, the string job and a newline character.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_361",
-    "word": "Câu 361: What does the statement `rewind(fp)` do?",
-    "question": "What does the statement `rewind(fp)` do?",
-    "options": [
-      "A. Bring the pointer fp back to the beginning of the file",
-      "B. Assign to the pointer fp the address 0x00 (NULL)",
-      "C. Bring the pointer fp to the end of the file",
-      "D. Bring the pointer fp back to the beginning of the current line"
+      "A. The search may return an incorrect index or fail to locate the target element",
+      "B. The search will always find the target element if it is present somewhere in the array",
+      "C. The search will perform as expected, but only for elements in the lower half of the array",
+      "D. The search will automatically sort the array before locating the target element"
     ],
     "answer": "A",
-    "correctWord": "A. Bring the pointer fp back to the beginning of the file",
+    "correctWord": "A. The search may return an incorrect index or fail to locate the target element",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_369",
-    "word": "Câu 369: What happens when the return statement has a double expressi...",
-    "question": "What happens when the return statement has a double expression and the function return type is int?",
+    "id": "prf_370",
+    "word": "Câu 370: What happens when you try to access the 11th element of an a...",
+    "question": "What happens when you try to access the 11th element of an array with a size of 10 in the C language?",
     "options": [
-      "A. There is error",
-      "B. This causes a run-time error",
-      "C. This is system dependent",
-      "D. There is a conversion (truncation) from double to int"
-    ],
-    "answer": "D",
-    "correctWord": "D. There is a conversion (truncation) from double to int",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_372",
-    "word": "Câu 372: Which of the following is true about the `default` case in a...",
-    "question": "Which of the following is true about the `default` case in a switch statement?",
-    "options": [
-      "A. It must always be placed at the beginning of the switch statement",
-      "B. It is mandatory for every switch statement",
-      "C. It executes when none of the case conditions match",
-      "D. It can be used multiple times within a single switch"
-    ],
-    "answer": "C",
-    "correctWord": "C. It executes when none of the case conditions match",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_379",
-    "word": "Câu 379: Which of the following statements is incorrect?",
-    "question": "Which of the following statements is incorrect?",
-    "options": [
-      "A. To make our programs longer, we use higher-level languages.",
-      "B. Program code in a high level language can not run, it must be translated to binary code (machine code) before running.",
-      "C. C is based on a view of structured programming.",
-      "D. Programs that perform relatively simple tasks and are written in assembly language contain a large number of statements."
+      "A. The program compiles and runs without any errors, but the behavior is undefined",
+      "B. The program compiles and runs without any errors, and the 11th element is accessed",
+      "C. The program fails to compile due to a compilation error",
+      "D. The program compiles and runs without any errors, and the 11th element is automatically added to the array"
     ],
     "answer": "A",
-    "correctWord": "A. To make our programs longer, we use higher-level languages.",
+    "correctWord": "A. The program compiles and runs without any errors, but the behavior is undefined",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_378",
+    "word": "Câu 378: When declaring a 2D array without initialization in C:",
+    "question": "When declaring a 2D array without initialization in C:",
+    "options": [
+      "A. Both the number of rows and columns must be specified",
+      "B. The number of columns must be specified",
+      "C. The number of rows must be specified",
+      "D. The number of rows and columns can be determined dynamically at runtime"
+    ],
+    "answer": "A",
+    "correctWord": "A. Both the number of rows and columns must be specified",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
@@ -593,6 +480,22 @@
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
+    "id": "prf_387",
+    "word": "Câu 387: How does a \"for\" loop differ from a \"while\" loop in C progra...",
+    "question": "How does a \"for\" loop differ from a \"while\" loop in C programming?",
+    "options": [
+      "A. A \"for\" loop is typically used when the number of iterations is known/iterating over a sequence, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
+      "B. A \"for\" loop is primarily used for conditional statements, while a \"while\" loop is designed for sequential processing.",
+      "C. The use of \"for\" and \"while\" loops is interchangeable; there is no substantial difference between them.",
+      "D. A \"for\" loop is exclusively used with arrays."
+    ],
+    "answer": "A",
+    "correctWord": "A. A \"for\" loop is typically used when the number of iterations is known/iterating over a sequence, while a \"while\" loop is used to execute a block of code repeatedly as long as a condition is true.",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
     "id": "prf_389",
     "word": "Câu 389: Choose the correct statement related to the array.",
     "question": "Choose the correct statement related to the array.",
@@ -609,66 +512,82 @@
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_390",
-    "word": "Câu 390: Choose the correct statement about the following statement: ...",
-    "question": "Choose the correct statement about the following statement: `scanf(\"%d, %d\", &a, &b);`",
+    "id": "prf_393",
+    "word": "Câu 393: During the compilation process, what will be done with comme...",
+    "question": "During the compilation process, what will be done with comments?",
     "options": [
-      "A. scanf will expect two integers inputted by user and write them to variables a and b.",
-      "B. scanf will expect two floating-point numbers inputted by user and write them to variables a and b.",
-      "C. scanf will expect two integers inputted by user separated by a comma, and write the first integer to variable a, the comma to variable b.",
-      "D. scanf will expect two integers inputted by user separated by a comma, and write the first integer to variable a and the second integer to variable b."
+      "A. The comment mark will be removed. The content of the comments will be compiled line by line.",
+      "B. The comment is treated as an array of characters.",
+      "C. Comments are removed in the pre-processing step.",
+      "D. Each comment is compiled as a statement that does nothing."
     ],
-    "answer": "D",
-    "correctWord": "D. scanf will expect two integers inputted by user separated by a comma, and write the first integer to variable a and the second integer to variable b.",
+    "answer": "C",
+    "correctWord": "C. Comments are removed in the pre-processing step.",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_394",
+    "word": "Câu 394: Real-world example of a `switch` statement in C is:",
+    "question": "Real-world example of a `switch` statement in C is:",
+    "options": [
+      "A. Check the day of the week",
+      "B. Sort an array ascending",
+      "C. Sort an array descending",
+      "D. Find the average value of a sequence"
+    ],
+    "answer": "A",
+    "correctWord": "A. Check the day of the week",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_397",
-    "word": "Câu 397: In a C program, what happens if none of the conditions in an...",
-    "question": "In a C program, what happens if none of the conditions in an if-else statement are true (and there is no final else)?",
+    "id": "prf_399",
+    "word": "Câu 399: In bubble sort, after each pass of sorting in ascending, whe...",
+    "question": "In bubble sort, after each pass of sorting in ascending, where is the largest element in the unsorted part of the array?",
     "options": [
-      "A. The program will skip the if-else block and continue with the next statement.",
-      "B. The program will raise an error.",
-      "C. The else if block will be executed.",
-      "D. The program will terminate abruptly."
+      "A. It moved to the end of the sorted/unsorted boundary",
+      "B. It moved to the beginning of the sorted part",
+      "C. It stays in its position",
+      "D. It removed from the array"
     ],
     "answer": "A",
-    "correctWord": "A. The program will skip the if-else block and continue with the next statement.",
-    "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Mảng & Giải Thuật Cơ Bản"
-  },
-  {
-    "id": "prf_403",
-    "word": "Câu 403: In the C programming language, which of the following statem...",
-    "question": "In the C programming language, which of the following statements about the pointer operators `&` and `*` is true?",
-    "options": [
-      "A. The & operator is used to get the address of a variable, while the * operator is used to access the value at the address the pointer points to.",
-      "B. The & operator is used to get the value of a variable, while the * operator is used to access the address of a variable.",
-      "C. The & operator is used to get the value of a variable, while the * operator can only be used with global variables.",
-      "D. Both & and * are used to get memory addresses."
-    ],
-    "answer": "A",
-    "correctWord": "A. The & operator is used to get the address of a variable, while the * operator is used to access the value at the address the pointer points to.",
+    "correctWord": "A. It moved to the end of the sorted/unsorted boundary",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },
   {
-    "id": "prf_410",
-    "word": "Câu 410: In the following function, what is the purpose of the parame...",
-    "question": "In the following function, what is the purpose of the parameter `int* a`? `void input(int* a, int n)`",
+    "id": "prf_400",
+    "word": "Câu 400: In the context of arrays in the C language, what does traver...",
+    "question": "In the context of arrays in the C language, what does traversal refer to?",
     "options": [
-      "A. It is a pointer to the first element of the array",
-      "B. It holds the array size",
-      "C. It defines the function return type",
-      "D. It stores the index of the element"
+      "A. The process of accessing elements in an array sequentially",
+      "B. The process of searching for a specific element in an array",
+      "C. The process of resizing the array during runtime",
+      "D. The process of inserting elements into an array"
     ],
     "answer": "A",
-    "correctWord": "A. It is a pointer to the first element of the array",
-    "explanation": "Đáp án: B.",
+    "correctWord": "A. The process of accessing elements in an array sequentially",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Mảng & Giải Thuật Cơ Bản"
+  },
+  {
+    "id": "prf_413",
+    "word": "Câu 413: What is the correct syntax for declaring a static array in C...",
+    "question": "What is the correct syntax for declaring a static array in C?",
+    "options": [
+      "A. DataType ArrayName[NumberOfElements];",
+      "B. ArrayName DataType[NumberOfElements];",
+      "C. DataType[NumberOfElements] ArrayName;",
+      "D. [NumberOfElements] DataType ArrayName;"
+    ],
+    "answer": "A",
+    "correctWord": "A. DataType ArrayName[NumberOfElements];",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Mảng & Giải Thuật Cơ Bản"
   },

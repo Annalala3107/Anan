@@ -8,7 +8,7 @@
  */
 export function cleanOptionText(text?: string): string {
   if (!text) return '';
-  return text.trim().replace(/^[A-Fa-f][.):]+(?:\s+|$)/, '').trim();
+  return text.trim().replace(/^[A-Ha-h][.):]+(?:\s+|$)/, '').trim();
 }
 
 /**
@@ -19,7 +19,7 @@ export function cleanOptionText(text?: string): string {
  */
 export function extractOptionKey(text?: string): string | null {
   if (!text) return null;
-  const match = text.trim().match(/^[A-Fa-f](?=[.):]+(?:\s+|$))/);
+  const match = text.trim().match(/^[A-Ha-h](?=[.):]+(?:\s+|$))/);
   return match ? match[0].toUpperCase() : null;
 }
 
@@ -51,7 +51,7 @@ export function parseAnswerKeys(answerKey?: string): ParsedAnswerKeys {
   const tokens = raw
     .split(/[,/;\s]+/)
     .map((t) => t.trim().toUpperCase())
-    .filter((t) => /^[A-F]$/.test(t));
+    .filter((t) => /^[A-H]$/.test(t));
 
   const keys = Array.from(new Set(tokens));
   return { keys, isOrMode };
@@ -113,10 +113,12 @@ export function splitCorrectChoices(
   let parts: string[] = [];
 
   if (raw) {
-    // Prefer splitting before an explicit option prefix (" | B. ..."), otherwise split on single spaced pipe (" | ") not adjacent to another "|"
-    if (/\s+\|\s+(?=[A-Fa-f][.):]+(?:\s+|$))/.test(raw)) {
+    // Prefer splitting before an explicit option prefix (" | B. ", "; B. ", ", B. "), otherwise split on single spaced pipe (" | ") not adjacent to another "|"
+    const explicitPrefixDelimiter =
+      /(?:\s+\|\s+|\s*;+\s+|\s*,\s+)(?=[A-Ha-h][.):]+(?:\s+|$))/;
+    if (explicitPrefixDelimiter.test(raw)) {
       parts = raw
-        .split(/\s+\|\s+(?=[A-Fa-f][.):]+(?:\s+|$))/)
+        .split(explicitPrefixDelimiter)
         .map((p) => p.trim())
         .filter(Boolean);
     } else if (/(?<!\|)\s+\|\s+(?!\|)/.test(raw)) {
@@ -259,7 +261,7 @@ export function formatExplanationForCurrentOptions(
   const currentHeader = `Đáp án đúng (vị trí hiện tại): ${lettersSummary} (${detailsSummary})`;
 
   const headerRegex =
-    /^(?:Đáp\s*án(?:\s*đúng)?|Answer)\s*[:=]?\s*[A-Fa-f](?:\s*(?:,|hoặc|or|and|và|\/)\s*[A-Fa-f])*(?:\s*[.)]|\b)\s*/i;
+    /^(?:Đáp\s*án(?:\s*đúng)?|Answer)\s*[:=]?\s*[A-Ha-h](?:\s*(?:,|hoặc|or|and|và|\/)\s*[A-Ha-h])*(?:\s*[.)]|\b)\s*/i;
   const headerMatch = raw.match(headerRegex);
   if (!headerMatch) {
     return raw;
@@ -267,7 +269,7 @@ export function formatExplanationForCurrentOptions(
 
   let remainder = raw.slice(headerMatch[0].length).trim();
 
-  if (/^\(\s*[A-Fa-f][.):]+\s/.test(remainder)) {
+  if (/^\(\s*[A-Ha-h][.):]+\s/.test(remainder)) {
     remainder = consumeBalancedParentheses(remainder).trim();
   }
 

@@ -1371,7 +1371,12 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 {studyMethod === 'flashcard' ? 'Thẻ Ghi Nhớ 3D' : 'Phản xạ xoay tua 5 câu'}
               </span>
               <span className="hidden md:inline text-[10px] font-medium text-slate-400">
-                • {studyMethod === 'flashcard' ? 'Phím: [Space] Lật thẻ, [1/2/3] Đánh giá' : 'Phím: [1-4] hoặc [A-D]'}
+                •{' '}
+                {studyMethod === 'flashcard'
+                  ? 'Phím: [Space] Lật thẻ, [1/2/3] Đánh giá'
+                  : currentQ.isMultiSelect
+                  ? 'Phím: [1-6] hoặc [A-F] chọn, [Enter] xác nhận'
+                  : 'Phím: [1-4] hoặc [A-D]'}
               </span>
             </div>
             <div className="flex items-center gap-2.5 text-xs font-bold text-slate-900 dark:text-white flex-wrap">
@@ -1611,14 +1616,19 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                     </div>
 
                     {feedbackState === 'idle' && currentQ.isMultiSelect && (
-                      <span
-                        className={`w-5 h-5 rounded-md border flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
-                          isSelected
-                            ? 'bg-indigo-600 border-indigo-600 text-white'
-                            : 'border-slate-300 dark:border-slate-600'
-                        }`}
-                      >
-                        {isSelected && <Check className="w-3.5 h-3.5" />}
+                      <span className="flex items-center gap-2 shrink-0 mt-0.5">
+                        <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 hidden sm:inline">
+                          [{idx + 1}]
+                        </span>
+                        <span
+                          className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors ${
+                            isSelected
+                              ? 'bg-indigo-600 border-indigo-600 text-white'
+                              : 'border-slate-300 dark:border-slate-600'
+                          }`}
+                        >
+                          {isSelected && <Check className="w-3.5 h-3.5" />}
+                        </span>
                       </span>
                     )}
 

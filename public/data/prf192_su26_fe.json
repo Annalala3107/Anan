@@ -187,7 +187,7 @@
       "D. named"
     ],
     "answer": "A, B",
-    "correctWord": "A. const; B. define",
+    "correctWord": "A. const | B. define",
     "explanation": "Answer: A, B. In C, named constants are defined either using the const type qualifier (e.g., const int MAX = 10;) or via the #define preprocessor directive (e.g., #define MAX 10). The words constant (C) and named (D) are not keywords or directives in C.",
     "subject": "PRF192",
     "topic": "PRF192 - SU26 - FE"
@@ -573,7 +573,7 @@
       "E. FILE *f = fopen(\"output.txt \", \"w\" );"
     ],
     "answer": "B, C",
-    "correctWord": "B. FILE *f = fopen(\"output.txt\", \"a\" );; C. FILE *f = fopen(\"output.txt\", \"a+\" );",
+    "correctWord": "B. FILE *f = fopen(\"output.txt\", \"a\" ); | C. FILE *f = fopen(\"output.txt\", \"a+\" );",
     "explanation": "Answer: B, C. `fopen()` opens a file stream (`fwrite` writes blocks to an already-open stream, so A is invalid). Mode `\"a\"` opens the file to append at the end, and `\"a+\"` opens the file for both reading and appending at the end. Modes `\"w\"` and `\"w+\"` overwrite/truncate existing files from the beginning.",
     "subject": "PRF192",
     "topic": "PRF192 - SU26 - FE"

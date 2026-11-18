@@ -89,9 +89,9 @@
       "D. To calculate the address of the next instruction.",
       "E. To transfer instructions to the program counter (PC)."
     ],
-    "answer": "B",
-    "correctWord": "B. To hold the fetched instruction from memory.",
-    "explanation": "Answer: B. During the fetch stage of the instruction cycle, the instruction read from memory is loaded into the Instruction Register (IR), whose role is to hold the currently fetched instruction while it is decoded and executed. The Program Counter (PC) tracks the address of the next instruction (A, D), and the Control Unit / instruction decoder—not the IR itself—interprets the instruction (C).",
+    "answer": "B, C",
+    "correctWord": "B. To hold the fetched instruction from memory. | C. To interpret the fetched instruction.",
+    "explanation": "Answer: B, C. During the instruction cycle, the Instruction Register (IR) holds the instruction just fetched from memory (B) and provides the opcode/operand fields used to interpret and execute that instruction (C). The Program Counter (PC) tracks the address of the next instruction (A, D, E).",
     "subject": "CEA201",
     "topic": "SP26 - FE"
   },
@@ -299,7 +299,7 @@
       "D. Values are 1, 0, true, false, and others"
     ],
     "answer": "A, B",
-    "correctWord": "A. Values are 1, 0; B. Values are true, false",
+    "correctWord": "A. Values are 1, 0 | B. Values are true, false",
     "explanation": "Answer: A, B. Boolean algebra is a two-valued algebraic system where every variable and operation evaluates strictly to one of two truth values, commonly represented either numerically as 1 and 0 (A) or logically as true and false (B). Decimal numbers (C) or additional values (D) are not valid Boolean values.",
     "subject": "CEA201",
     "topic": "SP26 - FE"

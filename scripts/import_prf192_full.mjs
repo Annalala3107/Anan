@@ -117,10 +117,14 @@ for (let i = 0; i < paragraphs.length; i++) {
     };
   } else if (currentQ) {
     const optMatch = text.match(/^([A-H])\.\s*(.*)/);
-    const ansMatch = text.match(/^->\s*đáp án đúng[:.]?\s*([A-H])(?:\s*\((.*)\))?/i);
+    const ansMatch = text.match(/^->\s*đáp án đúng[:.]?\s*([A-H](?:\s*,\s*[A-H])*)(?:\s*\((.*)\))?$/i);
 
     if (ansMatch) {
-      currentQ.answerLetter = ansMatch[1].toUpperCase();
+      currentQ.answerLetter = ansMatch[1]
+        .split(',')
+        .map(s => s.trim().toUpperCase())
+        .filter(Boolean)
+        .join(', ');
       if (ansMatch[2]) {
         currentQ.explanation = ansMatch[2].trim();
       }
@@ -139,18 +143,27 @@ if (currentQ) parsedQuestions.push(currentQ);
 
 console.log('Parsed questions from docx:', parsedQuestions.length);
 
-// Read existing prf192_all.json to preserve curated explanations and verified topics
+// Read existing prf192_all.json by normalized question text to preserve matching curated explanations
+const normalizeStem = s => String(s || '').trim().toLowerCase().replace(/\s+/g, ' ');
 const existingPath = path.join(process.cwd(), 'public', 'data', 'prf192_all.json');
-let existingMapByNum = new Map();
+let existingMapByText = new Map();
 if (fs.existsSync(existingPath)) {
   const existing = JSON.parse(fs.readFileSync(existingPath, 'utf8'));
   existing.forEach(q => {
-    const m = q.id?.match(/^prf_(\d+)$/);
-    if (m) {
-      existingMapByNum.set(parseInt(m[1], 10), q);
+    const key = normalizeStem(q.question);
+    if (key && !existingMapByText.has(key)) {
+      existingMapByText.set(key, q);
     }
   });
 }
+
+const curatedMultiExplanations = {
+  4: 'Đáp án: C, E. getc() đọc 1 ký tự từ luồng FILE* chứ không đọc chuỗi vào biến s; scanf(s) thiếu chuỗi định dạng "%s" nên sai khi nhập chuỗi.',
+  39: 'Đáp án: B, C. Chế độ "a" và "a+" mở tệp để ghi nối dữ liệu vào cuối tệp; "w"/"w+" ghi đè từ đầu tệp còn fwrite() dùng để ghi dữ liệu vào luồng đã mở.',
+  281: 'Đáp án: A, D. printf() (với "%s") và puts() dùng để xuất chuỗi ký tự; putc() xuất 1 ký tự, còn gets() và getc() dùng để nhập dữ liệu.',
+  282: 'Đáp án: A, C. scanf() (với "%s" hoặc "%[^\\n]") và gets() dùng để nhập chuỗi; putc() và puts() dùng để xuất, còn getc() đọc 1 ký tự.',
+  312: 'Đáp án: B, C. Cả "w+" (hoặc dạng text "wt+") và "a+" đều tạo tệp mới nếu chưa có và cho phép vừa đọc vừa ghi ("w+" ghi đè từ đầu, "a+" ghi nối vào cuối tệp).'
+};
 
 // Build standardized items
 const allQuestions = [];
@@ -162,33 +175,46 @@ parsedQuestions.forEach(q => {
   const questionText = q.questionLines.join('\n').trim();
   const options = q.options;
   const answer = q.answerLetter;
+  const answerKeys = answer
+    .split(',')
+    .map(s => s.trim().toUpperCase())
+    .filter(Boolean);
 
-  // find matching option
-  const matchingOpt = options.find(opt => opt.startsWith(`${answer}.`) || opt.startsWith(`${answer} `));
-  const correctWord = matchingOpt || (options[0] || '');
+  // find matching option(s)
+  const matchingOpts = answerKeys
+    .map(k => options.find(opt => opt.startsWith(`${k}.`) || opt.startsWith(`${k} `)))
+    .filter(Boolean);
+  const correctWord = matchingOpts.length > 0 ? matchingOpts.join(' | ') : (options[0] || '');
 
-  if (!matchingOpt) {
+  if (answerKeys.length === 0 || matchingOpts.length !== answerKeys.length) {
     missingOptions.push({ num, answer, options });
   }
 
-  // Explanation: prioritize docx explanation if specific, else existing if detailed, else default
-  const existQ = existingMapByNum.get(num);
+  // Explanation: prioritize docx explanation, then curated multi-select notes, else matching curated explanation whose leading "Đáp án:" aligns with answer
+  const existQ = existingMapByText.get(normalizeStem(questionText));
+  const existExp = existQ?.explanation?.trim() || '';
+  const existExpAnsMatch = existExp.match(/^Đáp án:\s*([A-H](?:\s*,\s*[A-H])*)/i);
+  const existExpAnsNorm = existExpAnsMatch
+    ? existExpAnsMatch[1].split(',').map(s => s.trim().toUpperCase()).filter(Boolean).join(', ')
+    : '';
+  const isMatchingExistingExp =
+    Boolean(existExp) &&
+    existExpAnsNorm === answer &&
+    existExp !== `Đáp án: ${answer}.`;
+
   let finalExplanation = '';
   if (q.explanation) {
     finalExplanation = `Đáp án: ${answer}. ${q.explanation}`;
-  } else if (existQ && existQ.explanation && existQ.explanation !== `Đáp án: ${answer}.`) {
-    finalExplanation = existQ.explanation;
+  } else if (curatedMultiExplanations[num]) {
+    finalExplanation = curatedMultiExplanations[num];
+  } else if (isMatchingExistingExp) {
+    finalExplanation = existExp;
   } else {
     finalExplanation = `Đáp án: ${answer}.`;
   }
 
-  // Topic determination
-  let topic = '';
-  if (existQ && existQ.topic) {
-    topic = existQ.topic;
-  } else {
-    topic = classifyTopic(questionText, '', options.join('\n'), finalExplanation);
-  }
+  // Classify topic directly from question content
+  const topic = classifyTopic(questionText, '', options.join('\n'), finalExplanation);
 
   // Word label
   const firstLine = q.questionLines[0].trim();

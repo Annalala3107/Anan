@@ -35,7 +35,7 @@ export interface ParseExamResult {
 }
 
 const OPTION_LINE_REGEX =
-  /^\s*(\*)?\s*(?:\(\s*([A-Fa-f])\s*\)|\[\s*([A-Fa-f])\s*\]|([A-Fa-f])\s*(?:[\.\:\)]|\s+-\s+))(.*)$/;
+  /^\s*(\*)?\s*(?:\(\s*([A-Ha-h])\s*\)|\[\s*([A-Ha-h])\s*\]|([A-Ha-h])\s*(?:[\.\:\)]|\s+-\s+))(.*)$/;
 
 const EXPLICIT_QUESTION_HEADER_REGEX =
   /(?:^|\n)(?=[ \t]*(?:Câu(?:\s*hỏi)?\s*\d+|Question\s*\d+|Q\s*\d+|Bài\s*\d+)(?:\s*[\.\:\)\-]|\s+))/gi;
@@ -62,7 +62,7 @@ function hasAtLeastTwoOptions(text: string): boolean {
   if (lineOptCount >= 2) return true;
 
   const inlineMatches = text.match(
-    /(?:^|\s+)\*?\s*(?:\([A-Fa-f]\)|\[[A-Fa-f]\]|[A-Fa-f][\.\:\)])\s+/g
+    /(?:^|\s+)\*?\s*(?:\([A-Ha-h]\)|\[[A-Ha-h]\]|[A-Ha-h][\.\:\)])\s+/g
   );
   return Boolean(inlineMatches && inlineMatches.length >= 2);
 }
@@ -171,7 +171,7 @@ function inspectElementEmphasis(el: Element): {
   const descendants = el.querySelectorAll('*');
   descendants.forEach((child) => {
     const text = (child.textContent || '').trim();
-    const isPrefixOnly = /^[A-Fa-f][\.\:\)]?$/.test(text);
+    const isPrefixOnly = /^[A-Ha-h][\.\:\)]?$/.test(text);
     checkNodeStyle(child, isPrefixOnly);
   });
 
@@ -328,7 +328,7 @@ function extractTrailingAnswerKey(text: string): {
     );
   });
 
-  const pairRegex = /(?:Câu\s*)?(\d{1,4})\s*[\.\:\-\)]\s*([A-Fa-f](?:\s*(?:,|\/)\s*[A-Fa-f])*)\b/gi;
+  const pairRegex = /(?:Câu\s*)?(\d{1,4})\s*[\.\:\-\)]\s*([A-Ha-h](?:\s*(?:,|\/)\s*[A-Ha-h])*)\b/gi;
 
   const parsePairsFromLines = (slice: string[]): Map<number, string> => {
     const map = new Map<number, string>();
@@ -471,7 +471,7 @@ export function parseRawExamText(
 
   // Normalize bulleted options like "• A. ..." -> "A. ..."
   normalized = normalized.replace(
-    /^[ \t]*[•●▪◦\-][ \t]+(\*?\s*(?:\([A-Fa-f]\)|\[[A-Fa-f]\]|[A-Fa-f][\.\:\)]))/gm,
+    /^[ \t]*[•●▪◦\-][ \t]+(\*?\s*(?:\([A-Ha-h]\)|\[[A-Ha-h]\]|[A-Ha-h][\.\:\)]))/gm,
     '$1'
   );
 
@@ -554,7 +554,7 @@ export function parseRawExamText(
       let explanation = '';
 
       const answerMatch = block.match(
-        /(?:^|\n)[ \t]*(?:Đáp\s*án(?:\s*đúng)?|Answer|Key|Đ\/A|ĐA|Correct)[ \t]*[\:\=]?[ \t]*([A-Fa-f](?:[ \t]*(?:,|;|\/|\bhoặc\b|\bor\b|\band\b|\bvà\b)[ \t]*[A-Fa-f])*)\b[ \t]*(?=\n|$)/i
+        /(?:^|\n)[ \t]*(?:(?:->|=>|➔|➤|[-*•])[ \t]*)?(?:Đáp\s*án(?:\s*đúng)?|Answer|Key|Đ\/A|ĐA|Correct)[ \t]*[\:\=]?[ \t]*([A-Ha-h](?:[ \t]*(?:,|;|\/|\bhoặc\b|\bor\b|\band\b|\bvà\b)[ \t]*[A-Ha-h])*)\b(?:[ \t]*\(([^\n]*)\))?[ \t]*(?=\n|$)/i
       );
       if (answerMatch) {
         const rawAns = answerMatch[1].trim();
@@ -563,6 +563,9 @@ export function parseRawExamText(
           detectedAnswerLetter = parsedAns.isOrMode
             ? parsedAns.keys.join(' hoặc ')
             : parsedAns.keys.join(', ');
+        }
+        if (answerMatch[2]?.trim()) {
+          explanation = `Đáp án đúng: ${detectedAnswerLetter || rawAns}. ${answerMatch[2].trim()}`;
         }
       }
 
@@ -647,7 +650,7 @@ export function parseRawExamText(
           );
           if (
             trailingExpMatch &&
-            !/(?:^|\s)\*?\s*(?:\([A-Fa-f]\)|\[[A-Fa-f]\]|[A-Fa-f][\.\:\)])\s/.test(
+            !/(?:^|\s)\*?\s*(?:\([A-Ha-h]\)|\[[A-Ha-h]\]|[A-Ha-h][\.\:\)])\s/.test(
               trailingExpMatch[1]
             )
           ) {
@@ -657,7 +660,7 @@ export function parseRawExamText(
         }
 
         const inlineRegex =
-          /(?:^|\s+)(\*)?\s*(?:\(\s*([A-Fa-f])\s*\)|\[\s*([A-Fa-f])\s*\]|([A-Fa-f])[\.\:\)])\s*([\s\S]*?)(?=(?:\s+(?:\*\s*)?(?:\([A-Fa-f]\)|\[[A-Fa-f]\]|[A-Fa-f][\.\:\)])\s+|$))/g;
+          /(?:^|\s+)(\*)?\s*(?:\(\s*([A-Ha-h])\s*\)|\[\s*([A-Ha-h])\s*\]|([A-Ha-h])[\.\:\)])\s*([\s\S]*?)(?=(?:\s+(?:\*\s*)?(?:\([A-Ha-h]\)|\[[A-Ha-h]\]|[A-Ha-h][\.\:\)])\s+|$))/g;
         const inlineOptions: { letter: string; text: string; hasAsterisk: boolean }[] = [];
         let inlineMatch;
         while ((inlineMatch = inlineRegex.exec(blockForInline)) !== null) {

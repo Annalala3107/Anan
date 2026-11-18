@@ -10,7 +10,7 @@
       "D. Its role is protecting data from user, ensuring that sensitive information is not lost or intercepted."
     ],
     "answer": "A, B",
-    "correctWord": "A. Its role is data transfer, it will transfer data to and from peripheral devices.; B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals",
+    "correctWord": "A. Its role is data transfer, it will transfer data to and from peripheral devices. | B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals",
     "explanation": "Answer: A, B. An I/O module serves as the interface between the system bus (CPU/memory) and peripheral devices. Its primary roles are transferring data to and from external devices (A) and managing device communication, control, timing, and data buffering between the CPU and peripherals (B). Option C describes specialized audio ADC hardware rather than a general I/O module, and option D describes OS/security functions.",
     "subject": "CEA201",
     "topic": "SU26 - RE"
@@ -28,7 +28,7 @@
       "F. I/O mechanisms"
     ],
     "answer": "C, E",
-    "correctWord": "C. Interface between the computer and peripherals; E. The memory technology used",
+    "correctWord": "C. Interface between the computer and peripherals | E. The memory technology used",
     "explanation": "Answer: C, E. In computer architecture vs. computer organization (Stallings, Chapter 1), architectural attributes are those visible to the programmer: the instruction set (B), number of bits used to represent various data types (A), I/O mechanisms (F), and techniques for addressing memory (D). Organizational attributes are hardware implementation details transparent to the programmer, which include control signals, interfaces between the computer and peripherals (C), and the memory technology used (E).",
     "subject": "CEA201",
     "topic": "SU26 - RE"
@@ -221,7 +221,7 @@
       "D. DFS"
     ],
     "answer": "A, B, C",
-    "correctWord": "A. FIFO; B. Random; C. LRU",
+    "correctWord": "A. FIFO | B. Random | C. LRU",
     "explanation": "Answer: A, B, C. The most common cache replacement algorithms are LRU (Least Recently Used), FIFO (First-In, First-Out), LFU (Least Frequently Used), and Random. DFS (Depth-First Search) is a graph traversal algorithm, not a cache replacement policy.",
     "subject": "CEA201",
     "topic": "SU26 - RE"

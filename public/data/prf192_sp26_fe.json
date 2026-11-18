@@ -74,7 +74,7 @@
       "D. named"
     ],
     "answer": "A, B",
-    "correctWord": "A. const; B. define",
+    "correctWord": "A. const | B. define",
     "explanation": "Answer: A, B. In C, named constants can be defined using the 'const' keyword (e.g., const int MAX = 10;) or the '#define' preprocessor directive (e.g., #define MAX 10). 'constant' and 'named' are not valid C keywords or directives.",
     "subject": "PRF192",
     "topic": "PRF192_SP26_FE"
@@ -122,7 +122,7 @@
       "D. Works without checking for buffer overflow"
     ],
     "answer": "A, B",
-    "correctWord": "A. Uses array indexing; B. Uses pointer arithmetic",
+    "correctWord": "A. Uses array indexing | B. Uses pointer arithmetic",
     "explanation": "Answer: A, B. Manually copying a string in C is standardly implemented either using array indexing (e.g., `s2[i] = s1[i]`) or using pointer arithmetic (e.g., `*p2++ = *p1++`). It does not require dynamic memory allocation if `s2` is already a declared char array, and omitting buffer-size checks risks buffer overflow rather than safely working.",
     "subject": "PRF192",
     "topic": "PRF192_SP26_FE"

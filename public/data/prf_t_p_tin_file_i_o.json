@@ -1,5 +1,21 @@
 [
   {
+    "id": "prf_6",
+    "word": "Câu 6: Which of the following is used for single character I/O?",
+    "question": "Which of the following is used for single character I/O?",
+    "options": [
+      "A. getchar() and putchar()",
+      "B. gets() and puts()",
+      "C. scanf() and printf()",
+      "D. fgets() and fputs()"
+    ],
+    "answer": "A",
+    "correctWord": "A. getchar() and putchar()",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
     "id": "prf_16",
     "word": "Câu 16: Which function is used to open a text file?",
     "question": "Which function is used to open a text file?",
@@ -11,7 +27,7 @@
     ],
     "answer": "B",
     "correctWord": "B. fopen()",
-    "explanation": "Đáp án: A.",
+    "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
@@ -27,39 +43,23 @@
     ],
     "answer": "A",
     "correctWord": "A. feof()",
-    "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
-  },
-  {
-    "id": "prf_32",
-    "word": "Câu 32: Which of the following is the correct syntax of the do-while...",
-    "question": "Which of the following is the correct syntax of the do-while statement?",
-    "options": [
-      "A. do { statements; } while (condition);",
-      "B. do while (condition) { statements; }",
-      "C. do { statements; } while (condition)",
-      "D. do ( statements; ) while (condition);"
-    ],
-    "answer": "A",
-    "correctWord": "A. do { statements; } while (condition);",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
-    "id": "prf_36",
-    "word": "Câu 36: The function which will compute the average of two real numb...",
-    "question": "The function which will compute the average of two real numbers should be prototyped as:",
+    "id": "prf_34",
+    "word": "Câu 34: Which function writes the character value of the argument c ...",
+    "question": "Which function writes the character value of the argument c to the output stream referenced by fp?",
     "options": [
-      "A. int average( double, double);",
-      "B. double average( double, double);",
-      "C. char average( double, double);",
-      "D. void average( double, double);"
+      "A. int putc( int c, FILE *fp );",
+      "B. int fputs( const char *s, FILE *fp );",
+      "C. int getc( FILE *fp );",
+      "D. char *fgets( char *buf, int n, FILE *fp );"
     ],
-    "answer": "B",
-    "correctWord": "B. double average( double, double);",
-    "explanation": "Đáp án: B, C.",
+    "answer": "A",
+    "correctWord": "A. int putc( int c, FILE *fp );",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
@@ -74,26 +74,42 @@
       "D. FILE *f = fopen(\"output.txt\", \"w+\" );",
       "E. FILE *f = fopen(\"output.txt\", \"w\" );"
     ],
-    "answer": "B",
-    "correctWord": "B. FILE *f = fopen(\"output.txt\", \"a\" );",
+    "answer": "B, C",
+    "correctWord": "B. FILE *f = fopen(\"output.txt\", \"a\" ); | C. FILE *f = fopen(\"output.txt\", \"a+\" );",
+    "explanation": "Đáp án: B, C. Chế độ \"a\" và \"a+\" mở tệp để ghi nối dữ liệu vào cuối tệp; \"w\"/\"w+\" ghi đè từ đầu tệp còn fwrite() dùng để ghi dữ liệu vào luồng đã mở.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_42",
+    "word": "Câu 42: What is a proper method of opening a file for writing as bin...",
+    "question": "What is a proper method of opening a file for writing as binary file?",
+    "options": [
+      "A. FILE *f = fwrite( \"test.bin\", \"w\" );",
+      "B. FILE *f = fopen( \"test.bin\", \"w\" );",
+      "C. FILE *f = fopen( \"test.bin\", \"wb\" );",
+      "D. FILE *f = fwrite( \"test.bin\", \"wb\" );",
+      "E. FILE *f = fopen( \"test.bin\", \"bw\" );"
+    ],
+    "answer": "C",
+    "correctWord": "C. FILE *f = fopen( \"test.bin\", \"wb\" );",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
-    "id": "prf_40",
-    "word": "Câu 40: `int* ptr = malloc( sizeof(int) );` To reallocate ptr to be ...",
-    "question": "`int* ptr = malloc( sizeof(int) );` To reallocate ptr to be an array of 5 elements, which of the following statements generates an error?",
+    "id": "prf_183",
+    "word": "Câu 183: What will be the output of the following code if the input i...",
+    "question": "What will be the output of the following code if the input is `abcdef`?\n```c\nchar s[5];\nfgets(s, sizeof(s), stdin);\nprintf(\"%s\", s);\n```",
     "options": [
-      "A. ptr = realloc( ptr, 5 * sizeof(int) );",
-      "B. realloc( ptr, 5 * sizeof(int) );",
-      "C. ptr += malloc( 5 * sizeof(int) );",
-      "D. realloc( ptr, 20 );",
-      "E. ptr = realloc( ptr, 20 );"
+      "A. abcd",
+      "B. abcdef",
+      "C. abc",
+      "D. Syntax Error in fgets function"
     ],
-    "answer": "C",
-    "correctWord": "C. ptr += malloc( 5 * sizeof(int) );",
-    "explanation": "Đáp án: A.",
+    "answer": "A",
+    "correctWord": "A. abcd",
+    "explanation": "Đáp án: A. Đọc tối đa 4 ký tự + 1 ký tự '\\0'",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
@@ -351,98 +367,66 @@
     "topic": "Tệp Tin (File I/O)"
   },
   {
-    "id": "prf_352",
-    "word": "Câu 352: What is incorrect about `getchar()` function?",
-    "question": "What is incorrect about `getchar()` function?",
+    "id": "prf_357",
+    "word": "Câu 357: What does the following statement do? `fprintf(fp, \"%s:%.2lf...",
+    "question": "What does the following statement do? `fprintf(fp, \"%s:%.2lf,%s\\n\", name, salary, job);`",
     "options": [
-      "A. The getchar() function is defined in the `<stdio.h>` header file.",
-      "B. getchar() gets a string from stdin.",
-      "C. getchar() retrieves a single character from the standard input stream buffer without translating the input.",
-      "D. getchar() gets a character (an unsigned char) from stdin."
+      "A. Print to the file location pointed by fp the string name, the double variable salary (2 decimal places), the string job and a newline character.",
+      "B. Print to the screen the string name, a colon, the double variable salary (2 decimal places), a comma, the string job and a newline character.",
+      "C. Print to the file location pointed by fp the string name, a colon, the double variable salary (2 decimal places), a comma, the string job and a newline character.",
+      "D. Read from the file location pointed by fp."
     ],
-    "answer": "B",
-    "correctWord": "B. getchar() gets a string from stdin.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
-  },
-  {
-    "id": "prf_373",
-    "word": "Câu 373: Which of the following statements is incorrect?",
-    "question": "Which of the following statements is incorrect?",
-    "options": [
-      "A. To make our programs longer, we use higher-level languages",
-      "B. Program code in a high level language can not run, it must be translated to binary code (machine code) before running",
-      "C. C is based on a view of structured programming",
-      "D. Programs that perform relatively simple tasks and are written in assembly language contain a large number of statements"
-    ],
-    "answer": "A",
-    "correctWord": "A. To make our programs longer, we use higher-level languages",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
-  },
-  {
-    "id": "prf_386",
-    "word": "Câu 386: How does compilation differ from interpretation in the conte...",
-    "question": "How does compilation differ from interpretation in the context of C programming language?",
-    "options": [
-      "A. Compilation translates the entire source code into machine code before execution, whereas interpretation translates and executes line by line.",
-      "B. Compilation and interpretation are two terms that are used interchangeably.",
-      "C. Algorithm is another term for interpretation in programming languages.",
-      "D. IDE tools are responsible for both compilation and interpretation processes."
-    ],
-    "answer": "A",
-    "correctWord": "A. Compilation translates the entire source code into machine code before execution, whereas interpretation translates and executes line by line.",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
-  },
-  {
-    "id": "prf_395",
-    "word": "Câu 395: In C, what is the purpose of `|` operator?",
-    "question": "In C, what is the purpose of `|` operator?",
-    "options": [
-      "A. It is a bitwise operator OR",
-      "B. It is a logical operator AND",
-      "C. It is a bitwise operator AND",
-      "D. It is a logical operator OR"
-    ],
-    "answer": "A",
-    "correctWord": "A. It is a bitwise operator OR",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Tệp Tin (File I/O)"
-  },
-  {
-    "id": "prf_409",
-    "word": "Câu 409: In the C programming language, which of the following statem...",
-    "question": "In the C programming language, which of the following statements about local variables within a function is true?",
-    "options": [
-      "A. Local variables within a function are declared and initialized each time the function is called.",
-      "B. Local variables within a function can be accessed from any other function in the program.",
-      "C. Local variables within a function retain their value between different function calls.",
-      "D. Local variables within a function can be declared outside the function and still maintain local scope."
-    ],
-    "answer": "A",
-    "correctWord": "A. Local variables within a function are declared and initialized each time the function is called.",
+    "answer": "C",
+    "correctWord": "C. Print to the file location pointed by fp the string name, a colon, the double variable salary (2 decimal places), a comma, the string job and a newline character.",
     "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },
   {
-    "id": "prf_411",
-    "word": "Câu 411: What is the main purpose of a module in programming?",
-    "question": "What is the main purpose of a module in programming?",
+    "id": "prf_361",
+    "word": "Câu 361: What does the statement `rewind(fp)` do?",
+    "question": "What does the statement `rewind(fp)` do?",
     "options": [
-      "A. To carry out a specific function and may be used alone or combined with other modules to create a program",
-      "B. To store data in a database",
-      "C. To handle user input exclusively",
-      "D. To perform arithmetic calculations only"
+      "A. Bring the pointer fp back to the beginning of the file",
+      "B. Assign to the pointer fp the address 0x00 (NULL)",
+      "C. Bring the pointer fp to the end of the file",
+      "D. Bring the pointer fp back to the beginning of the current line"
     ],
     "answer": "A",
-    "correctWord": "A. To carry out a specific function and may be used alone or combined with other modules to create a program",
-    "explanation": "Đáp án: C.",
+    "correctWord": "A. Bring the pointer fp back to the beginning of the file",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_383",
+    "word": "Câu 383: How can you check if a file was successfully opened for writ...",
+    "question": "How can you check if a file was successfully opened for writing in C?",
+    "options": [
+      "A. Checking the return value of fopen() (if it is not NULL)",
+      "B. Using ferror()",
+      "C. Using feof()",
+      "D. Using fprintf()"
+    ],
+    "answer": "A",
+    "correctWord": "A. Checking the return value of fopen() (if it is not NULL)",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Tệp Tin (File I/O)"
+  },
+  {
+    "id": "prf_396",
+    "word": "Câu 396: In C programming language, what is the function `fprintf()` ...",
+    "question": "In C programming language, what is the function `fprintf()` used for?",
+    "options": [
+      "A. Writing formatted data to a file.",
+      "B. Reading formatted data from a file.",
+      "C. Appending formatted data to a file.",
+      "D. Closing a file."
+    ],
+    "answer": "A",
+    "correctWord": "A. Writing formatted data to a file.",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Tệp Tin (File I/O)"
   },

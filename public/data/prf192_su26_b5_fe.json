@@ -684,7 +684,7 @@
       "D. printf(\"%s\",s)"
     ],
     "answer": "A, C",
-    "correctWord": "A. putc(s); C. printf(s)",
+    "correctWord": "A. putc(s) | C. printf(s)",
     "explanation": "Answer: A, C. `putc()` outputs a single character and requires two arguments (`putc(int c, FILE *stream)`), so `putc(s)` fails to compile in GCC (both wrong type and too few arguments). `printf(s)` passes a string variable directly as a format string instead of using `\"%s\"`, which is improper/unsafe if `s` contains `%` specifiers. Both `puts(s)` (B) and `printf(\"%s\", s)` (D) are standard ways to output a string.",
     "subject": "PRF192",
     "topic": "PRF192 - SU26 - B5 - FE"

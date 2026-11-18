@@ -10,9 +10,9 @@
       "D. gets(s)",
       "E. scanf(s)"
     ],
-    "answer": "C",
-    "correctWord": "C. getc(s)",
-    "explanation": "Đáp án: C. getc nhận FILE*, không dùng để nhập chuỗi; E cũng sai về logic",
+    "answer": "C, E",
+    "correctWord": "C. getc(s) | E. scanf(s)",
+    "explanation": "Đáp án: C, E. getc() đọc 1 ký tự từ luồng FILE* chứ không đọc chuỗi vào biến s; scanf(s) thiếu chuỗi định dạng \"%s\" nên sai khi nhập chuỗi.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -34,82 +34,34 @@
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_28",
-    "word": "Câu 28: Which statement is valid for type casting?",
-    "question": "Which statement is valid for type casting?",
+    "id": "prf_43",
+    "word": "Câu 43: Which library should you include to work with the FILE datat...",
+    "question": "Which library should you include to work with the FILE datatype in C?",
     "options": [
-      "A. int i = (double)123.5;",
-      "B. double t = double(2);",
-      "C. double t = (double) 2;",
-      "D. double t = (int) 2.7;"
-    ],
-    "answer": "C",
-    "correctWord": "C. double t = (double) 2;",
-    "explanation": "Đáp án: C. (double) là ép về kiểu dữ liệu double",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_29",
-    "word": "Câu 29: How can you initialize a character array in C?",
-    "question": "How can you initialize a character array in C?",
-    "options": [
-      "A. char arr[] = \"Hello\";",
-      "B. char arr[] = ['H', 'e', 'l', 'l', 'o', '\\0'];",
-      "C. Char[] arr = \"Hello\";",
-      "D. Char[] arr = {'H', 'e', 'l', 'l', 'o', '\\0'};"
+      "A. stdio.h",
+      "B. stdlib.h",
+      "C. string.h",
+      "D. ctype.h"
     ],
     "answer": "A",
-    "correctWord": "A. char arr[] = \"Hello\";",
-    "explanation": "Đáp án: B.",
+    "correctWord": "A. stdio.h",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_49",
-    "word": "Câu 49: What happens in this do-while loop?",
-    "question": "What happens in this do-while loop?\n```c\nint n = 0;\ndo {\nprintf(\"Enter a number:\");\nscanf(\"%d\", &n);\n} while (n < 1 || n > 5);\n```",
+    "id": "prf_48",
+    "word": "Câu 48: A one dimensional array A has indices 1..100. Each element i...",
+    "question": "A one dimensional array A has indices 1..100. Each element is a string and takes up three bytes. The starting address of the array A is 1110 decimal. The address of A[49] is:",
     "options": [
-      "A. Never runs",
-      "B. Runs only when n = 4",
-      "C. Infinite loop",
-      "D. Runs at least once"
-    ],
-    "answer": "D",
-    "correctWord": "D. Runs at least once",
-    "explanation": "Đáp án: D. Vòng lặp do-while luôn thực thi thân vòng lặp trước ít nhất một lần rồi mới kiểm tra điều kiện",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_50",
-    "word": "Câu 50: What is the binary representation of 0xA2?",
-    "question": "What is the binary representation of 0xA2?",
-    "options": [
-      "A. 0b01100010",
-      "B. 0b10100010",
-      "C. 0b10010010",
-      "D. 0b10100010"
-    ],
-    "answer": "B",
-    "correctWord": "B. 0b10100010",
-    "explanation": "Đáp án: B. A = 1010, 2 = 0010 -> 0b10100010",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_51",
-    "word": "Câu 51: Choose the correct answer. The decimal positive binary compu...",
-    "question": "Choose the correct answer. The decimal positive binary computer representation on 16 bits (2 Bytes) with 251(10)",
-    "options": [
-      "A. 0000 0000 1111 1011(2)",
-      "B. 0000 0000 1110 1011(2)",
-      "C. 0000 0000 1111 1001(2)",
-      "D. 0000 0000 1101 1011(2)"
+      "A. 1254",
+      "B. 1158",
+      "C. 1159",
+      "D. 1157"
     ],
     "answer": "A",
-    "correctWord": "A. 0000 0000 1111 1011(2)",
-    "explanation": "Đáp án: A. 251 = 11111011 ở dạng 8 bit, thêm 8 số 0 phía trước thành 16 bit",
+    "correctWord": "A. 1254",
+    "explanation": "Đáp án: A. Địa chỉ A[49] = 1110 + (49 - 1) * 3 = 1110 + 144 = 1254",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -124,7 +76,38 @@
     ],
     "answer": "B",
     "correctWord": "B. 0",
-    "explanation": "Đáp án: C. D cũng đúng",
+    "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_53",
+    "word": "Câu 53: What is the result of the statement `strcmp(\"abcde\", \"abdc\")...",
+    "question": "What is the result of the statement `strcmp(\"abcde\", \"abdc\")`?",
+    "options": [
+      "A. 1",
+      "B. 0",
+      "C. -1"
+    ],
+    "answer": "C",
+    "correctWord": "C. -1",
+    "explanation": "Đáp án: C.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_54",
+    "word": "Câu 54: If the two strings have the same value, then strcmp() functi...",
+    "question": "If the two strings have the same value, then strcmp() function returns:",
+    "options": [
+      "A. True",
+      "B. 1",
+      "C. 0",
+      "D. -1"
+    ],
+    "answer": "C",
+    "correctWord": "C. 0",
+    "explanation": "Đáp án: C.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -146,161 +129,50 @@
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_65",
-    "word": "Câu 65: What will be the output of the following code?",
-    "question": "What will be the output of the following code?\n```c\n#include <stdio.h>\nint main() {\nint a = 1, b = 1;\nint result = ++a + ++b;\nprintf(\"%d %d %d\\n\", result, a, b);\nreturn 0;\n}\n```",
+    "id": "prf_58",
+    "word": "Câu 58: What is the return value of the `strcmp(\"abc\", \"Abcdef\")` fu...",
+    "question": "What is the return value of the `strcmp(\"abc\", \"Abcdef\")` function?",
     "options": [
-      "A. 4 2 2",
-      "B. 0 2 2",
-      "C. 1 2 2",
-      "D. 2 2 2"
+      "A. 1",
+      "B. 0",
+      "C. -1",
+      "D. 2"
     ],
     "answer": "A",
-    "correctWord": "A. 4 2 2",
+    "correctWord": "A. 1",
+    "explanation": "Đáp án: A. So sánh ký tự đầu theo mã ASCII: 'a' (97) > 'A' (65) nên trả về giá trị dương",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_68",
+    "word": "Câu 68: What is the output of the following code?",
+    "question": "What is the output of the following code?\n```c\nchar s[] = \"fpt\";\nint i = strlen(s);\nwhile (i)\nprintf(\"%s\", s + --i);\n```",
+    "options": [
+      "A. tptfpt",
+      "B. tpt",
+      "C. tptp",
+      "D. Compile error"
+    ],
+    "answer": "A",
+    "correctWord": "A. tptfpt",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_70",
-    "word": "Câu 70: What is the result displayed on the screen of the following ...",
-    "question": "What is the result displayed on the screen of the following program?\n```c\n#include <stdio.h>\nint main() {\nint *p, x = 3;\nx = 6;\np = &x;\n*p = 9;\nprintf(\"%d\", x);\nprintf(\"%d\", *p);\n}\n```",
+    "id": "prf_158",
+    "word": "Câu 158: What is the issue with the following code?",
+    "question": "What is the issue with the following code?\n```c\nchar str[1];\ngets(str);\nprintf(\"%s\", str);\n```",
     "options": [
-      "A. None of these",
-      "B. 99",
-      "C. 69"
-    ],
-    "answer": "B",
-    "correctWord": "B. 99",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_74",
-    "word": "Câu 74: What is the value of `ceil(2.55)` from the math.h library?",
-    "question": "What is the value of `ceil(2.55)` from the math.h library?",
-    "options": [
-      "A. 3",
-      "B. 2",
-      "C. 2.5",
-      "D. 2.6"
+      "A. Runtime error.",
+      "B. Logical error.",
+      "C. Compilation error.",
+      "D. No issue"
     ],
     "answer": "A",
-    "correctWord": "A. 3",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_97",
-    "word": "Câu 97: What is the result when converting 0101010 in binary system ...",
-    "question": "What is the result when converting 0101010 in binary system to decimal system?",
-    "options": [
-      "A. 78",
-      "B. 76",
-      "C. 74",
-      "D. 72"
-    ],
-    "answer": "C",
-    "correctWord": "C. 74",
-    "explanation": "Đáp án: C. Theo bộ đề gốc; giá trị thực của 0101010 là 42",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_117",
-    "word": "Câu 117: What does the following program display?",
-    "question": "What does the following program display?\n```c\n#include <stdio.h>\nint main() {\nint x = 1, y = 2, z = 3;\nx = x-- - 1;\nz = z + ++y;\nprintf(\"%d %d %d\", x, y, z);\nreturn 0;\n}\n```",
-    "options": [
-      "A. 1 5 3",
-      "B. 0 2 5",
-      "C. 1 2 4",
-      "D. 1 5 3"
-    ],
-    "answer": "B",
-    "correctWord": "B. 0 2 5",
-    "explanation": "Đáp án: D.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_140",
-    "word": "Câu 140: What the matter is the following C code?",
-    "question": "What the matter is the following C code?\n```c\n#include <stdio.h>\nint main() {\nint a = 1, b = 2, c = 3;\nprintf(\"%d %d %d\");\nreturn 0;\n}\n```",
-    "options": [
-      "A. The program outputs undefined values",
-      "B. The program has compile errors but still prints 1 2 3",
-      "C. The program output 3 2 1",
-      "D. The program runtime error."
-    ],
-    "answer": "A",
-    "correctWord": "A. The program outputs undefined values",
-    "explanation": "Đáp án: D.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_150",
-    "word": "Câu 150: What will be the output of the following C code?",
-    "question": "What will be the output of the following C code?\n```c\n#include <stdio.h>\nvoid main() {\nint i = 10, j = 3, k = 3;\nprintf(\"%d %d\", i, j, k);\n}\n```",
-    "options": [
-      "A. Compile time error",
-      "B. 10 3 3",
-      "C. 10 3",
-      "D. 10 3 somegarbage value"
-    ],
-    "answer": "C",
-    "correctWord": "C. 10 3",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_161",
-    "word": "Câu 161: Which of the following statements correctly allocates memory...",
-    "question": "Which of the following statements correctly allocates memory for a dynamic array of 10 integers in C?",
-    "options": [
-      "A. int* a = (int*)malloc(10 * sizeof(int));",
-      "B. int a[10] = malloc(10 * sizeof(int));",
-      "C. int* a = (int*)calloc(sizeof(int), 10);",
-      "D. int* a = (int*)malloc(10);"
-    ],
-    "answer": "A",
-    "correctWord": "A. int* a = (int*)malloc(10 * sizeof(int));",
-    "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_167",
-    "word": "Câu 167: What is the size of the char data type in bytes?",
-    "question": "What is the size of the char data type in bytes?",
-    "options": [
-      "A. 1 byte",
-      "B. 2 bytes",
-      "C. 4 bytes",
-      "D. It depends on the system"
-    ],
-    "answer": "A",
-    "correctWord": "A. 1 byte",
-    "explanation": "Đáp án: B.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_169",
-    "word": "Câu 169: How many bytes to represent float data type in C?",
-    "question": "How many bytes to represent float data type in C?",
-    "options": [
-      "A. 1 byte",
-      "B. 2 bytes",
-      "C. 4 bytes",
-      "D. 8 bytes"
-    ],
-    "answer": "C",
-    "correctWord": "C. 4 bytes",
-    "explanation": "Đáp án: B.",
+    "correctWord": "A. Runtime error.",
+    "explanation": "Đáp án: A. Mảng str[1] quá nhỏ, gets() dễ gây tràn bộ nhớ",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -321,50 +193,18 @@
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_173",
-    "word": "Câu 173: What are the sizes of the memory blocks allocated for d and ...",
-    "question": "What are the sizes of the memory blocks allocated for d and e?\n```c\nint size = 100;\nfloat *d = malloc(size);\nfloat *e = calloc(size, sizeof(float));\n```",
+    "id": "prf_178",
+    "word": "Câu 178: What is the value of variable a after executing the followin...",
+    "question": "What is the value of variable a after executing the following lines of code:\n```c\nint a = 0;\nchar line1[] = \"Hi\";\nchar line2[] = \"Hello\";\na = strcmp(line1, line2);\n```",
     "options": [
-      "A. 400 bytes and 400 bytes",
-      "B. 400 bytes and 100 bytes",
-      "C. 100 bytes and 800 bytes",
-      "D. 100 bytes and 400 bytes"
-    ],
-    "answer": "D",
-    "correctWord": "D. 100 bytes and 400 bytes",
-    "explanation": "Đáp án: D. malloc(100) cấp phát 100 bytes; calloc(100, 4) cấp phát 400 bytes",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_174",
-    "word": "Câu 174: In linear search, if the size of the array is n and the expe...",
-    "question": "In linear search, if the size of the array is n and the expected value does NOT exist in the array, how many comparisons will be made between the searching item and elements in the array?",
-    "options": [
-      "A. n",
-      "B. n - 1",
-      "C. n + 1",
-      "D. n / 2"
-    ],
-    "answer": "A",
-    "correctWord": "A. n",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_175",
-    "word": "Câu 175: What will be the output of the C program?",
-    "question": "What will be the output of the C program?\n```c\nint a = 5;\nprintf(\"%dha\" + 2, a);\n```",
-    "options": [
-      "A. 5ha",
-      "B. ha",
-      "C. dha",
-      "D. 7"
+      "A. 0",
+      "B. A positive value",
+      "C. A negative value",
+      "D. NaN"
     ],
     "answer": "B",
-    "correctWord": "B. ha",
-    "explanation": "Đáp án: B. Dời con trỏ chuỗi 2 vị trí bỏ qua \"%d\", chỉ còn \"ha\"",
+    "correctWord": "B. A positive value",
+    "explanation": "Đáp án: B. 'i' có mã ASCII 105 > 'e' có mã ASCII 101 nên trả về số dương",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -380,39 +220,23 @@
     ],
     "answer": "A",
     "correctWord": "A. Positive integer",
-    "explanation": "Đáp án: B.",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_180",
-    "word": "Câu 180: What is the result of the `printf(\"%c %c %c %c\", 'A', 0x42, ...",
-    "question": "What is the result of the `printf(\"%c %c %c %c\", 'A', 0x42, 0103, 68);` command?",
+    "id": "prf_182",
+    "word": "Câu 182: What is the output of the following code snippet?",
+    "question": "What is the output of the following code snippet?\n```c\nchar words[4][11];\nstrcpy(words[0], \"apple\");\nstrcat(words[0], \"juice\");\nprintf(\"%s\\n\", words[0]);\n```",
     "options": [
-      "A. A A B C",
-      "B. A B C D",
-      "C. A C C D",
-      "D. A B D C"
-    ],
-    "answer": "B",
-    "correctWord": "B. A B C D",
-    "explanation": "Đáp án: B. 'A'=65, 0x42=66='B', 0103=67='C', 68='D'",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_186",
-    "word": "Câu 186: What will be the output of the C program?",
-    "question": "What will be the output of the C program?\n```c\nint i = 5, j = 8;\nwhile (++i < j) {\nprintf(\"loop \");\n}\n```",
-    "options": [
-      "A. loop",
-      "B. Infinite loop",
-      "C. loop loop loop",
-      "D. loop loop"
+      "A. applejuice",
+      "B. apple",
+      "C. juice",
+      "D. juiceapple"
     ],
     "answer": "A",
-    "correctWord": "A. loop",
-    "explanation": "Đáp án: A. Theo bộ đề gốc; thực tế vòng lặp chạy với i=6 và i=7 nên in 2 lần",
+    "correctWord": "A. applejuice",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -637,9 +461,9 @@
       "D. puts()",
       "E. getc()"
     ],
-    "answer": "A",
-    "correctWord": "A. printf()",
-    "explanation": "Đáp án: A.",
+    "answer": "A, D",
+    "correctWord": "A. printf() | D. puts()",
+    "explanation": "Đáp án: A, D. printf() (với \"%s\") và puts() dùng để xuất chuỗi ký tự; putc() xuất 1 ký tự, còn gets() và getc() dùng để nhập dữ liệu.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -654,9 +478,9 @@
       "D. puts()",
       "E. getc()"
     ],
-    "answer": "A",
-    "correctWord": "A. scanf()",
-    "explanation": "Đáp án: A.",
+    "answer": "A, C",
+    "correctWord": "A. scanf() | C. gets()",
+    "explanation": "Đáp án: A, C. scanf() (với \"%s\" hoặc \"%[^\\n]\") và gets() dùng để nhập chuỗi; putc() và puts() dùng để xuất, còn getc() đọc 1 ký tự.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -822,18 +646,34 @@
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_365",
-    "word": "Câu 365: What will happen if the condition in a `while` loop is initi...",
-    "question": "What will happen if the condition in a `while` loop is initially false?",
+    "id": "prf_352",
+    "word": "Câu 352: What is incorrect about `getchar()` function?",
+    "question": "What is incorrect about `getchar()` function?",
     "options": [
-      "A. The loop is skipped entirely.",
-      "B. The loop executes indefinitely.",
-      "C. The loop executes once and then terminates.",
-      "D. An error occurs."
+      "A. The getchar() function is defined in the `<stdio.h>` header file.",
+      "B. getchar() gets a string from stdin.",
+      "C. getchar() retrieves a single character from the standard input stream buffer without translating the input.",
+      "D. getchar() gets a character (an unsigned char) from stdin."
     ],
-    "answer": "A",
-    "correctWord": "A. The loop is skipped entirely.",
+    "answer": "B",
+    "correctWord": "B. getchar() gets a string from stdin.",
     "explanation": "Đáp án: B.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_354",
+    "word": "Câu 354: What is the function of `fflush(stdin);` command?",
+    "question": "What is the function of `fflush(stdin);` command?",
+    "options": [
+      "A. Print string out to screen",
+      "B. Receive a string entered from the keyboard",
+      "C. Remove characters are entered from keyboard",
+      "D. Remove characters are remained in the keyboard buffer"
+    ],
+    "answer": "D",
+    "correctWord": "D. Remove characters are remained in the keyboard buffer",
+    "explanation": "Đáp án: D.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
@@ -849,88 +689,55 @@
     ],
     "answer": "B",
     "correctWord": "B. Returns the pointer to the first occurrence of the given substring in the main string",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_407",
-    "word": "Câu 407: What is an algorithm?",
-    "question": "What is an algorithm?",
-    "options": [
-      "A. A program executed using a computer",
-      "B. A procedure used for solving a problem or performing a computation",
-      "C. A sequence of steps to solve a problem",
-      "D. A description of hidden information"
-    ],
-    "answer": "B",
-    "correctWord": "B. A procedure used for solving a problem or performing a computation",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_408",
-    "word": "Câu 408: What is the primary purpose of a data type in C programming?",
-    "question": "What is the primary purpose of a data type in C programming?",
-    "options": [
-      "A. To define how values are stored and how operations are performed",
-      "B. To determine the variable name and its scope within the program",
-      "C. To specify the program's execution order and control flow",
-      "D. To control the program's memory allocation and deallocation process"
-    ],
-    "answer": "A",
-    "correctWord": "A. To define how values are stored and how operations are performed",
-    "explanation": "Đáp án: A.",
-    "subject": "Lập Trình C (PRF192)",
-    "topic": "Chuỗi Ký Tự (Strings)"
-  },
-  {
-    "id": "prf_412",
-    "word": "Câu 412: What is the result of the `printf(\"%d\", 0x11 | 010);` comman...",
-    "question": "What is the result of the `printf(\"%d\", 0x11 | 010);` command?",
-    "options": [
-      "A. 15",
-      "B. 22",
-      "C. 18",
-      "D. 25",
-      "E. 28"
-    ],
-    "answer": "D",
-    "correctWord": "D. 25",
     "explanation": "Đáp án: B.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_415",
-    "word": "Câu 415: What characteristic defines low \"coupling\" in module design?",
-    "question": "What characteristic defines low \"coupling\" in module design?",
+    "id": "prf_384",
+    "word": "Câu 384: How are strings typically represented in C?",
+    "question": "How are strings typically represented in C?",
     "options": [
-      "A. A module performs its tasks independently.",
-      "B. A module shares performance with other modules.",
-      "C. A module accesses global data.",
-      "D. A module depends on many other modules."
+      "A. As an array of characters",
+      "B. As an array of strings",
+      "C. As individual characters",
+      "D. As integers referencing ASCII values"
     ],
     "answer": "A",
-    "correctWord": "A. A module performs its tasks independently.",
+    "correctWord": "A. As an array of characters",
     "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },
   {
-    "id": "prf_416",
-    "word": "Câu 416: What does the line `scanf(\"%d\", &n);` do?",
-    "question": "What does the line `scanf(\"%d\", &n);` do?",
+    "id": "prf_417",
+    "word": "Câu 417: What does this code do?",
+    "question": "What does this code do?\n```c\nchar names[10][31];\ngets(names[0]);\n```",
     "options": [
-      "A. Assign value to n",
-      "B. Print n",
-      "C. Read an integer input",
-      "D. Declare n"
+      "A. Takes a line of input into names[0]",
+      "B. Takes input into all 10 strings",
+      "C. Fails to compile",
+      "D. Only stores 1 character"
     ],
-    "answer": "C",
-    "correctWord": "C. Read an integer input",
-    "explanation": "Đáp án: C.",
+    "answer": "A",
+    "correctWord": "A. Takes a line of input into names[0]",
+    "explanation": "Đáp án: A.",
+    "subject": "Lập Trình C (PRF192)",
+    "topic": "Chuỗi Ký Tự (Strings)"
+  },
+  {
+    "id": "prf_418",
+    "word": "Câu 418: What does the `'\\0'` character in a string represent?",
+    "question": "What does the `'\\0'` character in a string represent?",
+    "options": [
+      "A. The null terminator in C strings",
+      "B. A whitespace character",
+      "C. A printable character",
+      "D. A NULL pointer value"
+    ],
+    "answer": "A",
+    "correctWord": "A. The null terminator in C strings",
+    "explanation": "Đáp án: A.",
     "subject": "Lập Trình C (PRF192)",
     "topic": "Chuỗi Ký Tự (Strings)"
   },

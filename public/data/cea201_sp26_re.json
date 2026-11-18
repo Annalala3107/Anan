@@ -10,7 +10,7 @@
       "D. Its role is protecting data from user, ensuring that sensitive information is not lost or intercepted."
     ],
     "answer": "A, B",
-    "correctWord": "A. Its role is data transfer, it will transfer data to and from peripheral devices.; B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals",
+    "correctWord": "A. Its role is data transfer, it will transfer data to and from peripheral devices. | B. Its role is device communication control, it manages and controls the flow of data between the CPU and peripherals",
     "explanation": "Answer: A, B. An I/O module serves as the interface between the CPU/system bus and external peripheral devices. Its primary roles include transferring data to and from peripherals (with data buffering) and managing/controlling communication and data flow between the CPU and peripherals (control and timing, processor communication, and device communication). Converting analog audio signals (C) is specific to specialized ADC/audio hardware, and protecting sensitive data from users (D) is an OS/security function rather than a primary I/O module role.",
     "subject": "CEA201",
     "topic": "SP26 - RE"
