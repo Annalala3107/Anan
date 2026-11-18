@@ -99,7 +99,10 @@ export default function AITutorButton({
   const [explanation, setExplanation] = useState<AIExplanationResult | null>(() =>
     readCachedExplanation(cacheKey)
   );
-  const [isSharedCache, setIsSharedCache] = useState(false);
+  const [cacheBadge, setCacheBadge] = useState<'shared' | 'persisted' | null>(() =>
+    readCachedExplanation(cacheKey) ? 'shared' : null
+  );
+  const [showKeyInput, setShowKeyInput] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -109,7 +112,7 @@ export default function AITutorButton({
   useEffect(() => {
     const cached = readCachedExplanation(cacheKey);
     setExplanation(cached);
-    setIsSharedCache(false);
+    setCacheBadge(cached ? 'shared' : null);
     setIsOpen(false);
     setIsLoading(false);
     setError(null);
@@ -131,6 +134,7 @@ export default function AITutorButton({
     const cached = readCachedExplanation(cacheKey);
     if (cached) {
       setExplanation(cached);
+      setCacheBadge('shared');
       setIsOpen(true);
       setError(null);
       return;
@@ -172,6 +176,7 @@ export default function AITutorButton({
       let data: {
         success?: boolean;
         cached?: boolean;
+        persisted?: boolean;
         error?: string;
         explanation?: AIExplanationResult;
       } = {};
@@ -187,20 +192,23 @@ export default function AITutorButton({
           (data.error?.includes('GEMINI_API_KEY') || data.error?.includes('API'))
         ) {
           setNeedsApiKey(true);
+          setShowKeyInput(true);
         } else if (
           res.status === 401 ||
           res.status === 403 ||
           res.status === 429
         ) {
           setNeedsApiKey(true);
+          setShowKeyInput(true);
         }
         throw new Error(data.error || 'Không thể nhận giải thích từ Gemini AI.');
       }
 
       writeCachedExplanation(cacheKey, data.explanation);
       setExplanation(data.explanation);
-      setIsSharedCache(Boolean(data.cached));
+      setCacheBadge(data.cached ? 'shared' : data.persisted ? 'persisted' : 'shared');
       setNeedsApiKey(false);
+      setShowKeyInput(false);
       setIsOpen(true);
     } catch (err: unknown) {
       const msg =
@@ -262,7 +270,12 @@ export default function AITutorButton({
               : 'border-indigo-400/35 dark:border-cyan-400/35'
           }`}
         >
-          {isLoading ? (
+          {!hasKnownAnswer && !explanation && !isLoading ? (
+            <>
+              <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-cyan-400" />
+              <span>🤖 Chưa có đáp án gốc — Bấm để AI Suy Luận &amp; Giảng Bản Chất</span>
+            </>
+          ) : isLoading ? (
             <>
               <Loader2 className="w-3.5 h-3.5 animate-spin" />
               <span>AI đang phân tích câu hỏi...</span>
@@ -277,11 +290,6 @@ export default function AITutorButton({
                 <ChevronDown className="w-3.5 h-3.5" />
               )}
             </>
-          ) : !hasKnownAnswer ? (
-            <>
-              <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-cyan-400" />
-              <span>🤖 Chưa có đáp án gốc — Bấm để AI Suy Luận &amp; Giảng Bản Chất</span>
-            </>
           ) : (
             <>
               <Sparkles className="w-3.5 h-3.5 text-indigo-500 dark:text-cyan-400" />
@@ -289,63 +297,83 @@ export default function AITutorButton({
             </>
           )}
         </button>
+
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowKeyInput((prev) => !prev);
+          }}
+          title="Nhập hoặc đổi Gemini API Key cá nhân (BYOK)"
+          className={`inline-flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
+            showKeyInput || tempApiKey.trim()
+              ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-400/45'
+              : 'bg-white/70 dark:bg-white/[0.04] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-white/10 hover:border-indigo-400/40'
+          }`}
+        >
+          <Key className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+          <span>{tempApiKey.trim() ? 'Key riêng: Đang bật' : 'Key riêng'}</span>
+        </button>
       </div>
 
       {isOpen && error && (
-        <div className="p-3.5 rounded-2xl bg-rose-50 dark:bg-rose-950/35 border border-rose-200 dark:border-rose-800/70 space-y-2.5 text-xs">
+        <div className="p-3.5 rounded-2xl bg-rose-50 dark:bg-rose-950/35 border border-rose-200 dark:border-rose-800/70 text-xs">
           <div className="flex items-start gap-2 text-rose-700 dark:text-rose-300 font-semibold">
             <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
             <span>{error}</span>
           </div>
-
-          {needsApiKey && (
-            <form onSubmit={handleSaveAndRetryKey} className="space-y-2 pt-1">
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <p className="text-[11px] text-slate-600 dark:text-slate-300 flex items-center gap-1">
-                  <Key className="w-3 h-3 text-amber-500 shrink-0" />
-                  <span>
-                    Nhập Gemini API Key cá nhân (chỉ lưu tạm ở <code>sessionStorage</code>):
-                  </span>
-                </p>
-                <a
-                  href="https://aistudio.google.com/apikey"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[11px] font-bold text-indigo-600 dark:text-cyan-400 hover:underline"
-                >
-                  Lấy key miễn phí tại Google AI Studio ↗
-                </a>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <input
-                  type="password"
-                  autoComplete="off"
-                  value={tempApiKey}
-                  onChange={(e) => setTempApiKey(e.target.value)}
-                  placeholder="AQ... hoặc AIza..."
-                  className="flex-1 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-                <button
-                  type="submit"
-                  disabled={!tempApiKey.trim() || isLoading}
-                  className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs disabled:opacity-50 cursor-pointer shrink-0"
-                >
-                  Lưu &amp; Giải thích
-                </button>
-                {tempApiKey && (
-                  <button
-                    type="button"
-                    onClick={handleClearKey}
-                    title="Xóa API Key"
-                    className="p-1.5 rounded-xl bg-rose-500/10 text-rose-500 hover:bg-rose-500/20 cursor-pointer"
-                  >
-                    <Trash2 className="w-3.5 h-3.5" />
-                  </button>
-                )}
-              </div>
-            </form>
-          )}
         </div>
+      )}
+
+      {(showKeyInput || (isOpen && needsApiKey)) && (
+        <form
+          onSubmit={handleSaveAndRetryKey}
+          className="p-3.5 rounded-2xl bg-slate-100/80 dark:bg-slate-900/70 border border-slate-200 dark:border-white/10 space-y-2 text-xs animate-fade-in"
+        >
+          <div className="flex items-center justify-between gap-2 flex-wrap">
+            <p className="text-[11px] text-slate-600 dark:text-slate-300 flex items-center gap-1">
+              <Key className="w-3 h-3 text-amber-500 shrink-0" />
+              <span>
+                Nhập Gemini API Key cá nhân (chỉ lưu tạm ở <code>sessionStorage</code>):
+              </span>
+            </p>
+            <a
+              href="https://aistudio.google.com/apikey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] font-bold text-indigo-600 dark:text-cyan-400 hover:underline"
+            >
+              Lấy key miễn phí tại Google AI Studio ↗
+            </a>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <input
+              type="password"
+              autoComplete="off"
+              value={tempApiKey}
+              onChange={(e) => setTempApiKey(e.target.value)}
+              placeholder="AQ... hoặc AIza..."
+              className="flex-1 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <button
+              type="submit"
+              disabled={!tempApiKey.trim() || isLoading}
+              className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs disabled:opacity-50 cursor-pointer shrink-0"
+            >
+              Lưu &amp; Giải thích
+            </button>
+            {tempApiKey && (
+              <button
+                type="button"
+                onClick={handleClearKey}
+                title="Xóa API Key"
+                className="p-1.5 rounded-xl bg-rose-500/10 text-rose-500 hover:bg-rose-500/20 cursor-pointer"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        </form>
       )}
 
       {isOpen && explanation && (
@@ -357,9 +385,14 @@ export default function AITutorButton({
                   <Target className="w-3.5 h-3.5" />
                   <span>Bản chất &amp; Đáp án đúng</span>
                 </p>
-                {isSharedCache && (
+                {cacheBadge === 'shared' && (
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25">
-                    ⚡ Kho lời giải chung
+                    ⚡ Kho lời giải chung (0 tốn lượt AI)
+                  </span>
+                )}
+                {cacheBadge === 'persisted' && (
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/25">
+                    ✓ Đã lưu vĩnh viễn vào Kho chung
                   </span>
                 )}
               </div>

@@ -105,14 +105,15 @@ export async function getPermanentAiExplanation(
 export async function savePermanentAiExplanation(
   cacheKey: string,
   value: CachedAiExplanation
-): Promise<void> {
+): Promise<boolean> {
   const redis = getRedisWriteClient();
-  if (!redis) return;
+  if (!redis) return false;
 
   try {
     await redis.set(cacheKey, value);
+    return true;
   } catch {
-    // Ignore storage quota or transient Redis errors
+    return false;
   }
 }
 
