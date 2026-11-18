@@ -334,7 +334,7 @@ export function StudioTonearm({
   );
 }
 
-const RADIAL_BAR_COUNT = 40;
+const RADIAL_BAR_COUNT = 28;
 const RADIAL_BARS = Array.from({ length: RADIAL_BAR_COUNT }, (_, i) => {
   const angle = (i * 360) / RADIAL_BAR_COUNT;
   // Deterministic harmonic distribution so bars look musical without random hydration drift
@@ -532,13 +532,13 @@ export function StudioTurntable({
   );
 }
 
-const SIDE_BARS = Array.from({ length: 14 }, (_, i) => ({
+const SIDE_BARS = Array.from({ length: 10 }, (_, i) => ({
   widthPct: 35 + ((i * 23) % 65),
   duration: (0.55 + ((i * 5) % 9) * 0.08).toFixed(2),
   delay: (-((i * 11) % 13) * 0.08).toFixed(2),
 }));
 
-const HORIZON_BARS = Array.from({ length: 48 }, (_, i) => ({
+const HORIZON_BARS = Array.from({ length: 32 }, (_, i) => ({
   heightPx: 18 + Math.round(Math.sin(i * 0.45) * 14 + ((i * 17) % 24)),
   duration: (0.48 + ((i * 7) % 12) * 0.055).toFixed(2),
   delay: (-((i * 9) % 15) * 0.07).toFixed(2),
@@ -676,7 +676,9 @@ export function OuterReactiveVisuals({
           {HORIZON_BARS.map((bar, idx) => (
             <span
               key={`h-${idx}`}
-              className={`radial-beat-bar ${pausedBar} flex-1 max-w-[10px] rounded-t-full bg-gradient-to-t ${horizonGrad}`}
+              className={`radial-beat-bar ${pausedBar} ${
+                idx % 2 === 1 ? 'hidden sm:block' : ''
+              } flex-1 max-w-[10px] rounded-t-full bg-gradient-to-t ${horizonGrad}`}
               style={{
                 height: `${bar.heightPx}px`,
                 animationDuration: `${bar.duration}s`,
@@ -723,43 +725,31 @@ export function StudioSceneBackdrop({
         <div className="absolute inset-0 bg-[#04060d] transition-opacity duration-700" />
       )}
 
-      {/* Living Album Aura Scene (Optimized orb size for low-GPU laptop smoothness) */}
+      {/* Living Album Aura Scene (Zero animated blur filters for 60fps smoothness on all GPUs) */}
       {scene === 'aura' && (
         <div className="absolute inset-0 transition-opacity duration-700 bg-slate-950">
-          <div
-            className={`aura-orbit-a ${pauseAnim} absolute -top-24 -left-24 w-[52vw] h-[52vh] min-w-[360px] max-w-[660px] rounded-full overflow-hidden opacity-45 blur-2xl`}
-          >
-            <Image
-              src={`https://i.ytimg.com/vi/${safeVideoId}/mqdefault.jpg`}
-              alt=""
-              width={320}
-              height={180}
-              unoptimized
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div
-            className={`aura-orbit-b ${pauseAnim} absolute -bottom-24 -right-24 w-[50vw] h-[50vh] min-w-[360px] max-w-[640px] rounded-full overflow-hidden opacity-40 blur-2xl`}
-          >
-            <Image
-              src={`https://i.ytimg.com/vi/${safeVideoId}/mqdefault.jpg`}
-              alt=""
-              width={320}
-              height={180}
-              unoptimized
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div
-            className="absolute inset-0 opacity-65 transition-all duration-700"
-            style={{ background: HALO_RADIAL_MAP[tone] }}
+          <Image
+            src={`https://i.ytimg.com/vi/${safeVideoId}/mqdefault.jpg`}
+            alt=""
+            width={320}
+            height={180}
+            unoptimized
+            className="w-full h-full object-cover opacity-20 scale-105"
           />
           <div
             className="absolute inset-0"
             style={{
               background:
-                'radial-gradient(ellipse at center, rgba(2,6,23,0.4) 0%, rgba(2,6,23,0.78) 78%, rgba(2,6,23,0.92) 100%)',
+                'radial-gradient(ellipse at center, rgba(2,6,23,0.48) 0%, rgba(2,6,23,0.82) 76%, rgba(2,6,23,0.95) 100%)',
             }}
+          />
+          <div
+            className={`aura-orbit-a ${pauseAnim} absolute -top-24 -left-24 w-[52vw] h-[52vh] min-w-[340px] max-w-[640px] rounded-full opacity-75`}
+            style={{ background: HALO_RADIAL_MAP[tone] }}
+          />
+          <div
+            className={`aura-orbit-b ${pauseAnim} absolute -bottom-24 -right-24 w-[50vw] h-[50vh] min-w-[340px] max-w-[620px] rounded-full opacity-70`}
+            style={{ background: HALO_RADIAL_MAP[tone] }}
           />
         </div>
       )}

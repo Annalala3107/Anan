@@ -37,6 +37,8 @@ export default function ProfilePage() {
 
   const showConstellationHud = useQuizStore((s) => s.showConstellationHud);
   const setShowConstellationHud = useQuizStore((s) => s.setShowConstellationHud);
+  const enableConstellationBg = useQuizStore((s) => s.enableConstellationBg);
+  const setEnableConstellationBg = useQuizStore((s) => s.setEnableConstellationBg);
   const triggerConstellationAction = useQuizStore((s) => s.triggerConstellationAction);
   const hydrateSelection = useQuizStore((s) => s.hydrateSelection);
 
@@ -381,31 +383,47 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          <label className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer select-none self-start sm:self-center">
-            <input
-              type="checkbox"
-              checked={showConstellationHud}
-              onChange={(e) => setShowConstellationHud(e.target.checked)}
-              className="rounded accent-cyan-600 w-4 h-4"
-            />
-            <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
-              {showConstellationHud ? 'Đang hiện HUD hiệu năng' : 'Ẩn HUD (Gọn gàng)'}
-            </span>
-          </label>
+          <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-center">
+            <label className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={enableConstellationBg}
+                onChange={(e) => setEnableConstellationBg(e.target.checked)}
+                className="rounded accent-indigo-600 w-4 h-4"
+              />
+              <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+                Hiệu ứng chòm sao chuyển động (Tắt để tiết kiệm Pin/GPU)
+              </span>
+            </label>
+
+            <label className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={showConstellationHud}
+                onChange={(e) => setShowConstellationHud(e.target.checked)}
+                className="rounded accent-cyan-600 w-4 h-4"
+              />
+              <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+                {showConstellationHud ? 'Đang hiện HUD hiệu năng' : 'Ẩn HUD (Gọn gàng)'}
+              </span>
+            </label>
+          </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5 pt-1">
           <button
             type="button"
+            disabled={!enableConstellationBg}
             onClick={() => triggerConstellationAction('regenerate')}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60 text-xs font-bold transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60 text-xs font-bold transition-colors cursor-pointer disabled:opacity-45 disabled:cursor-not-allowed"
           >
             🎲 Tạo chòm sao mới
           </button>
           <button
             type="button"
+            disabled={!enableConstellationBg}
             onClick={() => triggerConstellationAction('shooting_star')}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 hover:bg-cyan-100 dark:hover:bg-cyan-900/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/60 text-xs font-bold transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 hover:bg-cyan-100 dark:hover:bg-cyan-900/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/60 text-xs font-bold transition-colors cursor-pointer disabled:opacity-45 disabled:cursor-not-allowed"
           >
             ☄️ Thả sao băng ngay
           </button>

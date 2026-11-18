@@ -8,6 +8,7 @@ class AmbientAudioSynthesizer {
   private currentPreset: AmbientPreset = 'off';
   private volume = 35;
   private bufferCache: Partial<Record<'rain' | 'brown', AudioBuffer>> = {};
+  private unlockHookBound = false;
 
   private ensureContext(): AudioContext | null {
     if (typeof window === 'undefined') return null;
@@ -19,6 +20,19 @@ class AmbientAudioSynthesizer {
     }
     if (this.ctx.state === 'suspended') {
       this.ctx.resume().catch(() => {});
+      if (!this.unlockHookBound) {
+        this.unlockHookBound = true;
+        const unlock = () => {
+          this.unlockHookBound = false;
+          window.removeEventListener('pointerdown', unlock);
+          window.removeEventListener('keydown', unlock);
+          if (this.ctx && this.ctx.state === 'suspended') {
+            this.ctx.resume().catch(() => {});
+          }
+        };
+        window.addEventListener('pointerdown', unlock, { once: true, passive: true });
+        window.addEventListener('keydown', unlock, { once: true, passive: true });
+      }
     }
     return this.ctx;
   }

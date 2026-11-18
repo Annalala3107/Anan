@@ -151,6 +151,9 @@ export default function FloatingMiniPlayer() {
   const isMuted = useMusicStore((s) => s.isMuted);
   const volume = useMusicStore((s) => s.volume);
   const isDucked = useMusicStore((s) => s.isDucked);
+  const liveVideoId = useMusicStore((s) => s.liveVideoId);
+  const liveTitle = useMusicStore((s) => s.liveTitle);
+  const liveArtist = useMusicStore((s) => s.liveArtist);
   const ambientPreset = useMusicStore((s) => s.ambientPreset);
   const pomodoroRunning = useMusicStore((s) => s.pomodoroRunning);
   const pomodoroMode = useMusicStore((s) => s.pomodoroMode);
@@ -184,17 +187,20 @@ export default function FloatingMiniPlayer() {
   const toneTokens = STUDIO_TONE_TOKENS[tone];
   const ambientMeta = getAmbientBadge(ambientPreset);
   const AmbientIcon = ambientMeta.Icon;
+  const displayVideoId = liveVideoId || currentTrack.videoId;
+  const displayTitle = liveTitle || currentTrack.title;
+  const displayArtist = liveArtist || currentTrack.artist;
 
   if (miniPlayerCollapsed) {
     return (
       <div
         role="region"
         aria-label="Trình phát nhạc thu gọn"
-        className={`glass-elevated fixed bottom-20 md:bottom-5 right-4 z-[70] flex items-center gap-2 rounded-full p-1.5 pr-2 border max-w-[calc(100vw-24px)] text-slate-900 dark:text-slate-100 transition-all duration-300 ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
+        className={`glass-elevated fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:bottom-5 right-4 z-[70] flex items-center gap-2 rounded-full p-1.5 pr-2 border max-w-[calc(100vw-24px)] text-slate-900 dark:text-slate-100 transition-all duration-300 ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
       >
         <VinylArtwork
-          videoId={currentTrack.videoId}
-          title={currentTrack.title}
+          videoId={displayVideoId}
+          title={displayTitle}
           isPlaying={isPlaying}
           tone={tone}
           size="xs"
@@ -207,7 +213,7 @@ export default function FloatingMiniPlayer() {
           title="Mở rộng Mini-Player"
         >
           <span className="text-xs font-medium truncate">
-            {currentTrack.title}
+            {displayTitle}
           </span>
           <StudioEqualizer isPlaying={isPlaying} tone={tone} size="sm" />
         </button>
@@ -266,14 +272,14 @@ export default function FloatingMiniPlayer() {
     <div
       role="region"
       aria-label="Focus Studio Mini-Player"
-      className={`glass-elevated fixed bottom-20 md:bottom-5 right-4 z-[70] w-[calc(100vw-32px)] max-w-[344px] rounded-2xl p-3.5 text-slate-900 dark:text-slate-100 border transition-all duration-300 ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
+      className={`glass-elevated fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:bottom-5 right-4 z-[70] w-[calc(100vw-32px)] max-w-[344px] rounded-2xl p-3.5 text-slate-900 dark:text-slate-100 border transition-all duration-300 ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
     >
       {/* Header Row */}
       <div className="flex items-start justify-between gap-2.5">
         <div className="flex items-center gap-3 min-w-0 flex-1">
           <VinylArtwork
-            videoId={currentTrack.videoId}
-            title={currentTrack.title}
+            videoId={displayVideoId}
+            title={displayTitle}
             isPlaying={isPlaying}
             tone={tone}
             size="md"
@@ -298,10 +304,10 @@ export default function FloatingMiniPlayer() {
               )}
             </div>
             <p className="text-xs font-semibold truncate text-slate-900 dark:text-white">
-              {currentTrack.title}
+              {displayTitle}
             </p>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
-              {currentTrack.artist}
+              {displayArtist}
             </p>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useQuizStore } from '@/lib/quizStore';
+import { useMusicStore } from '@/lib/musicStore';
 
 export interface DynamicConstellationBackgroundProps {
   /** Optional wrapper classes */
@@ -276,10 +277,14 @@ export default function DynamicConstellationBackground({
   const isExamActive = useQuizStore((state) => state.isExamActive);
   const showConstellationHud = useQuizStore((state) => state.showConstellationHud);
   const setShowConstellationHud = useQuizStore((state) => state.setShowConstellationHud);
+  const enableConstellationBg = useQuizStore((state) => state.enableConstellationBg);
   const constellationAction = useQuizStore((state) => state.constellationAction);
+  const isZenModeOpen = useMusicStore((state) => state.isZenModeOpen);
+  const showMiniPlayer = useMusicStore((state) => state.showMiniPlayer);
   const [hudCollapsed, setHudCollapsed] = useState(false);
 
   const effectiveShowHud = showHud || showConstellationHud;
+  const effectiveShowStars = showStars && enableConstellationBg && !isZenModeOpen;
 
   useEffect(() => {
     if (!constellationAction) return;
@@ -301,7 +306,7 @@ export default function DynamicConstellationBackground({
   useEffect(() => {
     const container = containerRef.current;
     const canvas = canvasRef.current;
-    if (!container || !canvas || !showStars) return;
+    if (!container || !canvas || !effectiveShowStars) return;
 
     const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
@@ -747,7 +752,7 @@ export default function DynamicConstellationBackground({
     resizeObserver?.observe(container);
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (!interactive) return;
+      if (!interactive || window.matchMedia?.('(pointer: coarse)').matches) return;
       pointer.x = e.clientX;
       pointer.y = e.clientY;
       pointer.active = true;
@@ -778,7 +783,7 @@ export default function DynamicConstellationBackground({
       spawnShootingStarRef.current = null;
       regenerateRef.current = null;
     };
-  }, [clusterCount, microStarCount, density, showStars, interactive]);
+  }, [clusterCount, microStarCount, density, effectiveShowStars, interactive]);
 
   return (
     <>
@@ -808,7 +813,7 @@ export default function DynamicConstellationBackground({
         <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25 dark:opacity-30" />
 
         {/* 1x Single-Batch Interactive Constellation Canvas */}
-        {showStars && (
+        {effectiveShowStars && (
           <canvas
             ref={canvasRef}
             className="absolute inset-0 block w-full h-full opacity-90 dark:opacity-100"
@@ -817,8 +822,12 @@ export default function DynamicConstellationBackground({
       </div>
 
       {/* Collapsible Telemetry & Interactive Control HUD Pill (Zero-React-Rerender FPS DOM updates) */}
-      {effectiveShowHud && !isExamActive && (
-        <div className="fixed bottom-20 md:bottom-5 left-4 z-30 max-w-[calc(100vw-2rem)] pointer-events-auto">
+      {effectiveShowHud && !isExamActive && !isZenModeOpen && enableConstellationBg && (
+        <div
+          className={`fixed ${
+            showMiniPlayer ? 'bottom-36' : 'bottom-20'
+          } md:bottom-5 left-4 z-30 max-w-[calc(100vw-2rem)] pointer-events-auto`}
+        >
           {hudCollapsed ? (
             <button
               type="button"

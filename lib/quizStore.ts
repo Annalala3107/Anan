@@ -4,6 +4,7 @@ import { StorageEngine } from './storage';
 import { QuizDatasetSchema } from './schema';
 
 const HUD_PREF_KEY = 'ananquiz_show_constellation_hud';
+const BG_PREF_KEY = 'ananquiz_enable_constellation_bg';
 
 export interface ConstellationActionRequest {
   type: 'regenerate' | 'shooting_star';
@@ -23,9 +24,11 @@ interface QuizStoreState {
   streak: number;
   syncStreak: () => void;
 
-  // Background Constellation HUD visibility (default false)
+  // Background Constellation HUD visibility (default false) & Canvas toggle (default true)
   showConstellationHud: boolean;
   setShowConstellationHud: (show: boolean) => void;
+  enableConstellationBg: boolean;
+  setEnableConstellationBg: (enabled: boolean) => void;
   constellationAction: ConstellationActionRequest | null;
   triggerConstellationAction: (type: 'regenerate' | 'shooting_star') => void;
 
@@ -63,6 +66,17 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
     }
     set({ showConstellationHud: show });
   },
+  enableConstellationBg: true,
+  setEnableConstellationBg: (enabled: boolean) => {
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem(BG_PREF_KEY, enabled ? 'true' : 'false');
+      } catch {
+        // Ignore storage quota errors
+      }
+    }
+    set({ enableConstellationBg: enabled });
+  },
   constellationAction: null,
   triggerConstellationAction: (type) =>
     set((state) => ({
@@ -80,10 +94,13 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
     const explicit = StorageEngine.hasExplicitSelectedQuiz();
     const currentStreak = StorageEngine.getStreak();
     let storedHud = false;
+    let storedBg = true;
     try {
       storedHud = localStorage.getItem(HUD_PREF_KEY) === 'true';
+      storedBg = localStorage.getItem(BG_PREF_KEY) !== 'false';
     } catch {
       storedHud = false;
+      storedBg = true;
     }
 
     if (savedCustomId) {
@@ -98,6 +115,7 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
           hasExplicitSelection: true,
           streak: currentStreak,
           showConstellationHud: storedHud,
+          enableConstellationBg: storedBg,
         });
         return;
       }
@@ -111,6 +129,7 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
       hasExplicitSelection: explicit,
       streak: currentStreak,
       showConstellationHud: storedHud,
+      enableConstellationBg: storedBg,
     });
   },
 

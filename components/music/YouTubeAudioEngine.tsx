@@ -114,6 +114,9 @@ export default function YouTubeAudioEngine() {
   const isDucked = useMusicStore((s) => s.isDucked);
   const seekRequest = useMusicStore((s) => s.seekRequest);
   const pomodoroRunning = useMusicStore((s) => s.pomodoroRunning);
+  const liveVideoId = useMusicStore((s) => s.liveVideoId);
+  const liveTitle = useMusicStore((s) => s.liveTitle);
+  const liveArtist = useMusicStore((s) => s.liveArtist);
 
   const currentTrack = useMemo(
     () => tracks.find((t) => t.id === currentTrackId) || tracks[0],
@@ -353,9 +356,14 @@ export default function YouTubeAudioEngine() {
           // Ignore seek errors
         }
       },
-      syncAudio: (muted: boolean, vol: number, ducked: boolean) => {
+      syncAudio: (muted: boolean, vol: number, ducked: boolean, immediate = false) => {
         const player = playerRef.current;
         if (!isPlayerReadyRef.current || !player || isFadingOutRef.current) return;
+        if (immediate) {
+          clearFade();
+          syncPlayerAudio(player, muted, vol, ducked);
+          return;
+        }
         const targetVol = computeEffectiveVolume(muted, vol, ducked);
         fadeVolumeTo(player, targetVol, 180, () => {
           syncPlayerAudio(player, muted, vol, ducked);
@@ -675,7 +683,7 @@ export default function YouTubeAudioEngine() {
 
   // Mute / Volume / Ducking synchronization effect
   useEffect(() => {
-    if (!isReady || !playerRef.current || isFadingOutRef.current) return;
+    if (!isReady || !playerRef.current || isFadingOutRef.current || fadeTimerRef.current !== null) return;
     syncPlayerAudio(playerRef.current, isMuted, volume, isDucked);
   }, [isMuted, volume, isDucked, isReady]);
 
@@ -749,19 +757,23 @@ export default function YouTubeAudioEngine() {
     }
 
     try {
+      const activeTitle = liveTitle || currentTrack.title;
+      const activeArtist = liveArtist || currentTrack.artist;
+      const activeVideoId = liveVideoId || currentTrack.videoId;
+
       if (typeof MediaMetadata !== 'undefined') {
         navigator.mediaSession.metadata = new MediaMetadata({
-          title: currentTrack.title,
-          artist: currentTrack.artist,
+          title: activeTitle,
+          artist: activeArtist,
           album: 'AnanQuiz Focus Studio',
           artwork: [
             {
-              src: `https://i.ytimg.com/vi/${currentTrack.videoId}/mqdefault.jpg`,
+              src: `https://i.ytimg.com/vi/${activeVideoId}/mqdefault.jpg`,
               sizes: '320x180',
               type: 'image/jpeg',
             },
             {
-              src: `https://i.ytimg.com/vi/${currentTrack.videoId}/hqdefault.jpg`,
+              src: `https://i.ytimg.com/vi/${activeVideoId}/hqdefault.jpg`,
               sizes: '480x360',
               type: 'image/jpeg',
             },
@@ -784,7 +796,7 @@ export default function YouTubeAudioEngine() {
     } catch {
       // Ignore Media Session errors on unsupported browsers
     }
-  }, [currentTrack, isPlaying]);
+  }, [currentTrack, isPlaying, liveVideoId, liveTitle, liveArtist]);
 
   // Global keyboard shortcuts (Alt+P play/pause, Alt+M mute, Alt+N next track)
   useEffect(() => {

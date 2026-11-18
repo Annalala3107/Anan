@@ -21,7 +21,7 @@ export interface MusicPlayerController {
   play: () => void;
   pause: () => void;
   seekTo: (seconds: number) => void;
-  syncAudio: (isMuted: boolean, volume: number, isDucked: boolean) => void;
+  syncAudio: (isMuted: boolean, volume: number, isDucked: boolean, immediate?: boolean) => void;
 }
 
 let playerController: MusicPlayerController | null = null;
@@ -173,11 +173,11 @@ export interface CuratedStation {
 export const CURATED_FOCUS_STATIONS: CuratedStation[] = [
   {
     id: 'station-lofi-study',
-    videoId: '5qap5aO4i9A',
-    title: 'Lofi Hip Hop Radio — Relax / Study',
+    videoId: 'jfKfPfyJRdk',
+    title: 'Lofi Hip Hop Radio — Beats to Relax / Study',
     artist: 'Lofi Girl · 24/7 Focus',
     category: 'lofi',
-    url: 'https://www.youtube.com/watch?v=5qap5aO4i9A',
+    url: 'https://www.youtube.com/watch?v=jfKfPfyJRdk',
   },
   {
     id: 'station-1am-study',
@@ -189,11 +189,11 @@ export const CURATED_FOCUS_STATIONS: CuratedStation[] = [
   },
   {
     id: 'station-chillhop',
-    videoId: '7NOSDKb0HlU',
-    title: 'Chillhop Radio — Study & Chill Beats',
+    videoId: '5yx6BWlEVcY',
+    title: 'Chillhop Radio — Jazzy & Lofi Hip Hop Beats',
     artist: 'Chillhop Music · 24/7 Stream',
     category: 'lofi',
-    url: 'https://www.youtube.com/watch?v=7NOSDKb0HlU',
+    url: 'https://www.youtube.com/watch?v=5yx6BWlEVcY',
   },
   {
     id: 'station-synthwave',
@@ -278,6 +278,7 @@ interface MusicPrefs {
   customTracks?: MusicTrack[];
   pinnedTrackIds?: string[];
   trackOrderIds?: string[];
+  ambientPreset?: AmbientPreset;
   ambientVolume?: number;
   pomodoroPreset?: PomodoroPresetKey;
   pomodoroAutoPauseMusic?: boolean;
@@ -506,6 +507,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       if (!raw) return;
       const prefs = JSON.parse(raw) as MusicPrefs;
 
+      let didMigrateLegacyIds = false;
       const customList: MusicTrack[] = Array.isArray(prefs.customTracks)
         ? prefs.customTracks
             .filter(
@@ -514,15 +516,35 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
                 ((typeof t.videoId === 'string' && /^[A-Za-z0-9_-]{11}$/.test(t.videoId)) ||
                   (typeof t.playlistId === 'string' && t.playlistId.length >= 12))
             )
-            .map((t) => ({
-              ...t,
-              videoId:
+            .map((t) => {
+              let resolvedVideoId =
                 typeof t.videoId === 'string' && /^[A-Za-z0-9_-]{11}$/.test(t.videoId)
                   ? t.videoId
-                  : DEFAULT_MUSIC_TRACKS[0].videoId,
-              isCustom: true,
-            }))
+                  : DEFAULT_MUSIC_TRACKS[0].videoId;
+              let resolvedUrl = t.url;
+
+              if (resolvedVideoId === '5qap5aO4i9A') {
+                resolvedVideoId = 'jfKfPfyJRdk';
+                resolvedUrl = 'https://www.youtube.com/watch?v=jfKfPfyJRdk';
+                didMigrateLegacyIds = true;
+              } else if (resolvedVideoId === '7NOSDKb0HlU') {
+                resolvedVideoId = '5yx6BWlEVcY';
+                resolvedUrl = 'https://www.youtube.com/watch?v=5yx6BWlEVcY';
+                didMigrateLegacyIds = true;
+              }
+
+              return {
+                ...t,
+                videoId: resolvedVideoId,
+                url: resolvedUrl,
+                isCustom: true,
+              };
+            })
         : [];
+
+      if (didMigrateLegacyIds) {
+        savePrefs({ customTracks: customList });
+      }
 
       const pinnedSet = new Set(Array.isArray(prefs.pinnedTrackIds) ? prefs.pinnedTrackIds : []);
       const baseMerged = [
@@ -565,6 +587,12 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       const validLoop =
         prefs.loopMode === 'one' || prefs.loopMode === 'all' ? prefs.loopMode : get().loopMode;
       const validShuffle = typeof prefs.isShuffle === 'boolean' ? prefs.isShuffle : get().isShuffle;
+      const validAmbientPreset: AmbientPreset =
+        prefs.ambientPreset === 'rain' ||
+        prefs.ambientPreset === 'brown' ||
+        prefs.ambientPreset === 'off'
+          ? prefs.ambientPreset
+          : get().ambientPreset;
       const validAmbientVol =
         typeof prefs.ambientVolume === 'number' && !Number.isNaN(prefs.ambientVolume)
           ? Math.max(0, Math.min(100, Math.round(prefs.ambientVolume)))
@@ -599,7 +627,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
           ? prefs.miniPlayerCollapsed
           : get().miniPlayerCollapsed;
 
-      AmbientAudioEngine.setVolume(validAmbientVol);
+      AmbientAudioEngine.setPreset(validAmbientPreset, validAmbientVol);
 
       set({
         tracks: orderedTracks,
@@ -608,6 +636,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
         isMuted: validMuted,
         loopMode: validLoop,
         isShuffle: validShuffle,
+        ambientPreset: validAmbientPreset,
         ambientVolume: validAmbientVol,
         pomodoroPreset: validPreset,
         pomodoroSecondsLeft: POMODORO_PRESETS[validPreset].focusSeconds,
@@ -680,14 +709,14 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     const { volume, isDucked } = get();
     savePrefs({ isMuted: next });
     set({ isMuted: next });
-    playerController?.syncAudio(next, volume, isDucked);
+    playerController?.syncAudio(next, volume, isDucked, true);
   },
 
   setMuted: (muted) => {
     const { volume, isDucked } = get();
     savePrefs({ isMuted: muted });
     set({ isMuted: muted });
-    playerController?.syncAudio(muted, volume, isDucked);
+    playerController?.syncAudio(muted, volume, isDucked, true);
   },
 
   setVolume: (volume) => {
@@ -696,13 +725,13 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     const nextMuted = clamped === 0 ? true : isMuted && clamped > 0 ? false : isMuted;
     savePrefs({ volume: clamped, isMuted: nextMuted });
     set({ volume: clamped, isMuted: nextMuted });
-    playerController?.syncAudio(nextMuted, clamped, isDucked);
+    playerController?.syncAudio(nextMuted, clamped, isDucked, true);
   },
 
   setDucked: (ducked) => {
     const { isMuted, volume } = get();
     set({ isDucked: ducked });
-    playerController?.syncAudio(isMuted, volume, ducked);
+    playerController?.syncAudio(isMuted, volume, ducked, false);
   },
 
   setLoopMode: (mode) => {
@@ -1044,6 +1073,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   setAmbientPreset: (preset) => {
     const vol = get().ambientVolume;
     AmbientAudioEngine.setPreset(preset, vol);
+    savePrefs({ ambientPreset: preset });
     set({ ambientPreset: preset });
   },
 

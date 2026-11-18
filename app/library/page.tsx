@@ -32,6 +32,7 @@ export default function LibraryPage() {
 
   // In-memory cache so switching subject tabs never re-fetches already-loaded JSON files
   const scopeCacheRef = useRef<Map<string, Word[]>>(new Map());
+  const manifestFilesCacheRef = useRef<Record<string, { keys?: string[] }> | null>(null);
 
   useEffect(() => {
     hydrateSelection();
@@ -97,19 +98,70 @@ export default function LibraryPage() {
               ? QUESTION_BANKS
               : QUESTION_BANKS.filter((s) => s.subjectCode === scope);
 
-          // Prefer full-bank file first if present to cover maximum questions cleanly
-          const fetchTasks = targetSections.flatMap((sec) =>
-            sec.quizzes.map(async (q) => {
-              try {
-                const res = await fetch(q.file_path);
-                if (!res.ok) return null;
-                const data = (await res.json()) as Word[];
-                return { data, subject: q.subject || sec.subjectCode };
-              } catch {
-                return null;
+          // Load manifest once to skip redundant sub-topic JSON files whose keys are 100% covered by _all.json
+          let manifestFiles = manifestFilesCacheRef.current;
+          if (!manifestFiles) {
+            try {
+              const mRes = await fetch('/data/index.json');
+              if (mRes.ok) {
+                const mData = await mRes.json();
+                if (mData?.files && typeof mData.files === 'object') {
+                  manifestFiles = mData.files as Record<string, { keys?: string[] }>;
+                  manifestFilesCacheRef.current = manifestFiles;
+                }
               }
-            })
-          );
+            } catch {
+              // Ignore manifest load errors and fall back to fetching section files
+            }
+          }
+
+          const candidateQuizzes = targetSections
+            .flatMap((sec) =>
+              sec.quizzes.map((q) => ({
+                filePath: q.file_path,
+                subject: q.subject || sec.subjectCode,
+                wordCount: q.wordCount || 0,
+                isAll: q.file_path.includes('_all.json'),
+              }))
+            )
+            .sort((a, b) => {
+              if (a.isAll !== b.isAll) return a.isAll ? -1 : 1;
+              return b.wordCount - a.wordCount;
+            });
+
+          const coveredKeys = new Set<string>();
+          const quizzesToFetch: Array<{ filePath: string; subject: string }> = [];
+
+          for (const item of candidateQuizzes) {
+            const entryKeys = manifestFiles?.[item.filePath]?.keys;
+            if (Array.isArray(entryKeys) && entryKeys.length > 0) {
+              let hasUncoveredKey = false;
+              for (const k of entryKeys) {
+                if (!coveredKeys.has(k)) {
+                  hasUncoveredKey = true;
+                  break;
+                }
+              }
+              if (!hasUncoveredKey) {
+                continue;
+              }
+              for (const k of entryKeys) {
+                coveredKeys.add(k);
+              }
+            }
+            quizzesToFetch.push({ filePath: item.filePath, subject: item.subject });
+          }
+
+          const fetchTasks = quizzesToFetch.map(async (q) => {
+            try {
+              const res = await fetch(q.filePath);
+              if (!res.ok) return null;
+              const data = (await res.json()) as Word[];
+              return { data, subject: q.subject };
+            } catch {
+              return null;
+            }
+          });
 
           const results = await Promise.all(fetchTasks);
           for (const res of results) {

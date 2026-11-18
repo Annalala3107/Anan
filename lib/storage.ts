@@ -34,12 +34,43 @@ const STORAGE_KEYS = {
 };
 
 export class StorageEngine {
+  private static progressCache: Record<string, WordProgress> | null = null;
+  private static customQuizzesCache: CustomQuiz[] | null = null;
+  private static customSubjectsCache: CustomSubject[] | null = null;
+  private static bookmarksCache: string[] | null = null;
+  private static storageListenerBound = false;
+
+  private static ensureStorageListener(): void {
+    if (typeof window === 'undefined' || this.storageListenerBound) return;
+    this.storageListenerBound = true;
+    window.addEventListener('storage', (e: StorageEvent) => {
+      if (!e.key || e.key === STORAGE_KEYS.WORD_PROGRESS) {
+        this.progressCache = null;
+      }
+      if (!e.key || e.key === STORAGE_KEYS.CUSTOM_QUIZZES) {
+        this.customQuizzesCache = null;
+      }
+      if (!e.key || e.key === STORAGE_KEYS.CUSTOM_SUBJECTS) {
+        this.customSubjectsCache = null;
+      }
+      if (!e.key || e.key === STORAGE_KEYS.BOOKMARKED_QUESTIONS) {
+        this.bookmarksCache = null;
+      }
+    });
+  }
+
   // ---- WORD PROGRESS (SRS) ----
   public static getWordProgress(): Record<string, WordProgress> {
     if (typeof window === 'undefined') return {};
+    this.ensureStorageListener();
+    if (this.progressCache !== null) {
+      return this.progressCache;
+    }
     try {
       const data = localStorage.getItem(STORAGE_KEYS.WORD_PROGRESS);
-      return data ? JSON.parse(data) : {};
+      const parsed: Record<string, WordProgress> = data ? JSON.parse(data) : {};
+      this.progressCache = parsed;
+      return parsed;
     } catch (e) {
       console.error('Failed to read word progress from storage:', e);
       return {};
@@ -71,7 +102,7 @@ export class StorageEngine {
     options?: { markMastered?: boolean }
   ): WordProgress {
     const key = typeof target === 'string' ? target : getQuestionKey(target);
-    const allProgress = this.getWordProgress();
+    const allProgress = { ...this.getWordProgress() };
     const existing: WordProgress = allProgress[key] || {
       word: key,
       strength: 0,
@@ -89,6 +120,7 @@ export class StorageEngine {
       markMastered: options?.markMastered,
     });
     allProgress[key] = updated;
+    this.progressCache = allProgress;
 
     if (typeof window !== 'undefined') {
       try {
@@ -112,19 +144,22 @@ export class StorageEngine {
     target: string | { id?: string; question?: string; word: string }
   ): void {
     const key = typeof target === 'string' ? target : getQuestionKey(target);
-    const allProgress = this.getWordProgress();
-    const existing: WordProgress = allProgress[key] || {
-      word: key,
-      strength: 0,
-      lastSeen: Date.now(),
-      nextDue: Date.now(),
-      seenCount: 0,
-      wrongStreak: 0,
-      status: 'learning',
-      intervalDays: 0,
-      easeFactor: 2.5,
-      mistakesCount: 0,
-    };
+    const allProgress = { ...this.getWordProgress() };
+    const prev = allProgress[key];
+    const existing: WordProgress = prev
+      ? { ...prev }
+      : {
+          word: key,
+          strength: 0,
+          lastSeen: Date.now(),
+          nextDue: Date.now(),
+          seenCount: 0,
+          wrongStreak: 0,
+          status: 'learning',
+          intervalDays: 0,
+          easeFactor: 2.5,
+          mistakesCount: 0,
+        };
 
     existing.mistakesCount = (existing.mistakesCount || 0) + 1;
     existing.lastSeen = Date.now();
@@ -137,6 +172,7 @@ export class StorageEngine {
     }
 
     allProgress[key] = existing;
+    this.progressCache = allProgress;
 
     if (typeof window !== 'undefined') {
       try {
@@ -292,25 +328,35 @@ export class StorageEngine {
       }
     }
 
-    localStorage.setItem(STORAGE_KEYS.STREAK, currentStreak.toString());
-    localStorage.setItem(STORAGE_KEYS.LAST_ACTIVE_DATE, today);
-    window.dispatchEvent(new CustomEvent('ananquiz:stats-updated'));
+    try {
+      localStorage.setItem(STORAGE_KEYS.STREAK, currentStreak.toString());
+      localStorage.setItem(STORAGE_KEYS.LAST_ACTIVE_DATE, today);
+      window.dispatchEvent(new CustomEvent('ananquiz:stats-updated'));
+    } catch (e) {
+      console.error('Failed to save streak:', e);
+    }
     return currentStreak;
   }
 
   // ---- CUSTOM QUIZZES ----
   public static getCustomQuizzes(): CustomQuiz[] {
     if (typeof window === 'undefined') return [];
+    this.ensureStorageListener();
+    if (this.customQuizzesCache !== null) {
+      return this.customQuizzesCache;
+    }
     try {
       const raw = localStorage.getItem(STORAGE_KEYS.CUSTOM_QUIZZES);
-      return raw ? JSON.parse(raw) : [];
+      const parsed: CustomQuiz[] = raw ? JSON.parse(raw) : [];
+      this.customQuizzesCache = parsed;
+      return parsed;
     } catch {
       return [];
     }
   }
 
   public static saveCustomQuiz(quiz: Omit<CustomQuiz, 'id' | 'created_at'>): CustomQuiz {
-    const list = this.getCustomQuizzes();
+    const list = [...this.getCustomQuizzes()];
     const newQuiz: CustomQuiz = {
       ...quiz,
       id: 'quiz_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
@@ -318,16 +364,26 @@ export class StorageEngine {
     };
 
     list.unshift(newQuiz);
+    this.customQuizzesCache = list;
     if (typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(list));
+      try {
+        localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(list));
+      } catch (e) {
+        console.error('Failed to save custom quiz:', e);
+      }
     }
     return newQuiz;
   }
 
   public static deleteCustomQuiz(id: string): void {
     const list = this.getCustomQuizzes().filter((q) => q.id !== id);
+    this.customQuizzesCache = list;
     if (typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(list));
+      try {
+        localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(list));
+      } catch (e) {
+        console.error('Failed to delete custom quiz:', e);
+      }
       if (this.getActiveCustomQuizId() === id) {
         this.setActiveCustomQuizId(null);
       }
@@ -337,9 +393,15 @@ export class StorageEngine {
   // ---- CUSTOM SUBJECTS ----
   public static getCustomSubjects(): CustomSubject[] {
     if (typeof window === 'undefined') return [];
+    this.ensureStorageListener();
+    if (this.customSubjectsCache !== null) {
+      return this.customSubjectsCache;
+    }
     try {
       const raw = localStorage.getItem(STORAGE_KEYS.CUSTOM_SUBJECTS);
-      return raw ? JSON.parse(raw) : [];
+      const parsed: CustomSubject[] = raw ? JSON.parse(raw) : [];
+      this.customSubjectsCache = parsed;
+      return parsed;
     } catch {
       return [];
     }
@@ -348,7 +410,7 @@ export class StorageEngine {
   public static saveCustomSubject(
     subject: Omit<CustomSubject, 'id' | 'created_at'>
   ): CustomSubject {
-    const list = this.getCustomSubjects();
+    const list = [...this.getCustomSubjects()];
     const newSubject: CustomSubject = {
       ...subject,
       id: 'sub_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
@@ -356,8 +418,13 @@ export class StorageEngine {
     };
 
     list.push(newSubject);
+    this.customSubjectsCache = list;
     if (typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(list));
+      try {
+        localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(list));
+      } catch (e) {
+        console.error('Failed to save custom subject:', e);
+      }
     }
     return newSubject;
   }
@@ -366,21 +433,31 @@ export class StorageEngine {
     id: string,
     updates: Partial<Omit<CustomSubject, 'id' | 'created_at'>>
   ): CustomSubject | null {
-    const list = this.getCustomSubjects();
+    const list = [...this.getCustomSubjects()];
     const index = list.findIndex((s) => s.id === id);
     if (index === -1) return null;
 
     list[index] = { ...list[index], ...updates };
+    this.customSubjectsCache = list;
     if (typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(list));
+      try {
+        localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(list));
+      } catch (e) {
+        console.error('Failed to update custom subject:', e);
+      }
     }
     return list[index];
   }
 
   public static deleteCustomSubject(id: string): void {
     const list = this.getCustomSubjects().filter((s) => s.id !== id);
+    this.customSubjectsCache = list;
     if (typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(list));
+      try {
+        localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(list));
+      } catch (e) {
+        console.error('Failed to delete custom subject:', e);
+      }
     }
   }
 
@@ -408,7 +485,11 @@ export class StorageEngine {
 
   public static setSelectedQuiz(path: string): void {
     if (typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEYS.SELECTED_QUIZ, path);
+      try {
+        localStorage.setItem(STORAGE_KEYS.SELECTED_QUIZ, path);
+      } catch (e) {
+        console.error('Failed to save selected quiz:', e);
+      }
     }
   }
 
@@ -484,26 +565,37 @@ export class StorageEngine {
       const { data } = validation.data;
 
       // Restore each storage key safely
-      if (data.wordProgress) {
-        localStorage.setItem(STORAGE_KEYS.WORD_PROGRESS, JSON.stringify(data.wordProgress));
-      }
-      if (data.customQuizzes) {
-        localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(data.customQuizzes));
-      }
-      if (data.customSubjects) {
-        localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(data.customSubjects));
-      }
-      if (data.dailyStats) {
-        localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(data.dailyStats));
-      }
-      if (typeof data.streak === 'number') {
-        localStorage.setItem(STORAGE_KEYS.STREAK, data.streak.toString());
-      }
-      if (data.selectedQuiz) {
-        localStorage.setItem(STORAGE_KEYS.SELECTED_QUIZ, data.selectedQuiz);
-      }
-      if (data.examHistory) {
-        localStorage.setItem(STORAGE_KEYS.EXAM_HISTORY, JSON.stringify(data.examHistory));
+      try {
+        if (data.wordProgress) {
+          localStorage.setItem(STORAGE_KEYS.WORD_PROGRESS, JSON.stringify(data.wordProgress));
+          this.progressCache = data.wordProgress;
+        }
+        if (data.customQuizzes) {
+          localStorage.setItem(STORAGE_KEYS.CUSTOM_QUIZZES, JSON.stringify(data.customQuizzes));
+          this.customQuizzesCache = null;
+        }
+        if (data.customSubjects) {
+          localStorage.setItem(STORAGE_KEYS.CUSTOM_SUBJECTS, JSON.stringify(data.customSubjects));
+          this.customSubjectsCache = data.customSubjects;
+        }
+        if (data.dailyStats) {
+          localStorage.setItem(STORAGE_KEYS.DAILY_STATS, JSON.stringify(data.dailyStats));
+        }
+        if (typeof data.streak === 'number') {
+          localStorage.setItem(STORAGE_KEYS.STREAK, data.streak.toString());
+        }
+        if (data.selectedQuiz) {
+          localStorage.setItem(STORAGE_KEYS.SELECTED_QUIZ, data.selectedQuiz);
+        }
+        if (data.examHistory) {
+          localStorage.setItem(STORAGE_KEYS.EXAM_HISTORY, JSON.stringify(data.examHistory));
+        }
+      } catch (e) {
+        console.error('Failed to write restored backup data to storage:', e);
+        return {
+          success: false,
+          message: 'Không thể lưu dữ liệu khôi phục do bộ nhớ trình duyệt đã đầy hoặc bị chặn.',
+        };
       }
 
       const restoredWordCount = Object.keys(data.wordProgress || {}).length;
@@ -525,9 +617,15 @@ export class StorageEngine {
   // ---- BOOKMARKS / FLAGGED QUESTIONS ----
   public static getBookmarks(): string[] {
     if (typeof window === 'undefined') return [];
+    this.ensureStorageListener();
+    if (this.bookmarksCache !== null) {
+      return this.bookmarksCache;
+    }
     try {
       const data = localStorage.getItem(STORAGE_KEYS.BOOKMARKED_QUESTIONS);
-      return data ? JSON.parse(data) : [];
+      const parsed: string[] = data ? JSON.parse(data) : [];
+      this.bookmarksCache = parsed;
+      return parsed;
     } catch (e) {
       console.error('Failed to read bookmarks:', e);
       return [];
@@ -542,17 +640,18 @@ export class StorageEngine {
 
   public static toggleBookmark(questionId: string): boolean {
     if (typeof window === 'undefined' || !questionId) return false;
+    const list = this.getBookmarks();
+    const idx = list.indexOf(questionId);
+    let updated: string[];
+    let isAdded = false;
+    if (idx !== -1) {
+      updated = list.filter((id) => id !== questionId);
+    } else {
+      updated = [...list, questionId];
+      isAdded = true;
+    }
+    this.bookmarksCache = updated;
     try {
-      const list = this.getBookmarks();
-      const idx = list.indexOf(questionId);
-      let updated: string[];
-      let isAdded = false;
-      if (idx !== -1) {
-        updated = list.filter((id) => id !== questionId);
-      } else {
-        updated = [...list, questionId];
-        isAdded = true;
-      }
       localStorage.setItem(STORAGE_KEYS.BOOKMARKED_QUESTIONS, JSON.stringify(updated));
       window.dispatchEvent(
         new CustomEvent('ananquiz:bookmarks-updated', { detail: { id: questionId, isAdded } })
@@ -560,7 +659,7 @@ export class StorageEngine {
       return isAdded;
     } catch (e) {
       console.error('Failed to toggle bookmark:', e);
-      return false;
+      return isAdded;
     }
   }
 }

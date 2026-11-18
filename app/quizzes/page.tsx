@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useDeferredValue } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Sparkles,
@@ -91,6 +91,7 @@ export default function QuizzesPage() {
 
   const [activeSubjectTab, setActiveSubjectTab] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const deferredSearchQuery = useDeferredValue(searchQuery);
   const [statusFilter, setStatusFilter] = useState<StatusFilterKey>('all');
   const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>({});
 
@@ -165,6 +166,15 @@ export default function QuizzesPage() {
     return map;
   }, [manifestFiles, progressMap]);
 
+  // Compute mastery stats for custom quizzes once per quiz/progress change
+  const customQuizStatsMap = useMemo<Record<string, QuizMasteryStat>>(() => {
+    const map: Record<string, QuizMasteryStat> = {};
+    for (const q of customQuizzes) {
+      map[q.id] = computeWordsStat(q.words || [], progressMap);
+    }
+    return map;
+  }, [customQuizzes, progressMap]);
+
   const toggleSectionCollapse = (sectionKey: string) => {
     setCollapsedSections((prev) => ({
       ...prev,
@@ -182,7 +192,7 @@ export default function QuizzesPage() {
       isCustom: boolean;
       stat: QuizMasteryStat;
     }) => {
-      const query = searchQuery.trim().toLowerCase();
+      const query = deferredSearchQuery.trim().toLowerCase();
       if (query) {
         const haystack = [
           params.name,
@@ -208,7 +218,7 @@ export default function QuizzesPage() {
       }
       return true;
     },
-    [searchQuery, statusFilter]
+    [deferredSearchQuery, statusFilter]
   );
 
   const handleSelectQuiz = (path: string) => {
@@ -329,7 +339,7 @@ export default function QuizzesPage() {
   }, [customQuizzes]);
 
   const isAllSubjects = activeSubjectTab === 'all';
-  const hasActiveFilter = searchQuery.trim() !== '' || statusFilter !== 'all';
+  const hasActiveFilter = deferredSearchQuery.trim() !== '' || statusFilter !== 'all';
 
   const filteredDefaultSections = isAllSubjects
     ? QUESTION_BANKS
@@ -347,19 +357,27 @@ export default function QuizzesPage() {
       ]),
     [customSubjects]
   );
-  const unassignedCustomQuizzes = customQuizzes.filter((q) => {
-    if (q.subject && knownCodes.has(q.subject)) return false;
-    const stat = computeWordsStat(q.words || [], progressMap);
-    return matchesQuizFilter({
-      name: q.name,
-      description: q.description,
-      subject: q.subject,
-      topic: q.topic,
-      tags: ['Tự tạo'],
-      isCustom: true,
-      stat,
-    });
-  });
+  const unassignedCustomQuizzes = useMemo(
+    () =>
+      customQuizzes.filter((q) => {
+        if (q.subject && knownCodes.has(q.subject)) return false;
+        const stat = customQuizStatsMap[q.id] || {
+          mastered: 0,
+          seen: 0,
+          total: q.words?.length || 0,
+        };
+        return matchesQuizFilter({
+          name: q.name,
+          description: q.description,
+          subject: q.subject,
+          topic: q.topic,
+          tags: ['Tự tạo'],
+          isCustom: true,
+          stat,
+        });
+      }),
+    [customQuizzes, knownCodes, customQuizStatsMap, matchesQuizFilter]
+  );
 
   // Compute total matching cards across currently selected scope
   const visibleMatchCount = useMemo(() => {
@@ -367,7 +385,11 @@ export default function QuizzesPage() {
     for (const sub of filteredCustomSubjects) {
       const subQuizzes = customQuizzes.filter((q) => q.subject === sub.subjectCode);
       for (const q of subQuizzes) {
-        const stat = computeWordsStat(q.words || [], progressMap);
+        const stat = customQuizStatsMap[q.id] || {
+          mastered: 0,
+          seen: 0,
+          total: q.words?.length || 0,
+        };
         if (
           matchesQuizFilter({
             name: q.name,
@@ -386,7 +408,11 @@ export default function QuizzesPage() {
     for (const sec of filteredDefaultSections) {
       const matchingCustom = customQuizzes.filter((q) => q.subject === sec.subjectCode);
       for (const q of matchingCustom) {
-        const stat = computeWordsStat(q.words || [], progressMap);
+        const stat = customQuizStatsMap[q.id] || {
+          mastered: 0,
+          seen: 0,
+          total: q.words?.length || 0,
+        };
         if (
           matchesQuizFilter({
             name: q.name,
@@ -426,7 +452,7 @@ export default function QuizzesPage() {
     filteredCustomSubjects,
     filteredDefaultSections,
     customQuizzes,
-    progressMap,
+    customQuizStatsMap,
     getBuiltInStat,
     matchesQuizFilter,
     isAllSubjects,
@@ -434,7 +460,11 @@ export default function QuizzesPage() {
   ]);
 
   const toCustomCardData = (quiz: CustomQuiz): UnifiedCardData => {
-    const stat = computeWordsStat(quiz.words || [], progressMap);
+    const stat = customQuizStatsMap[quiz.id] || {
+      mastered: 0,
+      seen: 0,
+      total: quiz.words?.length || 0,
+    };
     const isSelected = activeCustomQuiz?.id === quiz.id;
     const rawTags = [quiz.subject || 'Tự tạo', quiz.topic || 'Bộ đề cá nhân'].filter(Boolean);
     return {
@@ -903,7 +933,11 @@ export default function QuizzesPage() {
             topic: quiz.topic,
             tags: ['Tự tạo'],
             isCustom: true,
-            stat: computeWordsStat(quiz.words || [], progressMap),
+            stat: customQuizStatsMap[quiz.id] || {
+              mastered: 0,
+              seen: 0,
+              total: quiz.words?.length || 0,
+            },
           })
         );
 
@@ -916,7 +950,7 @@ export default function QuizzesPage() {
 
         return (
           <section key={sub.id} className="space-y-4">
-            <div className="bg-white/85 dark:bg-slate-900/55 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-4 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="bg-white/92 dark:bg-slate-900/82 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <button
                 type="button"
                 aria-expanded={!isCollapsed}
@@ -1055,7 +1089,11 @@ export default function QuizzesPage() {
                 topic: quiz.topic,
                 tags: ['Tự tạo'],
                 isCustom: true,
-                stat: computeWordsStat(quiz.words || [], progressMap),
+                stat: customQuizStatsMap[quiz.id] || {
+                  mastered: 0,
+                  seen: 0,
+                  total: quiz.words?.length || 0,
+                },
               })
             )
             .map(toCustomCardData);
@@ -1084,7 +1122,7 @@ export default function QuizzesPage() {
 
           return (
             <section key={section.id} className="space-y-4">
-              <div className="bg-white/85 dark:bg-slate-900/55 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-4 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="bg-white/92 dark:bg-slate-900/82 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <button
                   type="button"
                   aria-expanded={!isCollapsed}
@@ -1147,7 +1185,7 @@ export default function QuizzesPage() {
       {/* Unassigned / Other Custom Quizzes */}
       {isAllSubjects && unassignedCustomQuizzes.length > 0 && (
         <section className="space-y-4">
-          <div className="bg-white/85 dark:bg-slate-900/55 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-4 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="bg-white/92 dark:bg-slate-900/82 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-slate-600 to-slate-800 flex items-center justify-center text-white shadow-md shrink-0">
                 <BookOpen className="w-5 h-5" />

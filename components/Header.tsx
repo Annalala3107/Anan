@@ -54,7 +54,9 @@ export default function Header() {
     useQuizStore.getState().hydrateSelection();
 
     const savedTheme = localStorage.getItem('theme');
-    const shouldBeDark = savedTheme ? savedTheme === 'dark' : true;
+    const shouldBeDark = savedTheme
+      ? savedTheme === 'dark'
+      : document.documentElement.classList.contains('dark');
     setIsDark(shouldBeDark);
     if (shouldBeDark) {
       document.documentElement.classList.add('dark');

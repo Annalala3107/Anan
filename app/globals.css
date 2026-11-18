@@ -13,7 +13,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
   }
 
   body {
@@ -208,13 +207,11 @@
 @layer components {
   .glass-surface {
     contain: layout style;
-    background-color: rgba(255, 255, 255, 0.86);
-    border: 1px solid rgba(203, 213, 225, 0.78);
-    -webkit-backdrop-filter: blur(12px) saturate(125%);
-    backdrop-filter: blur(12px) saturate(125%);
+    background-color: rgba(255, 255, 255, 0.93);
+    border: 1px solid rgba(203, 213, 225, 0.82);
     box-shadow:
       0 18px 42px -18px rgba(15, 23, 42, 0.1),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.88);
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.92);
     transform: translate3d(0, 0, 0);
   }
 
@@ -222,8 +219,8 @@
     contain: layout style;
     background-color: rgba(255, 255, 255, 0.94);
     border: 1px solid rgba(148, 163, 184, 0.45);
-    -webkit-backdrop-filter: blur(18px) saturate(135%);
-    backdrop-filter: blur(18px) saturate(135%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    backdrop-filter: blur(16px) saturate(130%);
     box-shadow:
       0 26px 56px -18px rgba(15, 23, 42, 0.16),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
@@ -231,11 +228,11 @@
   }
 
   :where(.dark) .glass-surface {
-    background-color: rgba(11, 18, 34, 0.68);
+    background-color: rgba(11, 18, 34, 0.86);
     border: 1px solid rgba(148, 163, 184, 0.16);
     box-shadow:
       0 20px 46px -18px rgba(2, 6, 23, 0.72),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
   }
 
   :where(.dark) .glass-elevated {
@@ -247,14 +244,8 @@
   }
 
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .glass-surface {
-      background-color: rgba(255, 255, 255, 0.96);
-    }
     .glass-elevated {
       background-color: rgba(255, 255, 255, 0.98);
-    }
-    :where(.dark) .glass-surface {
-      background-color: rgba(11, 16, 30, 0.94);
     }
     :where(.dark) .glass-elevated {
       background-color: rgba(13, 20, 37, 0.97);
@@ -330,6 +321,7 @@
 
 .vinyl-disc-paused {
   animation-play-state: paused;
+  will-change: auto !important;
 }
 
 /* Studio Turntable Tonearm */
@@ -447,6 +439,7 @@
 
 .studio-anim-paused {
   animation-play-state: paused !important;
+  will-change: auto !important;
 }
 
 @keyframes studioEqPulse {
@@ -488,6 +481,7 @@
 .studio-eq-paused {
   animation-play-state: paused;
   transform: scaleY(0.24);
+  will-change: auto !important;
 }
 
 /* Custom Transparent Range Overlay over GPU-scaled Track */

@@ -187,6 +187,11 @@ export default function HeaderMusicWidget() {
   const loopMode = useMusicStore((s) => s.loopMode);
   const isShuffle = useMusicStore((s) => s.isShuffle);
   const trackErrors = useMusicStore((s) => s.trackErrors);
+  const liveVideoId = useMusicStore((s) => s.liveVideoId);
+  const liveTitle = useMusicStore((s) => s.liveTitle);
+  const liveArtist = useMusicStore((s) => s.liveArtist);
+  const livePlaylistIndex = useMusicStore((s) => s.livePlaylistIndex);
+  const livePlaylistTotal = useMusicStore((s) => s.livePlaylistTotal);
 
   const ambientPreset = useMusicStore((s) => s.ambientPreset);
   const ambientVolume = useMusicStore((s) => s.ambientVolume);
@@ -351,6 +356,9 @@ export default function HeaderMusicWidget() {
   const hasCurrentTrackError = Boolean(
     currentErrorKey && trackErrors[currentErrorKey]
   );
+  const displayVideoId = liveVideoId || currentTrack?.videoId || '';
+  const displayTitle = liveTitle || currentTrack?.title || 'Focus Studio';
+  const displayArtist = liveArtist || currentTrack?.artist || '';
 
   return (
     <>
@@ -386,7 +394,7 @@ export default function HeaderMusicWidget() {
           className="pr-2.5 pl-1 py-1.5 flex items-center gap-1.5 rounded-r-full text-xs font-medium text-slate-700 dark:text-slate-200 max-w-[165px] sm:max-w-[205px]"
         >
           <span className="truncate">
-            {currentTrack ? currentTrack.title : 'Focus Studio'}
+            {currentTrack ? displayTitle : 'Focus Studio'}
           </span>
           <HeaderPomodoroChip />
           <ChevronDown
@@ -480,8 +488,8 @@ export default function HeaderMusicWidget() {
               >
                 <div className="flex items-center gap-3">
                   <VinylArtwork
-                    videoId={currentTrack.videoId}
-                    title={currentTrack.title}
+                    videoId={displayVideoId}
+                    title={displayTitle}
                     isPlaying={isPlaying}
                     tone={tone}
                     size="md"
@@ -497,7 +505,9 @@ export default function HeaderMusicWidget() {
                       {currentTrack.playlistId && (
                         <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-medium bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border border-indigo-500/20">
                           <ListMusic className="w-2.5 h-2.5" />
-                          Playlist
+                          {livePlaylistTotal > 0
+                            ? `Bài ${livePlaylistIndex + 1}/${livePlaylistTotal}`
+                            : 'Playlist'}
                         </span>
                       )}
                       {isDucked && (
@@ -508,10 +518,10 @@ export default function HeaderMusicWidget() {
                     </div>
 
                     <p className="text-sm font-semibold truncate text-slate-900 dark:text-white">
-                      {currentTrack.title}
+                      {displayTitle}
                     </p>
                     <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                      {currentTrack.artist}
+                      {displayArtist}
                     </p>
                   </div>
 
