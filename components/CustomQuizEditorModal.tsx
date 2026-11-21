@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { CustomQuiz, CustomSubject, Word } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { QUESTION_BANKS } from '@/lib/defaultBanks';
-import { cleanOptionText, isAnswerMatch } from '@/lib/utils';
+import { cleanOptionText, isAnswerMatch, getQuestionAnswerMeta } from '@/lib/utils';
 import {
   X,
   Pencil,
@@ -16,6 +16,7 @@ import {
   Search,
   CheckCircle2,
   Save,
+  ListChecks,
 } from 'lucide-react';
 
 interface CustomQuizEditorModalProps {
@@ -24,6 +25,25 @@ interface CustomQuizEditorModalProps {
   customSubjects?: CustomSubject[];
   onClose: () => void;
   onSaved: (updated: CustomQuiz) => void;
+}
+
+function getMatchedOptionIndices(q: Word): number[] {
+  const opts = q.options || [];
+  const hasKey = Boolean((q.answer || '').trim() || (q.correctWord || '').trim());
+  if (!hasKey) return [];
+  const meta = getQuestionAnswerMeta(q.correctWord, q.answer, opts);
+  const indices: number[] = [];
+  opts.forEach((opt, i) => {
+    if (isAnswerMatch(opt, q.correctWord, q.answer, meta.correctChoices)) {
+      indices.push(i);
+    }
+  });
+  return indices;
+}
+
+function isQuestionMultiMode(q: Word, override?: boolean): boolean {
+  if (override !== undefined) return override;
+  return getQuestionAnswerMeta(q.correctWord, q.answer, q.options).isMultiSelect;
 }
 
 function createEmptyQuestion(): Word {
@@ -54,6 +74,7 @@ export default function CustomQuizEditorModal({
   const [topic, setTopic] = useState('');
   const [description, setDescription] = useState('');
   const [questions, setQuestions] = useState<Word[]>([]);
+  const [multiSelectMap, setMultiSelectMap] = useState<Record<string, boolean>>({});
   const [searchTerm, setSearchTerm] = useState('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
@@ -74,6 +95,7 @@ export default function CustomQuizEditorModal({
         options: Array.isArray(w.options) && w.options.length >= 2 ? [...w.options] : ['', '', '', ''],
       }))
     );
+    setMultiSelectMap({});
     setSearchTerm('');
     setErrorMsg(null);
   }, [isOpen, quiz]);
@@ -120,34 +142,78 @@ export default function CustomQuizEditorModal({
   };
 
   const handleUpdateOption = (qIdx: number, optIdx: number, value: string) => {
-    const letter = String.fromCharCode(65 + optIdx);
     setQuestions((prev) =>
       prev.map((q, i) => {
         if (i !== qIdx) return q;
+        const matchedIndices = getMatchedOptionIndices(q);
         const nextOpts = [...(q.options || [])];
-        const prevOpt = nextOpts[optIdx] || '';
-        const wasCorrect = isAnswerMatch(prevOpt, q.correctWord, q.answer);
         nextOpts[optIdx] = value;
+
+        if (!matchedIndices.includes(optIdx)) {
+          return { ...q, options: nextOpts };
+        }
+
+        const nextAnswer = matchedIndices.map((idx) => String.fromCharCode(65 + idx)).join(', ');
+        const nextCorrectWord = matchedIndices
+          .map((idx) => cleanOptionText(nextOpts[idx]) || nextOpts[idx])
+          .filter(Boolean)
+          .join(' | ');
 
         return {
           ...q,
           options: nextOpts,
-          ...(wasCorrect ? { answer: q.answer || letter, correctWord: cleanOptionText(value) } : {}),
+          answer: nextAnswer,
+          correctWord: nextCorrectWord,
         };
       })
     );
   };
 
+  const handleToggleMultiMode = (qIdx: number) => {
+    const targetQ = questions[qIdx];
+    if (!targetQ) return;
+    const key = String(targetQ.id ?? qIdx);
+    setMultiSelectMap((prev) => ({
+      ...prev,
+      [key]: !isQuestionMultiMode(targetQ, prev[key]),
+    }));
+  };
+
   const handleSelectCorrectOption = (qIdx: number, optIdx: number) => {
-    const letter = String.fromCharCode(65 + optIdx);
     setQuestions((prev) =>
       prev.map((q, i) => {
         if (i !== qIdx) return q;
-        const targetOpt = q.options?.[optIdx] || '';
+        const key = String(q.id ?? qIdx);
+        const multi = isQuestionMultiMode(q, multiSelectMap[key]);
+        const opts = q.options || [];
+
+        if (!multi) {
+          const letter = String.fromCharCode(65 + optIdx);
+          const targetOpt = opts[optIdx] || '';
+          return {
+            ...q,
+            answer: letter,
+            correctWord: cleanOptionText(targetOpt),
+          };
+        }
+
+        const current = new Set(getMatchedOptionIndices(q));
+        if (current.has(optIdx)) {
+          current.delete(optIdx);
+        } else {
+          current.add(optIdx);
+        }
+        const sorted = Array.from(current).sort((a, b) => a - b);
+        const nextAnswer = sorted.map((idx) => String.fromCharCode(65 + idx)).join(', ');
+        const nextCorrectWord = sorted
+          .map((idx) => cleanOptionText(opts[idx] || '') || (opts[idx] || ''))
+          .filter(Boolean)
+          .join(' | ');
+
         return {
           ...q,
-          answer: letter,
-          correctWord: cleanOptionText(targetOpt),
+          answer: nextAnswer,
+          correctWord: nextCorrectWord,
         };
       })
     );
@@ -189,14 +255,29 @@ export default function CustomQuizEditorModal({
 
       let resolvedAnswer = (q.answer || '').trim().toUpperCase();
       let resolvedCorrectWord = (q.correctWord || '').trim();
-      const matchIdx = validOpts.findIndex((o) => isAnswerMatch(o, resolvedCorrectWord, resolvedAnswer));
+      const hasRawKey = Boolean(resolvedAnswer || resolvedCorrectWord);
 
-      if (matchIdx >= 0) {
-        resolvedAnswer = String.fromCharCode(65 + matchIdx);
-        resolvedCorrectWord = cleanOptionText(validOpts[matchIdx]);
+      if (!hasRawKey) {
+        resolvedAnswer = '';
+        resolvedCorrectWord = '';
       } else {
-        resolvedAnswer = 'A';
-        resolvedCorrectWord = cleanOptionText(validOpts[0]);
+        const meta = getQuestionAnswerMeta(resolvedCorrectWord, resolvedAnswer, validOpts);
+        const matchedIndices: number[] = [];
+        validOpts.forEach((o, idx) => {
+          if (isAnswerMatch(o, resolvedCorrectWord, resolvedAnswer, meta.correctChoices)) {
+            matchedIndices.push(idx);
+          }
+        });
+
+        if (matchedIndices.length > 0) {
+          resolvedAnswer = matchedIndices.map((idx) => String.fromCharCode(65 + idx)).join(', ');
+          resolvedCorrectWord = matchedIndices
+            .map((idx) => cleanOptionText(validOpts[idx]) || validOpts[idx])
+            .join(' | ');
+        } else {
+          resolvedAnswer = 'A';
+          resolvedCorrectWord = cleanOptionText(validOpts[0]);
+        }
       }
 
       cleaned.push({
@@ -432,15 +513,41 @@ export default function CustomQuizEditorModal({
 
           {/* Question Cards */}
           <div className="space-y-4">
-            {filteredQuestions.map(({ item: q, idx }) => (
+            {filteredQuestions.map(({ item: q, idx }) => {
+              const qKey = String(q.id ?? idx);
+              const isMulti = isQuestionMultiMode(q, multiSelectMap[qKey]);
+              const matchedIndices = getMatchedOptionIndices(q);
+              const hasRawKey = Boolean((q.answer || '').trim() || (q.correctWord || '').trim());
+
+              return (
               <div
                 key={q.id ?? idx}
                 className="p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-900/75 border border-slate-200 dark:border-slate-800 space-y-3"
               >
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-xs font-black px-2.5 py-0.5 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">
-                    Câu {idx + 1}
-                  </span>
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-xs font-black px-2.5 py-0.5 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">
+                      Câu {idx + 1}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleToggleMultiMode(idx)}
+                      title="Chuyển giữa 1 đáp án đúng và nhiều đáp án đúng"
+                      className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-lg border transition-colors cursor-pointer ${
+                        isMulti
+                          ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/35'
+                          : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-indigo-600 dark:hover:text-indigo-300'
+                      }`}
+                    >
+                      <ListChecks className="w-3.5 h-3.5" />
+                      <span>{isMulti ? 'Nhiều đáp án' : '1 đáp án'}</span>
+                    </button>
+                    {!hasRawKey && (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">
+                        Chưa có đáp án
+                      </span>
+                    )}
+                  </div>
                   <button
                     type="button"
                     onClick={() => handleRemoveQuestion(idx)}
@@ -464,7 +571,7 @@ export default function CustomQuizEditorModal({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {(q.options || []).map((opt, optIdx) => {
                     const letter = String.fromCharCode(65 + optIdx);
-                    const isTrue = isAnswerMatch(opt, q.correctWord, q.answer);
+                    const isTrue = matchedIndices.includes(optIdx);
                     return (
                       <div
                         key={optIdx}
@@ -477,7 +584,7 @@ export default function CustomQuizEditorModal({
                         <button
                           type="button"
                           onClick={() => handleSelectCorrectOption(idx, optIdx)}
-                          title={`Đặt ${letter} là đáp án đúng`}
+                          title={isMulti ? `Bật/tắt ${letter} là đáp án đúng` : `Đặt ${letter} là đáp án đúng`}
                           className={`w-7 h-7 rounded-lg text-xs font-black flex items-center justify-center shrink-0 transition-colors cursor-pointer ${
                             isTrue
                               ? 'bg-emerald-600 text-white'
@@ -506,7 +613,8 @@ export default function CustomQuizEditorModal({
                   className="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
-            ))}
+              );
+            })}
 
             {filteredQuestions.length === 0 && (
               <div className="p-8 text-center text-xs text-slate-400 border border-dashed border-slate-300 dark:border-slate-700 rounded-2xl">

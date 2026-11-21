@@ -48,7 +48,7 @@ export default function WordModal({ word, onClose }: WordModalProps) {
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-md animate-fade-in cursor-pointer"
+      className="fixed inset-0 z-[80] flex items-center justify-center p-4 bg-black/65 backdrop-blur-md animate-fade-in cursor-pointer"
     >
       <div
         role="dialog"

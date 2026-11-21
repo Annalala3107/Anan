@@ -408,9 +408,9 @@ export default function CodeQuestionRenderer({
             return (
               <div
                 key={bIdx}
-                className="my-3 py-3 px-4 rounded-2xl bg-indigo-950/20 dark:bg-slate-900/80 border border-indigo-500/30 text-indigo-100 shadow-md"
+                className="my-3 py-3 px-4 rounded-2xl bg-indigo-50/90 dark:bg-slate-900/85 border border-indigo-200 dark:border-indigo-500/30 text-slate-900 dark:text-indigo-100 shadow-sm dark:shadow-md"
               >
-                <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 dark:text-indigo-300 mb-1 flex items-center gap-1 select-none">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-700 dark:text-indigo-300 mb-1 flex items-center gap-1 select-none">
                   <span>Hàm số định nghĩa từng khúc / Piecewise Function</span>
                 </div>
                 <MathText content={formatPiecewise(block.text)} displayMode={true} />
@@ -429,9 +429,9 @@ export default function CodeQuestionRenderer({
                   return (
                     <div
                       key={lIdx}
-                      className="my-3 py-3 px-4 rounded-2xl bg-indigo-950/20 dark:bg-slate-900/80 border border-indigo-500/30 text-indigo-100 shadow-md"
+                      className="my-3 py-3 px-4 rounded-2xl bg-indigo-50/90 dark:bg-slate-900/85 border border-indigo-200 dark:border-indigo-500/30 text-slate-900 dark:text-indigo-100 shadow-sm dark:shadow-md"
                     >
-                      <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 dark:text-indigo-300 mb-1 flex items-center gap-1 select-none">
+                      <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-700 dark:text-indigo-300 mb-1 flex items-center gap-1 select-none">
                         <span>Biểu thức toán học / Công thức</span>
                       </div>
                       <MathText content={trimmed} displayMode={true} />
@@ -444,7 +444,7 @@ export default function CodeQuestionRenderer({
                     key={lIdx}
                     as="p"
                     content={line}
-                    className="leading-relaxed font-semibold sm:font-bold text-slate-900 dark:text-slate-100 whitespace-pre-wrap break-words"
+                    className="leading-[1.68] font-medium text-slate-900 dark:text-slate-100 whitespace-pre-wrap break-words"
                   />
                 );
               })}
@@ -580,12 +580,12 @@ export default function CodeQuestionRenderer({
             </div>
 
             {/* Code Body with Line Numbers */}
-            <div className="p-4 overflow-x-auto text-xs sm:text-sm font-mono leading-relaxed selection:bg-indigo-500/30">
+            <div className="p-4 overflow-x-auto text-[13px] sm:text-sm font-mono leading-[1.65] selection:bg-indigo-500/30">
               <table className="border-collapse w-full">
                 <tbody>
                   {codeLines.map((line, lIdx) => (
                     <tr key={lIdx} className="hover:bg-white/[0.02]">
-                      <td className="select-none text-slate-600 text-right pr-4 border-r border-slate-800/80 font-mono text-xs w-8 align-top">
+                      <td className="select-none text-slate-500 text-right pr-4 border-r border-slate-800/80 font-mono text-xs w-8 align-top">
                         {lIdx + 1}
                       </td>
                       <td

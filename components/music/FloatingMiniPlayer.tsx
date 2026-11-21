@@ -196,7 +196,7 @@ export default function FloatingMiniPlayer() {
       <div
         role="region"
         aria-label="Trình phát nhạc thu gọn"
-        className={`glass-elevated fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:bottom-5 right-4 z-[70] flex items-center gap-2 rounded-full p-1.5 pr-2 border max-w-[calc(100vw-24px)] text-slate-900 dark:text-slate-100 transition-all duration-300 ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
+        className={`glass-elevated fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:bottom-5 right-4 z-[45] flex items-center gap-2 rounded-full p-1.5 pr-2 border max-w-[calc(100vw-24px)] text-slate-900 dark:text-slate-100 transition-all duration-300 ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
       >
         <VinylArtwork
           videoId={displayVideoId}
@@ -272,7 +272,7 @@ export default function FloatingMiniPlayer() {
     <div
       role="region"
       aria-label="Focus Studio Mini-Player"
-      className={`glass-elevated fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:bottom-5 right-4 z-[70] w-[calc(100vw-32px)] max-w-[344px] rounded-2xl p-3.5 text-slate-900 dark:text-slate-100 border transition-all duration-300 ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
+      className={`glass-elevated fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:bottom-5 right-4 z-[45] w-[calc(100vw-32px)] max-w-[344px] rounded-2xl p-3.5 text-slate-900 dark:text-slate-100 border transition-all duration-300 ${toneTokens.cardBorder} ${toneTokens.cardGlow}`}
     >
       {/* Header Row */}
       <div className="flex items-start justify-between gap-2.5">

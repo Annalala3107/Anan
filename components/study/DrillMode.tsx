@@ -17,6 +17,7 @@ import {
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
 import AITutorButton from '@/components/ai/AITutorButton';
+import MobileThumbBar from './MobileThumbBar';
 import {
   ArrowRight,
   CheckCircle2,
@@ -48,6 +49,9 @@ interface PartQuestionItem {
   sentence: string;
   correctWord: string;
   correctOptions: string[];
+  originalCorrectWord: string;
+  originalCorrectOptions: string[];
+  originalAnswerKey?: string;
   isMultiSelect: boolean;
   requiredCount: number;
   options: string[];
@@ -134,6 +138,9 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
             sentence: target.question,
             correctWord: rawCorrect,
             correctOptions: meta.correctChoices,
+            originalCorrectWord: rawCorrect,
+            originalCorrectOptions: meta.correctChoices,
+            originalAnswerKey: target.answer,
             isMultiSelect: meta.isMultiSelect,
             requiredCount: meta.requiredCount,
             options: target.options,
@@ -166,6 +173,9 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
           sentence,
           correctWord: target.word,
           correctOptions: [target.word],
+          originalCorrectWord: target.word,
+          originalCorrectOptions: [target.word],
+          originalAnswerKey: undefined,
           isMultiSelect: false,
           requiredCount: 1,
           options: finalOpts,
@@ -277,12 +287,27 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
   const prepareQuestionOptions = useCallback(
     (items: PartQuestionItem[], forceShuffle?: boolean): PartQuestionItem[] => {
       const shouldShuffle = forceShuffle !== undefined ? forceShuffle : shuffleOptions;
-      return items.map((q) => ({
-        ...q,
-        options: shouldShuffle
-          ? shuffleArray(q.originalOptions.map((o) => cleanOptionText(o)), true)
-          : q.originalOptions,
-      }));
+      return items.map((q) => {
+        if (!shouldShuffle) {
+          return {
+            ...q,
+            options: q.originalOptions,
+            correctOptions: q.originalCorrectOptions,
+            correctWord: q.originalCorrectWord,
+            answerKey: q.originalAnswerKey,
+          };
+        }
+        const cleanedCorrectOpts = q.hasAnswerKey
+          ? q.originalCorrectOptions.map((c) => cleanOptionText(c))
+          : [];
+        return {
+          ...q,
+          options: shuffleArray(q.originalOptions.map((o) => cleanOptionText(o)), true),
+          correctOptions: cleanedCorrectOpts,
+          correctWord: q.hasAnswerKey ? cleanedCorrectOpts.join(' | ') : '',
+          answerKey: undefined,
+        };
+      });
     },
     [shuffleOptions]
   );
@@ -295,11 +320,24 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
         prevQs.map((q, idx) => {
           // Do not reshuffle already-answered current question if submitted
           if (idx === currentIndex && isSubmittedAnswer) return q;
+          if (!nextVal) {
+            return {
+              ...q,
+              options: q.originalOptions,
+              correctOptions: q.originalCorrectOptions,
+              correctWord: q.originalCorrectWord,
+              answerKey: q.originalAnswerKey,
+            };
+          }
+          const cleanedCorrectOpts = q.hasAnswerKey
+            ? q.originalCorrectOptions.map((c) => cleanOptionText(c))
+            : [];
           return {
             ...q,
-            options: nextVal
-              ? shuffleArray(q.originalOptions.map((o) => cleanOptionText(o)), true)
-              : q.originalOptions,
+            options: shuffleArray(q.originalOptions.map((o) => cleanOptionText(o)), true),
+            correctOptions: cleanedCorrectOpts,
+            correctWord: q.hasAnswerKey ? cleanedCorrectOpts.join(' | ') : '',
+            answerKey: undefined,
           };
         })
       );
@@ -1067,7 +1105,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
                 </span>
               )}
             </div>
-            <span className="text-[11px] font-semibold text-slate-400">
+            <span className="hidden sm:inline text-[11px] font-semibold text-slate-400">
               Phím tắt: [1–{currentQ.options.length}] hoặc [A–{String.fromCharCode(64 + currentQ.options.length)}]
             </span>
           </div>
@@ -1075,7 +1113,7 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
             content={currentQ.sentence}
             image={currentQ.image || currentQ.rawWord?.image}
             imageCaption={currentQ.imageCaption || currentQ.rawWord?.imageCaption}
-            className="text-base sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
+            className="text-base sm:text-xl font-medium sm:font-semibold text-slate-900 dark:text-white leading-[1.65]"
           />
         </div>
 
@@ -1169,21 +1207,24 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
 
         {/* Multi-Select Confirm Button */}
         {!isAnswered && currentQ.isMultiSelect && (
-          <button
-            type="button"
-            disabled={selectedWords.length === 0}
-            onClick={handleConfirmMulti}
-            className={`w-full py-3.5 mb-5 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed ${
-              selectedWords.length === currentQ.requiredCount
-                ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-glow'
-                : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700'
-            }`}
-          >
-            <Check className="w-4 h-4" />
-            <span>
-              Xác nhận đáp án ({selectedWords.length}/{currentQ.requiredCount}) [Enter]
-            </span>
-          </button>
+          <MobileThumbBar className="mb-5">
+            <button
+              type="button"
+              disabled={selectedWords.length === 0}
+              onClick={handleConfirmMulti}
+              className={`w-full py-3.5 rounded-xl sm:rounded-2xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.98] ${
+                selectedWords.length === currentQ.requiredCount
+                  ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-glow'
+                  : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700'
+              }`}
+            >
+              <Check className="w-4 h-4" />
+              <span>
+                Xác nhận đáp án ({selectedWords.length}/{currentQ.requiredCount}){' '}
+                <span className="hidden sm:inline">[Enter]</span>
+              </span>
+            </button>
+          </MobileThumbBar>
         )}
       </div>
 
@@ -1261,20 +1302,31 @@ export default function DrillMode({ words, onExit }: DrillModeProps) {
 
       {/* Continue Button */}
       {isAnswered && (
-        <button
-          type="button"
-          onClick={handleNext}
-          className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold flex items-center justify-center gap-2 shadow-glow-success transition-all active:scale-[0.99] cursor-pointer"
-        >
-          <span>
-            {currentIndex < sessionQuestions.length - 1
-              ? 'Câu tiếp theo [Enter / Space]'
-              : retryMistakesAtEnd && retryQueue.length > 0
-              ? `Vào vòng sửa ${retryQueue.length} câu sai [Enter]`
-              : 'Hoàn thành chặng [Enter]'}
-          </span>
-          <ArrowRight className="w-5 h-5" />
-        </button>
+        <MobileThumbBar>
+          <button
+            type="button"
+            onClick={handleNext}
+            className="w-full py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold flex items-center justify-center gap-2 shadow-glow-success transition-all active:scale-[0.98] cursor-pointer"
+          >
+            <span>
+              {currentIndex < sessionQuestions.length - 1 ? (
+                <>
+                  Câu tiếp theo <span className="hidden sm:inline">[Enter / Space]</span>
+                </>
+              ) : retryMistakesAtEnd && retryQueue.length > 0 ? (
+                <>
+                  Vào vòng sửa {retryQueue.length} câu sai{' '}
+                  <span className="hidden sm:inline">[Enter]</span>
+                </>
+              ) : (
+                <>
+                  Hoàn thành chặng <span className="hidden sm:inline">[Enter]</span>
+                </>
+              )}
+            </span>
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </MobileThumbBar>
       )}
     </div>
   );

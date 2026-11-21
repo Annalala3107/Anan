@@ -11,6 +11,7 @@ import {
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
 import AITutorButton from '@/components/ai/AITutorButton';
+import MobileThumbBar from './MobileThumbBar';
 import {
   RotateCcw,
   CheckCircle2,
@@ -64,6 +65,9 @@ export default function FlashcardView({
     shuffleChoices,
     currentQ.correctOptions
   );
+  const hasKnownKey =
+    currentQ.hasAnswerKey !== false &&
+    (displayedCorrectList.length > 0 || Boolean(cleanOptionText(currentQ.correctWord)));
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-5">
@@ -111,7 +115,9 @@ export default function FlashcardView({
                 className="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center gap-1.5 transition-colors border border-slate-200 dark:border-slate-700 cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                <span>Lật xem đáp án [Space]</span>
+                <span>
+                  Lật xem đáp án <span className="hidden sm:inline">[Space]</span>
+                </span>
               </button>
             </div>
 
@@ -126,7 +132,7 @@ export default function FlashcardView({
                     content={currentQ.sentence}
                     image={currentQ.image}
                     imageCaption={currentQ.imageCaption}
-                    className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 dark:text-white leading-relaxed"
+                    className="text-base sm:text-xl font-medium sm:font-semibold text-slate-900 dark:text-white leading-[1.65]"
                   />
                 </div>
               </div>
@@ -181,7 +187,7 @@ export default function FlashcardView({
                 </strong>
               </span>
               <span className="font-bold text-indigo-600 dark:text-indigo-400 animate-pulse">
-                👆 Nhấn vào thẻ hoặc bấm [Space] để lật xem đáp án
+                👆 Nhấn vào thẻ<span className="hidden sm:inline"> hoặc bấm [Space]</span> để lật xem đáp án
               </span>
             </div>
           </div>
@@ -189,7 +195,7 @@ export default function FlashcardView({
           {/* BACK FACE */}
           <div
             aria-hidden={!isFlipped}
-            className={`col-start-1 row-start-1 backface-hidden rotate-y-180 w-full min-h-[360px] sm:min-h-[420px] rounded-3xl glass-elevated bg-gradient-to-br from-white/95 via-indigo-50/60 to-sky-50/60 dark:from-slate-900/75 dark:via-[#0F172A]/70 dark:to-indigo-950/75 border-2 border-indigo-400/50 dark:border-indigo-500/60 shadow-[0_0_35px_rgba(99,102,241,0.18)] p-6 sm:p-10 flex flex-col justify-between select-none ${
+            className={`col-start-1 row-start-1 backface-hidden rotate-y-180 w-full min-h-[360px] sm:min-h-[420px] rounded-3xl bg-white dark:bg-[#0F172A] bg-gradient-to-br from-white via-indigo-50/50 to-sky-50/50 dark:from-slate-900 dark:via-[#0F172A] dark:to-indigo-950/90 border-2 border-indigo-400/50 dark:border-indigo-500/60 shadow-[0_24px_56px_-18px_rgba(15,23,42,0.16)] dark:shadow-[0_28px_60px_-18px_rgba(2,6,23,0.88)] p-5 sm:p-10 flex flex-col justify-between select-none ${
               !isFlipped ? 'pointer-events-none' : ''
             }`}
           >
@@ -219,48 +225,62 @@ export default function FlashcardView({
                 className="text-xs font-bold px-3 py-1.5 rounded-xl bg-white/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center gap-1.5 transition-colors border border-slate-200 dark:border-slate-700 cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                <span>Xem lại câu hỏi [Space]</span>
+                <span>
+                  Xem lại câu hỏi <span className="hidden sm:inline">[Space]</span>
+                </span>
               </button>
             </div>
 
             {/* Center Content (Back: Reminder + Correct Answer + Breakdown + Explanation) */}
             <div className="my-6 space-y-5">
               {/* Compact Question Reminder */}
-              <div className="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 text-xs sm:text-sm text-slate-700 dark:text-slate-300 line-clamp-2">
+              <div className="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 text-xs sm:text-sm text-slate-700 dark:text-slate-300 max-h-32 overflow-y-auto leading-relaxed">
                 <span className="font-bold text-indigo-600 dark:text-indigo-400 mr-1.5">Câu hỏi:</span>
                 {currentQ.sentence}
               </div>
 
-              {/* Highlighted Correct Answer Box */}
-              <div className="p-5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/15 border-2 border-emerald-500/50 shadow-glow-success">
-                <div className="flex items-center justify-between gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-1.5">
-                  <span className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4" />
-                    <span>
-                      {answerMeta.isMultiSelect
-                        ? `Các đáp án chính xác (${answerMeta.requiredCount} đáp án)`
-                        : 'Đáp án chính xác'}
+              {/* Highlighted Correct Answer Box (or Unanswered Notice) */}
+              {hasKnownKey ? (
+                <div className="p-5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/15 border-2 border-emerald-500/50 shadow-glow-success">
+                  <div className="flex items-center justify-between gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-1.5">
+                    <span className="flex items-center gap-2">
+                      <Sparkles className="w-4 h-4" />
+                      <span>
+                        {answerMeta.isMultiSelect
+                          ? `Các đáp án chính xác (${answerMeta.requiredCount} đáp án)`
+                          : 'Đáp án chính xác'}
+                      </span>
                     </span>
-                  </span>
+                  </div>
+                  {displayedCorrectList.length > 1 ? (
+                    <ul className="space-y-1.5 mt-1">
+                      {displayedCorrectList.map((ans, idx) => (
+                        <li
+                          key={idx}
+                          className="text-base sm:text-xl font-bold text-slate-900 dark:text-white leading-snug flex items-start gap-2"
+                        >
+                          <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{ans}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white leading-snug">
+                      {displayedCorrectList[0] || cleanOptionText(currentQ.correctWord)}
+                    </p>
+                  )}
                 </div>
-                {displayedCorrectList.length > 1 ? (
-                  <ul className="space-y-1.5 mt-1">
-                    {displayedCorrectList.map((ans, idx) => (
-                      <li
-                        key={idx}
-                        className="text-base sm:text-xl font-black text-slate-900 dark:text-white leading-snug flex items-start gap-2"
-                      >
-                        <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{ans}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-lg sm:text-2xl font-black text-slate-900 dark:text-white leading-snug">
-                    {displayedCorrectList[0] || cleanOptionText(currentQ.correctWord)}
+              ) : (
+                <div className="p-4 sm:p-5 rounded-2xl bg-indigo-500/10 dark:bg-indigo-500/15 border-2 border-indigo-500/40">
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-300 mb-1">
+                    <Sparkles className="w-4 h-4" />
+                    <span>Câu hỏi chưa có đáp án gốc</span>
+                  </div>
+                  <p className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">
+                    Hãy bấm nút <strong>AI Gia sư</strong> bên dưới để suy luận đáp án chính xác và giải thích bản chất.
                   </p>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Full Options Breakdown with Correct Checkmark */}
               {currentQ.options && currentQ.options.length > 0 && (
@@ -311,7 +331,7 @@ export default function FlashcardView({
               )}
 
               {/* Explanation Box */}
-              {displayedExplanation && (
+              {hasKnownKey && displayedExplanation && (
                 <div className="p-4 rounded-2xl bg-indigo-50/90 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/30 text-xs sm:text-sm text-slate-800 dark:text-indigo-100 leading-relaxed flex items-start gap-3">
                   <BookOpen className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
                   <div className="flex-1 min-w-0">
@@ -329,7 +349,11 @@ export default function FlashcardView({
               <AITutorButton
                 question={currentQ.sentence}
                 options={currentQ.options}
-                correctAnswer={displayedCorrectList.join(' | ') || cleanOptionText(currentQ.correctWord)}
+                correctAnswer={
+                  hasKnownKey
+                    ? displayedCorrectList.join(' | ') || cleanOptionText(currentQ.correctWord)
+                    : ''
+                }
                 subject={currentQ.subject}
                 topic={currentQ.topic}
               />
@@ -344,85 +368,94 @@ export default function FlashcardView({
                 </strong>
               </span>
               <span className="text-emerald-700 dark:text-emerald-400 font-semibold">
-                👇 Tự đánh giá mức độ nhớ của bạn bên dưới (Phím 1, 2, 3)
+                👇 Tự đánh giá mức độ nhớ của bạn bên dưới
+                <span className="hidden sm:inline"> (Phím 1, 2, 3)</span>
               </span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Self-Evaluation SRS Rating Bar (Visible or active after flipping) */}
-      {isFlipped ? (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 animate-fade-in">
-          <button
-            type="button"
-            onClick={() => onRate(1)}
-            className="p-4 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 border-2 border-rose-500/40 hover:border-rose-500 text-left transition-all flex items-center justify-between group active:scale-95 cursor-pointer"
-          >
-            <div>
-              <div className="flex items-center gap-1.5 text-rose-600 dark:text-rose-400 font-black text-sm">
-                <XCircle className="w-4 h-4" />
-                <span>Chưa thuộc / Quên</span>
+      {/* Self-Evaluation SRS Rating Bar (Sticky Thumb-Zone on Mobile) */}
+      <MobileThumbBar>
+        {isFlipped ? (
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 animate-fade-in">
+            <button
+              type="button"
+              onClick={() => onRate(1)}
+              className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 border-2 border-rose-500/40 hover:border-rose-500 text-center sm:text-left transition-all flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-1 group active:scale-95 cursor-pointer touch-manipulation"
+            >
+              <div>
+                <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 text-rose-600 dark:text-rose-400 font-black text-xs sm:text-sm">
+                  <XCircle className="w-4 h-4 shrink-0" />
+                  <span className="sm:hidden">Quên</span>
+                  <span className="hidden sm:inline">Chưa thuộc / Quên</span>
+                </div>
+                <p className="hidden sm:block text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                  Đưa vào hàng đợi ôn lại ngay (Reset chu kỳ)
+                </p>
               </div>
-              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                Đưa vào hàng đợi ôn lại ngay (Reset chu kỳ)
-              </p>
-            </div>
-            <span className="px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-600 dark:text-rose-300 font-mono font-bold text-xs">
-              [1]
-            </span>
-          </button>
+              <span className="hidden sm:inline-flex px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-600 dark:text-rose-300 font-mono font-bold text-xs">
+                [1]
+              </span>
+            </button>
 
-          <button
-            type="button"
-            onClick={() => onRate(3)}
-            className="p-4 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border-2 border-amber-500/40 hover:border-amber-500 text-left transition-all flex items-center justify-between group active:scale-95 cursor-pointer"
-          >
-            <div>
-              <div className="flex items-center gap-1.5 text-amber-700 dark:text-amber-400 font-black text-sm">
-                <AlertCircle className="w-4 h-4" />
-                <span>Nhớ mang máng</span>
+            <button
+              type="button"
+              onClick={() => onRate(3)}
+              className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border-2 border-amber-500/40 hover:border-amber-500 text-center sm:text-left transition-all flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-1 group active:scale-95 cursor-pointer touch-manipulation"
+            >
+              <div>
+                <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 text-amber-700 dark:text-amber-400 font-black text-xs sm:text-sm">
+                  <AlertCircle className="w-4 h-4 shrink-0" />
+                  <span className="sm:hidden">Mơ hồ</span>
+                  <span className="hidden sm:inline">Nhớ mang máng</span>
+                </div>
+                <p className="hidden sm:block text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                  Tăng +1 chu kỳ nhớ, sẽ kiểm tra lại thêm 1 vòng
+                </p>
               </div>
-              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                Tăng +1 chu kỳ nhớ, sẽ kiểm tra lại thêm 1 vòng
-              </p>
-            </div>
-            <span className="px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300 font-mono font-bold text-xs">
-              [2]
-            </span>
-          </button>
+              <span className="hidden sm:inline-flex px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300 font-mono font-bold text-xs">
+                [2]
+              </span>
+            </button>
 
+            <button
+              type="button"
+              onClick={() => onRate(5)}
+              className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border-2 border-emerald-500/40 hover:border-emerald-500 text-center sm:text-left transition-all flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-1 group active:scale-95 shadow-glow-success cursor-pointer touch-manipulation"
+            >
+              <div>
+                <div className="flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 text-emerald-700 dark:text-emerald-400 font-black text-xs sm:text-sm">
+                  <CheckCircle2 className="w-4 h-4 shrink-0" />
+                  <span className="sm:hidden">Thuộc lầu</span>
+                  <span className="hidden sm:inline">Đã thuộc lầu!</span>
+                </div>
+                <p className="hidden sm:block text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                  {streakTarget > 1 && streak === 0
+                    ? 'Nắm chắc bản chất — Qua câu ngay!'
+                    : 'Hoàn thành câu này vào trí nhớ dài hạn'}
+                </p>
+              </div>
+              <span className="hidden sm:inline-flex px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-mono font-bold text-xs">
+                [3]
+              </span>
+            </button>
+          </div>
+        ) : (
           <button
             type="button"
-            onClick={() => onRate(5)}
-            className="p-4 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border-2 border-emerald-500/40 hover:border-emerald-500 text-left transition-all flex items-center justify-between group active:scale-95 shadow-glow-success cursor-pointer"
+            onClick={onToggleFlip}
+            className="w-full py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-sm sm:text-base shadow-glow transition-all flex items-center justify-center gap-2 active:scale-[0.99] cursor-pointer touch-manipulation"
           >
-            <div>
-              <div className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 font-black text-sm">
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Đã thuộc lầu!</span>
-              </div>
-              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                {streakTarget > 1 && streak === 0
-                  ? 'Nắm chắc bản chất — Qua câu ngay!'
-                  : 'Hoàn thành câu này vào trí nhớ dài hạn'}
-              </p>
-            </div>
-            <span className="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-mono font-bold text-xs">
-              [3]
+            <RotateCcw className="w-4 h-4" />
+            <span>
+              LẬT THẺ XEM ĐÁP ÁN &amp; GIẢI THÍCH{' '}
+              <span className="hidden sm:inline">[Phím Space]</span>
             </span>
           </button>
-        </div>
-      ) : (
-        <button
-          type="button"
-          onClick={onToggleFlip}
-          className="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-sm sm:text-base shadow-glow transition-all flex items-center justify-center gap-2 active:scale-[0.99] cursor-pointer"
-        >
-          <RotateCcw className="w-4 h-4" />
-          <span>LẬT THẺ XEM ĐÁP ÁN & GIẢI THÍCH [Phím Space]</span>
-        </button>
-      )}
+        )}
+      </MobileThumbBar>
     </div>
   );
 }

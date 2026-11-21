@@ -119,7 +119,23 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
         });
         return;
       }
-      StorageEngine.setActiveCustomQuizId(null);
+
+      // IndexedDB hydration runs asynchronously; defer clearing activeCustomQuizId until it settles
+      void StorageEngine.hydrateFromIdb().then(() => {
+        if (StorageEngine.getActiveCustomQuizId() !== savedCustomId) return;
+        const idbMatch = StorageEngine.getCustomQuizzes().find((q) => q.id === savedCustomId);
+        if (idbMatch) {
+          set({
+            activeCustomQuiz: idbMatch,
+            words: idbMatch.words,
+            loadedQuizKey: `custom:${idbMatch.id}`,
+            hasHydratedSelection: true,
+            hasExplicitSelection: true,
+          });
+        } else {
+          StorageEngine.setActiveCustomQuizId(null);
+        }
+      });
     }
 
     set({

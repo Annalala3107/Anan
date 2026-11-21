@@ -789,7 +789,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
             content={currentQ.sentence}
             image={currentQ.image}
             imageCaption={currentQ.imageCaption}
-            className="text-base sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
+            className="text-base sm:text-xl font-medium sm:font-semibold text-slate-900 dark:text-white leading-[1.65]"
           />
         </div>
 
@@ -874,7 +874,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
 
       {/* Pre-submission Confirmation Modal */}
       {showSubmitConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
+        <div className="fixed inset-0 z-[80] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
           <div className="max-w-md w-full p-6 rounded-3xl glass-elevated space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto">
               <AlertTriangle className="w-6 h-6" />

@@ -454,7 +454,7 @@ export default function HeaderMusicWidget() {
               top: `${coords.top}px`,
               right: `${coords.right}px`,
             }}
-            className="glass-elevated fixed z-[80] w-[calc(100vw-24px)] sm:w-[404px] max-h-[calc(100vh-92px)] overflow-y-auto rounded-2xl p-4 text-slate-900 dark:text-slate-100"
+            className="glass-elevated fixed z-[60] w-[calc(100vw-24px)] sm:w-[404px] max-h-[calc(100vh-92px)] overflow-y-auto rounded-2xl p-4 text-slate-900 dark:text-slate-100"
           >
             {/* Header Bar */}
             <div className="flex items-center justify-between gap-2 pb-3 border-b border-slate-200/75 dark:border-white/10">

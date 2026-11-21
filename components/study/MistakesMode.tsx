@@ -15,6 +15,7 @@ import {
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
 import AITutorButton from '@/components/ai/AITutorButton';
+import MobileThumbBar from './MobileThumbBar';
 import {
   CheckCircle2,
   XCircle,
@@ -361,7 +362,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
               content={currentWord.question || currentWord.word}
               image={currentWord.image}
               imageCaption={currentWord.imageCaption}
-              className="text-base sm:text-xl font-black text-slate-900 dark:text-white leading-relaxed flex-1"
+              className="text-base sm:text-xl font-medium sm:font-semibold text-slate-900 dark:text-white leading-[1.65] flex-1"
             />
           </div>
 
@@ -458,21 +459,24 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
 
         {/* Multi-Select Confirm Button */}
         {!isAnswered && answerMeta.isMultiSelect && (
-          <button
-            type="button"
-            disabled={selectedWords.length === 0}
-            onClick={handleConfirmMulti}
-            className={`w-full py-3.5 mb-5 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed ${
-              selectedWords.length === answerMeta.requiredCount
-                ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-glow'
-                : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700'
-            }`}
-          >
-            <Check className="w-4 h-4" />
-            <span>
-              Xác nhận đáp án ({selectedWords.length}/{answerMeta.requiredCount}) [Enter]
-            </span>
-          </button>
+          <MobileThumbBar className="mb-5">
+            <button
+              type="button"
+              disabled={selectedWords.length === 0}
+              onClick={handleConfirmMulti}
+              className={`w-full py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed ${
+                selectedWords.length === answerMeta.requiredCount
+                  ? 'bg-amber-500 hover:bg-amber-600 text-white shadow-glow'
+                  : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700'
+              }`}
+            >
+              <Check className="w-4 h-4" />
+              <span>
+                Xác nhận đáp án ({selectedWords.length}/{answerMeta.requiredCount}){' '}
+                <span className="hidden sm:inline">[Enter]</span>
+              </span>
+            </button>
+          </MobileThumbBar>
         )}
       </div>
 
@@ -528,13 +532,17 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
               subject={currentWord.subject}
               topic={currentWord.topic}
             />
-            <button
-              onClick={handleNext}
-              className="w-full py-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold flex items-center justify-center gap-2 shadow-glow transition-all cursor-pointer"
-            >
-              <span>Tiếp tục câu kế tiếp [Enter]</span>
-              <ArrowRight className="w-5 h-5" />
-            </button>
+            <MobileThumbBar>
+              <button
+                onClick={handleNext}
+                className="w-full py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold flex items-center justify-center gap-2 shadow-glow transition-all cursor-pointer active:scale-[0.98]"
+              >
+                <span>
+                  Tiếp tục câu kế tiếp <span className="hidden sm:inline">[Enter]</span>
+                </span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </MobileThumbBar>
           </div>
         );
       })()}

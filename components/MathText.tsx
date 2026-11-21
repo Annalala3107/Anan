@@ -49,7 +49,7 @@ export default function MathText({
           return (
             <span
               key={idx}
-              className="inline-block mx-0.5 align-middle select-text text-indigo-950 dark:text-indigo-200"
+              className="inline mx-0.5 align-baseline select-text text-indigo-950 dark:text-indigo-200"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           );

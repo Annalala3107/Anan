@@ -86,7 +86,7 @@ export default function QuestionMedia({
       {/* Lightbox Modal */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md animate-fade-in"
+          className="fixed inset-0 z-[80] flex flex-col items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md animate-fade-in"
           onClick={() => setIsOpen(false)}
           role="dialog"
           aria-modal="true"

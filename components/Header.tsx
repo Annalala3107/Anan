@@ -96,15 +96,15 @@ export default function Header() {
   return (
     <>
     <header className="sticky top-0 z-40 w-full max-w-full bg-white/95 dark:bg-[#090E17]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors transform-gpu">
-      <div className="w-full px-3 sm:px-4 md:px-5 lg:px-8 xl:px-10 h-14 sm:h-16 flex items-center justify-between gap-2">
+      <div className="w-full px-2.5 sm:px-4 md:px-5 lg:px-8 xl:px-10 h-14 sm:h-16 flex items-center justify-between gap-1.5 sm:gap-2">
         {/* Logo & Brand */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0 shrink-0">
           <Link
             href="/"
             onClick={(e) => handleNavClick(e, '/')}
-            className="flex items-center gap-2 font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white group shrink-0"
+            className="flex items-center gap-1.5 sm:gap-2 font-extrabold text-base sm:text-xl tracking-tight text-slate-900 dark:text-white group shrink-0"
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
+            <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
               <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:rotate-12 transition-transform duration-200" />
             </div>
             <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-black whitespace-nowrap">

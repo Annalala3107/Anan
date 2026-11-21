@@ -9,6 +9,7 @@ import {
   splitCorrectChoices,
   cleanOptionText,
   shuffleArray,
+  formatExplanationForCurrentOptions,
 } from '@/lib/utils';
 import {
   buildStandardQuestions,
@@ -17,6 +18,8 @@ import {
 } from '@/lib/quizHelpers';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
+import AITutorButton from '@/components/ai/AITutorButton';
+import MobileThumbBar from './MobileThumbBar';
 import FlashcardView from './FlashcardView';
 import {
   Zap,
@@ -78,7 +81,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
   // Interaction State
   const [selectedOpts, setSelectedOpts] = useState<string[]>([]);
-  const [feedbackState, setFeedbackState] = useState<'idle' | 'correct' | 'wrong'>('idle');
+  const [feedbackState, setFeedbackState] = useState<'idle' | 'correct' | 'wrong' | 'unanswered'>('idle');
   const [isCompleted, setIsCompleted] = useState(false);
 
   // Performance & Gamification Metrics
@@ -213,25 +216,40 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       const initialCards: CardItem[] = canonicalList.map((q, idx) => {
         const cleanedOpts = q.options.map((opt) => cleanOptionText(opt));
         const activeOpts = shuffleChoices ? shuffleArray(cleanedOpts, true) : q.options;
-        const rawCorrectOpts =
-          q.correctOptions && q.correctOptions.length > 0
+        const hasKey =
+          q.hasAnswerKey !== false &&
+          Boolean(
+            q.answerKey?.trim() ||
+              q.correctWord?.trim() ||
+              (q.correctOptions && q.correctOptions.length > 0)
+          );
+        const rawCorrectOpts = hasKey
+          ? q.correctOptions && q.correctOptions.length > 0
             ? q.correctOptions
-            : splitCorrectChoices(q.correctWord, q.answerKey, q.options);
-        const activeCorrectOpts = shuffleChoices
-          ? rawCorrectOpts.map((c) => cleanOptionText(c))
-          : rawCorrectOpts;
+            : splitCorrectChoices(q.correctWord, q.answerKey, q.options)
+          : [];
+        const activeCorrectOpts = hasKey
+          ? shuffleChoices
+            ? rawCorrectOpts.map((c) => cleanOptionText(c))
+            : rawCorrectOpts
+          : [];
         return {
           id: `card_${idx}_${q.id}`,
           originalOptions: q.options,
-          originalAnswerKey: q.answerKey,
-          originalCorrectWord: q.correctWord,
+          originalAnswerKey: hasKey ? q.answerKey : undefined,
+          originalCorrectWord: hasKey ? q.correctWord : '',
           originalCorrectOptions: rawCorrectOpts,
           question: {
             ...q,
             options: activeOpts,
             correctOptions: activeCorrectOpts,
-            correctWord: shuffleChoices ? activeCorrectOpts.join(' | ') : q.correctWord,
-            answerKey: shuffleChoices ? undefined : q.answerKey,
+            correctWord: hasKey
+              ? shuffleChoices
+                ? activeCorrectOpts.join(' | ')
+                : q.correctWord
+              : '',
+            answerKey: hasKey && !shuffleChoices ? q.answerKey : undefined,
+            hasAnswerKey: hasKey,
           },
           correctStreak: 0,
           mistakes: 0,
@@ -273,20 +291,30 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       const nextShuffle = !prev;
       setCards((prevCards) =>
         prevCards.map((c) => {
+          const hasKey =
+            c.question.hasAnswerKey !== false &&
+            (c.originalCorrectOptions.length > 0 || Boolean(c.originalCorrectWord.trim()));
           const nextOpts = nextShuffle
             ? shuffleArray(c.originalOptions.map((o) => cleanOptionText(o)), true)
             : c.originalOptions;
-          const nextCorrectOpts = nextShuffle
-            ? c.originalCorrectOptions.map((o) => cleanOptionText(o))
-            : c.originalCorrectOptions;
+          const nextCorrectOpts = hasKey
+            ? nextShuffle
+              ? c.originalCorrectOptions.map((o) => cleanOptionText(o))
+              : c.originalCorrectOptions
+            : [];
           return {
             ...c,
             question: {
               ...c.question,
               options: nextOpts,
               correctOptions: nextCorrectOpts,
-              correctWord: nextShuffle ? nextCorrectOpts.join(' | ') : c.originalCorrectWord,
-              answerKey: nextShuffle ? undefined : c.originalAnswerKey,
+              correctWord: hasKey
+                ? nextShuffle
+                  ? nextCorrectOpts.join(' | ')
+                  : c.originalCorrectWord
+                : '',
+              answerKey: hasKey && !nextShuffle ? c.originalAnswerKey : undefined,
+              hasAnswerKey: hasKey,
             },
           };
         })
@@ -416,10 +444,28 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
     advanceNextRef.current = advanceNext;
   }, [advanceNext]);
 
-  // Grade Rapid MCQ selection (supports both single-choice and multi-select)
+  // Grade Rapid MCQ selection (supports both single-choice, multi-select, and unanswered decks)
   const submitRapidSelection = useCallback(
     (chosenList: string[]) => {
       if (feedbackState !== 'idle' || !currentItem || !currentQ || chosenList.length === 0) return;
+
+      if (currentQ.hasAnswerKey === false) {
+        totalAttemptsRef.current += 1;
+        setTotalAttempts((prev) => prev + 1);
+        correctAttemptsRef.current += 1;
+        setCorrectAttempts((prev) => prev + 1);
+
+        const newStreak = Math.min(streakTarget, currentItem.correctStreak + 1);
+        setCards((prevCards) =>
+          prevCards.map((c) =>
+            c.id === currentItem.id
+              ? { ...c, correctStreak: newStreak, attempts: c.attempts + 1 }
+              : c
+          )
+        );
+        setFeedbackState('unanswered');
+        return;
+      }
 
       const isCorrect = isQuestionAnsweredCorrectly(
         chosenList,
@@ -678,7 +724,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
       }
 
       // RAPID RECALL MODE HOTKEYS
-      if (feedbackState === 'wrong') {
+      if (feedbackState === 'wrong' || feedbackState === 'unanswered') {
         if (e.code === 'Space' || e.key === 'Enter') {
           e.preventDefault();
           advanceNext();
@@ -1545,7 +1591,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
               content={currentQ.sentence}
               image={currentQ.image}
               imageCaption={currentQ.imageCaption}
-              className="text-base sm:text-lg md:text-xl font-bold text-slate-900 dark:text-white leading-relaxed"
+              className="text-base sm:text-lg md:text-xl font-medium sm:font-semibold text-slate-900 dark:text-white leading-[1.65]"
             />
           </div>
 
@@ -1554,12 +1600,14 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
             {currentQ.options &&
               currentQ.options.map((opt, idx) => {
                 const isSelected = selectedOpts.includes(opt);
-                const isTrueAnswer = isAnswerMatch(
-                  opt,
-                  currentQ.correctWord,
-                  shuffleChoices ? undefined : currentQ.answerKey,
-                  currentQ.correctOptions
-                );
+                const isTrueAnswer =
+                  currentQ.hasAnswerKey !== false &&
+                  isAnswerMatch(
+                    opt,
+                    currentQ.correctWord,
+                    shuffleChoices ? undefined : currentQ.answerKey,
+                    currentQ.correctOptions
+                  );
                 const letter = String.fromCharCode(65 + idx);
 
                 let optionStyle =
@@ -1568,6 +1616,10 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                 if (feedbackState === 'idle' && isSelected) {
                   optionStyle =
                     'bg-indigo-50 dark:bg-indigo-950/60 border-indigo-500 text-indigo-700 dark:text-indigo-200 font-bold shadow-sm';
+                } else if (feedbackState === 'unanswered') {
+                  optionStyle = isSelected
+                    ? 'bg-indigo-50 dark:bg-indigo-950/60 border-indigo-500 text-indigo-700 dark:text-indigo-200 font-bold shadow-sm'
+                    : 'opacity-60 border-slate-200 dark:border-slate-800 text-slate-500';
                 } else if (feedbackState === 'correct' && (isSelected || isTrueAnswer)) {
                   optionStyle =
                     'bg-emerald-500 text-white border-emerald-500 shadow-glow font-bold scale-[1.01]';
@@ -1577,7 +1629,7 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
                       'bg-rose-500 text-white border-rose-500 shadow-glow line-through opacity-90';
                   } else if (isTrueAnswer) {
                     optionStyle =
-                      'bg-emerald-500/20 text-emerald-400 border-2 border-emerald-500 shadow-glow-success font-black ring-2 ring-emerald-500/40 animate-pop-correct';
+                      'bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border-2 border-emerald-500 shadow-glow-success font-bold ring-2 ring-emerald-500/40 animate-pop-correct';
                   } else {
                     optionStyle =
                       'opacity-30 border-slate-200 dark:border-slate-800 text-slate-400';
@@ -1656,41 +1708,107 @@ export default function LearnMode({ words, onExit }: LearnModeProps) {
 
           {/* Multi-Select Confirm Button */}
           {feedbackState === 'idle' && currentQ.isMultiSelect && (
-            <button
-              type="button"
-              disabled={selectedOpts.length === 0}
-              onClick={handleConfirmMulti}
-              className={`mt-5 w-full py-3.5 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed ${
-                selectedOpts.length === currentQ.requiredCount
-                  ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-glow'
-                  : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700'
-              }`}
-            >
-              <Check className="w-4 h-4" />
-              <span>
-                Xác nhận đáp án ({selectedOpts.length}/{currentQ.requiredCount}) [Enter]
-              </span>
-            </button>
-          )}
-
-          {/* Wrong Feedback Anchor Action Bar */}
-          {feedbackState === 'wrong' && (
-            <div className="mt-6 p-4 rounded-2xl bg-rose-50/95 dark:bg-slate-900 border border-rose-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-3 animate-fade-in">
-              <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                <span>
-                  Nhìn kỹ nội dung đáp án màu <strong className="text-emerald-700 dark:text-emerald-400 font-bold">Xanh Lá</strong> ở trên! Câu này sẽ xuất hiện lại sau <strong>3 câu nữa</strong> {shuffleChoices ? '(với vị trí A–D đảo mới)' : ''}.
-                </span>
-              </div>
-
+            <MobileThumbBar className="mt-5">
               <button
                 type="button"
-                onClick={advanceNext}
-                className="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-glow transition-all cursor-pointer"
+                disabled={selectedOpts.length === 0}
+                onClick={handleConfirmMulti}
+                className={`w-full py-3.5 rounded-xl sm:rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.98] ${
+                  selectedOpts.length === currentQ.requiredCount
+                    ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-glow'
+                    : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700'
+                }`}
               >
-                <span>Đã Nhớ, Tiếp Tục [Space]</span>
-                <ArrowRight className="w-4 h-4" />
+                <Check className="w-4 h-4" />
+                <span>
+                  Xác nhận đáp án ({selectedOpts.length}/{currentQ.requiredCount}){' '}
+                  <span className="hidden sm:inline">[Enter]</span>
+                </span>
               </button>
+            </MobileThumbBar>
+          )}
+
+          {/* Wrong or Unanswered Feedback Explanation, AI Tutor & Sticky Thumb-Bar */}
+          {(feedbackState === 'wrong' || feedbackState === 'unanswered') && (
+            <div className="mt-6 space-y-4 animate-fade-in">
+              {feedbackState === 'wrong' && currentQ.explanation && (
+                <div className="p-4 sm:p-5 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/70">
+                  <p className="text-xs font-extrabold uppercase tracking-wider text-rose-600 dark:text-rose-400 flex items-center gap-1.5 mb-1.5">
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Giải thích chi tiết:</span>
+                  </p>
+                  <div className="text-sm sm:text-base font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
+                    <CodeQuestionRenderer
+                      content={formatExplanationForCurrentOptions(
+                        currentQ.explanation,
+                        currentQ.options,
+                        currentQ.correctWord,
+                        currentQ.answerKey,
+                        shuffleChoices,
+                        currentQ.correctOptions
+                      )}
+                      className="text-sm sm:text-base"
+                    />
+                  </div>
+                </div>
+              )}
+
+              {feedbackState === 'unanswered' && (
+                <div className="p-4 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-500/40 text-xs sm:text-sm font-medium text-indigo-800 dark:text-indigo-200">
+                  📌 Câu chưa có đáp án gốc — Đã ghi nhận lựa chọn của bạn. Bấm nút <strong>AI Gia sư</strong> bên dưới để suy luận đáp án đúng &amp; giảng bản chất bài.
+                </div>
+              )}
+
+              <AITutorButton
+                question={currentQ.sentence}
+                options={currentQ.options}
+                correctAnswer={currentQ.hasAnswerKey === false ? '' : currentQ.correctWord}
+                userAnswer={selectedOpts.join(' | ')}
+                subject={currentQ.subject}
+                topic={currentQ.topic}
+              />
+
+              <MobileThumbBar>
+                <div
+                  className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 ${
+                    feedbackState === 'wrong'
+                      ? 'bg-rose-50/95 dark:bg-slate-900 border-rose-200 dark:border-slate-700'
+                      : 'bg-indigo-50/90 dark:bg-slate-900 border-indigo-200 dark:border-slate-700'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
+                    <span
+                      className={`w-2 h-2 rounded-full shrink-0 ${
+                        feedbackState === 'wrong' ? 'bg-emerald-500 animate-ping' : 'bg-indigo-500'
+                      }`}
+                    />
+                    {feedbackState === 'wrong' ? (
+                      <span>
+                        Nhìn kỹ đáp án màu{' '}
+                        <strong className="text-emerald-700 dark:text-emerald-400 font-bold">
+                          Xanh Lá
+                        </strong>{' '}
+                        ở trên! Câu này sẽ quay lại sau <strong>3 câu nữa</strong>
+                        {shuffleChoices ? ' (đảo A–D mới)' : ''}.
+                      </span>
+                    ) : (
+                      <span>Đã xem xong lựa chọn &amp; giải thích — bấm tiếp tục để qua câu mới.</span>
+                    )}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={advanceNext}
+                    className="w-full sm:w-auto py-3 sm:py-2.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-glow transition-all cursor-pointer active:scale-[0.98] shrink-0"
+                  >
+                    <span>
+                      {feedbackState === 'wrong' ? 'Đã Nhớ, Tiếp Tục' : 'Tiếp Tục Câu Kế'}{' '}
+                      <span className="hidden sm:inline">[Space]</span>
+                    </span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </MobileThumbBar>
             </div>
           )}
         </div>

@@ -8,6 +8,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', 'Be Vietnam Pro', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['var(--font-mono)', 'JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
       colors: {
         primary: {
           DEFAULT: '#6366F1', // Cosmic Indigo
