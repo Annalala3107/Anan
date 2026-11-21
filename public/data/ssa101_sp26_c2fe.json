@@ -1,0 +1,802 @@
+[
+  {
+    "id": "ssa101_sp26_c2fe_q1",
+    "word": "SSA101 SP26 C2FE Q1: Employers value analytical thinkers because they...",
+    "question": "Employers value analytical thinkers because they:",
+    "options": [
+      "A. Work alone confidently and work with AI effectively",
+      "B. Use logical thinking to solve issues",
+      "C. Avoid workplace conflict and",
+      "D. Prefer routine tasks"
+    ],
+    "answer": "B",
+    "correctWord": "B. Use logical thinking to solve issues",
+    "explanation": "Answer: B. Analytical thinkers break down complex problems into manageable components and use logic, evidence, and systematic reasoning to arrive at sound solutions. Employers highly prize this ability to solve issues effectively in dynamic workplace environments. Option A describes independent work and AI fluency rather than the core of analytical thinking; option C is an incomplete distractor about conflict avoidance; and option D is incorrect because analytical thinkers thrive on problem-solving rather than repetitive routine tasks.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q2",
+    "word": "SSA101 SP26 C2FE Q2: Analytical thinking is commonly used when...",
+    "question": "Analytical thinking is commonly used when:",
+    "options": [
+      "A. Writing poetry only",
+      "B. Solving complex problems",
+      "C. Avoiding decisions",
+      "D. Relaxing"
+    ],
+    "answer": "B",
+    "correctWord": "B. Solving complex problems",
+    "explanation": "Answer: B. Analytical thinking is systematically applied when diagnosing, breaking down, and solving complex problems that require data evaluation, causal reasoning, and structured solutions. Writing poetry relies more on creative and emotional expression (A); avoiding decisions is passive avoidance rather than analytical thought (C); and relaxing is an unstructured state of rest (D).",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q3",
+    "word": "SSA101 SP26 C2FE Q3: Analytical thinking involves...",
+    "question": "Analytical thinking involves:",
+    "options": [
+      "A. Trusting intuition",
+      "B. Breaking a whole into parts",
+      "C. Following emotions",
+      "D. Avoiding structure"
+    ],
+    "answer": "B",
+    "correctWord": "B. Breaking a whole into parts",
+    "explanation": "Answer: B. At its fundamental core (derived from the Greek 'analusis' meaning a breaking up), analytical thinking is the cognitive process of breaking a complex concept, system, or problem into its smaller component parts to examine their relationships and functions. Intuition (A) and emotions (C) represent non-analytical, subjective cognitive modes, while analytical thinking relies on structure rather than avoiding it (D).",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q4",
+    "word": "SSA101 SP26 C2FE Q4: Amazon is significantly successful business based in analytical...",
+    "question": "Amazon is significantly successful business based in analytical thinking, which of the following is a sign of applying analytical thinking?",
+    "options": [
+      "A. Intuition",
+      "B. Hyper organization",
+      "C. Random processes",
+      "D. Individual memory"
+    ],
+    "answer": "B",
+    "correctWord": "B. Hyper organization",
+    "explanation": "Answer: B. In business and organizational management, analytical thinking manifests as meticulous structure, rigorous data-driven workflows, and 'hyper organization'—such as Amazon's data-driven operational metrics, fulfillment center logistics, and structured 6-page narrative memos. Intuition (A), random processes (C), and reliance on unverified individual memory (D) contradict the structured, empirical nature of analytical problem-solving.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q5",
+    "word": "SSA101 SP26 C2FE Q5: What is time management?...",
+    "question": "What is time management?",
+    "options": [
+      "A. Controlling others",
+      "B. Planning time use",
+      "C. Working randomly",
+      "D. Avoiding tasks and responsibilities"
+    ],
+    "answer": "B",
+    "correctWord": "B. Planning time use",
+    "explanation": "Answer: B. Time management is defined as the process of planning, organizing, and exercising conscious control over how much time is spent on specific activities to increase efficiency and productivity. Controlling others (A) pertains to interpersonal dominance or delegation; working randomly (C) is the antithesis of management; and avoiding tasks (D) describes procrastination or evasion.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q6",
+    "word": "SSA101 SP26 C2FE Q6: Which statement best reflects how time management in college...",
+    "question": "Which statement best reflects how time management in college differs from high school?",
+    "options": [
+      "A. College students have fewer deadlines",
+      "B. College schedules are more structured and require more efforts to follow",
+      "C. College requires students to independently plan and allocate time",
+      "D. Time management is less important in college"
+    ],
+    "answer": "C",
+    "correctWord": "C. College requires students to independently plan and allocate time",
+    "explanation": "Answer: C. Unlike high school, where daily schedules and pacing are tightly regulated by teachers, administrators, and parents, college offers substantial unstructured blocks of time with fewer daily contact hours. This shift requires students to autonomously plan, prioritize, and allocate their study and personal time. Options A and D are clearly false because college involves stringent deadlines and heightened accountability, while option B is incorrect because college schedules are less externally structured than high school schedules.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q7",
+    "word": "SSA101 SP26 C2FE Q7: Which of the following best represents an effective use of a...",
+    "question": "Which of the following best represents an effective use of a planner?",
+    "options": [
+      "A. Recording deadlines after they pass",
+      "B. Scheduling tasks without estimating duration",
+      "C. Planning tasks while considering priorities and time-on-task",
+      "D. Using it during exam weeks to cram knowledge in a short period of time"
+    ],
+    "answer": "C",
+    "correctWord": "C. Planning tasks while considering priorities and time-on-task",
+    "explanation": "Answer: C. An effective planner is used proactively to organize upcoming assignments, set clear task priorities, and realistically allocate estimated durations (time-on-task) for each activity. Recording past deadlines (A) renders a planner useless for time management; ignoring task duration (B) leads to overcommitting; and cramming only during exam weeks (D) reflects poor planning and counterproductive study habits.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q8",
+    "word": "SSA101 SP26 C2FE Q8: What is scheduling?...",
+    "question": "What is scheduling?",
+    "options": [
+      "A. Ignoring time",
+      "B. Planning activities",
+      "C. Avoiding tasks",
+      "D. Doing tasks randomly without any structure or order"
+    ],
+    "answer": "B",
+    "correctWord": "B. Planning activities",
+    "explanation": "Answer: B. Scheduling is the operational component of time management that involves planning, sequencing, and designating specific time slots for activities, commitments, and academic tasks. Ignoring time (A), avoiding tasks (C), and haphazardly executing random tasks (D) represent poor or absent scheduling.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q9",
+    "word": "SSA101 SP26 C2FE Q9: What tool helps prioritize tasks?...",
+    "question": "What tool helps prioritize tasks?",
+    "options": [
+      "A. Calendar only",
+      "B. Priority list",
+      "C. Social media",
+      "D. Email inbox"
+    ],
+    "answer": "B",
+    "correctWord": "B. Priority list",
+    "explanation": "Answer: B. A priority list (such as an ABC list or an Eisenhower Matrix) categorizes tasks based on importance and urgency, directly assisting learners in determining the order in which duties should be addressed. A calendar alone (A) tracks when events happen but does not inherently rank tasks by importance; social media (C) is a frequent source of distraction; and an email inbox (D) is a reactive communication channel rather than a prioritization tool.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q10",
+    "word": "SSA101 SP26 C2FE Q10: A student spends hours on low-priority tasks. What is the...",
+    "question": "A student spends hours on low-priority tasks. What is the issue?",
+    "options": [
+      "A. Good planning",
+      "B. High productivity",
+      "C. Poor prioritization",
+      "D. Effective scheduling"
+    ],
+    "answer": "C",
+    "correctWord": "C. Poor prioritization",
+    "explanation": "Answer: C. Spending hours on trivial, low-impact tasks while neglecting critical, high-value deadlines is a hallmark of poor prioritization (often known as 'productive procrastination'). This misallocation does not constitute good planning (A), genuine productivity (B), or effective scheduling (D).",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q11",
+    "word": "SSA101 SP26 C2FE Q11: What is “keyword searching”?...",
+    "question": "What is “keyword searching”?",
+    "options": [
+      "A. Writing essays",
+      "B. Reading books strategically",
+      "C. Using key terms",
+      "D. Copying text"
+    ],
+    "answer": "C",
+    "correctWord": "C. Using key terms",
+    "explanation": "Answer: C. Keyword searching is an information retrieval technique where a user inputs specific, significant words or concepts (key terms) into a search engine or library catalog to locate relevant sources and materials. Writing essays (A), strategic reading (B), and copying text (D) are distinct academic tasks that do not define keyword searching.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q12",
+    "word": "SSA101 SP26 C2FE Q12: What is information literacy?...",
+    "question": "What is information literacy?",
+    "options": [
+      "A. Reading and present articles professionally",
+      "B. Evaluating information",
+      "C. Memorizing data",
+      "D. Copying content"
+    ],
+    "answer": "B",
+    "correctWord": "B. Evaluating information",
+    "explanation": "Answer: B. Information literacy is a set of abilities enabling individuals to recognize when information is needed and to locate, evaluate, and effectively use the needed information. Evaluating information—assessing its authority, relevance, accuracy, and bias—is a foundational pillar of information literacy. Options A, C, and D do not capture the core definition, and copying content (D) violates academic integrity.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q13",
+    "word": "SSA101 SP26 C2FE Q13: A student finds an article that supports their argument but...",
+    "question": "A student finds an article that supports their argument but is written by an anonymous author on a personal blog. Based on Chapter 7, what should the student do first?",
+    "options": [
+      "A. Use the article because it supports the claim",
+      "B. Evaluate the author's credibility and evidence provided",
+      "C. Replace it with any academic article because journal articles are qualified",
+      "D. Ignore online sources entirely"
+    ],
+    "answer": "B",
+    "correctWord": "B. Evaluate the author's credibility and evidence provided",
+    "explanation": "Answer: B. In academic research (information literacy frameworks such as the CRAAP test), discovering a source that aligns with one's confirmation bias requires an immediate critical evaluation of author authority, evidence, and reliability before deciding whether it is acceptable to use. Accepting it uncritically (A) is confirmation bias; blindly grabbing any journal article without relevance checking (C) is careless; and dismissing all online sources (D) is unnecessary and impractical.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q14",
+    "word": "SSA101 SP26 C2FE Q14: Why is problem-solving linked with other thinking skills?...",
+    "question": "Why is problem-solving linked with other thinking skills?",
+    "options": [
+      "A. Problem-solving replaces analytical thinking and creative thinking",
+      "B. Effective problem-solving integrates multiple types of thinking",
+      "C. Creative thinking interferes with problem-solving",
+      "D. Critical thinking is unnecessary"
+    ],
+    "answer": "B",
+    "correctWord": "B. Effective problem-solving integrates multiple types of thinking",
+    "explanation": "Answer: B. Problem-solving is an overarching cognitive process that cannot function in isolation; it integrates analytical thinking (deconstructing causes and symptoms), creative thinking (generating alternative solutions), and critical thinking (evaluating feasibility and ethical impact). It does not replace them (A), creative thinking enhances rather than interferes with it (C), and critical thinking is essential (D).",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q15",
+    "word": "SSA101 SP26 C2FE Q15: Reviewing results after solving a problem helps students:...",
+    "question": "Reviewing results after solving a problem helps students:",
+    "options": [
+      "A. Assign blame to less responsible person",
+      "B. Improve future problem-solving efforts",
+      "C. Prove effort was sufficient to solve any problem",
+      "D. Avoid repeating tasks"
+    ],
+    "answer": "B",
+    "correctWord": "B. Improve future problem-solving efforts",
+    "explanation": "Answer: B. In problem-solving models (such as George Polya's 4-step framework), the final stage—evaluating and reflecting on the solution—allows learners to assess what worked, identify missteps, and build metacognitive problem-solving schemas to improve future performance. Assigning blame (A) is unproductive, proving effort (C) misses the focus on outcome and learning, and avoiding repeated tasks (D) is not the primary purpose of reflection.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q16",
+    "word": "SSA101 SP26 C2FE Q16: Which action best represents effective problem-solving?...",
+    "question": "Which action best represents effective problem-solving?",
+    "options": [
+      "A. Selecting the first solution that seems reasonable",
+      "B. Ignoring alternative approaches",
+      "C. Evaluating possible solutions before implementation",
+      "D. Avoiding feedback after solving the problem"
+    ],
+    "answer": "C",
+    "correctWord": "C. Evaluating possible solutions before implementation",
+    "explanation": "Answer: C. Effective problem solvers generate a range of potential solutions and evaluate them against criteria such as feasibility, cost, risk, and impact before committing to implementation. Jumping on the first idea (A) or ignoring alternatives (B) represents hasty heuristic decision-making, while avoiding feedback (D) prevents validation and continuous improvement.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q17",
+    "word": "SSA101 SP26 C2FE Q17: Why is flexibility important in problem-solving?...",
+    "question": "Why is flexibility important in problem-solving?",
+    "options": [
+      "A. Problems rarely change once identified",
+      "B. Initial solutions may not fully address the problem",
+      "C. Flexibility reduces accountability",
+      "D. It saves time in decision-making"
+    ],
+    "answer": "B",
+    "correctWord": "B. Initial solutions may not fully address the problem",
+    "explanation": "Answer: B. Complex real-world challenges frequently feature unexpected variables, incomplete data, or unintended consequences; hence, initial interventions may prove inadequate or fail. Flexibility enables problem-solvers to reframe hypotheses, adapt tactics, and pivot to alternative solutions. Option A is factually incorrect because problems evolve; option C is false because flexibility does not reduce responsibility; and option D is inaccurate as flexibility focuses on efficacy rather than simply rushing decisions.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q18",
+    "word": "SSA101 SP26 C2FE Q18: What is active listening?...",
+    "question": "What is active listening?",
+    "options": [
+      "A. Hearing only",
+      "B. Engaging fully",
+      "C. Interrupting to clarify if needed",
+      "D. Ignoring speaker"
+    ],
+    "answer": "B",
+    "correctWord": "B. Engaging fully",
+    "explanation": "Answer: B. Active listening involves fully concentrating, comprehending, processing, and responding thoughtfully to the speaker, both verbally and nonverbally. Hearing only (A) is mere physiological perception; frequent interrupting (C) disrupts the speaker's message and reflects poor listening etiquette; and ignoring the speaker (D) is non-listening.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q19",
+    "word": "SSA101 SP26 C2FE Q19: What is nonverbal communication?...",
+    "question": "What is nonverbal communication?",
+    "options": [
+      "A. Spoken words",
+      "B. Body language",
+      "C. Written text",
+      "D. Grammar rules"
+    ],
+    "answer": "B",
+    "correctWord": "B. Body language",
+    "explanation": "Answer: B. Nonverbal communication encompasses the transmission of messages through signals other than spoken or written language, including body language, facial expressions, gestures, posture, eye contact, and paralinguistics (tone, pitch). Spoken words (A), written text (C), and grammar rules (D) represent verbal and textual linguistic communication.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q20",
+    "word": "SSA101 SP26 C2FE Q20: What is clarity in communication?...",
+    "question": "What is clarity in communication?",
+    "options": [
+      "A. Long and complex sentences",
+      "B. Beautiful and eloquent language",
+      "C. Easy understanding",
+      "D. Repetition and emphasizing"
+    ],
+    "answer": "C",
+    "correctWord": "C. Easy understanding",
+    "explanation": "Answer: C. Clarity in communication refers to delivering a message concisely, coherently, and directly so that the recipient can easily understand the intended meaning without ambiguity or confusion. Overly complex sentences (A) obscure meaning, ornate language (B) may impede comprehension, and excessive repetition (D) can cause redundancy without guaranteeing clarity.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q21",
+    "word": "SSA101 SP26 C2FE Q21: Which of the following best reflects the relationship between...",
+    "question": "Which of the following best reflects the relationship between digital literacy and human agency?",
+    "options": [
+      "A. Digital literacy reduces personal responsibility",
+      "B. Algorithms fully determine human choices and thinking process",
+      "C. Digital literacy helps individuals navigate algorithmic influence",
+      "D. Human agency is irrelevant in digital environments"
+    ],
+    "answer": "C",
+    "correctWord": "C. Digital literacy helps individuals navigate algorithmic influence",
+    "explanation": "Answer: C. Digital literacy equips individuals with critical awareness of how algorithms, recommendation engines, and digital platforms operate, empowering them to preserve their human agency, evaluate digital content critically, and consciously navigate algorithmic influence. It increases rather than reduces personal responsibility (A), algorithms influence but do not completely eliminate choice (B), and human agency remains vital in ethical digital engagement (D).",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q22",
+    "word": "SSA101 SP26 C2FE Q22: Which term describes AI systems producing incorrect or...",
+    "question": "Which term describes AI systems producing incorrect or fabricated information?",
+    "options": [
+      "A. Automation",
+      "B. Optimization",
+      "C. Hallucination",
+      "D. Simulation"
+    ],
+    "answer": "C",
+    "correctWord": "C. Hallucination",
+    "explanation": "Answer: C. In artificial intelligence terminology, 'hallucination' refers to a phenomenon where a generative model outputs plausible-sounding but factually incorrect, ungrounded, or fabricated claims as though they were genuine facts. Automation (A) is running processes automatically, optimization (B) is maximizing efficiency, and simulation (D) is modeling a real-world process.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q23",
+    "word": "SSA101 SP26 C2FE Q23: According to the American Library Association (2011)...",
+    "question": "According to the American Library Association (2011), digital literacy primarily refers to the ability to:",
+    "options": [
+      "A. Program artificial intelligence systems to get the most productive information system",
+      "B. Use information and communication technologies to find, evaluate, create, and communicate information",
+      "C. Detect AI-generated content",
+      "D. Replace human judgment with algorithms"
+    ],
+    "answer": "B",
+    "correctWord": "B. Use information and communication technologies to find, evaluate, create, and communicate information",
+    "explanation": "Answer: B. The landmark definition published by the American Library Association (ALA, 2011) defines digital literacy as 'the ability to use information and communication technologies to find, evaluate, create, and communicate information, requiring both cognitive and technical skills.' Programming AI (A) is advanced software engineering, AI detection (C) is a narrow contemporary subskill, and replacing human judgment with algorithms (D) violates human-centered digital ethics.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q24",
+    "word": "SSA101 SP26 C2FE Q24: Which AI-supported strategy best aligns with improving...",
+    "question": "Which AI-supported strategy best aligns with improving memory storage?",
+    "options": [
+      "A. Asking AI to summarize a chapter and skipping the reading",
+      "B. Using AI to plan spaced practice after understanding the material",
+      "C. Letting AI answer practice questions and remember the answer list",
+      "D. Relying on AI-generated notes only"
+    ],
+    "answer": "B",
+    "correctWord": "B. Using AI to plan spaced practice after understanding the material",
+    "explanation": "Answer: B. Long-term memory encoding and retrieval strength improve significantly through spaced repetition and retrieval practice (the spacing effect and Ebbinghaus forgetting curve). Using AI as an organizational tool to schedule spaced review intervals after initial deep comprehension enhances memory retention without shortcutting active cognitive processing. Skipping reading (A), memorizing raw answer lists (C), or passively relying on AI notes (D) circumvent the deep mental effort necessary for genuine memory consolidation.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q25",
+    "word": "SSA101 SP26 C2FE Q25: Which of the following principle could best guides ethical...",
+    "question": "Which of the following principle could best guides ethical student use of AI?",
+    "options": [
+      "A. Use AI whenever it saves time and when you are too busy",
+      "B. Use AI to support learning goals, not replace them",
+      "C. Avoid AI entirely in higher education because it causes more harm than benefit",
+      "D. Use AI only for graded tasks"
+    ],
+    "answer": "B",
+    "correctWord": "B. Use AI to support learning goals, not replace them",
+    "explanation": "Answer: B. The overarching ethical guideline for academic AI use is to utilize AI tools as cognitive scaffolds, tutors, or feedback generators that support and enrich educational objectives, rather than letting AI complete tasks in place of actual learning and personal cognitive effort. Using AI as an expedient shortcut (A) or strictly on graded assignments to bypass effort (D) constitutes academic dishonesty, while blanket avoidance (C) ignores the legitimate educational benefits of digital literacy.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q26",
+    "word": "SSA101 SP26 C2FE Q26: Why is using AI to complete assignments unethical?...",
+    "question": "Why is using AI to complete assignments unethical?",
+    "options": [
+      "A. It takes too much time",
+      "B. It replaces the intended learning process",
+      "C. It requires technical skills",
+      "D. It reduces collaboration and social learning"
+    ],
+    "answer": "B",
+    "correctWord": "B. It replaces the intended learning process",
+    "explanation": "Answer: B. Using AI to complete assignments directly circumvents and replaces the active learning, critical thinking, and intellectual development that academic coursework is intended to foster. Submitting AI-generated work as one's own also constitutes academic dishonesty.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q27",
+    "word": "SSA101 SP26 C2FE Q27: A student skips classes but studies alone. What is the likely...",
+    "question": "A student skips classes but studies alone. What is the likely issue?",
+    "options": [
+      "A. Too much collaboration",
+      "B. Low behavioral engagement",
+      "C. Overconfidence",
+      "D. Excessive motivation"
+    ],
+    "answer": "B",
+    "correctWord": "B. Low behavioral engagement",
+    "explanation": "Answer: B. Behavioral engagement encompasses active participation in academic environments, including regularly attending classes and completing assigned work. Skipping lectures while attempting to study independently reflects low behavioral engagement.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q28",
+    "word": "SSA101 SP26 C2FE Q28: A student reads the syllabus carefully and plans ahead. This...",
+    "question": "A student reads the syllabus carefully and plans ahead. This shows:",
+    "options": [
+      "A. Passive learning",
+      "B. Avoidance behavior",
+      "C. Self-management",
+      "D. Dependence on teachers"
+    ],
+    "answer": "C",
+    "correctWord": "C. Self-management",
+    "explanation": "Answer: C. Carefully reading the course syllabus, noting key deadlines, and scheduling study activities ahead of time are quintessential signs of proactive academic self-management and self-regulation.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q29",
+    "word": "SSA101 SP26 C2FE Q29: Which term describes taking responsibility for your own learn...",
+    "question": "Which term describes taking responsibility for your own learning?",
+    "options": [
+      "A. Passive learning",
+      "B. Academic ownership",
+      "C. External motivation",
+      "D. Teacher-led learning systems"
+    ],
+    "answer": "B",
+    "correctWord": "B. Academic ownership",
+    "explanation": "Answer: B. Academic ownership refers to learners taking active responsibility, personal agency, and initiative for their own educational growth, study habits, and outcomes.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q30",
+    "word": "SSA101 SP26 C2FE Q30: Which question reflects a metacognitive approach to learning...",
+    "question": "Which question reflects a metacognitive approach to learning?",
+    "options": [
+      "A. \"How many pages do I need to read?\"",
+      "B. \"What strategy am I using, and is it effective?\"",
+      "C. \"Will this be on the exam and how can I have support?\"",
+      "D. \"How long is this assignment?\""
+    ],
+    "answer": "B",
+    "correctWord": "B. \"What strategy am I using, and is it effective?\"",
+    "explanation": "Answer: B. Metacognition involves monitoring, evaluating, and regulating one's own thought and learning processes. Asking what strategy one is using and evaluating its efficacy is a direct example of metacognitive self-regulation.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q31",
+    "word": "SSA101 SP26 C2FE Q31: Metacognition is best defined as...",
+    "question": "Metacognition is best defined as",
+    "options": [
+      "A. Thinking critically about academic content",
+      "B. Awareness and regulation of one's own thinking and learning",
+      "C. Memorizing information efficiently",
+      "D. Monitoring other students' performance"
+    ],
+    "answer": "B",
+    "correctWord": "B. Awareness and regulation of one's own thinking and learning",
+    "explanation": "Answer: B. Metacognition is scientifically defined as higher-order cognitive processing that entails an individual's conscious awareness, monitoring, and regulation of their own thinking and learning strategies.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q32",
+    "word": "SSA101 SP26 C2FE Q32: A student studies extensively but keeps failing quizzes. From...",
+    "question": "A student studies extensively but keeps failing quizzes. From a metacognitive perspective, what is the most likely issue?",
+    "options": [
+      "A. Lack of motivation",
+      "B. Poor time management",
+      "C. Ineffective study strategies not being evaluated",
+      "D. Insufficient intelligence"
+    ],
+    "answer": "C",
+    "correctWord": "C. Ineffective study strategies not being evaluated",
+    "explanation": "Answer: C. From a metacognitive viewpoint, devoting ample time to study without achieving positive results indicates that the student is relying on passive or ineffective methods (such as passive re-reading) without evaluating their true comprehension or adjusting their approach.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q33",
+    "word": "SSA101 SP26 C2FE Q33: Mark Twain compared idea generation to:...",
+    "question": "Mark Twain compared idea generation to:",
+    "options": [
+      "A. A journey",
+      "B. A kaleidoscope",
+      "C. A puzzle",
+      "D. A dream-making machine"
+    ],
+    "answer": "B",
+    "correctWord": "B. A kaleidoscope",
+    "explanation": "Answer: B. Mark Twain famously observed that ideas are like pieces in a mental kaleidoscope: we take existing, familiar concepts and turn them into fresh, curious patterns and combinations.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q34",
+    "word": "SSA101 SP26 C2FE Q34: Which behavior most strongly limits creative thinking?...",
+    "question": "Which behavior most strongly limits creative thinking?",
+    "options": [
+      "A. Questioning assumptions",
+      "B. Fear of making mistakes",
+      "C. Generating multiple solutions",
+      "D. Seeking alternative perspectives"
+    ],
+    "answer": "B",
+    "correctWord": "B. Fear of making mistakes",
+    "explanation": "Answer: B. Creative thinking requires taking cognitive risks, experimenting, and exploring uncharted possibilities. The fear of making mistakes induces risk aversion and conformity, which severely stifles creativity.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q35",
+    "word": "SSA101 SP26 C2FE Q35: Tracking ideas enhances creativity because it:...",
+    "question": "Tracking ideas enhances creativity because it:",
+    "options": [
+      "A. Eliminates imagination",
+      "B. Preserves inspiration",
+      "C. Avoids reflection and conclusion",
+      "D. Reduces novelty"
+    ],
+    "answer": "B",
+    "correctWord": "B. Preserves inspiration",
+    "explanation": "Answer: B. Insights, fleeting thoughts, and creative inspirations can quickly be forgotten if not recorded. Tracking and documenting ideas preserves them so they can be revisited, incubated, and further developed later.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q36",
+    "word": "SSA101 SP26 C2FE Q36: According to the chapter, creativity is:...",
+    "question": "According to the chapter, creativity is:",
+    "options": [
+      "A. A talent only some people are born with",
+      "B. Limited to artistic disciplines",
+      "C. A skill that can be developed and practiced",
+      "D. Incompatible with analytical thinking"
+    ],
+    "answer": "C",
+    "correctWord": "C. A skill that can be developed and practiced",
+    "explanation": "Answer: C. In academic success studies, creativity is understood not as an innate, unchangeable trait restricted to fine arts, but as a practical cognitive skill that anyone can cultivate, practice, and refine across diverse fields.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q37",
+    "word": "SSA101 SP26 C2FE Q37: What is the main purpose of self-directed learning in onli...",
+    "question": "What is the main purpose of self-directed learning in online education?",
+    "options": [
+      "A. To reduce instructor workload",
+      "B. To help students take control of their learning",
+      "C. To eliminate group work",
+      "D. To replace assessments with self-study activities"
+    ],
+    "answer": "B",
+    "correctWord": "B. To help students take control of their learning",
+    "explanation": "Answer: B. Self-directed learning is intended to empower students with autonomy and personal agency, allowing them to take control of their study schedules, pace, resources, and learning outcomes in flexible online environments.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q38",
+    "word": "SSA101 SP26 C2FE Q38: Which Bloom's level requires learners to break information ...",
+    "question": "Which Bloom's level requires learners to break information into parts?",
+    "options": [
+      "A. Understand",
+      "B. Apply",
+      "C. Analyze",
+      "D. Remember"
+    ],
+    "answer": "C",
+    "correctWord": "C. Analyze",
+    "explanation": "Answer: C. In Bloom's Revised Taxonomy, 'Analyze' involves dissecting complex concepts or structures into their component parts to examine relationships, distinguish causes from effects, and understand organizational structure.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q39",
+    "word": "SSA101 SP26 C2FE Q39: What is the key advantage of short, regular study sessions?...",
+    "question": "What is the key advantage of short, regular study sessions?",
+    "options": [
+      "A. Less effort is required",
+      "B. Information is memorized faster",
+      "C. Focus and retention are improved",
+      "D. Assignments become easier and more motivational"
+    ],
+    "answer": "C",
+    "correctWord": "C. Focus and retention are improved",
+    "explanation": "Answer: C. Employing distributed practice (spacing study sessions over time) optimizes cognitive load, maintains high concentration levels during each brief interval, and substantially improves long-term memory retention compared to cramming.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q40",
+    "word": "SSA101 SP26 C2FE Q40: Which type of memory is primarily responsible for temporari...",
+    "question": "Which type of memory is primarily responsible for temporarily holding information while processing it?",
+    "options": [
+      "A. Long-term memory",
+      "B. Sensory memory",
+      "C. Working memory",
+      "D. Episodic memory"
+    ],
+    "answer": "C",
+    "correctWord": "C. Working memory",
+    "explanation": "Answer: C. Working memory is the active cognitive system responsible for temporarily holding and manipulating information necessary for complex cognitive tasks such as reasoning, comprehension, and learning.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q41",
+    "word": "SSA101 SP26 C2FE Q41: What is encoding in memory?...",
+    "question": "What is encoding in memory?",
+    "options": [
+      "A. Forgetting information",
+      "B. Converting information for storage in memory",
+      "C. Repeating words and image",
+      "D. Skipping details"
+    ],
+    "answer": "B",
+    "correctWord": "B. Converting information for storage in memory",
+    "explanation": "Answer: B. In human memory systems, encoding is the initial process of translating sensory input and perceptions into mental representations or neural codes that can be stored and later retrieved.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q42",
+    "word": "SSA101 SP26 C2FE Q42: What is the primary benefit of reviewing graded tests?...",
+    "question": "What is the primary benefit of reviewing graded tests?",
+    "options": [
+      "A. Improving GPA immediately",
+      "B. Identifying grading errors",
+      "C. Strengthening understanding and memory",
+      "D. Reducing study time and have more fun if practicing with friends"
+    ],
+    "answer": "C",
+    "correctWord": "C. Strengthening understanding and memory",
+    "explanation": "Answer: C. Analyzing returned tests allows learners to pinpoint specific misconceptions, analyze why errors occurred, close knowledge gaps, and solidify conceptual understanding and memory for future learning.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q43",
+    "word": "SSA101 SP26 C2FE Q43: According to the International Society of Academic Integrity...",
+    "question": "According to the International Society of Academic Integrity (2021), academic integrity is best defined as:",
+    "options": [
+      "A. Compliance with university assessment rules only",
+      "B. A promise to uphold honesty, fairness, respect, responsibility, and courage",
+      "C. The ability to avoid plagiarism through software tools and institutional policies",
+      "D. A system of penalties designed to discourage cheating and misconduct"
+    ],
+    "answer": "B",
+    "correctWord": "B. A promise to uphold honesty, fairness, respect, responsibility, and courage",
+    "explanation": "Answer: B. The International Center/Society for Academic Integrity (ICAI) defines academic integrity through a commitment to fundamental moral values—honesty, trust, fairness, respect, responsibility, and courage—rather than mere rule-following or penalty avoidance.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q44",
+    "word": "SSA101 SP26 C2FE Q44: Why are AI detection tools controversial in academic setting...",
+    "question": "Why are AI detection tools controversial in academic settings?",
+    "options": [
+      "A. They could replace teachers in learning any knowledge",
+      "B. They are difficult to install",
+      "C. They are rarely used productively",
+      "D. They may produce inaccurate results and false accusations"
+    ],
+    "answer": "D",
+    "correctWord": "D. They may produce inaccurate results and false accusations",
+    "explanation": "Answer: D. AI detectors are widely debated and controversial because of their known unreliability, significant rate of false positives (falsely accusing honest students, especially non-native speakers), and false negatives.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q45",
+    "word": "SSA101 SP26 C2FE Q45: Which institutional response best aligns with the ethical a...",
+    "question": "Which institutional response best aligns with the ethical approach advocated in the text?",
+    "options": [
+      "A. Developing clear AI usage policies and promoting transparency",
+      "B. Banning all AI tools immediately because AI will destroy students' independent thinking",
+      "C. Ignoring AI-related misconduct",
+      "D. Replacing instructors with AI graders"
+    ],
+    "answer": "A",
+    "correctWord": "A. Developing clear AI usage policies and promoting transparency",
+    "explanation": "Answer: A. Contemporary academic consensus emphasizes establishing clear institutional AI policies, setting transparent boundaries, and guiding ethical usage rather than attempting futile blanket bans or ignoring the emerging technology.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q46",
+    "word": "SSA101 SP26 C2FE Q46: Why are universities described as being \"in the process\" o...",
+    "question": "Why are universities described as being \"in the process\" of developing AI policies?",
+    "options": [
+      "A. AI adoption is declining",
+      "B. AI is developing faster than ethical guidelines can be established",
+      "C. Faculty resistance has ended and AI become a popular tool accepted everywhere",
+      "D. Students no longer use AI"
+    ],
+    "answer": "B",
+    "correctWord": "B. AI is developing faster than ethical guidelines can be established",
+    "explanation": "Answer: B. Universities find themselves continually adjusting their guidelines because artificial intelligence capabilities and applications are advancing at a rapid rate that outpaces traditional academic policy-making cycles.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q47",
+    "word": "SSA101 SP26 C2FE Q47: Critical thinkers should:...",
+    "question": "Critical thinkers should:",
+    "options": [
+      "A. Accept everything",
+      "B. Question everything",
+      "C. Avoid research",
+      "D. Being smart in all situations"
+    ],
+    "answer": "B",
+    "correctWord": "B. Question everything",
+    "explanation": "Answer: B. Healthy skepticism and inquiry are fundamental to critical thinking; critical thinkers actively question information, underlying assumptions, and evidence rather than taking assertions at face value.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q48",
+    "word": "SSA101 SP26 C2FE Q48: Failing to validate sources results in:...",
+    "question": "Failing to validate sources results in:",
+    "options": [
+      "A. Strong arguments",
+      "B. Weak reasoning",
+      "C. Clear thinking",
+      "D. Improved logic"
+    ],
+    "answer": "B",
+    "correctWord": "B. Weak reasoning",
+    "explanation": "Answer: B. In critical inquiry and research, building an argument upon unvalidated, inaccurate, or biased sources compromises the evidentiary base, resulting in weak reasoning and invalid conclusions.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q49",
+    "word": "SSA101 SP26 C2FE Q49: Recognizing personal bias is part of:...",
+    "question": "Recognizing personal bias is part of:",
+    "options": [
+      "A. Problem-solving",
+      "B. Critical thinking",
+      "C. Information literacy",
+      "D. Intuition"
+    ],
+    "answer": "B",
+    "correctWord": "B. Critical thinking",
+    "explanation": "Answer: B. Critical thinking requires self-reflection and metacognitive awareness, specifically the ability to identify, examine, and mitigate one's own personal biases and preconceived notions.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  },
+  {
+    "id": "ssa101_sp26_c2fe_q50",
+    "word": "SSA101 SP26 C2FE Q50: Revisiting a resolved issue when conditions change is:...",
+    "question": "Revisiting a resolved issue when conditions change is:",
+    "options": [
+      "A. Weakness",
+      "B. Critical awareness",
+      "C. Confusion",
+      "D. Creativity"
+    ],
+    "answer": "B",
+    "correctWord": "B. Critical awareness",
+    "explanation": "Answer: B. Being willing to re-examine previously resolved matters when context, evidence, or environmental conditions change demonstrates critical awareness, intellectual adaptability, and sound judgment.",
+    "subject": "SSA101",
+    "topic": "SP26 - C2FE"
+  }
+]

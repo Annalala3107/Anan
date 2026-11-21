@@ -1,0 +1,802 @@
+[
+  {
+    "id": "ssa101_sp26_c1fe_q1",
+    "word": "SSA101 SP26 C1FE Q1: Problem-solving is best described as...",
+    "question": "Problem-solving is best described as:",
+    "options": [
+      "A. Finding the quickest answer to a difficulty",
+      "B. Applying a structured process to address challenges",
+      "C. Relying on intuition and experience to address normal issues",
+      "D. Avoiding situations that seem complex"
+    ],
+    "answer": "B",
+    "correctWord": "B. Applying a structured process to address challenges",
+    "explanation": "Answer: B. Applying a structured process to address challenges. Effective problem-solving is not merely reacting impulsively or finding a hasty shortcut; rather, it is a systematic, structured process that involves defining the problem, analyzing causes, generating alternatives, selecting and implementing a solution, and evaluating results.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q2",
+    "word": "SSA101 SP26 C1FE Q2: Why should we review outcomes after implementing a solution?...",
+    "question": "Why should we review outcomes after implementing a solution?",
+    "options": [
+      "A. To assign blame",
+      "B. To determine whether adjustments are needed",
+      "C. To prove effort was sufficient and possible",
+      "D. To avoid repeating the process"
+    ],
+    "answer": "B",
+    "correctWord": "B. To determine whether adjustments are needed",
+    "explanation": "Answer: B. To determine whether adjustments are needed. The final stage of problem-solving involves evaluating the implemented solution against intended goals to determine whether it resolved the issue or whether further modifications and adjustments are required.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q3",
+    "word": "SSA101 SP26 C1FE Q3: Which step typically comes first in effective problem-solving?...",
+    "question": "Which step typically comes first in effective problem-solving?",
+    "options": [
+      "A. Selecting a solution",
+      "B. Clearly defining the problem",
+      "C. Evaluating outcomes",
+      "D. Implementing a plan immediately"
+    ],
+    "answer": "B",
+    "correctWord": "B. Clearly defining the problem",
+    "explanation": "Answer: B. Clearly defining the problem. Effective problem-solving models (such as IDEAL or the 6-step problem-solving cycle) always begin by clearly understanding and defining the problem and its root causes before moving to brainstorming or selecting solutions.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q4",
+    "word": "SSA101 SP26 C1FE Q4: Why does Chapter 7 emphasize defining the problem accurately?...",
+    "question": "Why does Chapter 7 emphasize defining the problem accurately?",
+    "options": [
+      "A. It reduces the number of possible solutions",
+      "B. Incorrect problem definition leads to ineffective solutions",
+      "C. It saves time in implementation",
+      "D. It limits creative thinking"
+    ],
+    "answer": "B",
+    "correctWord": "B. Incorrect problem definition leads to ineffective solutions",
+    "explanation": "Answer: B. Incorrect problem definition leads to ineffective solutions. If a problem is defined incorrectly, efforts will target surface symptoms rather than the root cause, resulting in flawed, wasted, or counterproductive solutions.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q5",
+    "word": "SSA101 SP26 C1FE Q5: Which practice best demonstrates responsible use of information?...",
+    "question": "Which practice best demonstrates responsible use of information?",
+    "options": [
+      "A. Copying text when sources are cited without any form of paraphrasing",
+      "B. Paraphrasing without attribution",
+      "C. Integrating sources while acknowledging original authors",
+      "D. Using only one strong source"
+    ],
+    "answer": "C",
+    "correctWord": "C. Integrating sources while acknowledging original authors",
+    "explanation": "Answer: C. Integrating sources while acknowledging original authors. Responsible academic research and information literacy require synthesizing ideas from diverse sources while maintaining academic integrity by properly citing and attributing credit to original authors.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q6",
+    "word": "SSA101 SP26 C1FE Q6: Which question best helps evaluate the credibility of a source?...",
+    "question": "Which question best helps evaluate the credibility of a source?",
+    "options": [
+      "A. Is the information easy to read and interpret?",
+      "B. Does the author have relevant expertise?",
+      "C. Is the source visually appealing?",
+      "D. Does the source confirm personal opinions?"
+    ],
+    "answer": "B",
+    "correctWord": "B. Does the author have relevant expertise?",
+    "explanation": "Answer: B. Does the author have relevant expertise? In evaluating source credibility (such as under the CRAAP test criteria), the author's authority, credentials, and subject-matter expertise are critical indicators of trustworthiness and academic validity.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q7",
+    "word": "SSA101 SP26 C1FE Q7: Why is relying solely on search engine rankings problematic?...",
+    "question": "Why is relying solely on search engine rankings problematic?",
+    "options": [
+      "A. High-ranking results are always outdated",
+      "B. Rankings prioritize academic sources only",
+      "C. Popularity does not equal accuracy or reliability",
+      "D. Search engines limit access to peer-reviewed material"
+    ],
+    "answer": "C",
+    "correctWord": "C. Popularity does not equal accuracy or reliability",
+    "explanation": "Answer: C. Popularity does not equal accuracy or reliability. Search engine algorithms prioritize web traffic, keyword optimization, and popularity, which do not correlate directly with factual accuracy, peer-reviewed rigor, or intellectual reliability.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q8",
+    "word": "SSA101 SP26 C1FE Q8: Why is the process in analytical thinking important?...",
+    "question": "Why is the process in analytical thinking important?",
+    "options": [
+      "A. Because outcomes matter more than understanding",
+      "B. Because understanding how parts connect leads to better conclusions",
+      "C. Because analytical thinking is slower than other thinking types",
+      "D. Because it reduces creativity"
+    ],
+    "answer": "B",
+    "correctWord": "B. Because understanding how parts connect leads to better conclusions",
+    "explanation": "Answer: B. Because understanding how parts connect leads to better conclusions. Analytical thinking focuses on deconstructing complex issues into their component parts; examining the relationships and patterns between these parts leads to deeper comprehension and more sound conclusions.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q9",
+    "word": "SSA101 SP26 C1FE Q9: Analytical thinking is especially useful when students need to:...",
+    "question": "Analytical thinking is especially useful when students need to:",
+    "options": [
+      "A. Memorize large amounts of information",
+      "B. Understand complex systems or arguments",
+      "C. Express personal opinions creatively",
+      "D. Work under strict time pressure"
+    ],
+    "answer": "B",
+    "correctWord": "B. Understand complex systems or arguments",
+    "explanation": "Answer: B. Understand complex systems or arguments. Analytical thinking allows students to dissect complex, multifaceted structures, logical arguments, and interlinked systems to discern cause-and-effect relationships.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q10",
+    "word": "SSA101 SP26 C1FE Q10: Which of the following is a key step in analytical thinking?...",
+    "question": "Which of the following is a key step in analytical thinking?",
+    "options": [
+      "A. Accepting information at face value and let it be there",
+      "B. Separating facts from assumptions before drawing conclusions",
+      "C. Generating as many ideas as possible regardless the quality of each idea",
+      "D. Prioritizing emotional responses"
+    ],
+    "answer": "B",
+    "correctWord": "B. Separating facts from assumptions before drawing conclusions",
+    "explanation": "Answer: B. Separating facts from assumptions before drawing conclusions. A core pillar of analytical reasoning is distinguishing verifiable empirical facts and evidence from unproven assumptions, personal biases, or speculative beliefs.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q11",
+    "word": "SSA101 SP26 C1FE Q11: According to Chapter 7, analytical thinking primarily involves:...",
+    "question": "According to Chapter 7, analytical thinking primarily involves:",
+    "options": [
+      "A. Generating original ideas through imagination and brainstorming techniques",
+      "B. Breaking information into components to understand relationships and patterns",
+      "C. Evaluating arguments based on personal beliefs and values",
+      "D. Solving problems through trial and error without structured steps"
+    ],
+    "answer": "B",
+    "correctWord": "B. Breaking information into components to understand relationships and patterns",
+    "explanation": "Answer: B. Breaking information into components to understand relationships and patterns. Analytical thinking is defined as the cognitive skill of dissecting complex problems or data into fundamental components to reveal relationships, organizational structures, and underlying patterns.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q12",
+    "word": "SSA101 SP26 C1FE Q12: Goal setting is most effective when goals are:...",
+    "question": "Goal setting is most effective when goals are:",
+    "options": [
+      "A. Ambitious and open-ended",
+      "B. Flexible and undefined",
+      "C. Specific, realistic, and measurable",
+      "D. Focused only on long-term outcomes"
+    ],
+    "answer": "C",
+    "correctWord": "C. Specific, realistic, and measurable",
+    "explanation": "Answer: C. Specific, realistic, and measurable. Based on standard goal-setting frameworks (e.g., SMART criteria), goals provide the best motivation, clarity, and tracking when they are specific, realistic (achievable), and measurable.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q13",
+    "word": "SSA101 SP26 C1FE Q13: Procrastination is described as:...",
+    "question": "Procrastination is described as:",
+    "options": [
+      "A. A harmless habit with minimal consequences that students usually have",
+      "B. A delay that can trigger multiple academic difficulties",
+      "C. A strategy for managing stress effectively",
+      "D. A result of excessive motivation"
+    ],
+    "answer": "B",
+    "correctWord": "B. A delay that can trigger multiple academic difficulties",
+    "explanation": "Answer: B. A delay that can trigger multiple academic difficulties. Procrastination is not a harmless delay; it triggers a cascade of academic challenges, including cramming, elevated anxiety, compromised work quality, and missed deadlines.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q14",
+    "word": "SSA101 SP26 C1FE Q14: Which statement best reflects how time management in college...",
+    "question": "Which statement best reflects how time management in college differs from high school?",
+    "options": [
+      "A. College students have fewer deadlines",
+      "B. College schedules are more structured and require more efforts to follow",
+      "C. College requires students to independently plan and allocate time",
+      "D. Time management is less important in college"
+    ],
+    "answer": "C",
+    "correctWord": "C. College requires students to independently plan and allocate time",
+    "explanation": "Answer: C. College requires students to independently plan and allocate time. Unlike the tightly supervised and scheduled environment of high school, college grants students substantial discretionary time, placing full responsibility on the individual to prioritize, budget, and manage their time independently.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q15",
+    "word": "SSA101 SP26 C1FE Q15: Which concept focuses on identifying what tasks truly matter?...",
+    "question": "Which concept focuses on identifying what tasks truly matter?",
+    "options": [
+      "A. Multitasking",
+      "B. Time blocking",
+      "C. Prioritization",
+      "D. Delegation"
+    ],
+    "answer": "C",
+    "correctWord": "C. Prioritization",
+    "explanation": "Answer: C. Prioritization. Prioritization is the systematic practice of evaluating and ordering responsibilities according to their importance and urgency, allowing individuals to concentrate on the tasks that truly matter most.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q16",
+    "word": "SSA101 SP26 C1FE Q16: Why is multitasking a bad habit for learning?...",
+    "question": "Why is multitasking a bad habit for learning?",
+    "options": [
+      "A. It increases creativity in complex tasks",
+      "B. It often reduces efficiency and quality of work",
+      "C. It saves time when deadlines overlap",
+      "D. It improves long-term memory"
+    ],
+    "answer": "B",
+    "correctWord": "B. It often reduces efficiency and quality of work",
+    "explanation": "Answer: B. It often reduces efficiency and quality of work. Cognitive research demonstrates that multitasking forces the brain into continuous task-switching, which degrades focus, increases cognitive load, causes errors, and lowers both overall efficiency and output quality.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q17",
+    "word": "SSA101 SP26 C1FE Q17: What is one common reason students procrastinate?...",
+    "question": "What is one common reason students procrastinate?",
+    "options": [
+      "A. Tasks feel unimportant or overwhelming",
+      "B. Instructors assign unclear deadlines",
+      "C. Students lack intelligence and teamwork",
+      "D. College schedules are too flexible"
+    ],
+    "answer": "A",
+    "correctWord": "A. Tasks feel unimportant or overwhelming",
+    "explanation": "Answer: A. Tasks feel unimportant or overwhelming. Students frequently procrastinate when a task appears dauntingly large or ambiguous (overwhelming) or when they fail to see its intrinsic value, purpose, or immediate relevance.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q18",
+    "word": "SSA101 SP26 C1FE Q18: Which of the following best describes encoding in the learning...?",
+    "question": "Which of the following best describes encoding in the learning process?",
+    "options": [
+      "A. Storing information permanently without effort using long-term memory",
+      "B. Processing new information deeply so that memories are formed",
+      "C. Recalling information during an exam",
+      "D. Translating information into digital formats"
+    ],
+    "answer": "B",
+    "correctWord": "B. Processing new information deeply so that memories are formed",
+    "explanation": "Answer: B. Processing new information deeply so that memories are formed. In memory psychology, encoding is the initial conversion of incoming sensory and conceptual stimuli into neurological mental representations through focused attention and deep cognitive processing.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q19",
+    "word": "SSA101 SP26 C1FE Q19: Which of the following best describes retrieval in learning?...",
+    "question": "Which of the following best describes retrieval in learning?",
+    "options": [
+      "A. Re-reading notes repeatedly",
+      "B. Accessing and using stored knowledge when needed",
+      "C. Highlighting important sections of a text",
+      "D. Uploading materials to an AI chatbot"
+    ],
+    "answer": "B",
+    "correctWord": "B. Accessing and using stored knowledge when needed",
+    "explanation": "Answer: B. Accessing and using stored knowledge when needed. Retrieval is the cognitive act of recalling or accessing previously encoded and stored information from long-term memory to solve problems or answer questions.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q20",
+    "word": "SSA101 SP26 C1FE Q20: AI can support memory formation primarily by:...",
+    "question": "AI can support memory formation primarily by:",
+    "options": [
+      "A. Replacing reading and note-taking entirely by provide main content of every document",
+      "B. Providing metaphors, emotional connections, and multisensory learning ideas",
+      "C. Automatically storing information in long-term memory",
+      "D. Eliminating the need for attention and focus"
+    ],
+    "answer": "B",
+    "correctWord": "B. Providing metaphors, emotional connections, and multisensory learning ideas",
+    "explanation": "Answer: B. Providing metaphors, emotional connections, and multisensory learning ideas. AI can generate tailored analogies, vivid explanations, mnemonics, and multisensory study techniques that enrich elaborative encoding, helping the human brain build robust mental schema and memory connections.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q21",
+    "word": "SSA101 SP26 C1FE Q21: Why is intentional choice of communication method important?...",
+    "question": "Why is intentional choice of communication method important?",
+    "options": [
+      "A. Different methods require different levels of formality and clarity",
+      "B. Face-to-face communication is always superior and productive",
+      "C. Digital communication reduces misunderstandings",
+      "D. Informal methods save time"
+    ],
+    "answer": "A",
+    "correctWord": "A. Different methods require different levels of formality and clarity",
+    "explanation": "Answer: A. Different methods require different levels of formality and clarity. Various communication channels (e.g., formal email, face-to-face conversation, chat messaging, reports) carry distinct communicative norms, levels of formality, permanence, and clarity requirements that must fit the audience and context.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q22",
+    "word": "SSA101 SP26 C1FE Q22: A student sends an emotional email to a professor late at night...?",
+    "question": "A student sends an emotional email to a professor late at night and receives a negative response. Based on Chapter 8, what principle was most likely violated?",
+    "options": [
+      "A. Choosing the fastest communication method",
+      "B. Considering tone, purpose, and audience before sending",
+      "C. Using complete sentences and formal grammar",
+      "D. Providing sufficient background information"
+    ],
+    "answer": "B",
+    "correctWord": "B. Considering tone, purpose, and audience before sending",
+    "explanation": "Answer: B. Considering tone, purpose, and audience before sending. Professional and academic email communication requires tailoring the tone, maintaining emotional restraint, stating a clear constructive purpose, and respecting the status and expectations of the audience.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q23",
+    "word": "SSA101 SP26 C1FE Q23: Which of the following is identified as a common barrier to...?",
+    "question": "Which of the following is identified as a common barrier to effective communication?",
+    "options": [
+      "A. Clear purpose and using technologies",
+      "B. Cultural awareness and prejudice",
+      "C. Assumptions and misinterpretations",
+      "D. Active listening strategies"
+    ],
+    "answer": "C",
+    "correctWord": "C. Assumptions and misinterpretations",
+    "explanation": "Answer: C. Assumptions and misinterpretations. Making unverified assumptions, jumping to conclusions, and misinterpreting verbal or non-verbal cues represent core interpersonal communication barriers that lead to misunderstandings and conflict.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q24",
+    "word": "SSA101 SP26 C1FE Q24: Why is understanding why you are in college considered...?",
+    "question": "Why is understanding why you are in college considered foundational for success?",
+    "options": [
+      "A. It helps students choose easier and low-cost courses",
+      "B. It clarifies long-term goals and increases motivation",
+      "C. It allows students to reduce academic workload",
+      "D. It guarantees higher grades"
+    ],
+    "answer": "B",
+    "correctWord": "B. It clarifies long-term goals and increases motivation",
+    "explanation": "Answer: B. It clarifies long-term goals and increases motivation. Knowing one's overarching personal, academic, and career purpose provides intrinsic motivation, aligns daily choices with long-term aspirations, and provides the resilience required to overcome academic obstacles.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q25",
+    "word": "SSA101 SP26 C1FE Q25: Successful students typically view challenges as:...",
+    "question": "Successful students typically view challenges as:",
+    "options": [
+      "A. Signs they chose the wrong major",
+      "B. Evidence of instructor bias",
+      "C. Opportunities for growth and adjustment",
+      "D. Reasons to withdraw from courses"
+    ],
+    "answer": "C",
+    "correctWord": "C. Opportunities for growth and adjustment",
+    "explanation": "Answer: C. Opportunities for growth and adjustment. Embracing a growth mindset, successful students perceive academic difficulties and setbacks not as reflections of fixed incompetence, but as valuable learning opportunities to develop resilience, refine strategies, and grow.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q26",
+    "word": "SSA101 SP26 C1FE Q26: Which of the following best describes \"college culture\"?...",
+    "question": "Which of the following best describes \"college culture\"?",
+    "options": [
+      "A. A fixed set of rules identical across all academic institutions",
+      "B. A system focused only on academic performance and science of knowledge",
+      "C. Shared expectations, language, and norms within higher education",
+      "D. A social environment unrelated to learning"
+    ],
+    "answer": "C",
+    "correctWord": "C. Shared expectations, language, and norms within higher education",
+    "explanation": "Answer: C. \"College culture\" refers to the collective atmosphere, shared values, expectations, customs, academic vocabulary, and social and behavioral norms prevalent within higher education environments. It is not identical across all institutions (contrary to A), nor is it purely limited to academic science (B) or detached from learning (D).",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q27",
+    "word": "SSA101 SP26 C1FE Q27: Creative thinking involves:...",
+    "question": "Creative thinking involves:",
+    "options": [
+      "A. Memorization",
+      "B. Generating original ideas",
+      "C. Repeating tradition and exploring art",
+      "D. Avoiding risk"
+    ],
+    "answer": "B",
+    "correctWord": "B. Generating original ideas",
+    "explanation": "Answer: B. Creative thinking is defined as the cognitive ability to generate original, innovative, and useful ideas or novel solutions to problems. Memorization (A) represents lower-order recall, repeating tradition (C) lacks novelty, and avoiding risk (D) stifles creative exploration.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q28",
+    "word": "SSA101 SP26 C1FE Q28: According to the chapter, creativity is:...",
+    "question": "According to the chapter, creativity is:",
+    "options": [
+      "A. A talent only some people are born with",
+      "B. Limited to artistic disciplines",
+      "C. A skill that can be developed and practiced",
+      "D. Incompatible with analytical thinking"
+    ],
+    "answer": "C",
+    "correctWord": "C. A skill that can be developed and practiced",
+    "explanation": "Answer: C. In academic success studies, creativity is not an innate, immutable trait limited to a gifted few (A) or restricted to the fine arts (B); rather, it is a malleable cognitive skill that can be cultivated, practiced, and refined through deliberate techniques and divergent thinking.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q29",
+    "word": "SSA101 SP26 C1FE Q29: Which condition best supports creative thinking?...",
+    "question": "Which condition best supports creative thinking?",
+    "options": [
+      "A. Strict adherence to one correct answer",
+      "B. Openness to risk and experimentation",
+      "C. Avoidance of uncertainty",
+      "D. Dependence on authority"
+    ],
+    "answer": "B",
+    "correctWord": "B. Openness to risk and experimentation",
+    "explanation": "Answer: B. Creative thinking thrives in psychological safety where learners are encouraged to experiment, explore unconventional pathways, and accept the risk of failure or ambiguity. Strict conformity (A), avoiding uncertainty (C), and blind reliance on authority (D) severely inhibit creativity.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q30",
+    "word": "SSA101 SP26 C1FE Q30: Creative thinking is described in as the ability to:...",
+    "question": "Creative thinking is described in as the ability to:",
+    "options": [
+      "A. Follow established rules precisely",
+      "B. Produce original ideas by making new connections",
+      "C. Evaluate information objectively and systematically",
+      "D. Solve problems using fixed procedures"
+    ],
+    "answer": "B",
+    "correctWord": "B. Produce original ideas by making new connections",
+    "explanation": "Answer: B. Creative thinking entails combining disparate concepts in novel ways to produce original ideas and fresh perspectives. Following rules precisely (A) and using fixed procedures (D) are algorithmic execution, whereas evaluating information objectively (C) describes critical thinking.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q31",
+    "word": "SSA101 SP26 C1FE Q31: Which study habit is least effective for long-term learning?...",
+    "question": "Which study habit is least effective for long-term learning?",
+    "options": [
+      "A. Self-testing with flashcards, quiz and teaching others",
+      "B. Spaced practice combined with interleaving",
+      "C. Re-reading notes repeatedly without engagement",
+      "D. Reviewing mistakes"
+    ],
+    "answer": "C",
+    "correctWord": "C. Re-reading notes repeatedly without engagement",
+    "explanation": "Answer: C. Passive re-reading creates an \"illusion of competence\" or fluency effect where material feels familiar but is quickly forgotten. Cognitive research consistently demonstrates that passive re-reading is among the least effective study strategies, whereas active recall (A), spaced interleaving (B), and error analysis (D) promote durable long-term retention.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q32",
+    "word": "SSA101 SP26 C1FE Q32: Which strategy is recommended for managing test anxiety?...",
+    "question": "Which strategy is recommended for managing test anxiety?",
+    "options": [
+      "A. Avoiding preparation to reduce stress",
+      "B. Relying on last-minute cramming",
+      "C. Using preparation and familiarity to reduce fear",
+      "D. Studying only the night before"
+    ],
+    "answer": "C",
+    "correctWord": "C. Using preparation and familiarity to reduce fear",
+    "explanation": "Answer: C. Preparation builds competence and self-efficacy, while becoming familiar with the test structure, timing, and question styles demystifies the exam, significantly reducing anxiety. Avoidance (A), cramming (B), and pulling all-nighters (D) actually heighten acute stress and cognitive fatigue.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q33",
+    "word": "SSA101 SP26 C1FE Q33: Why is retrieval practice effective for learning?...",
+    "question": "Why is retrieval practice effective for learning?",
+    "options": [
+      "A. It reduces the amount of material and knowledge to study",
+      "B. It strengthens memory storage and retrieval pathways",
+      "C. It replaces the need for review knowledge",
+      "D. It prevents forgetting entirely"
+    ],
+    "answer": "B",
+    "correctWord": "B. It strengthens memory storage and retrieval pathways",
+    "explanation": "Answer: B. Retrieval practice (the testing effect) forces the brain to reconstruct knowledge from memory, which alters and consolidates neural memory traces, making future recall significantly stronger and more accessible. It does not reduce syllabus material (A), eliminate subsequent review (C), or completely stop all forgetting (D).",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q34",
+    "word": "SSA101 SP26 C1FE Q34: Which of the following is NOT a component of metacognition?...",
+    "question": "Which of the following is NOT a component of metacognition?",
+    "options": [
+      "A. Planning how to approach a task",
+      "B. Monitoring understanding during learning",
+      "C. Evaluating outcomes after completing a task",
+      "D. Memorizing facts without reflection"
+    ],
+    "answer": "D",
+    "correctWord": "D. Memorizing facts without reflection",
+    "explanation": "Answer: D. Metacognition (\"thinking about one's thinking\") comprises three core executive stages: Planning (A), Monitoring (B), and Evaluating (C). Rote memorization without reflection is purely passive and non-metacognitive.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q35",
+    "word": "SSA101 SP26 C1FE Q35: Which activity best demonstrates metacognitive awareness?...",
+    "question": "Which activity best demonstrates metacognitive awareness?",
+    "options": [
+      "A. Studying longer hours before exams to aim high grades",
+      "B. Recognizing which study strategies work best for you",
+      "C. Highlighting every paragraph in a textbook",
+      "D. Copying notes from slides"
+    ],
+    "answer": "B",
+    "correctWord": "B. Recognizing which study strategies work best for you",
+    "explanation": "Answer: B. Metacognitive awareness involves understanding one's own cognitive strengths, limitations, and knowing how to select the most appropriate learning strategies for different challenges. Merely increasing study hours (A), indiscriminate highlighting (C), or verbatim transcription (D) are procedural behaviors that do not reflect self-awareness.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q36",
+    "word": "SSA101 SP26 C1FE Q36: Why is metacognition considered a self-regulation skill?...",
+    "question": "Why is metacognition considered a self-regulation skill?",
+    "options": [
+      "A. It controls classroom behavior and course expectation",
+      "B. It allows students to manage and direct their learning",
+      "C. It reduces dependence on instructors",
+      "D. It improves memorization speed"
+    ],
+    "answer": "B",
+    "correctWord": "B. It allows students to manage and direct their learning",
+    "explanation": "Answer: B. Metacognition enables learners to self-regulate because it gives them the conscious tools to assess their current mastery, choose learning tactics, monitor progress, and make strategic adjustments independently.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q37",
+    "word": "SSA101 SP26 C1FE Q37: One ethical concern about using AI as a grading tool is that...",
+    "question": "One ethical concern about using AI as a grading tool is that it may:",
+    "options": [
+      "A. Improve consistency too much",
+      "B. Breach students' intellectual property by uploading their work to AI systems",
+      "C. Reduce grading speed",
+      "D. Require excessive faculty training"
+    ],
+    "answer": "B",
+    "correctWord": "B. Breach students' intellectual property by uploading their work to AI systems",
+    "explanation": "Answer: B. Submitting student essays and assignments into third-party AI platforms without explicit consent poses serious ethical and legal privacy issues, potentially violating copyright and intellectual property rights if commercial models ingest student submissions for training.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q38",
+    "word": "SSA101 SP26 C1FE Q38: According to the International Society of Academic Integrity...",
+    "question": "According to the International Society of Academic Integrity (2021), academic integrity is best defined as:",
+    "options": [
+      "A. Compliance with university assessment rules only",
+      "B. A promise to uphold honesty, fairness, respect, responsibility, and courage",
+      "C. The ability to avoid plagiarism through software tools and institutional policies",
+      "D. A system of penalties designed to discourage cheating and misconduct"
+    ],
+    "answer": "B",
+    "correctWord": "B. A promise to uphold honesty, fairness, respect, responsibility, and courage",
+    "explanation": "Answer: B. The International Center for Academic Integrity (ICAI / International Society of Academic Integrity) defines academic integrity through the commitment to fundamental values: honesty, trust, fairness, respect, responsibility, and courage. Option B accurately encapsulates these core ethical values.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q39",
+    "word": "SSA101 SP26 C1FE Q39: The concept of \"hallucination\" in AI refers to:...",
+    "question": "The concept of \"hallucination\" in AI refers to:",
+    "options": [
+      "A. Visual misinterpretation by humans",
+      "B. AI producing incorrect or fabricated information",
+      "C. Emotional responses to AI feedback",
+      "D. Errors caused only by user prompts"
+    ],
+    "answer": "B",
+    "correctWord": "B. AI producing incorrect or fabricated information",
+    "explanation": "Answer: B. In artificial intelligence, \"hallucination\" describes a phenomenon where a generative model produces plausible-sounding but factually incorrect, nonsensical, or entirely fabricated statements as if they were true.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q40",
+    "word": "SSA101 SP26 C1FE Q40: Why is using AI for personalized feedback considered ethically...",
+    "question": "Why is using AI for personalized feedback considered ethically problematic in some cases?",
+    "options": [
+      "A. AI feedback is always inaccurate or inclined towards complementation",
+      "B. It may replace meaningful instructor-student learning relationships",
+      "C. Students prefer automated feedback",
+      "D. AI cannot process written language"
+    ],
+    "answer": "B",
+    "correctWord": "B. It may replace meaningful instructor-student learning relationships",
+    "explanation": "Answer: B. Educational ethics highlights the risk of relational erosion: over-relying on automated AI feedback risks sidelining genuine human connection, mentorship, and personalized empathetic encouragement that human instructors provide.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q41",
+    "word": "SSA101 SP26 C1FE Q41: Critical thinking involves:...",
+    "question": "Critical thinking involves:",
+    "options": [
+      "A. Guessing outcomes based on personal experiences",
+      "B. Weighing options and data",
+      "C. Emotional reactions",
+      "D. Blind trust"
+    ],
+    "answer": "B",
+    "correctWord": "B. Weighing options and data",
+    "explanation": "Answer: B. Critical thinking is rational, reflective thinking focused on deciding what to believe or do. It requires objectively analyzing facts, evidence, data, and weighing multiple alternatives rather than reacting emotionally (C) or trusting blindly (D).",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q42",
+    "word": "SSA101 SP26 C1FE Q42: Which question best reflects a critical thinking mindset?...",
+    "question": "Which question best reflects a critical thinking mindset?",
+    "options": [
+      "A. \"Do I agree with this?\"",
+      "B. \"Is this information popular?\"",
+      "C. \"What evidence supports this claim?\"",
+      "D. \"Who benefits from this idea emotionally?\""
+    ],
+    "answer": "C",
+    "correctWord": "C. \"What evidence supports this claim?\"",
+    "explanation": "Answer: C. A critical thinker does not rely on subjective agreement (A) or popularity (B), but rigorously probes claims by examining empirical backing, validity, and underlying evidence (\"What evidence supports this claim?\").",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q43",
+    "word": "SSA101 SP26 C1FE Q43: Chapter 7 emphasizes that critical thinking requires students...",
+    "question": "Chapter 7 emphasizes that critical thinking requires students to:",
+    "options": [
+      "A. Avoid questioning authority and forms of powers",
+      "B. Consider multiple perspectives before judging",
+      "C. Focus on speed rather than accuracy",
+      "D. Rely on intuition"
+    ],
+    "answer": "B",
+    "correctWord": "B. Consider multiple perspectives before judging",
+    "explanation": "Answer: B. A core pillar of critical thinking is open-mindedness and considering diverse viewpoints, counterarguments, and contexts before reaching a balanced, well-reasoned judgment.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q44",
+    "word": "SSA101 SP26 C1FE Q44: Why does the author warn against confusing opinion with evidence...",
+    "question": "Why does the author warn against confusing opinion with evidence?",
+    "options": [
+      "A. Opinions are always incorrect and being more effected by emotions",
+      "B. Evidence-based reasoning leads to stronger conclusions",
+      "C. Opinions slow down decision-making",
+      "D. Evidence is difficult to interpret"
+    ],
+    "answer": "B",
+    "correctWord": "B. Evidence-based reasoning leads to stronger conclusions",
+    "explanation": "Answer: B. Opinions are personal beliefs or interpretations that may lack factual support. Building arguments on verifiable evidence produces reliable, logically sound, and robust conclusions.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q45",
+    "word": "SSA101 SP26 C1FE Q45: According to the American Library Association (2011), digital...",
+    "question": "According to the American Library Association (2011), digital literacy primarily refers to the ability to:",
+    "options": [
+      "A. Program artificial intelligence systems to get the most productive information system",
+      "B. Use information and communication technologies to find, evaluate, create, and communicate information",
+      "C. Detect AI-generated content",
+      "D. Replace human judgment with algorithms"
+    ],
+    "answer": "B",
+    "correctWord": "B. Use information and communication technologies to find, evaluate, create, and communicate information",
+    "explanation": "Answer: B. The American Library Association (ALA) defines digital literacy as the ability to use information and communication technologies to find, evaluate, create, and communicate information, which requires both technical and cognitive skills.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q46",
+    "word": "SSA101 SP26 C1FE Q46: Digital literacy is described as important because it:...",
+    "question": "Digital literacy is described as important because it:",
+    "options": [
+      "A. Is only useful for students in technology majors",
+      "B. Helps individuals critically evaluate online content",
+      "C. Removes the need for critical thinking and metacognition",
+      "D. Guarantees employment"
+    ],
+    "answer": "B",
+    "correctWord": "B. Helps individuals critically evaluate online content",
+    "explanation": "Answer: B. In an era saturated with information and misinformation, digital literacy equips learners to critically assess online sources for credibility, bias, and accuracy. It is essential across all disciplines, not just tech majors (A).",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q47",
+    "word": "SSA101 SP26 C1FE Q47: Which skill is NOT explicitly included in digital literacy as...",
+    "question": "Which skill is NOT explicitly included in digital literacy as described in the book?",
+    "options": [
+      "A. Evaluating online information",
+      "B. Communicating through digital platforms and social media",
+      "C. Understanding neural network architecture in depth",
+      "D. Responsible engagement with digital content"
+    ],
+    "answer": "C",
+    "correctWord": "C. Understanding neural network architecture in depth",
+    "explanation": "Answer: C. Digital literacy focuses on finding, evaluating, creating, and ethically communicating digital information. Deep technical understanding of neural network architecture belongs to specialized artificial intelligence engineering and computer science, not foundational digital literacy.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q48",
+    "word": "SSA101 SP26 C1FE Q48: What is the main purpose of self-directed learning in online...",
+    "question": "What is the main purpose of self-directed learning in online education?",
+    "options": [
+      "A. To reduce instructor workload",
+      "B. To help students take control of their learning",
+      "C. To eliminate group work",
+      "D. To replace assessments with self-study activities"
+    ],
+    "answer": "B",
+    "correctWord": "B. To help students take control of their learning",
+    "explanation": "Answer: B. Self-directed learning empowers students to assume autonomy and initiative in setting personal goals, pacing their study, selecting learning strategies, and monitoring their own progress in online courses.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q49",
+    "word": "SSA101 SP26 C1FE Q49: Which Bloom's level requires learners to break information into...",
+    "question": "Which Bloom's level requires learners to break information into parts?",
+    "options": [
+      "A. Understand",
+      "B. Apply",
+      "C. Analyze",
+      "D. Remember"
+    ],
+    "answer": "C",
+    "correctWord": "C. Analyze",
+    "explanation": "Answer: C. In Bloom's Taxonomy of Educational Objectives, the \"Analyze\" level involves breaking down complex material into its component parts, exploring organizational structure, and identifying relationships among the parts.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  },
+  {
+    "id": "ssa101_sp26_c1fe_q50",
+    "word": "SSA101 SP26 C1FE Q50: In the Plan-Monitor-Evaluate cycle, monitoring mainly focuses...",
+    "question": "In the Plan-Monitor-Evaluate cycle, monitoring mainly focuses on:",
+    "options": [
+      "A. Setting learning goals",
+      "B. Checking understanding during learning",
+      "C. Grading performance",
+      "D. Comparing results with peers"
+    ],
+    "answer": "B",
+    "correctWord": "B. Checking understanding during learning",
+    "explanation": "Answer: B. Within the metacognitive Plan-Monitor-Evaluate framework, monitoring is an active, ongoing check of comprehension and task progress during learning to identify confusion and adjust strategies in real time.",
+    "subject": "SSA101",
+    "topic": "SP26 - C1FE"
+  }
+]

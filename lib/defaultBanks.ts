@@ -365,6 +365,50 @@ export const QUESTION_BANKS: SubjectSection[] = [
         tags: ['College Life', 'Digital Literacy', 'ePortfolio'],
         subject: 'SSA101',
         topic: 'Kỹ Năng Học Đại Học Chung'
+      },
+      {
+        id: 'ssa101_sp26_c1fe',
+        name: 'SSA101 - SP26 - C1FE',
+        description: 'Trọn bộ 50 câu hỏi đề thi SSA101 - SP26 - C1FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/ssa101_sp26_c1fe.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SP26', 'C1FE', '50 Câu'],
+        subject: 'SSA101',
+        topic: 'SP26 - C1FE'
+      },
+      {
+        id: 'ssa101_sp26_c2fe',
+        name: 'SSA101 - SP26 - C2FE',
+        description: 'Trọn bộ 50 câu hỏi đề thi SSA101 - SP26 - C2FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/ssa101_sp26_c2fe.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SP26', 'C2FE', '50 Câu'],
+        subject: 'SSA101',
+        topic: 'SP26 - C2FE'
+      },
+      {
+        id: 'ssa101_sp26_re',
+        name: 'SSA101 - SP26 - RE',
+        description: 'Trọn bộ 50 câu hỏi đề thi SSA101 - SP26 - RE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/ssa101_sp26_re.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SP26', 'RE', '50 Câu'],
+        subject: 'SSA101',
+        topic: 'SP26 - RE'
+      },
+      {
+        id: 'ssa101_su26_fe',
+        name: 'SSA101 - SU26 - FE',
+        description: 'Trọn bộ 50 câu hỏi đề thi SSA101 - SU26 - FE kèm đáp án và giải thích chi tiết bằng tiếng Anh.',
+        file_path: '/data/ssa101_su26_fe.json',
+        is_public: true,
+        wordCount: 50,
+        tags: ['SU26', 'FE', '50 Câu'],
+        subject: 'SSA101',
+        topic: 'SU26 - FE'
       }
     ]
   },
