@@ -1,16 +1,28 @@
 import { Redis } from '@upstash/redis';
-import { hashString } from '@/lib/utils';
+import {
+  AiOptionTrap,
+  CachedAiExplanation,
+  CachedAiSolve,
+  buildAiExplainCacheKeyV1,
+  buildAiExplainCacheKeyV2,
+  buildAiSolveCacheKeyV1,
+  buildAiSolveCacheKeyV2,
+} from '@/lib/aiCacheKey';
 
-export interface CachedAiExplanation {
-  coreConcept: string;
-  trapAnalysis: string;
-  mnemonic: string;
-}
+export type { AiOptionTrap, CachedAiExplanation, CachedAiSolve };
+export {
+  buildAiExplainCacheKeyV1,
+  buildAiExplainCacheKeyV2,
+  buildAiSolveCacheKeyV1,
+  buildAiSolveCacheKeyV2,
+};
 
-export interface CachedAiSolve {
-  answer: string;
-  explanation: string;
-}
+export const buildAiExplainCacheKey = buildAiExplainCacheKeyV2;
+export const buildAiSolveCacheKey = buildAiSolveCacheKeyV2;
+
+const RATE_WINDOW_MS = 3600_000;
+const MAX_MEMORY_RL_KEYS = 1000;
+const inMemoryRateLimits = new Map<string, { count: number; resetAt: number }>();
 
 function getRedisUrl(): string {
   return (
@@ -47,55 +59,86 @@ export function getRedisReadClient(): Redis | null {
   return new Redis({ url, token: readOnlyToken });
 }
 
-function normalizeCacheSegment(text: string): string {
-  return text.trim().toLowerCase().replace(/\s+/g, ' ');
-}
+function sanitizeCachedExplanation(
+  rawParsed: Partial<CachedAiExplanation> | null | undefined
+): CachedAiExplanation | null {
+  if (!rawParsed || typeof rawParsed.coreConcept !== 'string') return null;
 
-export function buildAiExplainCacheKey(
-  question: string,
-  options: string[],
-  correctAnswer: string
-): string {
-  const normQ = normalizeCacheSegment(question);
-  const normOpts = options.map(normalizeCacheSegment).join('|');
-  const normAns = normalizeCacheSegment(correctAnswer);
-  return `ananquiz:ai:explain:v1:${hashString(`${normQ}::${normOpts}::${normAns}`)}`;
-}
+  const coreConcept = rawParsed.coreConcept.trim();
+  const trapAnalysis =
+    typeof rawParsed.trapAnalysis === 'string' ? rawParsed.trapAnalysis.trim() : '';
+  const mnemonic =
+    typeof rawParsed.mnemonic === 'string' ? rawParsed.mnemonic.trim() : '';
 
-export function buildAiSolveCacheKey(question: string, options: string[]): string {
-  const normQ = normalizeCacheSegment(question);
-  const normOpts = options.map(normalizeCacheSegment).join('|');
-  return `ananquiz:ai:solve:v1:${hashString(`${normQ}::${normOpts}`)}`;
+  if (!coreConcept && !trapAnalysis && !mnemonic) return null;
+
+  const optionTraps = Array.isArray(rawParsed.optionTraps)
+    ? rawParsed.optionTraps
+        .filter(
+          (item): item is AiOptionTrap =>
+            Boolean(item) &&
+            typeof item.optionText === 'string' &&
+            typeof item.reason === 'string' &&
+            item.optionText.trim().length > 0 &&
+            item.reason.trim().length > 0
+        )
+        .slice(0, 8)
+        .map((item) => ({
+          optionText: item.optionText.trim(),
+          reason: item.reason.trim(),
+        }))
+    : undefined;
+
+  const inferredAnswerTexts = Array.isArray(rawParsed.inferredAnswerTexts)
+    ? rawParsed.inferredAnswerTexts
+        .filter((t): t is string => typeof t === 'string' && t.trim().length > 0)
+        .map((t) => t.trim())
+        .slice(0, 8)
+    : undefined;
+
+  return {
+    coreConcept,
+    trapAnalysis,
+    mnemonic,
+    ...(optionTraps && optionTraps.length > 0 ? { optionTraps } : {}),
+    ...(inferredAnswerTexts && inferredAnswerTexts.length > 0
+      ? { inferredAnswerTexts }
+      : {}),
+  };
 }
 
 export async function getPermanentAiExplanation(
-  cacheKey: string
+  cacheKeyV2: string,
+  fallbackV1Key?: string
 ): Promise<CachedAiExplanation | null> {
   const redis = getRedisReadClient();
   if (!redis) return null;
 
-  try {
-    const raw = await redis.get<CachedAiExplanation | string>(cacheKey);
-    if (!raw) return null;
-    const parsed =
-      typeof raw === 'string'
-        ? (JSON.parse(raw) as Partial<CachedAiExplanation>)
-        : (raw as Partial<CachedAiExplanation>);
-
-    if (
-      parsed &&
-      typeof parsed.coreConcept === 'string' &&
-      (parsed.coreConcept || parsed.trapAnalysis || parsed.mnemonic)
-    ) {
-      return {
-        coreConcept: parsed.coreConcept || '',
-        trapAnalysis: parsed.trapAnalysis || '',
-        mnemonic: parsed.mnemonic || '',
-      };
+  const tryRead = async (key: string): Promise<CachedAiExplanation | null> => {
+    try {
+      const raw = await redis.get<CachedAiExplanation | string>(key);
+      if (!raw) return null;
+      const parsed =
+        typeof raw === 'string'
+          ? (JSON.parse(raw) as Partial<CachedAiExplanation>)
+          : (raw as Partial<CachedAiExplanation>);
+      return sanitizeCachedExplanation(parsed);
+    } catch {
+      return null;
     }
-  } catch {
-    // Cache read failure must never break AI endpoint
+  };
+
+  const v2Hit = await tryRead(cacheKeyV2);
+  if (v2Hit) return v2Hit;
+
+  if (fallbackV1Key && fallbackV1Key !== cacheKeyV2) {
+    const v1Hit = await tryRead(fallbackV1Key);
+    if (v1Hit) {
+      void savePermanentAiExplanation(cacheKeyV2, v1Hit);
+      return v1Hit;
+    }
   }
+
   return null;
 }
 
@@ -118,29 +161,54 @@ export async function savePermanentAiExplanation(
 }
 
 export async function getPermanentAiSolve(
-  cacheKey: string
-): Promise<CachedAiSolve | null> {
+  cacheKeyV2: string,
+  fallbackV1Key?: string
+): Promise<{ data: CachedAiSolve; version: 'v2' | 'v1' } | null> {
   const redis = getRedisReadClient();
   if (!redis) return null;
 
-  try {
-    const raw = await redis.get<CachedAiSolve | string>(cacheKey);
-    if (!raw) return null;
-    const parsed =
-      typeof raw === 'string'
-        ? (JSON.parse(raw) as Partial<CachedAiSolve>)
-        : (raw as Partial<CachedAiSolve>);
+  const tryRead = async (key: string): Promise<CachedAiSolve | null> => {
+    try {
+      const raw = await redis.get<CachedAiSolve | string>(key);
+      if (!raw) return null;
+      const parsed =
+        typeof raw === 'string'
+          ? (JSON.parse(raw) as Partial<CachedAiSolve>)
+          : (raw as Partial<CachedAiSolve>);
 
-    if (parsed && typeof parsed.answer === 'string' && parsed.answer.trim()) {
-      return {
-        answer: parsed.answer.trim(),
-        explanation:
-          typeof parsed.explanation === 'string' ? parsed.explanation.trim() : '',
-      };
+      if (parsed && typeof parsed.answer === 'string' && parsed.answer.trim()) {
+        const correctOptionTexts = Array.isArray(parsed.correctOptionTexts)
+          ? parsed.correctOptionTexts
+              .filter((t): t is string => typeof t === 'string' && t.trim().length > 0)
+              .map((t) => t.trim())
+          : undefined;
+        return {
+          answer: parsed.answer.trim(),
+          explanation:
+            typeof parsed.explanation === 'string' ? parsed.explanation.trim() : '',
+          ...(correctOptionTexts && correctOptionTexts.length > 0
+            ? { correctOptionTexts }
+            : {}),
+        };
+      }
+    } catch {
+      // Ignore cache read failures
     }
-  } catch {
-    // Ignore cache read failures
+    return null;
+  };
+
+  const v2Hit = await tryRead(cacheKeyV2);
+  if (v2Hit) {
+    return { data: v2Hit, version: 'v2' };
   }
+
+  if (fallbackV1Key && fallbackV1Key !== cacheKeyV2) {
+    const v1Hit = await tryRead(fallbackV1Key);
+    if (v1Hit) {
+      return { data: v1Hit, version: 'v1' };
+    }
+  }
+
   return null;
 }
 
@@ -161,9 +229,43 @@ export async function savePermanentAiSolve(
   }
 }
 
+function checkInMemoryRateLimit(
+  ip: string,
+  maxPerHour: number
+): { allowed: boolean; remaining: number } {
+  const now = Date.now();
+  const key = ip || 'anon';
+
+  if (inMemoryRateLimits.size >= MAX_MEMORY_RL_KEYS) {
+    inMemoryRateLimits.forEach((entry, k) => {
+      if (now >= entry.resetAt) {
+        inMemoryRateLimits.delete(k);
+      }
+    });
+    if (inMemoryRateLimits.size >= MAX_MEMORY_RL_KEYS) {
+      const oldestKey = inMemoryRateLimits.keys().next().value;
+      if (oldestKey !== undefined) {
+        inMemoryRateLimits.delete(oldestKey);
+      }
+    }
+  }
+
+  const existing = inMemoryRateLimits.get(key);
+  if (!existing || now >= existing.resetAt) {
+    inMemoryRateLimits.set(key, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return { allowed: true, remaining: Math.max(0, maxPerHour - 1) };
+  }
+
+  existing.count += 1;
+  return {
+    allowed: existing.count <= maxPerHour,
+    remaining: Math.max(0, maxPerHour - existing.count),
+  };
+}
+
 /**
  * Fair hourly rate limiter for uncached server-key Gemini requests.
- * Cache hits bypass this limit completely.
+ * Cache hits bypass this limit completely. Falls back to bounded in-memory limiter if Redis is absent.
  */
 export async function checkAiRateLimit(
   ip: string,
@@ -171,7 +273,7 @@ export async function checkAiRateLimit(
 ): Promise<{ allowed: boolean; remaining: number }> {
   const redis = getRedisWriteClient();
   if (!redis) {
-    return { allowed: true, remaining: maxPerHour };
+    return checkInMemoryRateLimit(ip, maxPerHour);
   }
 
   try {
@@ -185,6 +287,6 @@ export async function checkAiRateLimit(
       remaining: Math.max(0, maxPerHour - count),
     };
   } catch {
-    return { allowed: true, remaining: maxPerHour };
+    return checkInMemoryRateLimit(ip, maxPerHour);
   }
 }

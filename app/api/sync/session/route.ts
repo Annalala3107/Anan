@@ -1,6 +1,7 @@
 import { randomInt } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { Redis } from '@upstash/redis';
+import { resolveCors } from '@/lib/corsServer';
 import { BackupDataSchema } from '@/lib/schema';
 
 interface SyncRecord {
@@ -26,75 +27,15 @@ function getRedisClient(): Redis | null {
   return new Redis({ url, token });
 }
 
-function getAllowedOrigins(req: NextRequest): Set<string> {
-  const allowed = new Set<string>();
-
-  if (req.nextUrl?.origin) {
-    allowed.add(req.nextUrl.origin);
-  }
-
-  const configuredUrl = process.env.NEXT_PUBLIC_APP_URL?.trim();
-  if (configuredUrl) {
-    try {
-      allowed.add(new URL(configuredUrl).origin);
-    } catch {
-      // Ignore malformed env URL
-    }
-  }
-
-  const vercelHosts = [
-    process.env.VERCEL_URL,
-    process.env.VERCEL_BRANCH_URL,
-    process.env.VERCEL_PROJECT_PRODUCTION_URL,
-  ];
-
-  for (const host of vercelHosts) {
-    const clean = host?.trim();
-    if (clean) {
-      allowed.add(clean.startsWith('http') ? new URL(clean).origin : `https://${clean}`);
-    }
-  }
-
-  if (process.env.NODE_ENV !== 'production') {
-    allowed.add('http://localhost:3000');
-    allowed.add('http://127.0.0.1:3000');
-  }
-
-  return allowed;
-}
-
-function resolveCors(req: NextRequest): {
-  allowed: boolean;
-  headers: Record<string, string>;
-} {
-  const origin = req.headers.get('origin');
-  const baseHeaders: Record<string, string> = {
-    Vary: 'Origin',
-    'Cache-Control': 'no-store',
-  };
-
-  if (!origin) {
-    return { allowed: true, headers: baseHeaders };
-  }
-
-  const allowedOrigins = getAllowedOrigins(req);
-  if (!allowedOrigins.has(origin)) {
-    return { allowed: false, headers: baseHeaders };
-  }
-
-  return {
-    allowed: true,
-    headers: {
-      ...baseHeaders,
-      'Access-Control-Allow-Origin': origin,
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  };
+function resolveSyncCors(req: NextRequest) {
+  return resolveCors(req, {
+    methods: 'GET, POST, OPTIONS',
+    allowedHeaders: 'Content-Type',
+  });
 }
 
 export async function OPTIONS(req: NextRequest) {
-  const cors = resolveCors(req);
+  const cors = resolveSyncCors(req);
   if (!cors.allowed) {
     return NextResponse.json(
       { error: 'Origin không được phép truy cập.' },
@@ -110,7 +51,7 @@ export async function OPTIONS(req: NextRequest) {
  * and returns a one-time 6-digit transfer PIN.
  */
 export async function POST(req: NextRequest) {
-  const cors = resolveCors(req);
+  const cors = resolveSyncCors(req);
   if (!cors.allowed) {
     return NextResponse.json(
       { error: 'Origin không được phép tạo phiên chuyển dữ liệu.' },
@@ -251,7 +192,7 @@ export async function POST(req: NextRequest) {
  * Atomically retrieves and deletes the 6-digit transfer code (one-time claim).
  */
 export async function GET(req: NextRequest) {
-  const cors = resolveCors(req);
+  const cors = resolveSyncCors(req);
   if (!cors.allowed) {
     return NextResponse.json(
       { error: 'Origin không được phép nhận dữ liệu chuyển.' },

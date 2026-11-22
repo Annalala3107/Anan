@@ -7,10 +7,10 @@ import MathText from '@/components/MathText';
 import RomanChoicesGrid from '@/components/RomanChoicesGrid';
 import {
   extractRomanChoices,
-  isStandaloneFormula,
   formatPiecewise,
   convertAsciiMatrix,
 } from '@/lib/mathUtils';
+import { groupMarkdownTextLines } from '@/lib/markdownUtils';
 
 interface CodeQuestionRendererProps {
   content?: string;
@@ -418,32 +418,86 @@ export default function CodeQuestionRenderer({
             );
           }
 
-          const textLines = block.text.split('\n');
+          const textGroups = groupMarkdownTextLines(block.text);
           return (
             <div key={bIdx} className="space-y-2">
-              {textLines.map((line, lIdx) => {
-                const trimmed = line.trim();
-                if (!trimmed) return null;
-
-                if (isStandaloneFormula(trimmed)) {
+              {textGroups.map((group, gIdx) => {
+                if (group.type === 'formula') {
                   return (
                     <div
-                      key={lIdx}
+                      key={gIdx}
                       className="my-3 py-3 px-4 rounded-2xl bg-indigo-50/90 dark:bg-slate-900/85 border border-indigo-200 dark:border-indigo-500/30 text-slate-900 dark:text-indigo-100 shadow-sm dark:shadow-md"
                     >
                       <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-700 dark:text-indigo-300 mb-1 flex items-center gap-1 select-none">
                         <span>Biểu thức toán học / Công thức</span>
                       </div>
-                      <MathText content={trimmed} displayMode={true} />
+                      <MathText content={group.line} displayMode={true} />
                     </div>
+                  );
+                }
+
+                if (group.type === 'heading') {
+                  return (
+                    <h4
+                      key={gIdx}
+                      className={`font-bold text-slate-950 dark:text-white tracking-tight ${
+                        group.level === 2 ? 'text-sm sm:text-base mt-1' : 'text-xs sm:text-sm'
+                      }`}
+                    >
+                      <MathText as="span" content={group.text} />
+                    </h4>
+                  );
+                }
+
+                if (group.type === 'ul') {
+                  return (
+                    <ul
+                      key={gIdx}
+                      className="list-disc pl-5 space-y-1.5 my-1 text-slate-900 dark:text-slate-100"
+                    >
+                      {group.items.map((itemText, iIdx) => (
+                        <li
+                          key={iIdx}
+                          className="leading-[1.65] font-medium marker:text-indigo-500 dark:marker:text-cyan-400"
+                        >
+                          <MathText
+                            as="span"
+                            content={itemText}
+                            className="break-words"
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                }
+
+                if (group.type === 'ol') {
+                  return (
+                    <ol
+                      key={gIdx}
+                      className="list-decimal pl-5 space-y-1.5 my-1 text-slate-900 dark:text-slate-100"
+                    >
+                      {group.items.map((itemText, iIdx) => (
+                        <li
+                          key={iIdx}
+                          className="leading-[1.65] font-medium marker:font-mono marker:font-bold marker:text-indigo-600 dark:marker:text-cyan-400"
+                        >
+                          <MathText
+                            as="span"
+                            content={itemText}
+                            className="break-words"
+                          />
+                        </li>
+                      ))}
+                    </ol>
                   );
                 }
 
                 return (
                   <MathText
-                    key={lIdx}
+                    key={gIdx}
                     as="p"
-                    content={line}
+                    content={group.line}
                     className="leading-[1.68] font-medium text-slate-900 dark:text-slate-100 whitespace-pre-wrap break-words"
                   />
                 );

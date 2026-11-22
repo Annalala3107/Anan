@@ -12,15 +12,28 @@ import {
   AlertTriangle,
   Zap,
   Trash2,
+  CheckCircle2,
 } from 'lucide-react';
-import { hashString } from '@/lib/utils';
+import {
+  cleanOptionText,
+  hashString,
+  splitCorrectChoices,
+} from '@/lib/utils';
+import {
+  AiOptionTrap,
+  CachedAiExplanation,
+  buildAiExplainCacheKeyV2,
+  normalizeCacheText,
+  resolveCanonicalAnswerTexts,
+} from '@/lib/aiCacheKey';
+import {
+  getCachedAiExplanationAsync,
+  getCachedAiExplanationSync,
+  setCachedAiExplanation,
+} from '@/lib/aiClientCache';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 
-export interface AIExplanationResult {
-  coreConcept: string;
-  trapAnalysis: string;
-  mnemonic: string;
-}
+export type AIExplanationResult = CachedAiExplanation;
 
 interface AITutorButtonProps {
   question: string;
@@ -32,47 +45,7 @@ interface AITutorButtonProps {
   className?: string;
 }
 
-const CACHE_STORAGE_KEY = 'ananquiz_ai_explain_cache_v1';
 const API_KEY_SESSION_KEY = 'gemini_custom_api_key';
-const MAX_CACHE_ENTRIES = 60;
-const memoryExplainCache = new Map<string, AIExplanationResult>();
-
-function readCachedExplanation(cacheKey: string): AIExplanationResult | null {
-  const mem = memoryExplainCache.get(cacheKey);
-  if (mem) return mem;
-
-  if (typeof window === 'undefined') return null;
-  try {
-    const raw = sessionStorage.getItem(CACHE_STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as Record<string, AIExplanationResult>;
-    const hit = parsed?.[cacheKey];
-    if (hit && (hit.coreConcept || hit.trapAnalysis || hit.mnemonic)) {
-      memoryExplainCache.set(cacheKey, hit);
-      return hit;
-    }
-  } catch {
-    // Ignore storage read errors
-  }
-  return null;
-}
-
-function writeCachedExplanation(cacheKey: string, value: AIExplanationResult): void {
-  memoryExplainCache.set(cacheKey, value);
-  if (typeof window === 'undefined') return;
-  try {
-    const raw = sessionStorage.getItem(CACHE_STORAGE_KEY);
-    const prev: Record<string, AIExplanationResult> = raw ? JSON.parse(raw) : {};
-    const keys = Object.keys(prev);
-    if (keys.length >= MAX_CACHE_ENTRIES) {
-      delete prev[keys[0]];
-    }
-    prev[cacheKey] = value;
-    sessionStorage.setItem(CACHE_STORAGE_KEY, JSON.stringify(prev));
-  } catch {
-    // Ignore storage quota errors
-  }
-}
 
 export default function AITutorButton({
   question,
@@ -83,12 +56,22 @@ export default function AITutorButton({
   topic,
   className = '',
 }: AITutorButtonProps) {
-  const optionsSig = useMemo(
-    () => (Array.isArray(options) ? options.map((o) => o.trim()).join('|') : ''),
+  const safeOptions = useMemo(
+    () => (Array.isArray(options) ? options : []),
     [options]
   );
 
+  const optionsSig = useMemo(
+    () => safeOptions.map((o) => o.trim()).join('|'),
+    [safeOptions]
+  );
+
   const cacheKey = useMemo(
+    () => buildAiExplainCacheKeyV2(question, safeOptions, correctAnswer),
+    [question, safeOptions, correctAnswer]
+  );
+
+  const legacyClientKey = useMemo(
     () =>
       hashString(
         `${question.trim()}::${optionsSig}::${correctAnswer.trim()}`
@@ -96,12 +79,8 @@ export default function AITutorButton({
     [question, optionsSig, correctAnswer]
   );
 
-  const [explanation, setExplanation] = useState<AIExplanationResult | null>(() =>
-    readCachedExplanation(cacheKey)
-  );
-  const [cacheBadge, setCacheBadge] = useState<'shared' | 'persisted' | null>(() =>
-    readCachedExplanation(cacheKey) ? 'shared' : null
-  );
+  const [explanation, setExplanation] = useState<AIExplanationResult | null>(null);
+  const [cacheBadge, setCacheBadge] = useState<'shared' | 'persisted' | null>(null);
   const [showKeyInput, setShowKeyInput] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -110,14 +89,26 @@ export default function AITutorButton({
   const [tempApiKey, setTempApiKey] = useState('');
 
   useEffect(() => {
-    const cached = readCachedExplanation(cacheKey);
-    setExplanation(cached);
-    setCacheBadge(cached ? 'shared' : null);
+    let cancelled = false;
+
+    const syncHit = getCachedAiExplanationSync(cacheKey, legacyClientKey);
+    setExplanation(syncHit);
+    setCacheBadge(syncHit ? 'shared' : null);
     setIsOpen(false);
     setIsLoading(false);
     setError(null);
     setNeedsApiKey(false);
-  }, [cacheKey]);
+
+    void getCachedAiExplanationAsync(cacheKey, legacyClientKey).then((asyncHit) => {
+      if (cancelled || !asyncHit) return;
+      setExplanation(asyncHit);
+      setCacheBadge('shared');
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [cacheKey, legacyClientKey]);
 
   useEffect(() => {
     try {
@@ -128,10 +119,99 @@ export default function AITutorButton({
     }
   }, []);
 
+  const hasKnownAnswer = Boolean(correctAnswer && correctAnswer.trim());
+
+  const resolvedInferredLabels = useMemo(() => {
+    if (hasKnownAnswer || !explanation?.inferredAnswerTexts?.length) return [];
+    const normOptions = safeOptions.map((opt) =>
+      normalizeCacheText(cleanOptionText(opt) || opt)
+    );
+
+    return explanation.inferredAnswerTexts.map((rawText) => {
+      const cleaned = (cleanOptionText(rawText) || rawText).trim();
+      const targetNorm = normalizeCacheText(cleaned);
+      const idx = normOptions.findIndex((o) => o === targetNorm);
+      if (idx >= 0 && idx < 26) {
+        const displayClean = (cleanOptionText(safeOptions[idx]) || safeOptions[idx]).trim();
+        return `${String.fromCharCode(65 + idx)}. ${displayClean}`;
+      }
+      return cleaned;
+    });
+  }, [hasKnownAnswer, explanation, safeOptions]);
+
+  const userChoiceDiagnostics = useMemo(() => {
+    if (!explanation || !userAnswer || !userAnswer.trim()) return null;
+
+    const userChoicesRaw = splitCorrectChoices(userAnswer, undefined, safeOptions);
+    const seen = new Set<string>();
+    const cleanUserChoices: Array<{ norm: string; display: string }> = [];
+
+    for (const c of userChoicesRaw) {
+      const display = (cleanOptionText(c) || c).trim();
+      const norm = normalizeCacheText(display);
+      if (norm && !seen.has(norm)) {
+        seen.add(norm);
+        cleanUserChoices.push({ norm, display });
+      }
+    }
+
+    if (cleanUserChoices.length === 0) return null;
+
+    const correctNormSet = new Set<string>(
+      hasKnownAnswer
+        ? resolveCanonicalAnswerTexts(correctAnswer, safeOptions)
+        : (explanation.inferredAnswerTexts || [])
+            .map((t) => normalizeCacheText(cleanOptionText(t) || t))
+            .filter(Boolean)
+    );
+
+    const wrongChoices =
+      correctNormSet.size > 0
+        ? cleanUserChoices.filter((c) => !correctNormSet.has(c.norm))
+        : cleanUserChoices;
+
+    if (
+      !hasKnownAnswer &&
+      correctNormSet.size > 0 &&
+      wrongChoices.length === 0 &&
+      cleanUserChoices.length === correctNormSet.size
+    ) {
+      return { status: 'matched_inferred' as const, traps: [] as AiOptionTrap[] };
+    }
+
+    if (correctNormSet.size > 0 && wrongChoices.length === 0) {
+      return null;
+    }
+
+    const trapMap = new Map<string, AiOptionTrap>();
+    for (const trap of explanation.optionTraps || []) {
+      const trapNorm = normalizeCacheText(
+        cleanOptionText(trap.optionText) || trap.optionText
+      );
+      if (trapNorm && !trapMap.has(trapNorm)) {
+        trapMap.set(trapNorm, trap);
+      }
+    }
+
+    const matchedTraps: AiOptionTrap[] = [];
+    for (const choice of wrongChoices) {
+      const matched = trapMap.get(choice.norm);
+      if (matched) {
+        matchedTraps.push({
+          optionText: choice.display,
+          reason: matched.reason,
+        });
+      }
+    }
+
+    if (matchedTraps.length === 0) return null;
+    return { status: 'wrong_traps' as const, traps: matchedTraps };
+  }, [explanation, userAnswer, safeOptions, hasKnownAnswer, correctAnswer]);
+
   const fetchExplanation = async (overrideKey?: string) => {
     if (!question.trim() || isLoading) return;
 
-    const cached = readCachedExplanation(cacheKey);
+    const cached = await getCachedAiExplanationAsync(cacheKey, legacyClientKey);
     if (cached) {
       setExplanation(cached);
       setCacheBadge('shared');
@@ -164,7 +244,7 @@ export default function AITutorButton({
         headers,
         body: JSON.stringify({
           question,
-          options,
+          options: safeOptions,
           correctAnswer,
           userAnswer,
           subject,
@@ -204,7 +284,7 @@ export default function AITutorButton({
         throw new Error(data.error || 'Không thể nhận giải thích từ Gemini AI.');
       }
 
-      writeCachedExplanation(cacheKey, data.explanation);
+      void setCachedAiExplanation(cacheKey, data.explanation);
       setExplanation(data.explanation);
       setCacheBadge(data.cached ? 'shared' : data.persisted ? 'persisted' : 'shared');
       setNeedsApiKey(false);
@@ -226,7 +306,7 @@ export default function AITutorButton({
       setIsOpen((prev) => !prev);
       return;
     }
-    fetchExplanation();
+    void fetchExplanation();
   };
 
   const handleSaveAndRetryKey = (e: React.FormEvent) => {
@@ -239,7 +319,7 @@ export default function AITutorButton({
     } catch {
       // Ignore storage errors
     }
-    fetchExplanation(cleaned);
+    void fetchExplanation(cleaned);
   };
 
   const handleClearKey = (e: React.MouseEvent) => {
@@ -251,8 +331,6 @@ export default function AITutorButton({
       // Ignore
     }
   };
-
-  const hasKnownAnswer = Boolean(correctAnswer && correctAnswer.trim());
 
   return (
     <div
@@ -352,7 +430,7 @@ export default function AITutorButton({
               autoComplete="off"
               value={tempApiKey}
               onChange={(e) => setTempApiKey(e.target.value)}
-              placeholder="AQ... hoặc AIza..."
+              placeholder="AIza..."
               className="flex-1 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <button
@@ -378,6 +456,48 @@ export default function AITutorButton({
 
       {isOpen && explanation && (
         <div className="p-4 rounded-2xl bg-indigo-50/80 dark:bg-[#0B1326]/90 border border-indigo-200/90 dark:border-indigo-500/35 space-y-3 text-xs sm:text-sm animate-fade-in">
+          {resolvedInferredLabels.length > 0 && (
+            <div className="px-3 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-xs font-bold text-cyan-800 dark:text-cyan-200 flex flex-wrap items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
+              <span>Đáp án AI suy luận cho bộ lựa chọn hiện tại:</span>
+              <span className="font-mono text-indigo-700 dark:text-cyan-300">
+                {resolvedInferredLabels.join(' | ')}
+              </span>
+            </div>
+          )}
+
+          {userChoiceDiagnostics?.status === 'matched_inferred' && (
+            <div className="px-3 py-2 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-xs font-bold text-emerald-800 dark:text-emerald-200 flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span>Lựa chọn của bạn khớp hoàn toàn với đáp án AI suy luận!</span>
+            </div>
+          )}
+
+          {userChoiceDiagnostics?.status === 'wrong_traps' && (
+            <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 space-y-2">
+              <p className="text-[11px] font-black uppercase tracking-wider text-rose-700 dark:text-rose-300 flex items-center gap-1.5">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                <span>Vì sao lựa chọn của bạn dễ nhầm</span>
+              </p>
+              <div className="space-y-1.5">
+                {userChoiceDiagnostics.traps.map((trap, tIdx) => (
+                  <div
+                    key={tIdx}
+                    className="text-xs text-rose-950 dark:text-rose-100 space-y-0.5"
+                  >
+                    <p className="font-bold text-rose-700 dark:text-rose-300">
+                      • Phương án &ldquo;{trap.optionText}&rdquo;:
+                    </p>
+                    <CodeQuestionRenderer
+                      content={trap.reason}
+                      className="text-xs text-slate-800 dark:text-slate-100 leading-relaxed pl-3"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {explanation.coreConcept && (
             <div className="space-y-1">
               <div className="flex items-center justify-between gap-2 flex-wrap">
@@ -422,9 +542,10 @@ export default function AITutorButton({
                 <Zap className="w-3.5 h-3.5" />
                 <span>Mẹo nhớ nhanh 3 giây</span>
               </p>
-              <p className="text-xs sm:text-sm font-semibold text-emerald-900 dark:text-emerald-100 leading-relaxed">
-                {explanation.mnemonic}
-              </p>
+              <CodeQuestionRenderer
+                content={explanation.mnemonic}
+                className="text-xs sm:text-sm font-semibold text-emerald-900 dark:text-emerald-100 leading-relaxed"
+              />
             </div>
           )}
         </div>

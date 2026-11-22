@@ -105,3 +105,51 @@ export type ValidatedCustomSubject = z.infer<typeof CustomSubjectSchema>;
 export type ValidatedDailyStats = z.infer<typeof DailyStatsSchema>;
 export type ValidatedExamRecord = z.infer<typeof ExamRecordSchema>;
 export type ValidatedBackup = z.infer<typeof BackupDataSchema>;
+
+export const AiExplainRequestSchema = z.object({
+  question: z
+    .string()
+    .trim()
+    .min(2, 'Câu hỏi quá ngắn.')
+    .max(5000, 'Câu hỏi vượt quá giới hạn 5.000 ký tự.'),
+  options: z.array(z.string().max(1500)).max(12).optional().default([]),
+  correctAnswer: z.string().max(2000).optional().default(''),
+  userAnswer: z.string().max(2000).optional().default(''),
+  subject: z.string().max(120).optional().default(''),
+  topic: z.string().max(200).optional().default(''),
+  userApiKey: z.string().max(256).optional(),
+});
+
+export const AiSolveQuestionItemSchema = z.object({
+  index: z.number().int().min(0),
+  question: z.string().trim().min(1).max(5000),
+  options: z.array(z.string().max(1500)).min(2).max(12),
+});
+
+export const AiSolveRequestSchema = z.object({
+  mode: z.literal('solve'),
+  subject: z.string().max(120).optional().default('PRF192'),
+  userApiKey: z.string().max(256).optional(),
+  questions: z
+    .array(AiSolveQuestionItemSchema)
+    .min(1, 'Không có câu hỏi hợp lệ nào cần AI giải đáp.')
+    .max(30, 'Mỗi lượt chỉ giải tối đa 30 câu hỏi.'),
+});
+
+export const AiGenerateRequestSchema = z.object({
+  mode: z.literal('generate').optional().default('generate'),
+  prompt: z
+    .string()
+    .trim()
+    .min(3, 'Vui lòng cung cấp chủ đề hoặc nội dung cần tạo câu hỏi.')
+    .max(24000, 'Nội dung yêu cầu vượt quá giới hạn 24.000 ký tự.'),
+  subject: z.string().max(120).optional().default('PRF192'),
+  count: z.coerce.number().int().min(1).max(30).optional().default(10),
+  difficulty: z.enum(['easy', 'medium', 'hard']).optional().default('medium'),
+  questionType: z.enum(['single', 'multi', 'mixed']).optional().default('single'),
+  userApiKey: z.string().max(256).optional(),
+});
+
+export type ValidatedAiExplainRequest = z.infer<typeof AiExplainRequestSchema>;
+export type ValidatedAiSolveRequest = z.infer<typeof AiSolveRequestSchema>;
+export type ValidatedAiGenerateRequest = z.infer<typeof AiGenerateRequestSchema>;

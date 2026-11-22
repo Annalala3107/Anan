@@ -6,7 +6,12 @@ import { Word, CustomQuiz, CustomSubject } from '@/lib/types';
 import { StorageEngine } from '@/lib/storage';
 import { useQuizStore } from '@/lib/quizStore';
 import { QUESTION_BANKS } from '@/lib/defaultBanks';
-import { isAnswerMatch, cleanOptionText, resolveCorrectOptionFromAnswer } from '@/lib/utils';
+import {
+  isAnswerMatch,
+  cleanOptionText,
+  parseAnswerKeys,
+  resolveCorrectOptionFromAnswer,
+} from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
 import {
@@ -66,11 +71,13 @@ export default function AIPromptModal({
   const [subject, setSubject] = useState('PRF192');
   const [count, setCount] = useState(10);
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard'>('medium');
+  const [questionType, setQuestionType] = useState<'single' | 'multi' | 'mixed'>('single');
   const [userApiKey, setUserApiKey] = useState('');
   const [showKeyInput, setShowKeyInput] = useState(false);
   const [customSubjects, setCustomSubjects] = useState<CustomSubject[]>([]);
   const [previewDraft, setPreviewDraft] = useState<PreviewDraft | null>(null);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
+  const [multiEditMap, setMultiEditMap] = useState<Record<number, boolean>>({});
   const [lectureNotice, setLectureNotice] = useState<string | null>(null);
 
   // Loading & Error States
@@ -100,6 +107,7 @@ export default function AIPromptModal({
       setCustomSubjects(subs);
       setPreviewDraft(null);
       setEditingIndex(null);
+      setMultiEditMap({});
       setLectureNotice(null);
       setError(null);
       if (defaultSubject) {
@@ -171,6 +179,7 @@ export default function AIPromptModal({
           subject: subject.trim(),
           count,
           difficulty,
+          questionType,
         }),
       });
 
@@ -197,6 +206,7 @@ export default function AIPromptModal({
       const compactTopic =
         prompt.trim().length > 70 ? `${prompt.trim().slice(0, 70)}...` : prompt.trim();
       setEditingIndex(null);
+      setMultiEditMap({});
       setPreviewDraft({
         title:
           data.title ||
@@ -279,22 +289,77 @@ export default function AIPromptModal({
     }
   };
 
-  const handleSelectPreviewOption = (qIndex: number, optIndex: number, optText: string) => {
+  const handleSelectPreviewOption = (
+    qIndex: number,
+    optIndex: number,
+    optText: string,
+    isMultiMode: boolean
+  ) => {
     const letter = String.fromCharCode(65 + optIndex);
     const cleaned = cleanOptionText(optText);
     setPreviewDraft((prev) => {
       if (!prev) return null;
-      const nextWords = prev.words.map((w, idx) =>
-        idx === qIndex
-          ? {
-              ...w,
-              answer: letter,
-              correctWord: cleaned,
-            }
-          : w
-      );
+      const nextWords = prev.words.map((w, idx) => {
+        if (idx !== qIndex) return w;
+        if (!isMultiMode) {
+          const singleCorrect =
+            resolveCorrectOptionFromAnswer(letter, w.options, undefined) || cleaned;
+          return {
+            ...w,
+            answer: letter,
+            correctWord: singleCorrect,
+          };
+        }
+
+        const currentKeys = parseAnswerKeys(w.answer).keys;
+        let nextKeys: string[];
+        if (currentKeys.includes(letter)) {
+          nextKeys =
+            currentKeys.length > 1
+              ? currentKeys.filter((k) => k !== letter)
+              : currentKeys;
+        } else {
+          nextKeys = [...currentKeys, letter];
+        }
+
+        nextKeys = Array.from(new Set(nextKeys)).sort(
+          (a, b) => a.charCodeAt(0) - b.charCodeAt(0)
+        );
+        const nextAnswer = nextKeys.join(', ');
+        const nextCorrect =
+          resolveCorrectOptionFromAnswer(nextAnswer, w.options, undefined) || cleaned;
+
+        return {
+          ...w,
+          answer: nextAnswer,
+          correctWord: nextCorrect,
+        };
+      });
       return { ...prev, words: nextWords };
     });
+  };
+
+  const handleTogglePreviewMultiMode = (qIndex: number, enableMulti: boolean) => {
+    setMultiEditMap((prev) => ({ ...prev, [qIndex]: enableMulti }));
+    if (!enableMulti) {
+      setPreviewDraft((prev) => {
+        if (!prev) return null;
+        const nextWords = prev.words.map((w, idx) => {
+          if (idx !== qIndex) return w;
+          const keys = parseAnswerKeys(w.answer).keys;
+          if (keys.length <= 1) return w;
+          const firstKey = keys[0];
+          return {
+            ...w,
+            answer: firstKey,
+            correctWord:
+              resolveCorrectOptionFromAnswer(firstKey, w.options, undefined) ||
+              w.correctWord,
+          };
+        });
+        return { ...prev, words: nextWords };
+      });
+    }
   };
 
   const handleUpdatePreviewField = (
@@ -516,18 +581,36 @@ export default function AIPromptModal({
             <div className="max-h-[340px] overflow-y-auto space-y-2.5 pr-1">
               {previewDraft.words.map((q, idx) => {
                 const isEditing = editingIndex === idx;
+                const answerKeys = parseAnswerKeys(q.answer).keys;
+                const isMultiMode = Boolean(multiEditMap[idx] || answerKeys.length > 1);
                 return (
                   <div
                     key={idx}
                     className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-2"
                   >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex items-center gap-2">
+                    <div className="flex items-start justify-between gap-2 flex-wrap">
+                      <div className="flex items-center flex-wrap gap-2">
                         <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">
                           Câu {idx + 1}
                         </span>
+                        <button
+                          type="button"
+                          onClick={() => handleTogglePreviewMultiMode(idx, !isMultiMode)}
+                          title="Chuyển chế độ chọn 1 đáp án hoặc nhiều đáp án đúng"
+                          className={`text-[10px] font-bold px-2 py-0.5 rounded border transition-colors cursor-pointer ${
+                            isMultiMode
+                              ? 'bg-purple-500/15 text-purple-700 dark:text-purple-300 border-purple-400/40'
+                              : 'bg-slate-200/70 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-300/60 dark:border-slate-700'
+                          }`}
+                        >
+                          {isMultiMode
+                            ? `Nhiều đáp án (${Math.max(answerKeys.length, 1)})`
+                            : '1 đáp án'}
+                        </button>
                         <span className="text-[10px] text-slate-400">
-                          (Bấm vào đáp án để đổi đáp án đúng)
+                          {isMultiMode
+                            ? '(Bấm các đáp án đúng để bật/tắt)'
+                            : '(Bấm vào đáp án để đổi đáp án đúng)'}
                         </span>
                       </div>
                       <div className="flex items-center gap-2.5">
@@ -591,12 +674,17 @@ export default function AIPromptModal({
                     {Array.isArray(q.options) && q.options.length > 0 && (
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                         {q.options.map((opt, oIdx) => {
-                          const isTrue = isAnswerMatch(opt, q.correctWord || q.word, q.answer);
+                          const optLetter = String.fromCharCode(65 + oIdx);
+                          const isTrue =
+                            answerKeys.includes(optLetter) ||
+                            isAnswerMatch(opt, q.correctWord || q.word, q.answer);
                           return (
                             <button
                               key={oIdx}
                               type="button"
-                              onClick={() => handleSelectPreviewOption(idx, oIdx, opt)}
+                              onClick={() =>
+                                handleSelectPreviewOption(idx, oIdx, opt, isMultiMode)
+                              }
                               className={`w-full text-left px-2.5 py-1.5 rounded-xl text-xs border flex items-start gap-1.5 transition-colors cursor-pointer ${
                                 isTrue
                                   ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-700 dark:text-emerald-300 font-bold'
@@ -618,10 +706,15 @@ export default function AIPromptModal({
                     )}
 
                     {!isEditing && q.explanation && (
-                      <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed pt-1 border-t border-slate-200/70 dark:border-slate-800">
-                        <strong className="text-indigo-600 dark:text-indigo-400">Giải thích:</strong>{' '}
-                        {q.explanation}
-                      </p>
+                      <div className="pt-1.5 border-t border-slate-200/70 dark:border-slate-800 space-y-1">
+                        <span className="text-[10px] font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                          Giải thích:
+                        </span>
+                        <CodeQuestionRenderer
+                          content={q.explanation}
+                          className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed"
+                        />
+                      </div>
                     )}
                   </div>
                 );
@@ -826,6 +919,36 @@ export default function AIPromptModal({
                   <option value="medium">Vừa phải / Thông hiểu</option>
                   <option value="hard">Khó / Bẫy logic</option>
                 </select>
+              </div>
+            </div>
+
+            {/* Question format selector (Single / Multi-select / Mixed) */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-700 dark:text-slate-300 block">
+                Dạng câu hỏi:
+              </label>
+              <div className="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+                {[
+                  { id: 'single' as const, label: '1 đáp án' },
+                  { id: 'multi' as const, label: 'Nhiều đáp án' },
+                  { id: 'mixed' as const, label: 'Kết hợp' },
+                ].map((opt) => {
+                  const active = questionType === opt.id;
+                  return (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      onClick={() => setQuestionType(opt.id)}
+                      className={`py-2 px-2.5 rounded-lg text-xs font-bold transition-all duration-150 cursor-pointer ${
+                        active
+                          ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-cyan-300 shadow-sm border border-indigo-200/70 dark:border-indigo-500/35'
+                          : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'
+                      }`}
+                    >
+                      {opt.label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 

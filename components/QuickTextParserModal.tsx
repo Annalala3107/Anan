@@ -12,6 +12,7 @@ import {
   cleanOptionText,
   resolveCorrectOptionFromAnswer,
 } from '@/lib/utils';
+import { buildAiSolveCacheKeyV2 } from '@/lib/aiCacheKey';
 import { StorageEngine } from '@/lib/storage';
 import { useQuizStore } from '@/lib/quizStore';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
@@ -34,6 +35,7 @@ import {
   Loader2,
   Key,
   Check,
+  Square,
 } from 'lucide-react';
 
 interface QuickTextParserModalProps {
@@ -222,9 +224,19 @@ export default function QuickTextParserModal({
 
   // AI Solve unanswered state
   const [isAiSolving, setIsAiSolving] = useState(false);
+  const [solveProgress, setSolveProgress] = useState<{
+    done: number;
+    total: number;
+    batch: number;
+    totalBatches: number;
+  } | null>(null);
   const [aiSolveError, setAiSolveError] = useState<string | null>(null);
+  const [solvedBeforeFailure, setSolvedBeforeFailure] = useState(0);
+  const [resumeLimit, setResumeLimit] = useState<number | undefined>(undefined);
   const [needsSolveApiKey, setNeedsSolveApiKey] = useState(false);
+  const [showSolveKeyPanel, setShowSolveKeyPanel] = useState(false);
   const [solveApiKey, setSolveApiKey] = useState('');
+  const solveAbortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -239,14 +251,33 @@ export default function QuickTextParserModal({
       } catch {
         // Ignore storage errors
       }
+    } else if (solveAbortRef.current) {
+      solveAbortRef.current.abort();
+      solveAbortRef.current = null;
     }
   }, [isOpen, defaultSubject]);
 
+  useEffect(() => {
+    return () => {
+      if (solveAbortRef.current) {
+        solveAbortRef.current.abort();
+        solveAbortRef.current = null;
+      }
+    };
+  }, []);
+
   // Reset per-question overrides when source input changes
   useEffect(() => {
+    if (solveAbortRef.current) {
+      solveAbortRef.current.abort();
+      solveAbortRef.current = null;
+    }
     setQuestionOverrides({});
     setEditingKey(null);
     setAiSolveError(null);
+    setSolvedBeforeFailure(0);
+    setResumeLimit(undefined);
+    setSolveProgress(null);
   }, [deferredRawText]);
 
   // Support pressing Escape to close
@@ -265,20 +296,32 @@ export default function QuickTextParserModal({
     return parseRawExamText(deferredRawText, subject, topic, filterOptions);
   }, [deferredRawText, subject, topic, filterOptions]);
 
-  // Combine valid + unanswered questions with interactive overrides
+  // Combine valid + unanswered questions with interactive overrides keyed stably by content
   const previewItems = useMemo(() => {
-    const combined = [
+    const combinedRaw = [
       ...parsedResult.questions.map((w, idx) => ({
         raw: w,
-        key: `${w.id ?? 'v'}_v_${idx}`,
         orderHint: typeof w.id === 'number' ? w.id : idx + 1,
       })),
       ...parsedResult.unansweredQuestions.map((w, idx) => ({
         raw: w,
-        key: `${w.id ?? 'u'}_u_${idx}`,
         orderHint: typeof w.id === 'number' ? w.id : 100000 + idx,
       })),
     ].sort((a, b) => a.orderHint - b.orderHint);
+
+    const occMap = new Map<string, number>();
+    const combined = combinedRaw.map((entry) => {
+      const sig = buildAiSolveCacheKeyV2(
+        entry.raw.question || entry.raw.word || '',
+        entry.raw.options || []
+      );
+      const occ = occMap.get(sig) ?? 0;
+      occMap.set(sig, occ + 1);
+      return {
+        raw: entry.raw,
+        key: `${sig}_${occ}`,
+      };
+    });
 
     return combined
       .map((entry) => {
@@ -450,17 +493,66 @@ export default function QuickTextParserModal({
     }));
   };
 
+  const handleSolveKeyChange = (value: string) => {
+    setSolveApiKey(value);
+    const cleaned = value.trim();
+    try {
+      if (cleaned) {
+        sessionStorage.setItem('gemini_custom_api_key', cleaned);
+      } else {
+        sessionStorage.removeItem('gemini_custom_api_key');
+      }
+    } catch {
+      // Ignore
+    }
+  };
+
+  const handleClearSolveKey = () => {
+    setSolveApiKey('');
+    try {
+      sessionStorage.removeItem('gemini_custom_api_key');
+    } catch {
+      // Ignore
+    }
+  };
+
+  const handleStopAiSolve = () => {
+    if (solveAbortRef.current) {
+      solveAbortRef.current.abort();
+      solveAbortRef.current = null;
+    }
+  };
+
   const handleAiSolveUnanswered = async (maxQuestionsToSolve?: number) => {
     if (pendingUnansweredItems.length === 0 || isAiSolving) return;
 
-    const itemsToSolve =
+    const targetLimit =
       typeof maxQuestionsToSolve === 'number' && maxQuestionsToSolve > 0
-        ? pendingUnansweredItems.slice(0, maxQuestionsToSolve)
-        : pendingUnansweredItems;
+        ? maxQuestionsToSolve
+        : undefined;
+
+    const itemsToSolve = targetLimit
+      ? pendingUnansweredItems.slice(0, targetLimit)
+      : pendingUnansweredItems;
+
+    const controller = new AbortController();
+    solveAbortRef.current = controller;
+
+    const BATCH_SIZE = 15;
+    const totalBatches = Math.ceil(itemsToSolve.length / BATCH_SIZE);
 
     setIsAiSolving(true);
     setAiSolveError(null);
+    setSolvedBeforeFailure(0);
     setNeedsSolveApiKey(false);
+    setSolveProgress({
+      done: 0,
+      total: itemsToSolve.length,
+      batch: 1,
+      totalBatches,
+    });
+
+    let solvedTotal = 0;
 
     try {
       let keyToSend = solveApiKey.trim();
@@ -485,14 +577,22 @@ export default function QuickTextParserModal({
         headers['x-goog-api-key'] = keyToSend;
       }
 
-      const BATCH_SIZE = 15;
-      let solvedTotal = 0;
-
       for (let offset = 0; offset < itemsToSolve.length; offset += BATCH_SIZE) {
+        if (controller.signal.aborted) break;
+
+        const batchIndex = Math.floor(offset / BATCH_SIZE) + 1;
+        setSolveProgress({
+          done: solvedTotal,
+          total: itemsToSolve.length,
+          batch: batchIndex,
+          totalBatches,
+        });
+
         const batch = itemsToSolve.slice(offset, offset + BATCH_SIZE);
         const res = await fetch('/api/ai/generate-quiz', {
           method: 'POST',
           headers,
+          signal: controller.signal,
           body: JSON.stringify({
             mode: 'solve',
             subject,
@@ -524,6 +624,7 @@ export default function QuickTextParserModal({
             res.status === 429
           ) {
             setNeedsSolveApiKey(true);
+            setShowSolveKeyPanel(true);
           }
           throw new Error(data.error || 'Không thể nhờ AI giải đáp án lúc này.');
         }
@@ -536,7 +637,7 @@ export default function QuickTextParserModal({
           if (!ansLetter) continue;
           const options = targetItem.resolvedWord.options || [];
           const resolvedCorrect =
-            resolveCorrectOptionFromAnswer(ansLetter, options, '') || ansLetter;
+            resolveCorrectOptionFromAnswer(ansLetter, options, undefined) || ansLetter;
 
           updates[targetItem.key] = {
             answer: ansLetter,
@@ -547,15 +648,44 @@ export default function QuickTextParserModal({
         }
 
         setQuestionOverrides((prev) => ({ ...prev, ...updates }));
+        setSolveProgress({
+          done: Math.min(offset + batch.length, itemsToSolve.length),
+          total: itemsToSolve.length,
+          batch: batchIndex,
+          totalBatches,
+        });
       }
 
       if (solvedTotal > 0) {
         setPasteNotice(`🤖 Gemini AI đã giải & điền đáp án cho ${solvedTotal} câu hỏi!`);
       }
-    } catch (err: any) {
-      setAiSolveError(err.message || 'Lỗi khi nhờ AI giải đáp án.');
+      setResumeLimit(undefined);
+    } catch (err: unknown) {
+      if (err instanceof Error && err.name === 'AbortError') {
+        if (solvedTotal > 0) {
+          setPasteNotice(
+            `Đã dừng theo yêu cầu và giữ lại ${solvedTotal} câu AI vừa giải xong.`
+          );
+        }
+        return;
+      }
+
+      const errMessage =
+        err instanceof Error ? err.message : 'Lỗi khi nhờ AI giải đáp án.';
+      setSolvedBeforeFailure(solvedTotal);
+      if (targetLimit) {
+        const remainingForBatch = Math.max(1, itemsToSolve.length - solvedTotal);
+        setResumeLimit(remainingForBatch);
+      } else {
+        setResumeLimit(undefined);
+      }
+      setAiSolveError(errMessage);
     } finally {
+      if (solveAbortRef.current === controller) {
+        solveAbortRef.current = null;
+      }
       setIsAiSolving(false);
+      setSolveProgress(null);
     }
   };
 
@@ -919,6 +1049,20 @@ export default function QuickTextParserModal({
                         <Zap className="w-3.5 h-3.5" />
                         <span>⚡ Vào Thi Thử Ngay (AI giải tại chỗ)</span>
                       </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setShowSolveKeyPanel((prev) => !prev)}
+                        className={`px-2.5 py-1.5 rounded-xl border text-[11px] font-bold flex items-center gap-1 transition-colors cursor-pointer shrink-0 ${
+                          showSolveKeyPanel || solveApiKey.trim()
+                            ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-400/45'
+                            : 'bg-white/80 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
+                        }`}
+                        title="Cài đặt Gemini API Key riêng (BYOK)"
+                      >
+                        <Key className="w-3 h-3 text-amber-500" />
+                        <span>{solveApiKey.trim() ? 'Key riêng: Đang bật' : 'Key riêng'}</span>
+                      </button>
                     </div>
                   </div>
                 ) : (
@@ -955,27 +1099,118 @@ export default function QuickTextParserModal({
                           </>
                         )}
                       </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setShowSolveKeyPanel((prev) => !prev)}
+                        className={`px-2.5 py-1.5 rounded-xl border text-[11px] font-bold flex items-center gap-1 transition-colors cursor-pointer shrink-0 ${
+                          showSolveKeyPanel || solveApiKey.trim()
+                            ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-400/45'
+                            : 'bg-white/80 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'
+                        }`}
+                        title="Cài đặt Gemini API Key riêng (BYOK)"
+                      >
+                        <Key className="w-3 h-3 text-amber-500" />
+                        <span>{solveApiKey.trim() ? 'Key riêng: Đang bật' : 'Key riêng'}</span>
+                      </button>
                     </div>
                   </div>
                 )}
 
-                {needsSolveApiKey && (
-                  <div className="flex items-center gap-2">
-                    <Key className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                    <input
-                      type="password"
-                      value={solveApiKey}
-                      onChange={(e) => setSolveApiKey(e.target.value)}
-                      placeholder="Nhập Gemini API Key (AQ... hoặc AIza...) lưu tạm phiên này rồi bấm AI Giải lại"
-                      className="flex-1 px-2.5 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[11px] font-mono text-slate-900 dark:text-white"
-                    />
+                {isAiSolving && solveProgress && (
+                  <div className="p-2.5 rounded-xl bg-white/80 dark:bg-slate-900/75 border border-indigo-300/40 dark:border-indigo-500/30 space-y-1.5">
+                    <div className="flex items-center justify-between gap-2 text-[11px]">
+                      <span className="font-mono tabular-nums font-bold text-indigo-700 dark:text-cyan-300">
+                        Lô {solveProgress.batch}/{solveProgress.totalBatches} • Đã xử lý {solveProgress.done}/{solveProgress.total} câu
+                      </span>
+                      <button
+                        type="button"
+                        onClick={handleStopAiSolve}
+                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-rose-500/15 hover:bg-rose-500/25 text-rose-600 dark:text-rose-300 font-bold cursor-pointer"
+                      >
+                        <Square className="w-2.5 h-2.5 fill-current" />
+                        <span>Dừng</span>
+                      </button>
+                    </div>
+                    <div className="h-1.5 w-full rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+                      <div
+                        className="h-full w-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 origin-left transition-transform duration-150"
+                        style={{
+                          transform: `scaleX(${Math.max(
+                            0.06,
+                            solveProgress.total > 0
+                              ? solveProgress.done / solveProgress.total
+                              : 0
+                          )})`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {(showSolveKeyPanel || needsSolveApiKey) && (
+                  <div className="p-2.5 rounded-xl bg-white/75 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-700/80 space-y-1.5">
+                    <div className="flex items-center justify-between gap-2 flex-wrap text-[11px]">
+                      <span className="text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                        <Key className="w-3 h-3 text-amber-500 shrink-0" />
+                        <span>API Key cá nhân (chỉ lưu tạm trong <code>sessionStorage</code>):</span>
+                      </span>
+                      <a
+                        href="https://aistudio.google.com/apikey"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-indigo-600 dark:text-cyan-400 hover:underline"
+                      >
+                        Lấy key miễn phí tại Google AI Studio ↗
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <input
+                        type="password"
+                        autoComplete="off"
+                        value={solveApiKey}
+                        onChange={(e) => handleSolveKeyChange(e.target.value)}
+                        placeholder="AIza... (tùy chọn BYOK, lưu tạm sessionStorage)"
+                        className="flex-1 px-2.5 py-1.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 text-[11px] font-mono text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                      {solveApiKey && (
+                        <button
+                          type="button"
+                          onClick={handleClearSolveKey}
+                          title="Xóa API Key khỏi sessionStorage"
+                          className="p-1.5 rounded-lg bg-rose-500/10 text-rose-500 hover:bg-rose-500/20 cursor-pointer shrink-0"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 )}
 
                 {aiSolveError && (
-                  <p className="text-[11px] font-semibold text-rose-600 dark:text-rose-400">
-                    {aiSolveError}
-                  </p>
+                  <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 space-y-1.5 text-[11px]">
+                    <p className="font-semibold text-rose-600 dark:text-rose-300">
+                      {aiSolveError}
+                      {solvedBeforeFailure > 0
+                        ? ` (Đã lưu tự động ${solvedBeforeFailure} câu giải thành công từ các lô trước.)`
+                        : ''}
+                    </p>
+                    {pendingUnansweredItems.length > 0 && !isAiSolving && (
+                      <button
+                        type="button"
+                        onClick={() => handleAiSolveUnanswered(resumeLimit)}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold cursor-pointer"
+                      >
+                        <Bot className="w-3.5 h-3.5" />
+                        <span>
+                          🤖 Giải tiếp{' '}
+                          {resumeLimit
+                            ? `${Math.min(resumeLimit, pendingUnansweredItems.length)} câu còn lại`
+                            : `${pendingUnansweredItems.length} câu còn lại`}
+                        </span>
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
             )}
@@ -1134,8 +1369,11 @@ export default function QuickTextParserModal({
                       </div>
 
                       {!isEditing && q.explanation && (
-                        <div className="text-[11px] text-slate-500 dark:text-slate-400 italic pt-1 border-t border-slate-200/60 dark:border-slate-800">
-                          💡 {q.explanation}
+                        <div className="pt-1.5 border-t border-slate-200/60 dark:border-slate-800">
+                          <CodeQuestionRenderer
+                            content={`💡 ${q.explanation}`}
+                            className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed"
+                          />
                         </div>
                       )}
                     </div>
