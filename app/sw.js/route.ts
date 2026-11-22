@@ -1,9 +1,14 @@
-const CACHE_NAME = 'ananquiz-pwa-v1';
+export const dynamic = 'force-static';
+
+const BUILD_ID = process.env.ANANQUIZ_BUILD_ID || 'v2';
+
+const SW_SOURCE = `const CACHE_NAME = 'ananquiz-pwa-${BUILD_ID}';
 const PRECACHE_URLS = [
   '/',
   '/quizzes',
   '/library',
   '/profile',
+  '/sync',
   '/manifest.webmanifest',
   '/icon.svg',
   '/data/index.json',
@@ -50,6 +55,7 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
   if (url.pathname.startsWith('/api/')) return;
+  if (url.pathname === '/sw.js') return;
 
   const isDataOrAsset =
     url.pathname.startsWith('/data/') ||
@@ -99,3 +105,15 @@ self.addEventListener('fetch', (event) => {
     );
   }
 });
+`;
+
+export function GET() {
+  return new Response(SW_SOURCE, {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/javascript; charset=utf-8',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Service-Worker-Allowed': '/',
+    },
+  });
+}

@@ -148,6 +148,8 @@ export default function FloatingMiniPlayer() {
   const currentTrackId = useMusicStore((s) => s.currentTrackId);
   const isPlaying = useMusicStore((s) => s.isPlaying);
   const isReady = useMusicStore((s) => s.isReady);
+  const youtubeApiError = useMusicStore((s) => s.youtubeApiError);
+  const autoplayBlocked = useMusicStore((s) => s.autoplayBlocked);
   const isMuted = useMusicStore((s) => s.isMuted);
   const volume = useMusicStore((s) => s.volume);
   const isDucked = useMusicStore((s) => s.isDucked);
@@ -343,6 +345,13 @@ export default function FloatingMiniPlayer() {
         </div>
       </div>
 
+      {/* Diagnostic hint when AdBlock / network blocks YouTube */}
+      {youtubeApiError && !currentTrack.isLocalFile && (
+        <p className="mt-2 text-[10px] leading-snug text-amber-700 dark:text-amber-300 bg-amber-500/10 border border-amber-500/25 rounded-lg px-2 py-1">
+          AdBlock chặn YouTube — hãy dùng MP3 trên máy hoặc Âm nền trong Studio.
+        </p>
+      )}
+
       {/* Timeline Seekbar */}
       <div className="mt-2.5">
         <MiniPlayerSeekBar />
@@ -365,7 +374,7 @@ export default function FloatingMiniPlayer() {
             aria-label={isPlaying ? 'Tạm dừng' : 'Phát nhạc'}
             className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-500 text-white shadow-sm hover:scale-105 active:scale-95 transition-transform flex items-center justify-center"
           >
-            {!isReady && isPlaying ? (
+            {!isReady && isPlaying && !youtubeApiError && !autoplayBlocked ? (
               <Loader2 className="w-3.5 h-3.5 animate-spin" />
             ) : isPlaying ? (
               <Pause className="w-3.5 h-3.5 fill-current" />

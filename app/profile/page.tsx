@@ -28,7 +28,7 @@ import {
 } from 'lucide-react';
 import QrSyncModal from '@/components/QrSyncModal';
 import ConfirmModal from '@/components/ConfirmModal';
-import { useQuizStore } from '@/lib/quizStore';
+import { useQuizStore, MotionMode } from '@/lib/quizStore';
 
 interface ManifestEntry {
   count: number;
@@ -56,15 +56,27 @@ export default function ProfilePage() {
   } | null>(null);
   const [showQrSync, setShowQrSync] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [osReducedMotion, setOsReducedMotion] = useState(false);
 
   const showConstellationHud = useQuizStore((s) => s.showConstellationHud);
   const setShowConstellationHud = useQuizStore((s) => s.setShowConstellationHud);
   const enableConstellationBg = useQuizStore((s) => s.enableConstellationBg);
   const setEnableConstellationBg = useQuizStore((s) => s.setEnableConstellationBg);
+  const motionMode = useQuizStore((s) => s.motionMode);
+  const setMotionMode = useQuizStore((s) => s.setMotionMode);
   const triggerConstellationAction = useQuizStore((s) => s.triggerConstellationAction);
   const hydrateSelection = useQuizStore((s) => s.hydrateSelection);
   const setSelectedQuizPath = useQuizStore((s) => s.setSelectedQuizPath);
   const setActiveCustomQuiz = useQuizStore((s) => s.setActiveCustomQuiz);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setOsReducedMotion(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setOsReducedMotion(e.matches);
+    mq.addEventListener?.('change', onChange);
+    return () => mq.removeEventListener?.('change', onChange);
+  }, []);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -714,30 +726,111 @@ export default function ProfilePage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-center">
-            <label className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                checked={enableConstellationBg}
-                onChange={(e) => setEnableConstellationBg(e.target.checked)}
-                className="rounded accent-indigo-600 w-4 h-4"
-              />
-              <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
-                Hiệu ứng chòm sao chuyển động (Tắt để tiết kiệm Pin/GPU)
+            <button
+              type="button"
+              role="switch"
+              aria-checked={enableConstellationBg}
+              onClick={() => setEnableConstellationBg(!enableConstellationBg)}
+              className={`inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border text-left transition-colors cursor-pointer select-none ${
+                enableConstellationBg
+                  ? 'bg-indigo-500/15 border-indigo-500/40 text-indigo-700 dark:text-indigo-200'
+                  : 'bg-slate-100 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+              }`}
+            >
+              <span
+                aria-hidden="true"
+                className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+                  enableConstellationBg ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-600'
+                }`}
+              >
+                <span
+                  className={`inline-block h-3.5 w-3.5 rounded-full bg-white shadow-sm transition-transform duration-150 ${
+                    enableConstellationBg ? 'translate-x-[18px]' : 'translate-x-[3px]'
+                  }`}
+                />
               </span>
-            </label>
+              <span className="text-xs font-bold">
+                Hiệu ứng chòm sao (Tắt để tiết kiệm Pin/GPU)
+              </span>
+            </button>
 
-            <label className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                checked={showConstellationHud}
-                onChange={(e) => setShowConstellationHud(e.target.checked)}
-                className="rounded accent-cyan-600 w-4 h-4"
-              />
-              <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+            <button
+              type="button"
+              role="switch"
+              aria-checked={showConstellationHud}
+              onClick={() => setShowConstellationHud(!showConstellationHud)}
+              className={`inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border text-left transition-colors cursor-pointer select-none ${
+                showConstellationHud
+                  ? 'bg-cyan-500/15 border-cyan-500/40 text-cyan-700 dark:text-cyan-200'
+                  : 'bg-slate-100 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+              }`}
+            >
+              <span
+                aria-hidden="true"
+                className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+                  showConstellationHud ? 'bg-cyan-600' : 'bg-slate-300 dark:bg-slate-600'
+                }`}
+              >
+                <span
+                  className={`inline-block h-3.5 w-3.5 rounded-full bg-white shadow-sm transition-transform duration-150 ${
+                    showConstellationHud ? 'translate-x-[18px]' : 'translate-x-[3px]'
+                  }`}
+                />
+              </span>
+              <span className="text-xs font-bold">
                 {showConstellationHud ? 'Đang hiện HUD hiệu năng' : 'Ẩn HUD (Gọn gàng)'}
               </span>
-            </label>
+            </button>
           </div>
+        </div>
+
+        {/* Motion Mode Override (Allows overriding Windows prefers-reduced-motion) */}
+        <div className="pt-3 border-t border-slate-200/70 dark:border-white/10 space-y-2.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div>
+              <p className="text-xs font-bold text-slate-800 dark:text-slate-100">
+                Mức hiệu ứng chuyển động
+              </p>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                Nếu Windows tắt animation hệ thống, chọn <strong>Luôn bật đầy đủ</strong> để xem trọn bộ hiệu ứng AnanQuiz.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-1.5 sm:w-auto shrink-0">
+              {(
+                [
+                  { id: 'system', label: 'Theo hệ thống' },
+                  { id: 'full', label: 'Luôn bật đầy đủ' },
+                  { id: 'reduced', label: 'Tối giản' },
+                ] as { id: MotionMode; label: string }[]
+              ).map((opt) => {
+                const active = motionMode === opt.id;
+                return (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => setMotionMode(opt.id)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors cursor-pointer whitespace-nowrap ${
+                      active
+                        ? 'bg-indigo-600 text-white border-indigo-500 shadow-sm'
+                        : 'bg-slate-100 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-400/50'
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {osReducedMotion && motionMode === 'system' && (
+            <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-800 dark:text-amber-300 flex items-start gap-2">
+              <AlertTriangle className="w-4 h-4 shrink-0 text-amber-500 mt-0.5" />
+              <span>
+                Thiết bị/Windows của bạn đang bật chế độ <strong>Giảm chuyển động</strong> (<em>Animation effects = Off</em>) nên các hiệu ứng CSS đang tạm tắt theo hệ thống. Bấm <strong>Luôn bật đầy đủ</strong> ở trên nếu bạn muốn bật lại hiệu ứng riêng cho AnanQuiz.
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5 pt-1">

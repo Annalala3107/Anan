@@ -279,10 +279,24 @@ export default function DynamicConstellationBackground({
   const showConstellationHud = useQuizStore((state) => state.showConstellationHud);
   const setShowConstellationHud = useQuizStore((state) => state.setShowConstellationHud);
   const enableConstellationBg = useQuizStore((state) => state.enableConstellationBg);
+  const motionMode = useQuizStore((state) => state.motionMode);
   const constellationAction = useQuizStore((state) => state.constellationAction);
   const isZenModeOpen = useMusicStore((state) => state.isZenModeOpen);
   const showMiniPlayer = useMusicStore((state) => state.showMiniPlayer);
   const [hudCollapsed, setHudCollapsed] = useState(false);
+  const [osReducedMotion, setOsReducedMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setOsReducedMotion(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setOsReducedMotion(e.matches);
+    mq.addEventListener?.('change', onChange);
+    return () => mq.removeEventListener?.('change', onChange);
+  }, []);
+
+  const shouldAnimateMotion =
+    motionMode === 'full' || (motionMode === 'system' && !osReducedMotion);
 
   const pathname = usePathname();
   const isStudySession = Boolean(pathname?.startsWith('/session/'));
@@ -749,6 +763,9 @@ export default function DynamicConstellationBackground({
       if (resizeDebounce) clearTimeout(resizeDebounce);
       resizeDebounce = setTimeout(() => {
         syncCanvasSize(true);
+        if (!shouldAnimateMotion) {
+          drawFrame(0, 1);
+        }
       }, 140);
     };
 
@@ -759,6 +776,19 @@ export default function DynamicConstellationBackground({
           })
         : null;
     resizeObserver?.observe(container);
+
+    if (!shouldAnimateMotion) {
+      drawFrame(0, 1);
+      syncHudFps('Static');
+      window.addEventListener('resize', handleResize);
+      return () => {
+        if (resizeDebounce) clearTimeout(resizeDebounce);
+        resizeObserver?.disconnect();
+        window.removeEventListener('resize', handleResize);
+        spawnShootingStarRef.current = null;
+        regenerateRef.current = null;
+      };
+    }
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!interactive || window.matchMedia?.('(pointer: coarse)').matches) return;
@@ -792,7 +822,7 @@ export default function DynamicConstellationBackground({
       spawnShootingStarRef.current = null;
       regenerateRef.current = null;
     };
-  }, [clusterCount, microStarCount, density, effectiveShowStars, interactive]);
+  }, [clusterCount, microStarCount, density, effectiveShowStars, interactive, shouldAnimateMotion]);
 
   return (
     <>
@@ -806,7 +836,7 @@ export default function DynamicConstellationBackground({
         {/* Static GPU-Baked Cosmic Aurora Layer (Zero per-frame blur recalculation) */}
         {showAmbientGlows && (
           <div
-            className="absolute inset-0 opacity-30 dark:opacity-100 pointer-events-none"
+            className="absolute inset-0 opacity-45 dark:opacity-100 pointer-events-none"
             style={{
               transform: 'translate3d(0, 0, 0)',
               backgroundImage: [

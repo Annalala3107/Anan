@@ -498,6 +498,8 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
   const loopMode = useMusicStore((s) => s.loopMode);
   const isShuffle = useMusicStore((s) => s.isShuffle);
   const trackErrors = useMusicStore((s) => s.trackErrors);
+  const youtubeApiError = useMusicStore((s) => s.youtubeApiError);
+  const autoplayBlocked = useMusicStore((s) => s.autoplayBlocked);
 
   const liveVideoId = useMusicStore((s) => s.liveVideoId);
   const liveTitle = useMusicStore((s) => s.liveTitle);
@@ -895,6 +897,11 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
                 : ''}
               {isDucked ? ' • Tự giảm 15% khi thi' : ''}
             </p>
+            {youtubeApiError && !currentTrack.isLocalFile && (
+              <p className="mt-1.5 text-[11px] text-amber-300 bg-amber-500/15 border border-amber-400/30 rounded-lg px-2.5 py-1 max-w-md">
+                {youtubeApiError}
+              </p>
+            )}
           </div>
 
           <SessionIntentionBar />
@@ -934,7 +941,7 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
               aria-label={isPlaying ? 'Tạm dừng (Space)' : 'Phát nhạc (Space)'}
               className="studio-tactile-btn w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/35 hover:scale-105 transition-transform flex items-center justify-center ring-2 ring-white/25"
             >
-              {!isReady && isPlaying ? (
+              {!isReady && isPlaying && !youtubeApiError && !autoplayBlocked ? (
                 <Loader2 className="w-6 h-6 animate-spin" />
               ) : isPlaying ? (
                 <Pause className="w-6 h-6 fill-current" />

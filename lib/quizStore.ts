@@ -5,6 +5,14 @@ import { QuizDatasetSchema } from './schema';
 
 const HUD_PREF_KEY = 'ananquiz_show_constellation_hud';
 const BG_PREF_KEY = 'ananquiz_enable_constellation_bg';
+const MOTION_PREF_KEY = 'ananquiz_motion_mode';
+
+export type MotionMode = 'system' | 'full' | 'reduced';
+
+function applyDocumentMotionMode(mode: MotionMode) {
+  if (typeof document === 'undefined') return;
+  document.documentElement.setAttribute('data-motion', mode);
+}
 
 export interface ConstellationActionRequest {
   type: 'regenerate' | 'shooting_star';
@@ -24,11 +32,13 @@ interface QuizStoreState {
   streak: number;
   syncStreak: () => void;
 
-  // Background Constellation HUD visibility (default false) & Canvas toggle (default true)
+  // Background Constellation HUD visibility (default false) & Canvas toggle (default true) & Motion preference
   showConstellationHud: boolean;
   setShowConstellationHud: (show: boolean) => void;
   enableConstellationBg: boolean;
   setEnableConstellationBg: (enabled: boolean) => void;
+  motionMode: MotionMode;
+  setMotionMode: (mode: MotionMode) => void;
   constellationAction: ConstellationActionRequest | null;
   triggerConstellationAction: (type: 'regenerate' | 'shooting_star') => void;
 
@@ -77,6 +87,18 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
     }
     set({ enableConstellationBg: enabled });
   },
+  motionMode: 'system',
+  setMotionMode: (mode: MotionMode) => {
+    applyDocumentMotionMode(mode);
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem(MOTION_PREF_KEY, mode);
+      } catch {
+        // Ignore storage quota errors
+      }
+    }
+    set({ motionMode: mode });
+  },
   constellationAction: null,
   triggerConstellationAction: (type) =>
     set((state) => ({
@@ -95,13 +117,20 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
     const currentStreak = StorageEngine.getStreak();
     let storedHud = false;
     let storedBg = true;
+    let storedMotion: MotionMode = 'system';
     try {
       storedHud = localStorage.getItem(HUD_PREF_KEY) === 'true';
       storedBg = localStorage.getItem(BG_PREF_KEY) !== 'false';
+      const rawMotion = localStorage.getItem(MOTION_PREF_KEY);
+      if (rawMotion === 'full' || rawMotion === 'reduced' || rawMotion === 'system') {
+        storedMotion = rawMotion;
+      }
     } catch {
       storedHud = false;
       storedBg = true;
+      storedMotion = 'system';
     }
+    applyDocumentMotionMode(storedMotion);
 
     if (savedCustomId) {
       const matchedCustom = StorageEngine.getCustomQuizzes().find((q) => q.id === savedCustomId);
@@ -116,6 +145,7 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
           streak: currentStreak,
           showConstellationHud: storedHud,
           enableConstellationBg: storedBg,
+          motionMode: storedMotion,
         });
         return;
       }
@@ -146,6 +176,7 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
       streak: currentStreak,
       showConstellationHud: storedHud,
       enableConstellationBg: storedBg,
+      motionMode: storedMotion,
     });
   },
 

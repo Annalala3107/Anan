@@ -54,7 +54,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.classList.remove('dark');}else{document.documentElement.classList.add('dark');}}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.classList.remove('dark');}else{document.documentElement.classList.add('dark');}var m=localStorage.getItem('ananquiz_motion_mode');if(m==='full'||m==='reduced'||m==='system'){document.documentElement.setAttribute('data-motion',m);}else{document.documentElement.setAttribute('data-motion','system');}}catch(e){}})();`,
           }}
         />
         <link rel="preconnect" href="https://www.youtube.com" />

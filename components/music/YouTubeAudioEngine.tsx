@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef } from 'react';
+import { X } from 'lucide-react';
 import {
   useMusicStore,
   registerMusicPlayerController,
@@ -18,7 +19,7 @@ let ytApiPromise: Promise<any> | null = null;
 
 /**
  * Module-level singleton loader for the YouTube IFrame API script.
- * Ensures the script is injected only once and preserves any existing ready callback.
+ * Ensures the script is injected only once and detects AdBlock/network blocks cleanly.
  */
 function loadYouTubeIframeApi(): Promise<any> {
   if (typeof window === 'undefined') {
@@ -34,6 +35,23 @@ function loadYouTubeIframeApi(): Promise<any> {
   }
 
   ytApiPromise = new Promise<any>((resolve, reject) => {
+    let settled = false;
+    const timeoutId = window.setTimeout(() => {
+      if (settled) return;
+      if (window.YT && window.YT.Player) {
+        settled = true;
+        resolve(window.YT);
+        return;
+      }
+      settled = true;
+      ytApiPromise = null;
+      reject(
+        new Error(
+          'Không tải được trình phát YouTube (có thể do trình chặn quảng cáo AdBlock hoặc mạng chặn youtube.com). Hãy tắt AdBlock cho trang này, hoặc dùng File nhạc MP3 / Âm nền.'
+        )
+      );
+    }, 8000);
+
     const prevReady = window.onYouTubeIframeAPIReady;
     window.onYouTubeIframeAPIReady = () => {
       try {
@@ -41,6 +59,9 @@ function loadYouTubeIframeApi(): Promise<any> {
       } catch {
         // Ignore third-party callback failures
       }
+      if (settled) return;
+      window.clearTimeout(timeoutId);
+      settled = true;
       if (window.YT && window.YT.Player) {
         resolve(window.YT);
       } else {
@@ -57,14 +78,29 @@ function loadYouTubeIframeApi(): Promise<any> {
       tag.src = 'https://www.youtube.com/iframe_api';
       tag.async = true;
       tag.onerror = () => {
+        if (settled) return;
+        window.clearTimeout(timeoutId);
+        settled = true;
         ytApiPromise = null;
-        reject(new Error('Không thể tải YouTube IFrame API (kiểm tra mạng hoặc trình chặn quảng cáo)'));
+        reject(
+          new Error(
+            'Không thể tải YouTube IFrame API (kiểm tra trình chặn quảng cáo AdBlock hoặc kết nối mạng).'
+          )
+        );
       };
       document.head.appendChild(tag);
     }
   });
 
   return ytApiPromise;
+}
+
+function isTouchOrAppleMobile(): boolean {
+  if (typeof window === 'undefined' || typeof navigator === 'undefined') return false;
+  const ua = navigator.userAgent || '';
+  if (/iPad|iPhone|iPod/i.test(ua)) return true;
+  if (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) return true;
+  return Boolean(window.matchMedia?.('(pointer: coarse)').matches);
 }
 
 function getYouTubeErrorMessage(code: number): string {
@@ -121,6 +157,10 @@ export default function YouTubeAudioEngine() {
   const currentTrackId = useMusicStore((s) => s.currentTrackId);
   const isPlaying = useMusicStore((s) => s.isPlaying);
   const isReady = useMusicStore((s) => s.isReady);
+  const playerState = useMusicStore((s) => s.playerState);
+  const youtubeApiError = useMusicStore((s) => s.youtubeApiError);
+  const autoplayBlocked = useMusicStore((s) => s.autoplayBlocked);
+  const embedAnchorRect = useMusicStore((s) => s.embedAnchorRect);
   const isMuted = useMusicStore((s) => s.isMuted);
   const volume = useMusicStore((s) => s.volume);
   const isDucked = useMusicStore((s) => s.isDucked);
@@ -140,6 +180,7 @@ export default function YouTubeAudioEngine() {
   const activeIsLocalRef = useRef(false);
   const playerRef = useRef<any>(null);
   const isPlayerReadyRef = useRef(false);
+  const pendingPlayOnReadyRef = useRef(false);
   const activeVideoIdRef = useRef<string>('');
   const activeMediaKeyRef = useRef<string>('');
   const syncedIntentRef = useRef<{ mediaKey: string; isPlaying: boolean } | null>(null);
@@ -308,17 +349,24 @@ export default function YouTubeAudioEngine() {
         // Ignore
       }
 
+      const skipVolumeFade = isTouchOrAppleMobile();
       if (playlistId && typeof player.loadPlaylist === 'function') {
         if (autoPlay) {
-          if (targetVol > 0) {
+          if (!skipVolumeFade && targetVol > 0) {
             try {
               player.setVolume?.(0);
             } catch {
               // Ignore
             }
+          } else if (skipVolumeFade && !latest.isMuted) {
+            try {
+              player.unMute?.();
+            } catch {
+              // Ignore
+            }
           }
           player.loadPlaylist({ list: playlistId, listType: 'playlist' });
-          if (targetVol > 0) fadeVolumeTo(player, targetVol, 280);
+          if (!skipVolumeFade && targetVol > 0) fadeVolumeTo(player, targetVol, 280);
         } else {
           player.cuePlaylist?.({ list: playlistId, listType: 'playlist' });
         }
@@ -326,15 +374,21 @@ export default function YouTubeAudioEngine() {
       }
 
       if (autoPlay && typeof player.loadVideoById === 'function') {
-        if (targetVol > 0) {
+        if (!skipVolumeFade && targetVol > 0) {
           try {
             player.setVolume?.(0);
           } catch {
             // Ignore
           }
+        } else if (skipVolumeFade && !latest.isMuted) {
+          try {
+            player.unMute?.();
+          } catch {
+            // Ignore
+          }
         }
         player.loadVideoById(videoId);
-        if (targetVol > 0) fadeVolumeTo(player, targetVol, 280);
+        if (!skipVolumeFade && targetVol > 0) fadeVolumeTo(player, targetVol, 280);
       } else if (typeof player.cueVideoById === 'function') {
         player.cueVideoById(videoId);
       }
@@ -442,9 +496,13 @@ export default function YouTubeAudioEngine() {
         activeIsLocalRef.current = false;
         pauseLocalSafe();
         const player = playerRef.current;
-        if (!isPlayerReadyRef.current || !player) return;
+        if (!isPlayerReadyRef.current || !player) {
+          pendingPlayOnReadyRef.current = true;
+          return;
+        }
         const targetMediaKey = getTrackErrorKey(targetTrack);
         const targetVol = computeEffectiveVolume(latest.isMuted, latest.volume, latest.isDucked);
+        const skipVolumeFade = isTouchOrAppleMobile();
 
         try {
           try {
@@ -463,13 +521,15 @@ export default function YouTubeAudioEngine() {
             if (targetVol > 0) {
               try {
                 player.unMute?.();
-                player.setVolume?.(0);
+                if (!skipVolumeFade) {
+                  player.setVolume?.(0);
+                }
               } catch {
                 // Ignore
               }
             }
             player.playVideo?.();
-            if (targetVol > 0) {
+            if (!skipVolumeFade && targetVol > 0) {
               fadeVolumeTo(player, targetVol, 260);
             } else {
               syncPlayerAudio(player, latest.isMuted, latest.volume, latest.isDucked);
@@ -480,6 +540,7 @@ export default function YouTubeAudioEngine() {
         }
       },
       pause: () => {
+        pendingPlayOnReadyRef.current = false;
         if (activeIsLocalRef.current) {
           syncedIntentRef.current = {
             mediaKey: activeMediaKeyRef.current,
@@ -513,7 +574,7 @@ export default function YouTubeAudioEngine() {
         };
         const latest = useMusicStore.getState();
         const effectiveVol = computeEffectiveVolume(latest.isMuted, latest.volume, latest.isDucked);
-        if (effectiveVol === 0) {
+        if (effectiveVol === 0 || isTouchOrAppleMobile()) {
           clearFade();
           try {
             player.pauseVideo?.();
@@ -569,7 +630,7 @@ export default function YouTubeAudioEngine() {
 
         const player = playerRef.current;
         if (!isPlayerReadyRef.current || !player || isFadingOutRef.current) return;
-        if (immediate) {
+        if (immediate || isTouchOrAppleMobile()) {
           clearFade();
           syncPlayerAudio(player, muted, vol, ducked);
           return;
@@ -647,16 +708,20 @@ export default function YouTubeAudioEngine() {
               } catch {
                 // Ignore
               }
+              latest.setYoutubeApiError(null);
               latest.setReady(true);
+
+              const shouldPlayNow = latest.isPlaying || pendingPlayOnReadyRef.current;
+              pendingPlayOnReadyRef.current = false;
 
               if (latestTrack && latestMediaKey !== activeMediaKeyRef.current) {
                 loadIntoPlayer(
                   event.target,
                   latestTrack.videoId,
-                  latest.isPlaying,
+                  shouldPlayNow,
                   latestTrack.playlistId
                 );
-              } else if (latest.isPlaying) {
+              } else if (shouldPlayNow) {
                 syncedIntentRef.current = {
                   mediaKey: activeMediaKeyRef.current,
                   isPlaying: true,
@@ -800,9 +865,14 @@ export default function YouTubeAudioEngine() {
         });
 
         playerRef.current = player;
-      } catch {
+      } catch (err) {
         if (!cancelled) {
           const cur = useMusicStore.getState();
+          const msg =
+            err instanceof Error && err.message
+              ? err.message
+              : 'Không thể tải trình phát YouTube (kiểm tra AdBlock hoặc kết nối mạng).';
+          cur.setYoutubeApiError(msg);
           const activeTrack = cur.tracks.find((t) => t.id === cur.currentTrackId);
           if (!activeTrack?.isLocalFile) {
             cur.setPlayerState('error');
@@ -1126,6 +1196,29 @@ export default function YouTubeAudioEngine() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Autoplay / gesture-block watchdog: surface interactive YouTube mini embed if browser stalls playback
+  useEffect(() => {
+    if (!isPlaying || isLocalTrack || !isReady || youtubeApiError) {
+      return;
+    }
+    if (playerState === 'playing') {
+      useMusicStore.getState().setAutoplayBlocked(false);
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      const cur = useMusicStore.getState();
+      if (cur.isPlaying && cur.playerState !== 'playing' && !cur.youtubeApiError) {
+        cur.setAutoplayBlocked(true);
+      }
+    }, 2000);
+    return () => window.clearTimeout(timer);
+  }, [isPlaying, isLocalTrack, isReady, playerState, currentMediaKey, youtubeApiError]);
+
+  const isDockedInStudio = Boolean(embedAnchorRect && !isLocalTrack && !youtubeApiError);
+  const isFloatingUnlock = Boolean(
+    !isDockedInStudio && autoplayBlocked && !isLocalTrack && !youtubeApiError
+  );
+
   return (
     <>
       <audio
@@ -1184,10 +1277,52 @@ export default function YouTubeAudioEngine() {
         }}
       />
       <div
-        className="fixed bottom-0 right-0 w-16 h-10 opacity-[0.01] pointer-events-none z-[1] overflow-hidden"
-        aria-hidden={true}
+        data-yt-embed-dock="true"
+        style={
+          isDockedInStudio && embedAnchorRect
+            ? {
+                top: `${embedAnchorRect.top}px`,
+                left: `${embedAnchorRect.left}px`,
+                width: `${embedAnchorRect.width}px`,
+                height: `${embedAnchorRect.height}px`,
+              }
+            : undefined
+        }
+        className={
+          isDockedInStudio
+            ? 'fixed z-[70] rounded-xl overflow-hidden bg-black shadow-lg opacity-100 pointer-events-auto flex flex-col'
+            : isFloatingUnlock
+            ? 'fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom,0px))] md:bottom-5 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-5 z-[95] w-[280px] rounded-2xl glass-elevated border border-indigo-400/50 p-3 shadow-2xl opacity-100 pointer-events-auto flex flex-col gap-2'
+            : 'fixed bottom-1 right-1 w-[240px] h-[135px] opacity-[0.02] pointer-events-none z-[1] overflow-hidden flex flex-col'
+        }
+        aria-hidden={!isDockedInStudio && !isFloatingUnlock}
       >
-        <div ref={hostRef} className="w-[256px] h-[144px]" />
+        {isFloatingUnlock && (
+          <div className="flex items-center justify-between gap-2 text-xs font-semibold text-slate-900 dark:text-white">
+            <span className="truncate">Chạm ▶ để mở khóa âm thanh</span>
+            <button
+              type="button"
+              onClick={() => {
+                useMusicStore.getState().setAutoplayBlocked(false);
+                useMusicStore.getState().setPlaying(false);
+              }}
+              aria-label="Đóng khung mở khóa YouTube"
+              className="p-1 rounded-lg text-slate-500 hover:text-rose-500 hover:bg-slate-200/60 dark:hover:bg-white/10"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
+        <div
+          key="yt-singleton-host-wrap"
+          className={
+            isFloatingUnlock
+              ? 'w-[256px] h-[144px] rounded-xl overflow-hidden bg-black shrink-0'
+              : 'w-full h-full flex-1'
+          }
+        >
+          <div ref={hostRef} className="w-full h-full [&>iframe]:w-full [&>iframe]:h-full" />
+        </div>
       </div>
     </>
   );

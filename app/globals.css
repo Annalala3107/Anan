@@ -94,22 +94,37 @@
   animation: 200ms cubic-bezier(0.16, 1, 0.3, 1) both vt-fade-in;
 }
 
-/* Accessibility & Low Power Mode: Respect Reduced Motion */
+/* Accessibility & Low Power Mode: Respect Reduced Motion unless user explicitly chose data-motion="full" */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
+  html:not([data-motion='full']) *,
+  html:not([data-motion='full']) ::before,
+  html:not([data-motion='full']) ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
+  html:not([data-motion='full'])::view-transition-group(*),
+  html:not([data-motion='full'])::view-transition-old(*),
+  html:not([data-motion='full'])::view-transition-new(*) {
     animation: none !important;
   }
+}
+
+html[data-motion='reduced'] *,
+html[data-motion='reduced'] ::before,
+html[data-motion='reduced'] ::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-motion='reduced']::view-transition-group(*),
+html[data-motion='reduced']::view-transition-old(*),
+html[data-motion='reduced']::view-transition-new(*) {
+  animation: none !important;
 }
 
 /* ============================================================================
@@ -190,15 +205,25 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .midnight-glow-indigo {
+  html:not([data-motion='reduced']) .midnight-glow-indigo {
     animation: ambientDriftSlow 26s ease-in-out infinite;
   }
-  .midnight-glow-cyan {
+  html:not([data-motion='reduced']) .midnight-glow-cyan {
     animation: ambientDriftReverse 32s ease-in-out infinite;
   }
-  .midnight-glow-amber {
+  html:not([data-motion='reduced']) .midnight-glow-amber {
     animation: ambientDriftSlow 38s ease-in-out infinite reverse;
   }
+}
+
+html[data-motion='full'] .midnight-glow-indigo {
+  animation: ambientDriftSlow 26s ease-in-out infinite;
+}
+html[data-motion='full'] .midnight-glow-cyan {
+  animation: ambientDriftReverse 32s ease-in-out infinite;
+}
+html[data-motion='full'] .midnight-glow-amber {
+  animation: ambientDriftSlow 38s ease-in-out infinite reverse;
 }
 
 /* ============================================================================
@@ -272,34 +297,63 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .flashcard-3d-inner {
+  html:not([data-motion='full']) .flashcard-3d-inner {
     transition-duration: 0.01ms !important;
   }
 
-  .vinyl-disc-spin,
-  .studio-eq-bar,
-  .turntable-tonearm,
-  .sonic-pulse-ring,
-  .radial-beat-bar,
-  .side-wave-bar,
-  .aura-orbit-a,
-  .aura-orbit-b,
-  .zen-mote,
-  .vinyl-swap-enter,
-  .bass-breath-a,
-  .bass-breath-b,
-  .liquid-wave-track,
-  .zen-stage-enter,
-  .zen-plinth-enter,
-  .zen-dock-enter,
-  .digit-roll-enter,
-  .shooting-star,
-  .milestone-burst,
-  .shimmer-sweep-overlay,
-  .combo-pop-enter {
+  html:not([data-motion='full']) .vinyl-disc-spin,
+  html:not([data-motion='full']) .studio-eq-bar,
+  html:not([data-motion='full']) .turntable-tonearm,
+  html:not([data-motion='full']) .sonic-pulse-ring,
+  html:not([data-motion='full']) .radial-beat-bar,
+  html:not([data-motion='full']) .side-wave-bar,
+  html:not([data-motion='full']) .aura-orbit-a,
+  html:not([data-motion='full']) .aura-orbit-b,
+  html:not([data-motion='full']) .zen-mote,
+  html:not([data-motion='full']) .vinyl-swap-enter,
+  html:not([data-motion='full']) .bass-breath-a,
+  html:not([data-motion='full']) .bass-breath-b,
+  html:not([data-motion='full']) .liquid-wave-track,
+  html:not([data-motion='full']) .zen-stage-enter,
+  html:not([data-motion='full']) .zen-plinth-enter,
+  html:not([data-motion='full']) .zen-dock-enter,
+  html:not([data-motion='full']) .digit-roll-enter,
+  html:not([data-motion='full']) .shooting-star,
+  html:not([data-motion='full']) .milestone-burst,
+  html:not([data-motion='full']) .shimmer-sweep-overlay,
+  html:not([data-motion='full']) .combo-pop-enter {
     animation: none !important;
     transition: none !important;
   }
+}
+
+html[data-motion='reduced'] .flashcard-3d-inner {
+  transition-duration: 0.01ms !important;
+}
+
+html[data-motion='reduced'] .vinyl-disc-spin,
+html[data-motion='reduced'] .studio-eq-bar,
+html[data-motion='reduced'] .turntable-tonearm,
+html[data-motion='reduced'] .sonic-pulse-ring,
+html[data-motion='reduced'] .radial-beat-bar,
+html[data-motion='reduced'] .side-wave-bar,
+html[data-motion='reduced'] .aura-orbit-a,
+html[data-motion='reduced'] .aura-orbit-b,
+html[data-motion='reduced'] .zen-mote,
+html[data-motion='reduced'] .vinyl-swap-enter,
+html[data-motion='reduced'] .bass-breath-a,
+html[data-motion='reduced'] .bass-breath-b,
+html[data-motion='reduced'] .liquid-wave-track,
+html[data-motion='reduced'] .zen-stage-enter,
+html[data-motion='reduced'] .zen-plinth-enter,
+html[data-motion='reduced'] .zen-dock-enter,
+html[data-motion='reduced'] .digit-roll-enter,
+html[data-motion='reduced'] .shooting-star,
+html[data-motion='reduced'] .milestone-burst,
+html[data-motion='reduced'] .shimmer-sweep-overlay,
+html[data-motion='reduced'] .combo-pop-enter {
+  animation: none !important;
+  transition: none !important;
 }
 
 /* ============================================================================

@@ -13,9 +13,14 @@ export default function PwaRegistrar() {
     }
 
     const registerSw = () => {
-      navigator.serviceWorker.register('/sw.js').catch(() => {
-        // Ignore service worker registration errors in unsupported/private contexts
-      });
+      navigator.serviceWorker
+        .register('/sw.js', { updateViaCache: 'none' })
+        .then((reg) => {
+          void reg.update();
+        })
+        .catch(() => {
+          // Ignore service worker registration errors in unsupported/private contexts
+        });
     };
 
     if (document.readyState === 'complete') {

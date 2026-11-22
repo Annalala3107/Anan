@@ -360,6 +360,13 @@ async function fetchYouTubeMeta(
   return {};
 }
 
+export interface EmbedAnchorRect {
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+}
+
 export interface MusicStoreState {
   tracks: MusicTrack[];
   currentTrackId: string;
@@ -372,6 +379,10 @@ export interface MusicStoreState {
   loopMode: 'all' | 'one';
   isShuffle: boolean;
   trackErrors: Record<string, TrackErrorInfo>;
+  youtubeApiError: string | null;
+  autoplayBlocked: boolean;
+  showYoutubeEmbed: boolean;
+  embedAnchorRect: EmbedAnchorRect | null;
 
   // Timeline & Seek Bar
   currentTime: number;
@@ -442,6 +453,10 @@ export interface MusicStoreState {
   moveTrack: (trackId: string, direction: 'up' | 'down') => void;
   setReady: (ready: boolean) => void;
   setPlayerState: (state: MusicPlayerState) => void;
+  setYoutubeApiError: (message: string | null) => void;
+  setAutoplayBlocked: (blocked: boolean) => void;
+  setShowYoutubeEmbed: (show: boolean) => void;
+  setEmbedAnchorRect: (rect: EmbedAnchorRect | null) => void;
   setProgress: (currentTime: number, duration: number) => void;
   requestSeek: (seconds: number) => void;
   clearSeekRequest: () => void;
@@ -476,6 +491,10 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
   loopMode: 'all',
   isShuffle: false,
   trackErrors: {},
+  youtubeApiError: null,
+  autoplayBlocked: false,
+  showYoutubeEmbed: false,
+  embedAnchorRect: null,
 
   currentTime: 0,
   duration: 0,
@@ -668,6 +687,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
       currentTrackId: trackId,
       isPlaying: autoPlay,
       playerState: autoPlay ? 'buffering' : 'cued',
+      autoplayBlocked: false,
       currentTime: 0,
       duration: 0,
       liveVideoId: null,
@@ -692,6 +712,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     set({
       isPlaying: next,
       showMiniPlayer: shouldRevealMini,
+      autoplayBlocked: false,
       ...(next && playerState === 'error' ? { playerState: 'buffering' } : {}),
     });
     if (next) {
@@ -707,6 +728,7 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
     set({
       isPlaying: playing,
       showMiniPlayer: shouldRevealMini,
+      autoplayBlocked: false,
       ...(playing && playerState === 'error' ? { playerState: 'buffering' } : {}),
     });
     if (playing) {
@@ -1107,7 +1129,21 @@ export const useMusicStore = create<MusicStoreState>((set, get) => ({
 
   setReady: (ready) => set({ isReady: ready }),
 
-  setPlayerState: (playerState) => set({ playerState }),
+  setPlayerState: (playerState) =>
+    set(() => ({
+      playerState,
+      ...(playerState === 'playing'
+        ? { autoplayBlocked: false, youtubeApiError: null }
+        : {}),
+    })),
+
+  setYoutubeApiError: (youtubeApiError) => set({ youtubeApiError }),
+
+  setAutoplayBlocked: (autoplayBlocked) => set({ autoplayBlocked }),
+
+  setShowYoutubeEmbed: (showYoutubeEmbed) => set({ showYoutubeEmbed }),
+
+  setEmbedAnchorRect: (embedAnchorRect) => set({ embedAnchorRect }),
 
   setProgress: (currentTime, duration) =>
     set({

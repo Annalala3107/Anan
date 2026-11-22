@@ -33,6 +33,7 @@ import {
   X,
   Music,
   Smartphone,
+  Tv,
 } from 'lucide-react';
 import {
   formatSecondsMmSs,
@@ -189,6 +190,11 @@ export default function HeaderMusicWidget() {
   const loopMode = useMusicStore((s) => s.loopMode);
   const isShuffle = useMusicStore((s) => s.isShuffle);
   const trackErrors = useMusicStore((s) => s.trackErrors);
+  const youtubeApiError = useMusicStore((s) => s.youtubeApiError);
+  const autoplayBlocked = useMusicStore((s) => s.autoplayBlocked);
+  const showYoutubeEmbed = useMusicStore((s) => s.showYoutubeEmbed);
+  const setShowYoutubeEmbed = useMusicStore((s) => s.setShowYoutubeEmbed);
+  const setEmbedAnchorRect = useMusicStore((s) => s.setEmbedAnchorRect);
   const liveVideoId = useMusicStore((s) => s.liveVideoId);
   const liveTitle = useMusicStore((s) => s.liveTitle);
   const liveArtist = useMusicStore((s) => s.liveArtist);
@@ -239,9 +245,15 @@ export default function HeaderMusicWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'playlist' | 'focus'>('playlist');
   const [mounted, setMounted] = useState(false);
-  const [coords, setCoords] = useState<{ top: number; right: number }>({
-    top: 68,
-    right: 16,
+  const [coords, setCoords] = useState<{
+    top: number;
+    left?: number;
+    right: number;
+    isMobile: boolean;
+  }>({
+    top: 64,
+    right: 12,
+    isMobile: false,
   });
 
   const [customUrl, setCustomUrl] = useState('');
@@ -255,6 +267,7 @@ export default function HeaderMusicWidget() {
 
   const triggerWrapRef = useRef<HTMLDivElement | null>(null);
   const popoverRef = useRef<HTMLDivElement | null>(null);
+  const embedSlotRef = useRef<HTMLDivElement | null>(null);
   const localAudioInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -285,9 +298,19 @@ export default function HeaderMusicWidget() {
     const updatePosition = () => {
       const rect = triggerWrapRef.current?.getBoundingClientRect();
       if (!rect) return;
-      const rightOffset = Math.max(12, window.innerWidth - rect.right);
-      const topOffset = Math.min(window.innerHeight - 120, rect.bottom + 10);
-      setCoords({ top: topOffset, right: rightOffset });
+      const isMobile = window.innerWidth < 640;
+      const topOffset = Math.max(58, Math.min(window.innerHeight - 160, rect.bottom + 8));
+      if (isMobile) {
+        setCoords({ top: topOffset, left: 12, right: 12, isMobile: true });
+        return;
+      }
+      const popoverW = 404;
+      const maxAllowedRight = Math.max(12, window.innerWidth - popoverW - 12);
+      const rightOffset = Math.min(
+        maxAllowedRight,
+        Math.max(12, window.innerWidth - rect.right)
+      );
+      setCoords({ top: topOffset, right: rightOffset, isMobile: false });
     };
 
     updatePosition();
@@ -299,6 +322,65 @@ export default function HeaderMusicWidget() {
     };
   }, [isOpen]);
 
+  const shouldShowEmbedSlot = Boolean(
+    isOpen &&
+      (showYoutubeEmbed || autoplayBlocked) &&
+      currentTrack &&
+      !currentTrack.isLocalFile &&
+      !youtubeApiError
+  );
+
+  useEffect(() => {
+    if (!shouldShowEmbedSlot) {
+      setEmbedAnchorRect(null);
+      return;
+    }
+
+    const syncSlotRect = () => {
+      const slot = embedSlotRef.current;
+      const pop = popoverRef.current;
+      if (!slot || !pop) {
+        setEmbedAnchorRect(null);
+        return;
+      }
+      const slotRect = slot.getBoundingClientRect();
+      const popRect = pop.getBoundingClientRect();
+      const clippedOut =
+        slotRect.width < 120 ||
+        slotRect.height < 80 ||
+        slotRect.top < popRect.top - 4 ||
+        slotRect.bottom > popRect.bottom + 4;
+      if (clippedOut) {
+        setEmbedAnchorRect(null);
+        return;
+      }
+      setEmbedAnchorRect({
+        top: Math.round(slotRect.top),
+        left: Math.round(slotRect.left),
+        width: Math.round(slotRect.width),
+        height: Math.round(slotRect.height),
+      });
+    };
+
+    const rafId = window.requestAnimationFrame(syncSlotRect);
+    const popEl = popoverRef.current;
+    const ro =
+      typeof ResizeObserver !== 'undefined' && embedSlotRef.current
+        ? new ResizeObserver(syncSlotRect)
+        : null;
+    if (embedSlotRef.current) ro?.observe(embedSlotRef.current);
+    popEl?.addEventListener('scroll', syncSlotRect, { passive: true });
+    window.addEventListener('resize', syncSlotRect);
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      ro?.disconnect();
+      popEl?.removeEventListener('scroll', syncSlotRect);
+      window.removeEventListener('resize', syncSlotRect);
+      setEmbedAnchorRect(null);
+    };
+  }, [shouldShowEmbedSlot, coords, activeTab, setEmbedAnchorRect]);
+
   // Outside click & Escape handler
   useEffect(() => {
     if (!isOpen) return;
@@ -307,7 +389,8 @@ export default function HeaderMusicWidget() {
       const target = e.target as Node;
       if (
         triggerWrapRef.current?.contains(target) ||
-        popoverRef.current?.contains(target)
+        popoverRef.current?.contains(target) ||
+        (target instanceof Element && target.closest('[data-yt-embed-dock="true"]'))
       ) {
         return;
       }
@@ -413,7 +496,7 @@ export default function HeaderMusicWidget() {
           onClick={togglePlay}
           aria-label={isPlaying ? 'Tạm dừng nhạc nền' : 'Phát nhạc nền'}
           title="Phát / Tạm dừng (Alt + P)"
-          className="pl-2.5 pr-1.5 py-1.5 flex items-center justify-center rounded-l-full text-slate-700 dark:text-slate-200 hover:text-indigo-500 dark:hover:text-cyan-300 transition-colors"
+          className="pl-2 pr-1 sm:pl-2.5 sm:pr-1.5 py-1.5 flex items-center justify-center rounded-l-full text-slate-700 dark:text-slate-200 hover:text-indigo-500 dark:hover:text-cyan-300 transition-colors"
         >
           {isPlaying ? (
             <StudioEqualizer isPlaying={true} tone={tone} size="sm" />
@@ -428,7 +511,7 @@ export default function HeaderMusicWidget() {
           aria-expanded={isOpen}
           aria-haspopup="dialog"
           aria-label="Mở Focus Studio"
-          className="pr-2.5 pl-1 py-1.5 flex items-center gap-1.5 rounded-r-full text-xs font-medium text-slate-700 dark:text-slate-200 max-w-[165px] sm:max-w-[205px]"
+          className="pr-2 sm:pr-2.5 pl-1 py-1.5 flex items-center gap-1 sm:gap-1.5 rounded-r-full text-xs font-medium text-slate-700 dark:text-slate-200 max-w-[88px] min-[390px]:max-w-[124px] sm:max-w-[205px]"
         >
           <span className="truncate">
             {currentTrack ? displayTitle : 'Focus Studio'}
@@ -453,16 +536,19 @@ export default function HeaderMusicWidget() {
             style={{
               top: `${coords.top}px`,
               right: `${coords.right}px`,
+              ...(coords.isMobile && coords.left !== undefined
+                ? { left: `${coords.left}px` }
+                : {}),
             }}
-            className="glass-elevated fixed z-[60] w-[calc(100vw-24px)] sm:w-[404px] max-h-[calc(100vh-92px)] overflow-y-auto rounded-2xl p-4 text-slate-900 dark:text-slate-100"
+            className="glass-elevated fixed z-[60] w-auto sm:w-[404px] max-h-[calc(100dvh-88px)] overflow-y-auto rounded-2xl p-4 text-slate-900 dark:text-slate-100"
           >
             {/* Header Bar */}
             <div className="flex items-center justify-between gap-2 pb-3 border-b border-slate-200/75 dark:border-white/10">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-300">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-300 shrink-0">
                   <Disc3 className="w-4 h-4" />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <h2 className="text-sm font-semibold leading-tight flex items-center gap-1.5">
                     Focus Studio
                     {ambientPreset !== 'off' && (
@@ -471,13 +557,33 @@ export default function HeaderMusicWidget() {
                       </span>
                     )}
                   </h2>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                    Midnight Vinyl • Alt+P / M / N
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+                    Midnight Vinyl
+                    <span className="hidden sm:inline"> • Alt+P / M / N</span>
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 shrink-0">
+                {currentTrack && !currentTrack.isLocalFile && (
+                  <button
+                    type="button"
+                    onClick={() => setShowYoutubeEmbed(!showYoutubeEmbed)}
+                    title={
+                      showYoutubeEmbed
+                        ? 'Ẩn khung video YouTube'
+                        : 'Hiện khung video YouTube (hữu ích trên iOS/Safari)'
+                    }
+                    aria-label="Bật tắt khung video YouTube"
+                    className={`p-1.5 rounded-lg transition-colors ${
+                      showYoutubeEmbed || autoplayBlocked
+                        ? 'bg-indigo-500/15 text-indigo-600 dark:text-cyan-300'
+                        : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/10'
+                    }`}
+                  >
+                    <Tv className="w-4 h-4" />
+                  </button>
+                )}
                 <button
                   type="button"
                   onClick={() => {
@@ -576,6 +682,44 @@ export default function HeaderMusicWidget() {
                   </p>
                 )}
 
+                {youtubeApiError && !currentTrack.isLocalFile && (
+                  <div className="mt-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 p-2.5 space-y-2">
+                    <p className="text-[11px] leading-relaxed text-amber-800 dark:text-amber-200 font-medium">
+                      {youtubeApiError}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => localAudioInputRef.current?.click()}
+                        className="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors cursor-pointer"
+                      >
+                        Chọn MP3 trên máy
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setActiveTab('focus')}
+                        className="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition-colors cursor-pointer"
+                      >
+                        Mở Âm nền Mưa/Brown
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {shouldShowEmbedSlot && (
+                  <div className="mt-2.5 space-y-1.5">
+                    {autoplayBlocked && (
+                      <p className="text-[11px] font-medium text-amber-700 dark:text-amber-300 bg-amber-500/10 border border-amber-500/25 rounded-lg px-2.5 py-1.5">
+                        Trình duyệt yêu cầu chạm trực tiếp nút ▶ trên khung YouTube bên dưới để mở khóa âm thanh.
+                      </p>
+                    )}
+                    <div
+                      ref={embedSlotRef}
+                      className="w-full aspect-video max-h-[168px] rounded-xl bg-slate-950/90 border border-indigo-500/30"
+                    />
+                  </div>
+                )}
+
                 {/* Timeline Seekbar */}
                 <div className="mt-3">
                   <HeaderSeekBar />
@@ -615,7 +759,7 @@ export default function HeaderMusicWidget() {
                       aria-label={isPlaying ? 'Tạm dừng' : 'Phát nhạc'}
                       className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-500 text-white shadow-md shadow-indigo-500/30 hover:scale-105 active:scale-95 transition-transform flex items-center justify-center"
                     >
-                      {!isReady && isPlaying ? (
+                      {!isReady && isPlaying && !youtubeApiError && !autoplayBlocked ? (
                         <Loader2 className="w-4 h-4 animate-spin" />
                       ) : isPlaying ? (
                         <Pause className="w-4 h-4 fill-current" />

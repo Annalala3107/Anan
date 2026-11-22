@@ -201,7 +201,7 @@ export default function Header() {
           {/* Streak Counter */}
           <div
             title="Chuỗi ngày học liên tục"
-            className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-bold shadow-sm select-none group whitespace-nowrap shrink-0"
+            className="flex items-center gap-1 px-1.5 sm:px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs font-bold shadow-sm select-none group whitespace-nowrap shrink-0"
           >
             <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-500 text-amber-500 group-hover:scale-110 transition-transform duration-200 shrink-0" />
             <span>
@@ -214,7 +214,7 @@ export default function Header() {
           <button
             onClick={toggleTheme}
             title={isDark ? 'Chuyển sang giao diện Sáng' : 'Chuyển sang giao diện Tối'}
-            className="p-1.5 sm:p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 touch-manipulation"
+            className="p-1.5 sm:p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 touch-manipulation shrink-0"
           >
             {isDark ? (
               <Sun className="w-4 h-4 text-amber-400" />
