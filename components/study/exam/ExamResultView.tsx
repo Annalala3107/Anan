@@ -9,6 +9,7 @@ import {
 } from '@/lib/utils';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import AITutorButton from '@/components/ai/AITutorButton';
+import GpuProgressBar from '@/components/ui/GpuProgressBar';
 import {
   Trophy,
   RotateCcw,
@@ -264,18 +265,17 @@ export default function ExamResultView({
                   </div>
 
                   {/* Progress Bar Track */}
-                  <div className="w-full h-2 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
-                    <div
-                      className={`h-full rounded-full transition-all duration-700 ${
-                        item.percent >= 80
-                          ? 'bg-emerald-500'
-                          : item.percent >= 50
-                          ? 'bg-amber-500'
-                          : 'bg-rose-500'
-                      }`}
-                      style={{ width: `${item.percent}%` }}
-                    />
-                  </div>
+                  <GpuProgressBar
+                    percent={item.percent}
+                    trackClassName="w-full h-2 rounded-full bg-slate-200 dark:bg-slate-800"
+                    barClassName={`rounded-full duration-500 ${
+                      item.percent >= 80
+                        ? 'bg-emerald-500'
+                        : item.percent >= 50
+                        ? 'bg-amber-500'
+                        : 'bg-rose-500'
+                    }`}
+                  />
 
                   <div className="flex items-center justify-between text-[11px] text-slate-400 mt-1.5">
                     <span>

@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, Suspense } from 'react';
+import React, { useState, useEffect, useCallback, useRef, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { StorageEngine } from '@/lib/storage';
-import confetti from 'canvas-confetti';
+import { useQuizStore } from '@/lib/quizStore';
+import { triggerAstronomicalCelebration } from '@/lib/celebration';
 import Link from 'next/link';
 import {
   Smartphone,
@@ -15,6 +16,7 @@ import {
   Layers,
   Sparkles,
   Loader2,
+  ShieldCheck,
 } from 'lucide-react';
 
 async function decompressFromHash(): Promise<string | null> {
@@ -33,8 +35,8 @@ async function decompressFromHash(): Promise<string | null> {
     }
     const ds = new DecompressionStream('gzip');
     const writer = ds.writable.getWriter();
-    writer.write(bytes);
-    writer.close();
+    await writer.write(bytes);
+    await writer.close();
     return await new Response(ds.readable).text();
   } catch {
     return null;
@@ -46,7 +48,8 @@ function SyncContent() {
   const searchParams = useSearchParams();
   const initialCode = searchParams.get('code') || '';
 
-  const [inputCode, setInputCode] = useState(initialCode);
+  const [inputCode, setInputCode] = useState(initialCode.replace(/[^0-9]/g, '').slice(0, 6));
+  const [hasHashPayload, setHasHashPayload] = useState(false);
   const [importMode, setImportMode] = useState<'merge' | 'overwrite'>('merge');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -59,89 +62,88 @@ function SyncContent() {
     examCount: number;
   } | null>(null);
   const [countdown, setCountdown] = useState(4);
+  const isSubmittingRef = useRef(false);
 
-  const handlePerformSync = useCallback(
-    async (codeToUse: string, modeToUse: 'merge' | 'overwrite' = 'merge') => {
-      setLoading(true);
-      setErrorMsg(null);
-
-    try {
-      let jsonStr: string | null = await decompressFromHash();
-
-      if (!jsonStr) {
-        const cleanCode = codeToUse.replace(/[^0-9]/g, '').trim();
-        if (cleanCode.length !== 6) {
-          setErrorMsg('Mã PIN chuyển dữ liệu gồm đúng 6 chữ số (Ví dụ: 482915).');
-          setLoading(false);
-          return;
-        }
-
-        const res = await fetch(`/api/sync/session?code=${cleanCode}`);
-        const rawText = await res.text();
-        let data: { success?: boolean; payload?: unknown; error?: string } = {};
-        try {
-          data = rawText ? JSON.parse(rawText) : {};
-        } catch {
-          data = {};
-        }
-
-        if (!res.ok || !data.success || !data.payload) {
-          throw new Error(
-            data.error || 'Mã PIN không hợp lệ, đã được nhận hoặc đã hết hạn sau 15 phút.'
-          );
-        }
-
-        jsonStr =
-          typeof data.payload === 'string' ? data.payload : JSON.stringify(data.payload);
-      }
-
-      const importResult = StorageEngine.importAllData(jsonStr, { mode: modeToUse });
-
-      if (!importResult.success) {
-        throw new Error(importResult.message);
-      }
-
-      setAppliedMode(modeToUse);
-
-      const parsedData = JSON.parse(jsonStr);
-      const innerData = parsedData.data || parsedData;
-      const wordsCount = Object.keys(innerData.wordProgress || {}).length;
-      const streak = innerData.streak || 1;
-      const customQuizzesCount = (innerData.customQuizzes || []).length;
-      const examCount = (innerData.examHistory || []).length;
-
-      setRestoredStats({
-        wordsCount,
-        streak,
-        customQuizzesCount,
-        examCount,
-      });
-
-      setSyncSuccess(true);
-
-      confetti({
-        particleCount: 120,
-        spread: 70,
-        origin: { y: 0.6 },
-      });
-    } catch (err: unknown) {
-      const msg =
-        err instanceof Error ? err.message : 'Có lỗi xảy ra khi kết nối máy chủ.';
-      setErrorMsg(msg);
-    } finally {
-      setLoading(false);
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash.startsWith('#d=')) {
+      setHasHashPayload(true);
     }
   }, []);
 
-  // Auto-claim if code or hash payload is present in URL
-  useEffect(() => {
-    if (
-      initialCode ||
-      (typeof window !== 'undefined' && window.location.hash.startsWith('#d='))
-    ) {
-      handlePerformSync(initialCode, 'merge');
-    }
-  }, [initialCode, handlePerformSync]);
+  const handlePerformSync = useCallback(
+    async (codeToUse: string, modeToUse: 'merge' | 'overwrite' = 'merge') => {
+      if (isSubmittingRef.current) return;
+      isSubmittingRef.current = true;
+      setLoading(true);
+      setErrorMsg(null);
+
+      try {
+        let jsonStr: string | null = await decompressFromHash();
+
+        if (!jsonStr) {
+          const cleanCode = codeToUse.replace(/[^0-9]/g, '').trim();
+          if (cleanCode.length !== 6) {
+            setErrorMsg('Mã PIN chuyển dữ liệu gồm đúng 6 chữ số (Ví dụ: 482915).');
+            return;
+          }
+
+          const res = await fetch(`/api/sync/session?code=${cleanCode}`);
+          const rawText = await res.text();
+          let data: { success?: boolean; payload?: unknown; error?: string } = {};
+          try {
+            data = rawText ? JSON.parse(rawText) : {};
+          } catch {
+            data = {};
+          }
+
+          if (!res.ok || !data.success || !data.payload) {
+            throw new Error(
+              data.error || 'Mã PIN không hợp lệ, đã được nhận hoặc đã hết hạn sau 15 phút.'
+            );
+          }
+
+          jsonStr =
+            typeof data.payload === 'string' ? data.payload : JSON.stringify(data.payload);
+        }
+
+        const importResult = await StorageEngine.importAllDataAsync(jsonStr, {
+          mode: modeToUse,
+        });
+
+        if (!importResult.success) {
+          throw new Error(importResult.message);
+        }
+
+        useQuizStore.getState().syncStreak();
+        setAppliedMode(modeToUse);
+
+        const parsedData = JSON.parse(jsonStr);
+        const innerData = parsedData.data || parsedData;
+        const wordsCount = Object.keys(innerData.wordProgress || {}).length;
+        const streak = innerData.streak || 1;
+        const customQuizzesCount = (innerData.customQuizzes || []).length;
+        const examCount = (innerData.examHistory || []).length;
+
+        setRestoredStats({
+          wordsCount,
+          streak,
+          customQuizzesCount,
+          examCount,
+        });
+
+        setSyncSuccess(true);
+        triggerAstronomicalCelebration('milestone');
+      } catch (err: unknown) {
+        const msg =
+          err instanceof Error ? err.message : 'Có lỗi xảy ra khi kết nối máy chủ.';
+        setErrorMsg(msg);
+      } finally {
+        isSubmittingRef.current = false;
+        setLoading(false);
+      }
+    },
+    []
+  );
 
   // Countdown timer to auto-redirect after successful transfer
   useEffect(() => {
@@ -161,8 +163,11 @@ function SyncContent() {
 
   const handleSubmitManual = (e: React.FormEvent) => {
     e.preventDefault();
-    handlePerformSync(inputCode, importMode);
+    void handlePerformSync(inputCode, importMode);
   };
+
+  const isDetectedFromQr = Boolean(initialCode.trim() || hasHashPayload);
+  const canSubmit = hasHashPayload || inputCode.length === 6;
 
   return (
     <div className="min-h-[85vh] flex items-center justify-center px-4 py-8 animate-fade-in">
@@ -265,32 +270,48 @@ function SyncContent() {
                   Đang nhận và kiểm tra cấu trúc dữ liệu...
                 </p>
                 <p className="text-xs text-slate-400">
-                  Chuẩn bị cập nhật chuỗi streak và tiến độ thẻ nhớ SRS...
+                  Chuẩn bị hợp nhất với IndexedDB, chuỗi streak và thẻ nhớ SRS...
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmitManual} className="space-y-5">
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Nhập <strong>mã PIN 6 chữ số</strong> đang hiển thị trên máy tính để nhận dữ liệu. Mã chỉ có tác dụng <strong>1 lần trong vòng 15 phút</strong> và sẽ tự xóa khỏi máy chủ ngay sau khi nhận:
-                </p>
+                {isDetectedFromQr ? (
+                  <div className="p-3.5 rounded-2xl bg-emerald-500/12 border border-emerald-500/35 text-xs text-emerald-800 dark:text-emerald-200 flex items-start gap-2.5">
+                    <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <div className="space-y-0.5">
+                      <p className="font-bold">
+                        Đã nhận diện dữ liệu từ mã QR an toàn (chờ xác nhận)
+                      </p>
+                      <p className="opacity-90 leading-relaxed">
+                        Chọn chế độ <strong>Hợp nhất</strong> hoặc <strong>Ghi đè</strong> bên dưới rồi bấm <strong>Nhận Dữ Liệu Ngay</strong> để bảo vệ mã PIN dùng 1 lần.
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Nhập <strong>mã PIN 6 chữ số</strong> đang hiển thị trên máy tính để nhận dữ liệu. Mã chỉ có tác dụng <strong>1 lần trong vòng 15 phút</strong> và sẽ tự xóa khỏi máy chủ ngay sau khi nhận:
+                  </p>
+                )}
 
-                <div>
-                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
-                    Mã PIN chuyển dữ liệu (6 số)
-                  </label>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    maxLength={6}
-                    value={inputCode}
-                    onChange={(e) => {
-                      setInputCode(e.target.value.replace(/[^0-9]/g, ''));
-                      setErrorMsg(null);
-                    }}
-                    placeholder="Ví dụ: 482915"
-                    className="w-full py-4 px-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-center font-mono text-2xl sm:text-3xl font-black tracking-[0.3em] text-indigo-600 dark:text-indigo-400 focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all placeholder:tracking-normal placeholder:text-sm placeholder:font-normal placeholder:text-slate-400"
-                  />
-                </div>
+                {!hasHashPayload && (
+                  <div>
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
+                      Mã PIN chuyển dữ liệu (6 số)
+                    </label>
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      maxLength={6}
+                      value={inputCode}
+                      onChange={(e) => {
+                        setInputCode(e.target.value.replace(/[^0-9]/g, ''));
+                        setErrorMsg(null);
+                      }}
+                      placeholder="Ví dụ: 482915"
+                      className="w-full py-4 px-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-center font-mono text-2xl sm:text-3xl font-black tracking-[0.3em] text-indigo-600 dark:text-indigo-400 focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all placeholder:tracking-normal placeholder:text-sm placeholder:font-normal placeholder:text-slate-400"
+                    />
+                  </div>
+                )}
 
                 {errorMsg && (
                   <div className="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-400 text-xs flex items-center gap-2.5 animate-shake">
@@ -344,7 +365,7 @@ function SyncContent() {
                 <div className="pt-2 space-y-3">
                   <button
                     type="submit"
-                    disabled={inputCode.length !== 6}
+                    disabled={!canSubmit}
                     className="w-full py-4 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 text-white font-black flex items-center justify-center gap-2 shadow-glow text-sm transition-all cursor-pointer"
                   >
                     <span>Nhận Dữ Liệu Ngay</span>

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { resolveCors } from '@/lib/corsServer';
 
 const ALLOWED_YOUTUBE_HOSTS = new Set([
   'youtube.com',
@@ -34,14 +35,39 @@ function normalizeYouTubeUrl(rawInput: string): string | null {
   }
 }
 
+export async function OPTIONS(req: NextRequest) {
+  const cors = resolveCors(req, {
+    methods: 'GET, OPTIONS',
+    allowedHeaders: 'Content-Type',
+  });
+  if (!cors.allowed) {
+    return NextResponse.json(
+      { ok: false, error: 'Origin không được phép truy cập.' },
+      { status: 403, headers: cors.headers }
+    );
+  }
+  return new NextResponse(null, { status: 204, headers: cors.headers });
+}
+
 export async function GET(req: NextRequest) {
+  const cors = resolveCors(req, {
+    methods: 'GET, OPTIONS',
+    allowedHeaders: 'Content-Type',
+  });
+  if (!cors.allowed) {
+    return NextResponse.json(
+      { ok: false, error: 'Origin không được phép truy cập.' },
+      { status: 403, headers: cors.headers }
+    );
+  }
+
   const rawUrl = req.nextUrl.searchParams.get('url') || '';
   const targetUrl = normalizeYouTubeUrl(rawUrl);
 
   if (!targetUrl) {
     return NextResponse.json(
       { ok: false, error: 'URL YouTube không hợp lệ.' },
-      { status: 400 }
+      { status: 400, headers: cors.headers }
     );
   }
 
@@ -75,17 +101,20 @@ export async function GET(req: NextRequest) {
         typeof data?.thumbnail_url === 'string' ? data.thumbnail_url : undefined;
 
       if (title) {
-        return NextResponse.json({
-          ok: true,
-          title,
-          artist,
-          thumbnail,
-        });
+        return NextResponse.json(
+          {
+            ok: true,
+            title,
+            artist,
+            thumbnail,
+          },
+          { headers: cors.headers }
+        );
       }
     }
   } catch {
     // Fall through gracefully
   }
 
-  return NextResponse.json({ ok: false });
+  return NextResponse.json({ ok: false }, { headers: cors.headers });
 }

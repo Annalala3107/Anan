@@ -43,6 +43,7 @@ import {
   SleepTimerMode,
   useMusicStore,
 } from '@/lib/musicStore';
+import CosmicSwitch from '@/components/ui/CosmicSwitch';
 import { AmbientPreset } from '@/lib/ambientAudio';
 import {
   getStudioContextTone,
@@ -1193,25 +1194,21 @@ export default function HeaderMusicWidget() {
                   </div>
 
                   {/* Smart Pomodoro + Exam Duck Options */}
-                  <div className="space-y-1.5 pt-2 border-t border-slate-200/70 dark:border-white/10">
-                    <label className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={pomodoroAutoPauseMusic}
-                        onChange={(e) => setPomodoroAutoPause(e.target.checked)}
-                        className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                      />
-                      Tự tạm dừng nhạc khi chuyển sang phiên nghỉ
-                    </label>
-                    <label className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={examAutoDuckMusic}
-                        onChange={(e) => setExamAutoDuck(e.target.checked)}
-                        className="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                      />
-                      Tự giảm âm lượng còn 15% khi đang làm bài thi
-                    </label>
+                  <div className="space-y-2 pt-2 border-t border-slate-200/70 dark:border-white/10">
+                    <CosmicSwitch
+                      size="sm"
+                      checked={pomodoroAutoPauseMusic}
+                      onChange={setPomodoroAutoPause}
+                      className="w-full text-[11px] text-slate-600 dark:text-slate-300"
+                      label="Tự tạm dừng nhạc khi chuyển sang phiên nghỉ"
+                    />
+                    <CosmicSwitch
+                      size="sm"
+                      checked={examAutoDuckMusic}
+                      onChange={setExamAutoDuck}
+                      className="w-full text-[11px] text-slate-600 dark:text-slate-300"
+                      label="Tự giảm âm lượng còn 15% khi đang làm bài thi"
+                    />
                   </div>
                 </div>
 

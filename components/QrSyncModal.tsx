@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback, useId, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import QRCode from 'qrcode';
 import { StorageEngine } from '@/lib/storage';
+import CosmicSwitch from '@/components/ui/CosmicSwitch';
 import {
   X,
   Smartphone,
@@ -102,7 +103,7 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     setCopiedUrl(false);
 
     try {
-      const rawBackupJson = StorageEngine.exportAllData({
+      const rawBackupJson = await StorageEngine.exportAllDataAsync({
         excludeCustomQuizzes: compactMode,
       });
       const backupJson = (() => {
@@ -250,9 +251,9 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
     setTimeout(() => setCopiedUrl(false), 2000);
   };
 
-  const handleDownloadBackup = () => {
+  const handleDownloadBackup = async () => {
     try {
-      const jsonStr = StorageEngine.exportAllData();
+      const jsonStr = await StorageEngine.exportAllDataAsync();
       const blob = new Blob([jsonStr], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -332,22 +333,23 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
         )}
 
         {/* Compact Mode Toggle */}
-        <label className="flex items-start gap-2.5 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 text-xs cursor-pointer select-none">
-          <input
-            type="checkbox"
-            checked={compactMode}
-            onChange={(e) => setCompactMode(e.target.checked)}
-            className="mt-0.5 rounded accent-indigo-600 w-4 h-4 shrink-0"
-          />
-          <div className="min-w-0 flex-1">
-            <span className="font-bold text-slate-900 dark:text-white block">
+        <CosmicSwitch
+          size="md"
+          variant="card"
+          checked={compactMode}
+          onChange={setCompactMode}
+          className="w-full"
+          label={
+            <span className="text-xs font-bold text-slate-900 dark:text-white">
               Chế độ Gọn ({backupSizeKb} KB)
             </span>
+          }
+          description={
             <span className="text-[11px] text-slate-500 dark:text-slate-400">
               Chỉ đồng bộ Tiến độ SRS, Streak &amp; Lịch sử — bỏ qua đề tự tạo lớn để luôn vừa giới hạn QR/PIN.
             </span>
-          </div>
-        </label>
+          }
+        />
 
         {/* Modal Body */}
         {loading ? (
@@ -446,7 +448,7 @@ export default function QrSyncModal({ isOpen, onClose }: QrSyncModalProps) {
                   />
 
                   {syncCode && timeLeft === 0 && (
-                    <div className="absolute inset-0 bg-slate-900/85 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center p-4 text-center space-y-2 text-white">
+                    <div className="absolute inset-0 bg-slate-900/92 rounded-2xl flex flex-col items-center justify-center p-4 text-center space-y-2 text-white">
                       <p className="text-xs font-bold text-rose-400">
                         Mã PIN đã hết hạn (15 phút)
                       </p>

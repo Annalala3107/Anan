@@ -13,6 +13,12 @@ import {
   resolveCorrectOptionFromAnswer,
 } from '@/lib/utils';
 import { buildAiSolveCacheKeyV2 } from '@/lib/aiCacheKey';
+import {
+  clearSessionGeminiKey,
+  getSessionGeminiKey,
+  GOOGLE_AI_STUDIO_KEY_URL,
+  setSessionGeminiKey,
+} from '@/lib/apiKeyStorage';
 import { StorageEngine } from '@/lib/storage';
 import { useQuizStore } from '@/lib/quizStore';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
@@ -245,12 +251,8 @@ export default function QuickTextParserModal({
       if (defaultSubject) {
         setSubject(defaultSubject);
       }
-      try {
-        const sessionKey = sessionStorage.getItem('gemini_custom_api_key');
-        if (sessionKey) setSolveApiKey(sessionKey);
-      } catch {
-        // Ignore storage errors
-      }
+      const sessionKey = getSessionGeminiKey();
+      if (sessionKey) setSolveApiKey(sessionKey);
     } else if (solveAbortRef.current) {
       solveAbortRef.current.abort();
       solveAbortRef.current = null;
@@ -495,25 +497,12 @@ export default function QuickTextParserModal({
 
   const handleSolveKeyChange = (value: string) => {
     setSolveApiKey(value);
-    const cleaned = value.trim();
-    try {
-      if (cleaned) {
-        sessionStorage.setItem('gemini_custom_api_key', cleaned);
-      } else {
-        sessionStorage.removeItem('gemini_custom_api_key');
-      }
-    } catch {
-      // Ignore
-    }
+    setSessionGeminiKey(value);
   };
 
   const handleClearSolveKey = () => {
     setSolveApiKey('');
-    try {
-      sessionStorage.removeItem('gemini_custom_api_key');
-    } catch {
-      // Ignore
-    }
+    clearSessionGeminiKey();
   };
 
   const handleStopAiSolve = () => {
@@ -557,17 +546,9 @@ export default function QuickTextParserModal({
     try {
       let keyToSend = solveApiKey.trim();
       if (!keyToSend) {
-        try {
-          keyToSend = (sessionStorage.getItem('gemini_custom_api_key') || '').trim();
-        } catch {
-          // Ignore
-        }
+        keyToSend = getSessionGeminiKey();
       } else {
-        try {
-          sessionStorage.setItem('gemini_custom_api_key', keyToSend);
-        } catch {
-          // Ignore
-        }
+        setSessionGeminiKey(keyToSend);
       }
 
       const headers: Record<string, string> = {
@@ -1156,7 +1137,7 @@ export default function QuickTextParserModal({
                         <span>API Key cá nhân (chỉ lưu tạm trong <code>sessionStorage</code>):</span>
                       </span>
                       <a
-                        href="https://aistudio.google.com/apikey"
+                        href={GOOGLE_AI_STUDIO_KEY_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-bold text-indigo-600 dark:text-cyan-400 hover:underline"

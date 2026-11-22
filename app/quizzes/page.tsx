@@ -31,6 +31,7 @@ import QuickTextParserModal from '@/components/QuickTextParserModal';
 import CustomSubjectModal, { SUBJECT_ICONS } from '@/components/CustomSubjectModal';
 import CustomQuizEditorModal from '@/components/CustomQuizEditorModal';
 import ConfirmModal from '@/components/ConfirmModal';
+import GpuProgressBar from '@/components/ui/GpuProgressBar';
 import { QUESTION_BANKS } from '@/lib/defaultBanks';
 
 const getSubjectIcon = (iconName?: string) => {
@@ -677,14 +678,12 @@ export default function QuizzesPage() {
                   : 'Chưa học'}
               </span>
             </div>
-            <div className="w-full h-1.5 bg-slate-200/80 dark:bg-slate-800 rounded-full overflow-hidden">
-              <div
-                className={`h-full rounded-full transition-all duration-300 ${
-                  pct === 100 ? 'bg-emerald-500' : 'bg-indigo-500'
-                }`}
-                style={{ width: `${Math.max(pct, card.stat.seen > 0 ? 5 : 0)}%` }}
-              />
-            </div>
+            <GpuProgressBar
+              percent={card.stat.seen > 0 ? pct : 0}
+              minVisiblePercent={card.stat.seen > 0 ? 5 : 0}
+              trackClassName="w-full h-1.5 bg-slate-200/80 dark:bg-slate-800 rounded-full"
+              barClassName={`rounded-full ${pct === 100 ? 'bg-emerald-500' : 'bg-indigo-500'}`}
+            />
           </div>
 
           {/* 2-Tier Clear Action Buttons (No Truncation) */}

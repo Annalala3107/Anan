@@ -48,7 +48,7 @@
 .gpu-card {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
-  transition: transform 0.2s var(--ease-spring), border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.18s ease;
+  transition: transform 0.2s var(--ease-spring), border-color 0.2s ease, background-color 0.18s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {

@@ -104,7 +104,7 @@ export default function ConfirmModal({
         aria-labelledby={titleId}
         aria-describedby={descId}
         onClick={(e) => e.stopPropagation()}
-        className={`relative w-full max-w-md glass-elevated bg-white dark:bg-[#111827] border ${borderTone} rounded-3xl p-6 shadow-2xl text-center space-y-4 animate-scale-up cursor-default`}
+        className={`relative w-full max-w-md bg-white dark:bg-[#111827] border ${borderTone} rounded-3xl p-6 shadow-2xl text-center space-y-4 animate-scale-up cursor-default`}
       >
         <button
           type="button"

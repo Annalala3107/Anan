@@ -50,6 +50,7 @@ import {
   useMusicStore,
 } from '@/lib/musicStore';
 import { AmbientPreset } from '@/lib/ambientAudio';
+import CosmicSwitch from '@/components/ui/CosmicSwitch';
 import {
   getStudioContextTone,
   OuterReactiveVisuals,
@@ -1127,59 +1128,20 @@ function ZenFocusContent({ onClose }: { onClose: () => void }) {
 
                     {/* Custom Dark-Glass Pill Switches */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-3 border-t border-white/10 text-[11px] text-slate-300">
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={pomodoroAutoPauseMusic}
-                        onClick={() =>
-                          setPomodoroAutoPause(!pomodoroAutoPauseMusic)
-                        }
-                        className="inline-flex items-center gap-2 text-left text-slate-300 hover:text-white transition-colors"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className={`relative inline-flex items-center w-8 h-[18px] rounded-full transition-colors duration-200 shrink-0 ${
-                            pomodoroAutoPauseMusic
-                              ? 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.45)]'
-                              : 'bg-white/15 border border-white/10'
-                          }`}
-                        >
-                          <span
-                            className={`block w-3.5 h-3.5 rounded-full bg-white shadow-sm transition-transform duration-200 ${
-                              pomodoroAutoPauseMusic
-                                ? 'translate-x-[15px]'
-                                : 'translate-x-[2px]'
-                            }`}
-                          />
-                        </span>
-                        <span>Tạm dừng nhạc khi nghỉ</span>
-                      </button>
-
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={examAutoDuckMusic}
-                        onClick={() => setExamAutoDuck(!examAutoDuckMusic)}
-                        className="inline-flex items-center gap-2 text-left text-slate-300 hover:text-white transition-colors"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className={`relative inline-flex items-center w-8 h-[18px] rounded-full transition-colors duration-200 shrink-0 ${
-                            examAutoDuckMusic
-                              ? 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.45)]'
-                              : 'bg-white/15 border border-white/10'
-                          }`}
-                        >
-                          <span
-                            className={`block w-3.5 h-3.5 rounded-full bg-white shadow-sm transition-transform duration-200 ${
-                              examAutoDuckMusic
-                                ? 'translate-x-[15px]'
-                                : 'translate-x-[2px]'
-                            }`}
-                          />
-                        </span>
-                        <span>Hạ nhạc còn 15% khi thi</span>
-                      </button>
+                      <CosmicSwitch
+                        size="sm"
+                        checked={pomodoroAutoPauseMusic}
+                        onChange={setPomodoroAutoPause}
+                        className="text-slate-300 hover:text-white"
+                        label="Tạm dừng nhạc khi nghỉ"
+                      />
+                      <CosmicSwitch
+                        size="sm"
+                        checked={examAutoDuckMusic}
+                        onChange={setExamAutoDuck}
+                        className="text-slate-300 hover:text-white"
+                        label="Hạ nhạc còn 15% khi thi"
+                      />
                     </div>
                   </div>
 

@@ -15,6 +15,7 @@ import {
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
 import AITutorButton from '@/components/ai/AITutorButton';
+import GpuProgressBar from '@/components/ui/GpuProgressBar';
 import MobileThumbBar from './MobileThumbBar';
 import {
   CheckCircle2,
@@ -26,7 +27,7 @@ import {
   Shuffle,
   Check,
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { triggerAstronomicalCelebration } from '@/lib/celebration';
 
 interface MistakesModeProps {
   words: Word[];
@@ -153,11 +154,7 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
       setCurrentIndex((i) => i + 1);
     } else {
       setIsFinished(true);
-      confetti({
-        particleCount: 100,
-        spread: 60,
-        origin: { y: 0.6 },
-      });
+      triggerAstronomicalCelebration('session');
     }
   }, [currentIndex, mistakeWords.length]);
 
@@ -329,12 +326,11 @@ export default function MistakesMode({ words, onExit }: MistakesModeProps) {
       </div>
 
       {/* Progress */}
-      <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mb-6 sm:mb-8 overflow-hidden">
-        <div
-          className="h-full bg-amber-500 transition-[width] duration-300 ease-out transform-gpu"
-          style={{ width: `${((currentIndex + 1) / mistakeWords.length) * 100}%` }}
-        />
-      </div>
+      <GpuProgressBar
+        percent={((currentIndex + 1) / mistakeWords.length) * 100}
+        trackClassName="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full mb-6 sm:mb-8"
+        barClassName="bg-amber-500 rounded-full"
+      />
 
       {/* Question & Choices Animated Container */}
       <div key={currentIndex} className="animate-question-enter transform-gpu">

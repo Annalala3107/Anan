@@ -299,7 +299,9 @@ export default function DynamicConstellationBackground({
     motionMode === 'full' || (motionMode === 'system' && !osReducedMotion);
 
   const pathname = usePathname();
-  const isStudySession = Boolean(pathname?.startsWith('/session/'));
+  const isStudySession = Boolean(
+    pathname?.startsWith('/session/') || pathname?.startsWith('/library')
+  );
   const isStudySessionRef = useRef(isStudySession);
   useEffect(() => {
     isStudySessionRef.current = isStudySession;

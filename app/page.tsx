@@ -27,6 +27,7 @@ import { QUESTION_BANKS, getQuizDisplayName } from '@/lib/defaultBanks';
 import { WordProgress } from '@/lib/types';
 import QrSyncModal from '@/components/QrSyncModal';
 import QuickTextParserModal from '@/components/QuickTextParserModal';
+import GpuProgressBar from '@/components/ui/GpuProgressBar';
 
 export default function Home() {
   const {
@@ -382,12 +383,12 @@ export default function Home() {
               <span>Tiến độ làm chủ kiến thức (Spaced Repetition)</span>
               <span>{masteredPercent}% Hoàn thành</span>
             </div>
-            <div className="w-full h-2 bg-slate-200/80 dark:bg-black/40 rounded-full overflow-hidden p-0.5">
-              <div
-                className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 rounded-full transition-[width] duration-500 ease-out transform-gpu"
-                style={{ width: `${Math.max(masteredPercent, 4)}%` }}
-              />
-            </div>
+            <GpuProgressBar
+              percent={masteredPercent}
+              minVisiblePercent={4}
+              trackClassName="w-full h-2 bg-slate-200/80 dark:bg-black/40 rounded-full p-0.5"
+              barClassName="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 rounded-full duration-500"
+            />
           </div>
         </div>
       )}

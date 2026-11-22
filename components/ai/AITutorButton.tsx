@@ -31,6 +31,12 @@ import {
   getCachedAiExplanationSync,
   setCachedAiExplanation,
 } from '@/lib/aiClientCache';
+import {
+  clearSessionGeminiKey,
+  getSessionGeminiKey,
+  GOOGLE_AI_STUDIO_KEY_URL,
+  setSessionGeminiKey,
+} from '@/lib/apiKeyStorage';
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 
 export type AIExplanationResult = CachedAiExplanation;
@@ -44,8 +50,6 @@ interface AITutorButtonProps {
   topic?: string;
   className?: string;
 }
-
-const API_KEY_SESSION_KEY = 'gemini_custom_api_key';
 
 export default function AITutorButton({
   question,
@@ -111,12 +115,8 @@ export default function AITutorButton({
   }, [cacheKey, legacyClientKey]);
 
   useEffect(() => {
-    try {
-      const saved = sessionStorage.getItem(API_KEY_SESSION_KEY);
-      if (saved) setTempApiKey(saved);
-    } catch {
-      // Ignore storage errors
-    }
+    const saved = getSessionGeminiKey();
+    if (saved) setTempApiKey(saved);
   }, []);
 
   const hasKnownAnswer = Boolean(correctAnswer && correctAnswer.trim());
@@ -224,12 +224,7 @@ export default function AITutorButton({
     setError(null);
 
     try {
-      let storedKey = '';
-      try {
-        storedKey = sessionStorage.getItem(API_KEY_SESSION_KEY)?.trim() || '';
-      } catch {
-        storedKey = '';
-      }
+      const storedKey = getSessionGeminiKey();
       const keyToUse = (overrideKey !== undefined ? overrideKey : storedKey).trim();
 
       const headers: Record<string, string> = {
@@ -314,22 +309,14 @@ export default function AITutorButton({
     e.stopPropagation();
     const cleaned = tempApiKey.trim();
     if (!cleaned) return;
-    try {
-      sessionStorage.setItem(API_KEY_SESSION_KEY, cleaned);
-    } catch {
-      // Ignore storage errors
-    }
+    setSessionGeminiKey(cleaned);
     void fetchExplanation(cleaned);
   };
 
   const handleClearKey = (e: React.MouseEvent) => {
     e.stopPropagation();
     setTempApiKey('');
-    try {
-      sessionStorage.removeItem(API_KEY_SESSION_KEY);
-    } catch {
-      // Ignore
-    }
+    clearSessionGeminiKey();
   };
 
   return (
@@ -416,7 +403,7 @@ export default function AITutorButton({
               </span>
             </p>
             <a
-              href="https://aistudio.google.com/apikey"
+              href={GOOGLE_AI_STUDIO_KEY_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[11px] font-bold text-indigo-600 dark:text-cyan-400 hover:underline"

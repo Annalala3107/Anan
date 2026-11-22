@@ -15,6 +15,11 @@ import {
 import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
 import {
+  clearSessionGeminiKey,
+  getSessionGeminiKey,
+  setSessionGeminiKey,
+} from '@/lib/apiKeyStorage';
+import {
   Sparkles,
   X,
   AlertCircle,
@@ -89,16 +94,8 @@ export default function AIPromptModal({
   const [manualJson, setManualJson] = useState('');
 
   useEffect(() => {
-    try {
-      // Remove any legacy persistent key left in localStorage from older versions
-      if (localStorage.getItem('gemini_custom_api_key') !== null) {
-        localStorage.removeItem('gemini_custom_api_key');
-      }
-      const savedSessionKey = sessionStorage.getItem('gemini_custom_api_key');
-      if (savedSessionKey) setUserApiKey(savedSessionKey);
-    } catch {
-      // Ignore storage access errors in private mode
-    }
+    const savedSessionKey = getSessionGeminiKey();
+    if (savedSessionKey) setUserApiKey(savedSessionKey);
   }, []);
 
   useEffect(() => {
@@ -131,27 +128,12 @@ export default function AIPromptModal({
 
   const handleSaveUserKey = (val: string) => {
     setUserApiKey(val);
-    const cleaned = val.trim();
-    try {
-      localStorage.removeItem('gemini_custom_api_key');
-      if (cleaned) {
-        sessionStorage.setItem('gemini_custom_api_key', cleaned);
-      } else {
-        sessionStorage.removeItem('gemini_custom_api_key');
-      }
-    } catch {
-      // Ignore storage access errors
-    }
+    setSessionGeminiKey(val);
   };
 
   const handleClearUserKey = () => {
     setUserApiKey('');
-    try {
-      sessionStorage.removeItem('gemini_custom_api_key');
-      localStorage.removeItem('gemini_custom_api_key');
-    } catch {
-      // Ignore storage access errors
-    }
+    clearSessionGeminiKey();
   };
 
   const handleGenerateAI = async () => {

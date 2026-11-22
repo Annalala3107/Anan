@@ -11,6 +11,7 @@ import CodeQuestionRenderer from '@/components/CodeQuestionRenderer';
 import OptionContent from '@/components/OptionContent';
 import ExamConfigView from './exam/ExamConfigView';
 import ExamResultView from './exam/ExamResultView';
+import MobileThumbBar from './MobileThumbBar';
 import {
   Clock,
   CheckCircle2,
@@ -23,7 +24,7 @@ import {
   Shuffle,
   Check,
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { triggerAstronomicalCelebration } from '@/lib/celebration';
 
 interface ExamModeProps {
   words: Word[];
@@ -473,12 +474,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       });
 
       if (percent >= 70) {
-        useQuizStore.getState().triggerConstellationAction('shooting_star');
-        confetti({
-          particleCount: 150,
-          spread: 80,
-          origin: { y: 0.6 },
-        });
+        triggerAstronomicalCelebration('milestone');
       }
     }
   };
@@ -846,7 +842,7 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
       </div>
 
       {/* Sticky Bottom Thumb-Friendly Navigation Controls on Mobile */}
-      <div className="sticky bottom-0 -mx-4 sm:mx-0 p-3 sm:p-0 bg-white/95 dark:bg-[#090E17]/95 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none border-t border-slate-200/80 dark:border-slate-800/80 sm:border-0 flex items-center justify-between gap-2.5 shadow-glass sm:shadow-none z-20 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-0">
+      <MobileThumbBar className="flex items-center justify-between gap-2.5 -mx-4">
         <button
           disabled={currentIndex === 0}
           onClick={() => setCurrentIndex((i) => i - 1)}
@@ -870,12 +866,12 @@ export default function ExamMode({ words, onExit }: ExamModeProps) {
             <span>Nộp bài thi</span> <CheckCircle2 className="w-4 h-4" />
           </button>
         )}
-      </div>
+      </MobileThumbBar>
 
       {/* Pre-submission Confirmation Modal */}
       {showSubmitConfirm && (
         <div className="fixed inset-0 z-[80] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
-          <div className="max-w-md w-full p-6 rounded-3xl glass-elevated space-y-4">
+          <div className="max-w-md w-full p-6 rounded-3xl bg-white dark:bg-[#0F172A] border border-slate-200 dark:border-slate-700 shadow-2xl space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto">
               <AlertTriangle className="w-6 h-6" />
             </div>

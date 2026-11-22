@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { StorageEngine, ExamRecord } from '@/lib/storage';
+import { StorageEngine, ExamRecord, StorageHealthInfo } from '@/lib/storage';
 import { CustomQuiz, CustomSubject, DailyStats, WordProgress } from '@/lib/types';
 import { QUESTION_BANKS } from '@/lib/defaultBanks';
 import { getQuestionKey } from '@/lib/utils';
@@ -28,6 +28,8 @@ import {
 } from 'lucide-react';
 import QrSyncModal from '@/components/QrSyncModal';
 import ConfirmModal from '@/components/ConfirmModal';
+import CosmicSwitch from '@/components/ui/CosmicSwitch';
+import GpuProgressBar from '@/components/ui/GpuProgressBar';
 import { useQuizStore, MotionMode } from '@/lib/quizStore';
 
 interface ManifestEntry {
@@ -57,6 +59,7 @@ export default function ProfilePage() {
   const [showQrSync, setShowQrSync] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [osReducedMotion, setOsReducedMotion] = useState(false);
+  const [storageHealth, setStorageHealth] = useState<StorageHealthInfo | null>(null);
 
   const showConstellationHud = useQuizStore((s) => s.showConstellationHud);
   const setShowConstellationHud = useQuizStore((s) => s.setShowConstellationHud);
@@ -93,11 +96,13 @@ export default function ProfilePage() {
     setExamHistory(StorageEngine.getExamHistory());
     setCustomQuizzes(StorageEngine.getCustomQuizzes());
     setCustomSubjects(StorageEngine.getCustomSubjects());
+    setStorageHealth(StorageEngine.getStorageHealth());
   };
 
   useEffect(() => {
     hydrateSelection();
     loadData();
+    void StorageEngine.hydrateFromIdb().then(() => loadData());
     const onStatsUpdated = () => loadData();
     window.addEventListener('ananquiz:stats-updated', onStatsUpdated);
     return () => window.removeEventListener('ananquiz:stats-updated', onStatsUpdated);
@@ -231,9 +236,9 @@ export default function ProfilePage() {
     [dailyHistory]
   );
 
-  const handleExportBackup = () => {
+  const handleExportBackup = async () => {
     try {
-      const jsonContent = StorageEngine.exportAllData();
+      const jsonContent = await StorageEngine.exportAllDataAsync();
       const blob = new Blob([jsonContent], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -263,11 +268,12 @@ export default function ProfilePage() {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = (event) => {
+    reader.onload = async (event) => {
       const content = event.target?.result as string;
-      const res = StorageEngine.importAllData(content, { mode: importMode });
+      const res = await StorageEngine.importAllDataAsync(content, { mode: importMode });
 
       if (res.success) {
+        useQuizStore.getState().syncStreak();
         loadData();
         setBackupStatus({
           type: 'success',
@@ -295,11 +301,8 @@ export default function ProfilePage() {
     reader.readAsText(file);
   };
 
-  const executeResetProgress = () => {
-    localStorage.removeItem('ananquiz_word_progress');
-    localStorage.removeItem('ananquiz_daily_stats');
-    localStorage.removeItem('ananquiz_streak');
-    localStorage.removeItem('ananquiz_exam_history');
+  const executeResetProgress = async () => {
+    await StorageEngine.resetLearningProgress();
     window.location.reload();
   };
 
@@ -491,12 +494,12 @@ export default function ProfilePage() {
                   )}
                 </div>
 
-                <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full bg-gradient-to-r ${sub.color} transition-all duration-300`}
-                    style={{ width: `${Math.max(sub.percent, sub.seen > 0 ? 4 : 0)}%` }}
-                  />
-                </div>
+                <GpuProgressBar
+                  percent={sub.percent}
+                  minVisiblePercent={sub.seen > 0 ? 4 : 0}
+                  trackClassName="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full"
+                  barClassName={`rounded-full bg-gradient-to-r ${sub.color}`}
+                />
               </div>
             ))}
           </div>
@@ -526,6 +529,49 @@ export default function ProfilePage() {
                 Zod Validated
               </span>
             </div>
+
+            {/* Local Storage + IndexedDB Mirror Health */}
+            {storageHealth && (
+              <div className="mb-3 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 space-y-2 text-[11px]">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <span className="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+                    <Database className="w-3.5 h-3.5 text-indigo-500" />
+                    <span>Sức khỏe bộ nhớ cục bộ</span>
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono tabular-nums text-slate-600 dark:text-slate-300">
+                      {Math.round(storageHealth.usedBytes / 1024).toLocaleString('vi-VN')} / 5.120 KB ({storageHealth.percentUsed}%)
+                    </span>
+                    <span
+                      className={`px-2 py-0.5 rounded-full font-bold border ${
+                        storageHealth.idbSupported
+                          ? 'bg-emerald-500/12 text-emerald-700 dark:text-emerald-300 border-emerald-500/30'
+                          : 'bg-amber-500/12 text-amber-700 dark:text-amber-300 border-amber-500/30'
+                      }`}
+                    >
+                      {storageHealth.idbSupported ? '✓ IndexedDB Mirror' : 'Chỉ localStorage'}
+                    </span>
+                  </div>
+                </div>
+                <GpuProgressBar
+                  percent={storageHealth.percentUsed}
+                  minVisiblePercent={storageHealth.usedBytes > 0 ? 3 : 0}
+                  trackClassName="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full"
+                  barClassName={`rounded-full ${
+                    storageHealth.localStorageFullWarning
+                      ? 'bg-rose-500'
+                      : storageHealth.percentUsed >= 60
+                      ? 'bg-amber-500'
+                      : 'bg-emerald-500'
+                  }`}
+                />
+                {storageHealth.localStorageFullWarning && (
+                  <p className="text-[11px] font-semibold text-amber-700 dark:text-amber-300">
+                    localStorage gần chạm ngưỡng 5MB — tiến độ SRS và đề tự tạo đang được IndexedDB Mirror bảo vệ an toàn. Nên xuất file sao lưu định kỳ.
+                  </p>
+                )}
+              </div>
+            )}
 
             {/* Restore Mode Selector */}
             <div className="flex items-center justify-between flex-wrap gap-2 py-2 px-3 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 text-[11px]">
@@ -726,61 +772,30 @@ export default function ProfilePage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-center">
-            <button
-              type="button"
-              role="switch"
-              aria-checked={enableConstellationBg}
-              onClick={() => setEnableConstellationBg(!enableConstellationBg)}
-              className={`inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border text-left transition-colors cursor-pointer select-none ${
-                enableConstellationBg
-                  ? 'bg-indigo-500/15 border-indigo-500/40 text-indigo-700 dark:text-indigo-200'
-                  : 'bg-slate-100 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
-              }`}
-            >
-              <span
-                aria-hidden="true"
-                className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
-                  enableConstellationBg ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-600'
-                }`}
-              >
-                <span
-                  className={`inline-block h-3.5 w-3.5 rounded-full bg-white shadow-sm transition-transform duration-150 ${
-                    enableConstellationBg ? 'translate-x-[18px]' : 'translate-x-[3px]'
-                  }`}
-                />
-              </span>
-              <span className="text-xs font-bold">
-                Hiệu ứng chòm sao (Tắt để tiết kiệm Pin/GPU)
-              </span>
-            </button>
-
-            <button
-              type="button"
-              role="switch"
-              aria-checked={showConstellationHud}
-              onClick={() => setShowConstellationHud(!showConstellationHud)}
-              className={`inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl border text-left transition-colors cursor-pointer select-none ${
-                showConstellationHud
-                  ? 'bg-cyan-500/15 border-cyan-500/40 text-cyan-700 dark:text-cyan-200'
-                  : 'bg-slate-100 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
-              }`}
-            >
-              <span
-                aria-hidden="true"
-                className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
-                  showConstellationHud ? 'bg-cyan-600' : 'bg-slate-300 dark:bg-slate-600'
-                }`}
-              >
-                <span
-                  className={`inline-block h-3.5 w-3.5 rounded-full bg-white shadow-sm transition-transform duration-150 ${
-                    showConstellationHud ? 'translate-x-[18px]' : 'translate-x-[3px]'
-                  }`}
-                />
-              </span>
-              <span className="text-xs font-bold">
-                {showConstellationHud ? 'Đang hiện HUD hiệu năng' : 'Ẩn HUD (Gọn gàng)'}
-              </span>
-            </button>
+            <CosmicSwitch
+              size="md"
+              variant="card"
+              tone="indigo"
+              checked={enableConstellationBg}
+              onChange={setEnableConstellationBg}
+              label={
+                <span className="text-xs font-bold">
+                  Hiệu ứng chòm sao (Tắt để tiết kiệm Pin/GPU)
+                </span>
+              }
+            />
+            <CosmicSwitch
+              size="md"
+              variant="card"
+              tone="cyan"
+              checked={showConstellationHud}
+              onChange={setShowConstellationHud}
+              label={
+                <span className="text-xs font-bold">
+                  {showConstellationHud ? 'Đang hiện HUD hiệu năng' : 'Ẩn HUD (Gọn gàng)'}
+                </span>
+              }
+            />
           </div>
         </div>
 

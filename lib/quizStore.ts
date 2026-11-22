@@ -7,6 +7,9 @@ const HUD_PREF_KEY = 'ananquiz_show_constellation_hud';
 const BG_PREF_KEY = 'ananquiz_enable_constellation_bg';
 const MOTION_PREF_KEY = 'ananquiz_motion_mode';
 
+let activeLoadSeq = 0;
+let activeLoadController: AbortController | null = null;
+
 export type MotionMode = 'system' | 'full' | 'reduced';
 
 function applyDocumentMotionMode(mode: MotionMode) {
@@ -27,6 +30,7 @@ interface QuizStoreState {
   hasExplicitSelection: boolean;
   words: Word[];
   isLoadingWords: boolean;
+  loadError: string | null;
 
   // Live Streak State (synced with StorageEngine + custom events)
   streak: number;
@@ -61,6 +65,7 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
   hasExplicitSelection: false,
   words: [],
   isLoadingWords: false,
+  loadError: null,
 
   streak: 1,
   syncStreak: () => set({ streak: StorageEngine.getStreak() }),
@@ -196,19 +201,25 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
       selectedQuizPath: path,
       activeCustomQuiz: null,
       loadedQuizKey: null,
+      loadError: null,
       hasHydratedSelection: true,
       hasExplicitSelection: true,
     });
-    get().loadQuizWords(path);
+    void get().loadQuizWords(path);
   },
 
   setActiveCustomQuiz: (quiz: CustomQuiz | null) => {
     StorageEngine.setActiveCustomQuizId(quiz ? quiz.id : null);
     if (quiz) {
+      activeLoadSeq += 1;
+      activeLoadController?.abort();
+      activeLoadController = null;
       set({
         activeCustomQuiz: quiz,
         words: quiz.words,
         loadedQuizKey: `custom:${quiz.id}`,
+        isLoadingWords: false,
+        loadError: null,
         hasHydratedSelection: true,
         hasExplicitSelection: true,
       });
@@ -216,10 +227,11 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
       set({
         activeCustomQuiz: null,
         loadedQuizKey: null,
+        loadError: null,
         hasHydratedSelection: true,
         hasExplicitSelection: StorageEngine.hasExplicitSelectedQuiz(),
       });
-      get().loadQuizWords(get().selectedQuizPath);
+      void get().loadQuizWords(get().selectedQuizPath);
     }
   },
 
@@ -232,33 +244,81 @@ export const useQuizStore = create<QuizStoreState>((set, get) => ({
     const active = target || get().activeCustomQuiz || get().selectedQuizPath;
     const targetKey = typeof active === 'object' ? `custom:${active.id}` : active;
 
-    if (get().words.length > 0 && get().loadedQuizKey === targetKey) {
+    if (get().words.length > 0 && get().loadedQuizKey === targetKey && !get().loadError) {
       return get().words;
     }
 
-    set({ isLoadingWords: true });
+    const seq = ++activeLoadSeq;
+    activeLoadController?.abort();
+    const controller =
+      typeof AbortController !== 'undefined' ? new AbortController() : null;
+    activeLoadController = controller;
+
+    set({ isLoadingWords: true, loadError: null });
 
     try {
       if (typeof active === 'object' && active.words) {
-        set({ words: active.words, loadedQuizKey: targetKey, isLoadingWords: false });
+        if (seq !== activeLoadSeq) return get().words;
+        set({
+          words: active.words,
+          loadedQuizKey: targetKey,
+          isLoadingWords: false,
+          loadError: null,
+        });
         return active.words;
       }
 
       const filePath = typeof active === 'string' ? active : get().selectedQuizPath;
-      const res = await fetch(filePath);
-      if (!res.ok) throw new Error('Failed to fetch quiz dataset');
-      const rawData = await res.json();
+      const res = await fetch(filePath, controller ? { signal: controller.signal } : undefined);
+      if (!res.ok) {
+        throw new Error(`Không thể tải ngân hàng câu hỏi (HTTP ${res.status}).`);
+      }
+      const rawData: unknown = await res.json();
 
-      // Zod Schema Validation to safeguard against corrupted or malformed questions
+      if (seq !== activeLoadSeq) {
+        return get().words;
+      }
+
+      // Zod Schema Validation with strict Array fallback so corrupted payloads never crash UI
       const parsed = QuizDatasetSchema.safeParse(rawData);
-      const data: Word[] = parsed.success ? (parsed.data as Word[]) : rawData;
+      let data: Word[] = [];
+      if (parsed.success) {
+        data = parsed.data as Word[];
+      } else if (Array.isArray(rawData) && rawData.length > 0) {
+        data = rawData as Word[];
+      } else {
+        throw new Error('Dữ liệu bộ đề không đúng định dạng mảng câu hỏi hợp lệ.');
+      }
 
-      set({ words: data, loadedQuizKey: targetKey, isLoadingWords: false });
+      if (seq !== activeLoadSeq) {
+        return get().words;
+      }
+
+      set({
+        words: data,
+        loadedQuizKey: targetKey,
+        isLoadingWords: false,
+        loadError: null,
+      });
       return data;
-    } catch (err) {
+    } catch (err: unknown) {
+      if (
+        seq !== activeLoadSeq ||
+        (err instanceof Error && err.name === 'AbortError')
+      ) {
+        return get().words;
+      }
       console.error('Error loading quiz dataset:', err);
-      set({ isLoadingWords: false });
+      const message =
+        err instanceof Error
+          ? err.message
+          : 'Không thể tải ngân hàng câu hỏi. Hãy kiểm tra mạng và thử lại.';
+      set({ isLoadingWords: false, loadError: message });
       return [];
+    } finally {
+      if (activeLoadController === controller) {
+        activeLoadController = null;
+      }
     }
   },
 }));
