@@ -22,9 +22,10 @@ Tài liệu này định nghĩa bản sắc thị giác **Thiên hà / Chòm sao
 ## 2. Design Tokens (Đồng bộ với `tailwind.config.js` & `app/layout.tsx`)
 
 - **Typography:**
-  - Chữ giao diện & câu hỏi: `Be Vietnam Pro` (`--font-sans`), hỗ trợ tiếng Việt có dấu sắc nét mọi kích cỡ.
-  - Code, đồng hồ, phím tắt, bộ đếm câu: `JetBrains Mono` (`--font-mono`) kèm `tabular-nums` chống nhảy số.
-  - Toán học: `KaTeX` (`katex/dist/katex.min.css`).
+  - Chữ giao diện, tiêu đề & điều hướng: `Be Vietnam Pro` (`--font-sans`), hỗ trợ tiếng Việt có dấu sắc nét mọi kích cỡ.
+  - Nội dung đọc câu hỏi, đáp án, giải thích & mệnh đề STEM song ngữ: `IBM Plex Sans` (`--font-reading`, `font-reading`), hỗ trợ tập ký tự `vietnamese`, `latin`, `greek`, phân biệt rõ `I/l/1` và `0/O`.
+  - Code, đồng hồ, phím tắt, bộ đếm câu, badge mã môn & chỉ mục `(i)/(ii)`: `JetBrains Mono` (`--font-mono`) kèm `tabular-nums` chống nhảy số.
+  - Toán học: `KaTeX` (`katex/dist/katex.min.css`), tỷ lệ `1.06em` inline / `1.15em` display, `.katex .mtext` kế thừa `--font-reading`.
 - **Bảng màu Thiên văn (Cosmic Dark ưu tiên + hỗ trợ Light Mode):**
   - Nền vũ trụ sâu (`cosmic.bg`): `#080C14`
   - Bề mặt chính (`cosmic.surface`): `#0F172A`

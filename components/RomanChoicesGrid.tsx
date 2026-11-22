@@ -35,7 +35,7 @@ export default function RomanChoicesGrid({
             <span className="shrink-0 px-2 py-0.5 rounded-md text-xs font-mono font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-950/80 border border-indigo-300/60 dark:border-indigo-500/30 shadow-xs">
               ({item.numeral})
             </span>
-            <div className="text-sm font-medium text-slate-800 dark:text-slate-100 leading-relaxed overflow-x-auto min-w-0 flex-1">
+            <div className="font-reading text-sm font-medium text-slate-800 dark:text-slate-100 leading-relaxed overflow-x-auto min-w-0 flex-1">
               <MathText content={item.content} />
             </div>
           </div>

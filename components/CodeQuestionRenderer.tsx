@@ -396,24 +396,42 @@ export default function CodeQuestionRenderer({
   };
 
   return (
-    <div className={`space-y-3.5 ${className}`}>
+    <div className={`font-reading space-y-3.5 ${className}`}>
       {/* Visual Diagram / Image if present */}
       {image && <QuestionMedia src={image} caption={imageCaption} />}
 
       {/* Render Parsed Blocks Sequentially */}
       {blocks.map((block, bIdx) => {
         if (block.type === 'text') {
-          // If the text block is a piecewise function, render as display formula
-          if (/[a-zA-Z]\([a-zA-Z]\)\s*=\s*\{/.test(block.text)) {
+          // If the text block contains a piecewise function, split prose intro/outro from display formula
+          const pwMatch = block.text.match(/[a-zA-Z]\([a-zA-Z]\)\s*=\s*\{[\s\S]*?\}/);
+          if (pwMatch && pwMatch.index !== undefined) {
+            const beforeText = block.text.slice(0, pwMatch.index).trim();
+            const piecewiseExpr = pwMatch[0];
+            const afterText = block.text.slice(pwMatch.index + piecewiseExpr.length).trim();
+
             return (
-              <div
-                key={bIdx}
-                className="my-3 py-3 px-4 rounded-2xl bg-indigo-50/90 dark:bg-slate-900/85 border border-indigo-200 dark:border-indigo-500/30 text-slate-900 dark:text-indigo-100 shadow-sm dark:shadow-md"
-              >
-                <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-700 dark:text-indigo-300 mb-1 flex items-center gap-1 select-none">
-                  <span>Hàm số định nghĩa từng khúc / Piecewise Function</span>
+              <div key={bIdx} className="space-y-2.5">
+                {beforeText && (
+                  <MathText
+                    as="p"
+                    content={beforeText}
+                    className="leading-[1.68] font-medium text-slate-900 dark:text-slate-100 whitespace-pre-wrap break-words"
+                  />
+                )}
+                <div className="my-3 py-3 px-4 rounded-2xl bg-indigo-50/90 dark:bg-slate-900/85 border border-indigo-200 dark:border-indigo-500/30 text-slate-900 dark:text-indigo-100 shadow-sm dark:shadow-md">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-700 dark:text-indigo-300 mb-1 flex items-center gap-1 select-none">
+                    <span>Hàm số định nghĩa từng khúc / Piecewise Function</span>
+                  </div>
+                  <MathText content={formatPiecewise(piecewiseExpr)} displayMode={true} />
                 </div>
-                <MathText content={formatPiecewise(block.text)} displayMode={true} />
+                {afterText && (
+                  <MathText
+                    as="p"
+                    content={afterText}
+                    className="leading-[1.68] font-medium text-slate-900 dark:text-slate-100 whitespace-pre-wrap break-words"
+                  />
+                )}
               </div>
             );
           }

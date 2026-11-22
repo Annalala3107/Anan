@@ -447,7 +447,7 @@ export default function LibraryPage() {
                     </div>
 
                     {/* Question text */}
-                    <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-3 mb-3">
+                    <h3 className="font-reading text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-3 mb-3">
                       {w.question || w.word}
                     </h3>
 

@@ -38,7 +38,7 @@ export default function OptionContent({
   if (containsMath(displayText)) {
     return (
       <span
-        className={`whitespace-normal break-words leading-relaxed text-left inline-block w-full ${className}`}
+        className={`font-reading whitespace-normal break-words leading-relaxed text-left inline-block w-full ${className}`}
       >
         <MathText content={displayText} />
       </span>
@@ -47,7 +47,7 @@ export default function OptionContent({
 
   return (
     <span
-      className={`whitespace-pre-line break-words leading-relaxed text-left inline-block w-full ${className}`}
+      className={`font-reading whitespace-pre-line break-words leading-relaxed text-left inline-block w-full ${className}`}
     >
       {displayText}
     </span>

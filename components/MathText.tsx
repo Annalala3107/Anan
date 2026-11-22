@@ -35,7 +35,7 @@ function renderSegments(segments: InlineSegment[], keyPrefix = 'seg'): React.Rea
       return (
         <span
           key={key}
-          className="inline mx-0.5 align-baseline select-text text-indigo-950 dark:text-indigo-200"
+          className="inline mx-0.5 align-baseline select-text text-indigo-950 dark:text-indigo-100"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       );
@@ -73,20 +73,24 @@ export default function MathText({
     const html = renderMathSafely(content, true);
     return (
       <div
-        className={`overflow-x-auto py-1 text-center font-sans ${className}`}
+        className={`overflow-x-auto py-1 text-center font-reading ${className}`}
         dangerouslySetInnerHTML={{ __html: html }}
       />
     );
   }
 
+  const resolvedClass = /\bfont-(?:mono|sans|reading)\b/.test(className)
+    ? className
+    : `font-reading ${className}`.trim();
+
   // Fast path: if neither math syntax nor inline markdown delimiters are present
   if (!containsMath(content) && !/[*`]/.test(content)) {
     const Component = as;
-    return <Component className={className}>{content}</Component>;
+    return <Component className={resolvedClass}>{content}</Component>;
   }
 
   const segments = tokenizeInlineRichText(content);
   const Component = as;
 
-  return <Component className={className}>{renderSegments(segments)}</Component>;
+  return <Component className={resolvedClass}>{renderSegments(segments)}</Component>;
 }

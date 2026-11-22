@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-sans)', 'Be Vietnam Pro', 'system-ui', '-apple-system', 'sans-serif'],
+        reading: ['var(--font-reading)', 'IBM Plex Sans', 'var(--font-sans)', 'Be Vietnam Pro', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       colors: {

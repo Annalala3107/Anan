@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Be_Vietnam_Pro, JetBrains_Mono } from 'next/font/google';
+import { Be_Vietnam_Pro, IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google';
 import 'katex/dist/katex.min.css';
 import './globals.css';
 import Header from '@/components/Header';
@@ -15,6 +15,14 @@ const beVietnamPro = Be_Vietnam_Pro({
   weight: ['400', '500', '600', '700', '800', '900'],
   display: 'swap',
   variable: '--font-sans',
+});
+
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ['vietnamese', 'latin', 'greek'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-reading',
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -49,7 +57,7 @@ export default function RootLayout({
     <html
       lang="vi"
       suppressHydrationWarning
-      className={`dark ${beVietnamPro.variable} ${jetbrainsMono.variable}`}
+      className={`dark ${beVietnamPro.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <script

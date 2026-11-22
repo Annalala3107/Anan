@@ -361,6 +361,7 @@ export function cleanMathToLatex(expr: string): string {
   s = s.replace(/\(\s*\(([^()]+)\)\s*\/\s*([^()]+)\s*\)/g, '\\frac{$1}{$2}');
   s = s.replace(/\(([^)]+)\)\s*\/\s*\(([^)]+)\)/g, '\\frac{$1}{$2}');
   s = s.replace(/\(([^)]+)\)\s*\/\s*([a-zA-Z0-9_^{}]+)/g, '\\frac{$1}{$2}');
+  s = s.replace(/(\\sqrt(?:\[\d+\])?\{[^}]+\})\s*\/\s*\(([^)]+)\)/g, '\\frac{$1}{$2}');
   s = s.replace(/(\b[-+]?\d+)\s*\/\s*(\\sqrt\{[^}]+\}|\b\d+)/g, '\\frac{$1}{$2}');
   s = s.replace(/([a-zA-Z0-9]+)\s*\/\s*(\\sqrt\{[^}]+\})/g, '\\frac{$1}{$2}');
 
@@ -437,17 +438,20 @@ export function extractRomanChoices(questionText: string): {
   };
 }
 
+const NATURAL_PROSE_REGEX =
+  /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]|\b(?:the|and|for|find|range|domain|function|evaluate|limit|simplify|quotient|differentiate|derivative|integral|solve|determine|calculate|estimate|approximate|compute|prove|show|suppose|assume|given|let|where|when|which|what|that|with|from|then|invertible|continuous|discontinuous|increasing|decreasing|value|values|interval|intervals|point|slope|curve|area|volume|system|equation|equations|matrix|matrices|vector|vectors|each|all|any|there|are|of|at|by|in|to|on|is|not|or|so|such)\b/i;
+
+function hasNaturalLanguageProse(text: string): boolean {
+  return NATURAL_PROSE_REGEX.test(text);
+}
+
 /**
- * Checks if a string is pure mathematical content without natural language English words.
+ * Checks if a string is pure mathematical content without natural language prose.
  */
 export function isPureMath(text: string): boolean {
   if (!text) return false;
   const trimmed = text.trim();
-  const hasEnglishProse =
-    /\b(?:the|and|find|when|where|with|that|from|which|estimate|approximate|evaluate|calculate|determine|suppose|assume|given|let|are|of|for|at|by|in|to|then|such|each|all|any|there|is\s+a|is\s+an|is\s+the|is\s+in|is\s+not)\b/i.test(
-      trimmed
-    );
-  if (hasEnglishProse) return false;
+  if (hasNaturalLanguageProse(trimmed) || /\bif\b/i.test(trimmed)) return false;
 
   return (
     /\\begin\{(?:cases|bmatrix)\}/.test(trimmed) ||
@@ -456,6 +460,9 @@ export function isPureMath(text: string): boolean {
     /^[0-9a-zA-Z^_+*/\s()-]+=[0-9a-zA-Z^_+*/\s()-]+$/.test(trimmed) ||
     /^[±\d\s/\\sqrt{}[\]]+$/.test(trimmed) ||
     /^\[\s*[-+0-9a-zA-Z\s,;]+?\s*\](?:\^T)?$/.test(trimmed) ||
+    /^[\(\[]\s*[-+]?(?:\d*π|\d+(?:\.\d+)?|∞)(?:\/\d+)?\s*,\s*[-+]?(?:\d*π|\d+(?:\.\d+)?|∞)(?:\/\d+)?\s*[\)\]]$/.test(
+      trimmed
+    ) ||
     /^∫/.test(trimmed) ||
     /^lim_/.test(trimmed) ||
     /^\\lim_/.test(trimmed) ||
@@ -470,16 +477,23 @@ export function isStandaloneFormula(line: string): boolean {
   const trimmed = line.trim();
   if (!trimmed) return false;
 
-  return (
-    /^(?:lim_\{|\\lim_\{|∫|\\int|\b\w+\(x\)\s*=|Evaluate the limit lim_|Find the limit\s*lim_)/.test(
-      trimmed
-    ) ||
-    /^[a-zA-Z]\([a-zA-Z]\)\s*=\s*\{/.test(trimmed) ||
+  if (
+    /^\$\$[\s\S]+\$\$$/.test(trimmed) ||
+    /^\\\[[\s\S]+\\\]$/.test(trimmed) ||
     /^\\begin\{(?:bmatrix|cases)\}/.test(trimmed) ||
     /^[A-Z]\s*=\s*\\begin\{bmatrix\}/.test(trimmed) ||
-    (/^[a-zA-Z0-9^_+*/\s()-]+=[0-9a-zA-Z^_+*/\s()-]+$/.test(trimmed) && /\^/.test(trimmed)) ||
-    /^\$\$[\s\S]+\$\$$/.test(trimmed) ||
-    /^\\\[[\s\S]+\\\]$/.test(trimmed)
+    /^[a-zA-Z]\([a-zA-Z]\)\s*=\s*\{/.test(trimmed)
+  ) {
+    return true;
+  }
+
+  if (hasNaturalLanguageProse(trimmed) || /\bif\b/i.test(trimmed)) {
+    return false;
+  }
+
+  return (
+    /^(?:lim_\{|\\lim_\{|∫|\\int|[a-zA-Z]\([a-zA-Z]\)\s*=)/.test(trimmed) ||
+    (/^[a-zA-Z0-9^_+*/\s()-]+=[0-9a-zA-Z^_+*/\s()-]+$/.test(trimmed) && /\^/.test(trimmed))
   );
 }
 
@@ -489,7 +503,7 @@ export function isStandaloneFormula(line: string): boolean {
 export function containsMath(text: string): boolean {
   if (!text) return false;
   return (
-    /[∫∑√±∓·⇒≠≤≥Δθπ∈]/.test(text) ||
+    /[∫∑√±∓·⇒≠≤≥Δθπ∈∞]/.test(text) ||
     /\b(?:lim_\{|dy\/dt|dz\/dt|dy\/dx|d\^2y\/dx\^2|y'\(1\)|f'\(x\)|f\(x\)|w'\(t\))\b/.test(
       text
     ) ||
@@ -512,7 +526,7 @@ export function containsMath(text: string): boolean {
  * Strictly separates currency ($20,000) from LaTeX delimiters ($x^2$).
  */
 const INLINE_MATH_REGEX =
-  /(?:\$(?!\s|\d)[^$\n]+(?<!\s)\$|\\\([^\)]+\\\)|\\begin\{cases\}[\s\S]*?\\end\{cases\}|L(?:\\left)?\(\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\\right)?\)\s*=\s*\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}|[A-Za-z]\s*=\s*\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\^T)?|\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\^T)?|lim_\{[^}]+\}\s*(?:\([^)]+\)|[a-zA-Z0-9_|^+\-*()]+)*(?:\s*=\s*[-+0-9a-zA-Z()]+)?|∫_\{[^}]+\}\^\{[^}]+\}[^,.:;\n]*\bd[a-z]\b|∫[^,.:;\n]*\bd[a-z]\b|\|[a-zA-Z0-9_|^+\-*\s()]+\||(?:span\s*)?\{[^{}\n|]+\|[^{}\n|]+\}|(?:span\s*)?\{[^{}\n]+\}(?:\s*=\s*(?:span\s*)?\{[^{}\n]+\})*|[-+0-9a-zA-Z_()^*/{}π]+(?:\s*[-+*/]\s*[-+0-9a-zA-Z_()^*/{}π]+)*\s*=\s*(?:lim_\{[^}]+\}\s*)?[-+0-9a-zA-Z_()^*/{}√π]+(?:\s*[-+*/]\s*[-+0-9a-zA-Z_()^*/{}√π]+)*|\b[a-zA-Z]\s*→\s*[-+0-9a-zA-Z∞]+\b|\b(?:d\^2y\/dx\^2|dy\/dt|dz\/dt|dy\/dx|dp\/dt|y'\(1\)|f'\(x\)|f\(x\)|g\(x\)|w'\(t\))\b|³?√\([^)]+\)|³?√[0-9a-zA-Z]+|\b[a-zA-Z]\^[0-9]+|\b[a-zA-Z]\^\([^)]+\)|\b[a-zA-Z]_[0-9a-zA-Z]+\b|\b[a-zA-Z]_\{[^}]+\}|\b\d*\s*(?:cm|m|km|s|ft|in)\^[0-9]+(?:\/[a-zA-Z]+)?\b|\b\d+\s*[×x]\s*\d+\b|±\s*\d+(?:\/√\d+)?|\[\s*[-+]?(?:\d+|π|∞|\w+)(?:\/\d+)?\s*,\s*[-+]?(?:\d+|π|∞|\w+)(?:\/\d+)?\s*\])/g;
+  /(?:\$(?!\s|\d)[^$\n]+(?<!\s)\$|\\\([^\)]+\\\)|\\begin\{cases\}[\s\S]*?\\end\{cases\}|L(?:\\left)?\(\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\\right)?\)\s*=\s*\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}|[A-Za-z]\s*=\s*\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\^T)?|\\begin\{bmatrix\}[\s\S]*?\\end\{bmatrix\}(?:\^T)?|lim_\{[^}]+\}\s*(?:³?√\([^)]+\)|³?√[a-zA-Z0-9]+|\([^)]+\)|\|[^|]+\||[a-zA-Z0-9_^+\-*/()π∞]+)(?:\s*[-+*/]\s*(?:³?√\([^)]+\)|³?√[a-zA-Z0-9]+|\([^)]+\)|\|[^|]+\||[a-zA-Z0-9_^+\-*/()π∞]+))*(?:\s*=\s*[-+0-9a-zA-Z()∞]+)?|∫_\{[^}]+\}\^\{[^}]+\}[^,.:;\n]*\bd[a-z]\b|∫[^,.:;\n]*\bd[a-z]\b|\|[a-zA-Z0-9_|^+\-*\s()]+\||(?:span\s*)?\{[^{}\n|]+\|[^{}\n|]+\}|(?:span\s*)?\{[^{}\n]+\}(?:\s*=\s*(?:span\s*)?\{[^{}\n]+\})*|\(\s*[a-zA-Z]\([^)]+\)\s*[-+]\s*[a-zA-Z]\([^)]+\)\s*\)\s*\/\s*[a-zA-Z0-9]+|[-+0-9a-zA-Z_()^*/{}π]+\s*[≠≤≥]\s*[-+0-9a-zA-Z_()^*/{}√π∞]+|[-+0-9a-zA-Z_()^*/{}π]+(?:\s*[-+*/]\s*[-+0-9a-zA-Z_()^*/{}π]+)*\s*=\s*(?:lim_\{[^}]+\}\s*)?[-+0-9a-zA-Z_()^*/{}√π]+(?:\s*[-+*/]\s*[-+0-9a-zA-Z_()^*/{}√π]+)*|\b[a-zA-Z]\s*→\s*[-+0-9a-zA-Z∞]+\b|\b(?:d\^2y\/dx\^2|dy\/dt|dz\/dt|dy\/dx|dp\/dt|y'\(1\)|f'\(x\)|f\(x\)|g\(x\)|w'\(t\))\b|³?√\([^)]+\)|³?√[0-9a-zA-Z]+|\b[a-zA-Z]\^[0-9]+|\b[a-zA-Z]\^\([^)]+\)|\b[a-zA-Z]_[0-9a-zA-Z]+\b|\b[a-zA-Z]_\{[^}]+\}|\b\d*\s*(?:cm|m|km|s|ft|in)\^[0-9]+(?:\/[a-zA-Z]+)?\b|\b\d+\s*[×x]\s*\d+\b|±\s*\d+(?:\/√\d+)?|[\(\[]\s*[-+]?(?:\d*π|\d+(?:\.\d+)?|∞)(?:\/\d+)?\s*,\s*[-+]?(?:\d*π|\d+(?:\.\d+)?|∞)(?:\/\d+)?\s*[\)\]]|\[\s*[-+]?(?:\d*π|\d+(?:\.\d+)?|∞|[a-zA-Z])(?:\/\d+)?\s*,\s*[-+]?(?:\d*π|\d+(?:\.\d+)?|∞|[a-zA-Z])(?:\/\d+)?\s*\])/g;
 
 export interface MathToken {
   type: 'text' | 'math';
